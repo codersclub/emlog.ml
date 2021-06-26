@@ -51,5 +51,12 @@ https://www.emlog.net/download
 3. 在浏览器里访问：http:你网站的域名/passwd.php 按照提示操作重置密码。重置后如果该文件没自动删除请务必手动删除。
 
 
+## 
+
+[](https://gitee.com/snowsun/emlog-docs/blob/master/plugin.md)
+
+
+
+
 ## 软件授权许可证（License）
 发布Emlog软件所依据的许可证是自由软件基金会的GPLv3(或更高版本)：[LICENSE](/license.txt)
