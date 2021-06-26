@@ -30,32 +30,47 @@ www.emlog.net
 https://www.emlog.net/download
 
 ## 环境要求
+
+### pro 环境要求
 * PHP7.0及以上
 * MySQL5.6及以上
 
+### 6.0.0 环境要求
+* PHP7.0~7.4
+* MySQL5.6+
+
+### 5.3.1 环境要求
+* PHP5.6
+* MySQL5
+
 ## 安装说明
+
+### pro版本
 1. 将解压后的所有文件上传到服务器或者虚拟主机的web根目录，也可以将zip压缩包上传后在线解压。
 2. 在浏览器上访问事先解析好的域名，程序会自动跳转到emlog安装页面，按照提示安装即可。
 3. 安装过程不会创建数据库，需要您事先创建好 ,点击确认安装，安装成功。
 
-## 忘记密码
-
-如果您在使用emlog系统过程中忘记了自己的后台密码，可以使用emlog密码重置工具来重置密码：
-
-工具下载地址：https://www.emlog.net/plugin/detail/176
-
-使用方法：
-
-1. 将下载的zip包解压。
-2. 将解压后的 passwd.php文件上传到emlog的根目录
-3. 在浏览器里访问：http:你网站的域名/passwd.php 按照提示操作重置密码。重置后如果该文件没自动删除请务必手动删除。
+### 5.3.1 及 6.0.0
+1. **将src文件夹下的所有文件上传到服务器或者虚拟主机你要安装emlog的目录，**
+* 注意是src下的内容，不是把src这个文件夹传上去。
+2. **在浏览器上访问你的博客地址，程序会自动跳转到emlog安装页面，按照提示安装即可。**
+* 一般数据库地址和数据库前缀保持默认不需要修改，
+* 数据库前缀对于只能建立一个数据库的虚拟主机用户来说比较有意义，数据库表加上前缀可以方便区别其他程序的数据表，也有一定的安全防范作用
+* 安装过程不会创建数据库，需要您事先创建好
+3. **点击确认安装，安装成功。**
 
 
-## 
+## 常见问题
 
-[](https://gitee.com/snowsun/emlog-docs/blob/master/plugin.md)
+[常见问题](https://gitee.com/snowsun/emlog-docs/blob/master/faq.md)
 
+## 插件开发指南
 
+[插件开发教程](https://gitee.com/snowsun/emlog-docs/blob/master/plugin.md)
+
+## 模板开发指南
+
+[模板开发指南](https://gitee.com/snowsun/emlog-docs/blob/master/template.md)
 
 
 ## 软件授权许可证（License）
