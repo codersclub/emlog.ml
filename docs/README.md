@@ -1,37 +1,55 @@
-# emlog-docs
+# Emlog
 
-#### 介绍
-emlog的使用和开发文档
-
-#### 软件架构
-软件架构说明
+emlog是一款基于PHP和MySQL的功能强大的博客及CMS建站系统，追求快速、稳定、简单、舒适的建站体验。
 
 
-#### 安装教程
+## 功能简介
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+* 一键式更换模板，方便快捷打造个性站点
+* 支持强大的插件扩展功能，随意选择实用的插件，让你的站点无限可能
+* 支持日志URL自定义，链接样式更适合SEO
+* 清爽的日志撰写页面、配以自动保存，书写博文更加舒适无忧
+* 日志草稿箱功能，方便保存你未完成的日志
+* 灵活的侧边栏组件(widgets)管理，轻松组合、自定义你喜欢的组件
+* 自定义页面，轻松创建留言板、导航条、个人介绍等页面
+* 多人联合撰写，后台轻松管理多个撰写人
+* 支持灵活的标签(tag)分类，以及传统分类方式
+* 方便的附件（图片、文件）上传和管理
+* 上传的图片可以随意直观的嵌入到日志内容里，让你的日志图文并茂
+* 首页日历方式查阅日志，方便、直观、快捷
+* 数据缓存技术，站点访问速度更快
+* 站点数据备份/恢复功能
 
 
-#### 特技
+## 官方首页
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+www.emlog.net
+
+## 安装包下载
+
+https://www.emlog.net/download
+
+## 环境要求
+* PHP7.0及以上
+* MySQL5.6及以上
+
+## 安装说明
+1. 将解压后的所有文件上传到服务器或者虚拟主机的web根目录，也可以将zip压缩包上传后在线解压。
+2. 在浏览器上访问事先解析好的域名，程序会自动跳转到emlog安装页面，按照提示安装即可。
+3. 安装过程不会创建数据库，需要您事先创建好 ,点击确认安装，安装成功。
+
+## 忘记密码
+
+如果您在使用emlog系统过程中忘记了自己的后台密码，可以使用emlog密码重置工具来重置密码：
+
+工具下载地址：https://www.emlog.net/plugin/detail/176
+
+使用方法：
+
+1. 将下载的zip包解压。
+2. 将解压后的 passwd.php文件上传到emlog的根目录
+3. 在浏览器里访问：http:你网站的域名/passwd.php 按照提示操作重置密码。重置后如果该文件没自动删除请务必手动删除。
+
+
+## 软件授权许可证（License）
+发布Emlog软件所依据的许可证是自由软件基金会的GPLv3(或更高版本)：[LICENSE](/license.txt)
