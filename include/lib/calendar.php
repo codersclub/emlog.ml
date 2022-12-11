@@ -19,7 +19,7 @@ class Calendar {
 		$logdate = [];
 		$now = time();
 		$date_state = "and date<=$now";
-/*vot*/		$query = $DB->query("SELECT date FROM " . DB_PREFIX . "blog WHERE hide='n' AND checked='y' AND type='blog' $date_state");
+		$query = $DB->query("SELECT date FROM " . DB_PREFIX . "blog WHERE hide='n' AND checked='y' AND type='blog' $date_state");
 		while ($date = $DB->fetch_array($query)) {
 			$logdate[] = date("Ymd", $date['date']);
 		}
@@ -56,17 +56,17 @@ class Calendar {
 			$m = '12';
 			$year_down = $n_year - 1;
 		}
-/*vot*/		$url = DYNAMIC_BLOGURL . '?action=cal&record=' . ($n_year - 1) . $n_month; //Previous Year
-/*vot*/		$url2 = DYNAMIC_BLOGURL . '?action=cal&record=' . ($n_year + 1) . $n_month;//Next Year
-/*vot*/		$url3 = DYNAMIC_BLOGURL . '?action=cal&record=' . $year_down . $m;         //Previous Month
-/*vot*/		$url4 = DYNAMIC_BLOGURL . '?action=cal&record=' . $year_up . $mj;          //Next month
+		$url = DYNAMIC_BLOGURL . '?action=cal&record=' . ($n_year - 1) . $n_month; //Previous Year
+		$url2 = DYNAMIC_BLOGURL . '?action=cal&record=' . ($n_year + 1) . $n_month;//Next Year
+		$url3 = DYNAMIC_BLOGURL . '?action=cal&record=' . $year_down . $m;         //Previous Month
+		$url4 = DYNAMIC_BLOGURL . '?action=cal&record=' . $year_up . $mj;          //Next month
 
 		$calendar = "<table class=\"calendartop\" cellspacing=\"0\"><tr>
 		<td><a href=\"javascript:void(0);\" onclick=\"sendinfo('$url','calendar');\"> &laquo; </a>$n_year2<a href=\"javascript:void(0);\" onclick=\"sendinfo('$url2','calendar');\"> &raquo; </a></td>
 		<td><a href=\"javascript:void(0);\" onclick=\"sendinfo('$url3','calendar');\"> &laquo; </a>$n_month<a href=\"javascript:void(0);\" onclick=\"sendinfo('$url4','calendar');\"> &raquo; </a></td>
 		</tr></table>
 		<table class=\"calendar\" cellspacing=\"0\">
-<!--vot-->	<tr><td class=\"week\">".lang('weekday1')."</td><td class=\"week\">".lang('weekday2')."</td><td class=\"week\">".lang('weekday3')."</td><td class=\"week\">".lang('weekday4')."</td><td class=\"week\">".lang('weekday5')."</td><td class=\"week\">".lang('weekday6')."</td><td class=\"sun\">".lang('weekday7')."</td></tr>";
+          	<tr><td class=\"week\">".lang('weekday1')."</td><td class=\"week\">".lang('weekday2')."</td><td class=\"week\">".lang('weekday3')."</td><td class=\"week\">".lang('weekday4')."</td><td class=\"week\">".lang('weekday5')."</td><td class=\"week\">".lang('weekday6')."</td><td class=\"sun\">".lang('weekday7')."</td></tr>";
 
 		//Get a given date is the first day of the week
 		$week = @gmdate("w", gmmktime(0, 0, 0, $n_month, 1, $n_year));

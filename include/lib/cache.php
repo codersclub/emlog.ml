@@ -77,14 +77,14 @@ class Cache {
 	}
 
 	public function updateArticleCache() {
-		$this->updateCache(['sta', 'tags', 'sort', 'newlog', 'record', 'logtags', 'logsort', 'logalias']);
+		$this->updateCache(['sta', 'tags', 'sort', 'newlog', 'record', 'logsort', 'logalias']);
 	}
 
 	public function cacheWrite($cacheData, $cacheName) {
 		$cachefile = EMLOG_ROOT . '/content/cache/' . $cacheName . '.php';
 		$cacheData = "<?php exit;//" . $cacheData;
-/*vot*/		@ $fp = fopen($cachefile, 'wb') or emMsg(lang('cache_read_error'));
-/*vot*/		@ fwrite($fp, $cacheData) or emMsg(lang('cache_not_writable'));
+		@ $fp = fopen($cachefile, 'wb') or emMsg(lang('cache_read_error'));
+		@ fwrite($fp, $cacheData) or emMsg(lang('cache_not_writable'));
 		$this->{$cacheName . '_cache'} = null;
 		fclose($fp);
 	}
@@ -419,7 +419,7 @@ class Cache {
 					$record_cache[$h]['lognum'] = $lognum;
 				}
 				$record_cache[$p] = array(
-/*vot*/					'record' => gmdate('Y-m', $show_record['date']),
+					'record' => gmdate('Y-m', $show_record['date']),
 					'date'   => gmdate('Ym', $show_record['date'])
 				);
 				$p++;
@@ -454,31 +454,10 @@ class Cache {
 	}
 
 	/**
-	 * Post tags cache
+	 * Post Tag Cache [Deprecated]
 	 */
 	private function mc_logtags() {
-		$tag_model = new Tag_Model();
-		$newlog = $this->readCache("newlog");
-
-		$log_cache_tags = [];
-		foreach ($newlog as $each) {
-			$gid = $each['gid'];
-			$tag_ids = $tag_model->getTagIdsFromBlogId($gid);
-			$tag_names = $tag_model->getNamesFromIds($tag_ids);
-
-			$tags = [];
-			foreach ($tag_names as $key => $value) {
-				$tag = [];
-				$tag['tagurl'] = rawurlencode($value);
-				$tag['tagname'] = htmlspecialchars($value);
-				$tag['tid'] = (int)$key;
-				$tags[] = $tag;
-			}
-
-			$log_cache_tags[$gid] = $tags;
-		}
-
-		$cacheData = serialize($log_cache_tags);
+		$cacheData = serialize([]);
 		$this->cacheWrite($cacheData, 'logtags');
 	}
 

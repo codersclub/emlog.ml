@@ -86,18 +86,15 @@ class Media_Model {
 		$filepath_thum = $attach['filepath'];
 		$filepath = str_replace("thum - ", "", $attach['filepath']);
 		if (file_exists($filepath_thum)) {
-/*vot*/			@unlink($filepath_thum) or emMsg(lang('del_failed'));
+			@unlink($filepath_thum) or emMsg(lang('del_failed'));
 		}
 		if (file_exists($filepath)) {
-/*vot*/			@unlink($filepath) or emMsg(lang('del_failed'));
+			@unlink($filepath) or emMsg(lang('del_failed'));
 		}
 
 		return $this->db->query("DELETE FROM $this->table WHERE aid = $media_id $author");
 	}
 
-	/**
-	 * update media
-	 */
 	function updateMedia($data, $media_id) {
 		$author = User::haveEditPermission() ? '' : 'and author=' . UID;
 		$Item = [];

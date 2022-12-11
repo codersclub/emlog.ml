@@ -12,7 +12,7 @@ class Log_Model {
 	private $Parsedown;
 	private $table;
 
-	function __construct() {
+	public function __construct() {
 		$this->db = Database::getInstance();
 		$this->table = DB_PREFIX . 'blog';
 		$this->Parsedown = new Parsedown();
@@ -22,9 +22,8 @@ class Log_Model {
 	/**
 	 * create article
 	 */
-	function addlog($logData) {
-		$kItem = [];
-		$dItem = [];
+	public function addlog($logData) {
+		$kItem = $dItem = [];
 		foreach ($logData as $key => $data) {
 			$kItem[] = $key;
 			$dItem[] = $data;
@@ -38,8 +37,8 @@ class Log_Model {
 	/**
 	 * update article
 	 */
-	function updateLog($logData, $blogId) {
-		$author = User::haveEditPermission() ? '' : 'and author=' . UID;
+	public function updateLog($logData, $blogId, $uid = UID) {
+		$author = User::haveEditPermission() ? '' : 'and author=' . $uid;
 		$Item = [];
 		foreach ($logData as $key => $data) {
 			$Item[] = "$key='$data'";
@@ -57,7 +56,7 @@ class Log_Model {
 	 * @param string $type
 	 * @return int
 	 */
-	function getLogNum($hide = 'n', $condition = '', $type = 'blog', $spot = 0) {
+	public function getLogNum($hide = 'n', $condition = '', $type = 'blog', $spot = 0) {
 		$hide_state = $hide ? "and hide='$hide'" : '';
 
 		if ($spot == 0) {
@@ -73,15 +72,12 @@ class Log_Model {
 		return $data['total'];
 	}
 
-	/**
-	 * Get single article for admin
-	 */
-	function getOneLogForAdmin($blogId) {
+	public function getOneLogForAdmin($blogId) {
 		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
 		$sql = "SELECT * FROM $this->table WHERE gid=$blogId $author";
 		$res = $this->db->query($sql);
 		if ($this->db->affected_rows() < 1) {
-/*vot*/			emMsg(lang('no_permission'), './');
+			emMsg(lang('no_permission'), './');
 		}
 		$row = $this->db->fetch_array($res);
 		if ($row) {
@@ -98,7 +94,7 @@ class Log_Model {
 	/**
 	 * get single article
 	 */
-	function getOneLogForHome($blogId) {
+	public function getOneLogForHome($blogId) {
 		$sql = "SELECT * FROM $this->table WHERE gid=$blogId AND hide='n' AND checked='y'";
 		$res = $this->db->query($sql);
 		$row = $this->db->fetch_array($res);
@@ -128,20 +124,11 @@ class Log_Model {
 		];
 	}
 
-	/**
-	 * Get posts by conditions for Admin
-	 *
-	 * @param string $condition
-	 * @param string $hide_state
-	 * @param int $page
-	 * @param string $type
-	 * @return array
-	 */
-	function getLogsForAdmin($condition = '', $hide_state = '', $page = 1, $type = 'blog') {
+	public function getLogsForAdmin($condition = '', $hide_state = '', $page = 1, $type = 'blog') {
 		$perpage_num = Option::get('admin_perpage_num');
 		$start_limit = !empty($page) ? ($page - 1) * $perpage_num : 0;
-		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
-		$hide_state = $hide_state ? "AND hide='$hide_state'" : '';
+/*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
+/*vot*/		$hide_state = $hide_state ? "AND hide='$hide_state'" : '';
 		$limit = "LIMIT $start_limit, " . $perpage_num;
 		$sql = "SELECT * FROM $this->table WHERE type='$type' $author $hide_state $condition $limit";
 		$res = $this->db->query($sql);
@@ -149,21 +136,13 @@ class Log_Model {
 		while ($row = $this->db->fetch_array($res)) {
 			$row['timestamp'] = $row['date'];
 			$row['date'] = date("Y-m-d H:i", $row['date']);
-/*vot*/			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
+			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
 			$logs[] = $row;
 		}
 		return $logs;
 	}
 
-	/**
-	 * Get posts by conditions for Homepage
-	 *
-	 * @param string $condition
-	 * @param int $page
-	 * @param int $perPageNum
-	 * @return array
-	 */
-	function getLogsForHome($condition = '', $page = 1, $perPageNum = 10) {
+	public function getLogsForHome($condition = '', $page = 1, $perPageNum = 10) {
 		$start_limit = !empty($page) ? ($page - 1) * $perPageNum : 0;
 		$limit = $perPageNum ? "LIMIT $start_limit, $perPageNum" : '';
 		$now = time();
@@ -177,13 +156,13 @@ class Log_Model {
 			$row['logid'] = $row['gid'];
 			$cookiePassword = isset($_COOKIE['em_logpwd_' . $row['gid']]) ? addslashes(trim($_COOKIE['em_logpwd_' . $row['gid']])) : '';
 			if (!empty($row['password']) && $cookiePassword != $row['password']) {
-/*vot*/				$row['excerpt'] = '<p>[' . lang('post_protected_by_password_click_title') . ']</p>';
+				$row['excerpt'] = '<p>[' . lang('post_protected_by_password_click_title') . ']</p>';
 			}
 
 			$row['log_description'] = $this->Parsedown->text(empty($row['excerpt']) ? $row['content'] : $row['excerpt']);
 			$row['attachment'] = '';
 			$row['tag'] = '';
-/*vot*/			$row['tbcount'] = 0;//Compatible not deleted Quote of template
+			$row['tbcount'] = 0;
 			$logs[] = $row;
 		}
 		return $logs;
@@ -191,11 +170,8 @@ class Log_Model {
 
 	/**
 	 * get rss article list
-	 *
-	 * @param int $perPageNum
-	 * @return array
 	 */
-	function getLogsForRss($perPageNum = 10) {
+	public function getLogsForRss($perPageNum = 10) {
 		if ($perPageNum <= 0) {
 			return [];
 		}
@@ -209,14 +185,14 @@ class Log_Model {
 			$re['title'] = htmlspecialchars($re['title']);
 			$re['content'] = $this->Parsedown->text($re['content']);
 			if (!empty($re['password'])) {
-/*vot*/				$re['content'] = '<p>' . lang('article_encrypted') . ']</p>';
+				$re['content'] = '<p>' . lang('article_encrypted') . ']</p>';
 			} elseif (Option::get('rss_output_fulltext') == 'n') {
 				if (!empty($re['excerpt'])) {
 					$re['content'] = $re['excerpt'];
 				} else {
 					$re['content'] = extractHtmlData($re['content'], 330);
 				}
-/*vot*/				$re['content'] .= ' <a href="' . Url::log($re['id']) . '">' . lang('read_more') . '</a>';
+				$re['content'] .= ' <a href="' . Url::log($re['id']) . '">' . lang('read_more') . '</a>';
 			}
 			$d[] = $re;
 		}
@@ -232,7 +208,7 @@ class Log_Model {
 		$pages = [];
 		while ($row = $this->db->fetch_array($res)) {
 			$row['date'] = date("Y-m-d H:i", $row['date']);
-/*vot*/			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
+			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
 			$pages[] = $row;
 		}
 		return $pages;
@@ -242,10 +218,10 @@ class Log_Model {
 	 * delete article
 	 */
 	function deleteLog($blogId) {
-/*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
-/*vot*/		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
+		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
+		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
 		if ($this->db->affected_rows() < 1) {
-/*vot*/			emMsg(lang('no_permission'), './');
+			emMsg(lang('no_permission'), './');
 		}
 		// comment
 /*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "comment WHERE gid=$blogId");
@@ -291,10 +267,7 @@ class Log_Model {
 		$this->db->query("UPDATE $this->table SET views=views+1 WHERE gid=$blogId");
 	}
 
-	/**
-	 * Determine whether the repeated posting
-	 */
-	function isRepeatPost($title, $time) {
+	public function isRepeatPost($title, $time) {
 /*vot*/		$sql = "SELECT gid FROM $this->table WHERE title='$title' AND date='$time' LIMIT 1";
 		$res = $this->db->query($sql);
 		$row = $this->db->fetch_array($res);
@@ -388,9 +361,9 @@ class Log_Model {
 			if (view::isTplExist('pw')) {
 				include view::getView('pw');
 			} else {
-/*vot*/				$page_pass = lang('page_password_enter');
-/*vot*/				$submit_pass = lang('submit_password');
-/*vot*/				$back = lang('back_home');
+				$page_pass = lang('page_password_enter');
+				$submit_pass = lang('submit_password');
+				$back = lang('back_home');
 				echo <<<EOT
 <!doctype html>
 <html>
@@ -404,9 +377,9 @@ class Log_Model {
 </head>
 <body class="text-center">
 	<form action="" method="post" class="form-signin" style="width: 100%;max-width: 330px;padding: 15px;margin: 0 auto;">
-<!--vot--><input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
-<!--vot--><button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
-<!--vot--><p class="mt-5 mb-3 text-muted"><a href="{$url}">{$back}</a></p>
+          <input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
+          <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
+          <p class="mt-5 mb-3 text-muted"><a href="{$url}">{$back}</a></p>
     </form>
 </body>
 </html>
@@ -416,8 +389,8 @@ EOT;
 				setcookie('em_logpwd_' . $logid, ' ', time() - 31536000);
 			}
 			exit;
-		} else {
-			setcookie('em_logpwd_' . $logid, $logPwd);
 		}
+
+		setcookie('em_logpwd_' . $logid, $logPwd);
 	}
 }

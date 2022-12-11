@@ -32,19 +32,19 @@ class Mysqlpdo {
 
 	private function __construct() {
 		if (!class_exists('PDO')) {
-/*vot*/			emMsg(lang('pdo_not_supported'));
+			emMsg(lang('pdo_not_supported'));
 		}
 
 		try {
 			$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';
 			$options = [];
 			$dbh = new PDO($dsn, DB_USER, DB_PASSWD, $options);
-/*vot*/			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   //Set if the sql statement is executed incorrectly, an exception will be thrown, and the transaction will be automatically rolled back
-/*vot*/			$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);           //Disable the simulation effect of prepared statements (anti-SQL injection)
+			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   //Set if the sql statement is executed incorrectly, an exception will be thrown, and the transaction will be automatically rolled back
+			$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);           //Disable the simulation effect of prepared statements (anti-SQL injection)
 
 			$this->conn = $dbh;
 		} catch (PDOException $e) {
-/*vot*/			emMsg(lang('pdo_connect_error' . $e->getMessage());
+			emMsg(lang('pdo_connect_error' . $e->getMessage());
 		}
 
 	}
@@ -79,10 +79,10 @@ class Mysqlpdo {
 			$this->result = $this->conn->query($sql);
 			$this->queryCount++;
 			if (!$ignore_err && 1046 == $this->geterrno()) {
-/*vot*/				emMsg(lang('db_error_name');
+				emMsg(lang('db_error_name');
 			}
 			if (!$ignore_err && !$this->result) {
-/*vot*/				emMsg(lang('db_sql_error') . ": {$sql}<br />" . $this->geterror());
+				emMsg(lang('db_sql_error') . ": {$sql}<br />" . $this->geterror());
 			} else {
 				return $this->result;
 			}

@@ -5,7 +5,7 @@
  * @link https://www.emlog.net
  */
 
-/*vot*/ session_start();
+session_start();
 
 if (getenv('EMLOG_ENV') === 'develop'
     || defined('DEV_MODE')) {
@@ -42,11 +42,11 @@ if (empty($_SESSION['LANG'])) {
 }
 define('LANG', $_SESSION['LANG']);
 
-//vot: blog language direction
-define('LANG_DIR', LANG_LIST[LANG]['dir']); //'ltr', 'rtl'
+// blog language direction
+const LANG_DIR = LANG_LIST[LANG]['dir'];
 
 // Load the core Lang File
-/*vot*/ load_language('core');
+load_language('core');
 
 
 $CACHE = Cache::getInstance();
@@ -60,7 +60,7 @@ const ROLE_ADMIN = 'admin';              //Admin
 const ROLE_EDITOR = 'editor';            //Editor
 const ROLE_WRITER = 'writer';            //Registered user
 const ROLE_VISITOR = 'visitor';          //Guest
-/*vot*/ const ROLE_FOUNDER = 'founder';  //Founder
+const ROLE_FOUNDER = 'founder';          //Founder
 
 define('ROLE', ISLOGIN === true ? $userData['role'] : User::ROLE_VISITOR);
 define('UID', ISLOGIN === true ? $userData['uid'] : '');
@@ -83,8 +83,8 @@ const MSGCODE_NO_UPUPDATE = 1002;
 const MSGCODE_SUCCESS = 200;
 
 //Access Scheme
-/*vot*/define('SCHEME', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://');
-/*vot*/define('ROOT_URL', str_replace('\\','/', dirname($_SERVER['PHP_SELF'])));
+define('SCHEME', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://');
+define('ROOT_URL', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
 
 $active_plugins = Option::get('active_plugins');
 $emHooks = [];

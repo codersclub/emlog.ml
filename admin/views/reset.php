@@ -10,7 +10,7 @@
                         <div class="col-lg-12">
                             <div class="p-5">
                                 <div class="text-center">
-<!--vot-->                          <h1 class="h4 text-gray-900 mb-4"><?=lang('retrieve_password')?></h1>
+                                    <h1 class="h4 text-gray-900 mb-4"><?=lang('retrieve_password')?></h1>
                                 </div>
                                 <form method="post" class="user" action="./account.php?action=doreset">
 									<?php if (isset($_GET['error_mail'])): ?>
@@ -31,7 +31,7 @@
 									<?php endif ?>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?=lang('submit')?></button>
                                     <hr>
-<!--vot-->                          <div class="text-center"><a class="small" href="../admin"><?=lang('login')?></a></div>
+                                    <div class="text-center"><a class="small" href="../admin"><?=lang('login')?></a></div>
                                     <hr>
                                     <div class="text-center"><a href="../" class="small" role="button">&larr;<?=lang('back_home')?></a></div>
                                 </form>

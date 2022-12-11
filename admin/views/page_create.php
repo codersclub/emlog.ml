@@ -7,10 +7,10 @@
         <div class="col-xl-12">
             <div id="post" class="form-group">
                 <div>
-<!--vot-->          <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?=lang('page_title')?>"/>
+                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?=lang('page_title')?>"/>
                 </div>
                 <div id="post_bar">
-<!--vot-->          <a href="#mediaModal" class="text-muted small my-3" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i
+                    <a href="#mediaModal" class="text-muted small my-3" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i
                                 class="icofont-plus"></i> <?=lang('upload_insert')?></a>
 					<?php doAction('adm_writelog_head') ?>
                 </div>
@@ -18,16 +18,16 @@
             </div>
 
             <div class="form-group">
-<!--vot-->      <label><?=lang('link_alias')?></label>
+                <label><?=lang('link_alias')?></label>
                 <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
             </div>
             <div class="form-group">
-<!--vot-->      <label><?=lang('page_template')?>:</label>
+                <label><?=lang('page_template')?>:</label>
                 <input name="template" id="template" class="form-control" value="<?= $template ?>"/>
             </div>
             <div class="form-group">
                 <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-<!--vot-->      <label for="allow_remark"><?=lang('allow_comments')?></label>
+                <label for="allow_remark"><?=lang('allow_comments')?></label>
             </div>
 
             <div id="post_button">
@@ -35,9 +35,9 @@
                 <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>" />
                 <input type="hidden" name="pageid" value="<?= $pageId ?>" />
 				<?php if ($pageId < 0): ?>
-<!--vot-->          <input type="submit" value="<?=lang('page_publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="submit" value="<?=lang('page_publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
 				<?php else: ?>
-<!--vot-->          <input type="submit" value="<?=lang('save_and_return')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="submit" value="<?=lang('save_and_return')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
 				<?php endif ?>
             </div>
         </div>
@@ -48,13 +48,13 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-<!--vot-->      <h5 class="modal-title" id="exampleModalLabel"><?=lang('resource_library')?></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?=lang('resource_library')?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-<!--vot-->      <a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?=lang('upload_files')?></a>
+                <a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?=lang('upload_files')?></a>
                 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
                     <div class="row">
                     </div>
@@ -77,7 +77,7 @@
         previewsContainer: ".dropzone-previews",
         sending: function (file, xhr, formData) {
             formData.append("filesize", file.size);
-<!--vot-->  $('#mediaAdd').html("<?=lang('uploading')?>");
+            $('#mediaAdd').html("<?=lang('uploading')?>");
         },
         init: function () {
             this.on("error", function (file, response) {
@@ -85,7 +85,7 @@
             });
             this.on("queuecomplete", function (file) {
                 $('#mediaModal').find('.modal-body .row').load("./media.php?action=lib");
-<!--vot-->      $('#mediaAdd').html("<?=lang('upload_files')?>");
+                $('#mediaAdd').html("<?=lang('upload_files')?>");
             });
         }
     });
@@ -98,7 +98,7 @@
 </script>
 
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<? /*vot*/ if (strtolower(LANG) !== 'zh-cn') { ?>
+<? if (strtolower(LANG) !== 'zh-cn') { ?>
 <script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
 <? } ?>
 <script>

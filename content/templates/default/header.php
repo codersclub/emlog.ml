@@ -12,7 +12,7 @@ if (!defined('EMLOG_ROOT')) {
 require_once View::getView('module');
 ?>
 <!doctype html>
-<!--vot--><html lang="<?=LANG?>" dir="<?= LANG_DIR ?>">
+          <html lang="<?=LANG?>" dir="<?= LANG_DIR ?>">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@ require_once View::getView('module');
 	<link href="<?= TEMPLATE_URL ?>css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
 	<link href="<?= TEMPLATE_URL ?>css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
 	<script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<!--vot--><script>function sendinfo(url) {  // Calendar generation and page turning
+          <script>function sendinfo(url) {  // Calendar generation and page turning
 			$("#calendar").load(url)
 		}</script>
 	<?php doAction('index_head') ?>

@@ -17,67 +17,67 @@ function em_confirm(id, property, token) {
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
-/*vot*/     msg = lang('article_del_sure');
+    msg = lang('article_del_sure');
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
-/*vot*/     msg = lang('draft_del_sure');
+    msg = lang('draft_del_sure');
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
-/*vot*/     msg = lang('twitter_del_sure');
+    msg = lang('twitter_del_sure');
             break;
         case 'comment':
             url = 'comment.php?action=del&id=' + id;
-/*vot*/     msg = lang('comment_del_sure');
+    msg = lang('comment_del_sure');
             break;
         case 'commentbyip':
             url = 'comment.php?action=delbyip&ip=' + id;
-/*vot*/     msg = lang('comment_ip_del_sure');
+    msg = lang('comment_ip_del_sure');
             break;
         case 'link':
             url = 'link.php?action=dellink&linkid=' + id;
-/*vot*/     msg = lang('link_del_sure');
+    msg = lang('link_del_sure');
             break;
         case 'navi':
             url = 'navbar.php?action=del&id=' + id;
-/*vot*/     msg = lang('navi_del_sure');
+    msg = lang('navi_del_sure');
             break;
         case 'media':
             url = 'media.php?action=delete&aid=' + id;
-/*vot*/     msg = lang('attach_del_sure');
+    msg = lang('attach_del_sure');
             break;
         case 'avatar':
             url = 'blogger.php?action=delicon';
-/*vot*/     msg = lang('avatar_del_sure');
+    msg = lang('avatar_del_sure');
             break;
         case 'sort':
             url = 'sort.php?action=del&sid=' + id;
-/*vot*/     msg = lang('category_del_sure');
+    msg = lang('category_del_sure');
             break;
         case 'del_user':
             url = 'user.php?action=del&uid=' + id;
-/*vot*/     msg = lang('user_del_sure');
+    msg = lang('user_del_sure');
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
-/*vot*/     msg = lang('user_disable_sure');
+    msg = lang('user_disable_sure');
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
-/*vot*/     msg = lang('template_del_sure');
+    msg = lang('template_del_sure');
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
-/*vot*/     msg = lang('plugin_reset_sure');
+    msg = lang('plugin_reset_sure');
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
-/*vot*/     msg = lang('plugin_del_sure');
+    msg = lang('plugin_del_sure');
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
-/*vot*/     msg = lang('media_category_del_sure');
+    msg = lang('media_category_del_sure');
             break;
     }
     if (confirm(msg)) {
@@ -97,16 +97,20 @@ function hideActived() {
     $(".alert-danger").slideUp(300);
 }
 
-function displayToggle(id, keep) {
+// Click action of [More Options]
+let icon_mod = "down";
+
+function displayToggle(id) {
     $("#" + id).toggle();
-    icon_tog ? $(".icofont-simple-right").attr("class", "icofont-simple-down") : $(".icofont-simple-down").attr("class", "icofont-simple-right");
-    icon_tog = !icon_tog;
-    if (keep == 1) {
-        Cookies.set('em_' + id, $("#" + id).css('visibility'), {expires: 365})
+    if (icon_mod === "down") {
+        icon_mod = "right";
+        $(".icofont-simple-down").attr("class", "icofont-simple-right")
+    } else {
+        icon_mod = "down";
+        $(".icofont-simple-right").attr("class", "icofont-simple-down")
     }
-    if (keep == 2) {
-        Cookies.set('em_' + id, $("#" + id).css('visibility'))
-    }
+
+    Cookies.set('em_' + id, icon_mod, {expires: 365})
 }
 
 function doToggle(id) {
@@ -146,7 +150,7 @@ function checkform() {
     var a = $.trim($("#alias").val());
     var t = $.trim($("#title").val());
 
-    if (typeof articleTextRecord !== "undefined") {  // When submitting, reset the original text record value to prevent the leaving prompt from appearing
+/*vot*/ if (typeof articleTextRecord !== "undefined") {  // When submitting, reset the original text record value to prevent the leaving prompt from appearing
         articleTextRecord = $("textarea[name=logcontent]").text();
     } else {
         pageText = $("textarea").text();
@@ -154,7 +158,7 @@ function checkform() {
     if (0 == isalias(a)) {
         return true;
     } else {
-/*vot*/ alert(lang('alias_link_error'));
+alert(lang('alias_link_error'));
         $("#alias").focus();
         return false;
     }
@@ -163,13 +167,13 @@ function checkform() {
 function checkalias() {
     var a = $.trim($("#alias").val());
     if (1 == isalias(a)) {
-/*vot*/ $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_invalid_chars') + '</span>');
+$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_invalid_chars') + '</span>');
     } else if (2 == isalias(a)) {
-/*vot*/ $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_digital') + '</span>');
+$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_digital') + '</span>');
     } else if (3 == isalias(a)) {
-/*vot*/ $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_format_must_be') + '</span>');
+$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_format_must_be') + '</span>');
     } else if (4 == isalias(a)) {
-/*vot*/ $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_system_conflict') + '</span>');
+$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_system_conflict') + '</span>');
     } else {
         $("#alias_msg_hook").html('');
         $("#msg").html('');
@@ -194,7 +198,7 @@ function insert_cover(imgsrc) {
     $('#cover_rm').show();
 }
 
-// act: 1 - Automatically save at regular intervals. 2 - Normal save.
+// act 1：auto save 2：save
 function autosave(act) {
     var nodeid = "as_logid";
     var timeout = 30000;
@@ -219,9 +223,8 @@ function autosave(act) {
     var ishide = ishide == "" ? "y" : ishide;
     var querystr = "logcontent=" + encodeURIComponent(content) + "&logexcerpt=" + encodeURIComponent(excerpt) + "&title=" + encodeURIComponent(title) + "&cover=" + encodeURIComponent(cover) + "&alias=" + encodeURIComponent(alias) + "&author=" + author + "&sort=" + sort + "&postdate=" + postdate + "&date=" + date + "&tag=" + encodeURIComponent(tag) + "&top=" + top + "&sortop=" + sortop + "&allow_remark=" + allow_remark + "&password=" + password + "&token=" + token + "&ishide=" + ishide + "&as_logid=" + logid;
 
-    // check alias
     if (alias != '' && 0 != isalias(alias)) {
-/*vot*/ $("#msg").show().html(lang('alias_link_error_not_saved'));
+$("#msg").show().html(lang('alias_link_error_not_saved'));
         if (act == 0) {
             setTimeout("autosave(1)", timeout);
         }
@@ -231,19 +234,19 @@ function autosave(act) {
     if (act == 1 && ishide == 'n') {
         return;
     }
-    // Do not save automatically when the content is empty 
+    // Do not save automatically when the content is empty
     if (act == 1 && content == "") {
         setTimeout("autosave(1)", timeout);
         return;
     }
     // Manual saving is not allowed when the last successful save time is less than one second
     if ((new Date().getTime() - Cookies.get('em_saveLastTime')) < 1000 && act != 1) {
-/*vot*/ alert(lang('too_quick'));
+alert(lang('too_quick'));
         return;
     }
     var btname = $("#savedf").val();
-/*vot*/ $("#savedf").val(lang('saving'));
-/*vot*/ $('title').text(lang('saving_in') + titleText);
+$("#savedf").val(lang('saving'));
+$('title').text(lang('saving_in') + titleText);
     $("#savedf").attr("disabled", "disabled");
     $.post(url, querystr, function (data) {
         data = $.trim(data);
@@ -256,17 +259,17 @@ function autosave(act) {
             var m = d.getMinutes();
             var s = d.getSeconds();
             var tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-/*vot*/     $("#save_info").html(lang('saved_ok_time')+ tm);
-/*vot*/     $('title').text(lang('saved_ok') + titleText);
-/*vot*/     articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
-/*vot*/     Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie
+    $("#save_info").html(lang('saved_ok_time')+ tm);
+    $('title').text(lang('saved_ok') + titleText);
+    articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
+    Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie
             $("#" + nodeid).val(logid);
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-/*vot*/     $("#msg").html(lang('save_system_error')).addClass("alert-danger");
-/*vot*/     $('title').text(lang('save_failed') + titleText);
-/*vot*/     alert(lang('save_failed_prompt'))
+    $("#msg").html(lang('save_system_error')).addClass("alert-danger");
+    $('title').text(lang('save_failed') + titleText);
+    alert(lang('save_failed_prompt'))
         }
     });
     if (act == 1) {
@@ -275,9 +278,9 @@ function autosave(act) {
 }
 
 // editor.md: Page AutoSave shortcut: Ctrl + S
-function pagesave(){
-    document.addEventListener('keydown', function(e){  // Prevents the browser default action from autosave
-        if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)){
+function pagesave() {
+/*vot*/ document.addEventListener('keydown', function (e) {  // Prevents the browser default action from autosave
+        if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
             e.preventDefault();
         }
     });
@@ -286,11 +289,11 @@ function pagesave(){
 
     $.post(url, $("#addlog").serialize(), function (data) {
         let titleText = $('title').text();
-/*vot*/ $('title').text(lang('saved_ok') + titleText);
-        setTimeout(function(){
+        $('title').text('[保存成功] ' + titleText);
+        setTimeout(function () {
             $('title').text(titleText);
         }, 2000);
-    }).fail(function(){
+    }).fail(function () {
 /*vot*/ $('title').text(lang('save_failed') + $('title').text());
 /*vot*/ alert(lang('save_failed!'))
     });
@@ -307,7 +310,6 @@ $.fn.toggleClick = function () {
     });
 };
 
-// Filter HTML tags
 function removeHTMLTag(str) {
 /*vot*/ str = str.replace(/<\/?[^>]*>/g, ''); //Remove HTML tags
 /*vot*/ str = str.replace(/[ | ]*\n/g, '\n'); //Trim white spaces
@@ -366,9 +368,9 @@ var hooks = {
 
 // Paste upload image
 function imgPasteExpand(thisEditor) {
-    var listenObj = document.querySelector("textarea").parentNode  // Object to listen for
-    var postUrl = './media.php?action=upload';  // emlog image upload address
-    var emMediaPhpUrl = "./media.php?action=lib";  // The resource library address of emlog, which is used to asynchronously obtain the uploaded image data
+/*vot*/    var listenObj = document.querySelector("textarea").parentNode  // Object to listen for
+/*vot*/    var postUrl = './media.php?action=upload';  // emlog image upload address
+/*vot*/    var emMediaPhpUrl = "./media.php?action=lib";  // The resource library address of emlog, which is used to asynchronously obtain the uploaded image data
 
     // By dynamically configuring the read-only mode, the original paste action of the editor is prevented and the cursor position is restored
     function preventEditorPaste() {
@@ -391,13 +393,13 @@ function imgPasteExpand(thisEditor) {
 
     // Paste event fires
     listenObj.addEventListener("paste", function (e) {
-        if ($('.editormd-dialog').css('display') == 'block') return;  // Exit if editor has dialog
+/*vot*/        if ($('.editormd-dialog').css('display') == 'block') return;  // Exit if editor has dialog
         if (!(e.clipboardData && e.clipboardData.items)) return;
 
-        var pasteData = e.clipboardData || window.clipboardData; // Get the entire contents of the clipboard
-        pasteAnalyseResult = new Array;  // Used to store the results of traversal analysis
+/*vot*/        var pasteData = e.clipboardData || window.clipboardData; // Get the entire contents of the clipboard
+/*vot*/        pasteAnalyseResult = new Array;  // Used to store the results of traversal analysis
 
-        for(var i = 0; i < pasteData.items.length; i++) {  // Traverse the data in the analysis clipboard
+/*vot*/        for(var i = 0; i < pasteData.items.length; i++) {  // Traverse the data in the analysis clipboard
             var item = pasteData.items[i];
 
             if ((item.kind == "file") && (item.type.match('^image/'))) {
@@ -405,12 +407,12 @@ function imgPasteExpand(thisEditor) {
                 if (imgData.size === 0) return;
                 pasteAnalyseResult['type'] = 'img';
                 pasteAnalyseResult['data'] = imgData;
-                break;  // When there is a picture in the pasteboard, jump out of the loop
+/*vot*/                break;  // When there is a picture in the pasteboard, jump out of the loop
             }
             ;
         }
 
-        if (pasteAnalyseResult['type'] == 'img') {  // If there is a picture in the clipboard, upload the picture
+/*vot*/        if (pasteAnalyseResult['type'] == 'img') {  // If there is a picture in the clipboard, upload the picture
             preventEditorPaste();
             uploadImg(pasteAnalyseResult['data']);
             return;
@@ -420,17 +422,17 @@ function imgPasteExpand(thisEditor) {
     // Upload image
     function uploadImg(img) {
         var formData = new FormData();
-/*vot*/ var imgName = lang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
+var imgName = lang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
 
         formData.append('file', img, imgName);
-/*vot*/ thisEditor.insertValue(lang('uploading'));
+thisEditor.insertValue(lang('uploading'));
         $.ajax({
             url: postUrl, type: 'post', data: formData, processData: false, contentType: false, xhr: function () {
                 var xhr = $.ajaxSettings.xhr();
                 if (xhr.upload) {
                     thisEditor.insertValue("....");
                     xhr.upload.addEventListener('progress', function (e) {  // Show upload progress
-/*vot*/                 console.log(lang('progress') + e.loaded + ' / ' + e.total);
+                console.log(lang('progress') + e.loaded + ' / ' + e.total);
                         let percent = Math.floor(e.loaded / e.total * 100);
                         if (percent < 10) {
                             replaceByNum('..' + percent + '%', 4);
@@ -444,16 +446,16 @@ function imgPasteExpand(thisEditor) {
                 return xhr;
             }, success: function (result) {
                 let imgUrl, thumbImgUrl;
-/*vot*/         console.log(lang('upload_ok_get_result'));
+        console.log(lang('upload_ok_get_result'));
                 $.get(emMediaPhpUrl, function (data) {  // Get the result asynchronously, append to the editor
-/*vot*/             console.log(lang('result_ok'));
+            console.log(lang('result_ok'));
                     imgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[0];
                     thumbImgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[1];
-/*vot*/             replaceByNum(`[![](${thumbImgUrl})](${imgUrl})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters/*vot*/
+            replaceByNum(`[![](${thumbImgUrl})](${imgUrl})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                 })
             }, error: function (result) {
-/*vot*/         alert(lang('upload_failed_error'));
-/*vot*/         replaceByNum(lang('upload_failed_error'), 6);
+        alert(lang('upload_failed_error'));
+        replaceByNum(lang('upload_failed_error'), 6);
             }
         })
     }
@@ -478,3 +480,38 @@ $(document).ready(function () {
         }
     })
 })
+
+function checkupdate() {
+    $("#upmsg").html("").addClass("spinner-border text-primary");
+    $.get("./upgrade.php?action=check_update", function (result) {
+        if (result.code == 1001) {
+            $("#upmsg").html("您的emlog pro尚未注册，<a href=\"auth.php\">去注册</a>").removeClass();
+        } else if (result.code == 1002) {
+            $("#upmsg").html("已经是最新版本").removeClass();
+        } else if (result.code == 1003) {
+            $("#upmsg").html("更新服务已到期，<a href=\"https://www.emlog.net/\" target=\"_blank\">登录官网续期</a>").removeClass();
+        } else if (result.code == 200) {
+            $("#upmsg").html("有可用的新版本 " + result.data.version + "，<a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">查看更新内容</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">现在更新</a>").removeClass();
+        } else {
+            $("#upmsg").html("检查失败，可能是网络问题").removeClass();
+        }
+    });
+}
+
+function doup(source, upsql) {
+    $("#upmsg").html("正在更新中，请耐心等待").addClass("ajaxload");
+    $.get('./upgrade.php?action=update&source=' + source + "&upsql=" + upsql, function (data) {
+        $("#upmsg").removeClass();
+        if (data.match("succ")) {
+            $("#upmsg").html('恭喜您！更新成功了，请<a href="./">刷新页面</a>开始体验新版emlog');
+        } else if (data.match("error_down")) {
+            $("#upmsg").html('下载更新失败，可能是服务器网络问题');
+        } else if (data.match("error_zip")) {
+            $("#upmsg").html('解压更新失败，可能是你的服务器空间不支持zip模块');
+        } else if (data.match("error_dir")) {
+            $("#upmsg").html('更新失败，目录不可写');
+        } else {
+            $("#upmsg").html('更新失败');
+        }
+    });
+}

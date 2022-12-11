@@ -1,6 +1,6 @@
 <?php
 /**
- * Database operation routing (only compatible with old plug-ins, not recommended)
+ * Database operation routing (only compatible with old version, not recommended)
  *
  * @package EMLOG
  * @link https://www.emlog.net
@@ -13,7 +13,7 @@ class MySql {
 			return MySqlii::getInstance();
 		}
 
-/*vot*/		emMsg('mysql_not_supported');
+		emMsg('mysql_not_supported');
 	}
 
 }

@@ -19,8 +19,8 @@ class Notice {
 		$_SESSION['mail_code'] = $randCode;
 		$_SESSION['mail'] = $mail;
 
-/*vot*/		$title = lang('reset_password_code');
-/*vot*/		$content = lang('email_verify_code') . $randCode;
+		$title = lang('reset_password_code');
+		$content = lang('email_verify_code') . $randCode;
 		$sendmail = new SendMail();
 		$ret = $sendmail->send($mail, $title, $content);
 		if ($ret) {
@@ -40,8 +40,8 @@ class Notice {
 		if (!$email) {
 			return false;
 		}
-/*vot*/		$title = lang('new_article_review');
-/*vot*/		$content = lang('new_article_title') . $post_title;
+		$title = lang('new_article_review');
+		$content = lang('new_article_title') . $post_title;
 		$sendmail = new SendMail();
 		$ret = $sendmail->send($email, $title, $content);
 		if ($ret) {
@@ -61,8 +61,8 @@ class Notice {
 		if (!$email) {
 			return false;
 		}
-/*vot*/		$title = lang('new_comment_review');
-/*vot*/		$content = lang('new_comment_is') . $comment;
+		$title = lang('new_comment_review');
+		$content = lang('new_comment_is') . $comment;
 		$sendmail = new SendMail();
 		$ret = $sendmail->send($email, $title, $content);
 		if ($ret) {

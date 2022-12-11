@@ -2,23 +2,23 @@
 	exit('error!');
 } ?>
 <?php if (isset($_GET['active_edit'])): ?>
-<!--vot--><div class="alert alert-success"><?=lang('personal_data_modified_ok')?></div><?php endif ?>
+          <div class="alert alert-success"><?=lang('personal_data_modified_ok')?></div><?php endif ?>
 <?php if (isset($_GET['active_del'])): ?>
-<!--vot--><div class="alert alert-success"><?=lang('avatar_deleted_ok')?></div><?php endif ?>
+          <div class="alert alert-success"><?=lang('avatar_deleted_ok')?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('nickname_is_empty')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('nickname_is_empty')?></div><?php endif ?>
 <?php if (isset($_GET['error_b'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('email_format_invalid')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('email_format_invalid')?></div><?php endif ?>
 <?php if (isset($_GET['error_email'])): ?>
     <div class="alert alert-danger"><?=lang('email_empty')?></div><?php endif ?>
 <?php if (isset($_GET['error_c'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('password_length_short')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('password_length_short')?></div><?php endif ?>
 <?php if (isset($_GET['error_d'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('password_not_equal')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('password_not_equal')?></div><?php endif ?>
 <?php if (isset($_GET['error_e'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('username_exists')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('username_exists')?></div><?php endif ?>
 <?php if (isset($_GET['error_f'])): ?>
-<!--vot--><div class="alert alert-danger"><?=lang('nickname_exists')?></div><?php endif ?>
+          <div class="alert alert-danger"><?=lang('nickname_exists')?></div><?php endif ?>
 <?php if (isset($_GET['error_g'])): ?>
     <div class="alert alert-danger"><?=lang('email_is_used')?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -36,7 +36,7 @@
         </ul>
 	<?php else: ?>
         <ul class="nav nav-pills">
-<!--vot-->  <li class="nav-item"><a class="nav-link active" href="./blogger.php"><?=lang('personal_settings')?></a></li>
+            <li class="nav-item"><a class="nav-link active" href="./blogger.php"><?=lang('personal_settings')?></a></li>
         </ul>
 	<?php endif ?>
 </div>
@@ -54,35 +54,35 @@
         <form action="blogger.php?action=update" method="post" name="blooger" id="blooger" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="form-group">
-<!--vot-->          <label><?=lang('nickname')?></label>
+                    <label><?=lang('nickname')?></label>
                     <input class="form-control" value="<?= $nickname ?>" name="name" maxlength="20" required>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('email')?></label>
+                    <label><?=lang('email')?></label>
                     <input type="email" name="email" class="form-control" value="<?= $email ?>" required>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('personal_description')?></label>
+                    <label><?=lang('personal_description')?></label>
                     <textarea name="description" class="form-control"><?= $description ?></textarea>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('login_name')?></label>
+                    <label><?=lang('login_name')?></label>
                     <input class="form-control" value="<?= $username ?>" name="username">
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('new_password_info')?></label>
+                    <label><?=lang('new_password_info')?></label>
                     <input type="password" name="hidden-auto-filling" style="width: 0;border: 0;opacity: 0">
                     <input type="password" class="form-control" value="" name="newpass">
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('new_password_repeat')?></label>
+                    <label><?=lang('new_password_repeat')?></label>
                     <input type="password" class="form-control" value="" name="repeatpass">
                 </div>
                 <div class="form-group">
 					<?php doAction('blogger_ext') ?>
                 </div>
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-<!--vot-->      <input type="submit" value="<?=lang('save_data')?>" class="btn btn-sm btn-success"/>
+                <input type="submit" value="<?=lang('save_data')?>" class="btn btn-sm btn-success"/>
             </div>
         </form>
     </div>
@@ -92,9 +92,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-<!--vot-->      <h5 class="modal-title"><?=lang('crop_upload')?></h5>
+                <h5 class="modal-title"><?=lang('crop_upload')?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<!--vot-->          <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -107,8 +107,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-<!--vot-->      <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?=lang('cancel')?></button>
-<!--vot-->      <button type="button" id="crop" class="btn btn-sm btn-success"><?=lang('save')?></button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?=lang('cancel')?></button>
+                <button type="button" id="crop" class="btn btn-sm btn-success"><?=lang('save')?></button>
             </div>
         </div>
     </div>

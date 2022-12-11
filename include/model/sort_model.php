@@ -66,7 +66,7 @@ class Sort_Model {
 			$row = $this->db->fetch_array($res);
 			$sortName = htmlspecialchars($row['sortname']);
 		} else {
-/*vot*/			$sortName = lang('uncategorized');
+			$sortName = lang('uncategorized');
 		}
 		return $sortName;
 	}

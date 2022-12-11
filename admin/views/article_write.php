@@ -9,10 +9,10 @@
         <div class="col-xl-12">
             <div id="post" class="form-group">
                 <div>
-<!--vot-->          <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?=lang('post_title')?>" autofocus required/>
+                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?=lang('post_title')?>" autofocus required/>
                 </div>
                 <div id="post_bar">
-<!--vot-->          <a href="#mediaModal" class="text-muted small my-3" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i
+                    <a href="#mediaModal" class="text-muted small my-3" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i
                                 class="icofont-plus"></i> <?=lang('upload_insert')?></a>
 					<?php doAction('adm_writelog_head') ?>
                 </div>
@@ -20,12 +20,12 @@
             </div>
 
             <div class="form-group">
-<!--vot-->      <label><?=lang('post_description')?>:</label>
+                <label><?=lang('post_description')?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
             </div>
 
             <div class="form-group">
-<!--vot-->      <label><?=lang('article_cover')?>:</label>
+                <label><?=lang('article_cover')?>:</label>
                 <input name="cover" id="cover" class="form-control" placeholder="<?=lang('cover_placeholder')?>" value="<?= $cover ?>"/>
                 <div class="row mt-3">
                     <div class="col-md-4">
@@ -38,13 +38,13 @@
                 </div>
             </div>
 
-<!--vot-->  <div class="show_advset" id="displayToggle" onclick="displayToggle('advset', 1);"><?=lang('more_options')?><i class="icofont-simple-right"></i></div>
+<!--vot-->  <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?=lang('more_options')?><i class="icofont-simple-right"></i></div>
 
             <div id="advset" class="shadow-sm p-3 mb-2 bg-white rounded">
                 <div class="form-group">
-<!--vot-->          <label><?=lang('category')?>:</label>
+                    <label><?=lang('category')?>:</label>
                     <select name="sort" id="sort" class="form-control">
-<!--vot-->              <option value="-1"><?=lang('category_select')?></option>
+                        <option value="-1"><?=lang('category_select')?></option>
 						<?php
 						foreach ($sorts as $key => $value):
 							if ($value['pid'] != 0) {
@@ -67,10 +67,10 @@
                     </select>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('tags')?>:</label>
-<!--vot-->          <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>" placeholder="<?=lang('post_tags_separated')?>"/>
+                    <label><?=lang('tags')?>:</label>
+                    <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>" placeholder="<?=lang('post_tags_separated')?>"/>
 					<?php if ($tags): ?>
-<!--vot-->              <span class="small"><a href="javascript:doToggle('tags', 1);"><?=lang('recently_used')?></a></span>
+                        <span class="small"><a href="javascript:doToggle('tags', 1);"><?=lang('recently_used')?></a></span>
                         <div id="tags" style="display: none">
 							<?php
 							foreach ($tags as $val) {
@@ -81,20 +81,20 @@
 					<?php endif; ?>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('publish_time')?>: <?=lang('publish_time_tips')?></label>
+                    <label><?=lang('publish_time')?>: <?=lang('publish_time_tips')?></label>
                     <input maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('link_alias')?></label>
+                    <label><?=lang('link_alias')?></label>
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('access_password')?>:</label>
+                    <label><?=lang('access_password')?>:</label>
                     <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
                 </div>
                 <div class="form-group">
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-<!--vot-->          <label for="allow_remark"><?=lang('allow_comments')?></label>
+                    <label for="allow_remark"><?=lang('allow_comments')?></label>
                 </div>
             </div>
 
@@ -105,13 +105,13 @@
                 <input type="hidden" name="gid" value=<?= $logid ?>/>
                 <input type="hidden" name="author" id="author" value=<?= $author ?>/>
 				<?php if ($logid < 0): ?>
-<!--vot-->          <input type="submit" value="<?=lang('post_publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-<!--vot-->          <input type="button" name="savedf" id="savedf" value="<?=lang('save_draft')?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
+                    <input type="submit" value="<?=lang('post_publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="<?=lang('save_draft')?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
 				<?php else: ?>
-<!--vot-->          <input type="submit" value="<?=lang('save_and_return')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-<!--vot-->          <input type="button" name="savedf" id="savedf" value="<?=lang('save')?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
+                    <input type="submit" value="<?=lang('save_and_return')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="<?=lang('save')?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
 					<?php if ($isdraft) : ?>
-<!--vot-->              <input type="submit" name="pubdf" id="pubdf" value="<?=lang('publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                        <input type="submit" name="pubdf" id="pubdf" value="<?=lang('publish')?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
 					<?php endif ?>
 				<?php endif ?>
                 <span id="save_info"></span>
@@ -124,13 +124,13 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-<!--vot-->      <h5 class="modal-title" id="exampleModalLabel"><?=lang('resource_library')?></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?=lang('resource_library')?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-<!--vot-->      <a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?=lang('upload_files')?></a>
+                <a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?=lang('upload_files')?></a>
                 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
                     <div class="row">
                     </div>
@@ -154,7 +154,7 @@
         previewsContainer: ".dropzone-previews",
         sending: function (file, xhr, formData) {
             formData.append("filesize", file.size);
-/*vot*/     $('#mediaAdd').html("<?=lang('uploading')?>");
+    $('#mediaAdd').html("<?=lang('uploading')?>");
         },
         init: function () {
             this.on("error", function (file, response) {
@@ -162,7 +162,7 @@
             });
             this.on("queuecomplete", function (file) {
                 $('#mediaModal').find('.modal-body .row').load("./media.php?action=lib");
-/*vot*/         $('#mediaAdd').html("<?=lang('upload_files')?>");
+        $('#mediaAdd').html("<?=lang('upload_files')?>");
             });
         }
     });
@@ -181,7 +181,7 @@
             <div class="modal-header">
                 <h5 class="modal-title"><?=lang('crop_upload')?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<!--vot-->          <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -194,19 +194,17 @@
                 </div>
             </div>
             <div class="modal-footer">
-<!--vot-->      <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?=lang('cancel')?></button>
-<!--vot-->      <button type="button" id="crop" class="btn btn-sm btn-success"><?=lang('save')?></button>
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?=lang('cancel')?></button>
+                <button type="button" id="crop" class="btn btn-sm btn-success"><?=lang('save')?></button>
             </div>
         </div>
     </div>
 </div>
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<? if (strtolower(LANG) !== 'zh-cn') { ?>
-<script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
-<? } ?>
+<!--vot--><?php if (strtolower(LANG) !== 'zh-cn') { ?>
+<!--vot--><script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
+<!--vot--><?php } ?>
 <script>
-    var icon_tog = false;//If the value is true, the "advanced options" arrow points to the right
-
     $("#alias").keyup(function () {
         checkalias();
     });
@@ -215,11 +213,6 @@
     $("#menu_content").addClass('show');
     $("#menu_write").addClass('active');
 
-    if (Cookies.get('em_advset') == "hidden") {
-        displayToggle('advset', 1);
-    } else {
-        $(".icofont-simple-right").attr("class", "icofont-simple-down");
-    }
     // Editor
     var Editor, Editor_summary;
     $(function () {
@@ -263,7 +256,7 @@
             flowChart: false,
             autoFocus: false,
             sequenceDiagram: false,
-/*vot*/     placeholder: "<?=lang('enter_summary')?>",
+    placeholder: "<?=lang('enter_summary')?>",
             onload: function () {
                 hooks.doAction("sum_loaded", this);
             }
@@ -351,8 +344,8 @@
     window.onbeforeunload = function (e) {
         if ($("textarea[name=logcontent]").text() == articleTextRecord) return
         e = e || window.event;
-/*vot*/     if (e) e.returnValue = lang('leave_prompt');
-/*vot*/ return lang('leave_prompt');
+    if (e) e.returnValue = lang('leave_prompt');
+return lang('leave_prompt');
     }
 
     // If the content of the article has been modified, make the page title modified to 'modified'
@@ -361,7 +354,7 @@
         obj.config({
             onchange: function () {
                 if ($("textarea[name=logcontent]").text() == articleTextRecord) return
-/*vot*/         $('title').text(lang('already_edited') + titleText);
+        $('title').text(lang('already_edited') + titleText);
             }
         });
     });
@@ -373,4 +366,11 @@
             autosave(2);
 		}
 	});
+
+	// Use cookie to decide whether to collapse [More Options]
+    if(Cookies.get('em_advset') === "right") {
+        $("#advset").toggle();
+        icon_mod = "right";
+	    $(".icofont-simple-down").attr("class", "icofont-simple-right")
+    }
 </script>

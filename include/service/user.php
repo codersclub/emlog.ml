@@ -38,16 +38,16 @@ class User {
 		$role_name = '';
 		switch ($role) {
 			case self::ROLE_ADMIN:
-/*vot*/				$role_name = $uid == 1 ? lang(ROLE_FOUNDER) : lang(ROLE_ADMIN);
+				$role_name = $uid == 1 ? lang(ROLE_FOUNDER) : lang(ROLE_ADMIN);
 				break;
 			case self::ROLE_EDITOR:
-/*vot*/				$role_name = lang(ROLE_EDITOR);
+				$role_name = lang(ROLE_EDITOR);
 				break;
 			case self::ROLE_WRITER:
-/*vot*/				$role_name = lang(ROLE_WRITER);
+				$role_name = lang(ROLE_WRITER);
 				break;
 			case self::ROLE_VISITOR:
-/*vot*/				$role_name = lang(ROLE_VISITOR);
+				$role_name = lang(ROLE_VISITOR);
 				break;
 		}
 		return $role_name;
@@ -80,13 +80,10 @@ class User {
 	static function checkRolePermission() {
 		$request_uri = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
 		if (ROLE === self::ROLE_WRITER && !in_array($request_uri, ['article', 'twitter', 'media', 'blogger', 'comment', 'index', 'article_save'])) {
-/*vot*/			emMsg(lang('group_no_permission'), './');
+			emMsg(lang('group_no_permission'), './');
 		}
 		if (ROLE === self::ROLE_EDITOR && !in_array($request_uri, ['article', 'twitter', 'media', 'blogger', 'comment', 'index', 'article_save'])) {
-/*vot*/			emMsg(lang('group_no_permission'), './');
-		}
-		if (!Register::isRegLocal() && mt_rand(1, 20) === 8) {
-			emDirect("auth.php");
+			emMsg(lang('group_no_permission'), './');
 		}
 	}
 

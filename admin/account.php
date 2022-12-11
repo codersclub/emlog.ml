@@ -12,7 +12,8 @@
 
 require_once '../init.php';
 
-/*vot*/ load_language('admin');
+
+load_language('admin');
 
 $sta_cache = $CACHE->readCache('sta');
 $user_cache = $CACHE->readCache('user');
@@ -28,7 +29,8 @@ if ($action == 'signin') {
 	$login_code = Option::get('login_code') === 'y';
 	$is_signup = Option::get('is_signup') === 'y';
 
-/*vot*/	$page_title = lang('login');
+	
+	$page_title = lang('login');
 	require_once View::getAdmView('user_head');
 	require_once View::getAdmView('signin');
 	View::output();
@@ -69,10 +71,12 @@ if ($action == 'signup') {
 	$error_msg = '';
 
 	if (Option::get('is_signup') !== 'y') {
-/*vot*/		emMsg(lang('registration_disabled'));
+		
+		emMsg(lang('registration_disabled'));
 	}
 
-/*vot*/	$page_title = lang('account_register');
+	
+	$page_title = lang('account_register');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('signup');
 	View::output();
@@ -88,7 +92,8 @@ if ($action == 'dosignup') {
 	$mail = isset($_POST['mail']) ? addslashes(trim($_POST['mail'])) : '';
 	$passwd = isset($_POST['passwd']) ? addslashes(trim($_POST['passwd'])) : '';
 	$repasswd = isset($_POST['repasswd']) ? addslashes(trim($_POST['repasswd'])) : '';
-/*vot*/	$login_code = isset($_POST['login_code']) ? addslashes(strtoupper(trim($_POST['login_code']))) : ''; //Registration captcha
+	
+	$login_code = isset($_POST['login_code']) ? addslashes(strtoupper(trim($_POST['login_code']))) : ''; //Registration captcha
 
 	if (!checkMail($mail)) {
 		emDirect('./account.php?action=signup&error_login=1');
@@ -122,7 +127,8 @@ if ($action == 'reset') {
 	$login_code = Option::get('login_code') === 'y';
 	$error_msg = '';
 
-/*vot*/	$page_title = lang('retrieve_password');
+	
+	$page_title = lang('retrieve_password');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('reset');
 	View::output();
@@ -157,7 +163,8 @@ if ($action == 'reset2') {
 	$login_code = Option::get('login_code') === 'y';
 	$error_msg = '';
 
-/*vot*/	$page_title = lang('retrieve_password');
+	
+	$page_title = lang('retrieve_password');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('reset2');
 	View::output();

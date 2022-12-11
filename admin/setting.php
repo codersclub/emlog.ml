@@ -38,7 +38,7 @@ if (empty($action)) {
 	}
 
 //vot	$tzlist = array( .... // Moved to lang_tz.php
-/*vot*/	include EMLOG_ROOT . '/lang/' . LANG . '/lang_tz.php'; // Load Time Zone List
+	include EMLOG_ROOT . '/lang/' . LANG . '/lang_tz.php'; // Load Time Zone List
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('setting'));
@@ -72,14 +72,14 @@ if ($action == 'save') {
 		'att_type'            => isset($_POST['att_type']) ? str_replace('php', 'x', strtolower(addslashes($_POST['att_type']))) : '',
 		'att_imgmaxw'         => isset($_POST['att_imgmaxw']) ? (int)$_POST['att_imgmaxw'] : 420,
 		'att_imgmaxh'         => isset($_POST['att_imgmaxh']) ? (int)$_POST['att_imgmaxh'] : 460,
-/*vot*/		'detect_url'          => isset($_POST['detect_url']) ? addslashes($_POST['detect_url']) : 'n', // Automatically detect site URL
+		'detect_url'          => isset($_POST['detect_url']) ? addslashes($_POST['detect_url']) : 'n', // Automatically detect site URL
 	];
 
 	if ($getData['login_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-/*vot*/		emMsg(lang('verification_code_not_supported'), "setting.php");
+		emMsg(lang('verification_code_not_supported'), "setting.php");
 	}
 	if ($getData['comment_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-/*vot*/		emMsg(lang('verification_code_comment_not_supported'), "setting.php");
+		emMsg(lang('verification_code_comment_not_supported'), "setting.php");
 	}
 	if ($getData['blogurl'] && substr($getData['blogurl'], -1) != '/') {
 		$getData['blogurl'] .= '/';
@@ -203,7 +203,7 @@ if ($action == 'mail_test') {
 	];
 
 	if (!checkMail($data["testTo"])) {
-/*vot*/		exit("<small class='text-info'>" . lang('email_enter_please') . "</small>");
+		exit("<small class='text-info'>" . lang('email_enter_please') . "</small>");
 	}
 
 	$mail = new PHPMailer(true);
@@ -223,7 +223,7 @@ if ($action == 'mail_test') {
 	try {
 		return $mail->Send();
 	} catch (Exception $exc) {
-/*vot*/		exit("<small class='text-danger'>" . lang('test_mail_failed') . "</small>");
+		exit("<small class='text-danger'>" . lang('test_mail_failed') . "</small>");
 		return false;
 	}
 }

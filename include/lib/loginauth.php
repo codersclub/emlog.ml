@@ -24,13 +24,13 @@ class LoginAuth {
 
 		if (($userData = self::validateAuthCookie($auth_cookie)) === false) {
 			return false;
-		} else {
-			return true;
 		}
+
+		return true;
 	}
 
 	/**
-	 * Not logged in, jump to the user login page
+	 * If user is not logged in, jump to the login page
 	 */
 	public static function checkLogin($error_code = NULL) {
 		if (self::isLogin() === true) {
@@ -44,7 +44,7 @@ class LoginAuth {
 	}
 
 	/**
-	 * Logged in, jump to the user (management) center
+	 * If user is logged in, jump to the admin center
 	 */
 	public static function checkLogged() {
 		if (self::isLogin() === false) {
@@ -214,7 +214,7 @@ class LoginAuth {
 	public static function checkToken() {
 		$token = isset($_REQUEST['token']) ? addslashes($_REQUEST['token']) : '';
 		if ($token !== self::genToken()) {
-/*vot*/			emMsg(lang('no_permission') . ' Token error');
+			emMsg(lang('no_permission') . ' Token error');
 		}
 	}
 }

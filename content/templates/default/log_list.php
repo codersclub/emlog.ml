@@ -31,14 +31,14 @@ if (!defined('EMLOG_ROOT')) {
 						<hr class="list-line"/>
 						<div class="row info-row">
                                                     <div class="log-info">
-<!--vot-->							<?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
+          							<?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
 								<?= gmdate('Y-m-d', $value['date']) ?>&nbsp;
 								<span class="mh"><?= date('H:i', $value['date']) ?></span>
 								<span class="mh"><?php editflg($value['logid'], $value['author']) ?></span>
 							</div>
 							<div class="log-count">
-<!--vot-->                      <a href="<?= $value['log_url'] ?>#comments"><?=lang('comments')?>: (<?= $value['comnum'] ?>)&nbsp;</a>
-<!--vot-->                      <a href="<?= $value['log_url'] ?>"><?=lang('_views')?>: (<?= $value['views'] ?>)</a>
+                                <a href="<?= $value['log_url'] ?>#comments"><?=lang('comments')?>: (<?= $value['comnum'] ?>)&nbsp;</a>
+                                <a href="<?= $value['log_url'] ?>"><?=lang('_views')?>: (<?= $value['views'] ?>)</a>
 							</div>
 						</div>
 					</div>
@@ -46,7 +46,7 @@ if (!defined('EMLOG_ROOT')) {
 				endforeach;
 			else:
 				?>
-<!--vot-->          <p><?=lang('sorry_no_results')?></p>
+                    <p><?=lang('sorry_no_results')?></p>
 			<?php endif ?>
 			<div class="pagination bottom-5">
 				<?= $page_url ?>

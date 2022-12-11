@@ -38,7 +38,7 @@ if (!$action) {
 if ($action === 'delbyip') {
 	LoginAuth::checkToken();
 	if (!User::haveEditPermission()) {
-/*vot*/		emMsg(lang('no_permission'), './');
+		emMsg(lang('no_permission'), './');
 	}
 	$ip = $_GET['ip'] ? addslashes($_GET['ip']) : '';
 	$Comment_Model->delCommentByIp($ip);

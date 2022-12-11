@@ -37,13 +37,13 @@ class SendMail {
 
 		//Add the email body. If isHTML is set to true, it can be a complete html string, i.e. you can use the file_get_contents function to read the local html file
 		$mail->Body = $content;
+		$mail->WordWrap = 80; // Set the length of each string line
 
 		//Add an attachment to the email. This method also has two parameters. The first parameter is the directory where the attachment is stored (relative directory or absolute directory can be used). The second parameter is the name of the attachment in the email attachment
 		//$mail->addAttachment('./1.png,'Image');
 		//The same method can be called multiple times to upload multiple attachments
 		//$mail->addAttachment('./test.php','php file');
 
-		$mail->WordWrap = 80; // Set the length of each line
 		$mail->IsHTML(true);
 
 		try {

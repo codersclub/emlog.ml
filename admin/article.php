@@ -68,7 +68,6 @@ if (empty($action)) {
 	$logNum = $Log_Model->getLogNum($hide_state, $sqlSegment, 'blog', 1);
 	$logs = $Log_Model->getLogsForAdmin($sqlSegment, $hide_state, $page);
 	$sorts = $CACHE->readCache('sort');
-	$log_cache_tags = $CACHE->readCache('logtags');
 
 	$subPage = '';
 	foreach ($_GET as $key => $val) {
@@ -164,7 +163,7 @@ if ($action == 'operate_log') {
 			break;
 		case 'change_author':
 			if (!User::haveEditPermission()) {
-/*vot*/				emMsg(lang('no_permission'), './');
+				emMsg(lang('no_permission'), './');
 			}
 			foreach ($logs as $val) {
 				$Log_Model->updateLog(array('author' => $author), $val);
@@ -174,7 +173,7 @@ if ($action == 'operate_log') {
 			break;
 		case 'check':
 			if (!User::haveEditPermission()) {
-/*vot*/				emMsg(lang('no_permission'), './');
+				emMsg(lang('no_permission'), './');
 			}
 			$Log_Model->checkSwitch($gid, 'y');
 			$CACHE->updateCache();
@@ -182,7 +181,7 @@ if ($action == 'operate_log') {
 			break;
 		case 'uncheck':
 			if (!User::haveEditPermission()) {
-/*vot*/				emMsg(lang('no_permission'), './');
+				emMsg(lang('no_permission'), './');
 			}
 			$Log_Model->checkSwitch($gid, 'n');
 			$CACHE->updateCache();
@@ -210,7 +209,7 @@ if ($action === 'write') {
 	extract($blogData);
 
 	$isdraft = false;
-/*vot*/	$containertitle = lang('post_write');
+	$containertitle = lang('post_write');
 	$orig_date = '';
 	$sorts = $CACHE->readCache('sort');
 	$tagStr = '';
@@ -240,7 +239,7 @@ if ($action === 'edit') {
 	extract($blogData);
 
 	$isdraft = $hide == 'y' ? true : false;
-/*vot*/	$containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
+	$containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
 	$postDate = date('Y-m-d H:i:s', $date);
 	$sorts = $CACHE->readCache('sort');
 

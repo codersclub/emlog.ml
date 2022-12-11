@@ -12,7 +12,7 @@
 
 require_once '../init.php';
 
-/*vot*/ load_language('admin');
+load_language('admin');
 
 $sta_cache = $CACHE->readCache('sta');
 $user_cache = $CACHE->readCache('user');

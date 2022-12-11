@@ -30,11 +30,11 @@ class MySqlii {
 	 * Internal object instance
 	 * @var object MySql
 	 */
-	private static $instance = null;
+	private static $instance;
 
 	private function __construct() {
 		if (!class_exists('mysqli')) {
-/*vot*/			emMsg(lang('mysqli_not_supported'));
+			emMsg(lang('mysqli_not_supported'));
 		}
 
 		@$this->conn = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);
@@ -42,18 +42,18 @@ class MySqlii {
 			switch ($this->conn->connect_errno) {
 				case 1044:
 				case 1045:
-/*vot*/					emMsg(lang('db_credential_error'));
+					emMsg(lang('db_credential_error'));
 					break;
 				case 1049:
-/*vot*/					emMsg(lang('db_not_found'));
+					emMsg(lang('db_not_found'));
 					break;
 				case 2003:
 				case 2005:
 				case 2006:
-/*vot*/					emMsg(lang('db_unavailable'));
+					emMsg(lang('db_unavailable'));
 					break;
 				default :
-/*vot*/					emMsg(lang('db_error_code') . $this->conn->connect_error);
+					emMsg(lang('db_error_code') . $this->conn->connect_error);
 					break;
 			}
 		}
@@ -86,13 +86,10 @@ class MySqlii {
 		$this->result = $this->conn->query($sql);
 		$this->queryCount++;
 		if (!$ignore_err && 1046 == $this->geterrno()) {
-/*vot*/			emMsg(lang('db_error_name'));
-		}
-		if (!$ignore_err && 1286 == $this->geterrno()) {
-			emMsg("数据库不支持InnoDB引擎，建议使用MySQL5.6或更高版本");
+			emMsg(lang('db_error_name'));
 		}
 		if (!$ignore_err && !$this->result) {
-/*vot*/			emMsg(lang('db_sql_error'). ": $sql<br /><br />" . $this->geterror());
+			emMsg(lang('db_sql_error'). ": $sql<br /><br />" . $this->geterror());
 		} else {
 			return $this->result;
 		}
@@ -105,7 +102,7 @@ class MySqlii {
 		return $query->fetch_array($type);
 	}
 
-	function once_fetch_array($sql) {
+	public function once_fetch_array($sql) {
 		$this->result = $this->query($sql);
 		return $this->fetch_array($this->result);
 	}
@@ -156,7 +153,7 @@ class MySqlii {
 	/**
 	 * Get number of affected rows in previous MySQL operation
 	 */
-	function affected_rows() {
+	public function affected_rows() {
 		return $this->conn->affected_rows;
 	}
 
@@ -177,7 +174,17 @@ class MySqlii {
 	/**
 	 *  Escapes special characters
 	 */
-	function escape_string($sql) {
+	public function escape_string($sql) {
 		return $this->conn->real_escape_string($sql);
 	}
+
+	public function listTables() {
+		$rs = $this->query("SHOW TABLES FROM " . DB_NAME);
+		$tables = [];
+		while ($row = $this->fetch_row($rs)) {
+			$tables[] = isset($row[0]) ? $row[0] : '';
+		}
+		return $tables;
+	}
+
 }

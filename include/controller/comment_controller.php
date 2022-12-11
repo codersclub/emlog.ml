@@ -27,7 +27,7 @@ class Comment_Controller {
 		}
 
 		if ($url && strncasecmp($url, 'http', 4)) {
-			$url = 'http://' . $url;
+			$url = 'https://' . $url;
 		}
 
 		doAction('comment_post');
@@ -35,29 +35,29 @@ class Comment_Controller {
 		$Comment_Model = new Comment_Model();
 		$Comment_Model->setCommentCookie($name, $mail, $url);
 		if ($Comment_Model->isLogCanComment($blogId) === false) {
-/*vot*/            emMsg(lang('comment_error_comment_disabled'));
+           emMsg(lang('comment_error_comment_disabled'));
 		} elseif ($Comment_Model->isCommentExist($blogId, $name, $content) === true) {
-/*vot*/            emMsg(lang('comment_error_content_exists'));
+           emMsg(lang('comment_error_content_exists'));
 		} elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
-/*vot*/            emMsg(lang('comment_error_flood_control'));
+           emMsg(lang('comment_error_flood_control'));
 		} elseif (empty($name)) {
-/*vot*/            emMsg(lang('comment_error_name_enter'));
+           emMsg(lang('comment_error_name_enter'));
 		} elseif (strlen($name) > 20) {
-/*vot*/            emMsg(lang('comment_error_name_invalid'));
+           emMsg(lang('comment_error_name_invalid'));
 		} elseif ($mail != '' && !checkMail($mail)) {
-/*vot*/            emMsg(lang('comment_error_email_invalid'));
+           emMsg(lang('comment_error_email_invalid'));
 		} elseif (ISLOGIN == false && $Comment_Model->isNameAndMailValid($name, $mail) === false) {
-/*vot*/            emMsg(lang('comment_error_other_user'));
+           emMsg(lang('comment_error_other_user'));
 		} elseif (!empty($url) && preg_match("/^(http|https)\:\/\/[^<>'\"]*$/", $url) == false) {
-/*vot*/            emMsg(lang('comment_error_url_invalid'),'javascript:history.back(-1);');
+           emMsg(lang('comment_error_url_invalid'),'javascript:history.back(-1);');
 		} elseif (empty($content)) {
-/*vot*/            emMsg(lang('comment_error_empty'));
+           emMsg(lang('comment_error_empty'));
 		} elseif (strlen($content) > 60000) {
-/*vot*/            emMsg(lang('comment_error_content_invalid'));
+           emMsg(lang('comment_error_content_invalid'));
 		} elseif (User::isVistor() && Option::get('comment_needchinese') == 'y' && !preg_match('/[\x{4e00}-\x{9fa5}]/iu', $content)) {
-/*vot*/            emMsg(lang('comment_error_national_chars'));
+           emMsg(lang('comment_error_national_chars'));
 		} elseif (ISLOGIN == false && Option::get('comment_code') == 'y' && session_start() && (empty($imgcode) || $imgcode !== $_SESSION['code'])) {
-/*vot*/            emMsg(lang('comment_error_captcha_invalid'));
+           emMsg(lang('comment_error_captcha_invalid'));
 		}
 
 		$_SESSION['code'] = null;

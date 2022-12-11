@@ -16,14 +16,14 @@ class User_Model {
 	function getUsers($email = '', $page = 1) {
 		$condition = $limit = '';
 		if ($email) {
-			$condition = " AND email LIKE '$email%'";
+/*vot*/			$condition = " AND email LIKE '$email%'";
 		}
 		if ($page) {
 			$perpage_num = Option::get('admin_perpage_num');
 			$startId = ($page - 1) * $perpage_num;
 			$limit = "LIMIT $startId, " . $perpage_num;
 		}
-		$res = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE 1=1 $condition ORDER BY uid DESC $limit");
+/*vot*/		$res = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE 1=1 $condition ORDER BY uid DESC $limit");
 		$users = [];
 		while ($row = $this->db->fetch_array($res)) {
 			$row['name'] = htmlspecialchars($row['nickname']);
@@ -39,7 +39,7 @@ class User_Model {
 	}
 
 	function getOneUser($uid) {
-		$row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/		$row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
 		$userData = [];
 		if ($row) {
 			$userData = array(
@@ -62,7 +62,7 @@ class User_Model {
 			$Item[] = "$key='$data'";
 		}
 		$upStr = implode(',', $Item);
-		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
+/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
 	}
 
 	function updateUserByMail($userData, $mail) {
@@ -72,31 +72,31 @@ class User_Model {
 			$Item[] = "$key='$data'";
 		}
 		$upStr = implode(',', $Item);
-		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
+/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
 	}
 
 	function addUser($username, $mail, $password, $role) {
 		$timestamp = time();
 		$nickname = getRandStr(8, false);
-		$sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
+/*vot*/		$sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
 		$this->db->query($sql);
 	}
 
 	function deleteUser($uid) {
-		$this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
+/*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
 	}
 
 	function forbidUser($uid) {
-		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
+/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
 	}
 
 	function unforbidUser($uid) {
-		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
+/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
 	}
 
 	/**
-	 * Check the User name exists
+	 * check the username exists
 	 *
 	 * @param string $user_name
 	 * @param int $uid Compatible with the fact that the user name has not changed when updating the author's information
@@ -108,11 +108,7 @@ class User_Model {
 		}
 		$subSql = $uid ? 'and uid!=' . $uid : '';
 		$data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE username='$user_name' $subSql");
-		if ($data['total'] > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return $data['total'] > 0;
 	}
 
 	function isNicknameExist($nickname, $uid = '') {
@@ -121,11 +117,7 @@ class User_Model {
 		}
 		$subSql = $uid ? 'and uid!=' . $uid : '';
 		$data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE nickname='$nickname' $subSql");
-		if ($data['total'] > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return $data['total'] > 0;
 	}
 
 	function isMailExist($mail, $uid = '') {
@@ -134,11 +126,7 @@ class User_Model {
 		}
 		$subSql = $uid ? 'and uid!=' . $uid : '';
 		$data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE email='$mail' $subSql");
-		if ($data['total'] > 0) {
-			return true;
-		} else {
-			return false;
-		}
+		return $data['total'] > 0;
 	}
 
 	function getUserNum() {

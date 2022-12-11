@@ -100,11 +100,11 @@ var myBlog = {
 			let url = $('#info_u').val()
 
 			if (isCn == 'y' && !cnReg.test(comContent)) {
-/*vot*/         this.comTip = lang('chinese_must_have')
+        this.comTip = lang('chinese_must_have')
 			} else if (typeof mail !== "undefined" && mail != '' && !mailReg.test(mail)) {
-/*vot*/         this.comTip = lang('email_invalid')
+        this.comTip = lang('email_invalid')
 			} else if (typeof url !== "undefined" && url != '' && !urlReg.test(url)) {
-/*vot*/         this.comTip = lang('url_invalid')
+        this.comTip = lang('url_invalid')
 			} else {
 				this.comTip = ''
 			}
@@ -325,7 +325,7 @@ var myBlog = {
 	tocMobileSet: function () {
 		if (window.outerWidth > 1275) return
 		$(".toc-con").toggle()
-/*vot*/ $("[toc-date='title']").append('<a class="toc-link">[' + lang('toc') + ']</a>')
+$("[toc-date='title']").append('<a class="toc-link">[' + lang('toc') + ']</a>')
 
        $(".toc-link").click(function (e) {  // Add event listener
 			$(".toc-con").show()

@@ -23,29 +23,18 @@ if (empty($action)) {
 
 	$max_execution_time = ini_get('max_execution_time') ?: '';
 	$max_upload_size = ini_get('upload_max_filesize') ?: '';
-/*vot*/	$php_ver = PHP_VERSION . ', ' . $max_execution_time . 's, ' . $max_upload_size;
+	$php_ver = PHP_VERSION . ', ' . $max_execution_time . 's, ' . $max_upload_size;
 	$role_name = User::getRoleName($role, UID);
 	if (function_exists("curl_init")) {
 		$c = curl_version();
-/*vot*/		$php_ver .= ", curl" . $c['version'];
+		$php_ver .= ", curl" . $c['version'];
 	}
 	if (class_exists('ZipArchive', FALSE)) {
-/*vot*/		$php_ver .= ', zip';
+		$php_ver .= ', zip';
 	}
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('index'));
 	include View::getAdmView('footer');
 	View::output();
-}
-
-if ($action === 'get_news') {
-	$emcurl = new EmCurl();
-	$emcurl->request('https://www.emlog.net/services/messenger_pro.php');
-	header('Content-Type: application/json; charset=UTF-8');
-	if ($emcurl->getHttpStatus() !== 200) {
-		exit('{"result":"fail"}');
-	}
-	$response = $emcurl->getRespone();
-	exit($response);
 }

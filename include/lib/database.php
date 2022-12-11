@@ -17,7 +17,7 @@ class Database {
 			return Mysqlpdo::getInstance();
 		}
 
-/*vot*/		emMsg(lang('mysql_not_supported'));
+		emMsg(lang('mysql_not_supported'));
 	}
 
 }

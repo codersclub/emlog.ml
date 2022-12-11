@@ -7,10 +7,10 @@ if (!defined('EMLOG_ROOT')) {
 }
 ?>
 <!doctype html>
-<!--vot--><html lang="<?=LANG?>" dir="<?= LANG_DIR ?>">
+          <html lang="<?=LANG?>" dir="<?= LANG_DIR ?>">
 <head>
 	<meta charset="utf-8">
-<!--vot--><title><?=lang('404_error')?></title>
+          <title><?=lang('404_error')?></title>
 	<style>
 		body {
 			background-color: #F7F7F7;
@@ -49,8 +49,8 @@ if (!defined('EMLOG_ROOT')) {
 </head>
 <body>
 <div class="main">
-<!--vot--><p><?=lang('404_description')?></p>
-<!--vot--><p><a href="<?= BLOG_URL ?>"><?=lang('click_return')?></a></p>
+          <p><?=lang('404_description')?></p>
+          <p><a href="<?= BLOG_URL ?>"><?=lang('click_return')?></a></p>
 </div>
 </body>
 </html>

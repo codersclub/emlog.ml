@@ -744,7 +744,7 @@ body {
 	margin: 10px 0;
 	padding: 10px 0px;
 	font-size: medium;
-/*vot*/    border-bottom: 1px #CCC solid;
+   border-bottom: 1px #CCC solid;
 	overflow: hidden;
 	color: #333
 }
@@ -800,7 +800,7 @@ body {
 	margin: 20px 10px 10px 20px;
 	clear: both;
 	border: none;
-/*vot*/    border-top: 1px solid #CCC;
+   border-top: 1px solid #CCC;
 	padding: 0
 }
 .comment .comment-post {

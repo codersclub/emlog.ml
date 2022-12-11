@@ -30,7 +30,7 @@ class Api_Controller {
 			$this->Cache = Cache::getInstance();
 			$this->$_func();
 		} else {
-			Output::error('API function is not exist');
+			Output::error('api method is not exist');
 		}
 	}
 
@@ -70,12 +70,49 @@ class Api_Controller {
 		output::ok(['article_id' => $article_id,]);
 	}
 
+	private function article_update() {
+		$id = isset($_POST['id']) ? (int)trim($_POST['id']) : 0;
+		$req_sign = isset($_POST['req_sign']) ? addslashes(trim($_POST['req_sign'])) : '';
+		$req_time = isset($_POST['req_time']) ? addslashes(trim($_POST['req_time'])) : '';
+		$title = isset($_POST['title']) ? addslashes(trim($_POST['title'])) : '';
+		$content = isset($_POST['content']) ? addslashes(trim($_POST['content'])) : '';
+		$excerpt = isset($_POST['excerpt']) ? addslashes(trim($_POST['excerpt'])) : '';
+		$post_date = isset($_POST['post_date']) ? trim($_POST['post_date']) : '';
+		$sort_id = isset($_POST['sort_id']) ? (int)$_POST['sort_id'] : -1;
+		$cover = isset($_POST['cover']) ? addslashes(trim($_POST['cover'])) : '';
+		$tags = isset($_POST['tags']) ? strip_tags(addslashes(trim($_POST['tags']))) : '';
+		$author_uid = isset($_POST['author_uid']) ? (int)trim($_POST['author_uid']) : 1;
+
+		if (empty($req_sign) || empty($req_time) || empty($id) || empty($title)) {
+			Output::error('parameter error');
+		}
+
+		$this->checkApiKey($req_sign, $req_time);
+
+		$logData = [
+			'title'   => $title,
+			'content' => $content,
+			'excerpt' => $excerpt,
+			'sortid'  => $sort_id,
+			'cover'   => $cover,
+			'author'  => $author_uid,
+			'date'    => strtotime($post_date ?: date('Y-m-d H:i:s')),
+		];
+
+		$this->Log_Model->updateLog($logData, $id, $author_uid);
+		$this->Tag_Model->updateTag($tags, $id);
+		$this->Cache->updateCache();
+
+		output::ok();
+	}
+
 	private function article_list() {
 		$page = isset($_GET['page']) ? (int)trim($_GET['page']) : 1;
 		$count = isset($_GET['count']) ? (int)trim($_GET['count']) : Option::get('index_lognum');
 		$sort_id = isset($_GET['sort_id']) ? (int)trim($_GET['sort_id']) : 0;
 		$keyword = isset($_GET['keyword']) ? addslashes(htmlspecialchars(urldecode(trim($_GET['keyword'])))) : '';
 		$keyword = str_replace(['%', '_'], ['\%', '\_'], $keyword);
+		$tag = isset($_GET['tag']) ? addslashes(urldecode(trim($_GET['tag']))) : '';
 
 		$sub = '';
 		if ($sort_id) {
@@ -83,6 +120,12 @@ class Api_Controller {
 		}
 		if ($keyword) {
 			$sub .= " and title like '%{$keyword}%'";
+		}
+		if ($tag) {
+			$blogIdStr = $this->Tag_Model->getTagByName($tag);
+			if ($blogIdStr) {
+				$sub .= "and gid IN ($blogIdStr)";
+			}
 		}
 
 		$r = $this->Log_Model->getLogsForHome($sub . " ORDER BY top DESC ,date DESC", $page, $count);
@@ -105,6 +148,7 @@ class Api_Controller {
 				'comnum'      => (int)$value['comnum'],
 				'top'         => $value['top'],
 				'sortop'      => $value['sortop'],
+				'tags'        => $this->getTags((int)$value['gid']),
 			];
 		}
 
@@ -137,6 +181,7 @@ class Api_Controller {
 			'comnum'      => (int)$r['comnum'],
 			'top'         => $r['top'],
 			'sortop'      => $r['sortop'],
+			'tags'        => $this->getTags($id),
 		];
 
 		output::ok(['article' => $article,]);
@@ -178,6 +223,21 @@ class Api_Controller {
 		$id = $this->Twitter_Model->addTwitter($data);
 		$this->Cache->updateCache('sta');
 		output::ok(['note_id' => $id,]);
+	}
+
+	private function getTags($id) {
+		$tag_ids = $this->Tag_Model->getTagIdsFromBlogId($id);
+		$tag_names = $this->Tag_Model->getNamesFromIds($tag_ids);
+		$tags = [];
+		if (!empty($tag_names)) {
+			foreach ($tag_names as $value) {
+				$tags[] = [
+					'name' => htmlspecialchars($value),
+					'url'  => Url::tag(rawurlencode($value)),
+				];
+			}
+		}
+		return $tags;
 	}
 
 	private function checkApiKey($req_sign, $req_time) {

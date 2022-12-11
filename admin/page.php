@@ -30,7 +30,7 @@ if (empty($action)) {
 
 if ($action == 'new') {
 	$pageData = array(
-/*vot*/ 	'containertitle'  => lang('add_page'),
+	'containertitle'  => lang('add_page'),
 		'pageId'          => -1,
 		'title'           => '',
 		'content'         => '',
@@ -55,7 +55,7 @@ if ($action == 'new') {
 if ($action == 'mod') {
 	$emPage = new Log_Model();
 
-/*vot*/	$containertitle = lang('page_edit');
+	$containertitle = lang('page_edit');
 	$pageId = isset($_GET['id']) ? (int)$_GET['id'] : '';
 	$pageData = $emPage->getOneLogForAdmin($pageId);
 	extract($pageData);

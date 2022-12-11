@@ -1,6 +1,6 @@
 <?php
 /**
- * Basic function library
+ * Common function library
  * @package EMLOG
  * @link https://www.emlog.net
  */
@@ -8,7 +8,7 @@
 function emAutoload($class) {
 	$class = strtolower($class);
 
-/*vot*/ load_language($class);
+	load_language($class);
 
 	if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
 		require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
@@ -22,11 +22,7 @@ function emAutoload($class) {
 }
 
 /**
- * HTML code conversion function
- *
- * @param unknown_type $content
- * @param unknown_type $wrap = Do wrap
- * @return string
+ * Convert HTML Code
  */
 function htmlClean($content, $nl2br = true) {
 	$content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
@@ -38,13 +34,14 @@ function htmlClean($content, $nl2br = true) {
 	return $content;
 }
 
-/**
- * Get User Ip
- */
 if (!function_exists('getIp')) {
 	function getIp() {
 		$ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-		if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+			$list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+			$ip = $list[0];
+		}
+		if (!ip2long($ip)) {
 			$ip = '';
 		}
 		return $ip;
@@ -174,8 +171,8 @@ function subString($strings, $start, $length) {
 function extractHtmlData($data, $len) {
 	$data = subString(strip_tags($data), 0, $len + 30);
 	$search = array(
-/*vot*/		"/([\r\n])[\s]+/", // Remove whitespace characters
-/*vot*/		"/&(quot|#34);/i", // Replace HTML entities
+		"/([\r\n])[\s]+/", // Remove whitespace characters
+		"/&(quot|#34);/i", // Replace HTML entities
 		"/&(amp|#38);/i",
 		"/&(lt|#60);/i",
 		"/&(gt|#62);/i",
@@ -204,7 +201,7 @@ function changeFileSize($fileSize) {
 	} elseif ($fileSize >= 1024) {
 		$fileSize = round($fileSize / 1024, 2) . ' KB';
 	} else {
-/*vot*/        $fileSize .= lang('_bytes');
+		$fileSize .= lang('_bytes');
 	}
 	return $fileSize;
 }
@@ -294,9 +291,9 @@ function pagination($count, $perlogs, $page, $url, $anchor = '') {
 		}
 	}
 	if ($page > 6)
-/*vot*/        $re = "<a href=\"{$urlHome}$anchor\" title=\"".lang('first_page')."\">&laquo;</a><em> ... </em>$re";
+		$re = "<a href=\"{$urlHome}$anchor\" title=\"" . lang('first_page') . "\">&laquo;</a><em> ... </em>$re";
 	if ($page + 5 < $pnums)
-/*vot*/        $re .= "<em> ... </em> <a href=\"$url$pnums$anchor\" title=\"".lang('last_page')."\">&raquo;</a>";
+		$re .= "<em> ... </em> <a href=\"$url$pnums$anchor\" title=\"" . lang('last_page') . "\">&raquo;</a>";
 	if ($pnums <= 1)
 		$re = '';
 	return $re;
@@ -383,12 +380,12 @@ function smartDate($datetemp, $dstr = 'Y-m-d H:i') {
 	if ($hover == 0) {
 		$min = floor($sec / 60);
 		if ($min == 0) {
-/*vot*/			$op = $sec . lang('_sec_ago');
+			$op = $sec . lang('_sec_ago');
 		} else {
-/*vot*/			$op = $min . lang('_min_ago');
+			$op = $min . lang('_min_ago');
 		}
 	} elseif ($hover < 24) {
-/*vot*/		$op = lang('about_') . $hover . lang('_hour_ago');
+		$op = lang('about_') . $hover . lang('_hour_ago');
 	} else {
 		$op = date($dstr, $datetemp);
 	}
@@ -429,24 +426,24 @@ function upload2local($attach, &$result) {
 	$success = 0;
 	switch ($ret) {
 		case '100':
-/*vot*/			$message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
+			$message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
 			break;
 		case '101':
 		case '104':
-/*vot*/			$message = lang('upload_failed_error_code') . $errorNum;
+			$message = lang('upload_failed_error_code') . $errorNum;
 			break;
 		case '102':
-/*vot*/			$message = lang('file_type_not_supported');
+			$message = lang('file_type_not_supported');
 			break;
 		case '103':
 			$r = changeFileSize(Option::getAttMaxSize());
-/*vot*/			$message = lang('file_size_exceeds_') . $r . lang('_of_limit');
+			$message = lang('file_size_exceeds_') . $r . lang('_of_limit');
 			break;
 		case '105':
-/*vot*/			$message = lang('upload_folder_unwritable');
+			$message = lang('upload_folder_unwritable');
 			break;
 		default:
-/*vot*/			$message = lang('upload_ok');
+			$message = lang('upload_ok');
 			$success = 1;
 			break;
 	}
@@ -527,7 +524,7 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
 
 	if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $attachpath)) {
 		@unlink($tmpFile);
-/*vot*/		return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
+		return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
 	}
 
 	// Extract image width and height
@@ -663,7 +660,6 @@ function chImageSize($img, $max_w, $max_h) {
 if (!function_exists('getGravatar')) {
 	function getGravatar($email, $s = 40) {
 		$hash = md5($email);
-//vot		$gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
 /*vot*/		$gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
 		doOnceAction('get_Gravatar', $email, $gravatar_url);
 
@@ -890,11 +886,11 @@ function emDirect($directUrl) {
 function emMsg($msg, $url = 'javascript:history.back(-1);', $isAutoGo = false) {
 	if ($msg == '404') {
 		header("HTTP/1.1 404 Not Found");
-/*vot*/        $msg = lang('404_description');
+		$msg = lang('404_description');
 	}
-/*vot*/    $lang = LANG;
-/*vot*/    $dir  = LANG_DIR;
-/*vot*/    $title = lang('prompt');
+	$lang = LANG;
+	$dir = LANG_DIR;
+	$title = lang('prompt');
 	echo <<<EOT
 <!doctype html>
 <html lang="$lang" dir="$dir">
@@ -938,7 +934,7 @@ a {
 <p>$msg</p>
 EOT;
 	if ($url != 'none') {
-/*vot*/        echo '<p><a href="' . $url . '">&larr; '. lang('click_return').'</a></p>';
+		echo '<p><a href="' . $url . '">&larr; ' . lang('click_return') . '</a></p>';
 	}
 	echo <<<EOT
 </div>
@@ -1100,7 +1096,7 @@ function em_v() {
 		return true;
 	}
 	$a = sha1_file(EMLOG_ROOT . '/include/lib/emcurl.php');
-	if ($a !== '0f85f470fdd9032ff164f50141771e0ba47d0015') {
+	if ($a !== 'e84862f865a6bc46a797c8e1d1c63ec8ecd8064d') {
 		exit;
 	}
 }
@@ -1143,7 +1139,7 @@ function getTimeZoneOffset($remote_tz, $origin_tz = 'UTC') {
 }
 
 /**
- * Upload and Crop image
+ * Upload the cut pictures (cover and avatar)
  */
 function uploadCropImg() {
 	$attach = isset($_FILES['image']) ? $_FILES['image'] : '';
@@ -1173,11 +1169,11 @@ function uploadCropImg() {
  * @author Valery Votintsev, codersclub.org
  */
 function udir($file = '', $remove_drive = false) {
-    $file = str_replace('\\', '/', $file);
-    if ($remove_drive) {
-        $file = preg_replace("/^\w:/", '', $file);
-    }
-    return $file;
+	$file = str_replace('\\', '/', $file);
+	if ($remove_drive) {
+		$file = preg_replace("/^\w:/", '', $file);
+	}
+	return $file;
 }
 
 
@@ -1189,35 +1185,35 @@ function udir($file = '', $remove_drive = false) {
  * @author Valery Votintsev, codersclub.org
  */
 function load_language($model = '') {
-    global $LANGUAGE;
-    global $LANGLIST;
+	global $LANGUAGE;
+	global $LANGLIST;
 
-    $model = strtolower($model);
-    $model = str_replace('_controller', '', $model);
-    $model = str_replace('_model', '', $model);
+	$model = strtolower($model);
+	$model = str_replace('_controller', '', $model);
+	$model = str_replace('_model', '', $model);
 
-    if (!isset($LANGUAGE)) {
-        $LANGUAGE = array();
-    }
-    if (!isset($LANGLIST)) {
-        $LANGLIST = array();
-    }
+	if (!isset($LANGUAGE)) {
+		$LANGUAGE = array();
+	}
+	if (!isset($LANGLIST)) {
+		$LANGLIST = array();
+	}
 
-    if ($model && !isset($LANGLIST[$model])) {
-        $file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
+	if ($model && !isset($LANGLIST[$model])) {
+		$file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
 
-        if (is_file($file)) {
-            $lang = array();
-            $ok = @require_once $file;
+		if (is_file($file)) {
+			$lang = array();
+			$ok = @require_once $file;
 
-            // Language file must contain $lang = array(...);
-            $LANGUAGE = array_merge($LANGUAGE, $lang);
+			// Language file must contain $lang = array(...);
+			$LANGUAGE = array_merge($LANGUAGE, $lang);
 
-            unset($lang);
+			unset($lang);
 
-            $LANGLIST[$model] = 1;
-        }
-    }
+			$LANGLIST[$model] = 1;
+		}
+	}
 }
 
 /**
@@ -1228,8 +1224,8 @@ function load_language($model = '') {
  * @author Valery Votintsev, codersclub.org
  */
 function lang($key = '') {
-    global $LANGUAGE;
-    return isset($LANGUAGE[$key]) ? $LANGUAGE[$key] : '{' . $key . '}';
+	global $LANGUAGE;
+	return isset($LANGUAGE[$key]) ? $LANGUAGE[$key] : '{' . $key . '}';
 }
 
 /**
@@ -1241,9 +1237,9 @@ function lang($key = '') {
  * @author Valery Votintsev, codersclub.org
  */
 function emdate($date = 0, $show_time = 0) {
-    $format = $show_time ? 'date_time_format' : 'date_format';
+	$format = $show_time ? 'date_time_format' : 'date_format';
 
-    return gmdate(lang($format), $date);
+	return gmdate(lang($format), $date);
 }
 
 /**
@@ -1252,19 +1248,19 @@ function emdate($date = 0, $show_time = 0) {
  * @param string $name
  */
 function dump($data, $name = '') {
-    $buf = var_export($data, true);
+	$buf = var_export($data, true);
 
-    $buf = str_replace('\\r', '', $buf);
-    $buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
+	$buf = str_replace('\\r', '', $buf);
+	$buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
 
-    echo '<pre>';
+	echo '<pre>';
 
-    if ($name) {
-        echo $name, '=';
-    }
+	if ($name) {
+		echo $name, '=';
+	}
 
-    echo $buf;
-    echo "</pre>\n";
+	echo $buf;
+	echo "</pre>\n";
 }
 
 if (!function_exists('split')) {
@@ -1312,6 +1308,7 @@ if (!function_exists('get_browse')) {
 			$br = 'unknown';
 		}
 		return $br;
+	}
 }
 
 function backtrace() {
@@ -1327,7 +1324,7 @@ function backtrace() {
   echo '<th>Args</th>', "\n";
   echo '</tr>', "\n";
 
-  foreach($raw as $entry){
+  foreach ($raw as $entry) {
     $args = '';
 
 //DEBUG
@@ -1336,7 +1333,7 @@ function backtrace() {
 //print_r($entry);
 //echo '</pre>';
 
-    if($entry['function'] != 'backtrace') {
+    if ($entry['function'] != 'backtrace') {
       echo '<tr>', "\n";
       echo '<td>', $entry['file'], '</td>', "\n";
       echo '<td>', $entry['line'], '</td>', "\n";
@@ -1352,14 +1349,14 @@ function backtrace() {
             $args .= $a;
             break;
         case 'string':
-            $a = htmlspecialchars(substr($a, 0, 64)).((strlen($a) > 64) ? '...' : '');
+            $a = htmlspecialchars(substr($a, 0, 64)) . ((strlen($a) > 64) ? '...' : '');
             $args .= "\"$a\"";
             break;
         case 'array':
-            $args .= 'Array('.count($a).')';
+            $args .= 'Array(' . count($a) . ')';
             break;
         case 'object':
-            $args .= 'Object('.get_class($a).')';
+            $args .= 'Object(' . get_class($a) . ')';
             break;
         case 'resource':
 //            $args .= 'Resource('.strstr($a, '#').')';
@@ -1375,7 +1372,7 @@ function backtrace() {
             $args .= 'Unknown';
         }
       }
-      if(!$args) $args = '&nbsp;';
+      if (!$args) $args = '&nbsp;';
       echo '<td>', $args, '</td>', "\n";
       echo '</tr>', "\n";
     }
@@ -1385,7 +1382,7 @@ function backtrace() {
 }
 
 // Removes parameter '$key' from '$sourceURL' query string (if present)
-function removeParam($key, $sourceURL) { 
+function removeParam($key, $sourceURL) {
     $url = parse_url($sourceURL);
     if (!isset($url['query'])) return $sourceURL;
     parse_str($url['query'], $query_data);

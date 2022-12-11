@@ -215,11 +215,11 @@ class Tag_Model {
 	 */
 	function getNamesFromIds($tagIds = NULL) {
 		$names = [];
-/*vot*/	foreach ($tagIds AS $i => $tag) {
-/*vot*/		if(empty($tag)) {
-/*vot*/			unset($tagIds[$i]);
-/*vot*/		}
-/*vot*/	}
+	foreach ($tagIds AS $i => $tag) {
+		if(empty($tag)) {
+			unset($tagIds[$i]);
+		}
+	}
 
 		if (!empty($tagIds)) {
 			$tag_string = implode(',', $tagIds);
@@ -345,7 +345,7 @@ class Tag_Model {
 	function getBlogIdsFromTagId($tagId) {
 		$blogs = [];
 
-/*vot*/	if(!empty($tagId)) {
+	if(!empty($tagId)) {
 		$sql = "SELECT `gid` FROM `" . DB_PREFIX . "tag` WHERE `tid` = " . $tagId;
 		$query = $this->db->query($sql);
 
@@ -356,7 +356,7 @@ class Tag_Model {
 				$blogs = explode(',', $result['gid']);
 			}
 		}
-/*vot*/	}
+	}
 
 		return $blogs;
 	}

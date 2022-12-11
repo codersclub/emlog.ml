@@ -7,11 +7,11 @@
 
 class Option {
 
-	const EMLOG_VERSION = 'pro 1.8.0';               //Version number
-	const EMLOG_VERSION_TIMESTAMP = 1667402137;      //Version timestamp
-	const ICON_MAX_W = 160;                          //Maximum avatar thumbnail width
-	const ICON_MAX_H = 160;                          //Maximum avatar thumbnail height
-	const UPLOADFILE_PATH = '../content/uploadfile/';//Upload path
+	const EMLOG_VERSION = 'pro 1.9.0';
+	const EMLOG_VERSION_TIMESTAMP = 1670197369;
+	const ICON_MAX_W = 160;
+	const ICON_MAX_H = 160;
+	const UPLOADFILE_PATH = '../content/uploadfile/';
 
 	static function get($option) {
 		$CACHE = Cache::getInstance();
@@ -37,18 +37,6 @@ class Option {
 					return $options_cache[$option];
 			}
 		}
-	}
-
-	static function getAll() {
-		$CACHE = Cache::getInstance();
-		$options_cache = $CACHE->readCache('options');
-		$options_cache['site_title'] = $options_cache['site_title'] ?: $options_cache['blogname'];
-		$options_cache['site_description'] = $options_cache['site_description'] ?: $options_cache['bloginfo'];
-		if (empty($options_cache['emkey'])) {
-/*vot*/			$options_cache['footer_info'] .= defined('DEV_MODE') ? (lang('powered_by_emlog') . ' ' . Option::EMLOG_VERSION) : lang('pro_unregistered');
-/*vot*/			$options_cache['site_title'] = defined('DEV_MODE') ? $options_cache['site_title'] : lang('pro_unregistered') . ' ' . $options_cache['site_title'];
-		}
-		return $options_cache;
 	}
 
 	static function getRoutingTable() {
@@ -129,6 +117,18 @@ class Option {
 		];
 	}
 
+	static function getAll() {
+		$CACHE = Cache::getInstance();
+		$options_cache = $CACHE->readCache('options');
+		$options_cache['site_title'] = $options_cache['site_title'] ?: $options_cache['blogname'];
+		$options_cache['site_description'] = $options_cache['site_description'] ?: $options_cache['bloginfo'];
+		if (empty($options_cache['emkey'])) {
+/*vot*/			$options_cache['footer_info'] .= defined('DEV_MODE') ? (lang('powered_by_emlog') . ' ' . Option::EMLOG_VERSION) : lang('pro_unregistered');
+/*vot*/			$options_cache['site_title'] = defined('DEV_MODE') ? $options_cache['site_title'] : lang('pro_unregistered') . ' ' . $options_cache['site_title'];
+		}
+		return $options_cache;
+	}
+
 	/**
 	 * Get the file types allowed to upload
 	 */
@@ -148,17 +148,17 @@ class Option {
 	 */
 	static function getWidgetTitle() {
 		return [
-/*vot*/			'blogger'     => lang('blogger'),
-/*vot*/			'calendar'    => lang('calendar'),
-/*vot*/			'tag'         => lang('tags'),
-/*vot*/			'sort'        => lang('categories'),
-/*vot*/			'archive'     => lang('archive'),
-/*vot*/			'newcomm'     => lang('new_comments'),
-/*vot*/			'newlog'      => lang('new_posts'),
-/*vot*/			'hotlog'      => lang('hot_posts'),
-/*vot*/			'link'        => lang('links'),
-/*vot*/			'search'      => lang('search'),
-/*vot*/			'custom_text' => lang('widget_custom')
+			'blogger'     => lang('blogger'),
+			'calendar'    => lang('calendar'),
+			'tag'         => lang('tags'),
+			'sort'        => lang('categories'),
+			'archive'     => lang('archive'),
+			'newcomm'     => lang('new_comments'),
+			'newlog'      => lang('new_posts'),
+			'hotlog'      => lang('hot_posts'),
+			'link'        => lang('links'),
+			'search'      => lang('search'),
+			'custom_text' => lang('widget_custom')
 		];
 	}
 
@@ -185,7 +185,7 @@ class Option {
 	static function updateOption($name, $value, $isSyntax = false) {
 		$DB = Database::getInstance();
 		$value = $isSyntax ? $value : "'$value'";
-		$sql = 'INSERT INTO ' . DB_PREFIX . "options (option_name, option_value) VALUES ('$name', $value) ON DUPLICATE KEY UPDATE option_value=$value, option_name='$name'";
+/*vot*/		$sql = 'INSERT INTO ' . DB_PREFIX . "options (option_name, option_value) VALUES ('$name', $value) ON DUPLICATE KEY UPDATE option_value=$value, option_name='$name'";
 		$DB->query($sql);
 	}
 }
