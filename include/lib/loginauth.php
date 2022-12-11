@@ -29,9 +29,6 @@ class LoginAuth {
 		return true;
 	}
 
-	/**
-	 * If user is not logged in, jump to the login page
-	 */
 	public static function checkLogin($error_code = NULL) {
 		if (self::isLogin() === true) {
 			return;
@@ -43,9 +40,6 @@ class LoginAuth {
 		}
 	}
 
-	/**
-	 * If user is logged in, jump to the admin center
-	 */
 	public static function checkLogged() {
 		if (self::isLogin() === false) {
 			return;
@@ -53,9 +47,6 @@ class LoginAuth {
 		emDirect("./");
 	}
 
-	/**
-	 * Verify User/Password
-	 */
 	public static function checkUser($username, $password) {
 		if (empty($username) || empty($password)) {
 			return self::LOGIN_ERROR_USER;
@@ -71,9 +62,6 @@ class LoginAuth {
 		return self::LOGIN_ERROR_PASSWD;
 	}
 
-	/**
-	 * Query administrator information by login name (username or email)
-	 */
 	public static function getUserDataByLogin($account) {
 		$DB = Database::getInstance();
 		if (empty($account)) {

@@ -70,7 +70,7 @@ function realUrl() {
 		return $real_url;
 	}
 
-/*vot*/	$emlog_path = EMLOG_ROOT . '/';
+	$emlog_path = EMLOG_ROOT . DIRECTORY_SEPARATOR;
 	$script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
 	$script_path = str_replace('\\', '/', $script_path);
 	$path_element = explode('/', $script_path);
@@ -82,7 +82,7 @@ function realUrl() {
 	$max_deep = count($path_element);
 
 	while ($current_deep < $max_deep) {
-/*vot*/		$this_match .= $path_element[$current_deep] . '/';
+		$this_match .= $path_element[$current_deep] . DIRECTORY_SEPARATOR;
 
 		if (substr($emlog_path, strlen($this_match) * (-1)) === $this_match) {
 			$best_match = $this_match;
@@ -300,14 +300,10 @@ function pagination($count, $perlogs, $page, $url, $anchor = '') {
 }
 
 /**
- * Plug-in function call, mounted plug-in function to a hook on the reserved
- *
- * @param string $hook
- * @param string $actionFunc
- * @return boolearn
+ * 该函数在插件中调用,挂载插件函数到预留的钩子上
  */
 function addAction($hook, $actionFunc) {
-	// Use global variables to store plug-in functions mounted on the mount point
+	// 通过全局变量来存储挂载点上挂载的插件函数
 	global $emHooks;
 	if (!isset($emHooks[$hook]) || !in_array($actionFunc, $emHooks[$hook])) {
 		$emHooks[$hook][] = $actionFunc;
@@ -316,8 +312,8 @@ function addAction($hook, $actionFunc) {
 }
 
 /**
- * Implementation of the hanging hook function, support multi-parameter eg:doAction('post_comment', $author, $email, $url, $comment);
- * eg: Insert extended content at the mount point
+ * 挂载执行方式1（插入式挂载）：执行挂在钩子上的函数,支持多参数 eg:doAction('post_comment', $author, $email, $url, $comment);
+ * eg：在挂载点插入扩展内容
  */
 function doAction($hook) {
 	global $emHooks;
@@ -330,8 +326,8 @@ function doAction($hook) {
 }
 
 /**
- * Execute the first function hung on the hook, only supports one line, and ret is passed by reference
- * eg: Take over the file upload function and change the upload locally to upload to the cloud
+ * 挂载执行方式2（单次接管式挂载）：执行挂在钩子上的第一个函数,仅执行行一次，接收输入input，且会修改传入的变量$ret
+ * eg：接管文件上传函数，将上传本地改为上传云端
  */
 function doOnceAction($hook, $input, &$ret) {
 	global $emHooks;
@@ -343,8 +339,8 @@ function doOnceAction($hook, $input, &$ret) {
 }
 
 /**
- * Mounting execution mode 3 (take-over mount): execute all functions on the hook, the previous execution result is used as the input of the next one, and the incoming variable $ret will be modified
- * eg: Different plugins modify and replace the content of the article differently.
+ * 挂载执行方式3（轮流接管式挂载）：执行挂在钩子上的所有函数，上一个执行结果作为下一个的输入，且会修改传入的变量$ret
+ * eg：不同插件对文章内容进行不同的修改替换。
  */
 function doMultiAction($hook, $input, &$ret) {
 	global $emHooks;
@@ -660,6 +656,7 @@ function chImageSize($img, $max_w, $max_h) {
 if (!function_exists('getGravatar')) {
 	function getGravatar($email, $s = 40) {
 		$hash = md5($email);
+//vot		$gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
 /*vot*/		$gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
 		doOnceAction('get_Gravatar', $email, $gravatar_url);
 
@@ -809,11 +806,11 @@ function emDownFile($source) {
 
 	$temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
 	if ($temp_file === false) {
-/*vot*/		emMsg('emDownFile: Failed to create temporary file.');
+		emMsg('emDownFile：Failed to create temporary file.');
 	}
 	$ret = file_put_contents($temp_file, $content);
 	if ($ret === false) {
-/*vot*/		emMsg('emDownFile: Failed to write temporary file.');
+		emMsg('emDownFile：Failed to write temporary file.');
 	}
 
 	return $temp_file;
@@ -1078,14 +1075,14 @@ function emStrtotime($timeStr) {
 		$unixPostDate -= (int)$timezone * 3600;
 	} elseif ($serverTimeZone) {
 		/*
-		 * If the server configuration defaults to the time zone, then PHP will recognize the incoming time as the local time in the time zone
-		 * But the time we pass in is actually the local time of the time zone configured by the blog, not the local time of the server time zone
-		 * Therefore, we need to subtract / add the time difference between the two time zones to get the UTC time.
+		 * 如果服务器配置默认了时区，那么PHP将会把传入的时间识别为时区当地时间
+		 * 但是我们传入的时间实际是blog配置的时区的当地时间，并不是服务器时区的当地时间
+		 * 因此，我们需要将strtotime得到的时间去掉/加上两个时区的时差，得到utc时间
 		 */
 		$offset = getTimeZoneOffset($serverTimeZone);
-		// First subtract/add the time difference configured by the local time zone
+		// 首先减去/加上本地时区配置的时差
 		$unixPostDate -= (int)$timezone * 3600;
-		// Then subtract/add the time difference between the server time zone and UTC to get the UTC time.
+		// 再减去/加上服务器时区与utc的时差，得到utc时间
 		$unixPostDate -= $offset;
 	}
 	return $unixPostDate;
@@ -1269,7 +1266,7 @@ if (!function_exists('split')) {
 	}
 }
 
-//vot em_v();
+em_v();
 
 if (!function_exists('get_os')) {
 	function get_os($user_agent) {
@@ -1311,21 +1308,21 @@ if (!function_exists('get_browse')) {
 	}
 }
 
-function backtrace() {
+	function backtrace() {
 
-  $raw = debug_backtrace();
+		$raw = debug_backtrace();
 
-  echo '<div><b>BackTrace:</b>', "\n";
-  echo '<table border="1" cellPadding="4">', "\n";
-  echo '<tr>', "\n";
-  echo '<th>File</th>', "\n";
-  echo '<th>Line</th>', "\n";
-  echo '<th>Function</th>', "\n";
-  echo '<th>Args</th>', "\n";
-  echo '</tr>', "\n";
+		echo '<div><b>BackTrace:</b>', "\n";
+		echo '<table border="1" cellPadding="4">', "\n";
+		echo '<tr>', "\n";
+		echo '<th>File</th>', "\n";
+		echo '<th>Line</th>', "\n";
+		echo '<th>Function</th>', "\n";
+		echo '<th>Args</th>', "\n";
+		echo '</tr>', "\n";
 
-  foreach ($raw as $entry) {
-    $args = '';
+		foreach ($raw as $entry) {
+			$args = '';
 
 //DEBUG
 //echo '<pre>';
@@ -1333,77 +1330,77 @@ function backtrace() {
 //print_r($entry);
 //echo '</pre>';
 
-    if ($entry['function'] != 'backtrace') {
-      echo '<tr>', "\n";
-      echo '<td>', $entry['file'], '</td>', "\n";
-      echo '<td>', $entry['line'], '</td>', "\n";
-      echo '<td>', $entry['function'], '</td>', "\n";
+			if ($entry['function'] != 'backtrace') {
+				echo '<tr>', "\n";
+				echo '<td>', $entry['file'], '</td>', "\n";
+				echo '<td>', $entry['line'], '</td>', "\n";
+				echo '<td>', $entry['function'], '</td>', "\n";
 
-      foreach ($entry['args'] as $a) {
-        if (!empty($args)) {
-            $args .= ', ';
-        }
-        switch (gettype($a)) {
-        case 'integer':
-        case 'double':
-            $args .= $a;
-            break;
-        case 'string':
-            $a = htmlspecialchars(substr($a, 0, 64)) . ((strlen($a) > 64) ? '...' : '');
-            $args .= "\"$a\"";
-            break;
-        case 'array':
-            $args .= 'Array(' . count($a) . ')';
-            break;
-        case 'object':
-            $args .= 'Object(' . get_class($a) . ')';
-            break;
-        case 'resource':
+				foreach ($entry['args'] as $a) {
+					if (!empty($args)) {
+						$args .= ', ';
+					}
+					switch (gettype($a)) {
+						case 'integer':
+						case 'double':
+							$args .= $a;
+							break;
+						case 'string':
+							$a = htmlspecialchars(substr($a, 0, 64)) . ((strlen($a) > 64) ? '...' : '');
+							$args .= "\"$a\"";
+							break;
+						case 'array':
+							$args .= 'Array(' . count($a) . ')';
+							break;
+						case 'object':
+							$args .= 'Object(' . get_class($a) . ')';
+							break;
+						case 'resource':
 //            $args .= 'Resource('.strstr($a, '#').')';
-            $args .= $a;
-            break;
-        case 'boolean':
-            $args .= $a ? 'True' : 'False';
-            break;
-        case 'NULL':
-            $args .= 'Null';
-            break;
-        default:
-            $args .= 'Unknown';
-        }
-      }
-      if (!$args) $args = '&nbsp;';
-      echo '<td>', $args, '</td>', "\n";
-      echo '</tr>', "\n";
-    }
-  }
+							$args .= $a;
+							break;
+						case 'boolean':
+							$args .= $a ? 'True' : 'False';
+							break;
+						case 'NULL':
+							$args .= 'Null';
+							break;
+						default:
+							$args .= 'Unknown';
+					}
+				}
+				if (!$args) $args = '&nbsp;';
+				echo '<td>', $args, '</td>', "\n";
+				echo '</tr>', "\n";
+			}
+		}
 
-  echo '</table>', "\n";
-}
+		echo '</table>', "\n";
+	}
 
 // Removes parameter '$key' from '$sourceURL' query string (if present)
-function removeParam($key, $sourceURL) {
-    $url = parse_url($sourceURL);
-    if (!isset($url['query'])) return $sourceURL;
-    parse_str($url['query'], $query_data);
-    if (!isset($query_data[$key])) return $sourceURL;
-    unset($query_data[$key]);
-    $url['query'] = http_build_query($query_data);
-    return build_url($url);
-}
+	function removeParam($key, $sourceURL) {
+		$url = parse_url($sourceURL);
+		if (!isset($url['query'])) return $sourceURL;
+		parse_str($url['query'], $query_data);
+		if (!isset($query_data[$key])) return $sourceURL;
+		unset($query_data[$key]);
+		$url['query'] = http_build_query($query_data);
+		return build_url($url);
+	}
 
-function build_url($parsed_url) {
-  $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-  $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-  $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-  $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-  $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
-  $pass     = ($user || $pass) ? "$pass@" : '';
-  $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-  $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
-  $query    = ($query == '?') ? '' : $query;
-  $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-  return "$scheme$user$pass$host$port$path$query$fragment";
+	function build_url($parsed_url) {
+		$scheme = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+		$host = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+		$port = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+		$user = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+		$pass = isset($parsed_url['pass']) ? ':' . $parsed_url['pass'] : '';
+		$pass = ($user || $pass) ? "$pass@" : '';
+		$path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+		$query = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+		$query = ($query == '?') ? '' : $query;
+		$fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+		return "$scheme$user$pass$host$port$path$query$fragment";
 	}
 }
 

@@ -8,7 +8,7 @@
 session_start();
 
 if (getenv('EMLOG_ENV') === 'develop'
-    || defined('DEV_MODE')) {
+/*vot*/    || defined('DEV_MODE')) {
 	error_reporting(E_ALL);
 } else {
 	error_reporting(1);
@@ -56,11 +56,11 @@ $userData = [];
 define('ISLOGIN', LoginAuth::isLogin());
 date_default_timezone_set(Option::get('timezone'));
 
-const ROLE_ADMIN = 'admin';              //Admin
-const ROLE_EDITOR = 'editor';            //Editor
-const ROLE_WRITER = 'writer';            //Registered user
-const ROLE_VISITOR = 'visitor';          //Guest
-const ROLE_FOUNDER = 'founder';          //Founder
+const ROLE_ADMIN = 'admin';
+const ROLE_EDITOR = 'editor';
+const ROLE_WRITER = 'writer';
+const ROLE_VISITOR = 'visitor';
+const ROLE_FOUNDER = 'founder';
 
 define('ROLE', ISLOGIN === true ? $userData['role'] : User::ROLE_VISITOR);
 define('UID', ISLOGIN === true ? $userData['uid'] : '');

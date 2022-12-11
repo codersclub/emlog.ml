@@ -29,7 +29,7 @@ class Option {
 					}
 					return [];
 				case 'blogurl':
-/*vot*/				 if (@$options_cache['detect_url'] == 'y') {
+					if ($options_cache['detect_url'] == 'y') {
 						return realUrl();
 					}
 					return $options_cache['blogurl'];

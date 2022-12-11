@@ -40,7 +40,7 @@
             <form action="auth.php?action=auth" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-<!--vot-->              <input class="form-control" id="emkey" name="emkey" placeholder="<?=lang('enter_reg_code')?>" required>
+<!--vot-->              <input class="form-control" id="emkey" name="emkey" placeholder="<?=lang('enter_reg_code')?>" minlength="32" maxlength="32" required>
                     </div>
                     <div class="form-group">
                         <a href="<?= OFFICIAL_SERVICE_HOST ?>register" target="_blank"><?=lang('get_emkey')?>&rarr; </a>

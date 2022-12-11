@@ -224,7 +224,7 @@ class Log_Model {
 			emMsg(lang('no_permission'), './');
 		}
 		// comment
-/*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "comment WHERE gid=$blogId");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "comment where gid=$blogId");
 		// tag
 		$this->db->query("UPDATE " . DB_PREFIX . "tag SET gid= REPLACE(gid,',$blogId,',',') WHERE gid LIKE '%" . $blogId . "%' ");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "tag WHERE gid=',' ");
@@ -305,7 +305,7 @@ class Log_Model {
 		$sta_cache = $CACHE->readCache('sta');
 		$lognum = $sta_cache['lognum'];
 		$start = $lognum > $num ? mt_rand(0, $lognum - $num) : 0;
-/*vot*/		$sql = "SELECT gid,title FROM $this->table WHERE hide='n' AND checked='y' AND type='blog' $date_state LIMIT $start, $num";
+		$sql = "SELECT gid,title FROM $this->table WHERE hide='n' and checked='y' and type='blog' $date_state LIMIT $start, $num";
 		$res = $this->db->query($sql);
 		$logs = [];
 		while ($row = $this->db->fetch_array($res)) {
@@ -322,7 +322,7 @@ class Log_Model {
 	function getHotLog($num) {
 		$now = time();
 		$date_state = "and date<=$now";
-/*vot*/		$sql = "SELECT gid,title FROM $this->table WHERE hide='n' AND checked='y' AND type='blog' $date_state ORDER BY views DESC, comnum DESC LIMIT 0, $num";
+		$sql = "SELECT gid,title FROM $this->table WHERE hide='n' and checked='y' and type='blog' $date_state ORDER BY views DESC, comnum DESC LIMIT 0, $num";
 		$res = $this->db->query($sql);
 		$logs = [];
 		while ($row = $this->db->fetch_array($res)) {

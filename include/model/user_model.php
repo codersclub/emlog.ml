@@ -99,7 +99,7 @@ class User_Model {
 	 * check the username exists
 	 *
 	 * @param string $user_name
-	 * @param int $uid Compatible with the fact that the user name has not changed when updating the author's information
+	 * @param int $uid 兼容更新作者资料时用户名未变更情况
 	 * @return boolean
 	 */
 	function isUserExist($user_name, $uid = '') {

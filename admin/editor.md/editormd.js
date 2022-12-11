@@ -65,7 +65,7 @@
             "list-ul", "list-ol", "hr", "|",
             "link", "reference-link", "image", "video", "code", "preformatted-text", "code-block", "table", "datetime", "pagebreak", "|",
             "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|", "info"
-/*vot*/     , "emoji", "html-entities", "help"
+    , "emoji", "html-entities", "help"
         ],
         simple: [
             "undo", "redo", "|",
@@ -3681,7 +3681,7 @@
             toc: true,
             tocm: false,
             tocStartLevel: 1,
-/*vot*/     tocTitle             : this.lang.tocTitle, //"目录",
+    tocTitle             : this.lang.tocTitle, //"目录",
             tocDropdown: false,
             tocContainer: "",
             markdown: "",
@@ -4307,7 +4307,7 @@
             case "wd" :
 //vot               var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 //vot               datefmt = weekDays[weekDay];
-/*vot*/             datefmt = wdPrefix + this.lang.weekDays[weekDay];
+            datefmt = wdPrefix + this.lang.weekDays[weekDay];
                 break;
 
             case "day" :

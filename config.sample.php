@@ -2,7 +2,7 @@
 header("location: ./install.php");
 exit;
 //MySQL database host
-const DB_HOST = '127.0.0.1';// or 'localhost'
+const DB_HOST = '127.0.0.1';
 //MySQL database username
 const DB_USER = 'root';
 //MySQL database user password
@@ -30,7 +30,6 @@ const LANG_LIST = [
 		'name'  => 'Русский',
 		'title' => 'Russian',
 		'dir'   => 'ltr',
-	],
 	'zh-CN' => [
 		'name'  => '简体中文',
 		'title' => 'Simplified Chinese',

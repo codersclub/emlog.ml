@@ -311,8 +311,8 @@ $.fn.toggleClick = function () {
 };
 
 function removeHTMLTag(str) {
-/*vot*/ str = str.replace(/<\/?[^>]*>/g, ''); //Remove HTML tags
-/*vot*/ str = str.replace(/[ | ]*\n/g, '\n'); //Trim white spaces
+    str = str.replace(/<\/?[^>]*>/g, ''); //去除HTML tag
+    str = str.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
     str = str.replace(/ /ig, '');
     return str;
 }

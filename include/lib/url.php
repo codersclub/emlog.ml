@@ -21,7 +21,7 @@ class Url {
 			if (!empty($logalias_cache[$blogId])) {
 				$logsort_cache = $CACHE->readCache('logsort');
 				$sort = '';
-				//Category Mode under the url
+				//分类模式下的url
 				if (3 == $urlMode && isset($logsort_cache[$blogId])) {
 					$sort = !empty($logsort_cache[$blogId]['alias']) ?
 						$logsort_cache[$blogId]['alias'] :
@@ -29,7 +29,7 @@ class Url {
 					$sort .= '/';
 				}
 				$logUrl = BLOG_URL . $sort . urlencode($logalias_cache[$blogId]);
-				//Open the alias html suffix
+				//开启别名html后缀
 				if (Option::get('isalias_html') == 'y') {
 					$logUrl .= '.html';
 				}
@@ -38,16 +38,16 @@ class Url {
 		}
 
 		switch ($urlMode) {
-			case '0'://Default: Dynamic
+			case '0'://默认：动态
 				$logUrl = BLOG_URL . '?post=' . $blogId;
 				break;
-			case '1'://Static
+			case '1'://静态
 				$logUrl = BLOG_URL . 'post-' . $blogId . '.html';
 				break;
-			case '2'://Directory
+			case '2'://目录
 				$logUrl = BLOG_URL . 'post/' . $blogId;
 				break;
-			case '3'://Category
+			case '3'://分类
 				$log_sort = $CACHE->readCache('logsort');
 				if (!empty($log_sort[$blogId]['alias'])) {
 					$logUrl = BLOG_URL . $log_sort[$blogId]['alias'] . '/' . $blogId;

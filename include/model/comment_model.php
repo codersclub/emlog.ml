@@ -273,7 +273,7 @@ class Comment_Model {
 
 		if ($pid > 0) {
 			$comment = $this->getOneComment($pid);
-/*vot*/			$content = '@' . addslashes($comment['poster']) . ': ' . $content;
+			$content = '@' . addslashes($comment['poster']) . ': ' . $content;
 		}
 
 		$hide = Option::get('ischkcomment') == 'y' && !User::haveEditPermission() ? 'y' : 'n';

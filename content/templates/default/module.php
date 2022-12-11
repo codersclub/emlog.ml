@@ -192,7 +192,7 @@ function widget_hotlog($title) {
 <?php } ?>
 <?php
 /**
- * widget:Random Post
+ * 侧边栏：搜索
  */
 function widget_search($title) { ?>
 	<div class="widget shadow-theme">
@@ -222,12 +222,6 @@ function widget_archive($title) {
         </div>
         <select id="archive" class="archive">
 			<?php foreach ($record_cache as $value): ?>
-<?php
-/*vot*/	//2008年12月, 2008-12
-/*vot*/	$sep = mb_substr($value['record'],4,1);
-/*vot*/	$da = explode($sep,$value['record']);
-/*vot*/	$value['record'] = lang('month_' . intval($da[1])) . ' ' . $da[0];
-?>
                 <option value="<?= Url::record($value['date']) ?>"><?= $value['record'] ?>&nbsp;(<?= $value['lognum'] ?>)</option>
 			<?php endforeach ?>
         </select>
@@ -297,17 +291,6 @@ function blog_navi() {
                 <li class="list-item list-menu"><a class="nav-link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= $value['naviname'] ?></a></li>
 			<?php endif ?>
 			<?php endforeach ?>
-
-<!--vot-->  <li class="list-item list-menu drop">
-                <span class="toggle"><?= lang('language') ?>:&nbsp;<img src="<?= ROOT_URL ?>/lang/<?= LANG ?>/flag.gif"></span>
-                <div class="down"><!-- RIGHT -->
-                <?php foreach(LANG_LIST as $l=>$lng) {
-                $selected = ($_SESSION['LANG'] == $l) ? 'selected="selected"' : '';
-?>
-                <a href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= ROOT_URL ?>/lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
-                <?php } ?>
-                </div>
-<!--vot-->  </li>
         </ul>
     </div>
 <?php } ?>
@@ -374,7 +357,7 @@ function blog_tag($blogid) {
 	$tag_names = $tag_model->getNamesFromIds($tag_ids);
 	if (!empty($tag_names)) {
 /*vot*/         $tag = lang('tags') . ': ';
-		foreach ($log_cache_tags[$blogid] as $value) {
+		foreach ($tag_names as $key => $value) {
 /*vot*/			$tag .= "	<a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='{lang('tag')}' >" . htmlspecialchars($value) . '</a>';
 		}
 		echo $tag;
