@@ -288,11 +288,8 @@ EOT;
 		. "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
 		. "\n//cookie name\n"
 		. "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
-		. "\n//Safety admin entry: /admin/?s=xxx\n"
-		. "//const ADMIN_PATH_CODE = 'xxx';"
 
-
-		. "\n\n// Default blog language"
+		. "\n// Default blog language"
 		. "\ndefine('DEFAULT_LANG', 'en'); //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc."
 		. "\n// Enabled language list"
 		. "\ndefine('LANG_LIST', ["
