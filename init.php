@@ -7,7 +7,7 @@
 
 session_start();
 
-if (getenv('EMLOG_ENV') === 'develop'
+/*vot*/ if (getenv('EMLOG_ENV') === 'develop'
 /*vot*/    || defined('DEV_MODE')) {
 	error_reporting(E_ALL);
 } else {

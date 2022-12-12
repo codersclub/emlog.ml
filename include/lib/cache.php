@@ -454,7 +454,7 @@ class Cache {
 	}
 
 	/**
-	 * Post Tag Cache [Deprecated]
+	 * Post tags cache
 	 * 文章标签缓存 [已废弃]
 	 */
 	private function mc_logtags() {
