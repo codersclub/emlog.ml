@@ -1154,26 +1154,6 @@ function uploadCropImg() {
 	return $ret;
 }
 
-//------------------------------------------------------------------
-// Functions added by Valery Votintsev (vot) at codersclub.org
-
-/**
- * Unix Style Dir Name
- *
- * @param string $file //original path
- * @param boolean $remove_drive //If need to remove the Windows-like drive, i.e. C:\windows\system32\...
- * @return unix style path
- * @author Valery Votintsev, codersclub.org
- */
-function udir($file = '', $remove_drive = false) {
-	$file = str_replace('\\', '/', $file);
-	if ($remove_drive) {
-		$file = preg_replace("/^\w:/", '', $file);
-	}
-	return $file;
-}
-
-
 /**
  * Load Language File
  *
@@ -1200,7 +1180,7 @@ function load_language($model = '') {
 
 		if (is_file($file)) {
 			$lang = array();
-			$ok = @require_once $file;
+			@require_once $file;
 
 			// Language file must contain $lang = array(...);
 			$LANGUAGE = array_merge($LANGUAGE, $lang);
@@ -1304,6 +1284,26 @@ if (!function_exists('get_browse')) {
 		return $br;
 	}
 }
+
+//------------------------------------------------------------------
+// Functions added by Valery Votintsev (vot) at codersclub.org
+
+/**
+ * Unix Style Dir Name
+ *
+ * @param string $file //original path
+ * @param boolean $remove_drive //If need to remove the Windows-like drive, i.e. C:\windows\system32\...
+ * @return unix style path
+ * @author Valery Votintsev, codersclub.org
+ */
+function udir($file = '', $remove_drive = false) {
+	$file = str_replace('\\', '/', $file);
+	if ($remove_drive) {
+		$file = preg_replace("/^\w:/", '', $file);
+	}
+	return $file;
+}
+
 
 function backtrace() {
 	$raw = debug_backtrace();
