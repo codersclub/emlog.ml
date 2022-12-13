@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Tips
-Version: 2.0
+Version: 3.0
 Plugin URL:
 Description: It is the world's first emlog plugin, it will send one cozy little tips in your administration page.
 Author: emlog official
