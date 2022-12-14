@@ -4,10 +4,6 @@ $lang = array(
 
 //---------------------------
 //admin/account.php
-//'mail_test_header'	=> 'Заголовки тестового письма',//'测试邮件发送标题',
-//'mail_test_content'	=> 'Отправка тестового письма',//'测试邮件发送内容',
-//'mail_send_ok'	=> 'Письмо успешно отправлено',//'邮件发送成功',
-//'mail_send_error'	=> 'Ошибка при отправке письма',//'邮件发送失败',
  'registration_disabled' => 'Регистрация пользователей запрещена!',//'系统已关闭注册！',
 
 //---------------------------
@@ -43,10 +39,6 @@ $lang = array(
  'import_failed_not_emlog'	=> 'Ошибка импорта! Файл не соответствут формату emlog backup!',//'导入失败！该文件不是emlog的数据备份文件!',
  'import_failed_not_emlog_ver'	=> 'Ошибка импорта! Файл не соответствут версии emlog ' . Option::EMLOG_VERSION . '!',//'导入失败！该文件不是emlog' . Option::EMLOG_VERSION . '生成的备份!',
  'import_failed_bad_prefix'	=> 'Ошибка импорта! Префикс файла резервной копии базы данных не соответствует префиксу текущей базы данных ',//'导入失败！备份文件中的数据库表前缀与当前系统数据库表前缀不一致',
-
-//---------------------------
-//admin/globals.php
-// 'no_permission'	=> 'Insufficient permissions!',//'权限不足！',
 
 //---------------------------
 //admin/index.php
@@ -258,7 +250,6 @@ $lang = array(
  'attachment_upload'	=> 'Загрузка файлов',//'上传附件',
  'bulk_upload'		=> 'Массовая загрузка',//'('//'批量上传',
  'attachment_library'	=> 'Перечень загруженных файлов',//'附件库',
-// ')',//'）',
  'no_attachments'	=> 'Нет загруженных файлов',//'该文章没有附件',
  'insert'		=> 'Добавить',//'插入 ',
  'insert_full_size'	=> 'Добавить полно-размерное изображение',//'插入原图',
@@ -268,18 +259,9 @@ $lang = array(
 
 //---------------------------
 //admin/views/auth.php
-// 'em_reg_ok'			=> 'Congratulations, the registration is successful',//'恭喜，注册成功了',
-// 'reg_failed'			=> 'Registration failed',//'注册失败',
  'ext_store_info'	=> 'Магазин расширений используется для загрузки шаблонов и плагинов, открыт только для зарегистрированных пользователей',//'Магазин расширений используется для загрузки шаблонов и плагинов, открыт только для зарегистрированных пользователей',//'扩展商店用于下载模板和插件，仅开放给已完成注册用户',
  'too_many_articles'	=> 'Количество статей превысило лимит для незарегистрированной версии',//'文章数量已经超过未注册版本限额',
  'emlog_notregistered'	=> 'Извините! Ваш emlog pro не был зарегистрирован. Завершите регистрацию, чтобы разблокировать все функции emlog pro',//'抱歉！您的emlog pro尚未完成注册， 完成注册来解锁emlog pro的全部功能',
-// 'get_emkey'			=> 'Get registration code',//'获取注册码',
-// 'ok_register_now'	=> 'Start registration',//'开始注册',
-// 'emlog_reg_ok'		=> 'Congratulations, your emlog pro has been registered!',//'恭喜，您的emlog pro已完成注册！',
-// 'register_emlog'		=> 'Register EMLOG PRO',//'注册EMLOG PRO',
-// 'enter_reg_code'	=> 'Enter the registration code',//'输入注册码',
-// 'registered'			=> 'registered',//'注册',
-// 'register'		=> 'Register',//'注册',
 
 //---------------------------
 //admin/views/blogger.php
@@ -580,10 +562,6 @@ $lang = array(
  'add'			=> 'Добавить',//'添加',
 
 //---------------------------
-//admin/views/naviedit.php
-// 'nav_name'		=> 'Navigation Name',//'导航名称',
-
-//---------------------------
 //admin/views/page.php
  'page_title'		=> 'Заголовок страницы',//'页面标题',
  'setting_items'	=> 'Параметры страницы',//'设置项',
@@ -610,7 +588,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/plugin_install.php
-// 'plugin_install'		=> 'Install plugin',//'安装插件',
  'plugin_zipped_only'		=> 'Поддерживаются плагины только в виде zip архива',//'只支持zip压缩格式的插件包',
  'plugin_not_writable'		=> 'Ошибка загрузки. Нет прав записи в папку content/plugins',//'上传失败，插件目录(content/plugins)不可写',
  'plugin_zip_nonsupport'	=> 'Сервер не поддерживает модуль zip архивов, следуйте инструкции по установке плагина вручную' ,//'空间不支持zip模块，请按照提示手动安装插件',
@@ -626,9 +603,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/register.php
-// 'ext_store_info'	=> 'Магазин расширений предназначен для скачивания шаблонов и плагинов, и доступен только зарегистрированным покупателям',//'扩展商店用于下载模板和插件，仅开放给注册用户',
-// 'too_many_articles'	=> 'Извините, количество ваших статей превышает установленный лимит для незарегистрированной версии',//'抱歉，您的文章数量已经超过未注册版本限额',
-// 'emlog_notregistered'	=> 'Emlog не зарегистрирован! Для разблокировки всех возможностей необходимо зарегистрировать ваш emlog pro',//'未注册！您的emlog pro尚未完成注册， 完成注册来解锁emlog pro的全部功能',
  'ok_register_now'	=> 'Начать регистрацию',//'开始注册',
  'emlog_reg_ok'		=> 'Поздравляем! Ваш emlog pro успешно зарегистрирован!',//'恭喜，您的emlog pro已完成注册！',
  'enter_reg_code'	=> 'Введите регистрационный код',//'输入注册码',
@@ -640,13 +614,8 @@ $lang = array(
 //---------------------------
 //admin/views/reset.php
  'retrieve_password'	=> 'Восстановление пароля',//'找回密码',
-// 'email'			=> 'E-mail',//'邮箱',
-// 'captcha'			=> 'Captcha',//'验证码',
  'new_password'		=> 'Новый пароль',//'新的密码',
  'confirm_password'	=> 'Подтвердите новый пароль',//'确认新密码',
-// 'submit'		=> 'Submit',//'提交',
-// 'login'		=> 'Login',//'登录',
-// 'back_home'		=> 'Back to home',//'返回首页',
  'email_enter'		=> 'Введите зарегистрированный Email адрес',//'输入注册邮箱',
  'email_invalid'	=> 'Неизвестный Email адрес',//'错误的注册邮箱',
  'email_send_error'	=> 'Ошибка отправки проверочного кода, проверьте правильность почтового адреса',//'邮件验证码发送失败，请检查邮件通知设置',
@@ -684,7 +653,7 @@ $lang = array(
  'settings_saved_ok'	=> 'Настройки успешно сохранены',//'设置保存成功',
  'site_title'		=> 'Заголовок сайта',//'站点标题',
  'site_subtitle'	=> 'Слоган сайта (подзаголовок)',//'站点副标题',
- 'site_address	'	=> 'Адрес сайта',//'站点地址',
+ 'site_address'		=> 'Адрес сайта',//'站点地址',
  'per_page'		=> 'Статей на странице',//'每页显示',
  'posts_per_page'	=> 'Количество статей, показываемых на странице',//'每页显示文章数量',
  '_posts'		=> ' статей',//'篇文章',
@@ -737,8 +706,6 @@ $lang = array(
 //---------------------------
 //admin/views/setting_api.php
  'api_key_reset_ok'	=> 'Ключ API успешно сброшен',//'接口秘钥重置成功',
-//'basic_settings'	=> 'Basic Settings',//'基本设置',//'基础设置',
-//'seo_settings'	=> 'SEO Settings',//'SEO设置',//'SEO优化',
  'api_enable'		=> 'Разрешить API',//'开启API',
  'api_key'		=> 'Ключ API',//'API秘钥',
  'api_key_reset'	=> 'Сбросить ключ API',//'重置API秘钥',
@@ -801,13 +768,6 @@ $lang = array(
  'price_unit'		=> 'Юаней',//'元',
  'go_buy'		=> 'Купить',//'去购买',
  'download&install'	=> 'Скачать и установить',//'下载安装',
-// 'plugin'		=> 'Plug-in',//'插件',
-// 'developer'		=> 'Developer',//'开发者',
-// 'update_time'	=> 'Update time',//'更新时间',
-// 'price'		=> 'Price',//'价格',
-// 'free'		=> 'Free',//'免费',
-// 'go_buy'		=> 'Go to buy',//'去购买',
-// 'download&install'	=> 'Download and install',//'下载安装',
  'app_store'		=> 'Магазин приложений',//'应用商店',
  'version_number'	=> 'Номер версии',//'版本号',
 
@@ -828,10 +788,12 @@ $lang = array(
  'plugin_search'		=> 'Поиск плагинов',//'搜索插件',
  'show_free_only'		=> 'Показать только бесплатные',//'仅看免费',
  'store_no_results'		=> 'По Вашему запросу ничего не найдено. Однако каталог постоянно пополняется, возможно появится и то, что Вы ищете :)',//'暂未找到结果，应用商店进货中，敬请期待：）',
+'plugin_publish'		=> 'Опубликовать плагин',//'发布插件',
 
 //---------------------------
 //admin/views/store_tpl.php
  'temlate_search'	=> 'Поиск шаблонов...',//'搜索模板...',
+'template_publish'	=> 'Опубликовать шаблон',//'发布模板',
 
 //---------------------------
 //admin/views/style.php
@@ -897,15 +859,11 @@ $lang = array(
 
 //---------------------------
 //admin/views/twitter.php
-// 'published_ok'		=> 'Entry has been publised successfully',//'发布成功',
-// 'settings_saved_ok'	=> 'Settings have been saved successfully',//'设置保存成功',
  'twitter_del_ok'	=> 'Заметка успешно удалена',//'笔记删除成功',
  'twitter_empty'	=> 'Текст заметки должен быть не пустым',//'笔记内容不能为空',
  'twitter_add'		=> 'Добавить заметку',//'卡片笔记',
  'twitter_prompt'	=> 'Здесь вы можете быстро записать свои идеи, мысли или новые знания',//'快速记录想法，帮你方便的捕捉灵感，积累知识的复利',
  'twitter_save'		=> 'Сохранить заметку',//'保存笔记',
-// 'delete'		=> 'Delete',//'删除',
-// 'have'			=> 'Have ',//'有',
  'twitters'			=> 'Заметки',//'笔记',
  '_twitters'			=> ' заметок',//'条笔记',
 
@@ -991,5 +949,4 @@ $lang = array(
  'widget_use'		=> 'Используемые виджеты',//'使用中的组件',
  'widget_order_save'	=> 'Сохранить порядок виджетов',//'保存组件排序',
  'widget_setting_reset'	=> 'Сбросить настройки виджета по умолчанию',//'恢复出厂设置',
-
 );
