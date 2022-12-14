@@ -158,9 +158,9 @@ if ($action == 'mail') {
 	$options_cache = $CACHE->readCache('options');
 	$smtp_mail = isset($options_cache['smtp_mail']) ? $options_cache['smtp_mail'] : '';
 	$smtp_pw = isset($options_cache['smtp_pw']) ? $options_cache['smtp_pw'] : '';
+	$smtp_from_name = isset($options_cache['smtp_from_name']) ? $options_cache['smtp_from_name'] : '';
 	$smtp_server = isset($options_cache['smtp_server']) ? $options_cache['smtp_server'] : '';
 	$smtp_port = isset($options_cache['smtp_port']) ? $options_cache['smtp_port'] : '';
-
 	$mail_notice_comment = isset($options_cache['mail_notice_comment']) ? $options_cache['mail_notice_comment'] : '';
 	$mail_notice_post = isset($options_cache['mail_notice_post']) ? $options_cache['mail_notice_post'] : '';
 
@@ -179,6 +179,7 @@ if ($action == 'mail_save') {
 	$data = [
 		'smtp_mail'           => isset($_POST['smtp_mail']) ? addslashes($_POST['smtp_mail']) : '',
 		'smtp_pw'             => isset($_POST['smtp_pw']) ? addslashes($_POST['smtp_pw']) : '',
+		'smtp_from_name'      => isset($_POST['smtp_from_name']) ? addslashes($_POST['smtp_from_name']) : '',
 		'smtp_server'         => isset($_POST['smtp_server']) ? addslashes($_POST['smtp_server']) : '',
 		'smtp_port'           => isset($_POST['smtp_port']) ? (int)$_POST['smtp_port'] : '',
 		'mail_notice_comment' => isset($_POST['mail_notice_comment']) ? $_POST['mail_notice_comment'] : 'n',
@@ -193,28 +194,30 @@ if ($action == 'mail_save') {
 
 if ($action == 'mail_test') {
 	$data = [
-		'smtp_mail'   => isset($_POST['smtp_mail']) ? addslashes($_POST['smtp_mail']) : '',
-		'smtp_pw'     => isset($_POST['smtp_pw']) ? addslashes($_POST['smtp_pw']) : '',
-		'smtp_server' => isset($_POST['smtp_server']) ? addslashes($_POST['smtp_server']) : '',
-		'smtp_port'   => isset($_POST['smtp_port']) ? (int)$_POST['smtp_port'] : '',
-		'testTo'      => isset($_POST['testTo']) ? $_POST['testTo'] : '',
+		'smtp_mail'      => isset($_POST['smtp_mail']) ? addslashes($_POST['smtp_mail']) : '',
+		'smtp_pw'        => isset($_POST['smtp_pw']) ? addslashes($_POST['smtp_pw']) : '',
+		'smtp_from_name' => isset($_POST['smtp_from_name']) ? addslashes($_POST['smtp_from_name']) : '',
+		'smtp_server'    => isset($_POST['smtp_server']) ? addslashes($_POST['smtp_server']) : '',
+		'smtp_port'      => isset($_POST['smtp_port']) ? (int)$_POST['smtp_port'] : '',
+		'testTo'         => isset($_POST['testTo']) ? $_POST['testTo'] : '',
 	];
 
-	if (!checkMail($data["testTo"])) {
+	if (!checkMail($data['testTo'])) {
 		exit("<small class='text-info'>" . lang('email_enter_please') . "</small>");
 	}
 
 	$mail = new PHPMailer(true);
-	$mail->IsSMTP();                                                       // Use SMTP authentication to send mail
-	$mail->CharSet = 'UTF-8';                                              // Character Encoding
-	$mail->SMTPAuth = true;                                                // Enable authentication
-	$mail->SMTPSecure = $data["smtp_port"] == '587' ? 'STARTTLS' : 'ssl';  // Set up login authentication using ssl encryption
-	$mail->Port = $data["smtp_port"];                                      // SMTP Port
-	$mail->Host = $data["smtp_server"];                                    // STMP server address
-	$mail->Username = $data["smtp_mail"];                                  // Email address
-	$mail->Password = $data["smtp_pw"];                                    // SMTP authorization password
-	$mail->From = $data["smtp_mail"];                                      // Sender Email
-	$mail->AddAddress($data["testTo"]);                                    // Recipient Email
+	$mail->IsSMTP();
+	$mail->CharSet = 'UTF-8';
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = $data['smtp_port'] == '587' ? 'STARTTLS' : 'ssl';
+	$mail->Port = $data['smtp_port'];
+	$mail->Host = $data['smtp_server'];
+	$mail->Username = $data['smtp_mail'];
+	$mail->Password = $data['smtp_pw'];
+	$mail->From = $data['smtp_mail'];
+	$mail->FromName = $data['smtp_from_name'];
+	$mail->AddAddress($data['testTo']);
 	$mail->Subject = lang('test_mail_subj');
 	$mail->Body = lang('test_mail_body');
 
@@ -222,7 +225,6 @@ if ($action == 'mail_test') {
 		return $mail->Send();
 	} catch (Exception $exc) {
 		exit("<small class='text-danger'>" . lang('test_mail_failed') . "</small>");
-		return false;
 	}
 }
 

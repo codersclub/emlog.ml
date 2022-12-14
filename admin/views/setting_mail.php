@@ -29,6 +29,10 @@
                 <input type="password" name="smtp_pw" cols="" rows="3" class="form-control" value="<?= $smtp_pw ?>" required>
             </div>
             <div class="form-group">
+                <label><?= lang('sender_name') ?></label>
+                <input type="from_name" class="form-control" value="<?= $smtp_from_name ?>" name="smtp_from_name">
+            </div>
+            <div class="form-group">
                 <label><?= lang('smtp_server') ?>:</label>
                 <input class="form-control" value="<?= $smtp_server ?>" name="smtp_server" required>
             </div>

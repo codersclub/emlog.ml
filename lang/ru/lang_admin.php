@@ -66,12 +66,13 @@ $lang = array(
 //admin/setting_mail.php
  'email_sending'	=> 'Отправка Email',//'邮件发送',
  'sender_email'		=> 'Email отправителя',//'发送人邮箱',
+ 'sender_name'		=> 'Имя отправителя (необязательно)',//'发送人名称（选填）',
  'smtp_password'	=> 'SMTP пароль',//'SMTP密码',
  'smtp_server'		=> 'SMTP сервер',//'SMTP服务器',
  'smtp_port'		=> 'SMTP порт',//'端口',
  'smtp_port_info'	=> '(465: ssl протокол, используется в почтовых серверах QQ, Netease, и др.; 587: STARTTLS протокол используется в Outlook)',//'(465：ssl协议，如QQ邮箱，网易邮箱等，587：STARTTLS协议 如：Outlook邮箱)',
  'send_test'		=> 'Тест отправки',//'发送测试',
- 'send_test_prompt'	=> '<b>В качестве примера рассмотрим настройки для почтового ящика на QQ:</b><br>Email отправителя: ваш email адрес на QQ<br>SMTP пароль: См. настройки в сервисе: QQ mailbox -&gt; Почтовый адрес -&gt; Разрешить IMAP/SMTP сервис -&gt; Сгенерировать код авторизации (т.е. SMTP пароль)<br>SMTP сервер: smtp.qq.com<br>SMTP порт: 465 (поддерживается только SSL порт)<br>',//'<b>以QQ邮箱配置为例</b><br>发送人邮箱：你的QQ邮箱<br>SMTP密码：见QQ邮箱顶部设置-> 账户 -> 开启IMAP/SMTP服务 -> 生成授权码（即为SMTP密码）<br>SMTP服务器：smtp.qq.com<br>端口：465 (只支持 SSL 端口)<br>',
+ 'send_test_prompt'	=> '<b>В качестве примера рассмотрим настройки для почтового ящика на QQ:</b><br>Email отправителя: ваш email адрес на QQ<br>SMTP пароль: См. настройки в сервисе: QQ mailbox -&gt; Почтовый адрес -&gt; Разрешить IMAP/SMTP сервис -&gt; Сгенерировать код авторизации (т.е. SMTP пароль)<br>Имя отправителя: ваше имя или название сайта<br>SMTP сервер: smtp.qq.com<br>SMTP порт: 465 (поддерживается только SSL порт)<br>',//'<b>以QQ邮箱配置为例</b><br>发送人邮箱：你的QQ邮箱<br>SMTP密码：见QQ邮箱顶部设置-> 账户 -> 开启IMAP/SMTP服务 -> 生成授权码（即为SMTP密码）<br>SMTP服务器：smtp.qq.com<br>端口：465 (只支持 SSL 端口)<br>',
  'recepient_email_enter'	=> 'Введите email получателя',//'输入接收邮箱',
  'send'			=> 'Отправить',//'发送',
 
