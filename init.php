@@ -27,9 +27,10 @@ require_once EMLOG_ROOT . '/include/lib/common.php';
 
 spl_autoload_register("emAutoload");
 
+//'en', 'zh-CN'
+const LANG = 'en';
 // blog language direction
 const LANG_DIR = Option::LANG_LIST[LANG]['dir'];
-
 // Load the core Lang File
 load_language('core');
 
