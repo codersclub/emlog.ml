@@ -1,6 +1,17 @@
 <?php
 
+$lang = [
+//content/plugins/tips/tips_setting.php
+	'got_it'		=> '好的，我知道你知道了',//'Ok I know you got it',
+	'tips_plugin'		=> '小贴士插件',//'Tips plugin',
+	'tips_plugin_info'	=> '这是世界上第一个emlog插件，它会在你的管理页面送上一句温馨的小提示，样式如下。',//'This is the world\'s first emlog plug-in, it will send a warm reminder on your management page, the style is as follows.',
+	'tips_plugin_info2'	=> '另外该插件也是一个demo，可以在这个插件基础上修改，开发出你自己的插件。',//'In addition, the plug-in is also a demo, which can be modified on the basis of this plug-in to develop your own plug-in.',
+	'ok_i_know'		=> '好的，我知道了',//'Okay, I know',
+];
+
+
 $array_tips = [
+//content/plugins/tips/tips.php
 	'为防文章丢失，emlog会在你书写文章的时候为你自动保存',
 	'你可以把你未写完的文章保存到草稿箱里',
 	'大尺寸的图片上传时会自动生成缩略图，从而加快页面加载速度',

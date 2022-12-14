@@ -17,7 +17,7 @@ $array_tips = [
 vot*/
 
 // Load Tips from /lang/XX/lang_plugin_tips.php
-	include_once EMLOG_ROOT . '/lang/' . LANG . '/lang_plugin_tips.php';
+include_once EMLOG_ROOT . '/lang/' . LANG . '/lang_plugin_tips.php';
 
 function tips() {
 	global $array_tips;
