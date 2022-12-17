@@ -71,9 +71,16 @@
 
     function deltags() {
         var tid = $('#tid').val()
-        if (!confirm('<?=lang('tag_delete_sure')?>')) {
-            return;
-        }
-        window.open("./tag.php?action=del_tag&token=<?= LoginAuth::genToken() ?>&tid=" + tid, "_self");
+        swal({
+/*vot*/     title: lang('tag_delete_sure'),
+            text: '删除后可能无法恢复',
+            icon: 'warning',
+            buttons: ['取消', '确定'],
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                window.open("./tag.php?action=del_tag&token=<?= LoginAuth::genToken() ?>&tid=" + tid, "_self");
+            }
+        });
     }
 </script>

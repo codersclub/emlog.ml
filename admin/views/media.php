@@ -191,10 +191,23 @@
 
     function mediaact(act) {
         if (getChecked('aids') === false) {
-            alert('<?= lang('resource_select') ?>');
+/*vot*/     swal("", lang('resource_select'), "info");
             return;
         }
-        if (act == 'del' && !confirm('<?= lang('resource_del_sure') ?>')) {
+
+        if (act == 'del') {
+            swal({
+/*vot*/         title: lang('resource_del_sure'),
+                text: '删除后可能无法恢复',
+                icon: 'warning',
+                buttons: ['取消', '确定'],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $("#operate").val(act);
+                    $("#form_media").submit();
+                }
+            });
             return;
         }
         $("#operate").val(act);
@@ -213,7 +226,7 @@
     // Change category
     function changeSort(obj) {
         if (getChecked('aids') === false) {
-            alert(lang('media_select'));
+/*vot*/     swal("", lang('media_select'), "info");
             return;
         }
         if ($('#sort').val() == '') return;

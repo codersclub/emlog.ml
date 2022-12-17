@@ -70,10 +70,22 @@
 
     function pageact(act) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('select_page_to_operate')?>');
+/*vot*/     swal("", lang('select_page_to_operate', "info");
             return;
         }
-        if (act == 'del' && !confirm('<?=lang('sure_delete_selected_pages')?>')) {
+        if (act == 'del') {
+            swal({
+/*vot*/         title: lang('sure_delete_selected_pages'),
+                text: '删除后可能无法恢复',
+                icon: 'warning',
+                buttons: ['取消', '确定'],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $("#operate").val(act);
+                    $("#form_page").submit();
+                }
+            });
             return;
         }
         $("#operate").val(act);

@@ -154,11 +154,24 @@
 
     function commentact(act) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('comment_operation_select')?>');
+/*vot*/     swal("", lang('comment_operation_select'), "info");
             return;
         }
-        if (act == 'del' && !confirm('<?=lang('comment_selected_delete_sure')?>')) {
-            return;
+
+        if (act == 'del') {
+            swal({
+/*vot*/         title: lang('comment_selected_delete_sure'),
+                text: '删除后可能无法恢复',
+                icon: 'warning',
+                buttons: ['取消', '确定'],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $("#operate").val(act);
+                    $("#form_com").submit();
+                }
+            });
+            return
         }
         $("#operate").val(act);
         $("#form_com").submit();

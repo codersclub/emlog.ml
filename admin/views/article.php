@@ -200,7 +200,7 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
 					<?php if ($draft): ?>
                         <a href="javascript:logact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
 					<?php else: ?>
-                        <a href="javascript:logact('hide');" class="btn btn-sm btn-primary"><?= lang('add_draft') ?></a>
+                        <a href="javascript:logact('hide');" class="btn btn-sm btn-success"><?= lang('add_draft') ?></a>
 					<?php endif ?>
                     <a href="javascript:logact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                 </div>
@@ -225,20 +225,32 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
 
     function logact(act) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('select_article')?>');
+/*vot*/     swal("", lang('select_article'), "info");
             return;
         }
-        if (act == 'del' && !confirm('<?=lang('sure_delete_articles')?>')) {
+
+        if (act == 'del') {
+            swal({
+/*vot*/         title: lang('sure_delete_articles'),
+                text: '删除后可能无法恢复',
+                icon: 'warning',
+                buttons: ['取消', '确定'],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $("#operate").val(act);
+                    $("#form_log").submit();
+                }
+            });
             return;
         }
         $("#operate").val(act);
         $("#form_log").submit();
     }
 
-    // Change category
     function changeSort(obj) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('select_post_to_operate')?>');
+/*vot*/     swal("", lang('select_post_to_operate'), "info");
             return;
         }
         if ($('#sort').val() == '') return;
@@ -246,10 +258,9 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         $("#form_log").submit();
     }
 
-    // Change author
     function changeAuthor(obj) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('select_post_to_operate')?>');
+/*vot*/     swal("", lang('select_post_to_operate'), "info");
             return;
         }
         if ($('#author').val() == '') return;
@@ -257,10 +268,9 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         $("#form_log").submit();
     }
 
-    // Top
     function changeTop(obj) {
         if (getChecked('ids') == false) {
-            alert('<?=lang('select_post_to_operate')?>');
+/*vot*/     swal("", lang('select_post_to_operate'), "info");
             return;
         }
         if ($('#top').val() == '') return;
@@ -268,12 +278,10 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         $("#form_log").submit();
     }
 
-    // Filter by category
     function selectSort(obj) {
         window.open("./article.php?sid=" + obj.value + "<?= $isdraft ?>", "_self");
     }
 
-    // Filter by user
     function selectUser(obj) {
         window.open("./article.php?uid=" + obj.value + "<?= $isdraft ?>", "_self");
     }
