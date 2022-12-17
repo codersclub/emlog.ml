@@ -1,18 +1,14 @@
 <p align="center">
-  <img src="./logo.png" width=100 />
+  <img src="./admin/views/images/logo.png" width=100 />
 </p>
 <p align="center">
 	<a href="https://github.com/emlog/emlog/releases/latest"><img src="https://img.shields.io/github/v/release/emlog/emlog?logo=github" alt="GitHub release" /></a>
 	<a href="https://www.emlog.net/docs/#/"><img src="https://img.shields.io/badge/docsify-document-brightgreen" alt="Document" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/QQ Group-460197406-red" alt="QQ Group" /></a>
-</p>
-<p align="center">
-  <a href="#/README.cn.md">Chinese</a> | English
 </p>
 
 # emlog
 
-A powerful blog and content knowledge management system based on PHP and MySQL, pursuing a fast, stable, simple and comfortable website building experience.
+emlog is a lightweight blog and CMS website building system, dedicated to creating a user-friendly personal cloud content management system.
 
 ## Overview
 
