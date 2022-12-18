@@ -208,7 +208,7 @@
     $("#alias").keyup(function () {
         checkalias();
     });
-    setTimeout("autosave(1)", 30000);
+    setTimeout("autosave(1)", 60000);
     $("#menu_category_content").addClass('active');
     $("#menu_content").addClass('show');
     $("#menu_write").addClass('active');
