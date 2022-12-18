@@ -311,17 +311,17 @@ function topflg($top, $sortop = 'n', $sortid = null) {
 ?>
 <?php
 /**
- * blog:Editor
+ * Article details page: edit link
  */
 function editflg($logid, $author) {
-	$editflg = User::haveEditPermission() || $author == UID ? '<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank">' . lang('edit') . '</a>' : '';
+	$editflg = User::haveEditPermission() || $author == UID ? '&nbsp;&nbsp;&nbsp;<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank">' . lang('edit') . '</a>' : '';
 	echo $editflg;
 }
 
 ?>
 <?php
 /**
- * blog:Category
+ * Article details page: Category
  */
 function blog_sort($blogid) {
 	global $CACHE;
@@ -335,21 +335,21 @@ function blog_sort($blogid) {
 } ?>
 <?php
 /**
- * Article Listing Page: Categories
+ * Home Article List: Categories
  */
 function bloglist_sort($blogid) {
 	global $CACHE;
 	$log_cache_sort = $CACHE->readCache('logsort');
 	?>
 	<?php if (!empty($log_cache_sort[$blogid])) { ?>
-		<span class="loglist-sort">
-            <a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
+        <span class="loglist-sort">
+			<a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
 		</span>
 	<?php }
 } ?>
 <?php
 /**
- * blog:Post Tags
+ * Homepage article list and article details page: tags
  */
 function blog_tag($blogid) {
 	$tag_model = new Tag_Model();
@@ -367,7 +367,7 @@ function blog_tag($blogid) {
 ?>
 <?php
 /**
- * blog:Post author
+ * Home page article list and article details page: Author
  */
 function blog_author($uid) {
 	global $CACHE;
@@ -382,7 +382,7 @@ function blog_author($uid) {
 ?>
 <?php
 /**
- * blog:Neighbor Post
+ * Article Details Page: Adjacent Articles
  */
 function neighbor_log($neighborLog) {
 	extract($neighborLog) ?>
@@ -395,7 +395,7 @@ function neighbor_log($neighborLog) {
 <?php } ?>
 <?php
 /**
- * blog:comment list
+ * Article details page: comment list
  */
 function blog_comments($comments) {
 	extract($comments);
@@ -438,7 +438,7 @@ function blog_comments($comments) {
 <?php } ?>
 <?php
 /**
- * blog:sub-comment list
+ * Article details page: sub-comments
  */
 function blog_comments_children($comments, $children) {
 	$isGravatar = Option::get('isgravatar');
@@ -454,15 +454,17 @@ function blog_comments_children($comments, $children) {
                     <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                     <div class="comment-content"><?= $comment['content'] ?></div>
 					<?php if ($comment['level'] < 4): ?>
-          				<div class="comment-reply"><button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
-						</div><?php endif ?>
-				</div>
+                        <div class="comment-reply">
+                            <button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
+                        </div><?php endif ?>
+                </div>
 			<?php else: ?>
                 <div class="comment-infos-unGravatar">
                     <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                     <div class="comment-content"><?= $comment['content'] ?></div>
 					<?php if ($comment['level'] < 4): ?>
-          					<div class="comment-reply"><button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
+          					<div class="comment-reply">
+          						<button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
 						</div><?php endif ?>
 				</div>
 			<?php endif ?>
@@ -472,14 +474,16 @@ function blog_comments_children($comments, $children) {
 <?php } ?>
 <?php
 /**
- * blog:Post a comment form
+ * Article Details Page: Comment Form
  */
 function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark) {
 	$isNeedChinese = Option::get('comment_needchinese');
 	if ($allow_remark == 'y'): ?>
 		<div id="comment-place">
 			<div class="comment-post" id="comment-post">
-          			<div class="cancel-reply" id="cancel-reply" style="display:none"><button class="comment-replay-btn"><?=lang('cancel_reply')?></button></div>
+          			<div class="cancel-reply" id="cancel-reply" style="display:none">
+          				<button class="comment-replay-btn"><?=lang('cancel_reply')?></button>
+          			</div>
 				<form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform"
 					  is-chinese="<?= $isNeedChinese ?>">
 					<input type="hidden" name="gid" value="<?= $logid ?>"/>
@@ -493,9 +497,9 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
 								   value="<?= $ckmail ?>" size="22"
                                    tabindex="2" placeholder="<?=lang('homepage')?>" />
                             <input class="form-control com_control comment-url" id="info_u" autocomplete="off" type="text" name="comurl" maxlength="128"
-								   value="<?= $ckurl ?>" size="22"
+				value="<?= $ckurl ?>" size="22"
                                    tabindex="3" placeholder="<?=lang('homepage')?>"/>
-						</div>
+			</div>
 					<?php endif ?>
 
 					<span class="com_submit_p">
@@ -509,7 +513,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
 								<div class="modal-content" style="display: table-cell;">
                                     <div class="modal-header" style="border-bottom: 0px;">
 					<?=lang('enter_captcha')?>
-									</div>
+				    </div>
 									<?= $verifyCode ?>
 									<div class="modal-footer" style="border-top: 0px;">
           				<button type="button" class="btn" id="close-modal" data-dismiss="modal"><?=lang('close')?></button>
@@ -529,7 +533,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
 <?php } ?>
 <?php
 /**
- * blog-tool: Determine whether it is the Home
+ * Helper function: whether it is the home page
  */
 function blog_tool_ishome() {
 	if (BLOG_URL . trim(Dispatcher::setPath(), '/') == BLOG_URL) {

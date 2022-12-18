@@ -30,7 +30,7 @@ class Cache {
 	}
 
 	/**
-	 * Static method, Returns the database connection instance
+	 * Static method, Returns the class instance
 	 *
 	 * @return Cache
 	 */
@@ -191,7 +191,7 @@ class Cache {
 			'note_num'   => $note_num,
 		];
 
-		// 性能问题仅缓存最近1000个用户的信息
+		// Performance issue: only cache the information of the last 1000 users
 		$query = $this->db->query("SELECT uid FROM " . DB_PREFIX . "user order by uid desc limit 1000");
 		while ($row = $this->db->fetch_array($query)) {
 			$data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "blog WHERE author={$row['uid']} AND hide='n' and type='blog'");
@@ -279,11 +279,11 @@ class Cache {
 				continue;
 			}
 			$usenum = empty($row['gid']) ? 0 : substr_count($row['gid'], ',') + 1;
-			$fontsize = 10 + round(($usenum - $minuse) * $rank); //maxfont:22pt,minfont:10pt
+			$fontsize = 10 + round(($usenum - $minuse) * $rank); //min fontsize:10pt
 			$tag_cache[] = [
 				'tagurl'   => urlencode($row['tagname']),
 				'tagname'  => htmlspecialchars($row['tagname']),
-				'fontsize' => $fontsize,
+				'fontsize' => min($fontsize, 22),//max fontsize:22pt,
 				'usenum'   => $usenum
 			];
 		}
@@ -381,7 +381,7 @@ class Cache {
 	}
 
 	/**
-	 * Latest Posts
+	 * Latest Articles
 	 */
 	private function mc_newlog() {
 		$index_newlognum = Option::get('index_newlognum');
@@ -403,16 +403,16 @@ class Cache {
 	}
 
 	/**
-	 * Post Archive Cache
+	 * Article Archive Cache
 	 */
 	private function mc_record() {
-		$query = $this->db->query('select date from ' . DB_PREFIX . "blog WHERE hide='n' and checked='y' and type='blog' ORDER BY date DESC");
+/*vot*/		$query = $this->db->query('SELECT date FROM ' . DB_PREFIX . "blog WHERE hide='n' AND checked='y' AND type='blog' ORDER BY date DESC");
 		$record = 'xxxx_x';
 		$p = 0;
 		$lognum = 1;
 		$record_cache = [];
 		while ($show_record = $this->db->fetch_array($query)) {
-			$f_record = gmdate('Y_n', $show_record['date']);
+/*vot*/			$f_record = gmdate('Y_m', $show_record['date']);
 			if ($record != $f_record) {
 				$h = $p - 1;
 				if ($h != -1) {
@@ -454,8 +454,7 @@ class Cache {
 	}
 
 	/**
-	 * Post tags cache
-	 * 文章标签缓存 [已废弃]
+	 * Article tags cache [Deprecated]
 	 */
 	private function mc_logtags() {
 		$cacheData = serialize([]);
@@ -463,7 +462,7 @@ class Cache {
 	}
 
 	/**
-	 * Blog Categories cache
+	 * Article Categories cache
 	 */
 	private function mc_logsort() {
 		$sql = "SELECT gid,sortid FROM " . DB_PREFIX . "blog where type='blog' order by top DESC, sortop DESC, date DESC";
