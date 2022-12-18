@@ -15,16 +15,16 @@ emlog is a lightweight blog and CMS website building system, dedicated to creati
 - [x] Markdown editor, auto save, more comfortable and worry-free creation
 - [x] User registration, login, contribution, management
 - [x] Multimedia resource manager, support upload management of pictures, audio, video, files, etc.
-- [x] Draft box function to save your unfinished articles
+- [x] Draft box
 - [x] Template themes to create a personalized site
-- [x] Rich plugin extensions to provide more functions
+- [x] Rich plugin extensions
 - [x] Support article URL customization, better SEO effect
 - [x] Flexible sidebar component (widgets) management, easy to combine and customize your favorite components
 - [x] Custom pages to easily create message boards, navigation bars, personal profiles, etc.
 - [x] Multi-person co-writing, easy management of multiple writers in the background
 - [x] tag, secondary classification
 - [x] Data caching technology, faster site access
-- [x] Site data backup/restore function
+- [x] Site data backup/restore
 
 ## Download
 
