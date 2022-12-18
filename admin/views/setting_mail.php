@@ -22,11 +22,11 @@
             <h4><?= lang('email_service') ?></h4>
             <div class="form-group">
                 <label><?= lang('sender_email') ?></label>
-                <input type="email" class="form-control" value="<?= $smtp_mail ?>" name="smtp_mail" required>
+                <input type="email" class="form-control" value="<?= $smtp_mail ?>" name="smtp_mail">
             </div>
             <div class="form-group">
                 <label><?= lang('smtp_password') ?>:</label>
-                <input type="password" name="smtp_pw" cols="" rows="3" class="form-control" value="<?= $smtp_pw ?>" required>
+                <input type="password" name="smtp_pw" cols="" rows="3" class="form-control" value="<?= $smtp_pw ?>">
             </div>
             <div class="form-group">
                 <label><?= lang('sender_name') ?></label>
@@ -34,11 +34,11 @@
             </div>
             <div class="form-group">
                 <label><?= lang('smtp_server') ?>:</label>
-                <input class="form-control" value="<?= $smtp_server ?>" name="smtp_server" required>
+                <input class="form-control" value="<?= $smtp_server ?>" name="smtp_server">
             </div>
             <div class="form-group">
                 <label><?= lang('smtp_port') ?> <?= lang('smtp_port_info') ?></label>
-                <input class="form-control" value="<?= $smtp_port ?>" name="smtp_port" required>
+                <input class="form-control" value="<?= $smtp_port ?>" name="smtp_port">
             </div>
             <div class="form-group">
                 <input type="button" value="<?= lang('send_test') ?>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#testMail"/>
