@@ -61,9 +61,6 @@ class MySqlii {
 		$this->conn->set_charset('utf8mb4');
 	}
 
-	/**
-	 * Static method that returns the database connection instance
-	 */
 	public static function getInstance() {
 		if (self::$instance === null) {
 			self::$instance = new MySqlii();
@@ -72,33 +69,27 @@ class MySqlii {
 		return self::$instance;
 	}
 
-	/**
-	 * Close database connection
-	 */
-	function close() {
+	public function close() {
 		return $this->conn->close();
 	}
 
-	/**
-	 * Send query statement
-	 */
-	function query($sql, $ignore_err = FALSE) {
+	public function query($sql, $ignore_err = FALSE) {
 		$this->result = $this->conn->query($sql);
 		$this->queryCount++;
 		if (!$ignore_err && 1046 == $this->geterrno()) {
 			emMsg(lang('db_error_name'));
 		}
+		if (!$ignore_err && 1115 == $this->getErrNo()) {
+			emMsg("MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本");
+		}
 		if (!$ignore_err && !$this->result) {
-			emMsg(lang('db_sql_error'). ": $sql<br /><br />" . $this->geterror());
+/*vot*/			emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());
 		} else {
 			return $this->result;
 		}
 	}
 
-	/**
-	 * Fetch a row as an associative array / array results from a numerical index
-	 */
-	function fetch_array(mysqli_result $query, $type = MYSQLI_ASSOC) {
+	public function fetch_array(mysqli_result $query, $type = MYSQLI_ASSOC) {
 		return $query->fetch_array($type);
 	}
 
@@ -107,46 +98,33 @@ class MySqlii {
 		return $this->fetch_array($this->result);
 	}
 
-	/**
-	 * Fetch a row as an array of results from a numerical index
-	 */
-	function fetch_row(mysqli_result $query) {
+	public function fetch_row(mysqli_result $query) {
 		return $query->fetch_row();
 	}
 
-	/**
-	 * The number of rows obtained
-	 *
-	 */
-	function num_rows(mysqli_result $query) {
+	public function num_rows(mysqli_result $query) {
 		return $query->num_rows;
 	}
 
-	/**
-	 * Get the number of fields in the result set
-	 */
-	function num_fields(mysqli_result $query) {
+	public function num_fields(mysqli_result $query) {
 		return $query->field_count;
 	}
 
-	/**
-	 * Get the last ID generated from the previous INSERT operation
-	 */
-	function insert_id() {
+	public function insert_id() {
 		return $this->conn->insert_id;
 	}
 
 	/**
 	 * Get mysql error
 	 */
-	function geterror() {
+	public function getError() {
 		return $this->conn->error;
 	}
 
 	/**
 	 * Get mysql error code
 	 */
-	function geterrno() {
+	public function getErrNo() {
 		return $this->conn->errno;
 	}
 
@@ -157,17 +135,11 @@ class MySqlii {
 		return $this->conn->affected_rows;
 	}
 
-	/**
-	 * Get database version
-	 */
-	function getMysqlVersion() {
+	public function getMysqlVersion() {
 		return $this->conn->server_info;
 	}
 
-	/**
-	 * Get the number of database queries
-	 */
-	function getQueryCount() {
+	public function getQueryCount() {
 		return $this->queryCount;
 	}
 
