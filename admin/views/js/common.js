@@ -210,7 +210,7 @@ function insert_cover(imgsrc) {
     $('#cover_rm').show();
 }
 
-// act 1：auto save 2：save
+// act: 1 - auto save; 2 - save
 function autosave(act) {
     var nodeid = "as_logid";
     var timeout = 60000;
@@ -323,8 +323,8 @@ $.fn.toggleClick = function () {
 };
 
 function removeHTMLTag(str) {
-    str = str.replace(/<\/?[^>]*>/g, ''); //去除HTML tag
-    str = str.replace(/[ | ]*\n/g, '\n'); //去除行尾空白
+    str = str.replace(/<\/?[^>]*>/g, ''); //Remove HTML tags
+    str = str.replace(/[ | ]*\n/g, '\n'); //Remove trailing whitespace
     str = str.replace(/ /ig, '');
     return str;
 }

@@ -300,10 +300,10 @@ function pagination($count, $perlogs, $page, $url, $anchor = '') {
 }
 
 /**
- * 该函数在插件中调用,挂载插件函数到预留的钩子上
+ * This function is called in the plug-in, and the plug-in function is mounted on the reserved hook
  */
 function addAction($hook, $actionFunc) {
-	// 通过全局变量来存储挂载点上挂载的插件函数
+	// Store plug-in functions mounted on the mount point through global variables
 	global $emHooks;
 	if (!isset($emHooks[$hook]) || !in_array($actionFunc, $emHooks[$hook])) {
 		$emHooks[$hook][] = $actionFunc;
@@ -312,8 +312,8 @@ function addAction($hook, $actionFunc) {
 }
 
 /**
- * 挂载执行方式1（插入式挂载）：执行挂在钩子上的函数,支持多参数 eg:doAction('post_comment', $author, $email, $url, $comment);
- * eg：在挂载点插入扩展内容
+ * Mount execution mode 1 (plug-in mount): Execute the function hung on the hook, support multiple parameters eg:doAction('post_comment', $author, $email, $url, $comment);
+ * eg: Insert extended content at the mount point
  */
 function doAction($hook) {
 	global $emHooks;
@@ -326,8 +326,8 @@ function doAction($hook) {
 }
 
 /**
- * 挂载执行方式2（单次接管式挂载）：执行挂在钩子上的第一个函数,仅执行行一次，接收输入input，且会修改传入的变量$ret
- * eg：接管文件上传函数，将上传本地改为上传云端
+ * Mount execution mode 2 (single takeover mount): Execute the first function hung on the hook, execute the line only once, receive input input, and modify the incoming variable $ret
+ * eg: Take over the file upload function and change the upload from local to cloud
  */
 function doOnceAction($hook, $input, &$ret) {
 	global $emHooks;
@@ -339,8 +339,8 @@ function doOnceAction($hook, $input, &$ret) {
 }
 
 /**
- * 挂载执行方式3（轮流接管式挂载）：执行挂在钩子上的所有函数，上一个执行结果作为下一个的输入，且会修改传入的变量$ret
- * eg：不同插件对文章内容进行不同的修改替换。
+ * Mount execution mode 3 (takeover mount in turn): Execute all functions hung on the hook, the previous execution result is used as the next input, and the incoming variable $ret will be modified
+ * eg: Different plug-ins make different modifications and replacements to the content of the article.
  */
 function doMultiAction($hook, $input, &$ret) {
 	global $emHooks;
@@ -806,11 +806,11 @@ function emDownFile($source) {
 
 	$temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
 	if ($temp_file === false) {
-		emMsg('emDownFile：Failed to create temporary file.');
+		emMsg('emDownFile: Failed to create temporary file.');
 	}
 	$ret = file_put_contents($temp_file, $content);
 	if ($ret === false) {
-		emMsg('emDownFile：Failed to write temporary file.');
+		emMsg('emDownFile: Failed to write temporary file.');
 	}
 
 	return $temp_file;
@@ -1075,14 +1075,14 @@ function emStrtotime($timeStr) {
 		$unixPostDate -= (int)$timezone * 3600;
 	} elseif ($serverTimeZone) {
 		/*
-		 * 如果服务器配置默认了时区，那么PHP将会把传入的时间识别为时区当地时间
-		 * 但是我们传入的时间实际是blog配置的时区的当地时间，并不是服务器时区的当地时间
-		 * 因此，我们需要将strtotime得到的时间去掉/加上两个时区的时差，得到utc时间
+		 * If the server is configured with a default time zone, then PHP will recognize the incoming time as the local time in the time zone
+		 * But the time we pass in is actually the local time of the time zone configured by the blog, not the local time of the server time zone
+		 * Therefore, we need to remove/add the time difference between the two time zones to the time obtained by strtotime to get the utc time
 		 */
 		$offset = getTimeZoneOffset($serverTimeZone);
-		// 首先减去/加上本地时区配置的时差
+		// First subtract/add the time difference configured for the local time zone
 		$unixPostDate -= (int)$timezone * 3600;
-		// 再减去/加上服务器时区与utc的时差，得到utc时间
+		// Then subtract/add the time difference between the server time zone and utc to get the utc time
 		$unixPostDate -= $offset;
 	}
 	return $unixPostDate;

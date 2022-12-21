@@ -192,7 +192,7 @@ function widget_hotlog($title) {
 <?php } ?>
 <?php
 /**
- * 侧边栏：搜索
+ * Sidebar: Search
  */
 function widget_search($title) { ?>
 	<div class="widget shadow-theme">

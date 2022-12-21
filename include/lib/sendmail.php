@@ -30,7 +30,7 @@ class SendMail {
 				$mail->AddAddress($value);
 			}
 		} else {
-			$mail->AddAddress($to); #抄送
+			$mail->AddAddress($to); //CC
 		}
 
 		$mail->Subject = $title;
