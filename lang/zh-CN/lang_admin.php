@@ -207,6 +207,8 @@ $lang = array(
 'unknown_author'                          => '未知作者',//'Unknown author',
 'unknown_role'                            => '未知角色',//'Unknown role',
 'publish_regular'                         => '定时发布',//'Regular publishing',
+'ok'					=> '确定',//'OK',
+'delete_not_recover'			=> '删除后可能无法恢复',//'Deleted may not be recoverable',
 
 //---------------------------
 //admin/views/article_write.php

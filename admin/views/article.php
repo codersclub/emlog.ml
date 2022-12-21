@@ -232,9 +232,9 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         if (act == 'del') {
             swal({
 /*vot*/         title: lang('sure_delete_articles'),
-                text: '删除后可能无法恢复',
+/*vot*/         text: lang('delete_not_recover'),
                 icon: 'warning',
-                buttons: ['取消', '确定'],
+/*vot*/         buttons: [lang('cancel'), lang('ok')],
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {

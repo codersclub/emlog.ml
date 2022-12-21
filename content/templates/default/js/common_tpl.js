@@ -215,8 +215,8 @@ var myBlog = {
 		for (var i = 0; i < data.length; i++) {
 			if (data[i]['type'] < minType) minType = data[i]['type']
 		}
-		tocHtml = tocHtml + '<div class="toc-con" style="left:' + padNum + 'px" id="toc-con">'	// 渲染
-		tocHtml = tocHtml + '<div style="height:calc(100vh - 70px);overflow-y:scroll;" ><lu>'
+/*vot*/		tocHtml = tocHtml + '<div class="toc-con" style="left:' + padNum + 'px" id="toc-con">'	// rendering
+/*vot*/		tocHtml = tocHtml + '<div style="height:calc(100vh - 70px);overflow-y:scroll;" ><ul>'
 		for (var i = 0; i < data.length; i++) {
 			let k = minType
 			let itemType = data[i]['type']
@@ -236,7 +236,7 @@ var myBlog = {
 			tocHtml = tocHtml + isBold[0] + data[i]['content'] + isBold[1] + '</li>'
 			judgeN = itemType
 		}
-		tocHtml = tocHtml + '</lu></div></div>'
+/*vot*/		tocHtml = tocHtml + '</ul></div></div>'
 		$logcon.before(tocHtml)
 
 		function tocSetListen(){  // Add listening events in batches

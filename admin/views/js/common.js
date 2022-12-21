@@ -14,7 +14,8 @@ function timestamp() {
 
 function em_confirm(id, property, token) {
     let url, msg;
-    let text = '删除后可能无法恢复'
+/*vot*/    let text = lang('delete_not_recover')
+
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
@@ -88,7 +89,7 @@ function em_confirm(id, property, token) {
         title: msg,
         text: text,
         icon: "warning",
-        buttons: ["取消", "确定"],
+/*vot*/ buttons: [lang('cancel'), lang('ok')],
         dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
