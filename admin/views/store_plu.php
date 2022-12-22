@@ -59,7 +59,7 @@
                     </a>
                     <div class="card-body">
                         <p class="card-text"><?= $v['name'] ?>
-							<?= $v['price'] > 0 ? '<span class="badge badge-warning">' . $v['price'] . '元</span>' : '<span class="badge badge-success">' . lang('free') . '</span>' ?>
+<!--vot-->			<?= $v['price'] > 0 ? '<span class="badge badge-warning">' . $v['price'] . '&yen;</span>' : '<span class="badge badge-success">' . lang('free') . '</span>' ?>
                         </p>
                         <p class="card-text text-muted small">
 							<?= $v['info'] ?><br><br>
@@ -70,7 +70,7 @@
                         </p>
                         <p class="card-text text-right">
 							<?php if ($v['price'] > 0): ?>
-                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank">￥<?= $v['price'] ?>
+<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank">&yen;<?= $v['price'] ?>
                                     , <?= lang('go_buy') ?></a>
 							<?php else: ?>
                                 <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=plugin"

@@ -80,7 +80,7 @@ class MySqlii {
 			emMsg(lang('db_error_name'));
 		}
 		if (!$ignore_err && 1115 == $this->getErrNo()) {
-			emMsg("MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本");
+/*vot*/			emMsg(lang('utf8mb4_not_support'));
 		}
 		if (!$ignore_err && !$this->result) {
 /*vot*/			emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());

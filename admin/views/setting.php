@@ -115,7 +115,7 @@
                 </select>
             </div>
             <div class="alert alert-primary">
-                RSS地址(用于RSS阅读器订阅你的站点内容)：<?= $blogurl . 'rss.php' ?>
+<!--vot-->                <?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
             </div>
 
             <hr>
