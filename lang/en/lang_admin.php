@@ -207,6 +207,8 @@ $lang = array(
 'unknown_author'	=> 'Unknown author',//'未知作者',
 'unknown_role'		=> 'Unknown role',//'未知角色',
 'publish_regular'	=> 'Regular publishing',//'定时发布',
+'ok'			=> 'OK',//'确定',
+'delete_not_recover'	=> 'Deleted may not be recoverable',//'删除后可能无法恢复',
 
 //---------------------------
 //admin/views/article_write.php
@@ -467,6 +469,9 @@ $lang = array(
 'update_expired'	=> 'The update service has expired, ',//'更新服务已到期，',
 'log_in_to_renew'	=> 'Log in to the official website to renew',//'登录官网续期',
 'articles_pending'	=> 'Pending Articles',//'待审文章',
+'help_faq'		=> 'Help | FAQ',//'帮助文档 | 常见问题',
+'contacts'		=> 'Contact and exchange | Join Q group',//'联系交流 | 加入Q群',
+'feedback'		=> 'Problem Feedback | Official Community',//'问题反馈 | 官方社区',
 
 //---------------------------
 //admin/views/links.php
@@ -703,6 +708,7 @@ $lang = array(
 'article_settigs'		=> 'Article Settings',//'文章设置',
 'upload_settings'		=> 'Upload settings',//'上传设置',
 'comment_settings'		=> 'Comment settings',//'评论设置',
+'rss_url'			=> 'RSS URL (for RSS readers to subscribe to your site content)',//'RSS地址(用于RSS阅读器订阅你的站点内容)',
 
 //---------------------------
 //admin/views/setting_api.php

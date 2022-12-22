@@ -125,8 +125,9 @@ $lang = array(
  'db_unavailable'		=> 'Failed to connect to the MySQL database, the database address is wrong or the database server is unavailable',//'连接MySQL数据库失败，数据库地址错误或者数据库服务器不可用',
 // 'db_server_unavailable'	=> 'Database connection error: The database server is unavailable.',//'连接数据库失败，数据库服务器不可用',
  'db_error_code'		=> 'Failed to connect to the MySQL database, please check the database information. Error code: ',//'连接MySQL数据库失败，请检查数据库信息。错误编号：',
- 'db_error_name'		=> 'Database connection error:  Please fill out the database name',//'连接数据库失败，请填写数据库名',
+ 'db_error_name'		=> 'Database connection error: Please fill out the database name',//'连接数据库失败，请填写数据库名',
 // 'db_sql_error'		=> 'SQL statement execution error',//'SQL语句执行错误',
+ 'utf8mb4_not_support'		=> 'MySQL does not support utf8mb4 character set, please upgrade to MySQL5.6 or later',//'MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本',
 
 //---------------------------------------
 //include/lib/mysqlpdo.php

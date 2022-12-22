@@ -63,7 +63,7 @@ $lang = array(
 //---------------------------
 //m/view/logauth.php
  'post_password_required'	=> 'This post requires a password to access. Please, enter the password.',//'该文章需要密码才能访问，请输入密码',
- 'ok'			=> 'OK',//'确定',
+// 'ok'			=> 'OK',//'确定',
 // 'back_home'		=> '&laquo; Back to home',//'&laquo;返回首页',
 
 //---------------------------

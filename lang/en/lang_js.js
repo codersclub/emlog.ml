@@ -53,6 +53,9 @@ var LNG = {
  'draft_del_sure'	: 'Are you sure you want to delete this draft? ',//'确定要删除该篇草稿吗？',
  'media_category_del_sure' : 'Are you sure you want to delete this resource category (resource files will not be deleted)?',//'确定要删除该资源分类吗（不会删除资源文件）？',
  'media_select'		: 'Please select a media file to move',//'请选择要移动的资源',
+ 'delete_not_recover'	: 'Deleted may not be recoverable',//'删除后可能无法恢复',
+ 'ok'			: 'OK',//'确定',
+ 'cancel'		: 'Cancel',//'取消',
 
 //---------------------------
 //include/lib/js/common_tpl.js

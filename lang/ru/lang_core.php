@@ -127,6 +127,7 @@ $lang = array(
  'db_error_code'		=> 'Ошибка: Проверьте введённую информацию. Error code: ',//'连接MySQL数据库失败，请检查数据库信息。错误编号：',
  'db_error_name'		=> 'Ошибка: Пожалуйста, укажите имя базы данных',//'连接数据库失败，请填写数据库名',
 // 'db_sql_error'		=> 'SQL statement execution error',//'SQL语句执行错误',
+ 'utf8mb4_not_support'		=> 'MySQL не поддерживает кодировку utf8mb4, пожалуйста обновитесь до версии MySQL5.6 или выше',//'MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本',
 
 //---------------------------------------
 //include/lib/mysqlpdo.php
