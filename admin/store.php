@@ -57,7 +57,7 @@ if ($action === 'install') {
 		emDirect("./store.php?error_param=1");
 	}
 
-	$temp_file = emFetchFile('https://www.emlog.net/' . $source);
+	$temp_file = emFetchFile('https://emlog.io/' . $source);
 	if (!$temp_file) {
 		emDirect("./store.php?error_down=1");
 	}

@@ -17,67 +17,67 @@ function em_confirm(id, property, token) {
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
-    msg = lang('article_del_sure');
+            msg = lang('article_del_sure');
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
-    msg = lang('draft_del_sure');
+            msg = lang('draft_del_sure');
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
-    msg = lang('twitter_del_sure');
+            msg = lang('twitter_del_sure');
             break;
         case 'comment':
             url = 'comment.php?action=del&id=' + id;
-    msg = lang('comment_del_sure');
+            msg = lang('comment_del_sure');
             break;
         case 'commentbyip':
             url = 'comment.php?action=delbyip&ip=' + id;
-    msg = lang('comment_ip_del_sure');
+            msg = lang('comment_ip_del_sure');
             break;
         case 'link':
             url = 'link.php?action=dellink&linkid=' + id;
-    msg = lang('link_del_sure');
+            msg = lang('link_del_sure');
             break;
         case 'navi':
             url = 'navbar.php?action=del&id=' + id;
-    msg = lang('navi_del_sure');
+            msg = lang('navi_del_sure');
             break;
         case 'media':
             url = 'media.php?action=delete&aid=' + id;
-    msg = lang('attach_del_sure');
+            msg = lang('attach_del_sure');
             break;
         case 'avatar':
             url = 'blogger.php?action=delicon';
-    msg = lang('avatar_del_sure');
+            msg = lang('avatar_del_sure');
             break;
         case 'sort':
             url = 'sort.php?action=del&sid=' + id;
-    msg = lang('category_del_sure');
+            msg = lang('category_del_sure');
             break;
         case 'del_user':
             url = 'user.php?action=del&uid=' + id;
-    msg = lang('user_del_sure');
+            msg = lang('user_del_sure');
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
-    msg = lang('user_disable_sure');
+            msg = lang('user_disable_sure');
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
-    msg = lang('template_del_sure');
+            msg = lang('template_del_sure');
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
-    msg = lang('plugin_reset_sure');
+            msg = lang('plugin_reset_sure');
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
-    msg = lang('plugin_del_sure');
+            msg = lang('plugin_del_sure');
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
-    msg = lang('media_category_del_sure');
+            msg = lang('media_category_del_sure');
             break;
     }
     if (confirm(msg)) {
@@ -158,7 +158,7 @@ function checkform() {
     if (0 == isalias(a)) {
         return true;
     } else {
-alert(lang('alias_link_error'));
+        alert(lang('alias_link_error'));
         $("#alias").focus();
         return false;
     }
@@ -167,13 +167,13 @@ alert(lang('alias_link_error'));
 function checkalias() {
     var a = $.trim($("#alias").val());
     if (1 == isalias(a)) {
-$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_invalid_chars') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_invalid_chars') + '</span>');
     } else if (2 == isalias(a)) {
-$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_digital') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_digital') + '</span>');
     } else if (3 == isalias(a)) {
-$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_format_must_be') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_format_must_be') + '</span>');
     } else if (4 == isalias(a)) {
-$("#alias_msg_hook").html('<span id="input_error">' + lang('alias_system_conflict') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_system_conflict') + '</span>');
     } else {
         $("#alias_msg_hook").html('');
         $("#msg").html('');
@@ -224,7 +224,7 @@ function autosave(act) {
     var querystr = "logcontent=" + encodeURIComponent(content) + "&logexcerpt=" + encodeURIComponent(excerpt) + "&title=" + encodeURIComponent(title) + "&cover=" + encodeURIComponent(cover) + "&alias=" + encodeURIComponent(alias) + "&author=" + author + "&sort=" + sort + "&postdate=" + postdate + "&date=" + date + "&tag=" + encodeURIComponent(tag) + "&top=" + top + "&sortop=" + sortop + "&allow_remark=" + allow_remark + "&password=" + password + "&token=" + token + "&ishide=" + ishide + "&as_logid=" + logid;
 
     if (alias != '' && 0 != isalias(alias)) {
-$("#msg").show().html(lang('alias_link_error_not_saved'));
+        $("#msg").show().html(lang('alias_link_error_not_saved'));
         if (act == 0) {
             setTimeout("autosave(1)", timeout);
         }
@@ -241,12 +241,12 @@ $("#msg").show().html(lang('alias_link_error_not_saved'));
     }
     // Manual saving is not allowed when the last successful save time is less than one second
     if ((new Date().getTime() - Cookies.get('em_saveLastTime')) < 1000 && act != 1) {
-alert(lang('too_quick'));
+        alert(lang('too_quick'));
         return;
     }
     var btname = $("#savedf").val();
-$("#savedf").val(lang('saving'));
-$('title').text(lang('saving_in') + titleText);
+    $("#savedf").val(lang('saving'));
+    $('title').text(lang('saving_in') + titleText);
     $("#savedf").attr("disabled", "disabled");
     $.post(url, querystr, function (data) {
         data = $.trim(data);
@@ -259,17 +259,17 @@ $('title').text(lang('saving_in') + titleText);
             var m = d.getMinutes();
             var s = d.getSeconds();
             var tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-    $("#save_info").html(lang('saved_ok_time')+ tm);
-    $('title').text(lang('saved_ok') + titleText);
-    articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
-    Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie
+            $("#save_info").html(lang('saved_ok_time') + tm);
+            $('title').text(lang('saved_ok') + titleText);
+            articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
+            Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie
             $("#" + nodeid).val(logid);
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-    $("#msg").html(lang('save_system_error')).addClass("alert-danger");
-    $('title').text(lang('save_failed') + titleText);
-    alert(lang('save_failed_prompt'))
+            $("#msg").html(lang('save_system_error')).addClass("alert-danger");
+            $('title').text(lang('save_failed') + titleText);
+            alert(lang('save_failed_prompt'))
         }
     });
     if (act == 1) {
@@ -422,17 +422,17 @@ function imgPasteExpand(thisEditor) {
     // Upload image
     function uploadImg(img) {
         var formData = new FormData();
-var imgName = lang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
+        var imgName = lang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
 
         formData.append('file', img, imgName);
-thisEditor.insertValue(lang('uploading'));
+        thisEditor.insertValue(lang('uploading'));
         $.ajax({
             url: postUrl, type: 'post', data: formData, processData: false, contentType: false, xhr: function () {
                 var xhr = $.ajaxSettings.xhr();
                 if (xhr.upload) {
                     thisEditor.insertValue("....");
                     xhr.upload.addEventListener('progress', function (e) {  // Show upload progress
-                console.log(lang('progress') + e.loaded + ' / ' + e.total);
+                        console.log(lang('progress') + e.loaded + ' / ' + e.total);
                         let percent = Math.floor(e.loaded / e.total * 100);
                         if (percent < 10) {
                             replaceByNum('..' + percent + '%', 4);
@@ -446,16 +446,16 @@ thisEditor.insertValue(lang('uploading'));
                 return xhr;
             }, success: function (result) {
                 let imgUrl, thumbImgUrl;
-        console.log(lang('upload_ok_get_result'));
+                console.log(lang('upload_ok_get_result'));
                 $.get(emMediaPhpUrl, function (data) {  // Get the result asynchronously, append to the editor
-            console.log(lang('result_ok'));
+                    console.log(lang('result_ok'));
                     imgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[0];
                     thumbImgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[1];
-            replaceByNum(`[![](${thumbImgUrl})](${imgUrl})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
+                    replaceByNum(`[![](${thumbImgUrl})](${imgUrl})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                 })
             }, error: function (result) {
-        alert(lang('upload_failed_error'));
-        replaceByNum(lang('upload_failed_error'), 6);
+                alert(lang('upload_failed_error'));
+                replaceByNum(lang('upload_failed_error'), 6);
             }
         })
     }
@@ -485,33 +485,31 @@ function checkupdate() {
     $("#upmsg").html("").addClass("spinner-border text-primary");
     $.get("./upgrade.php?action=check_update", function (result) {
         if (result.code == 1001) {
-            $("#upmsg").html("您的emlog pro尚未注册，<a href=\"auth.php\">去注册</a>").removeClass();
+            $("#upmsg").html("Your emlog has not been registered，<a href=\"auth.php\">register</a>").removeClass();
         } else if (result.code == 1002) {
-            $("#upmsg").html("已经是最新版本").removeClass();
-        } else if (result.code == 1003) {
-            $("#upmsg").html("更新服务已到期，<a href=\"https://www.emlog.net/\" target=\"_blank\">登录官网续期</a>").removeClass();
+            $("#upmsg").html("Already the latest version").removeClass();
         } else if (result.code == 200) {
-            $("#upmsg").html("有可用的新版本 " + result.data.version + "，<a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">查看更新内容</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">现在更新</a>").removeClass();
+            $("#upmsg").html("There is a new version available " + result.data.version + "，<a href=\"https://emlog.io/docs/#/changelog\" target=\"_blank\">Check out what's new</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">update now</a>").removeClass();
         } else {
-            $("#upmsg").html("检查失败，可能是网络问题").removeClass();
+            $("#upmsg").html("Check failed, may be a network problem").removeClass();
         }
     });
 }
 
 function doup(source, upsql) {
-    $("#upmsg").html("正在更新中，请耐心等待").addClass("ajaxload");
+    $("#upmsg").html("Updating…").addClass("ajaxload");
     $.get('./upgrade.php?action=update&source=' + source + "&upsql=" + upsql, function (data) {
         $("#upmsg").removeClass();
         if (data.match("succ")) {
-            $("#upmsg").html('恭喜您！更新成功了，请<a href="./">刷新页面</a>开始体验新版emlog');
+            $("#upmsg").html('The update was successful，<a href="./">refresh page</a>');
         } else if (data.match("error_down")) {
-            $("#upmsg").html('下载更新失败，可能是服务器网络问题');
+            $("#upmsg").html('Failed to download the update, it may be a server network problem');
         } else if (data.match("error_zip")) {
-            $("#upmsg").html('解压更新失败，可能是你的服务器空间不支持zip模块');
+            $("#upmsg").html('Failed to decompress and update. your server does not support zip');
         } else if (data.match("error_dir")) {
-            $("#upmsg").html('更新失败，目录不可写');
+            $("#upmsg").html('Update failed, no write permission');
         } else {
-            $("#upmsg").html('更新失败');
+            $("#upmsg").html('update failed');
         }
     });
 }

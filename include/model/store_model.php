@@ -19,7 +19,7 @@ class Store_Model {
 	public function reqEmStore($type, $tag = '', $keyword = '') {
 		$emcurl = new EmCurl();
 		$emcurl->setPost(['emkey' => Option::get('emkey'), 'ver' => Option::EMLOG_VERSION, 'type' => $type, 'tag' => $tag, 'keyword' => $keyword]);
-		$emcurl->request('https://www.emlog.net/store/pro');
+		$emcurl->request('https://emlog.io/store/pro');
 
 		$retStatus = $emcurl->getHttpStatus();
 		if ($retStatus !== MSGCODE_SUCCESS) {

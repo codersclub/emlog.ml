@@ -15,5 +15,3 @@ const DB_PREFIX = 'emlog_';
 const AUTH_KEY = 'emlog-key';
 //Cookie name
 const AUTH_COOKIE_NAME = 'emlog-cookie';
-//Default blog language
-const LANG = 'en'; //'en', 'zh-CN'

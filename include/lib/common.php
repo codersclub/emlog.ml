@@ -1179,7 +1179,7 @@ function load_language($model = '') {
 
 		if (is_file($file)) {
 			$lang = array();
-			@require_once $file;
+			@require $file;
 
 			// Language file must contain $lang = array(...);
 			$LANGUAGE = array_merge($LANGUAGE, $lang);

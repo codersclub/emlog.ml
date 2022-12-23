@@ -6,7 +6,7 @@
  */
 
 define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
-const LANG = 'zh-CN';         //zh-CN, en, ru, etc.
+const LANG = 'en';            //zh-CN, en, ru, etc.
 const LANG_DIR = 'ltr';       //ltr, rtl
 
 require_once EMLOG_ROOT . '/include/lib/common.php';
@@ -288,8 +288,6 @@ EOT;
 		. "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
 		. "\n//cookie name\n"
 		. "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
-		. "\n// Default language\n"
-		. "const LANG = 'zh-CN'; //'en', 'zh-CN', etc."
 		. "\n";
 
 	$fp = @fopen('config.php', 'w');
