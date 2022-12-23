@@ -211,7 +211,7 @@ function insert_cover(imgsrc) {
     $('#cover_rm').show();
 }
 
-// act: 1 - auto save; 2 - save
+// act 1:auto save 2:save
 function autosave(act) {
     var nodeid = "as_logid";
     var timeout = 60000;
@@ -272,7 +272,7 @@ function autosave(act) {
             var m = d.getMinutes();
             var s = d.getSeconds();
             var tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-            $("#save_info").html(lang('saved_ok_time')+ tm);
+            $("#save_info").html(lang('saved_ok_time') + tm);
             $('title').text(lang('saved_ok') + titleText);
             articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
             Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie

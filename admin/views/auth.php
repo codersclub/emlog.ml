@@ -15,7 +15,7 @@
                 <p class="lead text-danger mb-4"><?= lang('too_many_articles') ?></p>
 			<?php endif ?>
             <p class="lead text-danger mb-4"><?= lang('emlog_notregistered') ?></p>
-            <p><a href="<?= OFFICIAL_SERVICE_HOST ?>register" target="_blank"><?= lang('get_emkey') ?>&rarr; </a></p>
+            <p><a href="https://emlog.io/register" target="_blank"><?= lang('get_emkey') ?>&rarr; </a></p>
             <hr>
             <a href="#" class="btn btn-sm btn-success shadow-lg" data-toggle="modal" data-target="#exampleModal"><?= lang('ok_register_now') ?></a>
         </div>
@@ -43,7 +43,7 @@
 <!--vot-->              <input class="form-control" id="emkey" name="emkey" placeholder="<?= lang('enter_reg_code') ?>" minlength="32" maxlength="32" required>
                     </div>
                     <div class="form-group">
-                        <a href="<?= OFFICIAL_SERVICE_HOST ?>register" target="_blank"><?= lang('get_emkey') ?>&rarr; </a>
+                        <a href="https://emlog.io/register" target="_blank"><?= lang('get_emkey') ?>&rarr; </a>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -143,8 +143,7 @@
                 <div class="card-body" id="admindex_msg">
                     <ul class="list-group list-group-flush">
 <!--vot-->                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?=lang('help_faq')?></a></li>
-<!--vot-->                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?=lang('contacts')?></a></li>
-<!--vot-->                        <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank"><?=lang('feedback')?></a></li>
+<!--vot-->                        <li class="msg_type_0"><a href="https://github.com/emlog/emlog/issues" target="_blank"><?=lang('issues')?></a></li>
                     </ul>
                 </div>
             </div>

@@ -42,7 +42,7 @@ class Register {
 
 		$emcurl = new EmCurl();
 		$emcurl->setPost(['emkey' => $emkey]);
-		$emcurl->request('https://www.emlog.net/proauth/register');
+		$emcurl->request('https://emlog.io/proauth/register');
 		if ($emcurl->getHttpStatus() !== 200) {
 			return false;
 		}

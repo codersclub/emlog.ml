@@ -3,7 +3,7 @@
 </p>
 <p align="center">
 	<a href="https://github.com/emlog/emlog/releases/latest"><img src="https://img.shields.io/github/v/release/emlog/emlog?logo=github" alt="GitHub release" /></a>
-	<a href="https://www.emlog.net/docs/#/"><img src="https://img.shields.io/badge/docsify-document-brightgreen" alt="Document" /></a>
+	<a href="https://emlog.io/docs/#/"><img src="https://img.shields.io/badge/docsify-document-brightgreen" alt="Document" /></a>
 </p>
 
 # emlog

@@ -1088,16 +1088,6 @@ function emStrtotime($timeStr) {
 	return $unixPostDate;
 }
 
-function em_v() {
-	if (mt_rand(1, 5) !== 5) {
-		return true;
-	}
-	$a = sha1_file(EMLOG_ROOT . '/include/lib/emcurl.php');
-	if ($a !== 'e84862f865a6bc46a797c8e1d1c63ec8ecd8064d') {
-		exit;
-	}
-}
-
 /**
  * Load jQuery
  */
@@ -1180,7 +1170,7 @@ function load_language($model = '') {
 
 		if (is_file($file)) {
 			$lang = array();
-			@require_once $file;
+			@require $file;
 
 			// Language file must contain $lang = array(...);
 			$LANGUAGE = array_merge($LANGUAGE, $lang);
@@ -1242,8 +1232,6 @@ if (!function_exists('split')) {
 		return preg_split($str, $delimiter);
 	}
 }
-
-em_v();
 
 if (!function_exists('get_os')) {
 	function get_os($user_agent) {

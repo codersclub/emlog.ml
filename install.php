@@ -6,8 +6,8 @@
  */
 
 define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
-define('LANG', 'en');      //zh-CN, zh-TW, en, ru, etc.
-define('LANG_DIR', 'ltr'); //ltr, rtl
+const LANG = 'en';            //zh-CN, en, ru, etc.
+const LANG_DIR = 'ltr';       //ltr, rtl
 
 require_once EMLOG_ROOT . '/include/lib/common.php';
 

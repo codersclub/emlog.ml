@@ -469,9 +469,10 @@ $lang = array(
 'update_expired'                          => '更新服务已到期，',//'The update service has expired, ',
 'log_in_to_renew'                         => '登录官网续期',//'Log in to the official website to renew',
 'articles_pending'                        => '待审文章',//'Pending Articles',
-'help_faq'				=> '帮助文档 | 常见问题',//'Help | FAQ',
+'help_faq'				=> '帮助文档 | 常见问题',//'FAQ',
 'contacts'				=> '联系交流 | 加入Q群',//'Contact and exchange | Join Q group',
 'feedback'				=> '问题反馈 | 官方社区',//'Problem Feedback | Official Community',
+'issues'				=> 'Issues',//'Issues',
 
 //---------------------------
 //admin/views/links.php
