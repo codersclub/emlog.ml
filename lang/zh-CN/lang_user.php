@@ -1,5 +1,3 @@
 <?php
 
-$lang = array(
-
-);
+$lang = array();

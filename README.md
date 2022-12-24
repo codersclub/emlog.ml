@@ -8,7 +8,7 @@
 
 # emlog
 
-emlog is a lightweight blog and CMS website building system, dedicated to creating a user-friendly personal cloud content management system.
+emlog is a lightweight blog and CMS website building system, dedicated to creating a better personal cloud content management system.
 
 ## Overview
 
