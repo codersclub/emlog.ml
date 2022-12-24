@@ -82,7 +82,7 @@ function em_confirm(id, property, token) {
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
             msg = lang('media_category_del_sure');
-            text = '不会删除分类下资源文件';
+/*vot*/     text = lang('category_not_deleted');
             break;
     }
     swal({
@@ -498,33 +498,33 @@ function checkupdate() {
     $("#upmsg").html("").addClass("spinner-border text-primary");
     $.get("./upgrade.php?action=check_update", function (result) {
         if (result.code == 1001) {
-            $("#upmsg").html("您的emlog pro尚未注册，<a href=\"auth.php\">去注册</a>").removeClass();
+/*vot*/            $("#upmsg").html(lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register') + "</a>").removeClass();
         } else if (result.code == 1002) {
-            $("#upmsg").html("已经是最新版本").removeClass();
+/*vot*/            $("#upmsg").html(lang('is_latest_version')).removeClass();
         } else if (result.code == 1003) {
-            $("#upmsg").html("更新服务已到期，<a href=\"https://www.emlog.net/\" target=\"_blank\">登录官网续期</a>").removeClass();
+/*vot*/            $("#upmsg").html(lang('update_expired') + ", <a href=\"https://emlog.io/\" target=\"_blank\">" + lang('log_in_renew') + "</a>").removeClass();
         } else if (result.code == 200) {
-            $("#upmsg").html("有可用的新版本 " + result.data.version + "，<a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">查看更新内容</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">现在更新</a>").removeClass();
+/*vot*/            $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://emlog.io/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "', '" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
         } else {
-            $("#upmsg").html("检查失败，可能是网络问题").removeClass();
+/*vot*/            $("#upmsg").html(lang('check_failed')).removeClass();
         }
     });
 }
 
 function doup(source, upsql) {
-    $("#upmsg").html("正在更新中，请耐心等待").addClass("ajaxload");
+/*vot*/    $("#upmsg").html(lang("updating_now')).addClass("ajaxload");
     $.get('./upgrade.php?action=update&source=' + source + "&upsql=" + upsql, function (data) {
         $("#upmsg").removeClass();
         if (data.match("succ")) {
-            $("#upmsg").html('恭喜您！更新成功了，请<a href="./">刷新页面</a>开始体验新版emlog');
+/*vot*/            $("#upmsg").html(lang('updated_ok'));
         } else if (data.match("error_down")) {
-            $("#upmsg").html('下载更新失败，可能是服务器网络问题');
+/*vot*/            $("#upmsg").html(lang('update_download_fail'));
         } else if (data.match("error_zip")) {
-            $("#upmsg").html('解压更新失败，可能是你的服务器空间不支持zip模块');
+/*vot*/            $("#upmsg").html(lang('unzip_fail'));
         } else if (data.match("error_dir")) {
-            $("#upmsg").html('更新失败，目录不可写');
+/*vot*/            $("#upmsg").html(lang('update_not_writable'));
         } else {
-            $("#upmsg").html('更新失败');
+/*vot*/            $("#upmsg").html(lang('update_fail'));
         }
     });
 }
