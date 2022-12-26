@@ -12,6 +12,7 @@ const LANG_DIR = 'ltr';       //ltr, rtl
 require_once EMLOG_ROOT . '/include/lib/common.php';
 
 load_language('install');
+load_language('core');
 
 header('Content-Type: text/html; charset=UTF-8');
 spl_autoload_register("emAutoload");
