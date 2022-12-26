@@ -4,60 +4,52 @@ $lang = array(
 
 //---------------------------
 //admin/account.php
-//'mail_test_header'	=> 'Test mail sending header',//'测试邮件发送标题',
-//'mail_test_content'	=> 'Test mail sending content',//'测试邮件发送内容',
-//'mail_send_ok'	=> 'Mail sent successfully',//'邮件发送成功',
-//'mail_send_error'	=> 'Mail sending failed',//'邮件发送失败',
-'registration_disabled'                   => 'The system has closed registration!',//'系统已关闭注册！',
+'registration_disabled'			=> 'The system has closed registration!',//'系统已关闭注册！',
 
 //---------------------------
 //admin/article.php
-'drafts'                                  => 'Drafts',//'草稿箱',
-'_drafts'                                 => ' drafts',//'草稿箱',
-'post_manage'                             => 'Article Manage',//'文章管理',
-'draft_manage'                            => 'Draft Manage',//'草稿管理',
-'no_permission'                           => 'Insufficient permissions!',//'权限不足！',
-'check'                                   => 'Show',//'审核',
-'uncheck'                                 => 'Uncheck',//'驳回',
-'view_by_tag'                             => 'View by tag',//'按标签查看',
-'article_add'                             => 'Write a new article',//'写新文章',
-'enter_summary'                           => 'If left blank, use the content of the article as a summary...',//'如果留空，则使用文章内容作为摘要...',
-'attachment_delete_error'                 => 'Failed to delete the file!',//'删除失败!',
+'drafts'				=> 'Drafts',//'草稿箱',
+'_drafts'				=> ' drafts',//'草稿箱',
+'post_manage'				=> 'Article Manage',//'文章管理',
+'draft_manage'				=> 'Draft Manage',//'草稿管理',
+'no_permission'				=> 'Insufficient permissions!',//'权限不足！',
+'check'					=> 'Show',//'审核',
+'uncheck'				=> 'Uncheck',//'驳回',
+'view_by_tag'				=> 'View by tag',//'按标签查看',
+'article_add'				=> 'Write a new article',//'写新文章',
+'enter_summary'				=> 'If left blank, use the content of the article as a summary...',//'如果留空，则使用文章内容作为摘要...',
+'attachment_delete_error'		=> 'Failed to delete the file!',//'删除失败!',
 
 //---------------------------
 //admin/blogger.php
-'avatar_delete'                           => 'Delete avatar',//'删除头像',
+'avatar_delete'                         => 'Delete avatar',//'删除头像',
 
 //---------------------------
 //admin/data.php
-'backup_directory_not_writable'           => 'Backup failed. Backup directory (content/backup) is not writable.',//'备份失败。备份目录(content/backup)不可写',
-'backup_create_file_error'                => 'Failed to create backup file. Backup directory (content/backup) is not writable.',//'创建备份文件失败。备份目录(content/backup)不可写',
-'backup_empty'                            => 'There is nothing in the backup data',//'数据表没有任何内容',
-'file_not_exists'                         => 'File does not exist',//'文件不存在',
-'import_only_emlog'                       => 'You can import only emlog SQL backup file',//'只能导入emlog备份的SQL文件',
-'info_illegal'                            => 'Submitted information is illegal',//'非法提交的信息',
-'attachment_exceed_system_limit'          => 'File size exceeds the system limit ',//'文件大小超过系统 ',
-'upload_failed_code'                      => 'Upload failed. Error code: ',//'上传文件失败,错误码: ',
-'import_only_emlog_no_change'             => 'You can only import emlog backup archive, and the archive file name can not be changed!',//'只能导入emlog备份的压缩包，且不能修改压缩包文件名！',
-'import_failed_not_read'                  => 'Import failed! Can not read the file',//'导入失败！读取文件失败',
-'import_failed_not_emlog'                 => 'Import failed! The backup file is not the emlog backup file!',//'导入失败！该文件不是emlog的数据备份文件!',
-'import_failed_not_emlog_ver'             => 'Import failed! The backup file is not the emlog ' . Option::EMLOG_VERSION . ' backup file!',//'导入失败！该文件不是emlog' . Option::EMLOG_VERSION . '生成的备份!',
-'import_failed_bad_prefix'                => 'Import failed! The database backup file prefix does not match the current system database prefix ',//'导入失败！备份文件中的数据库表前缀与当前系统数据库表前缀不一致',
-
-//---------------------------
-//admin/globals.php
-// 'no_permission'	=> 'Insufficient permissions!',//'权限不足！',
+'backup_directory_not_writable'         => 'Backup failed. Backup directory (content/backup) is not writable.',//'备份失败。备份目录(content/backup)不可写',
+'backup_create_file_error'              => 'Failed to create backup file. Backup directory (content/backup) is not writable.',//'创建备份文件失败。备份目录(content/backup)不可写',
+'backup_empty'                          => 'There is nothing in the backup data',//'数据表没有任何内容',
+'file_not_exists'                       => 'File does not exist',//'文件不存在',
+'import_only_emlog'                     => 'You can import only emlog SQL backup file',//'只能导入emlog备份的SQL文件',
+'info_illegal'                          => 'Submitted information is illegal',//'非法提交的信息',
+'attachment_exceed_system_limit'        => 'File size exceeds the system limit ',//'文件大小超过系统 ',
+'upload_failed_code'                    => 'Upload failed. Error code: ',//'上传文件失败,错误码: ',
+'import_only_emlog_no_change'           => 'You can only import emlog backup archive, and the archive file name can not be changed!',//'只能导入emlog备份的压缩包，且不能修改压缩包文件名！',
+'import_failed_not_read'                => 'Import failed! Can not read the file',//'导入失败！读取文件失败',
+'import_failed_not_emlog'               => 'Import failed! The backup file is not the emlog backup file!',//'导入失败！该文件不是emlog的数据备份文件!',
+'import_failed_not_emlog_ver'           => 'Import failed! The backup file is not the emlog ' . Option::EMLOG_VERSION . ' backup file!',//'导入失败！该文件不是emlog' . Option::EMLOG_VERSION . '生成的备份!',
+'import_failed_bad_prefix'              => 'Import failed! The database backup file prefix does not match the current system database prefix ',//'导入失败！备份文件中的数据库表前缀与当前系统数据库表前缀不一致',
 
 //---------------------------
 //admin/index.php
-'supported'                               => 'Supported',//'支持',
-'not_supported'                           => 'NOT supported',//'不支持',
-'phpinfo_disabled'                        => 'phpinfo function is disabled!',//'phpinfo函数被禁用!',
-'released'                                => ' released',
+'supported'                             => 'Supported',//'支持',
+'not_supported'                         => 'NOT supported',//'不支持',
+'phpinfo_disabled'                      => 'phpinfo function is disabled!',//'phpinfo函数被禁用!',
+'released'                              => ' released',
 
 //---------------------------
 //admin/plugin.php
-'plugin_upload_error'                     => 'Plugin upload failed',//'插件上传失败',
+'plugin_upload_error'                   => 'Plugin upload failed',//'插件上传失败',
 
 //---------------------------
 //admin/setting.php
@@ -74,7 +66,7 @@ $lang = array(
 //admin/setting_mail.php
 'email_sending'                           => 'Email sending',//'邮件发送',
 'sender_email'                            => 'Sender email',//'发送人邮箱',
-'sender_name'		=> 'Sender name (optional)',//'发送人名称（选填）',
+'sender_name'                             => 'Sender name (optional)',//'发送人名称（选填）',
 'smtp_password'                           => 'SMTP password',//'SMTP密码',
 'smtp_server'                             => 'SMTP server',//'SMTP服务器',
 'smtp_port'                               => 'SMTP port',//'端口',
@@ -215,8 +207,8 @@ $lang = array(
 'unknown_author'                          => 'Unknown author',//'未知作者',
 'unknown_role'                            => 'Unknown role',//'未知角色',
 'publish_regular'                         => 'Regular publishing',//'定时发布',
-'ok'			=> 'OK',//'确定',
-'delete_not_recover'	=> 'Deleted may not be recoverable',//'删除后可能无法恢复',
+'ok'					  => 'OK',//'确定',
+'delete_not_recover'			  => 'Deleted may not be recoverable',//'删除后可能无法恢复',
 
 //---------------------------
 //admin/views/article_write.php
@@ -261,7 +253,6 @@ $lang = array(
 'attachment_upload'                       => 'Upload attachment',//'上传附件',
 'bulk_upload'                             => 'Bulk upload',//'('//'批量上传',
 'attachment_library'                      => 'Attachment Library',//'附件库',
-// ')',//'）',
 'no_attachments'                          => 'The post has no attachment',//'该文章没有附件',
 'insert'                                  => 'Insert',//'插入 ',
 'insert_full_size'                        => 'Insert full size image',//'插入原图',
@@ -271,18 +262,9 @@ $lang = array(
 
 //---------------------------
 //admin/views/auth.php
-// 'em_reg_ok'			=> 'Congratulations, the registration is successful',//'恭喜，注册成功了',
-// 'reg_failed'			=> 'Registration failed',//'注册失败',
 'ext_store_info'                          => 'The extension store is used to download templates and plug-ins, only open to registered users',//'扩展商店用于下载模板和插件，仅开放给已完成注册用户',
 'too_many_articles'                       => 'The number of articles has exceeded the unregistered version limit',//'文章数量已经超过未注册版本限额',
 'emlog_notregistered'                     => 'Sorry! Your emlog pro has not been registered, complete the registration to unlock all the functions of emlog pro',//'抱歉！您的emlog pro尚未完成注册， 完成注册来解锁emlog pro的全部功能',
-// 'get_emkey'			=> 'Get registration code',//'获取注册码',
-// 'ok_register_now'	=> 'Start registration',//'开始注册',
-// 'emlog_reg_ok'		=> 'Congratulations, your emlog pro has been registered!',//'恭喜，您的emlog pro已完成注册！',
-// 'register_emlog'		=> 'Register EMLOG PRO',//'注册EMLOG PRO',
-// 'enter_reg_code'	=> 'Enter the registration code',//'输入注册码',
-// 'registered'			=> 'registered',//'注册',
-// 'register'		=> 'Register',//'注册',
 
 //---------------------------
 //admin/views/blogger.php
@@ -385,7 +367,7 @@ $lang = array(
 'to_site'                                 => 'View My site',//'查看我的站点',
 'settings'                                => 'Settings',//'设置',
 'logout'                                  => 'Logout',//'退出',
-// 'post_write'		=> 'Add article',//'写文章',
+// 'post_write'				=> 'Add article',//'写文章',
 'draft'                                   => 'Draft',//'草稿',
 // 'posts'		=> 'Posts',//'文章',
 'posts_pending'                           => ' Pending posts',//'篇文章待审',
@@ -487,9 +469,10 @@ $lang = array(
 'update_expired'                          => 'The update service has expired, ',//'更新服务已到期，',
 'log_in_to_renew'                         => 'Log in to the official website to renew',//'登录官网续期',
 'articles_pending'                        => 'Pending Articles',//'待审文章',
-'help_faq'		=> 'Help | FAQ',//'帮助文档 | 常见问题',
-'contacts'		=> 'Contact and exchange | Join Q group',//'联系交流 | 加入Q群',
-'feedback'		=> 'Problem Feedback | Official Community',//'问题反馈 | 官方社区',
+'help_faq'				  => 'Help | FAQ',//'帮助文档 | 常见问题',
+'contacts'				  => 'Contact and exchange | Join Q group',//'联系交流 | 加入Q群',
+'feedback'				  => 'Problem Feedback | Official Community',//'问题反馈 | 官方社区',
+'issues'				  => 'Issues',//'Issues',
 
 //---------------------------
 //admin/views/links.php
@@ -586,10 +569,6 @@ $lang = array(
 'add'                                     => 'Add',//'添加',
 
 //---------------------------
-//admin/views/naviedit.php
-// 'nav_name'		=> 'Navigation Name',//'导航名称',
-
-//---------------------------
 //admin/views/page.php
 'page_title'                              => 'Page title',//'页面标题',
 'setting_items'                           => 'Setting items',//'设置项',
@@ -616,7 +595,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/plugin_install.php
-// 'plugin_install'		=> 'Install plugin',//'安装插件',
 'plugin_zipped_only'                      => 'Supports plug-in package only in zip compression format',//'只支持zip压缩格式的插件包',
 'plugin_not_writable'                     => 'Upload failed, plugin directory (content/plugins) is not writable',//'上传失败，插件目录(content/plugins)不可写',
 'plugin_zip_nonsupport'                   => 'Server does not support zip module, follow the prompts to install the plugin manually',//'空间不支持zip模块，请按照提示手动安装插件',
@@ -632,9 +610,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/register.php
-// 'ext_store_info'	=> 'The extension store is used to download templates and plug-ins, only open to registered users',//'扩展商店用于下载模板和插件，仅开放给已完成注册用户',
-// 'too_many_articles'	=> 'The number of articles has exceeded the unregistered version limit',//'文章数量已经超过未注册版本限额',
-// 'emlog_notregistered'	=> 'Sorry! Your emlog pro has not been registered, complete the registration to unlock all the functions of emlog pro',//'抱歉！您的emlog pro尚未完成注册， 完成注册来解锁emlog pro的全部功能',
 'ok_register_now'                         => 'Start registration',//'开始注册',
 'emlog_reg_ok'                            => 'Congratulations, your emlog pro has been registered!',//'恭喜，您的emlog pro已完成注册！',
 'enter_reg_code'                          => 'Enter the registration code',//'输入注册码',
@@ -646,13 +621,8 @@ $lang = array(
 //---------------------------
 //admin/views/reset.php
 'retrieve_password'                       => 'Retrieve password',//'找回密码',
-// 'email'			=> 'E-mail',//'邮箱',
-// 'captcha'			=> 'Captcha',//'验证码',
 'new_password'                            => 'New password',//'新的密码',
 'confirm_password'                        => 'Confirm new password',//'确认新密码',
-// 'submit'		=> 'Submit',//'提交',
-// 'login'		=> 'Login',//'登录',
-// 'back_home'		=> 'Back to home',//'返回首页',
 'email_enter'                             => 'Enter registered email',//'输入注册邮箱',
 'email_invalid'                           => 'Wrong registered email',//'错误的注册邮箱',
 'email_send_error'                        => 'Failed to send email verification code, please check email notification settings',//'邮件验证码发送失败，请检查邮件通知设置',
@@ -690,7 +660,7 @@ $lang = array(
 'settings_saved_ok'                       => 'Settings have been saved successfully',//'设置保存成功',
 'site_title'                              => 'Site title',//'站点标题',
 'site_subtitle'                           => 'Site subtitle',//'站点副标题',
-'site_address	'                        => 'Site address',//'站点地址',
+'site_address'                            => 'Site address',//'站点地址',
 'per_page'                                => 'Show per page',//'每页显示',
 'posts_per_page'                          => 'Number of articles displayed per page',//'每页显示文章数量',
 '_posts'                                  => ' posts',//'篇文章',
@@ -739,13 +709,11 @@ $lang = array(
 'article_settigs'                         => 'Article Settings',//'文章设置',
 'upload_settings'                         => 'Upload settings',//'上传设置',
 'comment_settings'                        => 'Comment settings',//'评论设置',
-'rss_url'			=> 'RSS URL (for RSS readers to subscribe to your site content)',//'RSS地址(用于RSS阅读器订阅你的站点内容)',
+'rss_url'				  => 'RSS URL (for RSS readers to subscribe to your site content)',//'RSS地址(用于RSS阅读器订阅你的站点内容)',
 
 //---------------------------
 //admin/views/setting_api.php
 'api_key_reset_ok'                        => 'Interface key was reset successfully',//'接口秘钥重置成功',
-//'basic_settings'	=> 'Basic Settings',//'基本设置',//'基础设置',
-//'seo_settings'	=> 'SEO Settings',//'SEO设置',//'SEO优化',
 'api_enable'                              => 'Enable API',//'开启API',
 'api_key'                                 => 'API key',//'API秘钥',
 'api_key_reset'                           => 'Reset API key',//'重置API秘钥',
@@ -794,10 +762,10 @@ $lang = array(
 'install_failed_zip'                      => 'Installation failed, unable to decompress, please install php Zip extension',//'安装失败，无法解压，请安装php的Zip扩展',
 'install_invalid_ext'                     => 'Installation failed, not a valid installation package',//'安装失败，不是有效的安装包',
 'store_unavailable'                       => 'The store is temporarily unavailable, it may be a network problem',//'商店暂不可用，可能是网络问题',
-// 'back_home'		=> 'Back to home',//'返回首页',
+// 'back_home'				=> 'Back to home',//'返回首页',
 'ext_store'                               => 'Extension Store',//'扩展商店',
 'ext_store_templates'                     => 'Template themes',//'模板主题',
-// 'template'		=> 'Template',//'模板',
+// 'template'				=> 'Template',//'模板',
 'extensions'                              => 'Extensions',//'扩展插件',
 'ext_store_plugins'                       => 'Extensions',//'扩展插件',
 
@@ -808,13 +776,6 @@ $lang = array(
 'price_unit'                        => 'Yuan',//'元',
 'go_buy'                            => 'Go to buy',//'去购买',
 'download&install'                  => 'Download and install',//'下载安装',
-// 'plugin'		=> 'Plug-in',//'插件',
-// 'developer'		=> 'Developer',//'开发者',
-// 'update_time'	=> 'Update time',//'更新时间',
-// 'price'		=> 'Price',//'价格',
-// 'free'		=> 'Free',//'免费',
-// 'go_buy'		=> 'Go to buy',//'去购买',
-// 'download&install'	=> 'Download and install',//'下载安装',
 'app_store'                         => 'App store',//'应用商店',
 'version_number'                    => 'Version number',//'版本号',
 
@@ -835,12 +796,12 @@ $lang = array(
 'plugin_search'                     => 'Search plugin',//'搜索插件',
 'show_free_only'                    => 'Show only free',//'仅看免费',
 'store_no_results'                  => 'No results have been found yet, the app store is in stock, so stay tuned :)',//'暂未找到结果，应用商店进货中，敬请期待：）',
-'plugin_publish'		=> 'Publish plugin',//'发布插件',
+'plugin_publish'                    => 'Publish plugin',//'发布插件',
 
 //---------------------------
 //admin/views/store_tpl.php
 'temlate_search'                    => 'Search Templates...',//'搜索模板...',
-'template_publish'	=> 'Publish template',//'发布模板',
+'template_publish'                  => 'Publish template',//'发布模板',
 
 //---------------------------
 //admin/views/style.php
@@ -906,15 +867,11 @@ $lang = array(
 
 //---------------------------
 //admin/views/twitter.php
-// 'published_ok'		=> 'Entry has been publised successfully',//'发布成功',
-// 'settings_saved_ok'	=> 'Settings have been saved successfully',//'设置保存成功',
 'twitter_del_ok'                    => 'Note deleted successfully',//'笔记删除成功',
 'twitter_empty'                     => 'Note content cannot be empty',//'笔记内容不能为空',
 'twitter_add'                       => 'Add a note',//'卡片笔记',
 'twitter_prompt'                    => 'Quickly record ideas, help you easily capture inspiration and accumulate knowledge compound interest',//'快速记录想法，帮你方便的捕捉灵感，积累知识的复利',
 'twitter_save'                      => 'Save the note',//'保存笔记',
-// 'delete'		=> 'Delete',//'删除',
-// 'have'			=> 'Have ',//'有',
 'twitters'                          => 'Notes',//'笔记',
 '_twitters'                         => ' note(s)',//'条笔记',
 
@@ -1000,5 +957,4 @@ $lang = array(
 'widget_use'                        => 'Used widgets',//'使用中的组件',
 'widget_order_save'                 => 'Save widget order',//'保存组件排序',
 'widget_setting_reset'              => 'Reset default widget settings',//'恢复出厂设置',
-
 );

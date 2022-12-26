@@ -64,7 +64,7 @@ $lang = array(
 
 //---------------------------
 //admin/setting_mail.php
-'email_service'                           => '邮件服务',//'Email Service',
+'email_sending'                           => '邮件服务',//'Email sending',
 'sender_email'                            => '发送人邮箱',//'Sender email',
 'sender_name'                             => '发送人名称（选填）',//'Sender name (optional)',
 'smtp_password'                           => 'SMTP密码',//'SMTP password',
@@ -207,8 +207,8 @@ $lang = array(
 'unknown_author'                          => '未知作者',//'Unknown author',
 'unknown_role'                            => '未知角色',//'Unknown role',
 'publish_regular'                         => '定时发布',//'Regular publishing',
-'ok'					=> '确定',//'OK',
-'delete_not_recover'			=> '删除后可能无法恢复',//'Deleted may not be recoverable',
+'ok'					  => '确定',//'OK',
+'delete_not_recover'			  => '删除后可能无法恢复',//'Deleted may not be recoverable',
 
 //---------------------------
 //admin/views/article_write.php
@@ -469,10 +469,10 @@ $lang = array(
 'update_expired'                          => '更新服务已到期，',//'The update service has expired, ',
 'log_in_to_renew'                         => '登录官网续期',//'Log in to the official website to renew',
 'articles_pending'                        => '待审文章',//'Pending Articles',
-'help_faq'				=> '帮助文档 | 常见问题',//'FAQ',
-'contacts'				=> '联系交流 | 加入Q群',//'Contact and exchange | Join Q group',
-'feedback'				=> '问题反馈 | 官方社区',//'Problem Feedback | Official Community',
-'issues'				=> 'Issues',//'Issues',
+'help_faq'				  => '帮助文档 | 常见问题',//'FAQ',
+'contacts'				  => '联系交流 | 加入Q群',//'Contact and exchange | Join Q group',
+'feedback'				  => '问题反馈 | 官方社区',//'Problem Feedback | Official Community',
+'issues'				  => 'Issues',//'Issues',
 
 //---------------------------
 //admin/views/links.php
@@ -709,7 +709,7 @@ $lang = array(
 'article_settigs'                         => '文章设置',//'Article Settings',
 'upload_settings'                         => '上传设置',//'Upload settings',
 'comment_settings'                        => '评论设置',//'Comment settings',
-'rss_url'				=> 'RSS地址(用于RSS阅读器订阅你的站点内容)',//'RSS URL (for RSS readers to subscribe to your site content)',
+'rss_url'				  => 'RSS地址(用于RSS阅读器订阅你的站点内容)',//'RSS URL (for RSS readers to subscribe to your site content)',
 
 //---------------------------
 //admin/views/setting_api.php

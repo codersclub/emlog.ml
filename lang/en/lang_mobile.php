@@ -5,8 +5,8 @@ $lang = array(
 
 //---------------------------
 //m/index.php (All Blog/Comment/Twitter Actions)
-'mobile_version_unavailable' => 'Mobile version of the site is not available.',//'该站点手机版已关闭！',
-'blog_entry_not_exists'      => 'The entry does not exist.',//'不存在该条目',
+'mobile_version_unavailable'		=> 'Mobile version of the site is not available.',//'该站点手机版已关闭！',
+'blog_entry_not_exists'			=> 'The entry does not exist.',//'不存在该条目',
 // 'comment_error_comment_disabled'	=> 'Comment error: The comments for this entry has been closed.',//'评论失败：该文章已关闭评论',
 // 'comment_error_content_exists'	=> 'Comment error: The same content already exists.',//'评论失败：已存在相同内容评论',
 // 'comment_error_flood_control'	=> 'Comment error: You must wait before sending another comment.',//'评论失败：您提交评论的速度太快了，请稍后再发表评论',
@@ -20,7 +20,7 @@ $lang = array(
 // 'comment_parameter_error'		=> 'Parameter error',//'参数错误',
 //// 'image_share'			=> 'Share Image',//'分享图片',
 // 'captcha'				=> 'Captcha',//'验证码',
-'blog_saved_wait_approve'    => 'Articles published successfully, please wait for administrator verification',//'文章发布成功，请等待管理员审核',
+'blog_saved_wait_approve'		=> 'Articles published successfully, please wait for administrator verification',//'文章发布成功，请等待管理员审核',
 
 //---------------------------
 //m/index.php (All Blog/Comment/Twitter Actions)
@@ -62,9 +62,9 @@ $lang = array(
 
 //---------------------------
 //m/view/logauth.php
-'post_password_required'     => 'This post requires a password to access. Please, enter the password.',//'该文章需要密码才能访问，请输入密码',
-'ok'                         => 'OK',//'确定',
-// 'back_home'		=> '&laquo; Back to home',//'&laquo;返回首页',
+'post_password_required'	=> 'This post requires a password to access. Please, enter the password.',//'该文章需要密码才能访问，请输入密码',
+'ok'				=> 'OK',//'确定',
+// 'back_home'			=> '&laquo; Back to home',//'&laquo;返回首页',
 
 //---------------------------
 //m/view/login.php
@@ -74,17 +74,17 @@ $lang = array(
 
 //---------------------------
 //m/view/msg.php (Error Message)
-'return'                     => 'Return',//'返回',
+'return'		=> 'Return',//'返回',
 
 //---------------------------
 //m/view/reply.php (add blog comment)
-'reply'                      => 'Reply',//'回复',
-'logged_as'                  => 'You are currently logged in as',//'当前已登录为',
+'reply'			=> 'Reply',//'回复',
+'logged_as'		=> 'You are currently logged in as',//'当前已登录为',
 // 'nickname'		=> 'Nicname',//'昵称',
-'email_optional'             => 'E-Mail adress (optional)',//'邮件地址 (选填)',
-'homepage_optional'          => 'Homepage (optional)',//'个人主页 (选填)',
-'content'                    => 'Content',//'内容',
-'comment_leave'              => 'Leave a comment',//'发表评论',
+'email_optional'	=> 'E-Mail adress (optional)',//'邮件地址 (选填)',
+'homepage_optional'	=> 'Homepage (optional)',//'个人主页 (选填)',
+'content'		=> 'Content',//'内容',
+'comment_leave'		=> 'Leave a comment',//'发表评论',
 
 //---------------------------
 //m/view/single.php (blog post)
@@ -101,8 +101,8 @@ $lang = array(
 
 //---------------------------
 //m/view/twitter.php
-'twitter_content'            => 'Twitter content',//'微语内容',
-'image_upload_select'        => 'Select an image to upload',//'选择要上传的图片',
+'twitter_content'	=> 'Twitter content',//'微语内容',
+'image_upload_select'	=> 'Select an image to upload',//'选择要上传的图片',
 // 'publish'		=> 'Publish',//'发布',
 // 'view_image'		=> 'View image',//'查看图片',
 // 'delete'		=> 'Delete',//'删除',

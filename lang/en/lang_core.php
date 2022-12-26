@@ -22,13 +22,13 @@ $lang = array(
 //---------------------------
 //include/lib/calendar.php
 
-'weekday1' => 'Mo',//'Monday',//'一',
-'weekday2' => 'Tu',//'Tuesday',//'二',
-'weekday3' => 'We',//'Wednesday',//'三',
-'weekday4' => 'Th',//'Thursday',//'四',
-'weekday5' => 'Fr',//'Friday',//'五',
-'weekday6' => 'Sa',//'Saturday',//'六',
-'weekday7' => 'Su',//'Sunday',//'日',
+'weekday1'	=> 'Mo',//'Monday',//'一',
+'weekday2'	=> 'Tu',//'Tuesday',//'二',
+'weekday3'	=> 'We',//'Wednesday',//'三',
+'weekday4'	=> 'Th',//'Thursday',//'四',
+'weekday5'	=> 'Fr',//'Friday',//'五',
+'weekday6'	=> 'Sa',//'Saturday',//'六',
+'weekday7'	=> 'Su',//'Sunday',//'日',
 
 'month_1'                    => 'January',
 'month_2'                    => 'February',

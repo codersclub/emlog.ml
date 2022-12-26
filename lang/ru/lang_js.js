@@ -100,10 +100,10 @@ var LNG = {
 //------------------------------
 // Return the language var value
 function lang(key) {
-  if(LNG[key]) {
-    val = LNG[key];
-  } else {
-    val = '{'+key+'}';
-  }
-  return val;
+    if (LNG[key]) {
+        val = LNG[key];
+    } else {
+        val = '{' + key + '}';
+    }
+    return val;
 }
