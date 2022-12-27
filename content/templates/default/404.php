@@ -7,7 +7,7 @@ if (!defined('EMLOG_ROOT')) {
 }
 ?>
 <!doctype html>
-          <html lang="<?=LANG?>" dir="<?= LANG_DIR ?>">
+<html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">
 <head>
     <meta charset="utf-8">
     <title><?=lang('404_error')?></title>
@@ -49,8 +49,8 @@ if (!defined('EMLOG_ROOT')) {
 </head>
 <body>
 <div class="main">
-    <p><?=lang('404_description')?></p>
-    <p><a href="<?= BLOG_URL ?>"><?=lang('click_return')?></a></p>
+    <p><?= lang('404_description') ?></p>
+    <p><a href="<?= BLOG_URL ?>"><?= lang('click_return') ?></a></p>
 </div>
 </body>
 </html>
