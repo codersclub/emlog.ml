@@ -512,7 +512,7 @@ function checkupdate() {
 }
 
 function doup(source, upsql) {
-/*vot*/    $("#upmsg").html(lang("updating_now')).addClass("ajaxload");
+/*vot*/    $("#upmsg").html(lang('updating_now')).addClass("ajaxload");
     $.get('./upgrade.php?action=update&source=' + source + "&upsql=" + upsql, function (data) {
         $("#upmsg").removeClass();
         if (data.match("succ")) {
