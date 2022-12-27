@@ -22,7 +22,7 @@
                                         <div class="row no-gutters align-items-center">
                                             <div class="col">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles_pending') ?></div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php"><?= $sta_cache['checknum'] ?></a></div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php?checked=n"><?= $sta_cache['checknum'] ?></a></div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="icofont-pencil-alt-5 fa-2x text-gray-300"></i>
@@ -73,7 +73,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="./twitter.php"><?= lang('twitters') ?></a>
-                            <a href="./twitter.php"><span class="badge badge-primary badge-pill"><?= $sta_cache['note_num'] ?></span></a>
+                            <a href="./twitter.php?all=y"><span class="badge badge-primary badge-pill"><?= $sta_cache['note_num'] ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="./comment.php"><?= lang('comments') ?></a>
@@ -94,11 +94,11 @@
                             <span class="small"><?= $php_ver ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-							<?= lang('database') ?>
+                            <?= lang('database') ?>
                             <span class="small">MySQL <?= $mysql_ver ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-							<?= lang('web_server') ?>
+                            <?= lang('web_server') ?>
                             <span class="small"><?= $serverapp ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -142,8 +142,8 @@
                 <h6 class="card-header"><?= lang('official_news') ?></h6>
                 <div class="card-body" id="admindex_msg">
                     <ul class="list-group list-group-flush">
-<!--vot-->                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?=lang('help_faq')?></a></li>
-<!--vot-->                        <li class="msg_type_0"><a href="https://github.com/emlog/emlog/issues" target="_blank"><?=lang('issues')?></a></li>
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?=lang('help_faq')?></a></li>
+                        <li class="msg_type_0"><a href="https://github.com/emlog/emlog/issues" target="_blank"><?=lang('issues')?></a></li>
                     </ul>
                 </div>
             </div>

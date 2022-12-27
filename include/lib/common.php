@@ -117,7 +117,7 @@ function checkPlugin($plugin) {
  * Verify email address format
  */
 function checkMail($email) {
-	if (preg_match("/^[\w\.\-]+@\w+([\.\-]\w+)*\.\w+$/", $email) && strlen($email) <= 60) {
+	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 		return true;
 	}
 
@@ -166,9 +166,6 @@ function subString($strings, $start, $length) {
 
 /**
  * Extract plain text from html content
- *
- * @param string $data
- * @param int $len
  */
 function extractHtmlData($data, $len) {
 	$data = subString(strip_tags($data), 0, $len + 30);
@@ -217,8 +214,6 @@ function getFileSuffix($fileName) {
 
 /**
  * Convert relative path to full URL, eg: ../content/uploadfile/xxx.jpeg
- * @param $filePath
- * @return string
  */
 function getFileUrl($filePath) {
 	if (!stristr($filePath, 'http')) {
@@ -367,10 +362,6 @@ function subContent($content, $len, $clean = 0) {
 
 /**
  * Time transformation function
- *
- * @param $datetemp
- * @param $dstr
- * @return string
  */
 function smartDate($datetemp, $dstr = 'Y-m-d H:i') {
 	$sec = time() - $datetemp;
@@ -390,9 +381,6 @@ function smartDate($datetemp, $dstr = 'Y-m-d H:i') {
 	return $op;
 }
 
-/**
- * Generate a random string
- */
 function getRandStr($length = 12, $special_chars = true) {
 	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 	if ($special_chars) {
@@ -991,8 +979,6 @@ if (!function_exists('hash_hmac')) {
 
 /**
  * Get the MIME type based on the file extension
- * @param string $extension
- * @return string
  */
 function get_mimetype($extension) {
 	$ct['htm'] = 'text/html';
