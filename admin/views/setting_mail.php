@@ -19,7 +19,7 @@
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
         <form action="setting.php?action=mail_save" method="post" name="input" id="mail_config">
-            <h4><?= lang('email_service') ?></h4>
+            <h4><?= lang('email_sending') ?></h4>
             <div class="form-group">
                 <label><?= lang('sender_email') ?></label>
                 <input type="email" class="form-control" value="<?= $smtp_mail ?>" name="smtp_mail">
