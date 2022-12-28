@@ -1295,13 +1295,6 @@ function backtrace() {
 
 	foreach ($raw as $entry) {
 		$args = '';
-
-//DEBUG
-//echo '<pre>';
-//echo 'entry: ';
-//print_r($entry);
-//echo '</pre>';
-
 		if ($entry['function'] != 'backtrace') {
 			echo '<tr>', "\n";
 			echo '<td>', $entry['file'], '</td>', "\n";

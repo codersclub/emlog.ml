@@ -16,11 +16,13 @@ $array_tips = [
 ];
 vot*/
 
-// Load Tips from /lang/XX/lang_plugin_tips.php
-include_once EMLOG_ROOT . '/lang/' . LANG . '/lang_plugin_tips.php';
+// Load Plugin Language from content/plugins/PLUGIN_NAME/lang/XX/lang.php
+// Load Plugin Language from /lang/XX/lang_plugin_tips.php
+load_language('plugin_tips');
+
 
 function tips() {
-	global $array_tips;
+	$array_tips = lang('array_tips');
 	$i = mt_rand(0, count($array_tips) - 1);
 	$tip = $array_tips[$i];
 	echo "<div id=\"tip\"> $tip</div>";

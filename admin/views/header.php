@@ -26,7 +26,7 @@
     <script src="./views/js/common.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/sweetalert.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script>    var em_lang = '<?= LANG ?>';</script>
-    <script src="<?= BLOG_URL ?>/lang/<?= LANG ?>/lang_js.js"></script>
+    <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
 	<?php doAction('adm_head'); ?>
 </head>
 <body>
@@ -149,13 +149,13 @@
                     <div class="topbar-divider d-none d-sm-block"></div>
 <!-- Change Language -->
                     <li class="nav-item mx-1 drop">
-                        <span class="nav-link toggle"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>/lang/<?= LANG ?>/flag.gif"></span>
+                        <span class="nav-link toggle"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>lang/<?= LANG ?>/flag.gif"></span>
                         <div class="down"><!-- RIGHT -->
                             <?php
                                 foreach(LANG_LIST as $l=>$lng) {
                                     $selected = ($_SESSION['LANG'] == $l) ? 'selected="selected"' : '';
                             ?>
-                            <a href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= BLOG_URL ?>/lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
+                            <a href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= BLOG_URL ?>lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
                             <?php } ?>
                         </div>
                     </li>

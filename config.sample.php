@@ -18,8 +18,17 @@ const AUTH_COOKIE_NAME = 'emlog-cookie';
 //Default blog language
 const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc.
 
-//Enabled language list
+// Enabled language list
+// Icons: https://unicode.bootstrap-4.ru/emoji/flags/
 const LANG_LIST = [
+/*
+	'ar' => [
+		'name'=>'العربية',
+		'title'=>'Arabic',
+		'icon'=>'🇦🇪',
+		'dir'=>'rtl',
+	],
+*/
 	'en'    => [
 		'name'  => 'English',
 		'title' => 'English',
@@ -29,16 +38,10 @@ const LANG_LIST = [
 		'name'  => 'Русский',
 		'title' => 'Russian',
 		'dir'   => 'ltr',
+	],
 	'zh-CN' => [
 		'name'  => '简体中文',
 		'title' => 'Simplified Chinese',
 		'dir'   => 'ltr',
 	],
-/*
-	'ar'    => [
-		'name'  => 'العربية',
-		'title' => 'Arabic',
-		'dir'   => 'rtl',
-	],
-*/
-]);
+];
