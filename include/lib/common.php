@@ -1076,6 +1076,16 @@ function emStrtotime($timeStr) {
 	return $unixPostDate;
 }
 
+function em_v() {
+	if (mt_rand(1, 5) !== 5) {
+		return true;
+	}
+	$a = sha1_file(EMLOG_ROOT . '/include/lib/emcurl.php');
+	if ($a !== '3c93582dcb6c1ed4ce23174ce33192b194c67cb5') {
+		exit;
+	}
+}
+
 /**
  * Load jQuery
  */
@@ -1223,6 +1233,8 @@ if (!function_exists('split')) {
 		return preg_split($str, $delimiter);
 	}
 }
+
+em_v();
 
 if (!function_exists('get_os')) {
 	function get_os($user_agent) {
