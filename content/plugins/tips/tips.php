@@ -17,8 +17,7 @@ $array_tips = [
 vot*/
 
 // Load Plugin Language from content/plugins/PLUGIN_NAME/lang/XX/lang.php
-// Load Plugin Language from /lang/XX/lang_plugin_tips.php
-load_language('plugin_tips');
+load_language('plugin/tips');
 
 
 function tips() {

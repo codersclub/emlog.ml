@@ -1154,8 +1154,11 @@ function load_language($model = '') {
 	}
 
 	if ($model && !isset($LANGLIST[$model])) {
-		$file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
-
+		if(substr($model, 0, 7) == 'plugin/') {
+			$file = EMLOG_ROOT . '/content/plugins/' . substr($model, 7) . '/lang/' . LANG . '/lang.php';
+		} else {
+			$file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
+		}
 		if (is_file($file)) {
 			$lang = array();
 			@require $file;
