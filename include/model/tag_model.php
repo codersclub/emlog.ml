@@ -59,7 +59,7 @@ class Tag_Model {
 
 	function addTag($tagStr, $blogId) {
 		$tagStr = trim($tagStr);
-/*DO NOT TRANSLATE!*/ $tagStr = str_replace('，', ',', $tagStr);
+/*DO NOT TRANSLATE!*/ $tagStr = str_replace('，', ',', $tagStr); // Chinese comma
 
 		if (empty($tagStr)) {
 			return;
@@ -98,7 +98,7 @@ class Tag_Model {
 
 	function updateTag($tagStr, $blogId) {
 		$tagStr = trim($tagStr);
-/*DO NOT TRANSLATE!*/ $tagStr = str_replace('，', ',', $tagStr);
+/*DO NOT TRANSLATE!*/ $tagStr = str_replace('，', ',', $tagStr); // Chinese comma
 
 		// The old Tag Id list
 		$old_tags = $this->getTagIdsFromBlogId($blogId);

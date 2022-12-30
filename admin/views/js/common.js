@@ -302,7 +302,7 @@ function pagesave() {
 
     $.post(url, $("#addlog").serialize(), function (data) {
         let titleText = $('title').text();
-        $('title').text('[保存成功] ' + titleText);
+/*vot*/ $('title').text(lang('saved_ok') + titleText);
         setTimeout(function () {
             $('title').text(titleText);
         }, 2000);

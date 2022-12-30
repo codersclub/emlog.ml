@@ -39,7 +39,7 @@ class Cache {
 	/**
 	 * Update cache
 	 *
-	 * @param mixed $cacheMethodName cache name：'options', multi use array：['options', 'user'], Leave blank for update all
+	 * @param mixed $cacheMethodName cache name:'options', multi use array:['options', 'user'], Leave blank for update all
 	 */
 	public function updateCache($cacheMethodName = null) {
 		// Update a single cache
