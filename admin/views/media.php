@@ -83,7 +83,7 @@
         <div class="col-auto my-1">
             <div class="custom-control custom-checkbox mr-sm-2">
                 <input type="checkbox" class="custom-control-input" id="checkAllCard">
-                <label class="custom-control-label" for="checkAllCard">全选</label>
+                <label class="custom-control-label" for="checkAllCard"><?=lang('select_all')?></label>
             </div>
         </div>
         <div class="col-auto my-1 form-inline">

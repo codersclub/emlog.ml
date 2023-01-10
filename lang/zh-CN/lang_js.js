@@ -5,6 +5,11 @@ var LNG = {
     'already_edited': '[已修改] ',//'[already edited] ',
 
 //---------------------------
+//admin/views/tag.php
+    'tag_select_del': '请选择要删除的标签',//'Please select a tag to delete',
+    'tag_delete_sure': '确定要删除所选标签吗',//'Are you sure you want to delete the selected tags',
+
+//---------------------------
 //admin/views/js/common.js
     'twitter_del_sure': '确定要删除该笔记吗？',//'Are you sure you want to delete this note?',
     'comment_del_sure': '确定要删除该评论吗？',//'Are you sure you want to delete this comment?',

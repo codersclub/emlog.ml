@@ -89,7 +89,7 @@
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
                 </div>
                 <div class="form-group">
-                    <label>跳转链接：（填写后不展示文章内容直接跳转该地址）</label>
+<!--vot-->          <label><?=lang('jump_link')?>: <?=lang('jump_link_info')?></label>
                     <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
                 </div>
                 <div class="form-group">

@@ -33,14 +33,14 @@
             <div class="col-auto my-1">
                 <div class="custom-control custom-checkbox mr-sm-2">
                     <input type="checkbox" class="custom-control-input" id="checkAllCard">
-                    <label class="custom-control-label" for="checkAllCard">全选</label>
+                    <label class="custom-control-label" for="checkAllCard"><?=lang('select_all')?></label>
                 </div>
             </div>
             <div class="col-auto my-1 form-inline">
-                <a href="javascript:tagact('del');" class="btn btn-sm btn-danger">删除</a>
+                <a href="javascript:tagact('del');" class="btn btn-sm btn-danger"><?=lang('delete')?></a>
             </div>
         </div>
-        <div class="page"><?= $pageurl ?> （有 <?= $tags_count ?> 个标签）</div>
+        <div class="page"><?= $pageurl ?> (<?=lang('have')?> <?= $tags_count ?> <?=lang('_tags')?>)</div>
     </form>
 </div>
 
@@ -78,16 +78,16 @@
 
     function tagact(act) {
         if (getChecked('tids') === false) {
-            swal("", "请选择要删除的标签", "info");
+            swal("", lang('tag_select_del'), "info");
             return;
         }
 
         if (act == 'del') {
             swal({
-                title: '确定要删除所选标签吗',
-                text: '删除后可能无法恢复',
+                title: lang('tag_delete_sure'),
+                text: lang('delete_not_recover'),
                 icon: 'warning',
-                buttons: ['取消', '确定'],
+                buttons: [lang('cancel), lang('ok')],
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
