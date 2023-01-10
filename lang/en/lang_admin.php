@@ -230,6 +230,8 @@ $lang = array(
 'cover_placeholder'                       => 'Cover image URL, fill in manually or click the area below to upload image',//'封面图地址URL，手动填写或点击下方图片区域上传',
 'cover_image'                             => 'Cover image',//'封面图片',
 'recently_used'                           => 'Recently used+',//'近期使用的+',
+'jump_link'				=> 'Jump link',//'跳转链接',
+'jump_link_info'			=> '(directly jump to this address without displaying the content of the article after filling in)',//'（填写后不展示文章内容直接跳转该地址）',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -814,7 +816,7 @@ $lang = array(
 '_cancel_'                          => ' Cancel ',//'取 消',
 'tag_select'                        => 'Please select a tag',//'请选择标签',
 'tag_delete_sure'                   => 'Are you sure you want to delete the selected tags?',//'你确定要删除所选标签吗？',
-'_tags'                             => ' tags',//'个标签',
+'_tags'                             => ' tags',//'个标签',// Number of tags
 
 //---------------------------
 //admin/views/template.php
