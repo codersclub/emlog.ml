@@ -89,6 +89,10 @@
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
                 </div>
                 <div class="form-group">
+                    <label>跳转链接：（填写后不展示文章内容直接跳转该地址）</label>
+                    <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                </div>
+                <div class="form-group">
                     <label><?= lang('access_password') ?>:</label>
                     <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
                 </div>

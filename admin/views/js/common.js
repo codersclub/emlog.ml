@@ -219,6 +219,7 @@ function autosave(act) {
     var title = $.trim($("#title").val());
     var cover = $.trim($("#cover").val());
     var alias = $.trim($("#alias").val());
+    var link = $.trim($("#link").val());
     var sort = $.trim($("#sort").val());
     var postdate = $.trim($("#postdate").val());
     var date = $.trim($("#date").val());
@@ -234,7 +235,7 @@ function autosave(act) {
     var ishide = $.trim($("#ishide").val());
     var token = $.trim($("#token").val());
     var ishide = ishide == "" ? "y" : ishide;
-    var querystr = "logcontent=" + encodeURIComponent(content) + "&logexcerpt=" + encodeURIComponent(excerpt) + "&title=" + encodeURIComponent(title) + "&cover=" + encodeURIComponent(cover) + "&alias=" + encodeURIComponent(alias) + "&author=" + author + "&sort=" + sort + "&postdate=" + postdate + "&date=" + date + "&tag=" + encodeURIComponent(tag) + "&top=" + top + "&sortop=" + sortop + "&allow_remark=" + allow_remark + "&password=" + password + "&token=" + token + "&ishide=" + ishide + "&as_logid=" + logid;
+    var querystr = "logcontent=" + encodeURIComponent(content) + "&logexcerpt=" + encodeURIComponent(excerpt) + "&title=" + encodeURIComponent(title) + "&cover=" + encodeURIComponent(cover) + "&alias=" + encodeURIComponent(alias) + "&link=" + encodeURIComponent(link) + "&author=" + author + "&sort=" + sort + "&postdate=" + postdate + "&date=" + date + "&tag=" + encodeURIComponent(tag) + "&top=" + top + "&sortop=" + sortop + "&allow_remark=" + allow_remark + "&password=" + password + "&token=" + token + "&ishide=" + ishide + "&as_logid=" + logid;
 
     if (alias != '' && 0 != isalias(alias)) {
         $("#msg").show().html(lang('alias_link_error_not_saved'));

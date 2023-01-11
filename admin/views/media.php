@@ -25,8 +25,7 @@
                 <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
                 <button type="button" class="btn <?= $cur_tab ?> btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false"></button>
                 <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>"
-                       data-sortname="<?= $val['sortname'] ?>"><?= lang('edit') ?></a>
+                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-sortname="<?= $val['sortname'] ?>"><?= lang('edit') ?></a>
                     <a class="dropdown-item text-danger" href="javascript: em_confirm(<?= $val['id'] ?>, 'media_sort', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
                 </div>
             </div>
@@ -81,8 +80,14 @@
     <div class="form-row align-items-center">
         <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
         <input name="operate" id="operate" value="" type="hidden"/>
+        <div class="col-auto my-1">
+            <div class="custom-control custom-checkbox mr-sm-2">
+                <input type="checkbox" class="custom-control-input" id="checkAllCard">
+                <label class="custom-control-label" for="checkAllCard">全选</label>
+            </div>
+        </div>
         <div class="col-auto my-1 form-inline">
-            <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('resource_del_selected') ?></a>
+            <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
 			<?php if (User::isAdmin()): ?>
                 <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
                     <option value="" selected="selected"><?= lang('move_to') ?></option>
@@ -92,12 +97,6 @@
                     <option value="0"><?= lang('uncategorized') ?></option>
                 </select>
 			<?php endif; ?>
-        </div>
-        <div class="col-auto my-1">
-            <div class="custom-control custom-checkbox mr-sm-2">
-                <input type="checkbox" class="custom-control-input" id="checkAllCard">
-                <label class="custom-control-label" for="checkAllCard"><?= lang('select_all') ?></label>
-            </div>
         </div>
     </div>
 </form>

@@ -126,6 +126,7 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
 								<?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
 <!--vot-->								<?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
 								<?php if ($value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
+<!--Do not translate:Lock-->					<?php if ($value['link']): ?><span class="small">🔗</span><?php endif ?>
 								<?php if (!$draft && $value['checked'] == 'n'): ?><span class="badge small badge-danger"><?= lang('is_pending') ?></span><?php endif ?>
                             </td>
                             <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info"><?= $value['comnum'] ?></a></td>
