@@ -7,8 +7,6 @@
     <div class="alert alert-success"><?= lang('avatar_deleted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('nickname_is_empty') ?></div><?php endif ?>
-<?php if (isset($_GET['error_b'])): ?>
-    <div class="alert alert-danger"><?= lang('email_format_invalid') ?></div><?php endif ?>
 <?php if (isset($_GET['error_email'])): ?>
     <div class="alert alert-danger"><?= lang('email_empty') ?></div><?php endif ?>
 <?php if (isset($_GET['error_c'])): ?>
@@ -71,8 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label><?= lang('new_password_info') ?></label>
-                    <input type="password" name="hidden-auto-filling" style="width: 0;border: 0;opacity: 0">
-                    <input type="password" class="form-control" value="" name="newpass">
+                    <input type="password" class="form-control" value="" autocomplete="new-password" name="newpass">
                 </div>
                 <div class="form-group">
                     <label><?= lang('new_password_repeat') ?></label>

@@ -32,11 +32,10 @@
         <div class="row justify-content-between">
             <div class="form-inline">
                 <h6 class="m-0 font-weight-bold"><?= lang('users_total') ?> (<?= $usernum ?>)</h6>
-
             </div>
             <form action="user.php" method="get">
                 <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="email" value="<?= $email ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
+                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
                     <div class="input-group-append">
                         <button class="btn btn-sm btn-success" type="submit">
                             <i class="icofont-search-2"></i>
@@ -90,14 +89,11 @@
                         <td><?= $val['create_time'] ?></td>
                         <td>
 							<?php if (UID != $val['uid']): ?>
-                                <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');"
-                                   class="badge badge-danger"><?= lang('delete') ?></a>
+                                <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
 								<?php if ($forbid): ?>
-                                    <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>"
-                                       class="badge badge-success"><?= lang('unban') ?></a>
+                                    <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>" class="badge badge-success"><?= lang('unban') ?></a>
 								<?php else: ?>
-                                    <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-warning"><?= lang('ban') ?></a>
+                                    <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-warning"><?= lang('ban') ?></a>
 								<?php endif ?>
 							<?php endif ?>
                         </td>
@@ -119,7 +115,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="user.php?action=new" method="post">
+            <form action="user.php?action=new" method="post" autocomplete="off">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="sortname"><?= lang('role') ?></label>
@@ -131,13 +127,11 @@
                     </div>
                     <div class="form-group">
                         <label for="username"><?= lang('email') ?></label>
-                        <input class="hidden-auto-filling" name="email" style="width: 0;border: 0;opacity: 0">
                         <input type="email" name="email" class="form-control" value="<?= $email ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password"><?= lang('password_min_length') ?></label>
-                        <input class="hidden-auto-filling" type="password" name="psw" style="width: 0;border: 0;opacity: 0">
-                        <input class="form-control" id="password" name="password" type="password" required>
+                        <input class="form-control" id="password" name="password" autocomplete="new-password" type="password" required>
                     </div>
                     <div class="form-group">
                         <label for="password2"><?= lang('password_repeat') ?></label>

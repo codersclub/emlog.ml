@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label><?= lang('smtp_password') ?>:</label>
-                <input type="password" name="smtp_pw" cols="" rows="3" class="form-control" value="<?= $smtp_pw ?>">
+                <input type="password" name="smtp_pw" cols="" rows="3" class="form-control" value="<?= $smtp_pw ?>" autocomplete="new-password">
             </div>
             <div class="form-group">
                 <label><?= lang('sender_name') ?></label>

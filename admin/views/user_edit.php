@@ -37,13 +37,11 @@
     </div>
     <div class="form-group">
         <label for="username"><?= lang('user_name') ?></label>
-        <input class="hidden-auto-filling" name="name" style="width: 0;border: 0;opacity: 0">
         <input class="form-control" value="<?= $username ?>" name="username" id="username" required>
     </div>
     <div class="form-group">
         <label for="password"><?= lang('password_new') ?></label>
-        <input class="hidden-auto-filling" type="password" name="psw" style="width: 0;border: 0;opacity: 0">
-        <input type="password" class="form-control" name="password" id="password">
+        <input type="password" class="form-control" autocomplete="new-password" name="password" id="password">
     </div>
     <div class="form-group">
         <label for="password2"><?= lang('password_new_repeat') ?></label>
