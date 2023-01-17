@@ -99,6 +99,7 @@ $lang = array(
 'plugin_view'                             => 'View Plugin',//'查看插件',
 'free_zone'                               => 'Free zone',//'免费区',
 'paid_zone'                               => 'Paid zone',//'付费区',
+'my_apps'				=> 'Purchased apps',//'已购应用',
 
 //---------------------------
 //admin/style.php
@@ -793,17 +794,26 @@ $lang = array(
 'install_failed'                    => 'Installation failed.',//'安装失败，',
 
 //---------------------------
+//admin/views/store_mine.php
+'contact_to_install'		=> 'Contact the author to install',//'联系作者安装',
+'no_my_apps'			=> 'You have not purchased any apps.',//'你还没有购买任何应用。',
+
+
+//---------------------------
 //admin/views/store_plu.php
 'install_free'                      => 'Install for free',//'免费安装',
 'plugin_search'                     => 'Search plugin',//'搜索插件',
 'show_free_only'                    => 'Show only free',//'仅看免费',
 'store_no_results'                  => 'No results have been found yet, the app store is in stock, so stay tuned :)',//'暂未找到结果，应用商店进货中，敬请期待：）',
 'plugin_publish'                    => 'Publish plugin',//'发布插件',
+'this_author_only'		=> 'View only this author items',//'仅看Ta的作品',
+'_plugins'			=> ' plugins',//'个插件',// Number of plugins
 
 //---------------------------
 //admin/views/store_tpl.php
 'temlate_search'                    => 'Search Templates...',//'搜索模板...',
 'template_publish'                  => 'Publish template',//'发布模板',
+'_templates'			=> ' templates',//'个模板',// Number of templates
 
 //---------------------------
 //admin/views/style.php

@@ -794,24 +794,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/store_mine.php
-//'install_ok'                              => '安装成功',//'Successful installation',                                                                                              
-//'install_failed'	=> '安装失败',//'Installation failed',                                                                                                  
-//'install_failed_download'	=> '安装失败，无法下载安装包',//'The installation failed and the installation package could not be downloaded',                                         
-//'install_failed_write'	=> '安装失败，无法写文件，请检查content/下目录是否可写',//'The installation failed and the file cannot be written. Please check whether the directory under content/ is writable',
-//'install_failed_zip'	=> '安装失败，无法解压，请安装php的Zip扩展',//'Installation failed, unable to decompress, please install the Zip extension of php',                                   
-//'install_invalid_ext'	=> '安装失败，不是有效的安装包',//'Installation failed, not a valid installation package',                                                                
-//'store_unavailable'	=> '商店暂不可用，可能是网络问题',//'The store is temporarily unavailable, it may be a network problem',                                                    
-//'back_home'	=> '返回首页',//'Return home',                                                                                                          
-//'app_store'	=> '应用商店',//'App Store',                                                                                                            
-//'ext_store_templates'	=> '模板主题',//'Template theme',                                                                                                       
-//'ext_store_plugins'	=> '扩展插件',//'Extension',                                                                                                            
-//'my_apps'	=> '已购应用',//'Purchased apps',                                                                                                       
-//'developer'	=> '开发者',//'Developer',                                                                                                           
-//'version_number'	=> '版本号',//'Version number',                                                                                                      
-//'update_time'	=> '更新时间',//'Update time',                                                                                                         
-//'install'	=> '安装',//'Install',                                                                                                              
-'contact_to_install'	=> '联系作者安装',//'Contact the author to install',                                                                                        
-'no_my_apps'		=> '你还没有购买任何应用。',//'You have not purchased any apps.',                                                                                     
+'contact_to_install'		=> '联系作者安装',//'Contact the author to install',
+'no_my_apps'			=> '你还没有购买任何应用。',//'You have not purchased any apps.',
 
 
 //---------------------------
