@@ -307,6 +307,7 @@ function pagesave() {
         setTimeout(function () {
             $('title').text(titleText);
         }, 2000);
+        pageText = $("textarea").text();
     }).fail(function () {
 /*vot*/ $('title').text(lang('save_failed') + $('title').text());
 /*vot*/ alert(lang('save_failed!'))

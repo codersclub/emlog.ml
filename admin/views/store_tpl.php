@@ -13,22 +13,17 @@
     <div class="alert alert-danger"><?= lang('install_failed_zip') ?></div><?php endif ?>
 <?php if (isset($_GET['error_source'])): ?>
     <div class="alert alert-danger"><?= lang('install_invalid_ext') ?></div><?php endif ?>
-
 <?php if (isset($_GET['error'])): ?>
-    <div class="container-fluid">
-        <div class="text-center">
-            <p class="lead text-gray-800 mb-5"><?= lang('store_unavailable') ?></p>
-            <a href="./">&larr; <?= lang('back_home') ?></a>
-        </div>
-    </div>
-<?php endif ?>
+    <div class="alert alert-danger"><?= lang('store_unavailable') ?></div><?php endif ?>
+
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('app_store') ?> - <?= $sub_title ?></h1>
 </div>
 <div class="row mb-4 ml-1 justify-content-between">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link active" href="./store.php?tag=free"><i class="icofont-paint"></i> <?= lang('ext_store_templates') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu&tag=free"><?= lang('ext_store_plugins') ?></a></li>
+        <li class="nav-item"><a class="nav-link active" href="./store.php"><i class="icofont-paint"></i> <?= lang('ext_store_templates') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?= lang('ext_store_plugins') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine">已购应用</a></li>
     </ul>
     <form action="./store.php" method="get">
         <div class="form-inline search-inputs-nowrap">
@@ -42,6 +37,7 @@
     </form>
 </div>
 <div class="row mb-3 ml-1">
+    <a href="./store.php" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
     <a href="./store.php?tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
     <a href="./store.php?tag=paid" class="badge badge-warning m-1 ml-2 p-2"><?= lang('paid_zone') ?></a>
 </div>
@@ -61,7 +57,7 @@
                         </p>
                         <p class="card-text text-muted small">
                             <span class="small"><?= $v['info'] ?></span><br><br>
-							<?= lang('developer') ?>: <?= $v['author'] ?><br>
+							<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
 							<?= lang('version_number') ?>: <?= $v['ver'] ?><br>
 							<?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>
@@ -78,6 +74,7 @@
                 </div>
             </div>
 		<?php endforeach ?>
+        <div class="col-md-12 page my-5"><?= $pageurl ?> (有<?= $count ?>个模板)</div>
 	<?php else: ?>
         <div class="col-md-12">
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>

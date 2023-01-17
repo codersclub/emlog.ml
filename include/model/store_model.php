@@ -7,17 +7,31 @@
 
 class Store_Model {
 
-	public function getTemplates($tag, $keyword) {
-		return $this->reqEmStore('tpl', $tag, $keyword);
+	public function getTemplates($tag, $keyword, $page, $author_id) {
+		return $this->reqEmStore('tpl', $tag, $keyword, $page, $author_id);
 	}
 
-	public function getPlugins($tag, $keyword) {
-		return $this->reqEmStore('plu', $tag, $keyword);
+	public function getPlugins($tag, $keyword, $page, $author_id) {
+		return $this->reqEmStore('plu', $tag, $keyword, $page, $author_id);
 	}
 
-	public function reqEmStore($type, $tag = '', $keyword = '') {
+	public function getMyAddon() {
+		return $this->reqEmStore('mine');
+	}
+
+	public function reqEmStore($type, $tag = '', $keyword = '', $page = 1, $author_id = 0) {
 		$emcurl = new EmCurl();
-		$emcurl->setPost(['emkey' => Option::get('emkey'), 'ver' => Option::EMLOG_VERSION, 'type' => $type, 'tag' => $tag, 'keyword' => $keyword]);
+
+		$post_data = [
+			'emkey'     => Option::get('emkey'),
+			'ver'       => Option::EMLOG_VERSION,
+			'type'      => $type,
+			'tag'       => $tag,
+			'keyword'   => $keyword,
+			'page'      => $page,
+			'author_id' => $author_id
+		];
+		$emcurl->setPost($post_data);
 		$emcurl->request('https://emlog.io/store/pro');
 
 		$retStatus = $emcurl->getHttpStatus();
@@ -39,10 +53,12 @@ class Store_Model {
 		$data = [];
 		switch ($type) {
 			case 'tpl':
-				$data = isset($ret['data']['templates']) ? $ret['data']['templates'] : [];
+				$data['templates'] = isset($ret['data']['templates']) ? $ret['data']['templates'] : [];
+				$data['count'] = isset($ret['data']['count']) ? $ret['data']['count'] : 0;
 				break;
 			case 'plu':
-				$data = isset($ret['data']['plugins']) ? $ret['data']['plugins'] : [];
+				$data['plugins'] = isset($ret['data']['plugins']) ? $ret['data']['plugins'] : [];
+				$data['count'] = isset($ret['data']['count']) ? $ret['data']['count'] : 0;
 				break;
 		}
 		return $data;

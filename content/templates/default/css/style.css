@@ -11,21 +11,25 @@
 
 /* Some variables */
 * {
-    --marRadius: 8px /* Card rounded corners */
+    --marRadius: 8px;              /* Card rounded corners */
+	--conBgcolor: #ffffff;   /* 导航、卡片、内容的背景颜色 */
+	--bodyBground: #f5f5f6;  /* 页面背景颜色 */
+	--fontColor: #5a5c69;    /* 普通文本的颜色 */
+	--aColor:  #333333;      /* a 标签的颜色 */
+	--aHoverColor:  #f6607d; /* a 标签 hover 状态的颜色 */
+	--lightColor: #929292      /* 比较浅一点的文本颜色 */
 }
-
 /* Define width = (border+padding) for all elements to facilitate subsequent calculations */
 * {
     box-sizing: border-box
 }
-
 /* Initialization */
 body {
     margin: 0;
     line-height: 1.5;
     font-size: 16px;
-    color: #5a5c69;
-    background: #f5f5f6;
+	color: var(--fontColor);
+	background-color: var(--bodyBground);
     font-family: helvetica neue, Helvetica, Arial, sans-serif
 }
 
@@ -40,71 +44,68 @@ p {
 }
 
 a {
-    color: #333333;
-    transition: all 0.2s;
-    text-decoration: none
+	color: var(--aColor);
+	transition: all 0.2s;
+	text-decoration: none 
 }
 
 a:focus, a:hover {
-    color: #f6607d;
-    text-decoration: none
+	color: var(--aHoverColor);
+	text-decoration: none
 }
 
 img {
-    max-width: 100%
+	max-width: 100%
 }
 
 hr {
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, .1)
+	border: 0;
+	border-top: 1px solid rgba(0,0,0,.1)
 }
 
 blockquote {
-    font-style: italic;
-    color: #868e96
+	font-style: italic;
+	color: #868e96
 }
-
-input, textarea {
-    font-family: inherit;
-    color: #495057;
-    outline: none
+input,textarea {
+	font-family: inherit;
+	color: #495057;
+	outline:none
 }
 
 input[type="submit"] {
-    cursor: pointer
+	cursor: pointer
 }
 
 textarea {
-    padding: 1rem 0.75rem
+	padding: 1rem 0.75rem
 }
 
 footer {
-    margin-top: 60px;
-    background-color: white;
-}
-
+	margin-top: 60px;
+	background-color: var(--conBgcolor);
+} 
 footer .list-inline {
-    margin: 0;
-    padding: 0
+	margin: 0;
+	padding: 0
 }
 
 footer .copyright {
-    font-size: 14px;
-    margin-bottom: 0;
-    text-align: center
+	font-size: 14px;
+	margin-bottom: 0;
+	text-align: center
 }
-
 /* Non styled list  */
-.unstyle-li {
-    padding-left: 0px;
-    list-style: none;
-    margin-block: 8px;
-    font-size: medium
-}
 
+.unstyle-li {
+	padding-left: 0px;
+	list-style: none;
+	margin-block: 8px;
+	font-size: medium
+}
 /* Card attributes. The page is composed of cards, which are directly configured here, so that the cards on the entire page have a uniform inner margin. */
 .card-padding {
-    padding: 1.25rem
+	padding: 1.25rem
 }
 
 /* Layout
@@ -112,8 +113,8 @@ footer .copyright {
    Column (col) needs to be configured separately according to the size of the screen. This is the most important part of the web page and the skeleton of the entire web page.
 ---------------------------------------------------*/
 .row {
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 /* Columns under the big screen */
@@ -149,8 +150,8 @@ footer .copyright {
         text-align: right
     }
 }
-
 /* Columns under the small screen */
+
 @media (max-width: 767px) {
 
     .column-big {
@@ -188,32 +189,11 @@ footer .copyright {
     margin-right: auto;
     margin-left: auto
 }
-
 /* Configuration of container on different screens */
-@media (min-width: 576px) {
-    .container {
-        max-width: 540px
-    }
-}
-
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px
-    }
-}
-
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px
-    }
-}
-
-@media (min-width: 1201px) {
-    .container {
-        max-width: 1140px
-    }
-}
-
+@media (min-width: 576px) {.container {max-width: 540px}}
+@media (min-width: 768px) {.container {max-width: 720px}}
+@media (min-width: 992px) {.container {max-width: 960px}}
+@media (min-width: 1201px) {.container {max-width: 1140px}}
 /* Set the inner and outer margins of the container on the small screen to make it more in line with the look and feel of the small screen */
 @media (min-width: 768px) {
     .container {
@@ -259,29 +239,29 @@ footer .copyright {
 /* There is no gap at the bottom (footer) of the blog page (that is, to prevent the weird phenomenon that the footer appears in the middle of the page)
 ---------------------------------------------------*/
 body {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 .blog-header {
-    flex: 0 0 auto;
+	flex: 0 0 auto;
 }
 
 .blog-container {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 .blog-footer {
-    flex: 0 0 auto;
+	flex: 0 0 auto;
 }
 
 /* Configuration of blog header attributes
 ---------------------------------------------------*/
 .blog-header {
-    margin-bottom: 2.3rem;
-    background: #ffffff; /* Background white color */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1) /* Shadow */
+	margin-bottom: 2.3rem;
+	background-color: var(--conBgcolor);
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1) /* Shadow */
 }
 
 .blog-header-c {
@@ -289,29 +269,28 @@ body {
     display: flex;
     justify-content: space-between /* The navigation bar is aligned at both ends of the main axis, that is, the heading and the navigation are two parts, one is aligned to the left, and the other is aligned to the right. */
 }
-
 /* Blog title and subtitle */
 .blog-header-title {
-    font-size: 26px;
-    z-index: 1
+	font-size: 26px;
+	z-index: 1
 }
 
 .blog-header-subtitle {
-    font-size: small;
-    letter-spacing: 0.2rem;
-    position: absolute;
-    padding-top: 48px;
-    z-index: 0
+	font-size: small;
+	letter-spacing: 0.2rem;
+	position: absolute;
+	padding-top: 48px;
+	z-index: 0
 }
 
 /* The padding-block of the navigation link should be large, so that the sub-navigation label can still be evoked after the cursor leaves the character for a certain distance
  * In addition, the list item of the li tag is marked as empty (list-style: none) */
 .nav-link {
-    padding: 1rem 0.5rem 1rem 0.5rem
+	padding: 1rem 0.5rem 1rem 0.5rem
 }
 
 .list-menu {
-    list-style: none
+	list-style: none
 }
 
 /* Dropdown */
@@ -375,21 +354,18 @@ body {
         padding-block: 4.5px;
         text-align: center
     }
-
     /* Large screen list style */
     .list-menu .list-menu {
         border-bottom: 1px solid #f1f1f1;
     }
 
-    .list-menu:last-child {
-        border-bottom: unset
-    }
-
-    .blog-header-toggle {
-        display: none
-    }
+	.list-menu:last-child { 
+		border-bottom: unset
+	}
+	.blog-header-toggle {
+		display: none
+	}
 }
-
 /* Small screen */
 @media (max-width: 767px) {
     .header {
@@ -409,7 +385,6 @@ body {
         left: 17px;
         top: -9px
     }
-
     /* Display the toggle menu border and toggle menu only on the small screen */
     .blog-header-toggle {
         cursor: pointer;
@@ -417,7 +392,6 @@ body {
         top: 25px;
         right: 25px;
     }
-
     .blogtoggle-icon {
         display: inline-block;
         width: 28px;
@@ -425,7 +399,6 @@ body {
         margin-top: -3px;
         vertical-align: middle;
     }
-
     /* The navigation of the small screen becomes a drop-down box */
     .blog-header-nav {
         display: none;
@@ -436,7 +409,6 @@ body {
         top: 72px;
         left: 0
     }
-
     /* List style of the header on the small screen */
     .nav-list {
         margin-top: 0px;
@@ -452,18 +424,18 @@ body {
 /* The drop-down box style under the big screen, the transparency set here is 0 (opacity: 0.0;). But in the small screen state
  * There is no hidden, so the following will cover this attribute in the small screen part, that is, the part below 767px. */
 .dropdown-menus {
-    background: white;
-    opacity: 0.0;
-    z-index: 4;
-    list-style: none;
-    margin-left: -26px;
-    position: absolute;
-    padding-left: 0px;
-    border: 1px solid #f1f1f1;
-    border-radius: 4px;
-    top: -3000px;
-    margin-bottom: -34px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1)
+	background: white;
+	opacity: 0.0;
+	z-index: 4;
+	list-style: none;
+	margin-left: -26px;
+	position: absolute;
+	padding-left: 0px;
+	border: 1px solid #f1f1f1;
+	border-radius: 4px;
+	top: -3000px;
+	margin-bottom: -34px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1)
 }
 
 .dropdown-menus .list-menu {
@@ -472,40 +444,39 @@ body {
 
 /* For the small screen attribute of the top menu bar, "small screen" is defined at 767px and below. Of course, this also includes the drop-down box style of the small screen. */
 @media all and (max-width: 767px) {
-    .nav-list {
-        text-align: left !important;
-        padding-left: 10%;
-        letter-spacing: 3px;
-        line-height: 17px
-    }
-
-    .dropdown-menus {
-        opacity: 1;
-        margin-left: 0px;
-        position: unset;
-        padding-left: 30px;
-        border: 0px solid #f1f1f1;
-        width: auto;
-        top: 0px;
-        margin-bottom: 0px;
-        box-shadow: 0 0 0 0 white;
-        font-size: smaller
-    }
+	.nav-list {
+		text-align: left !important;
+		padding-left: 10%;
+		letter-spacing: 3px;
+		line-height: 17px
+	}
+	.dropdown-menus {
+		opacity: 1;
+		margin-left: 0px;
+		position: unset;
+		padding-left: 30px;
+		border: 0px solid #f1f1f1;
+		width: auto;
+		top: 0px;
+		margin-bottom: 0px;
+		box-shadow: 0 0 0 0 white;
+		font-size: smaller
+	}
 }
 
 /* The style of the drop-down box */
 .list-menu:hover .dropdown-menus {
-    opacity: 0.95;
-    top: 56px;
-    transition: opacity 0.2s
+	opacity: 0.95;
+	top: 56px;
+	transition: opacity 0.2s
 }
 
 /* List articles (or article entries) page
 ---------------------------------------------------*/
 /* Attributes of the article publication time on the card */
 .info-row {
-    padding: 1rem;
-    padding-bottom: 8px !important
+	padding: 1rem;
+	padding-bottom: 8px !important
 }
 
 /* Article reading page
@@ -514,12 +485,10 @@ body {
 .bottom-5 {
     margin-bottom: 1.5rem !important
 }
-
 /* Label attributes, set margin-top to level three */
 .top-5, .mtop-5 {
-    margin-top: 3rem !important
+	margin-top: 3rem !important
 }
-
 /* Configuration of verification code modal window */
 .modal-dialog {
     display: none;
@@ -533,74 +502,68 @@ body {
     left: 50%;
     transform: translate3d(-50%, -50%, 0)
 }
-
 /* The button of the verification code modal window */
 .btn {
-    cursor: pointer;
-    color: #848798;
-    background-color: white;
-    padding: 8px 11px;
-    font-weight: 800;
-    border-radius: var(--marRadius);
-    margin-block: 12px;
-    margin-inline: 17.5px;
-    border: 1px solid #dedede
+	cursor: pointer;
+	color: #848798;
+	background-color: white;
+	padding: 8px 11px;
+	font-weight: 800;
+	border-radius: var(--marRadius);
+	margin-block: 12px;
+	margin-inline: 17.5px;
+	border: 1px solid #dedede
 }
 
 .btn:hover {
-    color: #50525e
-}
-
+	color: #50525e
+} 
 .modal-header {
-    text-align: center;
-    border-bottom: 0px;
-    width: 250px;
-    padding: 20px
+	text-align: center;
+	border-bottom: 0px;
+	width: 250px;
+	padding: 20px
 }
 
 .modal-content img {
-    float: left;
-    height: 32px;
-    margin-left: 20px;
-    margin-block: 30px
+	float: left;
+	height: 32px;
+	margin-left: 20px;
+	margin-block: 30px
 }
 
 .modal-content input[name="imgcode"] {
-    padding: 6px 8px !important;
-    margin-right: 20px;
-    margin-left: 8px;
-    text-align: left;
-    margin-block: 30px;
-    border: 1px solid #dedede
+	padding: 6px 8px !important;
+	margin-right: 20px;
+	margin-left: 8px;
+	text-align: left;
+	margin-block: 30px;
+	border: 1px solid #dedede
 }
 
 .modal-content .modal-footer {
-    padding: 10px;
-    text-align: center
+	padding: 10px;
+	text-align: center
 }
-
 /* After the verification code modal window pops up, the screen background should be locked */
 .lock-screen {
-    display: none;
-    z-index: 99;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #2d2d2b;
-    top: 0;
-    left: 0;
-    opacity: 0.5
+	display:none;
+	z-index: 99;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	background-color: #2d2d2b;
+	top: 0;
+	left: 0;
+	opacity: 0.5
 }
-
 /* Click style of verification code */
 #captcha {
     cursor: pointer
 }
 
 /* No scrolling */
-.scroll-fix {
-    overflow: hidden
-}
+.scroll-fix {overflow: hidden}
 
 /* Shadow
    The shadow of the article summary card and the sidebar component card of the article list page and the shadow after the mouse is floating
@@ -608,7 +571,7 @@ body {
 .shadow-theme {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02);
     border-radius: var(--marRadius);
-    background: #ffffff;
+	background-color: var(--conBgcolor);
     transition: box-shadow 0.4s
 }
 
@@ -690,7 +653,6 @@ body {
     margin-bottom: 24px;
     padding: 20px
 }
-
 /* The title of the sidebar component */
 .side-bar h3 {
     position: relative;
@@ -723,7 +685,7 @@ body {
 
 .pagination a {
     color: #c0bcbc;
-    padding: 5.5px 10px 3px 10px;
+	padding: 5.5px 10px 6px 10px;
     background: white;
     margin: 0 5px;
     line-height: 3;
@@ -894,12 +856,12 @@ body {
 }
 
 .comment {
-    margin: 10px 0;
-    padding: 10px 0px;
-    font-size: medium;
-    border-bottom: 1px #CCC solid;
-    overflow: hidden;
-    color: #333
+	margin: 10px 0;
+	padding: 10px 0px;
+	font-size: medium;
+	border-bottom: 1px #f7f7f7 solid;
+	overflow: hidden;
+	color: #333
 }
 
 .comment span {
@@ -964,7 +926,7 @@ body {
     margin: 20px 10px 10px 20px;
     clear: both;
     border: none;
-    border-top: 1px solid #CCC;
+/*vot*/ border-top: 1px solid #CCC;
     padding: 0
 }
 
@@ -979,7 +941,6 @@ body {
     margin-top: -8px;
     white-space: nowrap
 }
-
 /* The margin-top of the latest comment information in the sidebar should be 0 */
 .unstyle-li .comment-info {
     margin-top: 4px
@@ -988,7 +949,6 @@ body {
 .cancel-reply {
     font-size: large
 }
-
 /* Commenter's avatar */
 .avatar img {
     width: 40px;
@@ -1007,7 +967,6 @@ body {
     border-radius: 0 3px 3px 0;
     padding: 0
 }
-
 /* Reply, Cancel reply buttons in the comment area */
 .comment-replay-btn {
     border: none;
@@ -1028,7 +987,6 @@ body {
 .card-title {
     margin-bottom: 30px
 }
-
 /* The sticky pattern in the article entry */
 .log-topflg {
     user-select: none;
@@ -1046,7 +1004,7 @@ body {
 /* Article content page style
 ---------------------------------------------------*/
 .log-con {
-    background-color: #ffffff;
+	background-color: var(--conBgcolor);
     border-radius: var(--marRadius);
     max-width: 960px;
     padding: 30px;
@@ -1108,13 +1066,11 @@ body {
     font-family: inherit;
     margin: 0
 }
-
 /* Need to change the name, the friendship link attribute of the sidebar link card */
 .no-margin-bottom {
     font-size: medium;
     padding-left: 10px
 }
-
 /* Abstract content section */
 .loglist-body {
     margin-bottom: -22px;
@@ -1124,7 +1080,6 @@ body {
 .loglist-body p {
     margin: 0 -6px 0 0
 }
-
 /* Article title and tags, etc. */
 .loglist-title {
     font-size: x-large
@@ -1160,7 +1115,6 @@ body {
     transform: scale(1.01);
     clip: rect(50px, 730px, 250px, 0px)
 }
-
 /* Article category */
 .loglist-sort {
     user-select: none;
@@ -1172,31 +1126,8 @@ body {
     padding-bottom: 3px;
     border: 1px solid #e8e8e8
 }
-
-@media (max-width: 415px) {
-    .loglist-cover {
-        height: 160px;
-        overflow: hidden
-    }
-
-    .loglist-cover img {
-        position: unset;
-        width: 730px;
-    }
-}
-
-@media (max-width: 375px) {
-    .loglist-cover {
-        height: 140px;
-        overflow: hidden
-    }
-
-    .loglist-cover img {
-        position: unset;
-        width: 730px;
-    }
-}
-
+@media (max-width:415px) {.loglist-cover{ height: 160px;overflow: hidden}.loglist-cover img {position:unset;	width: 730px;}}
+@media (max-width:375px) {.loglist-cover{ height: 140px;overflow: hidden}.loglist-cover img {position:unset;	width: 730px;}}
 /* Other contents of the entry */
 .loglist-content {
     font-size: medium;
@@ -1209,11 +1140,10 @@ body {
 .log-info {
     font-size: small;
     letter-spacing: 0.5px;
-    color: #404040 !important
 }
 
 .log-info a {
-    color: #929292
+	color: var(--lightColor)
 }
 
 .log-count {
@@ -1221,9 +1151,8 @@ body {
 }
 
 .log-count a {
-    color: #252525
+	color: var(--fontColor)
 }
-
 /* Some styles of sidebar components */
 .bloggerinfo {
     margin-bottom: -10px;
@@ -1252,7 +1181,6 @@ body {
     margin-bottom: 15px;
     color: #929292
 }
-
 /* Search bar */
 .search {
     width: 80%;
@@ -1267,7 +1195,6 @@ body {
     margin-block: 0;
     border-radius: 0.25rem
 }
-
 /* Article reading and article tags */
 .tags {
     border: 1px solid #e8e8e8;
@@ -1275,7 +1202,6 @@ body {
     border-radius: 4px;
     white-space: nowrap
 }
-
 /* Tags in the sidebar widget */
 .tag-container {
     margin-block: 0;
@@ -1287,14 +1213,12 @@ body {
     border-radius: 4px;
     white-space: nowrap
 }
-
 /* The latest article style in the sidebar widget */
 .blog-lates, .blog-hot {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
 }
-
 /* Back to the previous page icon */
 .back-top {
     font-size: 20px;
@@ -1314,7 +1238,6 @@ body {
     border: 1px solid #bbbbbb;
     color: #bbbbbb
 }
-
 /* Dividing lines in article entries */
 .list-line {
     border: 0;
@@ -1322,7 +1245,6 @@ body {
     margin-bottom: -7px;
     border-top: 2px solid rgb(245, 245, 246)
 }
-
 /* Article categories in the sidebar */
 .log-classify-f {
     letter-spacing: 1px;
@@ -1335,12 +1257,11 @@ body {
     list-style: none;
     font-size: medium
 }
-
 /* Latest comments in the sidebar */
 .logcom-latest-time {
     position: absolute;
     right: 10px;
-    color: #b5b5b5;
+	color: var(--lightColor);
     margin-left: 10px;
     font-size: small
 }
@@ -1353,7 +1274,6 @@ body {
     vertical-align: middle;
     border-style: none
 }
-
 /* Date text style everywhere */
 .date {
     margin: 0;
@@ -1379,7 +1299,6 @@ body {
     margin-bottom: 30px;
     font-size: 1.75rem
 }
-
 /* The style of the adjacent article button */
 .neighbor-log {
     overflow: hidden;
@@ -1405,7 +1324,7 @@ body {
 }
 
 .comment-info a {
-    color: #4c4c4c;
+	color: var(--lightColor);
     padding-left: 5px
 }
 
@@ -1504,7 +1423,6 @@ img.zoom-img {
 .toc-con div::-webkit-scrollbar-thumb {
     background-color: rgb(0 0 0 / 10%)
 }
-
 /* page style */
 #page {
     margin-bottom: 24px
@@ -1534,6 +1452,8 @@ img.zoom-img {
     color: #929292
 }
 
+/* 一些适应各屏幕尺寸显示效果的样式
+---------------------------------------------------*/
 @media all and (max-width: 1200px) and (min-width: 992px) {
 
     /* mh is a class that is convenient for hiding elements on medium and small screens */
@@ -1549,7 +1469,6 @@ img.zoom-img {
     .bloginfo-name {
         margin-top: 32px
     }
-
     /* Calendar in medium screen state */
     #calendar {
         margin-left: -8px;
@@ -1571,7 +1490,6 @@ img.zoom-img {
         margin: -2px;
         padding-left: 2px
     }
-
     /* mh is a class that is convenient for hiding elements on medium and small screens */
     .mh {
         display: none
@@ -1619,23 +1537,19 @@ img.zoom-img {
     .loglist-tag {
         margin-top: 10px
     }
-
     /* The bottom margin of the blog header */
     .blog-header {
         margin-bottom: 1.6rem
     }
-
     /* Changes in the comment column */
     .comment-post input {
         padding: 0.5em 0.75em
     }
-
     /* Sidebar Calendar */
     #calendar {
         margin-left: 0
     }
 }
-
 /* The zoom and other adjustment styles made on some unusual devices in the middle size of the tablet */
 @media all and (max-width: 991px) and (min-width: 768px) {
 
@@ -1650,14 +1564,12 @@ img.zoom-img {
         width: 255px;
         margin-left: -47px
     }
-
     /* The comment content of the latest comment is slightly smaller */
     .logcom-latest-time {
         max-width: 60px
     }
 
 }
-
 /* Compromise zooming and other adjustments made to some extremely small screens */
 @media all and (max-width: 349px) {
 
@@ -1677,7 +1589,6 @@ img.zoom-img {
         font-size: small
     }
 }
-
 /* The display style of ordinary mobile devices */
 @media all and (max-width: 577px) {
     .dropdown-menus .list-menu {
@@ -1687,7 +1598,6 @@ img.zoom-img {
     .nav-link {
         padding: 8px;
     }
-
     /* The inner margin of the card container is slightly smaller */
     .card-padding {
         padding: 14px;
@@ -1738,7 +1648,6 @@ img.zoom-img {
     .loglist-content p {
         font-size: 14px;
     }
-
     /* Comment related */
     .comment-post #comment {
         border-radius: 6px;
@@ -1769,7 +1678,6 @@ img.zoom-img {
     .comment .comment-post {
         display: table
     }
-
     /* New style of comment list */
     .arrow {
         display: none
@@ -1785,19 +1693,16 @@ img.zoom-img {
         height: 30px;
         width: 30px;
     }
-
     /* Summary overflow peration is a bit more cropped on small screens */
     .subtitle-overflow {
         max-width: 80%
     }
-
     /* Optimize the display of the drop-down menu at the top of the webpage on the mobile terminal */
     .dropdown-menus .list-menu {
         padding: 0px;
         letter-spacing: 2px
     }
 }
-
 /* Styles for mobile toc */
 @media all and (max-width: 1274px) {
     .toc-con {

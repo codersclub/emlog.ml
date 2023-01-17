@@ -15,10 +15,22 @@ require_once 'globals.php';
 $Store_Model = new Store_Model();
 
 if (empty($action)) {
-	$tag = isset($_GET['tag']) ? addslashes($_GET['tag']) : '';
-	$keyword = isset($_GET['keyword']) ? htmlspecialchars(addslashes($_GET['keyword'])) : '';
-	$templates = $Store_Model->getTemplates($tag, $keyword);
+	$tag = Input::getStrVar('tag');
+	$page = Input::getIntVar('page', 1);
+	$keyword = Input::getStrVar('keyword');
+	$author_id = Input::getStrVar('author_id');
+
+	$r = $Store_Model->getTemplates($tag, $keyword, $page, $author_id);
+	$templates = $r['templates'];
+	$count = $r['count'];
 	$sub_title = lang('template') . ' ' . ($tag === 'free' ? lang('free_zone') : lang('paid_zone'));
+
+	$subPage = '';
+	foreach ($_GET as $key => $val) {
+		$subPage .= $key != 'page' ? "&$key=$val" : '';
+	}
+
+	$pageurl = pagination($count, 30, $page, "store.php?{$subPage}&page=");
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_tpl'));
@@ -27,10 +39,21 @@ if (empty($action)) {
 }
 
 if ($action === 'plu') {
-	$tag = isset($_GET['tag']) ? addslashes($_GET['tag']) : '';
-	$keyword = isset($_GET['keyword']) ? htmlspecialchars(addslashes($_GET['keyword'])) : '';
-	$plugins = $Store_Model->getPlugins($tag, $keyword);
-	$sub_title = lang('plugin') . ' ' . ($tag === 'free' ? lang('free_zone') : lang('paid_zone'));
+	$tag = Input::getStrVar('tag');
+	$page = Input::getIntVar('page', 1);
+	$keyword = Input::getStrVar('keyword');
+	$author_id = Input::getStrVar('author_id');
+
+	$r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id);
+	$plugins = $r['plugins'];
+	$count = $r['count'];
+	$sub_title = lang('plugin') . ' ' . ($tag === 'free' ? lang('free_zone') : lang('paid_zone'));	
+
+	$subPage = '';
+	foreach ($_GET as $key => $val) {
+		$subPage .= $key != 'page' ? "&$key=$val" : '';
+	}
+	$pageurl = pagination($count, 50, $page, "store.php?{$subPage}&page=");
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_plu'));
@@ -38,7 +61,20 @@ if ($action === 'plu') {
 	View::output();
 }
 
+if ($action === 'mine') {
+	$addons = $Store_Model->getMyAddon();
+	$sub_title = '已购应用';
+
+	include View::getAdmView('header');
+	require_once(View::getAdmView('store_mine'));
+	include View::getAdmView('footer');
+	View::output();
+}
+
 if ($action === 'error') {
+	$keyword = '';
+	$sub_title = '';
+
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_tpl'));
 	include View::getAdmView('footer');
@@ -75,14 +111,11 @@ if ($action === 'install') {
 	switch ($ret) {
 		case 0:
 			emDirect($store_path . 'active=1&tag=free');
-			break;
 		case 1:
 		case 2:
 			emDirect($store_path . 'error_dir=1');
-			break;
 		case 3:
 			emDirect($store_path . 'error_zip=1');
-			break;
 		default:
 			emDirect($store_path . 'error_source=1');
 	}

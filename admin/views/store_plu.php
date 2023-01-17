@@ -28,8 +28,9 @@
 </div>
 <div class="row mb-4 ml-1 justify-content-between">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link" href="./store.php?tag=free"><?= lang('ext_store_templates') ?></a></li>
-        <li class="nav-item"><a class="nav-link active" href="./store.php?action=plu&tag=free"><i class="icofont-plugin"></i> <?= lang('ext_store_plugins') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php"><?= lang('ext_store_templates') ?></a></li>
+        <li class="nav-item"><a class="nav-link active" href="./store.php?action=plu"><i class="icofont-plugin"></i> <?= lang('ext_store_plugins') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine">已购应用</a></li>
     </ul>
     <form action="./store.php" method="get">
         <div class="form-inline search-inputs-nowrap">
@@ -44,6 +45,7 @@
     </form>
 </div>
 <div class="row mb-3 ml-1">
+    <a href="./store.php?action=plu" class="badge badge-success m-1 p-2 active"><?= lang('all') ?></a>
     <a href="./store.php?action=plu&tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
     <a href="./store.php?action=plu&tag=paid" class="badge badge-warning m-1 ml-2 p-2"><?= lang('paid_zone') ?></a>
 </div>
@@ -64,23 +66,22 @@
                         <p class="card-text text-muted small">
 							<?= $v['info'] ?><br><br>
 							<?= lang('price') ?>: <?= $v['price'] > 0 ? $v['price'] . ' ' . lang('price_unit') : lang('free') ?><br>
-							<?= lang('developer') ?>: <?= $v['author'] ?><br>
+							<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
 							<?= lang('version_number') ?>: <?= $v['ver'] ?><br>
 							<?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>
                         <p class="card-text text-right">
 							<?php if ($v['price'] > 0): ?>
-<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank">&yen;<?= $v['price'] ?>
-                                    , <?= lang('go_buy') ?></a>
+<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank">&yen;<?= $v['price'] ?>, <?= lang('go_buy') ?></a>
 							<?php else: ?>
-                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=plugin"
-                                   class="btn btn-success btn-sm"><?= lang('install_free') ?></a>
+                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=plugin" class="btn btn-success btn-sm"><?= lang('install_free') ?></a>
 							<?php endif ?>
                         </p>
                     </div>
                 </div>
             </div>
 		<?php endforeach ?>
+        <div class="col-md-12 page my-5"><?= $pageurl ?> (有<?= $count ?>个插件)</div>
 	<?php else: ?>
         <div class="col-md-12">
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>
