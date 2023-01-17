@@ -30,7 +30,7 @@
     <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link" href="./store.php"><?= lang('ext_store_templates') ?></a></li>
         <li class="nav-item"><a class="nav-link active" href="./store.php?action=plu"><i class="icofont-plugin"></i> <?= lang('ext_store_plugins') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine">已购应用</a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
     <form action="./store.php" method="get">
         <div class="form-inline search-inputs-nowrap">
@@ -66,7 +66,7 @@
                         <p class="card-text text-muted small">
 							<?= $v['info'] ?><br><br>
 							<?= lang('price') ?>: <?= $v['price'] > 0 ? $v['price'] . ' ' . lang('price_unit') : lang('free') ?><br>
-							<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
+<!--vot-->						<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
 							<?= lang('version_number') ?>: <?= $v['ver'] ?><br>
 							<?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>
@@ -81,7 +81,7 @@
                 </div>
             </div>
 		<?php endforeach ?>
-        <div class="col-md-12 page my-5"><?= $pageurl ?> (有<?= $count ?>个插件)</div>
+<!--vot-->        <div class="col-md-12 page my-5"><?= $pageurl ?> (<?=lang('have')?> <?= $count ?><?=lang('_plugins')?>)</div>
 	<?php else: ?>
         <div class="col-md-12">
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>

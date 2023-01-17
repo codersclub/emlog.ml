@@ -63,7 +63,7 @@ if ($action === 'plu') {
 
 if ($action === 'mine') {
 	$addons = $Store_Model->getMyAddon();
-	$sub_title = '已购应用';
+/*vot*/	$sub_title = ('my_apps');
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_mine'));

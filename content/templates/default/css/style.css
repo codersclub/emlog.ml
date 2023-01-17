@@ -12,12 +12,12 @@
 /* Some variables */
 * {
     --marRadius: 8px;              /* Card rounded corners */
-	--conBgcolor: #ffffff;   /* 导航、卡片、内容的背景颜色 */
-	--bodyBground: #f5f5f6;  /* 页面背景颜色 */
-	--fontColor: #5a5c69;    /* 普通文本的颜色 */
-	--aColor:  #333333;      /* a 标签的颜色 */
-	--aHoverColor:  #f6607d; /* a 标签 hover 状态的颜色 */
-	--lightColor: #929292      /* 比较浅一点的文本颜色 */
+	--conBgcolor: #ffffff;   /* Background color for navigation, cards, content */
+	--bodyBground: #f5f5f6;  /* Page background color */
+	--fontColor: #5a5c69;    /* Normal text color */
+	--aColor:  #333333;      /* Link color (a tag) */
+	--aHoverColor:  #f6607d; /* Link hover color */
+	--lightColor: #929292      /* Lighter text color */
 }
 /* Define width = (border+padding) for all elements to facilitate subsequent calculations */
 * {
@@ -1452,7 +1452,7 @@ img.zoom-img {
     color: #929292
 }
 
-/* 一些适应各屏幕尺寸显示效果的样式
+/* Some styles to adapt to the display effect of each screen size
 ---------------------------------------------------*/
 @media all and (max-width: 1200px) and (min-width: 992px) {
 

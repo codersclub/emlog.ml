@@ -2,34 +2,34 @@
 	exit('error!');
 } ?>
 <?php if (isset($_GET['active'])): ?>
-    <div class="alert alert-success">安装成功</div><?php endif ?>
+<!--vot-->    <div class="alert alert-success"><?=lang('install_ok')?></div><?php endif ?>
 <?php if (isset($_GET['error_param'])): ?>
-    <div class="alert alert-danger">安装失败</div><?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed')?></div><?php endif ?>
 <?php if (isset($_GET['error_down'])): ?>
-    <div class="alert alert-danger">安装失败，无法下载安装包</div><?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_download')?></div><?php endif ?>
 <?php if (isset($_GET['error_dir'])): ?>
-    <div class="alert alert-danger">安装失败，无法写文件，请检查content/下目录是否可写</div><?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_write')?></div><?php endif ?>
 <?php if (isset($_GET['error_zip'])): ?>
-    <div class="alert alert-danger">安装失败，无法解压，请安装php的Zip扩展</div><?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_zip')?></div><?php endif ?>
 <?php if (isset($_GET['error_source'])): ?>
-    <div class="alert alert-danger">安装失败，不是有效的安装包</div><?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('install_invalid_ext')?></div><?php endif ?>
 
 <?php if (isset($_GET['error'])): ?>
     <div class="container-fluid">
         <div class="text-center">
-            <p class="lead text-gray-800 mb-5">商店暂不可用，可能是网络问题</p>
-            <a href="./">&larr; 返回首页</a>
+<!--vot-->            <p class="lead text-gray-800 mb-5"><?=lang('store_unavailable')?></p>
+<!--vot-->            <a href="./">&larr; <?=lang('back_home')?></a>
         </div>
     </div>
 <?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">应用商店 - <?= $sub_title ?></h1>
+<!--vot-->    <h1 class="h3 mb-0 text-gray-800"><?=lang('app_store')?> - <?= $sub_title ?></h1>
 </div>
 <div class="row mb-4 ml-1">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link" href="./store.php?tag=free">模板主题</a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu&tag=free">扩展插件</a></li>
-        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine">已购应用</a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?tag=free"><?=lang('ext_store_templates')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu&tag=free"><?=lang('ext_store_plugins')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
 <div class="row">
@@ -46,15 +46,15 @@
                         <p class="card-text"><?= $v['name'] ?></p>
                         <p class="card-text text-muted small">
                             <span class="small"><?= $v['info'] ?></span><br><br>
-                            开发者：<?= $v['author'] ?><br>
-                            版本号：<?= $v['ver'] ?><br>
-                            更新时间：<?= $v['update_time'] ?><br>
+<!--vot-->                            <?=lang('developer')?>: <?= $v['author'] ?><br>
+<!--vot-->                            <?=lang('version_number')?>: <?= $v['ver'] ?><br>
+<!--vot-->                            <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
                         </p>
                         <p class="card-text text-right">
 							<?php if (!empty($v['download_url'])): ?>
-                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=<?= $v['type'] ?>" class="btn btn-success btn-sm">安装</a>
+<!--vot-->                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=<?= $v['type'] ?>" class="btn btn-success btn-sm"><?=lang('install')?></a>
 							<?php else: ?>
-                                <a href="#" class="btn btn-success btn-sm">联系作者安装</a>
+<!--vot-->                                <a href="#" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
 							<?php endif; ?>
                         </p>
                     </div>
@@ -63,7 +63,7 @@
 		<?php endforeach ?>
 	<?php else: ?>
         <div class="col-md-12">
-            <div class="alert alert-info">你还没有购买任何应用。</div>
+<!--vot-->            <div class="alert alert-info"><?=lang('no_my_apps')?></div>
         </div>
 	<?php endif ?>
 </div>

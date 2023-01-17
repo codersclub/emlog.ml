@@ -324,7 +324,7 @@ var myBlog = {
 	* Some settings of the mobile toc
 	*/
 	tocMobileSet: function () {
-		if (window.outerWidth === 0) return  // Chrome 浏览器对新窗口打开的页面，会设置 width 为 0
+		if (window.outerWidth === 0) return  // Chrome browser will set the width to 0 for pages opened in new windows
 		if (window.outerWidth > 1275) return
 		$(".toc-con").toggle()
 $("[toc-date='title']").append('<a class="toc-link">[' + lang('toc') + ']</a>')
