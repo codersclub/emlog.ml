@@ -66,7 +66,7 @@
                         <p class="card-text text-muted small">
 							<?= $v['info'] ?><br><br>
 							<?= lang('price') ?>: <?= $v['price'] > 0 ? $v['price'] . ' ' . lang('price_unit') : lang('free') ?><br>
-<!--vot-->						<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
+<!--vot-->						<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
 							<?= lang('version_number') ?>: <?= $v['ver'] ?><br>
 							<?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>

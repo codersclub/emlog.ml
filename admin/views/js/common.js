@@ -264,9 +264,9 @@ function autosave(act) {
     $("#savedf").attr("disabled", "disabled");
     $.post(url, querystr, function (data) {
         data = $.trim(data);
-        var isresponse = /autosave\_gid\:\d+\_df\:\d*\_/;
+        var isresponse = /.*autosave\_gid\:\d+\_.*/;
         if (isresponse.test(data)) {
-            var getvar = data.match(/\_gid\:([\d]+)\_df\:([\d]*)\_/);
+            var getvar = data.match(/\_gid\:([\d]+)\_/);
             var logid = getvar[1];
             var d = new Date();
             var h = d.getHours();
@@ -281,9 +281,8 @@ function autosave(act) {
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-            $("#msg").html(lang('save_system_error')).addClass("alert-danger");
+/*vot*/            $("#save_info").html(lang('save_system_error')).addClass("alert-danger");
             $('title').text(lang('save_failed') + titleText);
-            alert(lang('save_failed_prompt'))
         }
     });
     if (act == 1) {

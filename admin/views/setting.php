@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label><?= lang('site_address') ?>:</label>
-                <input class="form-control" value="<?= $blogurl ?>" name="blogurl">
+                <input class="form-control" value="<?= $blogurl ?>" name="blogurl" type="url">
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="detect_url" id="detect_url" <?= $conf_detect_url ?> />
@@ -85,7 +85,7 @@
                 <label><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
-				<?= lang('comments_per_page') ?>: <input maxlength="5" style="width:50px;" class="form-control mx-sm-3" value="<?= $comment_pnum ?>" name="comment_pnum"/>
+                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:60px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
             </div>
             <div class="form-group form-inline">
 				<?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
@@ -94,7 +94,7 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-				<?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval"
+                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width: 60px;" type="number"/>
                                                                                  style="width: 100px;"/>
             </div>
 
@@ -103,12 +103,11 @@
             <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('posts_per_page') ?></label>
-                <input class="form-control mx-sm-3" value="<?= $index_lognum ?>" name="index_lognum"/>
+                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $index_lognum ?>" name="index_lognum" type="number"/>
             </div>
 
             <div class="form-group form-inline">
-                RSS <?= lang('export') ?> <input maxlength="5" style="width:50px;" value="<?= $rss_output_num ?>" class="form-control mx-sm-3"
-                                                 name="rss_output_num"/> <?= lang('rss_output_num') ?>
+                RSS <?= lang('export') ?> <input maxlength="5" style="width:60px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control mx-sm-3">
                     <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
                     <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>

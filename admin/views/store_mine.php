@@ -54,7 +54,7 @@
 							<?php if (!empty($v['download_url'])): ?>
 <!--vot-->                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=<?= $v['type'] ?>" class="btn btn-success btn-sm"><?=lang('install')?></a>
 							<?php else: ?>
-<!--vot-->                                <a href="#" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
+<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
 							<?php endif; ?>
                         </p>
                     </div>

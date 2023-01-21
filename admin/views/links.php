@@ -37,7 +37,7 @@
 						doAction('adm_link_display');
 						?>
                         <tr>
-                            <td><input class="form-control em-small" name="link[<?= $value['id'] ?>]" value="<?= $value['taxis'] ?>" maxlength="4"/></td>
+                            <td><input class="form-control" style="width:60px;" name="link[<?= $value['id'] ?>]" value="<?= $value['taxis'] ?>" maxlength="5" type="number"/></td>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editModal"
                                    data-linkid="<?= $value['id'] ?>"
@@ -51,9 +51,9 @@
                             </td>
                             <td>
 								<?php if ($value['hide'] == 'n'): ?>
-                                    <a href="link.php?action=hide&amp;linkid=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('visible') ?></a>
+/*vot*/					<a href="link.php?action=hide&amp;linkid=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('hide') ?></a>
 								<?php else: ?>
-                                    <a href="link.php?action=show&amp;linkid=<?= $value['id'] ?>" class="badge badge-warning"><?= lang('hidden') ?></a>
+/*vot*/                                 <a href="link.php?action=show&amp;linkid=<?= $value['id'] ?>" class="badge badge-warning"><?= lang('show') ?></a>
 								<?php endif ?>
                                 <a href="javascript: em_confirm(<?= $value['id'] ?>, 'link', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                             </td>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="form-group">
                         <label for="template"><?= lang('address') ?></label>
-                        <input class="form-control" id="siteurl" maxlength="255" name="siteurl" required>
+                        <input class="form-control" id="siteurl" maxlength="255" name="siteurl" type="url" required>
                     </div>
                     <div class="form-group">
                         <label for="alias"><?= lang('description') ?></label>

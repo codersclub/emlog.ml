@@ -13,7 +13,7 @@ $lang = array(
 'post_manage'                             => '文章管理',//'Post list',
 'draft_manage'                            => '草稿管理',//'Draft management',
 'no_permission'                           => '权限不足！',//'Insufficient permissions!',
-'check'                                   => '审核',//'Show',
+'check'                                   => '审核',//'Check',
 'uncheck'                                 => '驳回',//'Uncheck',
 'view_by_tag'                             => '按标签查看',//'View by tag',
 'article_add'                             => '写新文章',//'Write a new article',
@@ -486,6 +486,7 @@ $lang = array(
 'edit_link'                               => '编辑链接',//'Edit link',
 'click_to_hide'                           => '点击隐藏链接',//'Click to hide',
 'visible'                                 => '显示',//'Visible',
+'show'                                    => '显示',//'Show',
 'click_to_show'                           => '点击显示链接',//'Click to show',
 'view_link'                               => '查看链接',//'View link',
 'no_links'                                => '还没有添加链接',//'No link added yet',
@@ -794,7 +795,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/store_mine.php
-'contact_to_install'		=> '联系作者安装',//'Contact the author to install',
+'contact_to_install'		=> '请联系作者安装',//'Please contact the author to install',
 'no_my_apps'			=> '你还没有购买任何应用。',//'You have not purchased any apps.',
 
 

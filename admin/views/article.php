@@ -33,6 +33,8 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
     <div class="alert alert-success"><?= lang('verified_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_unck'])): ?>
     <div class="alert alert-success"><?= lang('rejected_ok') ?></div><?php endif ?>
+<?php if (isset($_GET['error_post_per_day'])): ?>
+    <div class="alert alert-danger">超出每日发文数量</div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('draft_manage') : lang('post_manage') ?></h1>
     <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
