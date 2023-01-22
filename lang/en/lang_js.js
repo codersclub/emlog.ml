@@ -32,7 +32,7 @@ var LNG = {
 // 'saving'		: 'Saving',//'正在保存',
     'saving': 'Saving...',//'正在保存中...',
     'saved_ok_time': 'Saved at ',//'保存于：',
-    'save_system_error': 'Error while saving... Unable to save.',//'网络或系统出现异常...保存可能失败',
+    'save_system_error': 'Failed to save, there may be an exception in the system or the daily posting limit has been reached',//'保存失败，可能系统出现异常或者达到每日发文限额',
     'too_quick': 'Do not operate frequently!',//'请勿频繁操作！',
     'saving_in': '[Saving] ',//'[保存中] ',
     'saved_ok': '[Saved successfully]: ',//'[保存成功] ',
