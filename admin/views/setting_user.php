@@ -32,7 +32,7 @@
                 <label class="form-check-label"><?= lang('writer_need_approve') ?></label>
             </div>
             <div class="form-group form-inline">
-                <label>注册用户限制24小时发文数量（包括草稿）：</label>
+                <label><?=lang('limit_daily_posts')?>:</label>
                 <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" name="posts_per_day"/>
             </div>
             <div class="form-group">
