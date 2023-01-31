@@ -85,7 +85,7 @@
                 <label><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:60px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
+                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
             </div>
             <div class="form-group form-inline">
 				<?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
@@ -94,7 +94,7 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width: 60px;" type="number"/>
+                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width: 80px;" type="number"/>
                                                                                  style="width: 100px;"/>
             </div>
 
@@ -103,11 +103,11 @@
             <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('posts_per_page') ?></label>
-                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $index_lognum ?>" name="index_lognum" type="number"/>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number"/>
             </div>
 
             <div class="form-group form-inline">
-                RSS <?= lang('export') ?> <input maxlength="5" style="width:60px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
+                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control mx-sm-3">
                     <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
                     <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
@@ -130,9 +130,17 @@
             </div>
             <div class="form-group form-inline">
                 <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> /> <?= lang('thumbnail_max_size') ?>
-                <input maxlength="5" style="width:60px;" class="form-control mx-sm-3" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
-                <input maxlength="5" style="width:60px;" class="form-control mx-sm-3" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
+                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
+                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
             </div>
+            <hr>
+
+            <h4>其他设置</h4>
+            <div class="form-group form-inline">
+                <label>后台每页展示条目数量</label>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number"/> （影响后台文章、评论、用户列表）
+            </div>
+
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
             <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
         </form>

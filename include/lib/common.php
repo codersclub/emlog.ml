@@ -364,22 +364,21 @@ function subContent($content, $len, $clean = 0) {
 
 /**
  * Time transformation function
+ * @param $timestamp int Timestamp (seconds)
+ * @param $format
+ * @return false|string
  */
-function smartDate($datetemp, $dstr = 'Y-m-d H:i') {
-	$sec = time() - $datetemp;
-	$hover = floor($sec / 3600);
-	if ($hover == 0) {
-		$min = floor($sec / 60);
-		if ($min == 0) {
-			$op = $sec . lang('_sec_ago');
-		} else {
-			$op = $min . lang('_min_ago');
-		}
-	} elseif ($hover < 24) {
-		$op = lang('about_') . $hover . lang('_hour_ago');
-	} else {
-		$op = date($dstr, $datetemp);
-	}
+function smartDate($timestamp, $format = 'Y-m-d H:i') {
+	$sec = time() - $timestamp;
+    if ($sec < 60) {
+	$op = $sec . lang('_sec_ago');
+    } elseif ($sec < 3600) {
+        $op = floor($sec / 60) . lang('_min_ago');
+    } elseif ($sec < 3600 * 24) {
+        $op = lang('about_') . floor($sec / 3600) . lang('_hour_ago');
+    } else {
+        $op = date($format, $timestamp);
+    }
 	return $op;
 }
 
@@ -658,28 +657,12 @@ if (!function_exists('getGravatar')) {
 
 /**
  * Gets a number of days of the specified month
+ * @param $month string 月份 01-12
+ * @param $year string 年份 0000
+ * @return false|string
  */
 function getMonthDayNum($month, $year) {
-	$month = (int)$month;
-	$year = (int)$year;
-
-	$months_map = array(1 => 31, 3 => 31, 4 => 30, 5 => 31, 6 => 30, 7 => 31, 8 => 31, 9 => 30, 10 => 31, 11 => 30, 12 => 31);
-	if (array_key_exists($month, $months_map)) {
-		return $months_map[$month];
-	}
-
-	if ($year % 100 === 0) {
-		if ($year % 400 === 0) {
-			return 29;
-		}
-		return 28;
-	}
-
-	if ($year % 4 === 0) {
-		return 29;
-	}
-
-	return 28;
+	return date("t", strtotime($year . $month . '01'));
 }
 
 /**
