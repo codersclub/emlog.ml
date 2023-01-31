@@ -657,8 +657,8 @@ if (!function_exists('getGravatar')) {
 
 /**
  * Gets a number of days of the specified month
- * @param $month string 月份 01-12
- * @param $year string 年份 0000
+ * @param $month string Month 01-12
+ * @param $year string Year 0000
  * @return false|string
  */
 function getMonthDayNum($month, $year) {

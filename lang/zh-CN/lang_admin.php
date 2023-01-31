@@ -554,7 +554,7 @@ $lang = array(
 'nav_url_invalid'                         => '导航地址格式错误(需包含http等前缀)',//'Navigation address format error (must include the prefix http, etc.)',
 'nav_edit'                                => '编辑导航',//'Edit navigation',
 'hide'                                    => '隐藏',//'Hide',
-'hidden'                                  => '隐藏',//'Hidden',
+'hidden'                                  => '已隐藏',//'Hidden',
 'nav_hide_click'                          => '点击隐藏导航',//'Click to hide navigation',
 'nav_show_click'                          => '点击显示导航',//'Click to show navigation',
 'nav_no'                                  => '还没有添加导航',//'Has not yet added navigation',
@@ -714,6 +714,9 @@ $lang = array(
 'upload_settings'                         => '上传设置',//'Upload settings',
 'comment_settings'                        => '评论设置',//'Comment settings',
 'rss_url'				  => 'RSS地址(用于RSS阅读器订阅你的站点内容)',//'RSS URL (for RSS readers to subscribe to your site content)',
+'other_settings'			=> '其他设置',//'Other settings',
+'admin_per_page'			=> '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
+'admin_per_page_tips'			=> '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
 
 //---------------------------
 //admin/views/setting_api.php

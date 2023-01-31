@@ -715,6 +715,9 @@ $lang = array(
 'upload_settings'                         => 'Upload settings',//'上传设置',
 'comment_settings'                        => 'Comment settings',//'评论设置',
 'rss_url'				  => 'RSS URL (for RSS readers to subscribe to your site content)',//'RSS地址(用于RSS阅读器订阅你的站点内容)',
+'other_settings'			=> 'Other settings',//'其他设置',
+'admin_per_page'			=> 'The number of items displayed per page in the admin panel',//'后台每页展示条目数量',
+'admin_per_page_tips'			=> '(Affect background articles, comments, user lists)',//'（影响后台文章、评论、用户列表）',
 
 //---------------------------
 //admin/views/setting_api.php

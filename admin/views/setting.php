@@ -135,10 +135,10 @@
             </div>
             <hr>
 
-            <h4>其他设置</h4>
+<!--vot-->            <h4><?= lang() ?><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
-                <label>后台每页展示条目数量</label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number"/> （影响后台文章、评论、用户列表）
+<!--vot-->                <label><?=lang('admin_per_page')?></label>
+<!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number"/> <?=lang('admin_per_page_tips')?>
             </div>
 
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>

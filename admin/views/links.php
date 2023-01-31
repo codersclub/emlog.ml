@@ -45,7 +45,7 @@
                                    data-siteurl="<?= $value['siteurl'] ?>"
                                    data-description="<?= $value['description'] ?>"><?= $value['sitename'] ?></a>
 								<?php if ($value['hide'] === 'y'): ?>
-                                    <br/><span class="badge badge-warning">已隐藏</span>
+<!--vot-->                          <br/><span class="badge badge-warning"><?= lang('hidden') ?></span>
 								<?php endif ?>
                             </td>
                             <td><?= $value['description'] ?></td>
