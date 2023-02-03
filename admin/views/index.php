@@ -121,9 +121,11 @@
     <div class="row">
 		<?php if (!Register::isRegLocal()) : ?>
             <div class="col-lg-6 mb-4">
-                <div class="card bg-danger text-white shadow">
+                <div class="card shadow">
+                    <div class="card-header bg-warning">
+                        <h6 class="my-0"><?= lang('emlog_reg_advantages') ?></h6>
+                    </div>
                     <div class="card-body">
-                        <h4><?= lang('emlog_reg_advantages') ?></h4>
                         <div><?= lang('advantage1') ?></div>
                         <div><?= lang('advantage2') ?></div>
                         <div><?= lang('advantage3') ?></div>
