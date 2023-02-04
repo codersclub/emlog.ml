@@ -94,7 +94,7 @@ $lang = array(
 'search'		=> 'Поиск',//'搜索',
 'widget_custom'		=> 'Произвольный виджет',//'自定义组件',
 'search_placeholder'	=> 'Искомые слова... и Enter',//'Search...and Enter',
-'pro_unregistered'	=> ' Незарегистрированная PRO версия',//' 未注册的PRO版本',
+'unregistered_version'	=> 'Незарегистрированная версия ',//'&#x672A;&#x6CE8;&#x518C;&#x7684;&#x7248;&#x672C; ',
 
 //---------------------------
 //include/lib/sendmail.php
