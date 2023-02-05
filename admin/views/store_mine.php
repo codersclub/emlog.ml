@@ -27,8 +27,8 @@
 </div>
 <div class="row mb-4 ml-1">
     <ul class="nav nav-pills">
-<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?tag=free"><?=lang('ext_store_templates')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu&tag=free"><?=lang('ext_store_plugins')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('ext_store_templates')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
 <!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>

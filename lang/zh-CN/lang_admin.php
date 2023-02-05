@@ -99,7 +99,7 @@ $lang = array(
 'plugin_view'                             => '查看插件',//'View Plugin',
 'free_zone'                               => '免费区',//'Free zone',
 'paid_zone'                               => '付费区',//'Paid zone',
-'my_apps'				=> '已购应用',//'Purchased apps',
+'my_apps'				=> '我的已购',//'My purchases',
 
 //---------------------------
 //admin/style.php

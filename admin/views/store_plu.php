@@ -60,19 +60,17 @@
                         <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<?= $icon ?>">
                     </a>
                     <div class="card-body">
-                        <p class="card-text"><?= $v['name'] ?>
-<!--vot-->			<?= $v['price'] > 0 ? '<span class="badge badge-warning">' . $v['price'] . '&yen;</span>' : '<span class="badge badge-success">' . lang('free') . '</span>' ?>
-                        </p>
+                        <p class="card-text"><?= $v['name'] ?></p>
                         <p class="card-text text-muted small">
 							<?= $v['info'] ?><br><br>
-							<?= lang('price') ?>: <?= $v['price'] > 0 ? $v['price'] . ' ' . lang('price_unit') : lang('free') ?><br>
-<!--vot-->						<?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
-							<?= lang('version_number') ?>: <?= $v['ver'] ?><br>
-							<?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
+<!--vot-->                  <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+<!--vot-->		    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
+			    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
+			    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>
                         <p class="card-text text-right">
 							<?php if ($v['price'] > 0): ?>
-<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank">&yen;<?= $v['price'] ?>, <?= lang('go_buy') ?></a>
+<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-warning btn-sm" target="_blank"><?= lang('go_buy') ?></a>
 							<?php else: ?>
                                 <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=plugin" class="btn btn-success btn-sm"><?= lang('install_free') ?></a>
 							<?php endif ?>
