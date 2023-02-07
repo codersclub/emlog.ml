@@ -148,6 +148,7 @@ $lang = array(
 'new_article_title'          => '文章标题是：',//'The article title is: ',
 'new_comment_review'         => '你的站点收到新的评论',//'Your site has received new comments',
 'new_comment_is'             => '评论内容是：',//'The comment is: ',
+'from_article'			=> '来自文章',//'From article: ',
 
 //---------------------------------------
 //include/service/user.php

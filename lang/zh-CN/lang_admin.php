@@ -429,6 +429,7 @@ $lang = array(
 'advantage4'                              => '4. 加入专属Q群，获得官方技术指导问题解答。',//'4. Join the exclusive Q group and get answers to official technical guidance questions.',
 'advantage5'                              => '5. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',//'5. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',
 'register_now'                            => '现在去注册',//'Register now',
+'click_to_register'			=> '点击去注册',//'click to register',
 'emlog_registered_ok'                     => '恭喜，您的EMLOG已经完成注册。',//'Congratulations, your EMLOG has been registered.',
 'em_reg_ok'                               => '注册成功，请登录',//'Registration is successful, please log in',
 'register_emlog'                          => '注册EMLOG PRO',//'Register EMLOG PRO',
@@ -735,7 +736,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_mail.php
-'comment_new_notify'                      => '新评论邮件通知（仅发送到创始人邮箱）',//'Email notification of new comments (sent to founder email only)',
+'comment_new_notify'                      => '新评论邮件通知（仅发送到文章作者邮箱）',//'Email notification of new comments (sent to the article author email only)',
 'article_new_notify'                      => '新文章投稿邮件通知（仅发送到创始人邮箱）',//'Email notification of new articles submitted (sent to founder email only)',
 
 //---------------------------

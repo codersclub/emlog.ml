@@ -19,6 +19,8 @@
     <div class="alert alert-danger"><?= lang('template_select_zip') ?></div><?php endif ?>
 <?php if (isset($_GET['error_e'])): ?>
     <div class="alert alert-danger"><?= lang('template_non_standard') ?></div><?php endif ?>
+<?php if (isset($_GET['error_f'])): ?>
+    <div class="alert alert-danger">上传安装包大小超出PHP限制</div><?php endif ?>
 <?php if (isset($_GET['error_c'])): ?>
     <div class="alert alert-danger">
 		<?= lang('template_no_zip') ?>

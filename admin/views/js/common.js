@@ -479,22 +479,6 @@ function imgPasteExpand(thisEditor) {
 hooks.addAction("loaded", imgPasteExpand);
 hooks.addAction("page_loaded", imgPasteExpand);
 
-// Setting interface, if you set "Automatic address detection", set input to read-only to indicate that this item is invalid
-$(document).ready(function () {
-    // Check the page after loading
-    if ($("#detect_url").prop("checked")) {
-        $("[name=blogurl]").attr("readonly", "readonly")
-    }
-
-    $("#detect_url").click(function () {
-        if ($(this).prop("checked")) {
-            $("[name=blogurl]").attr("readonly", "readonly")
-        } else {
-            $("[name=blogurl]").removeAttr("readonly")
-        }
-    })
-})
-
 function checkupdate() {
     $("#upmsg").html("").addClass("spinner-border text-primary");
     $.get("./upgrade.php?action=check_update", function (result) {
@@ -502,8 +486,6 @@ function checkupdate() {
 /*vot*/            $("#upmsg").html(lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register') + "</a>").removeClass();
         } else if (result.code == 1002) {
 /*vot*/            $("#upmsg").html(lang('is_latest_version')).removeClass();
-        } else if (result.code == 1003) {
-/*vot*/            $("#upmsg").html(lang('update_expired') + ", <a href=\"https://emlog.io/\" target=\"_blank\">" + lang('log_in_renew') + "</a>").removeClass();
         } else if (result.code == 200) {
 /*vot*/            $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://emlog.io/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "', '" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
         } else {
@@ -529,3 +511,35 @@ function doup(source, upsql) {
         }
     });
 }
+
+$(document).ready(function () {
+    // Check once the page is loaded
+    // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid
+    if ($("#detect_url").prop("checked")) {
+        $("[name=blogurl]").attr("readonly", "readonly")
+    }
+
+    $("#detect_url").click(function () {
+        if ($(this).prop("checked")) {
+            $("[name=blogurl]").attr("readonly", "readonly")
+        } else {
+            $("[name=blogurl]").removeAttr("readonly")
+        }
+    })
+
+    // store app install
+    $('.installBtn').click(function (e) {
+        e.preventDefault();
+        let link = $(this);
+        let down_url = link.data('url');
+        let type = link.data('type');
+/*vot*/        link.text(lang('installing'));
+        link.prev(".installMsg").html("").addClass("spinner-border text-primary");
+
+        let url = './store.php?action=install&type=' + type + '&source=' + down_url;
+        $.get(url, function (data) {
+/*vot*/            link.text(lang('install_free'));
+            link.prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
+        });
+    });
+})

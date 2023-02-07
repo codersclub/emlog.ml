@@ -50,25 +50,27 @@ class Notice {
 		return false;
 	}
 
-	public static function sendNewCommentMail($comment) {
+	public static function sendNewCommentMail($comment, $gid) {
 		if (!self::smtpServerReady()) {
 			return false;
 		}
 		if (Option::get('mail_notice_comment') === 'n') {
 			return false;
 		}
-		$email = self::getFounderEmail();
-		if (!$email) {
-			return false;
-		}
-		$title = lang('new_comment_review');
-		$content = lang('new_comment_is') . $comment;
+
 		$sendmail = new SendMail();
-		$ret = $sendmail->send($email, $title, $content);
-		if ($ret) {
-			return true;
+/*vot*/		$title = lang('new_comment_review');
+/*vot*/		$content = lang('new_comment_is') . $comment;
+
+		$r = self::getArticleInfo($gid);
+		if ($r) {
+/*vot*/			$content .= "<br> " . lang('from_article') . $r['log_title'];
+			$email = self::getArticleAuthorEmail($r['author']);
+			if (!$email) {
+				return false;
+			}
+			$sendmail->send($email, $title, $content);
 		}
-		return false;
 	}
 
 	private static function smtpServerReady() {
@@ -85,6 +87,24 @@ class Notice {
 			return false;
 		}
 		return $user_cache[1]['mail'];
+	}
+
+	private static function getArticleInfo($gid) {
+		$Log_Model = new Log_Model();
+		$r = $Log_Model->getOneLogForHome($gid);
+		if (isset($r['author'])) {
+			return $r;
+		}
+		return false;
+	}
+
+	private static function getArticleAuthorEmail($uid) {
+		$User_Model = new User_Model();
+		$r = $User_Model->getOneUser($uid);
+		if (isset($r['email'])) {
+			return $r['email'];
+		}
+		return false;
 	}
 
 }

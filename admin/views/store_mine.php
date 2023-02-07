@@ -1,27 +1,9 @@
 <?php if (!defined('EMLOG_ROOT')) {
 	exit('error!');
 } ?>
-<?php if (isset($_GET['active'])): ?>
-<!--vot-->    <div class="alert alert-success"><?=lang('install_ok')?></div><?php endif ?>
-<?php if (isset($_GET['error_param'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed')?></div><?php endif ?>
-<?php if (isset($_GET['error_down'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_download')?></div><?php endif ?>
-<?php if (isset($_GET['error_dir'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_write')?></div><?php endif ?>
-<?php if (isset($_GET['error_zip'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('install_failed_zip')?></div><?php endif ?>
-<?php if (isset($_GET['error_source'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('install_invalid_ext')?></div><?php endif ?>
-
 <?php if (isset($_GET['error'])): ?>
-    <div class="container-fluid">
-        <div class="text-center">
-<!--vot-->            <p class="lead text-gray-800 mb-5"><?=lang('store_unavailable')?></p>
-<!--vot-->            <a href="./">&larr; <?=lang('back_home')?></a>
-        </div>
-    </div>
-<?php endif ?>
+<!--vot-->    <div class="alert alert-danger"><?=lang('store_unavailable')?></div><?php endif ?>
+
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
 <!--vot-->    <h1 class="h3 mb-0 text-gray-800"><?=lang('app_store')?> - <?= $sub_title ?></h1>
 </div>
@@ -50,13 +32,14 @@
 <!--vot-->                            <?=lang('version_number')?>: <?= $v['ver'] ?><br>
 <!--vot-->                            <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
                         </p>
-                        <p class="card-text text-right">
-							<?php if (!empty($v['download_url'])): ?>
-<!--vot-->                                <a href="./store.php?action=install&source=<?= urlencode($v['download_url']) ?>&type=<?= $v['type'] ?>" class="btn btn-success btn-sm"><?=lang('install')?></a>
-							<?php else: ?>
+                        <div class="card-text d-flex justify-content-between">
+                            <div class="installMsg"></div>
+							<?php if (empty($v['download_url'])): ?>
 <!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
-							<?php endif; ?>
-                        </p>
+							<?php else: ?>
+<!--vot-->                                <a href="#" class="btn btn-success btn-sm installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $v['type'] ?>"><?= lang('install_free') ?></a>
+							<?php endif ?>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -104,7 +104,7 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             EMLOG
 							<?php if (!Register::isRegLocal()) : ?>
-                                <a href="auth.php"><span class="badge badge-danger"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?></span></a>
+<!--vot-->                      <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
 							<?php else: ?>
                                 <span class="badge <?php if (Register::getRegType() === 2): ?>badge-warning<?php else: ?>badge-success<?php endif; ?>"><?= Option::EMLOG_VERSION ?> <?= lang('registered') ?></span>
 							<?php endif ?>

@@ -23,6 +23,8 @@
     <div class="alert alert-danger"><?= lang('plugin_wrong_format') ?></div><?php endif ?>
 <?php if (isset($_GET['error_f'])): ?>
     <div class="alert alert-danger"><?= lang('plugin_zipped_only') ?></div><?php endif ?>
+<?php if (isset($_GET['error_g'])): ?>
+    <div class="alert alert-danger">上传安装包大小超出PHP限制</div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
