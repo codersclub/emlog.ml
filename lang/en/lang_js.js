@@ -46,6 +46,8 @@ var LNG = {
     'result_ok': 'Get the result successfully!',//'获取结果成功！',
     'unknown_error': 'Unknown error',//'未知错误',
     'upload_failed_error': 'Upload failed, wrong image type or network error',//'上传失败,图片类型错误或网络错误',
+    'installing': 'Installing...',//'安装中…',
+    'install_free': 'Install for free',//'免费安装',
 
 //----
     'backup_import_sure': 'Are you sure you want to import the backup files?',//'你确定要导入该备份文件吗？',
