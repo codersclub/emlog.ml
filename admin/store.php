@@ -86,16 +86,16 @@ if ($action === 'install') {
 	$source_type = isset($_GET['type']) ? trim($_GET['type']) : '';
 
 	if (!Register::isRegLocal()) {
-		exit('您的emlog pro尚未注册，<a href="auth.php">去注册</a>');
+/*vot*/		exit(lang('emlog_unregistered') . ', <a href="auth.php">' . lang('go_to_register') . '</a>');
 	}
 
 	if (empty($source)) {
-		exit('安装失败');
+/*vot*/		exit(lang('install_failed'));
 	}
 
 	$temp_file = emFetchFile('https://emlog.io/' . $source);
 	if (!$temp_file) {
-		exit('安装失败，无法下载安装包');
+/*vot*/		exit(lang('install_failed_download'));
 	}
 
 	if ($source_type == 'tpl') {
@@ -112,13 +112,13 @@ if ($action === 'install') {
 	@unlink($temp_file);
 	switch ($ret) {
 		case 0:
-			exit('安装成功 <a href="' . $suc_url . '">去查看</a>');
+/*vot*/			exit(lang('install_ok') . ' <a href="' . $suc_url . '">' . lang('go_check') . '</a>');
 		case 1:
 		case 2:
-			exit('安装失败，请检查content下目录是否可写');
+/*vot*/			exit(lang('install_failed_permission'));
 		case 3:
-			exit('安装失败，请安装php的Zip扩展');
+/*vot*/			exit(lang('install_failed_zip'));
 		default:
-			exit('安装失败，不是有效的安装包');
+/*vot*/			exit(lang('install_invalid_ext'));
 	}
 }

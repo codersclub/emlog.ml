@@ -100,6 +100,9 @@ $lang = array(
 'free_zone'                               => '免费区',//'Free zone',
 'paid_zone'                               => '付费区',//'Paid zone',
 'my_apps'				=> '我的已购',//'My purchases',
+'go_check'				=> '去查看',//'Go to check',
+'install_failed_permission'		=> '安装失败，请检查content下目录是否可写',//'Installation failed, please check whether the directory under content is writable',
+'install_failed_zip'			=> '安装失败，请安装php的Zip扩展',//'Installation failed, please install the Zip extension for php',
 
 //---------------------------
 //admin/style.php
@@ -597,6 +600,7 @@ $lang = array(
 'plugin_no_installed'                     => '还没有安装插件',//'No installed plugins',
 'plugin_install'                          => '安装插件',//'Install plugin',
 'plugin_new_install'                      => '安装插件',//'Install plugin',
+'php_size_limit'			=> '上传安装包大小超出PHP限制',//'The size of the uploaded installation package exceeds the PHP limit',
 
 //---------------------------
 //admin/views/plugin_install.php
