@@ -1,12 +1,12 @@
 <?php
 !defined('EMLOG_ROOT') && exit('access deined!');
 
-// 开启插件时执行该函数
+// Execute this function when the plugin is started
 function callback_init() {
 	// do something
 }
 
-// 关闭和删除插件时执行该函数
+// This function is executed when the plugin is closed and deleted
 function callback_rm() {
 	// do something
 }
