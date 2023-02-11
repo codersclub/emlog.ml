@@ -64,7 +64,7 @@ class Notice {
 
 		$r = self::getArticleInfo($gid);
 		if ($r) {
-/*vot*/			$content .= "<br> " . lang('from_article') . $r['log_title'];
+/*vot*/			$content .= '<br><br>' . lang('from_article') . $r['log_title'];
 			$email = self::getArticleAuthorEmail($r['author']);
 			if (!$email) {
 				return false;

@@ -147,7 +147,7 @@ $lang = array(
 'new_article_review'         => '你的站点收到新的待审核文章投稿',//'Your site has received new submissions for review',
 'new_article_title'          => '文章标题是：',//'The article title is: ',
 'new_comment_review'         => '你的站点收到新的评论',//'Your site has received new comments',
-'new_comment_is'             => '评论内容是：',//'The comment is: ',
+'new_comment_is'             => '评论内容：',//'Comment content: ',
 'from_article'			=> '来自文章',//'From article: ',
 
 //---------------------------------------
