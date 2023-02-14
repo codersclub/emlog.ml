@@ -73,9 +73,6 @@
             <a class="nav-link" href="media.php"><i class="icofont-image"></i><span><?= lang('resources') ?></span></a>
         </li>
 		<?php if (User::isAdmin()): ?>
-            <li class="nav-item" id="menu_page">
-                <a class="nav-link" href="page.php"><i class="icofont-page"></i><span><?= lang('pages') ?></span></a>
-            </li>
             <li class="nav-item" id="menu_user">
                 <a class="nav-link" href="user.php"><i class="icofont-user"></i><span><?= lang('users') ?></span></a>
             </li>
@@ -88,6 +85,7 @@
                         <a class="collapse-item" id="menu_tpl" href="template.php"><?= lang('templates') ?></a>
                         <a class="collapse-item" id="menu_navi" href="navbar.php"><?= lang('navigation') ?></a>
                         <a class="collapse-item" id="menu_widget" href="widgets.php"><?= lang('sidebar') ?></a>
+                        <a class="collapse-item" id="menu_page" href="page.php"><?= lang('page_management') ?></a>
                         <a class="collapse-item" id="menu_link" href="link.php"><?= lang('friend_links') ?></a>
                     </div>
                 </div>

@@ -37,6 +37,8 @@ class MySqlii {
 			emMsg(lang('mysqli_not_supported'));
 		}
 
+		mysqli_report(MYSQLI_REPORT_ERROR);
+
 		@$this->conn = new mysqli(DB_HOST, DB_USER, DB_PASSWD, DB_NAME);
 		if ($this->conn->connect_error) {
 			switch ($this->conn->connect_errno) {

@@ -102,7 +102,10 @@
     <script src="./editor.md/languages/<?= strtolower(LANG) ?>.js"></script>
 <? } ?>
 <script>
+    $("#menu_category_view").addClass('active');
+    $("#menu_view").addClass('show');
     $("#menu_page").addClass('active');
+
     checkalias();
     $("#alias").keyup(function () {
         checkalias();

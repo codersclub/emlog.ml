@@ -92,14 +92,13 @@ if ($action === 'doreply') {
 	if (empty($reply)) {
 		emDirect("./comment.php?error_c=1");
 	}
-	if (strlen($reply) > 2000) {
-		emDirect("./comment.php?error_d=1");
-	}
+
 	//Reply the comment pending review, need to be public (including reply content)
 	if ($hide == 'y') {
 		$Comment_Model->showComment($commentId);
 		$hide = 'n';
 	}
+
 	$Comment_Model->replyComment($blogId, $commentId, $reply, $hide);
 	$CACHE->updateCache('comment');
 	$CACHE->updateCache('sta');

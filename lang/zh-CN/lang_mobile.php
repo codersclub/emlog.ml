@@ -40,7 +40,7 @@ $lang = array(
 //m/view/comment.php: REMOVED!!!
 // 'pending'		=> '待审',//'Pending',
 // 'delete'		=> '删除',//'Delete',
-// 'belongs_to_post'	=> '所属文章',//'belongs to post',
+// 'belongs_to_article'	=> '所属文章',//'belongs to article',
 // 'hide'		=> '隐藏',//'Hide',
 // 'approve'		=> '审核',//'Approve',
 // 'reply'		=> '回复',//'Reply',

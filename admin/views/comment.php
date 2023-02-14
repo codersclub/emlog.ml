@@ -55,8 +55,9 @@
                         <th><input type="checkbox" id="checkAll"/></th>
                         <th><?= lang('content') ?></th>
                         <th><?= lang('comment_author') ?></th>
-                        <th><?= lang('time') ?></th>
-                        <th><?= lang('belongs_to_article') ?></th>
+                        <th><?= lang('from_article') ?></th>
+                        <th><?= lang('publish_time') ?></th>
+<!--vot-->              <th><?= lang('operation') ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -78,28 +79,31 @@
                         <tr>
                             <td style="width: 19px;"><input type="checkbox" value="<?= $cid ?>" name="com[]" class="ids"/></td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#replyModal"
-                                   data-cid="<?= $cid ?>"
-                                   data-comment="<?= $comment ?>"
-                                   data-hide="<?= $value['hide'] ?>"
-                                   data-gid="<?= $gid ?> ">
-									<?= $comment ?>
-                                </a>
+                                <?= $comment ?>
 								<?= $ishide ?>
 								<?php if ($top == 'y'): ?><span class="flag-indexTop" title="<?= lang('top') ?>"><?= lang('top') ?></span><?php endif ?>
                             </td>
                             <td class="small">
 								<?= $poster ?> <?= $mail ?> <?= $ip_info ?>
-								<?php if (User::haveEditPermission()): ?>
-                                    <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-pill badge-warning"><?= lang('del_from_ip') ?></a>
-								<?php endif ?>
                                 <br><?= $value['os'] ?> - <?= $value['browse'] ?>
                             </td>
-                            <td class="small"><?= $date ?></td>
                             <td class="small">
                                 <a href="<?= Url::log($gid) ?>" target="_blank"><?= $title ?></a><br>
                                 <a href="comment.php?gid=<?= $gid ?>" class="badge badge-info"><?= lang('article_all_comments') ?></a>
+                            </td>
+                            <td class="small"><?= $date ?></td>
+                            <td>
+                                <a href="#" data-toggle="modal" class="badge badge-success" data-target="#replyModal"
+                                   data-cid="<?= $cid ?>"
+                                   data-comment="<?= $comment ?>"
+                                   data-hide="<?= $value['hide'] ?>"
+                                   data-gid="<?= $gid ?> ">
+                                    回复评论
+                                </a>
+								<?php if (User::haveEditPermission()): ?>
+                                    <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
+                                       class="badge badge-pill badge-warning">按IP删除</a>
+								<?php endif ?>
                             </td>
                         </tr>
 					<?php endforeach ?>

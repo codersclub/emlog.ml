@@ -313,7 +313,7 @@ $lang = array(
 'no_comments_yet'                         => '还没有收到评论',//'Yet no comments',
 'operation'                               => '操作',//'Operation',
 'comment_selected_delete_sure'            => '确定要删除所选评论吗？',//'Are you sure you want to delete the selected comments?',
-'article_all_comments'                    => '该文所有评论',//'All comments on this article',
+'article_all_comments'                    => '查看该文所有评论',//'All comments of this article',
 
 //---------------------------
 //admin/views/data.php
@@ -740,8 +740,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_mail.php
-'comment_new_notify'                      => '新评论邮件通知（仅发送到文章作者邮箱）',//'Email notification of new comments (sent to the article author email only)',
-'article_new_notify'                      => '新文章投稿邮件通知（仅发送到创始人邮箱）',//'Email notification of new articles submitted (sent to founder email only)',
+'comment_new_notify'                      => '新评论通知（仅发送到文章作者邮箱）',//'Email notification of new comments (sent to the article author email only)',
+'article_new_notify'                      => '新文章投稿通知（仅发送到创始人邮箱）',//'Email notification of new articles submitted (sent to founder email only)',
 
 //---------------------------
 //admin/views/setting_user.php

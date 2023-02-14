@@ -4,7 +4,7 @@ Plugin Name: Tips
 Version: 3.0
 Plugin URL:
 Description: The world's first emlog plug-in. When it is turned on, it will show a warm reminder on the admin panel homepage.
-Author: emlog official
+Author: emlog
 Author URL: https://www.emlog.net
 */
 
@@ -21,7 +21,7 @@ load_language('plugin/tips');
 
 
 function tips() {
-	$array_tips = lang('array_tips');
+/*vot*/	$array_tips = lang('array_tips');
 	$i = mt_rand(0, count($array_tips) - 1);
 	$tip = $array_tips[$i];
 	echo "<div id=\"tip\"> $tip</div>";
