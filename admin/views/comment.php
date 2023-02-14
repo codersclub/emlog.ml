@@ -98,11 +98,11 @@
                                    data-comment="<?= $comment ?>"
                                    data-hide="<?= $value['hide'] ?>"
                                    data-gid="<?= $gid ?> ">
-                                    回复评论
+                                    <?= lang ('comment_reply') ?>
                                 </a>
 								<?php if (User::haveEditPermission()): ?>
                                     <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-pill badge-warning">按IP删除</a>
+                                       class="badge badge-pill badge-warning"><?= lang('del_from_ip') ?></a>
 								<?php endif ?>
                             </td>
                         </tr>
