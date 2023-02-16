@@ -28,6 +28,10 @@
                 <label class="form-check-label"><?= lang('registration_captcha') ?> <?= lang('registration_captcha_info') ?></label>
             </div>
             <div class="form-group form-check">
+                <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
+                <label class="form-check-label">开启注册邮件验证码</label>
+            </div>
+            <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkarticle" id="ischkarticle" <?= $conf_ischkarticle ?> />
                 <label class="form-check-label"><?= lang('writer_need_approve') ?></label>
             </div>

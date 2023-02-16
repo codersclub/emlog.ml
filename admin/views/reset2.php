@@ -18,16 +18,14 @@
 									<?php if (isset($_GET['err_mail_code'])): ?>
                                         <div class="alert alert-danger"><?= lang('verification_error') ?></div><?php endif ?>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="mail_code" name="mail_code"
-                                               placeholder="<?= lang('email_verification_code') ?>" required>
+                                        <input type="text" cla ss="form-control form-control-user" id="mail_code" name="mail_code" placeholder="<?= lang('email_verification_code') ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="6" id="passwd" name="passwd"
+                                        <input type="password" class="form-control form-control-user" minlength="6" id="passwd" autocomplete="new-password" name="passwd"
                                                placeholder="<?= lang('new_password') ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="6" id="repasswd" name="repasswd"
-                                               placeholder="<?= lang('confirm_password') ?>" required>
+                                        <input type="password" class="form-control form-control-user" minlength="6" id="repasswd" name="repasswd" placeholder="<?= lang('confirm_password') ?>" required>
                                     </div>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('submit') ?></button>
                                     <hr>

@@ -63,18 +63,18 @@ $lang = array(
 
 //---------------------------
 //include/controller/comment_controller.php
-'comment_error_comment_disabled' => '评论失败：该文章已关闭评论',//'Comment error: The comments for this entry has been closed.',
-'comment_error_content_exists'   => '评论失败：已存在相同内容评论',//'Comment error: The same content already exists.',
-'comment_error_flood_control'    => '评论失败：您写评论的速度太快了，请稍后再试',//'Comment failed: You are writing comments too fast, please try again later',
-'comment_error_name_enter'       => '评论失败：请填写姓名',//'Comment error: Please, enter your name.',
-'comment_error_name_invalid'     => '评论失败：姓名不符合规范',//'Comment error: Name does not meet requirements.',
-'comment_error_email_invalid'    => '评论失败：邮件地址不符合规范',//'Comment error: E-mail address does not meet requirements.',
-'comment_error_other_user'       => '评论失败：禁止使用管理员昵称或邮箱评论',//'Comment error: User data cannot be the same as administrator or other users.',
-'comment_error_url_invalid'      => '评论失败：主页地址不符合规范',//'Comment error: Homepage URL is invalid.',
-'comment_error_empty'            => '评论失败：请填写评论内容',//'Comment error: Please, enter some content.',
-'comment_error_content_invalid'  => '评论失败：内容不符合规范',//'Comment error: Content does not meet requirements.',
-'comment_error_national_chars'   => '评论失败：评论内容需包含中文',//'Comment error: Content must contain Chinese characters.',
-'comment_error_captcha_invalid'  => '评论失败：验证码错误',//'Comment error: Invalid captcha.',
+'comment_error_comment_disabled' => '该文章未开启评论',//'This article has no comments',
+'comment_error_content_exists'   => '已存在相同内容评论',//'The same content already exists.',
+'comment_error_flood_control'    => '评论发布太频繁了，休息下吧',//'Comments are posted too often, take a break',
+'comment_error_name_enter'       => '请填写姓名',//'Please, enter your name.',
+'comment_error_name_invalid'     => '姓名不符合规范',//'Name does not meet requirements.',
+'comment_error_email_invalid'    => '邮件地址不符合规范',//'E-mail address does not meet requirements.',
+'comment_error_other_user'       => '禁止使用管理员昵称或邮箱评论',//'User data cannot be the same as administrator or other users.',
+'comment_error_url_invalid'      => '主页地址不符合规范',//'Homepage URL is invalid.',
+'comment_error_empty'            => '请填写评论内容',//'Please, enter some content.',
+'comment_error_content_invalid'  => '内容内容太长了',//'Content too long',
+'comment_error_national_chars'   => '评论内容需包含中文',//'Content must contain Chinese characters.',
+'comment_error_captcha_invalid'  => '验证码错误',//'Invalid captcha.',
 
 //---------------------------
 //include/model/comment_model.php

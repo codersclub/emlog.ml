@@ -284,16 +284,15 @@ class Comment_Model {
 		$cid = $this->db->insert_id();
 		$CACHE = Cache::getInstance();
 
-		if ($hide == 'n') {
+		if ($hide === 'n') {
 			$this->db->query('UPDATE ' . DB_PREFIX . "blog SET comnum = comnum + 1 WHERE gid='$blogId'");
 			$CACHE->updateCache(array('sta', 'comment'));
 			doAction('comment_saved', $cid);
-			emDirect(Url::log($blogId) . '#' . $cid);
-		} else {
-			$CACHE->updateCache('sta');
-			doAction('comment_saved', $cid);
-			emMsg(lang('comment_wait_approve'), Url::log($blogId));
+			return ['cid' => $cid, 'hide' => 'n'];
 		}
+		$CACHE->updateCache('sta');
+		doAction('comment_saved', $cid);
+		return ['cid' => $cid, 'hide' => 'y'];
 	}
 
 	function isCommentExist($blogId, $name, $content) {
@@ -324,7 +323,7 @@ class Comment_Model {
 	}
 
 	function isLogCanComment($blogId) {
-		if (Option::get('iscomment') == 'n') {
+		if ($blogId <= 0 || Option::get('iscomment') == 'n') {
 			return false;
 		}
 		$query = $this->db->query("SELECT allow_remark FROM " . DB_PREFIX . "blog WHERE gid=$blogId");

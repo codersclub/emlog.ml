@@ -22,8 +22,7 @@
                                     <div class="alert alert-danger"><?= lang('password_invalid') ?></div><?php endif ?>
                                 <form method="post" class="user" action="./account.php?action=dosignin&s=<?= $admin_path_code ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp"
-                                               placeholder="<?= lang('user_name') ?>" required
+                                        <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="<?= lang('user_name') ?>" required
                                                autofocus>
                                     </div>
                                     <div class="form-group">
@@ -31,15 +30,14 @@
                                     </div>
 									<?php if ($login_code): ?>
                                         <div class="form-group form-inline">
-                                            <input type="text" name="login_code" class="form-control form-control-user" id="login_code" placeholder="<?= lang('captcha') ?>"
-                                                   required>
+                                            <input type="text" name="login_code" class="form-control form-control-user" id="login_code" placeholder="<?= lang('captcha') ?>" required>
                                             <img src="../include/lib/checkcode.php" id="checkcode" class="mx-2">
                                         </div>
 									<?php endif ?>
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox small">
-                                            <input type="checkbox" class="custom-control-input" id="ispersis" name="ispersis" value="1">
-                                            <label class="custom-control-label" for="ispersis"><?= lang('remember_me') ?></label>
+                                            <input type="checkbox" class="custom-control-input" id="persist" name="persist" value="1">
+                                            <label class="custom-control-label" for="persist"><?= lang('remember_me') ?></label>
                                         </div>
                                     </div>
                                     <button class="btn btn-primary btn-user btn-block" type="submit"><?= lang('login') ?></button>

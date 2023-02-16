@@ -80,7 +80,7 @@ $lang = array(
 //admin/setting_user.php
 'registration'                            => '登录注册',//'Registration',
 'registration_open'                       => '开启用户注册',//'Open user registration',
-'registration_captcha'                    => '开启登录注册验证码',//'Enable captcha at registration',
+'registration_captcha'                    => '开启登录注册图形验证码',//'Enable captcha at registration',
 'registration_captcha_info'               => '（提高安全性，建议开启）',//'(to improve security, it is recommended to open)',
 'user_rights'                             => '用户权限',//'User rights',
 'comment_write'                           => '发布评论',//'Post comments',
@@ -509,7 +509,7 @@ $lang = array(
 'back_home'                               => '返回首页',//'Back to home',
 'password_forget'                         => '忘记密码?',//'Forgot Password?',
 'account_register'                        => '注册账号',//'Register an account',
-'validation_error'                        => '验证错误，请重新输入',//'Validation error, please re-enter',
+'validation_error'                        => '图形验证错误',//'Captcha validation error',
 'password_invalid'                        => '用户或密码错误，请重新输入',//'User or password incorrect, please re-enter',
 
 //---------------------------
