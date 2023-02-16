@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label><?= lang('your_timezone') ?></label>
-                <select name="timezone" style="min-width:320px;" class="form-control">
+                <select name="timezone" style="width:320px;" class="form-control">
 					<?php foreach ($tzlist as $key => $value):
 						$ex = $key == $timezone ? "selected=\"selected\"" : '' ?>
                         <option value="<?= $key ?>" <?= $ex ?>><?= $value ?></option>
@@ -88,14 +88,13 @@
                 <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
             </div>
             <div class="form-group form-inline">
-				<?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
+		<?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
                     <option value="newer" <?= $ex3 ?>><?= lang('new_first') ?></option>
                     <option value="older" <?= $ex4 ?>><?= lang('old_first') ?></option>
                 </select>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width: 80px;" type="number"/>
-                                                                                 style="width: 100px;"/>
+                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number"/>
             </div>
 
             <hr>
@@ -108,7 +107,7 @@
 
             <div class="form-group form-inline">
                 RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
-                <select name="rss_output_fulltext" class="form-control mx-sm-3">
+                <select name="rss_output_fulltext" class="form-control">
                     <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
                     <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
                 </select>
@@ -121,12 +120,10 @@
 
             <h4><?= lang('upload_settings') ?></h4>
             <div class="form-group form-inline">
-				<?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control mx-sm-3" value="<?= $att_maxsize ?>" name="att_maxsize"/> KB
-                (1M=1024KB)
+		<?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> KB (1M=1024KB)
             </div>
             <div class="form-group form-inline">
-				<?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control mx-sm-3" value="<?= $att_type ?>"
-                                                        name="att_type"/> <?= lang('separate_by_comma') ?>
+		<?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('separate_by_comma') ?>
             </div>
             <div class="form-group form-inline">
                 <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> /> <?= lang('thumbnail_max_size') ?>

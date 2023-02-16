@@ -73,7 +73,7 @@ class Comment_Controller {
 		notice::sendNewCommentMail($content, $blogId);
 
 		if ($hide === 'y') {
-			$msg = '评论成功，请等待管理员审核';
+/*vot*/			$msg = lang('comment_wait_approve');
 			$resp === 'json' ? Output::ok($msg) : emMsg($msg);
 		}
 		if ($resp === 'json') {

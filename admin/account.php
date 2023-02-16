@@ -109,37 +109,37 @@ if ($action == 'dosignup') {
 
 	if (!checkMail($mail)) {
 		if ($resp === 'json') {
-			Output::error('错误的邮箱格式');
+/*vot*/			Output::error(lang('email_format_error'));
 		}
 		emDirect('./account.php?action=signup&error_login=1');
 	}
 	if (!User::checkLoginCode($login_code)) {
 		if ($resp === 'json') {
-			Output::error('图形验证码错误');
+/*vot*/			Output::error(lang('captcha_error'));
 		}
 		emDirect('./account.php?action=signup&err_ckcode=1');
 	}
 	if (Option::get('email_code') === 'y' && !User::checkMailCode($mail_code)) {
 		if ($resp === 'json') {
-			Output::error('邮件验证码错误');
+/*vot*/			Output::error(lang('verification_error'));
 		}
 		emDirect('./account.php?action=signup&err_mail_code=1');
 	}
 	if ($User_Model->isMailExist($mail)) {
 		if ($resp === 'json') {
-			Output::error('该邮箱已被注册');
+/*vot*/			Output::error(lang('email_in_use'));
 		}
 		emDirect('./account.php?action=signup&error_exist=1');
 	}
-	if (strlen($passwd) < 6) {
+/*vot*/	if (strlen($passwd) < 5) {
 		if ($resp === 'json') {
-			Output::error('密码不小于6位');
+/*vot*/			Output::error(lang('password_short'));
 		}
 		emDirect('./account.php?action=signup&error_pwd_len=1');
 	}
 	if ($passwd !== $repasswd) {
 		if ($resp === 'json') {
-			Output::error('两次输入的密码不一致');
+/*vot*/			Output::error(lang('password_not_equal'));
 		}
 		emDirect('./account.php?action=signup&error_pwd2=1');
 	}
@@ -159,14 +159,14 @@ if ($action == 'send_email_code') {
 	$mail = Input::postStrVar('mail');
 
 	if (!checkMail($mail)) {
-		Output::error('错误的邮箱');
+/*vot*/		Output::error(lang('email_wrong'));
 	}
 
 	$ret = Notice::sendRegMailCode($mail);
 	if ($ret) {
 		Output::ok();
 	} else {
-		Output::error('发送失败');
+/*vot*/		Output::error(lang('test_mail_failed'));
 	}
 }
 

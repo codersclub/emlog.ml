@@ -5,6 +5,10 @@ $lang = array(
 //---------------------------
 //admin/account.php
 'registration_disabled'                   => '系统已关闭注册！',//'The system has closed registration!',
+'auth_error'			=> '验证错误',//'Authentication Error',
+'wrong_user_password'		=> '用户或密码错误',//'Incorrect user or password',
+'captcha_error'			=> '图形验证码错误',//'Captcha verification error',
+'email_wrong'			=> '错误的邮箱',//'Wrong mailbox',
 
 //---------------------------
 //admin/article.php
@@ -625,7 +629,7 @@ $lang = array(
 'register'                                => '注册',//'Register',
 'email_format_error'                      => '错误的邮箱格式',//'Email format error',
 'email_in_use'                            => '该邮箱已被注册',//'Email is already in use'
-'password_short'                          => '密码不小于5位',//'Password must not be less than 5 digits',
+'password_short'                          => '密码不小于5位',//'Password must not be less than 5 character',
 
 //---------------------------
 //admin/views/reset.php
@@ -753,12 +757,16 @@ $lang = array(
 	                           //Content editor: Responsible for the management of articles, resources, comments, etc.<br>
           	                   //Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
 'limit_daily_posts'			=> '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
+'enable_email_code'			=> '开启注册邮件验证码',//'Enable email verification code on registration',
 
 //---------------------------
 //admin/views/signin.php
 // 'em_reg_ok'		=> '注册成功，请登录',//'Registration is successful, please log in',
 'password_reset_ok'                       => '密码重置成功，请登录',//'Password reset successfully, please log in',
 
+//---------------------------
+//admin/views/signup.php
+'send_email_code'			=> '发送邮件验证码',//'Send email verification code',
 
 //---------------------------
 //admin/views/sort.php

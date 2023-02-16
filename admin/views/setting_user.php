@@ -29,7 +29,7 @@
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
-                <label class="form-check-label">开启注册邮件验证码</label>
+<!--vot-->                <label class="form-check-label"><?=lang('enable_email_code')?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkarticle" id="ischkarticle" <?= $conf_ischkarticle ?> />

@@ -20,8 +20,8 @@ class Notice {
 		$_SESSION['mail_code'] = $randCode;
 		$_SESSION['mail'] = $mail;
 
-		$title = "注册用户邮件验证码";
-		$content = "邮件验证码：" . $randCode;
+/*vot*/		$title = lang('email_verif_code_title');
+/*vot*/		$content = lang('email_verif_code') . $randCode;
 		$sendmail = new SendMail();
 		$ret = $sendmail->send($mail, $title, $content);
 		if ($ret) {

@@ -75,10 +75,15 @@ $lang = array(
 'comment_error_content_invalid'  => '内容内容太长了',//'Content too long',
 'comment_error_national_chars'   => '评论内容需包含中文',//'Content must contain Chinese characters.',
 'comment_error_captcha_invalid'  => '验证码错误',//'Invalid captcha.',
+'mail_test_header'		=> '测试邮件发送标题',//'Test mail sending header',
+'mail_test_content'		=> '测试邮件发送内容',//'Test mail sending content',
+'mail_send_ok'			=> '邮件发送成功',//'Mail sent successfully',
+'mail_send_error'		=> '邮件发送失败',//'Mail sending failed',
+'comment_wait_approve'		=> '评论成功，请等待管理员审核',//'The comment is saved successfully, please wait for the administrator to approve',
+
 
 //---------------------------
 //include/model/comment_model.php
-'comment_wait_approve'           => '评论发表成功，请等待管理员审核',//'Thank you. Your comment is waiting for approval',
 // 'no_permission'	=> '权限不足！',//'Insufficient permissions!',
 
 );
