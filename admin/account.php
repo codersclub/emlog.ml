@@ -29,7 +29,6 @@ if ($action == 'signin') {
 	$login_code = Option::get('login_code') === 'y';
 	$is_signup = Option::get('is_signup') === 'y';
 
-	
 	$page_title = lang('login');
 	require_once View::getAdmView('user_head');
 	require_once View::getAdmView('signin');
@@ -49,7 +48,7 @@ if ($action == 'dosignin') {
 
 	if (!User::checkLoginCode($login_code)) {
 		if ($resp === 'json') {
-			Output::error('验证错误');
+/*vot*/			Output::error(lang('auth_error'));
 		}
 		emDirect('./account.php?action=signin&err_ckcode=1');
 	}
@@ -68,7 +67,7 @@ if ($action == 'dosignin') {
 		case LoginAuth::LOGIN_ERROR_USER:
 		case LoginAuth::LOGIN_ERROR_PASSWD:
 			if ($resp === 'json') {
-				Output::error('用户或密码错误');
+/*vot*/				Output::error(lang('wrong_user_password'));
 			}
 			emDirect("./account.php?action=signin&err_login=1");
 			break;
@@ -82,11 +81,9 @@ if ($action == 'signup') {
 	$error_msg = '';
 
 	if (Option::get('is_signup') !== 'y') {
-		
 		emMsg(lang('registration_disabled'));
 	}
 
-	
 	$page_title = lang('account_register');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('signup');
@@ -178,7 +175,6 @@ if ($action == 'reset') {
 	$login_code = Option::get('login_code') === 'y';
 	$error_msg = '';
 
-	
 	$page_title = lang('retrieve_password');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('reset');
@@ -214,7 +210,6 @@ if ($action == 'reset2') {
 	$login_code = Option::get('login_code') === 'y';
 	$error_msg = '';
 
-	
 	$page_title = lang('retrieve_password');
 	include View::getAdmView('user_head');
 	require_once View::getAdmView('reset2');
