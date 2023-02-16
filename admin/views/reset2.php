@@ -21,7 +21,7 @@
                                         <input type="text" cla ss="form-control form-control-user" id="mail_code" name="mail_code" placeholder="<?= lang('email_verification_code') ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="6" id="passwd" autocomplete="new-password" name="passwd"
+                                        <input type="password" class="form-control form-control-user" minlength="6" id="passwd" autocomplete="off" name="passwd"
                                                placeholder="<?= lang('new_password') ?>" required>
                                     </div>
                                     <div class="form-group">

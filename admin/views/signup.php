@@ -30,7 +30,7 @@
                                                autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="5" id="passwd" autocomplete="new-password" name="passwd"
+                                        <input type="password" class="form-control form-control-user" minlength="5" id="passwd" autocomplete="off" name="passwd"
                                                placeholder="<?= lang('password') ?>" required>
                                     </div>
                                     <div class="form-group">
