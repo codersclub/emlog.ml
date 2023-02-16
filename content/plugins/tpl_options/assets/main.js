@@ -1,5 +1,5 @@
 $(function () {
-    //初始化变量
+    //Initialize variables
     var tplOptions = window.tplOptions;
     var body = $('body');
     var iframe = $('<iframe name="upload-image" src="about:blank" style="display:none"/>').appendTo(body);
@@ -24,7 +24,7 @@ $(function () {
     var form = $('<form id="upload-form" target="upload-image" />').append(trueInput, targetInput = $('<input type="hidden" name="target">'), templateInput = $('<input type="hidden" name="template">')).appendTo(body).attr({
         action: tplOptions.uploadUrl, target: 'upload-image', enctype: 'multipart/form-data', method: 'post'
     });
-    //插入设置按钮
+    //Insert settings button
     for (var tpl of Object.keys(tplOptions.templates)) {
         var now = document.querySelector('a[href*="em_confirm(\'' + tpl + '\',"]');
         var xps = document.createElement('a');
@@ -33,7 +33,7 @@ $(function () {
         now.parentNode.appendChild(xps);
         $('<span class="badge badge-dange">设置</span>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
     }
-    //绑定事件
+    //Bind event handler
     body.on('click', '.' + attr('setting'), function () {
         $('.container-fluid .row').fadeToggle();
         $.ajax({
@@ -120,7 +120,7 @@ $(function () {
     }).on('change', '.tpl-options-form input, .tpl-options-form textarea', function () {
         $('form.tpl-options-form').trigger('submit');
     });
-    //定义方法
+    //Define method
     var initRichText = (function () {
         var num = 0;
         return function () {

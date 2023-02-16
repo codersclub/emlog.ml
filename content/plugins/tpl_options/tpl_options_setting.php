@@ -1,11 +1,11 @@
 <?php
 !defined('EMLOG_ROOT') && exit('access deined!');
 
-//插件设置页面
+//Plugin settings page
 function plugin_setting_view() {
 	TplOptions::getInstance()->setting();
 }
 
-//插件设置函数，不用
+//Plugin settings empty function
 function plugin_setting() {
 }

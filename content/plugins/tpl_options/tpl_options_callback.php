@@ -5,7 +5,7 @@ if (!class_exists('TplOptions', false)) {
 	include __DIR__ . '/tpl_options.php';
 }
 
-//插件激活回调函数
+//Plugin activation callback function
 function callback_init() {
 	$tplOptions = TplOptions::getInstance();
 	$table = $tplOptions->getTable('data');

@@ -1,33 +1,33 @@
 <?php
 /*
-Plugin Name: 模版设置插件
+Plugin Name: Template settings plugin
 Version: 4.2
 Plugin URL: https://www.emlog.net/plugin/detail/377
-Description: PRO版模版设置插件，为模板提供更丰富的设置功能。
-Author: 奇遇、蓝叶、emlog官方
+Description: Emlog PRO template setting plug-in, which provides richer setting functions for templates.
+Author: Adventure, Blue Leaf, emlog official
 */
 
 !defined('EMLOG_ROOT') && exit('access deined!');
 
 /**
- * 模板设置类
+ * Template settings class
  */
 class TplOptions {
 
-	//插件标识
+	//Plug-in ID
 	const ID = 'tpl_options';
 	const NAME = '模板设置';
 	const VERSION = '4.2';
 
-	//数据表前缀
+	//DB table prefix
 	private $_prefix = 'tpl_options_';
 
-	//数据表
+	//DB table
 	private $_tables = array(
 		'data',
 	);
 
-	//运行上传的文件类型
+	//Run uploaded file types
 	private $_imageTypes = array(
 		'gif',
 		'jpg',
@@ -35,41 +35,41 @@ class TplOptions {
 		'png'
 	);
 
-	//实例
+	//Instance
 	private static $_instance;
 
-	//是否初始化
+	//Whether to initialize
 	private $_inited = false;
 
-	//模板参数
+	//Template parameters
 	private $_templateOptions;
 
-	//从模板读取经过处理的原始设置项
+	//Read the processed raw settings item from the template
 	private $_options;
 
-	//支持的参数类型
+	//Supported parameter types
 	private $_types;
 
-	//数据为数组的类型
+	//The data is the array of types
 	private $_arrayTypes = array();
 
-	//数据库连接实例
+	//Database connection instance
 	private $_db;
 
-	//插件模板目录
+	//Plugin template directory
 	private $_view;
 
-	//插件前端资源路径
+	//Plugin frontend resource path
 	private $_assets;
 
-	//当前模板
+	//Current template
 	private $_currentTemplate;
 
-	//页面
+	//Pages
 	private $_pages;
 
 	/**
-	 * 单例入口
+	 * Singleton entry
 	 * @return TplOptions
 	 */
 	public static function getInstance() {
@@ -80,13 +80,13 @@ class TplOptions {
 	}
 
 	/**
-	 * 私有构造函数，保证单例
+	 * Private constructor, guaranteed singleton
 	 */
 	private function __construct() {
 	}
 
 	/**
-	 * 初始化函数
+	 * Initialization function
 	 * @return void
 	 */
 	public function init() {
@@ -95,14 +95,14 @@ class TplOptions {
 		}
 		$this->_inited = true;
 
-		//初始化各个数据表名
+		//Initialize each data table name
 		$tables = array();
 		foreach ($this->_tables as $name => $table) {
 			$tables[$table] = $this->getTableName($table);
 		}
 		$this->_tables = $tables;
 
-		//初始化模板设置类型
+		//Initialize template settings types
 		$this->_types = array(
 			'radio'    => array(
 				'name'       => '单选按钮',
@@ -147,16 +147,16 @@ class TplOptions {
 			'checkbox',
 			'tag',
 		);
-		//加载插件扩展配置
+		//Load plugin extension configuration
 		$template = Option::get('nonce_templet');
 		if (is_file($pluginsFile = TPLS_PATH . $template . '/plugins.php')) {
 			include $pluginsFile;
 		}
-		//设置模板目录
+		//Set template directory
 		$this->_view = dirname(__FILE__) . '/views/';
 		$this->_assets = BLOG_URL . 'content/plugins/' . self::ID . '/assets/';
 
-		//注册各个钩子
+		//Register each hook
 		$scriptBaseName = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
 		addAction('data_prebakup', function () {
 			TplOptions::getInstance()->hookDataPreBackup();
@@ -170,7 +170,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 输出数据
+	 * Output Data
 	 * @return void
 	 */
 	public function hookAdminMainTopData() {
@@ -187,7 +187,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 备份数据表
+	 * Backup data table
 	 * @return void
 	 */
 	public function hookDataPreBackup() {
@@ -199,7 +199,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 头部，如css文件
+	 * Header, such as a css file
 	 * @return void
 	 */
 	public function hookAdminHead() {
@@ -208,27 +208,27 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取数据表
-	 * @param mixed $table 表名缩写，可选，若不设置则返回所有表，否则返回对应表
-	 * @return mixed 返回数组或字符串
+	 * Get data table
+	 * @param mixed $table Table name abbreviation, optional, if not set, all tables will be returned, otherwise the corresponding table will be returned
+	 * @return mixed Return array or string
 	 */
 	public function getTable($table = null) {
 		return $table === null ? $this->_tables : (isset($this->_tables[$table]) ? $this->_tables[$table] : '');
 	}
 
 	/**
-	 * 获取数据表名
-	 * @param string $table 表名缩写
-	 * @return string 表全名
+	 * Get the data table name
+	 * @param string $table table name abbreviation
+	 * @return string table full name
 	 */
 	private function getTableName($table) {
 		return DB_PREFIX . $this->_prefix . $table;
 	}
 
 	/**
-	 * 获取模板参数数据，默认获取当前模板
-	 * @param mixed $template 模板名称，可选
-	 * @return array 模板参数
+	 * Get the template parameter data, get the current template by default
+	 * @param mixed $template Template name, optional
+	 * @return array Template options
 	 */
 	public function getTemplateOptions($template = null) {
 		if ($template === null) {
@@ -293,9 +293,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 设置模板参数数据
-	 * @param string $template 模板名称
-	 * @param array $options 模板参数
+	 * Set template option data
+	 * @param string $template Template name
+	 * @param array $options Template options
 	 * @return boolean
 	 */
 	public function setTemplateOptions($template, $options) {
