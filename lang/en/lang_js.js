@@ -5,6 +5,13 @@ var LNG = {
     'already_edited': '[already edited] ',//'[已修改] ',
 
 //---------------------------
+//admin/views/signup.php
+    'send_email_code'	: 'Send email verification code',//'发送邮件验证码',
+    'code_valid_for'	: 'Sent successfully, please check your email in ',//'发送成功，请查收邮件 ',
+    '_seconds'		: ' seconds',//'秒',
+    'test_mail_failed'	: 'Failed to send',//'发送失败',
+
+//---------------------------
 //admin/views/tag.php
     'tag_select_del': 'Please select a tag to delete',//'请选择要删除的标签',
     'tag_delete_sure': 'Are you sure you want to delete the selected tags',//'确定要删除所选标签吗',

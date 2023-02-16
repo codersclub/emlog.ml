@@ -4,7 +4,11 @@ $lang = array(
 
 //---------------------------
 //admin/account.php
-'registration_disabled'			=> 'The system has closed registration!',//'系统已关闭注册！',
+'registration_disabled'		=> 'The system has closed registration!',//'系统已关闭注册！',
+'auth_error'			=> 'Authentication Error',//'验证错误',
+'wrong_user_password'		=> 'Incorrect user or password',//'用户或密码错误',
+'captcha_error'			=> 'Captcha verification error',//'图形验证码错误',
+'email_wrong'			=> 'Wrong mailbox',//'错误的邮箱',
 
 //---------------------------
 //admin/article.php
@@ -509,7 +513,7 @@ $lang = array(
 'back_home'                               => 'Back to home',//'返回首页',
 'password_forget'                         => 'Forgot Password?',//'忘记密码?',
 'account_register'                        => 'Register an account',//'注册账号',
-'validation_error'                        => 'Validation error, please re-enter',//'验证错误，请重新输入',
+'validation_error'                        => 'Captcha validation error',//'图形验证错误',
 'password_invalid'                        => 'User or password incorrect, please re-enter',//'用户或密码错误，请重新输入',
 
 //---------------------------
@@ -626,7 +630,7 @@ $lang = array(
 'register'                                => 'Register',//'注册',
 'email_format_error'                      => 'Email format error',//'错误的邮箱格式',
 'email_in_use'                            => 'Email is already in use',//'该邮箱已被注册',
-'password_short'                          => 'Password must not be less than 5 digits',//'密码不小于5位',
+'password_short'                          => 'Password must not be less than 5 characters',//'密码不小于5位',
 
 //---------------------------
 //admin/views/reset.php
@@ -754,12 +758,16 @@ $lang = array(
              			           //内容编辑：负责文章、资源、评论等内容的管理<br>
                  		       	   //管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
 'limit_daily_posts'			=> 'Registered users limit the number of posts (including drafts) within 24 hours',//'注册用户限制24小时发文数量（包括草稿）',
+'enable_email_code'			=> 'Enable email verification code on registration',//'开启注册邮件验证码',
 
 //---------------------------
 //admin/views/signin.php
-// 'em_reg_ok'		=> 'Registration is successful, please log in',//'注册成功，请登录',
+// 'em_reg_ok'				=> 'Registration is successful, please log in',//'注册成功，请登录',
 'password_reset_ok'                       => 'Password reset successfully, please log in',//'密码重置成功，请登录',
 
+//---------------------------
+//admin/views/signup.php
+'send_email_code'			=> 'Send email verification code',//'发送邮件验证码',
 
 //---------------------------
 //admin/views/sort.php

@@ -7,13 +7,6 @@ $lang = array(
 'language'           => 'Language',//'语言',
 
 //---------------------------
-//include/controller/comment_controller.php
-'mail_test_header'   => 'Test mail sending header',//'测试邮件发送标题',
-'mail_test_content'  => 'Test mail sending content',//'测试邮件发送内容',
-'mail_send_ok'       => 'Mail sent successfully',//'邮件发送成功',
-'mail_send_error'    => 'Mail sending failed',//'邮件发送失败',
-
-//---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'm.Y',//'Y年n月',
 'cache_read_error'   => 'Cache read failed',//'读取缓存失败',
@@ -149,6 +142,8 @@ $lang = array(
 'new_comment_review'         => 'Your site has received new comments',//'你的站点收到新的评论',
 'new_comment_is'             => 'The comment is: ',//'评论内容是：',
 'from_article'			=> 'From article: ',//'来自文章',
+'email_verif_code_title'	=> 'Registered user email verification code';//'注册用户邮件验证码',
+'email_verif_code'		=> 'Email Verification Code: ',//'邮件验证码：',
 
 //---------------------------------------
 //include/service/user.php

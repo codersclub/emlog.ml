@@ -63,22 +63,27 @@ $lang = array(
 
 //---------------------------
 //include/controller/comment_controller.php
-'comment_error_comment_disabled' => 'Comment error: The comments for this entry has been closed.',//'评论失败：该文章已关闭评论',
-'comment_error_content_exists'   => 'Comment error: The same content already exists.',//'评论失败：已存在相同内容评论',
-'comment_error_flood_control'    => 'Comment error: You must wait some time before sending another comment.',//'评论失败：您写评论的速度太快了，请稍后再试',
-'comment_error_name_enter'       => 'Comment error: Please, enter your name.',//'评论失败：请填写姓名',
-'comment_error_name_invalid'     => 'Comment error: Name does not meet requirements.',//'评论失败：姓名不符合规范',
-'comment_error_email_invalid'    => 'Comment error: E-mail address does not meet requirements.',//'评论失败：邮件地址不符合规范',
-'comment_error_other_user'       => 'Comment error: User data cannot be the same as administrator or other users.',//'评论失败：禁止使用管理员昵称或邮箱评论',
-'comment_error_url_invalid'      => 'Comment error: Homepage URL is invalid.',//'评论失败：主页地址不符合规范',
-'comment_error_empty'            => 'Comment error: Please, enter some content.',//'评论失败：请填写评论内容',
-'comment_error_content_invalid'  => 'Comment error: Content does not meet requirements.',//'评论失败：内容不符合规范',
-'comment_error_national_chars'   => 'Comment error: Content must contain Chinese characters.',//'评论失败：评论内容需包含中文',
-'comment_error_captcha_invalid'  => 'Comment error: Invalid captcha.',//'评论失败：验证码错误',
+'comment_error_comment_disabled' => 'This article has no comments',//'该文章未开启评论',
+'comment_error_content_exists'   => 'The same content already exists.',//'已存在相同内容评论',
+'comment_error_flood_control'    => 'Comments are posted too often, take a break',//'评论发布太频繁了，休息下吧',
+'comment_error_name_enter'       => 'Please, enter your name.',//'请填写姓名',
+'comment_error_name_invalid'     => 'Name does not meet requirements.',//'姓名不符合规范',
+'comment_error_email_invalid'    => 'E-mail address does not meet requirements.',//'邮件地址不符合规范',
+'comment_error_other_user'       => 'User data cannot be the same as administrator or other users.',//'禁止使用管理员昵称或邮箱评论',
+'comment_error_url_invalid'      => 'Homepage URL is invalid.',//'主页地址不符合规范',
+'comment_error_empty'            => 'Please, enter some content.',//'请填写评论内容',
+'comment_error_content_invalid'  => 'Content too long',//'内容内容太长了',
+'comment_error_national_chars'   => 'Content must contain Chinese characters.',//'评论内容需包含中文',
+'comment_error_captcha_invalid'  => 'Invalid captcha.',//'验证码错误',
+'mail_test_header'		=> 'Test mail sending header',//'测试邮件发送标题',
+'mail_test_content'		=> 'Test mail sending content',//'测试邮件发送内容',
+'mail_send_ok'			=> 'Mail sent successfully',//'邮件发送成功',
+'mail_send_error'		=> 'Mail sending failed',//'邮件发送失败',
+'comment_wait_approve'		=> 'The comment is saved successfully, please wait for the administrator to approve',//'评论成功，请等待管理员审核',
+
 
 //---------------------------
 //include/model/comment_model.php
-'comment_wait_approve'          => 'Thank you. Your comment is waiting for approval',//'评论发表成功，请等待管理员审核',
 // 'no_permission'		=> 'Insufficient permissions!',//'权限不足！',
 
 );
