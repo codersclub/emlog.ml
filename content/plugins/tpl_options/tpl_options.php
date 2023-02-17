@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Template settings plugin
+Plugin Name: Template options plugin
 Version: 4.2
 Plugin URL: https://www.emlog.net/plugin/detail/377
-Description: Emlog PRO template setting plug-in, which provides richer setting functions for templates.
+Description: Emlog PRO template options plug-in, which provides richer setting functions for templates.
 Author: Adventure, Blue Leaf, emlog official
 */
 
@@ -153,7 +153,7 @@ class TplOptions {
 			include $pluginsFile;
 		}
 		//Set template directory
-		$this->_view = dirname(__FILE__) . '/views/';
+		$this->_view = __DIR__ . '/views/';
 		$this->_assets = BLOG_URL . 'content/plugins/' . self::ID . '/assets/';
 
 		//Register each hook
@@ -881,7 +881,7 @@ class TplOptions {
 	 * @return string
 	 */
 	private function getCheckedString($value, $optionValue) {
-		return is_array($optionValue) && in_array($value, $optionValue) || $value == $optionValue ? ' checked="checked"' : '';
+		return (is_array($optionValue) && in_array($value, $optionValue)) || $value == $optionValue ? ' checked="checked"' : '';
 	}
 
 	/**
