@@ -6,7 +6,7 @@ $(function () {
     var optionArea = $('<div/>').insertAfter($('#content').find('.container-fluid .row')).addClass(attr('area')).slideUp();
     var loadingDom = $('<div />').appendTo(body);
     var message = $('<span />').appendTo($('#wrapper'));
-    var goTopbtn = $('<span />').appendTo($('#wrapper')).attr({'id': 'goTopbtn', 'title': '返回顶部'});
+/*vot*/    var goTopbtn = $('<span />').appendTo($('#wrapper')).attr({'id': 'goTopbtn', 'title': lang('back_to_top')});
     var tplBox = $('.tpl');
     var timer, input, targetInput, target, templateInput, template;
     var trueInput = $('<input type="file" name="image">').css({
@@ -31,7 +31,7 @@ $(function () {
         xps.style.fontSize = '12px';
         xps.style.marginLeft = '4px';
         now.parentNode.appendChild(xps);
-        $('<span class="badge badge-dange">设置</span>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
+/*vot*/        $('<span class="badge badge-dange">' + lang('options') + '</span>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
     }
     //Bind event handler
     body.on('click', '.' + attr('setting'), function () {
@@ -76,12 +76,12 @@ $(function () {
         $('.tpl-options-menu').fadeToggle();
     }).on('click', '.tpl-options-btns', function () {
         if ($(this).attr('data-type') == 1) {
-            $(this).text('全部展开').attr('data-type', 0);
+/*vot*/            $(this).text(lang('expand_all')).attr('data-type', 0);
             $('.option-body').fadeOut();
             $('.option-description').fadeOut();
             $('.option-ico').removeClass('upico').addClass('downico');
         } else {
-            $(this).text('全部收缩').attr('data-type', 1);
+/*vot*/            $(this).text(lang('shrink_all')).attr('data-type', 1);
             $('.option-body').fadeIn();
             $('.option-description').fadeIn();
             $('.option-ico').removeClass('downico').addClass('upico');
@@ -111,7 +111,7 @@ $(function () {
             success: function (data) {
                 showMsg(data.code, data.msg);
             }, error: function () {
-                showMsg(1, '网络异常');
+/*vot*/                showMsg(1, lang('network_error'));
             }, complete: function () {
                 // loading(false);
             }
@@ -143,7 +143,7 @@ $(function () {
             $('[name="' + target + '"]').val(path).trigger('change');
             $('[data-name="' + target + '"]').attr('href', src).find('img').attr('src', src);
         } else {
-            alert('上传失败：' + msg)
+/*vot*/            alert(lang('upload_failed') + msg)
         }
         trueInput.val('');
         target = '';

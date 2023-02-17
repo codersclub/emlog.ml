@@ -16,7 +16,7 @@ class TplOptions {
 
 	//Plug-in ID
 	const ID = 'tpl_options';
-	const NAME = '模板设置';
+	const NAME = 'Template Options';
 	const VERSION = '4.2';
 
 	//DB table prefix
@@ -105,41 +105,41 @@ class TplOptions {
 		//Initialize template settings types
 		$this->_types = array(
 			'radio'    => array(
-				'name'       => '单选按钮',
+/*vot*/				'name'       => lang('ftype_radio'),
 				'allowMulti' => false,
 			),
 			'color'    => array(
-				'name'       => '颜色控件',
+/*vot*/				'name'       => lang('ftype_color'),
 				'allowMulti' => false,
 			),
 			'checkon'  => array(
-				'name'       => '开关',
+/*vot*/				'name'       => lang('ftype_checkon'),
 				'allowMulti' => false,
 			),
 			'checkbox' => array(
-				'name'       => '复选按钮',
+/*vot*/				'name'       => lang('ftype_checkbox'),
 				'allowMulti' => true,
 			),
 			'text'     => array(
-				'name'       => '文本',
+/*vot*/				'name'       => lang('ftype_text'),
 				'allowMulti' => true,
 				'allowRich'  => true,
 			),
 			'image'    => array(
-				'name'       => '图片',
+/*vot*/				'name'       => lang('ftype_image'),
 				'allowMulti' => false,
 			),
 			'page'     => array(
-				'name'       => '页面',
+/*vot*/				'name'       => lang('ftype_page'),
 				'allowMulti' => true,
 			),
 			'sort'     => array(
-				'name'        => '分类',
+/*vot*/				'name'        => lang('ftype_category'),
 				'allowMulti'  => true,
 				'allowDepend' => true,
 			),
 			'tag'      => array(
-				'name'       => '标签',
+/*vot*/				'name'       => lang('ftype_tag'),
 				'allowMulti' => true,
 			),
 		);
@@ -155,6 +155,7 @@ class TplOptions {
 		//Set template directory
 		$this->_view = __DIR__ . '/views/';
 		$this->_assets = BLOG_URL . 'content/plugins/' . self::ID . '/assets/';
+/*vot*/		$this->_lang = BLOG_URL . 'content/plugins/' . self::ID . '/lang/' . LANG;
 
 		//Register each hook
 		$scriptBaseName = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
@@ -205,11 +206,12 @@ class TplOptions {
 	public function hookAdminHead() {
 		echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(self::VERSION));
 		echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(self::VERSION));
+/*vot*/		echo sprintf('<script src="%s"></script>', $this->_lang . 'lang_js.js?ver=' . urlencode(self::VERSION));
 	}
 
 	/**
 	 * Get data table
-	 * @param mixed $table Table name abbreviation, optional, if not set, all tables will be returned, otherwise the corresponding table will be returned
+	 * @param mixed $table Table name, optional, if not set, all tables will be returned, otherwise the corresponding table will be returned
 	 * @return mixed Return array or string
 	 */
 	public function getTable($table = null) {
@@ -218,8 +220,8 @@ class TplOptions {
 
 	/**
 	 * Get the data table name
-	 * @param string $table table name abbreviation
-	 * @return string table full name
+	 * @param string $table Table name
+	 * @return string Table full name
 	 */
 	private function getTableName($table) {
 		return DB_PREFIX . $this->_prefix . $table;
@@ -315,8 +317,8 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取所有分类
-	 * @param boolean $unsorted 是否获取未分类
+	 * Get all categories
+	 * @param boolean $unsorted Whether to get uncategorized
 	 * @return array
 	 */
 	private function getSorts($unsorted = false) {
@@ -324,7 +326,7 @@ class TplOptions {
 		if ($unsorted) {
 			array_unshift($sorts, array(
 				'sid'      => -1,
-				'sortname' => '未分类',
+/*vot*/				'sortname' => lang('uncategorized'),
 				'lognum'   => 0,
 				'children' => array(),
 			));
@@ -333,7 +335,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取所有页面
+	 * Get all pages
 	 * @return array
 	 */
 	private function getPages() {
@@ -352,7 +354,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取数据库连接
+	 * Get database connection
 	 */
 	public function getDb() {
 		if ($this->_db !== null) {
@@ -363,10 +365,10 @@ class TplOptions {
 	}
 
 	/**
-	 * 从表中查询出所有数据
-	 * @param string $table 表名缩写
-	 * @param mixed $condition 字符串或数组条件
-	 * @return array 结果数据
+	 * Get all the data from the table
+	 * @param string $table Table name
+	 * @param mixed $condition String or array condition
+	 * @return array Result data
 	 */
 	private function queryAll($table, $condition = '', $select = '*') {
 		$table = $this->getTable($table) ? $this->getTable($table) : DB_PREFIX . $table;
@@ -384,10 +386,10 @@ class TplOptions {
 	}
 
 	/**
-	 * 将数据插入数据表
-	 * @param string $table 表名缩写
-	 * @param array $data 数据
-	 * @return bool 结果数据
+	 * Insert data into data table
+	 * @param string $table Table name
+	 * @param array $data Data
+	 * @return bool Result data
 	 */
 	private function insert($table, $data, $replace = false) {
 		$table = $this->getTable($table);
@@ -402,9 +404,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 根据条件构造WHERE子句
-	 * @param mixed $condition 字符串或数组条件
-	 * @return string 根据条件构造的查询子句
+	 * Construct a WHERE clause based on conditions
+	 * @param mixed $condition String or array condition
+	 * @return string Query clauses constructed from conditions
 	 */
 	private function buildQuerySql($condition) {
 		if (is_string($condition)) {
@@ -427,9 +429,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 根据数据构造INSERT/REPLACE INTO子句
-	 * @param array $data 数据
-	 * @return string 根据数据构造的子句
+	 * Construct INSERT/REPLACE INTO clauses based on data
+	 * @param array $data Data
+	 * @return string Clauses constructed from data
 	 */
 	private function buildInsertSql($data) {
 		$subSql = array();
@@ -451,9 +453,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 将数组展开为可以供SQL使用的字符串
-	 * @param array $data 数据
-	 * @return string 形如('value1', 'value2')的字符串
+	 * Expand an array into a string that can be used by SQL
+	 * @param array $data Data
+	 * @return string A string of the form ('value1', 'value2')
 	 */
 	private function implodeSqlArray($data) {
 		return implode(',', array_map(function ($val) {
@@ -467,7 +469,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 插件设置函数
+	 * Plugin settings function
 	 * @return void
 	 */
 	public function setting() {
@@ -496,14 +498,14 @@ class TplOptions {
 			if (!is_dir(TPLS_PATH . $template)) {
 				$this->jsonReturn(array(
 					'code' => 1,
-					'msg'  => '该模板不存在',
+/*vot*/					'msg'  => lang('tpl_not_found'),
 				));
 			}
 			$options = $this->getTemplateDefinedOptions($template);
 			if ($options === false) {
 				$this->jsonReturn(array(
 					'code' => 1,
-					'msg'  => '该模板不支持本插件设置',
+/*vot*/					'msg'  => lang('tpl_not_support'),
 				));
 			}
 			$this->_currentTemplate = $template;
@@ -552,7 +554,7 @@ class TplOptions {
 				$data = array(
 					'template' => $template,
 					'code'     => $result ? 0 : 1,
-					'msg'      => '保存模板设置' . ($result ? '成功' : '失败'),
+/*vot*/					'msg'      => lang('tpl_save_settings') . ($result ? lang('success') : lang('failure')),
 				);
 				$this->jsonReturn($data);
 			}
@@ -565,7 +567,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 判断是否本该为数组但不是数组的
+	 * Determine whether it should be an array but is not an array
 	 * @param array $option
 	 * @param mixed $data
 	 * @return boolean
@@ -587,7 +589,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 判断是否为多选/多行文本
+	 * Determine whether it is a multi-selection/multi-line text
 	 * @param array $option
 	 * @return boolean
 	 */
@@ -596,11 +598,11 @@ class TplOptions {
 	}
 
 	/**
-	 * 上传文件
-	 * @param string $template 模板
-	 * @param array $file 上传的文件
-	 * @param string $target 目标
-	 * @return array 上传结果信息
+	 * Upload file
+	 * @param string $template Template
+	 * @param array $file Uploaded file
+	 * @param string $target Target
+	 * @return array Upload result information
 	 */
 	private function upload($template, $file, $target) {
 		$result = array(
@@ -612,26 +614,26 @@ class TplOptions {
 		);
 		if ($file['error'] == 1) {
 			$result['code'] = 100;
-			$result['msg'] = '文件大小超过系统限制';
+/*vot*/			$result['msg'] = lang('file_size_large_system');
 			return $result;
 		}
 
 		if ($file['error'] > 1) {
 			$result['code'] = 101;
-			$result['msg'] = '上传文件失败';
+/*vot*/			$result['msg'] = lang('file_upload_failed');
 			return $result;
 		}
 		$extension = getFileSuffix($file['name']);
 		if (!in_array($extension, $this->_imageTypes)) {
 			$result['code'] = 102;
-			$result['msg'] = '错误的文件类型';
+/*vot*/			$result['msg'] = lang('file_wrong_type');
 			return $result;
 		}
 		$maxSize = Option::getAttMaxSize();
 
 		if ($file['size'] > $maxSize) {
 			$result['code'] = 103;
-			$result['msg'] = '文件大小超出emlog的限制';
+/*vot*/			$result['msg'] = lang('file_size_large_emlog');
 			return $result;
 		}
 		$uploadPath = Option::UPLOADFILE_PATH . self::ID . "/$template/";
@@ -646,14 +648,14 @@ class TplOptions {
 			$ret = @mkdir($uploadPath, 0777, true);
 			if ($ret === false) {
 				$result['code'] = 104;
-				$result['msg'] = '创建文件上传目录失败';
+/*vot*/				$result['msg'] = lang('create_upload_dir_error');
 				return $result;
 			}
 		}
 		if (@is_uploaded_file($file['tmp_name'])) {
 			if (@!move_uploaded_file($file['tmp_name'], $attachpath)) {
 				$result['code'] = 105;
-				$result['msg'] = '上传失败。文件上传目录(content/uploadfile)不可写';
+/*vot*/				$result['msg'] = lang('upload_no_rights');
 				return $result;
 			}
 			@chmod($attachpath, 0777);
@@ -662,9 +664,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取设置项的值
-	 * @param array $option 模板设置项
-	 * @param array $storedOptions 存储的模板设置项
+	 * Get the value of the option
+	 * @param array $option Template option
+	 * @param array $storedOptions Stored template options
 	 * @param string $template
 	 * @return mixed
 	 */
@@ -676,8 +678,8 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取模板设置项的值
-	 * @param array $option 模板设置项
+	 * Get the value of the template option
+	 * @param array $option Template option
 	 * @param string $template
 	 * @return mixed
 	 */
@@ -693,8 +695,8 @@ class TplOptions {
 				case 'radio':
 					if (!isset($option['values']) || !is_array($option['values'])) {
 						$option['values'] = array(
-							0 => '否',
-							1 => '是',
+/*vot*/							0 => lang('no'),
+/*vot*/							1 => lang('yes'),
 						);
 					}
 					$default = $this->arrayGet(array_keys($option['values']), 0);
@@ -742,7 +744,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 替换设置项里的url
+	 * Replace the url in the option
 	 * @param mixed $value
 	 * @param string $template
 	 * @return mixed
@@ -766,7 +768,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 渲染设置页面的设置项
+	 * Render options
 	 * @return void
 	 */
 	private function renderOptions() {
@@ -777,7 +779,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 渲染模板设置
+	 * Render template options
 	 * @return void
 	 */
 	private function renderByTpl($option, $tpl, $loopValues = true, $placeholder = true) {
@@ -787,7 +789,7 @@ class TplOptions {
 		}
 		echo '<div class="option ' . @$option['labels'] . '" id="' . $option['id'] . '">';
 		echo '<div class="option-ico upico"></div>';
-		echo '<div class="option-name" title="单击展开收缩设置内容" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']), $desc, '</div>';
+/*vot*/		echo '<div class="option-name" title="' . lang('shrink_expand') . '" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']), $desc, '</div>';
 		$depend = isset($option['depend']) ? $option['depend'] : 'none';
 		echo sprintf('<div class="option-body depend-%s">', $depend);
 
@@ -956,7 +958,7 @@ class TplOptions {
 	 * @return void
 	 */
 	private function renderImage($option) {
-		$tpl = '<span class="image-tip">友情提示：选择文件后将会立刻上传覆盖原图</span><a href="{value}" target="_blank" data-name="{name}"><img src="{value}"></a><br><input type="file" accept="image/*" data-target="{name}"><input type="hidden" name="{name}" value="{path}">';
+/*vot*/		$tpl = '<span class="image-tip">' . lang('tpl_upload_tips') . '</span><a href="{value}" target="_blank" data-name="{name}"><img src="{value}"></a><br><input type="file" accept="image/*" data-target="{name}"><input type="hidden" name="{name}" value="{path}">';
 		$this->renderByTpl($option, $tpl, false);
 	}
 
@@ -1010,7 +1012,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 转义字符串，防止悲剧
+	 * Escape strings to prevent conflicts
 	 * @param string $value
 	 * @return string
 	 */
@@ -1019,7 +1021,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取支持的模板
+	 * Get supported templates
 	 * @return array
 	 */
 	private function getTemplates() {
@@ -1050,8 +1052,8 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取模板缩略图url
-	 * @param string $template 模板
+	 * Get template thumbnail url
+	 * @param string $template Template
 	 * @return string
 	 */
 	private function getTemplatePreview($template) {
@@ -1062,9 +1064,9 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取模板参数配置
+	 * Get template parameter configuration
 	 * @param string $optionFile
-	 * @return mixed false表示不支持本插件
+	 * @return mixed False means this plugin is not supported
 	 */
 	private function getTemplateDefinedOptions($template) {
 		if (!is_file($optionFile = TPLS_PATH . $template . '/options.php')) {
@@ -1091,17 +1093,17 @@ class TplOptions {
 	}
 
 	/**
-	 * 获取模板文件
-	 * @param string $view 模板名字
-	 * @param string $ext 模板后缀，默认为.php
-	 * @return string 模板文件全路径
+	 * Get the template file
+	 * @param string $view Template name
+	 * @param string $ext Template suffix, the default is .php
+	 * @return string Full path to the template file
 	 */
 	public function view($view, $ext = '.php') {
 		return $this->_view . $view . $ext;
 	}
 
 	/**
-	 * 根据参数构造url
+	 * Construct url according to parameters
 	 * @param array $params
 	 * @return string
 	 */
@@ -1116,7 +1118,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 以json输出数据并结束
+	 * Output data in json and exit
 	 * @param mixed $data
 	 * @return void
 	 */
@@ -1127,10 +1129,10 @@ class TplOptions {
 	}
 
 	/**
-	 * 从数组里取出数据，支持key.subKey的方式
+	 * Take out data from the array, support key.subKey method
 	 * @param array $array
 	 * @param string $key
-	 * @param mixed $default 默认值
+	 * @param mixed $default Default value
 	 * @return mixed
 	 */
 	public function arrayGet($array, $key, $default = null) {
@@ -1147,7 +1149,7 @@ class TplOptions {
 	}
 
 	/**
-	 * 魔术方法，用以获取模板设置
+	 * Magic method to get template option
 	 * @param string $name
 	 * @return mixed
 	 */

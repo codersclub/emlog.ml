@@ -2,8 +2,8 @@
 !defined('EMLOG_ROOT') && exit('access deined!');
 ?>
 <div class="containertitle2">
-    <a class="navi3" href="<?php echo $this->url(); ?>">模板列表</a>
-	<?php if ($toSetTemplate != ''): ?><a class="navi4" href="<?php echo $this->url(array('template' => $toSetTemplate)); ?>">模板设置</a><?php endif; ?>
+<!--vot-->    <a class="navi3" href="<?php echo $this->url(); ?>"><?=lang('tpl_list')?></a>
+<!--vot-->	<?php if ($toSetTemplate != ''): ?><a class="navi4" href="<?php echo $this->url(array('template' => $toSetTemplate)); ?>"><?=lang('tpl_options')?></a><?php endif; ?>
 	<?php include $this->view('message'); ?>
 </div>
 <table class="adm__list">
@@ -20,12 +20,12 @@
         <td>
 			<?php if ($template['support'] !== false): ?>
                 <a href="<?php echo $this->url(array('template' => $name)); ?>">
-                    <img alt="点击设置该模板" title="点击设置该模板" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
+<!--vot-->                    <img alt="<?=lang('tpl_set')?>" title="<?=lang('tpl_set')?>" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
                     <br/>
 					<?php echo $template['name']; ?>
                 </a>
 			<?php else: ?>
-                <img title="该模板不支持本插件设置" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
+<!--vot-->                <img title="<?=lang('tpl_option_not_support')?>" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
                 <br/>
 				<?php echo $template['name']; ?>
 			<?php endif; ?>

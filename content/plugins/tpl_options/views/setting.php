@@ -2,17 +2,17 @@
 !defined('EMLOG_ROOT') && exit('access deined!');
 ?>
 <div id="tpl-options">
-    <div class="tpl-options-close">&laquo;返回</div>
-    <div class="tpl-options-btns" data-type="1">全部收缩</div>
+<!--vot-->    <div class="tpl-options-close"><?= lang('back') ?></div>
+<!--vot-->    <div class="tpl-options-btns" data-type="1"><?=lang('shrink_all')?></div>
 	<?php
 	$tplget = $this->getTemplateDefinedOptions($template);
 	if (array_key_exists('TplOptionsNavi', $tplget)):
 		$tplnavi = $tplget['TplOptionsNavi']['values'];
 		?>
-        <div class="tpl-options-menubtn">快捷菜单</div>
+<!--vot-->        <div class="tpl-options-menubtn"><?=lang('short_menu')?></div>
         <div class="tpl-options-menu">
             <ul>
-                <li onClick="TplShow('tpl-system')" class="active">设置说明</li>
+<!--vot-->                <li onClick="TplShow('tpl-system')" class="active"><?=lang('settings_help')?></li>
 				<?php
 				foreach ($tplnavi as $key => $v):
 					?>
