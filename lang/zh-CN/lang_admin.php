@@ -70,7 +70,7 @@ $lang = array(
 //admin/setting_mail.php
 'email_sending'                           => '邮件服务',//'Email sending',
 'sender_email'                            => '发送人邮箱',//'Sender email',
-'sender_name'                             => '发送人名称（选填）',//'Sender name (optional)',
+'sender_name'                             => '发送人名称（选填，建议填写站点名称）',//'Sender name (optional, it is recommended to fill in the site name)',
 'smtp_password'                           => 'SMTP密码',//'SMTP password',
 'smtp_server'                             => 'SMTP服务器',//'SMTP server',
 'smtp_port'                               => '端口',//'Port',
@@ -757,7 +757,7 @@ $lang = array(
 	                           //Content editor: Responsible for the management of articles, resources, comments, etc.<br>
           	                   //Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
 'limit_daily_posts'			=> '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
-'enable_email_code'			=> '开启注册邮件验证码',//'Enable email verification code on registration',
+'enable_email_code'			=> '开启注册邮件验证码（开启需配置邮件通知服务）',//'Enable email verification code on registration (you need to configure the email notification service to open it)',
 
 //---------------------------
 //admin/views/signin.php
