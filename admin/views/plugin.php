@@ -72,7 +72,7 @@
                                 <div class="small mt-3">
 									<?php if ($val['ForEmlog'] != ''): ?><?= lang('ok_for_emlog') ?>: <?= $val['ForEmlog'] ?>&nbsp | &nbsp<?php endif ?>
 									<?php if ($val['Author'] != ''): ?>
-										<?= lang('user') ?>: <?php if ($val['AuthorUrl'] != ''): ?>
+<!--vot-->									<?= lang('author') ?>: <?php if ($val['AuthorUrl'] != ''): ?>
                                             <a href="<?= $val['AuthorUrl'] ?>" target="_blank"><?= $val['Author'] ?></a>
 										<?php else: ?>
 											<?= $val['Author'] ?>
