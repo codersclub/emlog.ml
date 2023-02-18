@@ -832,7 +832,7 @@ body {
 }
 
 .comment-post #comment_submit {
-    width: 84px;
+/*vot*/    width: auto;
     height: 35px;
     text-align: center;
     font-size: 14px;
