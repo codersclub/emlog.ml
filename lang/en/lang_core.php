@@ -135,6 +135,10 @@ $lang = array(
 //include/model/media_model.php
 'del_failed'                 => 'Failed to delete!',//'删除失败!',
 
+//---------------------------
+//include/model/sort_model.php
+'uncategorized'            => 'Uncategorized',//'未分类',
+
 //---------------------------------------
 //include/service/notice.php
 'new_article_review'         => 'Your site has received new submissions for review',//'你的站点收到新的待审核文章投稿',

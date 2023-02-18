@@ -61,8 +61,4 @@ $lang = array(
 // 'alias_only_digits'		=> 'Invalid_alias! Can not be pure digital',//'别名错误，不能为纯数字',
 // 'alias_system_link'		=> 'Invalid alias! Conflicts with system link',//'别名错误，与系统链接冲突',
 
-//---------------------------
-//include/model/sort_model.php
- 'uncategorized'	=> 'Без категории',//'未分类',
-
 );
