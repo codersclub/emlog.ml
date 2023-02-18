@@ -99,7 +99,7 @@ if ($action === 'upload_zip') {
 		emDirect("./template.php?error_f=1");
 	}
 	if (!$zipfile || $zipfile['error'] > 0 || empty($zipfile['tmp_name'])) {
-/*vot*/		emMsg('template_upload_failed') . $zipfile['error']);
+/*vot*/		emMsg('template_upload_failed') . $zipfile['error'];
 	}
 	if (getFileSuffix($zipfile['name']) != 'zip') {
 		emDirect("./template.php?error_a=1");
