@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: 模版设置插件
+Plugin Name: Template options plugin
 */
 !defined('EMLOG_ROOT') && exit('access deined!');
 

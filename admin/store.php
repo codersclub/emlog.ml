@@ -85,7 +85,7 @@ if ($action === 'mine') {
 
 if ($action === 'svip') {
 	$addons = $Store_Model->getSvipAddon();
-	$sub_title = '铁杆svip专属';
+/*vot*/	$sub_title = lang('svip');
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_svip'));
