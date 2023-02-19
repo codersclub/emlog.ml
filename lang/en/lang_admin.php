@@ -101,12 +101,15 @@ $lang = array(
 'plugin'                                  => 'Plug-in',//'插件',
 'plugins'                                 => 'Plug-ins',//'插件',
 'plugin_view'                             => 'View Plugin',//'查看插件',
-'free_zone'                               => 'Free zone',//'免费区',
-'paid_zone'                               => 'Paid zone',//'付费区',
+'free_template'				=> 'Free template',//'免费模板',
+'paid_template'				=> 'Paid template',//'付费模板',
+'free_plugin'				=> 'Free plugin',//'免费插件',
+'paid_plugin'				=> 'Paid plugin',//'付费插件',
 'my_apps'				=> 'My purchases',//'已购应用',
 'go_check'				=> 'Go to check',//'去查看',
 'install_failed_permission'		=> 'Installation failed, please check whether the directory under content is writable',//'安装失败，请检查content下目录是否可写',
 'install_failed_zip'			=> 'Installation failed, please install the Zip extension for php',//'安装失败，请安装php的Zip扩展',
+'svip'					=> 'Hardcore svip exclusive',//'铁杆svip专属',
 
 //---------------------------
 //admin/style.php
@@ -833,6 +836,11 @@ $lang = array(
 'plugin_publish'                    => 'Publish plugin',//'发布插件',
 'this_author_only'		=> 'View only this author items',//'仅看Ta的作品',
 '_plugins'			=> ' plugins',//'个插件',// Number of plugins
+
+//---------------------------
+//admin/views/store_svip.php
+'not_svip'			=> 'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',//'您还不是铁杆svip付费支持用户，无法安装专属免费应用',
+'paid_support'			=> 'Paid support &rarr;',//'付费支持 &rarr;',
 
 //---------------------------
 //admin/views/store_tpl.php
