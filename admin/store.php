@@ -23,7 +23,13 @@ if (empty($action)) {
 	$r = $Store_Model->getTemplates($tag, $keyword, $page, $author_id);
 	$templates = $r['templates'];
 	$count = $r['count'];
-	$sub_title = lang('template') . ' ' . ($tag === 'free' ? lang('free_zone') : lang('paid_zone'));
+
+/*vot*/	$sub_title = lang('template');
+	if ($tag === 'free') {
+/*vot*/		$sub_title = lang('free_template');
+	} elseif ($tag === 'paid') {
+/*vot*/		$sub_title = lang('paid_template');
+	}
 
 	$subPage = '';
 	foreach ($_GET as $key => $val) {
@@ -47,7 +53,13 @@ if ($action === 'plu') {
 	$r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id);
 	$plugins = $r['plugins'];
 	$count = $r['count'];
-	$sub_title = lang('plugin') . ' ' . ($tag === 'free' ? lang('free_zone') : lang('paid_zone'));	
+
+/*vot*/	$sub_title = lang('plugin');
+	if ($tag === 'free') {
+/*vot*/		$sub_title = lang('free_plugin');
+	} elseif ($tag === 'paid') {
+/*vot*/		$sub_title = lang('paid_plugin');
+	}
 
 	$subPage = '';
 	foreach ($_GET as $key => $val) {
@@ -67,6 +79,16 @@ if ($action === 'mine') {
 
 	include View::getAdmView('header');
 	require_once(View::getAdmView('store_mine'));
+	include View::getAdmView('footer');
+	View::output();
+}
+
+if ($action === 'svip') {
+	$addons = $Store_Model->getSvipAddon();
+	$sub_title = '铁杆svip专属';
+
+	include View::getAdmView('header');
+	require_once(View::getAdmView('store_svip'));
 	include View::getAdmView('footer');
 	View::output();
 }
