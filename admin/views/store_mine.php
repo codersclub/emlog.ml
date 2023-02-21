@@ -26,7 +26,7 @@
                         <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<?= $icon ?>">
                     </a>
                     <div class="card-body">
-                        <p class="card-text"><?= $v['name'] ?></p>
+                        <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
                         <p class="card-text text-muted small">
                             <span class="small"><?= $v['info'] ?></span><br><br>
 <!--vot-->                            <?=lang('developer')?>: <?= $v['author'] ?><br>

@@ -20,20 +20,18 @@
 									<?php if (isset($_GET['err_ckcode'])): ?>
                                         <div class="alert alert-danger"><?= lang('verification_error') ?></div><?php endif ?>
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp"
-                                               placeholder="<?= lang('email_enter') ?>" required
+                                        <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('email_enter') ?>" required
                                                autofocus>
                                     </div>
 									<?php if ($login_code): ?>
                                         <div class="form-group form-inline">
-                                            <input type="text" name="login_code" class="form-control form-control-user" id="login_code" placeholder="<?= lang('captcha') ?>"
-                                                   required>
+                                            <input type="text" name="login_code" class="form-control form-control-user" id="login_code" placeholder="<?= lang('captcha') ?>" required>
                                             <img src="../include/lib/checkcode.php" id="checkcode" class="mx-2">
                                         </div>
 									<?php endif ?>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('submit') ?></button>
                                     <hr>
-                                    <div class="text-center"><a class="small" href="../admin"><?= lang('login') ?></a></div>
+                                    <div class="text-center"><a class="small" href="<?= BLOG_URL ?>/admin/"><?= lang('login') ?></a></div>
                                     <hr>
                                     <div class="text-center"><a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
                                 </form>

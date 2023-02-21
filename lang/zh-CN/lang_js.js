@@ -7,7 +7,7 @@ var LNG = {
 //---------------------------
 //admin/views/signup.php
     'send_email_code'	: '发送邮件验证码',//'Send email verification code',
-    'code_valid_for'	: '发送成功，请查收邮件 ',//'Sent successfully, please check your email in ',
+    'code_valid_for'	: '已发送,请查收邮件 ',//'Sent successfully, please check your email in ',
     '_seconds'		: '秒',//' seconds',
     'test_mail_failed'	: '发送失败',//'Failed to send',
 

@@ -64,7 +64,7 @@ $lang = array(
 'email_enter_please'                      => '请正确填写邮箱',//'Please enter correct email',
 'test_mail_subj'                          => '测试邮件',//'Test mail',
 'test_mail_body'                          => '这是一封测试邮件',//'This is a test email',
-'test_mail_failed'                        => '发送失败',//'Failed to send',
+'test_mail_failed'                        => '发送邮件失败',//'Failed to send mail',
 
 //---------------------------
 //admin/setting_mail.php
@@ -823,7 +823,7 @@ $lang = array(
 //---------------------------
 //admin/views/store_mine.php
 'contact_to_install'		=> '请联系作者安装',//'Please contact the author to install',
-'no_my_apps'			=> '你还没有购买任何应用。',//'You have not purchased any apps.',
+'no_my_apps'			=> '您还没有购买任何应用。',//'You have not purchased any apps.',
 
 
 //---------------------------

@@ -169,7 +169,7 @@ if ($action == 'send_email_code') {
 
 if ($action == 'reset') {
 	if (ISLOGIN === true) {
-		emDirect("../admin");
+		emDirect("../admin/");
 	}
 
 	$login_code = Option::get('login_code') === 'y';
@@ -204,7 +204,7 @@ if ($action == 'doreset') {
 
 if ($action == 'reset2') {
 	if (ISLOGIN === true) {
-		emDirect("../admin");
+		emDirect("../admin/");
 	}
 
 	$login_code = Option::get('login_code') === 'y';
