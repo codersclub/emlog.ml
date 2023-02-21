@@ -836,6 +836,7 @@ $lang = array(
 'plugin_publish'		=> 'Опубликовать плагин',//'发布插件',
 'this_author_only'		=> 'Показать объекты только этого автора',//'仅看Ta的作品',
 '_plugins'			=> ' плагинов',//'个插件',// Number of plugins
+'recommend_today'		=> 'Рекомендовано сегодня',//'今日推荐',
 
 //---------------------------
 //admin/views/store_svip.php

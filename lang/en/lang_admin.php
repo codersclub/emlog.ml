@@ -64,7 +64,7 @@ $lang = array(
 'email_enter_please'                      => 'Please enter correct email',//'请填写邮箱',
 'test_mail_subj'                          => 'Test mail',//'测试邮件',
 'test_mail_body'                          => 'This is a test email',//'这是一封测试邮件',
-'test_mail_failed'                        => 'Failed to send',//'发送失败',
+'test_mail_failed'                        => 'Failed to send mail',//'发送失败',
 
 //---------------------------
 //admin/setting_mail.php
@@ -836,6 +836,7 @@ $lang = array(
 'plugin_publish'                    => 'Publish plugin',//'发布插件',
 'this_author_only'		=> 'View only this author items',//'仅看Ta的作品',
 '_plugins'			=> ' plugins',//'个插件',// Number of plugins
+'recommend_today'		=> 'Recommended today',//'今日推荐',
 
 //---------------------------
 //admin/views/store_svip.php

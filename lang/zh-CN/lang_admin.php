@@ -835,6 +835,7 @@ $lang = array(
 'plugin_publish'                    => '发布插件',//'Publish plugin',
 'this_author_only'		=> '仅看Ta的作品',//'View only this author items',
 '_plugins'			=> '个插件',//' plugins',// Number of plugins
+'recommend_today'		=> '今日推荐',//'Recommended today',
 
 //---------------------------
 //admin/views/store_svip.php

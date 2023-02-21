@@ -45,7 +45,7 @@
                         <p class="card-text font-weight-bold">
 							<?= $v['name'] ?>
 							<?php if ($v['top'] === 1): ?>
-                                <span class="badge badge-danger p-1">今日推荐</span>
+<!--vot-->                                <span class="badge badge-danger p-1"><?=lang('recommend_today')?></span>
 							<?php endif; ?>
                         </p>
                         <p class="card-text text-muted small">
