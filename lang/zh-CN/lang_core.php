@@ -197,6 +197,10 @@ $lang = array(
 'comment_leave'              => '发布评论',//'Post a comment',
 
 //---------------------------
+//content/templates/default/pw.php
+'submit'                                  => '提交',//'Submit',
+
+//---------------------------
 //content/templates/default/side.php
 'rss_feed'                   => 'RSS订阅',//'RSS Subscription',
 'feed_rss'                   => '订阅Rss',//'RSS Subscription',

@@ -1,6 +1,6 @@
 <?php
 /**
- * 加密文章输入密码页面
+ * Input the article password page
  */
 if (!defined('EMLOG_ROOT')) {
 	exit('error!');
@@ -11,7 +11,7 @@ if (!defined('EMLOG_ROOT')) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>请输入文章访问密码</title>
+<!--vot-->    <title><?= lang('page_password_enter') ?></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,12 +73,12 @@ if (!defined('EMLOG_ROOT')) {
 </head>
 <body>
 <form action="" method="post">
-    <h1>请输入文章访问密码</h1>
+<!--vot-->    <h1><?= lang('page_password_enter') ?></h1>
     <div style="display: flex;">
         <input type="password" id="logpwd" name="logpwd" required autofocus>
-        <button type="submit">提交</button>
+<!--vot-->        <button type="submit"><?= lang('submit') ?></button>
     </div>
-    <a href="<?= BLOG_URL ?>">&larr;返回首页</a>
+<!--vot-->    <a href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
 </form>
 </body>
 </html>

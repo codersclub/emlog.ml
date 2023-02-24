@@ -197,6 +197,10 @@ $lang = array(
 'comment_leave'		=> 'Опубликовать комментарий',//'发布评论',
 
 //---------------------------
+//content/templates/default/pw.php
+'submit'		=> 'Подтвердить',//'提交',
+
+//---------------------------
 //content/templates/default/side.php
 'rss_feed'		=> 'RSS лента',//'RSS订阅',
 'feed_rss'		=> 'Лента RSS',//'订阅Rss',
