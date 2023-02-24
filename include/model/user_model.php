@@ -13,7 +13,7 @@ class User_Model {
 		$this->db = Database::getInstance();
 	}
 
-	function getUsers($email = '', $nickname = '', $page = 1) {
+	public function getUsers($email = '', $nickname = '', $page = 1) {
 		$condition = $limit = '';
 		if ($email) {
 /*vot*/			$condition = " AND email LIKE '$email%'";
@@ -41,11 +41,11 @@ class User_Model {
 		return $users;
 	}
 
-	function getOneUser($uid) {
+	public function getOneUser($uid) {
 /*vot*/		$row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
 		$userData = [];
 		if ($row) {
-			$userData = array(
+			$userData = [
 				'username'    => htmlspecialchars($row['username']),
 				'nickname'    => htmlspecialchars($row['nickname']),
 				'email'       => htmlspecialchars($row['email']),
@@ -53,12 +53,14 @@ class User_Model {
 				'description' => htmlspecialchars($row['description']),
 				'role'        => $row['role'],
 				'ischeck'     => $row['ischeck'],
-			);
+				'state'       => (int)$row['state'],
+				'ip'          => $row['ip'],
+			];
 		}
 		return $userData;
 	}
 
-	function updateUser($userData, $uid) {
+	public function updateUser($userData, $uid) {
 		$utctimestamp = time();
 		$Item = ["update_time=$utctimestamp"];
 		foreach ($userData as $key => $data) {
@@ -68,7 +70,7 @@ class User_Model {
 /*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
 	}
 
-	function updateUserByMail($userData, $mail) {
+	public function updateUserByMail($userData, $mail) {
 		$timestamp = time();
 		$Item = ["update_time=$timestamp"];
 		foreach ($userData as $key => $data) {
@@ -78,23 +80,23 @@ class User_Model {
 /*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
 	}
 
-	function addUser($username, $mail, $password, $role) {
+	public function addUser($username, $mail, $password, $role) {
 		$timestamp = time();
 		$nickname = getRandStr(8, false);
 /*vot*/		$sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
 		$this->db->query($sql);
 	}
 
-	function deleteUser($uid) {
+	public function deleteUser($uid) {
 /*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
 /*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
 	}
 
-	function forbidUser($uid) {
+	public function forbidUser($uid) {
 /*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
 	}
 
-	function unforbidUser($uid) {
+	public function unforbidUser($uid) {
 /*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
 	}
 
@@ -105,7 +107,7 @@ class User_Model {
 	 * @param int $uid Compatible with the case that the user name has not changed when updating the author's information
 	 * @return boolean
 	 */
-	function isUserExist($user_name, $uid = '') {
+	public function isUserExist($user_name, $uid = '') {
 		if (empty($user_name)) {
 			return false;
 		}
@@ -114,7 +116,7 @@ class User_Model {
 		return $data['total'] > 0;
 	}
 
-	function isNicknameExist($nickname, $uid = '') {
+	public function isNicknameExist($nickname, $uid = '') {
 		if (empty($nickname)) {
 			return FALSE;
 		}
@@ -123,7 +125,7 @@ class User_Model {
 		return $data['total'] > 0;
 	}
 
-	function isMailExist($mail, $uid = '') {
+	public function isMailExist($mail, $uid = '') {
 		if (empty($mail)) {
 			return FALSE;
 		}
@@ -132,7 +134,7 @@ class User_Model {
 		return $data['total'] > 0;
 	}
 
-	function getUserNum() {
+	public function getUserNum() {
 		$data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user");
 		return $data['total'];
 	}

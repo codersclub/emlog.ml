@@ -53,7 +53,7 @@
 								<?php endif ?>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('register') ?></button>
                                 <hr>
-<!-- vot-->                                    <div class="text-center"><a href="<?= BLOG_URL ?>admin/"><?= lang('log_in') ?></a></div>
+<!-- vot-->                                    <div class="text-center"><a href="./"><?= lang('log_in') ?></a></div>
                                 <hr>
 <!-- vot-->                                    <div class="text-center"><a href="<?= BLOG_URL ?>" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
                             </form>

@@ -29,7 +29,7 @@
                                     </div>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('submit') ?></button>
                                     <hr>
-                                    <div class="text-center"><a class="small" href="<?= BLOG_URL ?>/admin/"><?= lang('login') ?></a></div>
+                                    <div class="text-center"><a class="small" href="./"><?= lang('login') ?></a></div>
                                     <hr>
                                     <div class="text-center"><a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
                                 </form>
