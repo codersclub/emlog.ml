@@ -100,7 +100,8 @@ function widget_sort($title) {
 				if ($value['pid'] != 0) continue;
 				?>
                 <li>
-                    <a href="<?= Url::sort($value['sid']) ?>" title="<?= $value["description"] ?>"><?= $value['sortname'] ?>&nbsp;&nbsp;<?= (($value['lognum']) > 0) ? '(' . ($value['lognum']) . ')' : '' ?></a>
+                    <a href="<?= Url::sort($value['sid']) ?>" title="<?= $value["description"] ?>"><?= $value['sortname'] ?>
+                        &nbsp;&nbsp;<?= (($value['lognum']) > 0) ? '(' . ($value['lognum']) . ')' : '' ?></a>
 					<?php if (!empty($value['children'])): ?>
                         <ul class="log-classify-c">
 							<?php
@@ -384,11 +385,11 @@ function blog_tag($blogid) {
  * Home page article list and article details page: Author
  */
 function blog_author($uid) {
-	global $CACHE;
-	$user_cache = $CACHE->readCache('user');
-	$author = $user_cache[$uid]['name'];
-	$mail = $user_cache[$uid]['mail'];
-	$des = $user_cache[$uid]['des'];
+	$User_Model = new User_Model();
+	$user_info = $User_Model->getOneUser($uid);
+	$author = $user_info['nickname'];
+	$mail = $user_info['email'];
+	$des = $user_info['description'];
 	$title = !empty($mail) || !empty($des) ? "title=\"$des $mail\"" : '';
 	echo '<a href="' . Url::author($uid) . "\" $title>$author</a>";
 }

@@ -19,10 +19,10 @@ class Comment_Controller {
 		$uid = 0;
 
 		if (ISLOGIN === true) {
-			$CACHE = Cache::getInstance();
-			$user_cache = $CACHE->readCache('user');
-			$name = addslashes($user_cache[UID]['name_orig']);
-			$mail = addslashes($user_cache[UID]['mail']);
+			$User_Model = new User_Model();
+			$user_info = $User_Model->getOneUser(UID);
+			$name = addslashes($user_info['name_orig']);
+			$mail = addslashes($user_info['email']);
 			$url = addslashes(BLOG_URL);
 			$uid = UID;
 		}
@@ -48,8 +48,6 @@ class Comment_Controller {
 			$err = lang('comment_error_name_invalid');
 		} elseif ($mail !== '' && !checkMail($mail)) {
 			$err = lang('comment_error_email_invalid');
-		} elseif (ISLOGIN === false && $Comment_Model->isNameAndMailValid($name, $mail) === false) {
-			$err = lang('comment_error_other_user');
 		} elseif (!empty($url) && preg_match("/^(http|https)\:\/\/[^<>'\"]*$/", $url) == false) {
 			$err = lang('comment_error_url_invalid');
 		} elseif (empty($content)) {
