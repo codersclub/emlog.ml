@@ -117,7 +117,7 @@ class Cache {
 		$this->writeCache($cacheData, 'options');
 	}
 
-	// 考虑性能仅缓存前50个用户
+	// Caching only the first 50 users for performance considerations
 	private function mc_user() {
 		$user_cache = [];
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user ORDER BY uid ASC limit 50");
