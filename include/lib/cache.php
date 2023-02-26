@@ -117,10 +117,9 @@ class Cache {
 		$this->writeCache($cacheData, 'options');
 	}
 
-	// Caching only the first 50 users for performance considerations
 	private function mc_user() {
 		$user_cache = [];
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user ORDER BY uid ASC limit 50");
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user ORDER BY uid ASC");
 		while ($row = $this->db->fetch_array($query)) {
 			$photo = [];
 			$avatar = '';
