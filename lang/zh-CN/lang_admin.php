@@ -488,6 +488,9 @@ $lang = array(
 'contacts'				  => '联系交流 | 加入Q群',//'Contact and exchange | Join Q group',
 'feedback'				  => '问题反馈 | 官方社区',//'Problem Feedback | Official Community',
 'issues'				  => 'Issues',//'Issues',
+'comments_received'			=> '收到评论',//'Received comments',
+'last_articles'				=> '最近发布的文章',//'Recent articles',
+'last_comments'				=> '最近收到的评论',//'Recent comments',
 
 //---------------------------
 //admin/views/links.php
