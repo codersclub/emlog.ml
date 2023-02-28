@@ -38,21 +38,21 @@
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
-                        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<?= $icon ?>">
+                        <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
                     </a>
                     <div class="card-body">
                         <p class="card-text font-weight-bold">
-							<?= $v['name'] ?>
+                            <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= $v['name'] ?></a>
 							<?php if ($v['top'] === 1): ?>
-<!--vot-->                                <span class="badge badge-danger p-1"><?=lang('recommend_today')?></span>
+<!--vot-->                                <span class="badge badge-success p-1"><?=lang('recommend_today')?></span>
 							<?php endif; ?>
                         </p>
                         <p class="card-text text-muted small">
                             <span class="small"><?= $v['info'] ?></span><br><br>
 <!--vot-->                  <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . '&yen;</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
 <!--vot-->		    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
-			    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
-			    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
+<!--vot-->		    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
+<!--vot-->		    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                         </p>
                         <div class="card-text d-flex justify-content-between">
                             <div class="installMsg"></div>
