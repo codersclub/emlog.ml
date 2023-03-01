@@ -14,11 +14,11 @@
     <div class="card-header py-3">
         <div class="row justify-content-between">
             <div class="form-inline">
-                <h6 class="m-2 font-weight-bold">总标签数 (<?= $tags_count ?>)</h6>
+                <h6 class="m-2 font-weight-bold"><?= lang('tags_total') ?> (<?= $tags_count ?>)</h6>
             </div>
             <form action="tag.php" method="get">
                 <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="搜索标签名...">
+                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('tag_search') ?>">
                     <div class="input-group-append">
                         <button class="btn btn-sm btn-success" type="submit">
                             <i class="icofont-search-2"></i>
@@ -41,7 +41,7 @@
                         <div class="badge badge-light m-3 p-2">
                             <h5><a href="#" data-toggle="modal" data-target="#editModal" data-tid="<?= $v['tid'] ?>"
                                    data-tagname="<?= $v['tagname'] ?>"><?= $v['tagname'] ?></a></h5>
-                            <small class="<?= $count_style ?>">（文章：<?= $count ?>）</small>
+                            <small class="<?= $count_style ?>">(<?= lang('articles') ?>: <?= $count ?>)</small>
                             <input type="checkbox" name="tids[]" value="<?= $v['tid'] ?>" class="tids align-top"/>
                         </div>
 					<?php endforeach ?>

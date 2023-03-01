@@ -863,6 +863,8 @@ $lang = array(
 'tag_select'                        => '请选择标签',//'Please select a tag',
 'tag_delete_sure'                   => '你确定要删除所选标签吗？',//'Are you sure you want to delete the selected tags?',
 '_tags'                             => '个标签',//' tags',// Number of tags
+'tags_total'			=> '总标签数',//'Total tags',
+'tag_search'			=> '搜索标签名...',//'Search tag name...',
 
 //---------------------------
 //admin/views/template.php
