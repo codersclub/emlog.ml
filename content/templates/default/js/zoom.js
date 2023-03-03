@@ -154,7 +154,7 @@
   this._targetImage.offsetWidth
 
   var imageOffset = $(this._targetImage).offset()
-  var scrollTop = $(window).scrollTop() // 滚轮条与顶部上方的距离
+  var scrollTop = $(window).scrollTop() // The distance between the scroll bar and the top
   var viewportY = scrollTop + ($(window).height() / 2)
   var viewportX = ($(window).width() / 2)
   var imageCenterY = imageOffset.top + (this._targetImage.height / 2)
@@ -163,7 +163,7 @@
   this._translateY = viewportY - imageCenterY
   this._translateX = viewportX - imageCenterX
 
-  /* 修改：如果放大图比屏幕要高，那么就让放大图的上边缘与屏幕上边缘对齐 */
+  /* Modification: If the enlarged image is higher than the screen, then align the upper edge of the enlarged image with the upper edge of the screen */
   if (this._targetImage.height > $(window).height()) {
     this._translateY = this._translateY + (this._targetImage.height / 2) - ($(window).height() / 2)
   }
