@@ -69,7 +69,7 @@
                 </div>
                 <div class="form-group">
                     <label><?= lang('new_password_info') ?></label>
-                    <input type="password" class="form-control" value="" autocomplete="off" name="newpass">
+                    <input type="password" class="form-control" value="" autocomplete="new-password" name="newpass">
                 </div>
                 <div class="form-group">
                     <label><?= lang('new_password_repeat') ?></label>

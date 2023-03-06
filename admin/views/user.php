@@ -134,7 +134,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password"><?= lang('password_min_length') ?></label>
-                        <input class="form-control" id="password" name="password" autocomplete="off" type="password" required>
+                        <input class="form-control" id="password" name="password" autocomplete="new-password" type="password" required>
                     </div>
                     <div class="form-group">
                         <label for="password2"><?= lang('password_repeat') ?></label>

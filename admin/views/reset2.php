@@ -21,11 +21,11 @@
                                         <input type="text" cla ss="form-control form-control-user" id="mail_code" name="mail_code" placeholder="<?= lang('email_verification_code') ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="6" id="passwd" autocomplete="off" name="passwd"
+<!--vot-->                              <input type="password" class="form-control form-control-user" minlength="5" id="passwd" autocomplete="new-password" name="passwd"
                                                placeholder="<?= lang('new_password') ?>" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" minlength="6" id="repasswd" name="repasswd" placeholder="<?= lang('confirm_password') ?>" required>
+<!--vot-->                              <input type="password" class="form-control form-control-user" minlength="5" id="repasswd" name="repasswd" placeholder="<?= lang('confirm_password') ?>" required>
                                     </div>
                                     <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('submit') ?></button>
                                     <hr>
