@@ -17,7 +17,7 @@
 	--fontColor: #5a5c69;    /* Normal text color */
 	--aColor:  #333333;      /* Link color (a tag) */
 	--aHoverColor:  #f6607d; /* Link hover color */
-	--lightColor: #929292      /* Lighter text color */
+	--lightColor: #757575      /* Lighter text color */
 }
 /* Define width = (border+padding) for all elements to facilitate subsequent calculations */
 * {
@@ -727,7 +727,7 @@ body {
     }
 }
 
-#comment-place {
+#comment {
     margin-top: 80px;
 }
 
@@ -1661,7 +1661,7 @@ img.zoom-img {
         margin-top: -5px
     }
 
-    #comment-place {
+	#comment {
         margin-bottom: 80px
     }
 

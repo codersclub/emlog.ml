@@ -13,6 +13,10 @@ class Api_Controller {
 	public $Tag_Model;
 	public $User_Model;
 	public $Cache;
+	public $authReqSign;
+	public $authReqTime;
+	public $curUserInfo;
+	public $curUid;
 
 	function starter($params) {
 		$_func = isset($_GET['rest-api']) ? addslashes($_GET['rest-api']) : '';
@@ -37,8 +41,6 @@ class Api_Controller {
 	}
 
 	private function article_post() {
-		$req_sign = Input::postStrVar('req_sign');
-		$req_time = Input::postStrVar('req_time');
 		$title = Input::postStrVar('title');
 		$content = Input::postStrVar('content');
 		$excerpt = Input::postStrVar('excerpt');
@@ -48,12 +50,18 @@ class Api_Controller {
 		$tags = isset($_POST['tags']) ? strip_tags(addslashes(trim($_POST['tags']))) : '';
 		$cover = Input::postStrVar('cover');
 		$draft = Input::postStrVar('draft', 'n');
+		$this->authReqSign = Input::postStrVar('req_sign');
+		$this->authReqTime = Input::postStrVar('req_time');
 
-		if (empty($req_sign) || empty($req_time) || empty($title) || empty($content)) {
+		if (empty($title) || empty($content)) {
 			Output::error('parameter error');
 		}
 
-		$this->checkApiKey($req_sign, $req_time);
+		$this->auth();
+
+		if ($this->curUid) {
+			$author_uid = $this->curUid;
+		}
 
 		$logData = [
 			'title'   => $title,
@@ -77,8 +85,6 @@ class Api_Controller {
 
 	private function article_update() {
 		$id = Input::postIntVar('id');
-		$req_sign = Input::postStrVar('req_sign');
-		$req_time = Input::postStrVar('req_time');
 		$title = Input::postStrVar('title');
 		$content = Input::postStrVar('content');
 		$excerpt = Input::postStrVar('excerpt');
@@ -89,11 +95,17 @@ class Api_Controller {
 		$author_uid = isset($_POST['author_uid']) ? (int)trim($_POST['author_uid']) : 1;
 		$draft = Input::postStrVar('draft', 'n');
 
-		if (empty($req_sign) || empty($req_time) || empty($id) || empty($title)) {
+		if (empty($id) || empty($title)) {
 			Output::error('parameter error');
 		}
 
-		$this->checkApiKey($req_sign, $req_time);
+		$this->authReqSign = Input::postStrVar('req_sign');
+		$this->authReqTime = Input::postStrVar('req_time');
+		$this->auth();
+
+		if ($this->curUid) {
+			$author_uid = $this->curUid;
+		}
 
 		$logData = [
 			'title'   => $title,
@@ -213,16 +225,20 @@ class Api_Controller {
 	}
 
 	function note_post() {
-		$req_sign = isset($_POST['req_sign']) ? addslashes(trim($_POST['req_sign'])) : '';
-		$req_time = isset($_POST['req_time']) ? addslashes(trim($_POST['req_time'])) : '';
 		$t = isset($_POST['t']) ? addslashes(trim($_POST['t'])) : '';
 		$author_uid = isset($_POST['author_uid']) ? (int)trim($_POST['author_uid']) : 1;
+		$this->authReqSign = Input::postStrVar('req_sign');
+		$this->authReqTime = Input::postStrVar('req_time');
 
-		if (empty($req_sign) || empty($req_time) || empty($t)) {
+		if (empty($t)) {
 			Output::error('parameter error');
 		}
 
-		$this->checkApiKey($req_sign, $req_time);
+		$this->auth();
+
+		if ($this->curUid) {
+			$author_uid = $this->curUid;
+		}
 
 		$data = [
 			'content' => $t,
@@ -233,6 +249,27 @@ class Api_Controller {
 		$id = $this->Twitter_Model->addTwitter($data);
 		$this->Cache->updateCache('sta');
 		output::ok(['note_id' => $id,]);
+	}
+
+	public function userinfo() {
+		$this->checkAuthCookie();
+
+		if (!$this->curUserInfo) {
+			Output::error('auth error');
+		}
+
+		$data = [
+			'uid'         => (int)$this->curUserInfo['uid'],
+			'nickname'    => htmlspecialchars($this->curUserInfo['nickname']),
+			'role'        => $this->curUserInfo['role'],
+			'photo'       => $this->curUserInfo['photo'],
+			'email'       => $this->curUserInfo['email'],
+			'description' => htmlspecialchars($this->curUserInfo['description']),
+			'ip'          => $this->curUserInfo['ip'],
+			'create_time' => (int)$this->curUserInfo['create_time'],
+		];
+
+		output::ok(['userinfo' => $data]);
 	}
 
 	private function getTags($id) {
@@ -251,16 +288,40 @@ class Api_Controller {
 	}
 
 	private function getAuthorName($uid) {
-		$user_info = $this->User_Model->getOneUser($uid);
-		return isset($user_info['nickname']) ? $user_info['nickname'] : '';
+		$userInfo = $this->User_Model->getOneUser($uid);
+		return isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
 	}
 
-	private function checkApiKey($req_sign, $req_time) {
-		$apikey = Option::get('apikey');
-		$sign = md5($req_time . $apikey);
+	private function auth() {
+		if (isset($_COOKIE[AUTH_COOKIE_NAME])) {
+			$this->checkAuthCookie();
+		} else {
+			$this->checkApiKey();
+		}
+	}
 
-		if ($sign !== $req_sign) {
+	private function checkApiKey() {
+		if (empty($this->authReqSign) || empty($this->authReqTime)) {
+			Output::error('parameter error');
+		}
+
+		$apikey = Option::get('apikey');
+		$sign = md5($this->authReqTime . $apikey);
+
+		if ($sign !== $this->authReqSign) {
 			Output::error('sign error');
 		}
+	}
+
+	private function checkAuthCookie() {
+		if (!isset($_COOKIE[AUTH_COOKIE_NAME])) {
+			Output::error('auth cookie error');
+		}
+		$userInfo = loginauth::validateAuthCookie($_COOKIE[AUTH_COOKIE_NAME]);
+		if (!$userInfo) {
+			Output::error('auth cookie error');
+		}
+		$this->curUserInfo = $userInfo;
+		$this->curUid = (int)$userInfo['uid'];
 	}
 }

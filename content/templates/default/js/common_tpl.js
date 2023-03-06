@@ -46,7 +46,7 @@ var myBlog = {
 		$ele.append($com_board)
 		$("#comment-pid").attr("value", getpid)
 		$("#cancel-reply").css("display", "unset")
-		$("#comment-place").toggleClass("com-bottom")
+		$("#comment").toggleClass("com-bottom")
 	},
 	/**
 	* Cancel reply
@@ -54,7 +54,7 @@ var myBlog = {
 	cancelReply: function ($t) {
 		$("#comment-pid").attr("value", "0")
 		$("#cancel-reply").css("display", "none")
-		$("#comment-place").append($("#comment-post"))
+		$("#comment").append($("#comment-post"))
 			.toggleClass("com-bottom")
 	},
 	/**
