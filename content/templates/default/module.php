@@ -422,7 +422,7 @@ function blog_comments($comments) {
 
 	foreach ($commentStacks as $cid):
 		$comment = $comments[$cid];
-		$comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
+		$comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" rel="external nofollow" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
 		?>
         <div class="comment" id="<?= $comment['cid'] ?>">
 			<?php if ($isGravatar == 'y'): ?>
@@ -459,7 +459,7 @@ function blog_comments_children($comments, $children) {
 	$isGravatar = Option::get('isgravatar');
 	foreach ($children as $child):
 		$comment = $comments[$child];
-		$comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
+		$comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" rel="external nofollow" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
 		?>
         <div class="comment comment-children" id="<?= $comment['cid'] ?>">
 			<?php if ($isGravatar == 'y'): ?>
@@ -494,7 +494,7 @@ function blog_comments_children($comments, $children) {
 function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark) {
 	$isNeedChinese = Option::get('comment_needchinese');
 	if ($allow_remark == 'y'): ?>
-        <div id="comment">
+        <div id="comments">
 			<div class="comment-post" id="comment-post">
           			<div class="cancel-reply" id="cancel-reply" style="display:none">
           				<button class="comment-replay-btn"><?=lang('cancel_reply')?></button>
@@ -518,7 +518,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
 					<?php endif ?>
 
 					<span class="com_submit_p">
-                        <input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit"<?php } ?>
+						<input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
                                id="comment_submit" value="<?=lang('comment_leave')?>" tabindex="6"/>
 					</span>
 					<?php if ($verifyCode != "") { ?>
