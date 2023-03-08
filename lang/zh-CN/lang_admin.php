@@ -493,6 +493,11 @@ $lang = array(
 'last_comments'				=> '最近收到的评论',//'Recent comments',
 
 //---------------------------
+//admin/views/index_user.php
+'article_no_yet'			=> '还没有发布过文章。',//'No articles have been published yet.',
+'comment_no_yet'			=> '还没收到评论。',//'No comments received yet.',
+
+//---------------------------
 //admin/views/links.php
 'link_add'                                => '新建链接',//'Add Link',
 'link_management'                         => '友情链接',//'Friend links',

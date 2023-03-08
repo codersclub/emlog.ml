@@ -70,7 +70,7 @@
 						endforeach;
 					else:
 						?>
-                        <p class="m-3">还没有发布过文章。</p>
+                        <p class="m-3"><?=lang('article_no_yet')?></p>
 					<?php endif; ?>
                 </ul>
             </div>
@@ -88,7 +88,7 @@
 						<?php endforeach;
 					else:
 						?>
-                        <p class="m-3">还没收到评论。</p>
+                        <p class="m-3"><?=lang('comment_no_yet')?></p>
 					<?php endif; ?>
                 </ul>
             </div>
