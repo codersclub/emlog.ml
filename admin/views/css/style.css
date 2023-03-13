@@ -106,3 +106,8 @@ body {
 .app-list .btn {
     height: fit-content;
 }
+
+/* Select Language */
+.topbar .dropdown .dropdown-menu {
+  margin-top: -1rem;
+}
