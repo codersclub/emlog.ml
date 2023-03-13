@@ -50,7 +50,7 @@
 
                         <div class="card-text d-flex justify-content-between">
                             <div class="price mb-4">
-<!--vot-->                      <?= $v['price'] > 0 ? '<span class="text-danger">¥ ' . $v['price'] . '&yen;</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+<!--vot-->                      <?= $v['price'] > 0 ? '<span class="text-danger">&yen; ' . $v['price'] . ' ' . lang('price_unit') ?> . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
                             </div>
                             <div class="installMsg"></div>
                             <?php if ($v['price'] > 0): ?>
@@ -60,7 +60,7 @@
                             <?php endif ?>
                         </div>
                         <p class="card-text text-muted small">
-<!--vot-->                  <?= lang('developer') ?>:&nbsp;&nbsp;&nbsp;&nbsp;<?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
+<!--vot-->                  <?= lang('developer') ?>:&nbsp;&nbsp;&nbsp;&nbsp;<?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
 <!--vot-->                  <?= lang('version_number') ?>:&nbsp;&nbsp;&nbsp;&nbsp;<?= $v['ver'] ?><br>
 <!--vot-->                  <?= lang('update_time') ?>:<?= $v['update_time'] ?><br>
                         </p>

@@ -30,7 +30,7 @@
 
                         <div class="card-text d-flex justify-content-between">
                             <div class="price mb-4">
-<!--vot-->                      <?= $v['price'] > 0 ? '<span class="text-danger">¥ ' . $v['price'] . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+<!--vot-->                      <?= $v['price'] > 0 ? '<span class="text-danger">&yen; ' . $v['price'] . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
                             </div>
                             <div class="installMsg"></div>
 <!--vot-->                            <a href="#" class="btn btn-success btn-sm installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?=lang('install_free')?></a>
