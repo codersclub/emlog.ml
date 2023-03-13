@@ -295,7 +295,7 @@ function blog_navi() {
 
 <!-- Change Language -->
                 <li class="list-item list-menu drop">
-                    <span class="toggle"><?= lang('language') ?>:&nbsp;<img src="<?= ROOT_URL ?>/lang/<?= LANG ?>/flag.gif"></span>
+                    <div class="toggle"><?= lang('language') ?>:&nbsp;<img src="<?= ROOT_URL ?>/lang/<?= LANG ?>/flag.gif"></div>
                     <div class="down"><!-- RIGHT -->
                         <?php
                             foreach(LANG_LIST as $l=>$lng) {
