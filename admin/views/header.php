@@ -149,14 +149,14 @@
                     </li>
                     <div class="topbar-divider d-none d-sm-block"></div>
 <!-- Change Language -->
-                    <li class="nav-item mx-1 drop">
-                        <span class="nav-link toggle"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>lang/<?= LANG ?>/flag.gif"></span>
-                        <div class="down"><!-- RIGHT -->
+                    <li class="nav-item mx-1 dropdown">
+                        <span class="nav-link dropdown-toggle" data-toggle="dropdown"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>lang/<?= LANG ?>/flag.gif"></span>
+                        <div class="dropdown-menu"><!-- RIGHT -->
                             <?php
                                 foreach(LANG_LIST as $l=>$lng) {
                                     $selected = ($_SESSION['LANG'] == $l) ? 'selected="selected"' : '';
                             ?>
-                            <a href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= BLOG_URL ?>lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
+                            <a class="dropdown-item" href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= BLOG_URL ?>lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
                             <?php } ?>
                         </div>
                     </li>
