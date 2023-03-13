@@ -85,44 +85,24 @@ body {
 .editormd-preview li {
     list-style: unset!important;
 }
-/* Dropdown */
-.drop {
-  position: relative;
-  display: inline-block;
+
+/*store template/plugin list*/
+.app-list .card {
+    width: 352px;
 }
-.drop .toggle {
-  cursor: pointer;
-  color: #333333;
-  padding: 1rem 0.5rem 1rem 0.5rem;
+.app-list .name {
+    text-overflow: ellipsis;
 }
-.down {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  white-space: nowrap;
-  min-width: 24px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+.app-list .card-img-top-link {
+    height: 260px;
 }
-.down.right {
-  right: 0;
+.app-list .card-img-top {
+    width: 100%;
+    height: auto;
 }
-.down a {
-  color: black;
-  padding: 4px;
-  text-align: left;
-  text-decoration: none;
-  display: block;
+.app-list .price {
+    font-size: 20px;
 }
-.down a:hover {
-  background-color: #f0f0f0;
-  text-decoration: none;
-}
-.drop:hover .down {
-  display: block;
-}
-.drop:hover .toggle {
-}
-/* Change language */
-.language {
+.app-list .btn {
+    height: fit-content;
 }
