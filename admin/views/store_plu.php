@@ -33,45 +33,43 @@
 </div>
 <div class="mb-3">
 	<?php if (!empty($plugins)): ?>
-        <div class="d-flex flex-wrap justify-content-center app-list">
-            <?php foreach ($plugins as $k => $v):
-                $icon = $v['icon'] ?: "./views/images/plugin.png";
-                ?>
-                <div class="card mb-4 mr-4 shadow-sm">
-                    <a class="card-img-top-link d-flex border-bottom-light overflow-hidden" href="<?= $v['buy_url'] ?>" target="_blank">
-                        <img class="bd-placeholder-img card-img-top" alt="cover" src="<?= $icon ?>">
-                    </a>
-                    <div class="card-body">
-                        <p class="card-text font-weight-bold overflow-hidden text-nowrap name">
-                            <?php if ($v['top'] === 1): ?>
+        <div class="d-flex flex-wrap app-list">
+			<?php foreach ($plugins as $k => $v):
+				$icon = $v['icon'] ?: "./views/images/plugin.png";
+				?>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
+                            <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
+                        </a>
+                        <div class="card-body">
+                            <p class="card-text font-weight-bold">
+								<?php if ($v['top'] === 1): ?>
 <!--vot-->                                <span class="badge badge-success p-1"><?=lang('recommend_today')?></span>
-                            <?php endif; ?>
-                            <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= $v['name'] ?></a>
-                        </p>
-
-                        <div class="card-text d-flex justify-content-between">
-                            <div class="price mb-4">
-<!--vot-->                      <?= $v['price'] > 0 ? '<span class="text-danger">&yen; ' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+								<?php endif; ?>
+                                <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= $v['name'] ?></a>
+                            </p>
+                            <p class="card-text text-muted">
+								<?= $v['info'] ?><br><br>
+                                <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+                                <small>
+                                    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
+                                    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
+                                    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
+                                </small>
+                            </p>
+                            <div class="card-text d-flex justify-content-between">
+                                <div class="installMsg"></div>
+								<?php if ($v['price'] > 0): ?>
+<!--vot-->                          <a href="https://www.emlog.net/order/submit/plugin/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+								<?php else: ?>
+<!--vot-->                                <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?= lang('install_free') ?></a>
+								<?php endif ?>
                             </div>
-                            <div class="installMsg"></div>
-                            <?php if ($v['price'] > 0): ?>
-<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-sm btn-warning btn-sm" target="_blank"><?= lang('go_buy') ?></a>
-                            <?php else: ?>
-<!--vot-->                                <a href="#" class="btn btn-success btn-sm installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?= lang('install_free') ?></a>
-                            <?php endif ?>
                         </div>
-
-                        <p class="card-text text-muted small">
-                            <?= lang('developer') ?>:&nbsp;&nbsp;&nbsp;&nbsp;<?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
-                            <?= lang('version_number') ?>:&nbsp;&nbsp;&nbsp;&nbsp;<?= $v['ver'] ?><br>
-                            <?= lang('update_time') ?>:<?= $v['update_time'] ?><br>
-                        </p>
-
-                        <div class="small"><?= $v['info'] ?></div>
-
                     </div>
                 </div>
-            <?php endforeach ?>
+			<?php endforeach ?>
         </div>
 <!--vot-->        <div class="col-md-12 page my-5"><?= $pageurl ?> (<?=lang('have')?> <?= $count ?><?=lang('_plugins')?>)</div>
 	<?php else: ?>

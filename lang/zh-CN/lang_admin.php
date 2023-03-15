@@ -812,7 +812,7 @@ $lang = array(
 'price'                             => '价格',//'Price',
 'free'                              => '免费',//'Free',
 'price_unit'                        => '元',//'Yuan',
-'go_buy'                            => '去购买',//'Go to buy',
+'go_buy'                            => '立即购买',//'Buy now',
 'download&install'                  => '下载安装',//'Download and install',
 'app_store'                         => '应用商店',//'App store',
 'version_number'                    => '版本号',//'Version number',
@@ -832,7 +832,7 @@ $lang = array(
 //admin/views/store_mine.php
 'contact_to_install'		=> '请联系作者安装',//'Please contact the author to install',
 'no_my_apps'			=> '您还没有购买任何应用。',//'You have not purchased any apps.',
-
+'install_app'			=> '安装应用',//'Install app',
 
 //---------------------------
 //admin/views/store_plu.php

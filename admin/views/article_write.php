@@ -11,9 +11,8 @@
                 <div>
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('post_title') ?>" autofocus required/>
                 </div>
-                <div id="post_bar">
-                    <a href="#mediaModal" class="text-muted small my-3" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i
-                                class="icofont-plus"></i> <?= lang('upload_insert') ?></a>
+                <div id="post_bar" class="small my-3">
+                    <a href="#mediaModal" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
 					<?php doAction('adm_writelog_head') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
