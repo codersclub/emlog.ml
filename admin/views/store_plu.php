@@ -51,11 +51,11 @@
                             </p>
                             <p class="card-text text-muted">
 								<?= $v['info'] ?><br><br>
-                                <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+<!--vot-->                      <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
                                 <small>
-                                    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>">仅看Ta的作品</a><br>
-                                    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
-                                    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
+<!--vot-->                          <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
+<!--vot-->                          <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
+<!--vot-->                          <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                                 </small>
                             </p>
                             <div class="card-text d-flex justify-content-between">
