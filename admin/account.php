@@ -190,13 +190,13 @@ if ($action == 'doreset') {
 
 	if (!User::checkLoginCode($login_code)) {
 		if ($resp === 'json') {
-			Output::error('图形验证码错误');
+/*vot*/			Output::error(lang('captcha_error'));
 		}
 		emDirect('./account.php?action=reset&err_ckcode=1');
 	}
 	if (!$mail || !$User_Model->isMailExist($mail)) {
 		if ($resp === 'json') {
-			Output::error('错误的注册邮箱');
+/*vot*/			Output::error(lang('email_invalid'));
 		}
 		emDirect('./account.php?action=reset&error_mail=1');
 	}
@@ -209,7 +209,7 @@ if ($action == 'doreset') {
 		emDirect("./account.php?action=reset2&succ_mail=1");
 	} else {
 		if ($resp === 'json') {
-			Output::error('邮件验证码发送失败，请检查邮件通知设置');
+/*vot*/			Output::error(lang('email_send_error'));
 		}
 		emDirect("./account.php?action=reset&error_sendmail=1");
 	}
@@ -237,19 +237,19 @@ if ($action == 'doreset2') {
 
 	if (strlen($passwd) < 6) {
 		if ($resp === 'json') {
-			Output::error('密码长度不合规');
+/*vot*/			Output::error(lang('password_length_invalid'));
 		}
 		emDirect('./account.php?action=reset2&error_pwd_len=1');
 	}
 	if ($passwd !== $repasswd) {
 		if ($resp === 'json') {
-			Output::error('两次输入的密码不一致');
+/*vot*/			Output::error(lang('password_not_equal'));
 		}
 		emDirect('./account.php?action=reset2&error_pwd2=1');
 	}
 	if (!$mail_code || !User::checkMailCode($mail_code)) {
 		if ($resp === 'json') {
-			Output::error('邮件验证码错误');
+/*vot*/			Output::error(lang('mail_code_invalid'));
 		}
 		emDirect('./account.php?action=reset2&err_mail_code=1');
 	}

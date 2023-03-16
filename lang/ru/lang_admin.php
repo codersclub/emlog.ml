@@ -9,6 +9,8 @@ $lang = array(
 'wrong_user_password'		=> 'Неверный логин или пароль',//'用户或密码错误',
 'captcha_error'			=> 'Неверный код верификации',//'图形验证码错误',
 'email_wrong'			=> 'Неправильный Email',//'错误的邮箱',
+'password_length_invalid'	=> 'Неверная длина пароля',//'密码长度不合规',
+'mail_code_invalid'		=> 'Неверный проверочный Email код',//'邮件验证码错误',
 
 //---------------------------
 //admin/article.php
@@ -306,6 +308,7 @@ $lang = array(
 'new_password_repeat'		=> 'Повтор нового пароля',//'再输入一次新密码',
 'save_data'			=> 'Сохранить настройки',//'保存资料',
 'api_interface'			=> 'API интерфейс',//'API接口',
+'account_password'		=> 'Пароль аккаунта',//'账号密码',
 
 //---------------------------
 //admin/views/comment.php
