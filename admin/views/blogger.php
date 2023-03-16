@@ -63,6 +63,8 @@
                     <label><?= lang('personal_description') ?></label>
                     <textarea name="description" class="form-control"><?= $description ?></textarea>
                 </div>
+
+                <h4 class="mt-4 mb-3">账号密码</h4>
                 <div class="form-group">
                     <label><?= lang('login_name') ?></label>
                     <input class="form-control" value="<?= $username ?>" name="username">

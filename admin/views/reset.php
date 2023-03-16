@@ -20,7 +20,8 @@
 									<?php if (isset($_GET['err_ckcode'])): ?>
                                         <div class="alert alert-danger"><?= lang('verification_error') ?></div><?php endif ?>
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('email_enter') ?>" required
+                                        <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('email_enter') ?>"
+                                               required
                                                autofocus>
                                     </div>
 									<?php if ($login_code): ?>

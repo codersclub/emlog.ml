@@ -66,7 +66,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label><?= lang('tags') ?>:</label>
+<!--vot-->          <label><?= lang('tags') ?>: <small class="text-muted"><?= lang('tags_tips') ?></small></label>
                     <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>" placeholder="<?= lang('post_tags_separated') ?>"/>
 					<?php if ($tags): ?>
                         <span class="small"><a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
@@ -80,7 +80,7 @@
 					<?php endif; ?>
                 </div>
                 <div class="form-group">
-                    <label><?= lang('publish_time') ?>: <?= lang('publish_time_tips') ?></label>
+                    <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
                     <input maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                 </div>
                 <div class="form-group">
@@ -88,7 +88,7 @@
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?=lang('jump_link')?>: <?=lang('jump_link_info')?></label>
+<!--vot-->          <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
                     <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
                 </div>
                 <div class="form-group">

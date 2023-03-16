@@ -147,7 +147,7 @@ $lang = array(
 'add_page'                                => '新建页面',//'Add page',
 'page_title_info'                         => '输入页面标题',//'Enter the page title',
 'upload_insert'                           => '上传插入',//'Insert upload',
-'link_alias'                              => '链接别名：（用于seo设置 <a href="./setting.php?action=seo">&rarr;</a>）',//'Link alias: (for seo settings <a href="./setting.php?action=seo">&rarr;</a>)',
+'link_alias'                              => '链接别名：<small class="text-muted">（用于seo设置 <a href="./setting.php?action=seo">&rarr;</a>）</small>',//'Link alias: <small class="text-muted">(for SEO settings <a href="./setting.php?action=seo">&rarr;</a>)</small>',
 'link_alias_info'                         => '用于自定义该页面的链接地址。需要',//'The page link custom address. Required',
 'link_alias_enable'                       => '启用链接别名',//'Enable Link Alias',
 'page_template'                           => '页面模板',//'Page template',
@@ -244,6 +244,7 @@ $lang = array(
 'recently_used'                           => '近期使用的+',//'Recently used+',
 'jump_link'				=> '跳转链接',//'Jump link',
 'jump_link_info'			=> '（填写后不展示文章内容直接跳转该地址）',//'(directly jump to this address without displaying the content of the article after filling in)',
+'tags_tips'				=> '(也用于文章页关键词)',//'(also used for article page keywords)',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -650,7 +651,7 @@ $lang = array(
 'email_enter'                             => '输入注册邮箱',//'Enter registered email',
 'email_invalid'                           => '错误的注册邮箱',//'Wrong registered email',
 'email_send_error'                        => '邮件验证码发送失败，请检查邮件通知设置',//'Failed to send email verification code, please check email notification settings',
-'verification_error'                      => '邮件验证码错误',//'Email verification code error',
+'verification_error'                      => '图形验证码错误',//'Graphic verification code error',
 
 //---------------------------
 //admin/views/reset2.php
@@ -760,13 +761,20 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_user.php
-'groups_about'                            => '<b>用户组</b><br>注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',//'<b>User Groups</b><br>Registered user: generated through registration, can publish articles, notes, upload pictures, etc.<br>Administrator: Has all site management rights, can manage users, perform system settings, etc.<br>',
-'groups_alert'			=> '注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>
-             		           内容编辑：负责文章、资源、评论等内容的管理<br>
-                        	   管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-				   //'Registered users: Generated after registration, you can publish articles, notes, upload pictures, etc.<br>
-	                           //Content editor: Responsible for the management of articles, resources, comments, etc.<br>
-          	                   //Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
+'groups_about'                            => '<b>用户组</b><br>
+						注册用户：可以发文投稿、管理自己的文章、笔记、图片资源等<br>
+						内容编辑：负责全站文章、资源、评论等内容的管理<br>
+						管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+					//'<b>User Group</b><br>
+						//Registered users: can post and contribute articles, manage their own articles, notes, picture resources, etc.<br>
+						//Content editor: Responsible for the management of articles, resources, comments and other content on the site<br>
+						//Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
+'groups_alert'				=> '注册用户：可以发文投稿、管理自己的文章、笔记、图片资源等<br>
+					内容编辑：负责全站文章、资源、评论等内容的管理<br>
+					管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+					//'Registered users: can post and contribute articles, manage their own articles, notes, picture resources, etc.<br>
+					//Content editor: Responsible for the management of articles, resources, comments and other content on the site<br>
+					//Administrator: has full management authority of the site, can manage users, make system settings, etc.<br>',
 'limit_daily_posts'			=> '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
 'enable_email_code'			=> '开启注册邮件验证码（开启需配置邮件通知服务）',//'Enable email verification code on registration (you need to configure the email notification service to open it)',
 
