@@ -223,7 +223,7 @@ class Log_Model {
 	/**
 	 * Get a list of all pages
 	 */
-	function getAllPageList() {
+	public function getAllPageList() {
 		$sql = "SELECT * FROM $this->table WHERE type='page'";
 		$res = $this->db->query($sql);
 		$pages = [];
@@ -238,9 +238,9 @@ class Log_Model {
 	/**
 	 * delete article
 	 */
-	function deleteLog($blogId) {
-		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
-		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
+	public function deleteLog($blogId) {
+/*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
+/*vot*/		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
 		if ($this->db->affected_rows() < 1) {
 			emMsg(lang('no_permission'), './');
 		}
@@ -257,7 +257,7 @@ class Log_Model {
 	 * @param int $blogId
 	 * @param string $state
 	 */
-	function hideSwitch($blogId, $state) {
+	public function hideSwitch($blogId, $state) {
 		$author = User::haveEditPermission() ? '' : 'and author=' . UID;
 		$this->db->query("UPDATE $this->table SET hide='$state' WHERE gid=$blogId $author");
 		$this->db->query("UPDATE " . DB_PREFIX . "comment SET hide='$state' WHERE gid=$blogId");
@@ -271,7 +271,7 @@ class Log_Model {
 	 * @param int $blogId
 	 * @param string $state
 	 */
-	function checkSwitch($blogId, $state) {
+	public function checkSwitch($blogId, $state) {
 		$this->db->query("UPDATE $this->table SET checked='$state' WHERE gid=$blogId");
 		$state = $state == 'y' ? 'n' : 'y';
 		$this->db->query("UPDATE " . DB_PREFIX . "comment SET hide='$state' WHERE gid=$blogId");
@@ -284,7 +284,7 @@ class Log_Model {
 	 *
 	 * @param int $blogId
 	 */
-	function updateViewCount($blogId) {
+	public function updateViewCount($blogId) {
 		$this->db->query("UPDATE $this->table SET views=views+1 WHERE gid=$blogId");
 	}
 
@@ -301,7 +301,7 @@ class Log_Model {
 	 * @param int $date unix Timestamp
 	 * @return array
 	 */
-	function neighborLog($date) {
+	public function neighborLog($date) {
 		$now = time();
 		$date_state = "and date<=$now";
 		$neighborlog = [];
@@ -319,7 +319,7 @@ class Log_Model {
 	/**
 	 * Get Random Post
 	 */
-	function getRandLog($num) {
+	public function getRandLog($num) {
 		global $CACHE;
 		$now = time();
 		$date_state = "and date<=$now";
@@ -340,7 +340,7 @@ class Log_Model {
 	/**
 	 * Get Hot Posts
 	 */
-	function getHotLog($num) {
+	public function getHotLog($num) {
 		$now = time();
 		$date_state = "and date<=$now";
 		$sql = "SELECT gid,title FROM $this->table WHERE hide='n' and checked='y' and type='blog' $date_state ORDER BY views DESC, comnum DESC LIMIT 0, $num";
@@ -357,7 +357,7 @@ class Log_Model {
 	/**
 	 * Process Post alias, Prevent alias duplicated
 	 */
-	function checkAlias($alias, $logalias_cache, $logid) {
+	public function checkAlias($alias, $logalias_cache, $logid) {
 		static $i = 2;
 		$key = array_search($alias, $logalias_cache);
 		if (false !== $key && $key != $logid) {
@@ -375,7 +375,7 @@ class Log_Model {
 	/**
 	 * Encrypted Post access authentication
 	 */
-	function authPassword($postPwd, $cookiePwd, $logPwd, $logid) {
+	public function authPassword($postPwd, $cookiePwd, $logPwd, $logid) {
 		$url = BLOG_URL;
 		$pwd = $cookiePwd ?: $postPwd;
 		if ($pwd !== addslashes($logPwd)) {
@@ -398,9 +398,9 @@ class Log_Model {
 </head>
 <body class="text-center">
 	<form action="" method="post" class="form-signin" style="width: 100%;max-width: 330px;padding: 15px;margin: 0 auto;">
-          <input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
-          <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
-          <p class="mt-5 mb-3 text-muted"><a href="{$url}">{$back}</a></p>
+      <input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
+      <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
+      <p class="mt-5 mb-3 text-muted"><a href="{$url}">{$back}</a></p>
     </form>
 </body>
 </html>

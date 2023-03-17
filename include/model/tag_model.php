@@ -215,11 +215,11 @@ class Tag_Model {
 	 */
 	function getNamesFromIds($tagIds = NULL) {
 		$names = [];
-	foreach ($tagIds AS $i => $tag) {
-		if(empty($tag)) {
-			unset($tagIds[$i]);
+		foreach ($tagIds AS $i => $tag) {
+			if(empty($tag)) {
+				unset($tagIds[$i]);
+			}
 		}
-	}
 
 		if (!empty($tagIds)) {
 			$tag_string = implode(',', $tagIds);

@@ -34,17 +34,17 @@ class MediaSort_Model {
 			$Item[] = "$key='$data'";
 		}
 		$upStr = implode(',', $Item);
-		$this->db->query("UPDATE $this->table SET $upStr WHERE id=$id");
+/*vot*/		$this->db->query("UPDATE $this->table SET $upStr WHERE id=$id");
 	}
 
 	function addSort($name) {
-		$sql = "INSERT INTO " . $this->table . " (sortname) VALUES('$name')";
+/*vot*/		$sql = "INSERT INTO " . $this->table . " (sortname) VALUES('$name')";
 		$this->db->query($sql);
 	}
 
 	function deleteSort($id) {
-		$this->db->query("UPDATE " . $this->table_media . " SET sortid=0 WHERE sortid=$id");
-		$this->db->query("DELETE FROM " . $this->table . " WHERE id=$id");
+/*vot*/		$this->db->query("UPDATE " . $this->table_media . " SET sortid=0 WHERE sortid=$id");
+/*vot*/		$this->db->query("DELETE FROM " . $this->table . " WHERE id=$id");
 	}
 
 }

@@ -29,7 +29,7 @@ class Author_Controller {
 		//page meta
 		$site_title = $author_name . ' - ' . $site_title;
 
-		$sqlSegment = "AND author=$author ORDER BY date DESC";
+/*vot*/		$sqlSegment = "AND author=$author ORDER BY date DESC";
 		$sta_cache = $CACHE->readCache('sta');
 		$lognum = $sta_cache[$author]['lognum'];
 

@@ -19,7 +19,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
 <title><![CDATA[' . Option::get('blogname') . ']]></title> 
 <description><![CDATA[' . Option::get('bloginfo') . ']]></description>
 <link>' . BLOG_URL . '</link>
-          <language>' . LANG . '</language>
+<language>' . LANG . '</language>
 <generator>www.emlog.net</generator>';
 if (!empty($articles)) {
 	foreach ($articles as $value) {

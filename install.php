@@ -285,9 +285,9 @@ EOT;
 		. "const DB_NAME = '$db_name';"
 		. "\n//Database Table Prefix\n"
 		. "const DB_PREFIX = '$db_prefix';"
-		. "\n//auth key\n"
+		. "\n//Auth key\n"
 		. "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
-		. "\n//cookie name\n"
+		. "\n//Cookie name\n"
 		. "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
 
 		. "\n// Default blog language"
