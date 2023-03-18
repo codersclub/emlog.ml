@@ -254,15 +254,12 @@ class Api_Controller {
 	public function userinfo() {
 		$this->checkAuthCookie();
 
-		if (!$this->curUserInfo) {
-			Output::error('auth error');
-		}
-
 		$data = [
 			'uid'         => (int)$this->curUserInfo['uid'],
 			'nickname'    => htmlspecialchars($this->curUserInfo['nickname']),
 			'role'        => $this->curUserInfo['role'],
 			'photo'       => $this->curUserInfo['photo'],
+			'avatar'      => $this->curUserInfo['photo'] ? BLOG_URL . str_replace("../", '', $this->curUserInfo['photo']) : '',
 			'email'       => $this->curUserInfo['email'],
 			'description' => htmlspecialchars($this->curUserInfo['description']),
 			'ip'          => $this->curUserInfo['ip'],
@@ -302,24 +299,24 @@ class Api_Controller {
 
 	private function checkApiKey() {
 		if (empty($this->authReqSign) || empty($this->authReqTime)) {
-			Output::error('parameter error');
+			Output::authError('auth param error');
 		}
 
 		$apikey = Option::get('apikey');
 		$sign = md5($this->authReqTime . $apikey);
 
 		if ($sign !== $this->authReqSign) {
-			Output::error('sign error');
+			Output::authError('sign error');
 		}
 	}
 
 	private function checkAuthCookie() {
 		if (!isset($_COOKIE[AUTH_COOKIE_NAME])) {
-			Output::error('auth cookie error');
+			Output::authError('auth cookie error');
 		}
 		$userInfo = loginauth::validateAuthCookie($_COOKIE[AUTH_COOKIE_NAME]);
 		if (!$userInfo) {
-			Output::error('auth cookie error');
+			Output::authError('auth cookie error');
 		}
 		$this->curUserInfo = $userInfo;
 		$this->curUid = (int)$userInfo['uid'];
