@@ -1,36 +1,32 @@
+# 🍇 Installation Instructions
 
-# 安装说明
+## Environment preparation
 
-## 新版 emlog pro 安装
+* PHP5.6, PHP7, PHP8, recommend PHP7.4
+* MySQL5.6 and above, recommend MySQL5.6 or MariaDB 10.3 and above
+* Recommended server environment: Linux + nginx
+* Server recommendation: cloud server, such as: [Tencent Lightweight Application Server](https://url.cn/0EOuq6vG), [Aliyun ECS](https://www.aliyun.com/product/ecs?userCode=kjcf3grb ), [Hengchuang Hong Kong Cloud Server - No filing] (http://my.henghost.com/aff.php?aff=8851)
+* Server management panel software recommendation: [Pagoda Panel](https://www.bt.cn/) (Pagoda supports one-click emlog deployment, which is very convenient)
+* Browser recommendation: Chrome, Edge
+* Recommended local development integration environment: [phpEnv](https://www.phpenv.cn/)
 
-### 环境要求
-* PHP7.0\7.1\7.2\7.3\7.4\8.0，推荐 PHP7.4
-* MySQL5.6及以上，推荐 MySQL5.7
-* 服务器推荐：Linux + apache/nginx
-* 服务器面板软件推荐：宝塔面板
+## Download the installation package
 
-### 安装步骤
-1. 将解压后的所有文件上传到服务器或者虚拟主机的web根目录，也可以将zip压缩包上传后在线解压。
-2. 在浏览器上访问事先解析好的域名，程序会自动跳转到emlog安装页面，按照提示安装即可。
-3. 安装过程不会创建数据库，需要您事先创建好 ,点击确认安装，安装成功。
+[Download the latest version of emlog](https://www.emlog.net/download/zip)
 
+## installation steps
 
+1. Upload all decompressed files to the web root directory of the server, or directly upload the zip installation package and decompress it online.
+2. Access the site domain name on the browser, the program will automatically jump to the installation page, just follow the prompts to install.
+3. The installation process will not create a database, you need to create it in advance, click to confirm the installation, and the installation is successful.
 
-## 老版本安装（5.3.1和6.0.0）
+## Install with Docker
 
-### 6.0.0 环境要求
-* PHP7.0~7.4
-* MySQL5.6+
+1. cp config.sample.php config.php
+2. docker network create emlog_network
+3. docker-compose up
+4. http://localhost:8080
 
-### 5.3.1 环境要求
-* PHP5.6
-* MySQL5
+---
 
-### 安装步骤
-1. **将src文件夹下的所有文件上传到服务器或者虚拟主机你要安装emlog的目录，**
-* 注意是src下的内容，不是把src这个文件夹传上去。
-2. **在浏览器上访问你的博客地址，程序会自动跳转到emlog安装页面，按照提示安装即可。**
-* 一般数据库地址和数据库前缀保持默认不需要修改，
-* 数据库前缀对于只能建立一个数据库的虚拟主机用户来说比较有意义，数据库表加上前缀可以方便区别其他程序的数据表，也有一定的安全防范作用
-* 安装过程不会创建数据库，需要您事先创建好
-3. **点击确认安装，安装成功。**
+--end--

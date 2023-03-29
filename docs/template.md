@@ -1,207 +1,430 @@
-# 模板开发基础指南
+# ? Template Development Guide
 
-本文分析emlog下的模板基本结构以及基本变量、函数的作用，详细了解本文，有助于更快掌握emlog5的模板开发基础。
+Emlog can easily replace the template. The template theme file is located in the content\templates\ folder of the installation directory. Each template is a separate folder, and the folder is named after the template. Templates uploaded and installed through the app store and background are stored in this directory.
 
-emlog的模板位于安装目录content\templates\文件夹下，每个模板都是一个单独的文件夹，文件夹以模板名字命名。通过后台上传安装的模板都保存在这个目录下。
+## Template file and directory description
 
-## 模板文件目录说明
+* css folder: Store all CSS style files required by the template.
+* js folder: Store all JS files required by the template.
+* images folder: store the images required by the template.
+* header.php: page header, generally includes page head information and top header navigation.
+* echo_log.php: Display the content of a single article.
+* log_list.php: display the list of articles.
+* footer.php: information at the bottom of the page.
+* module.php: Sidebar module: latest articles, comments, categories, tags, etc.
+* page.php: display custom pages.
+* preview.jpg: Template preview image displayed on the background template selection interface, in 300×225 jpg format.
+* side.php: template sidebar file, if making a single-column template, this file is not necessary.
+* 404.php Custom error page when 404 page not found
+* pw.php Custom encrypted article input password page [not required, without this file, use the system default style]
 
-* images文件夹：存放模板所需图片。
-* css 文件夹：存放模板所需的所有样式文件。
-* js 文件夹：存放模板所需的所有JS文件。
-* header.php：页面头部。
-* echo_log.php：显示日志内容。
-* log_list.php：显示日志列表内容。
-* footer.php：页面底部。
-* main.css：模板的css文件。
-* module.php：模板公共代码，包含侧边widgets、评论、引用、编辑等，该文件是模板最核心的模块。
-* page.php：自定义的页面内容的模板。
-* preview.jpg：在后台模板选择界面显示的模板预览图，300×225 jpg格式。
-* side.php：模板侧边栏文件，如制作单栏模板则该文件不是必须的。
-* 404.php 自定义404页面未找到时的报错页面
-* t.php：显示微语内容【仅用于5.3.1】
+## template engine
 
+emlog does not use any other third-party template engine, and directly uses PHP's native syntax tags to embed HTML to generate dynamic pages. This not only reduces the learning burden for developers, but also greatly improves the efficiency of page loading and rendering.
 
-## 公共代码分析
-
-通过预览整个模板中的各个文件，你会发现以下代码同时存在于多个文件中，这些代码分别有以下用途： 
 ```php
-//此行代码存在于模板目录下的每个php文件起始部分(事实上为了安全起见，该行代码也在admin目录下的几乎所有php文件起始部分存在)，其作用是防止代码所在的php脚本被直接访问执行。 
+// eg: embedded variables
+<div><?= $value ?></div>
+
+// eg: loop
+<?php foreach ($abc as $v) :?>
+    <div><?= $v ?></div>
+<?php endforeach;?>
+
+// eg: judgment
+<?php if($a == 'abc') :?>
+    <div>hello</div>
+<?php endif;?>
+
+```
+
+## Common code
+
+By previewing each file in the entire template, you will find that the following codes exist in multiple files at the same time, and these codes have the following purposes:
+
+```php
+//This line of code exists at the beginning of each php file in the template directory, and its function is to prevent the php script where the code is located from being directly accessed and executed.
 if(!defined('EMLOG_ROOT')) {exit('error!');}
 ```
+
 ```php
-//这两行代码作用是调用模板文件夹下的side.php和footer.php的代码到当前文件的当前位置。
-//View是emlog的模板视图控制器，View::getView('文件名','文件后缀')将返回当前模板安装路径下对应的文件。
-//getView函数的第二个参数为缺省参数，在不传入值的情况下，将默认作为.php文件后缀返回文件路径。
-require_once View::getView('side'); 
-require_once View::getView('footer'); 
+//The function of these two lines of code is to call the codes of side.php and footer.php under the template folder to the current location of the current file.
+//View is the template view controller of emlog, View::getView('file name','file suffix') will return the corresponding file under the current template installation path.
+//The second parameter of the getView function is the default parameter. If no value is passed in, the file path will be returned by default as the suffix of the .php file.
+require_once View::getView('side');
+require_once View::getView('footer');
 ```
+
+```php
+// The following code format is the plug-in mount point in the template, refer to the default template, pay attention to keep it, do not delete it
+<?php doAction('xxx') ?>
+```
+
+## file description
+
 ### header.php
 
-开头注释内容是模板信息，该信息显示在模板选择界面
+#### header information
 
-* Template Name:模板名称
-* Description:模板介绍描述
-* Template Url:https://www.emlog.net/template/ 模板的网址
-* Author:模板作者
-* Author Url:作者或模板发布的URL
-* Sidebar Amount:标记该模板有几个侧边栏，一般为1，有些模板有两个侧边栏则标记2。这样可以在后台widgets里识别管理（仅5.3.1支持）。
+The content of the comment at the beginning is the necessary information of the template, which will be displayed on the background template management interface, and must be filled in completely.
 
+* Template Name: template name
+* Description: template introduction description
+* Template URL: https://www.emlog.net/template/detail/982
+* Author: template author
+* Author Url: Author's homepage
 
+require_once View::getView('module'); // Load template common module.
 
-之后是具体代码部分：
+#### Variables & Constants
 
-require_once View::getView('module');
+| Variables & Constants | Type | Description |
+|-------------------|-----|------------------------------------------------------------------------------------|
+| $site_title | variable | site title (affected by background seo optimization settings) |
+| $site_key | variable | site key |
+| $site_description | variable | output site browser description (affected by background seo optimization settings) |
+| $blogname | variable | site title |
+| $bloginfo | variable | site subtitle |
+| BLOG_URL | Constant | The URL of the homepage of the site, the output is in the form of https://emlog.net/ |
+| TEMPLATE_URL | Constant | The URL of the template folder, used to load the css, js and other content in the template, the output is like http://emlog.net/blog/content/templates/default/ |
 
-加载模板公共代码.
+The above variables and constants can be output in the template in the following way
 
-* $site_title：站点标题 * $site_key：关键字 * $site_description：输出博客设置的摘要 * BLOG_URL：博客首页的URL，输出形如http://simue.com/blog/ * TEMPLATE_URL：模板文件夹的URL，用于加载模板内的css、js及其他内容，输出形如http://simue.com/blog/content/templates/simue-tuso/ * BLOG_URL.Option::get('topimg')：这句可以无视，因为只默认模板可以自定义banner，其它模板没这功能（卡片语：很没营养的设定，嗯。）
+```php
+<?= $page_url?>
+<?= BLOG_URL ?>
+```
 
-<?php echo $curpage == CURPAGE_HOME ? 'current' : 'common';?> 判断当前是否首页，是则给导航加current类，用于表现当前位置。
+###footer.php
 
-<?php if($istwitter == 'y'):?>…….<?php endif;?> 如后台设置在前台显示碎语，则输出…….中的内容。
+#### Variables & Constants
 
-<?php echo $curpage == CURPAGE_TW ? 'current' : 'common';?> 判断当前URL是否为碎语并选择加类名。
+| variable, constant | type | description |
+|-----------------------|-----|-------------|
+| $icp | variable | ICP record number set in background |
+| $footer_info | Variables | Information at the bottom of the page set in the background |
+| Option::EMLOG_VERSION | Constant | Current emlog version number |
 
-<?php foreach ($navibar as $key ⇒ $val):?>…….<?php endforeach;?> 输出自定义页面的链接
+###log_list.php
 
-### footer.php
+| variable, constant, method | type | description |
+|--------------------------------------------|----- |----------------------------------|
+| $value['log_cover'] | variable | article cover image URL |
+| $value['logid'] | variable | the id of the current post |
+| $value['log_url'] | variable | article address URL |
+| $value['log_title'] | variable | post title |
+| date('Y-n-j', $value['date']) | variable | article release time, the parameter 'Y-n-j G:i l' is used to define the date format |
+| $value['log_description'] | variable | article abstract (full text output without abstract) |
+| $value['comnum'] | variable | number of comments for the current post |
+| $value['views'] | variable | views of the current article |
+| editflg($value['logid'],$value['author']) | variable | show "edit" link when admin or author is logged in |
+| topflg($value['top']) | variable | display top mark, this function is located in the template module.php |
+| $page_url | variable | display the page turning function of the current list page |
+| blog_sort($value['logid']) | Method | Display the category of the article |
+| blog_author($value['author']) | method | show the author of the post |
+| blog_tag($value['logid']) | Method | Display the tag of the post |
 
-Option::EMLOG_VERSION：获得版本号。
+!> The above variables and methods can be output in the template in the following way
 
-$icp：获得后台设置的ICP备案号。
-
-<?php doAction('index_footer'); ?> 页脚底部挂载点加入。
-
-### log_list.php
-
-<?php doAction('index_loglist_top'); ?> 页脚底部挂载点加入。
-
-$value['logid'] 该变量为当前日志的id
-
-<?php topflg($value['top']); ?> 显示置顶标记，该函数位于模板module.php内。
-
-<?php echo $value['log_url']; ?> 输出日志URL
-
-<?php echo $value['log_title']; ?> 输出日志标题
-
-<?php blog_author($value['author']); ?>
-
-输出日志的作者，该函数位于模板module.php内。
-
-<?php echo gmdate('Y-n-j G:i l', $value['date']); ?>
-
-输出日志发布时间，参数'Y-n-j G:i l'用于定义日期格式。
-
-<?php blog_sort($value['logid']); ?>
-
-输出日志所属的分类，该函数位于模板module.php内。
-
-<?php editflg($value['logid'],$value['author']); ?>
-
-当管理员或作者登陆时显示“编辑”链接，该函数位于模板module.php内。
-
-<?php echo $value['log_description']; ?>
-
-输出日志摘要（没有摘要则输出全文）。
-
-<?php blog_att($value['logid']); ?>
-
-如日志有附件则输出附件，该函数位于模板module.php内。
-
-<?php blog_tag($value['logid']); ?> 输出日志的标签，该函数位于模板module.php内。
-
-<?php echo $value['comnum']; ?> 输出当前日志的评论数
-
-<?php echo $value['tbcount']; ?> 输出当前日志的引用量
-
-<?php echo $value['views']; ?> 输出当前日志的浏览量
-
-<?php echo $page_url;?> 显示当前列表页的翻页功能。
-
-<?php include View::getView('side'); include View::getView('footer'); ?>
-
-加入侧边栏及加入页脚。
+```php
+<?= $value['logid'] ?>
+<?= blog_author($value['author']) ?>
+```
 
 ### echo_log.php
 
-该文件功能函数与列表页一致，但参数有区别，注意区分。 $logid 该变量为当前日志的id
+The function of this file is consistent with the list page, but the parameters are different, pay attention to the distinction. $logid This variable is the id of the current article
 
-<?php topflg($top); ?> 显示置顶标记，该函数位于模板module.php内。
+| variable, constant, method | type | description |
+|-----------------------------------------------------------------------------|-----|--------------------------------|
+| $log_title | variable | post title |
+| $log_cover | variable | post cover image URL |
+| date('Y-n-j', $date)| Variables | Article release time, the parameter 'Y-n-j G:i l' is used to define the date format |
+| $log_content | variable | article abstract (full text output without abstract) |
+| $comnum | variable | number of comments for the current post |
+| $views | variable | views of the current post |
+| $page_url | variable | display the page turning function of the current list page |
+| topflg($top) | method | show top flag |
+| blog_tag($logid) | method | tag of the post |
+| blog_author($author) | method | the author of the post |
+| blog_sort($logid) | method | category of the post |
+| editflg($logid,$author) | Method | Displays the "Edit" link when an admin or author is logged in. |
+| neighbor_log($neighborLog) | Method | Output the adjacent articles, that is, the previous and next articles. |
+| blog_comments($comments) | method | output a list of comments on this article |
+| blog_comments_post($logid,$ckname,$ckmail,$ckurl,$verifyCode,$allow_remark) | Method | Output post comment box |
 
-<?php echo $log_title; ?> 输出日志标题。
+###page.php
 
-<?php blog_author($author); ?> 输出日志的作者，该函数位于模板module.php内。
+The writing method of this file is similar to that of echo_log.php and will not be repeated here.
 
-<?php echo gmdate('Y-n-j G:i l', $date); ?> 输出日志发布时间，参数'Y-n-j G:i l'用于定义日期格式。
+###side.php
 
-<?php blog_sort($logid); ?> 输出日志所属的分类，该函数位于模板module.php内。
+The sidebar is mainly responsible for outputting the content of the sidebar according to the setting information of the background widgets. It is recommended that the code in this file remain unchanged.
 
-<?php editflg($logid,$author); ?> 当管理员或作者登陆时显示“编辑”链接，该函数位于模板module.php内。
+###module.php
 
-<?php echo $log_content; ?> 输出日志全文内容。
+Template public code, including side widgets, comments, quotes, edits, etc.
 
-<?php blog_att($logid); ?> 如日志有附件则输出附件，该函数位于模板module.php内。
+This file is composed of several functions, which are called by the template file, and more functions can be realized by customizing functions inside.
 
-<?php blog_tag($logid); ?> 输出日志的标签，该函数位于模板module.php内。
+For example, when calling emlog cache in a custom function, assuming that user cache information is read, the form is as follows: global $CACHE; $user_cache = $CACHE→readCache('user');
 
-<?php echo $comnum; ?> 日志页显示评论数
+If you need to operate the database, the form is as follows: $DB = MySql::getInstance(); $res = $DB→query($sql);
 
-<?php echo $tbcount; ?> 日志页显示引用数
+###404.php
 
-<?php echo $views; ?> 日志页显示浏览量
+Templates for custom 404 pages.
 
-<?php doAction('log_related', $logData); ?> 相关日志的挂载点，与3.x版本不同，4.0带第二参数。
+###pw.php
 
-<?php neighbor_log($neighborLog); ?> 输出邻近，就是上一篇及下一篇，该函数位于模板module.php内。
+It is used to customize the password input page of encrypted articles. If there is no template file, the system default style will be used, which will not affect the normal use of the password input function. For the template content, please refer to the default template.
 
-<?php blog_trackback($tb, $tb_url, $allow_tb); ?> 输出该日志被引用的信息列表，与3.x不同注意区分。
+## Foreground template mount point
 
-<?php blog_comments($comments); ?> 输出该日志评论列表，与3.x不同注意区分。
+#### Note: Be sure to refer to the default template when developing the template to retain the following mount points for compatibility with other plugins.
 
-<?php blog_comments_post($logid,$ckname,$ckmail,$ckurl,$verifyCode,$allow_remark); ?> 输出发表评论框，与3.x不同注意区分。
+| Mount point | Belonging file | Change in point description | Example |
+|-----------------------------------|--------------|-----------------------------|-----|
+| doAction('index_head') | header.php | The mount point in the head tag of the site, used to mount js or css style files |
+| doAction('index_footer') | footer.php | Mount point at the bottom of the footer, used to mount bottom information display plugins |
+| doAction('index_loglist_top') | log_list.php | Mount point at the top of the home page article list, it is recommended to add it under the home page navigation bar |
+| doAction('log_related', $logData) | echo_log.php | Related post mount point, added between post content and comments |
 
-### page.php
+Example of adding a mount point:
 
-该文件写法与echo_log.php类似，不再重复。
+```php
+<?php doAction('index_footer') ?>
+```
 
-### side.php
+## Constants that can be used directly
 
-侧边栏，主要负责根据后台widgets设置信息输出侧边栏内容。建议该文件内代码保持不变。
+| variable, constant | type | description |
+|-----------------------|-----|-----------------------------------------------|
+| Option::EMLOG_VERSION | Constant | Get the current emlog version number |
+| ROLE | Constant | Current user role (user group): admin administrator, writer registered user, visitor visitor |
+| ROLE_ADMIN | constant | admin administrator |
+| ROLE_WRITER | constant | writer registered user |
+| ROLE_VISITOR | constant | visitor visitor |
+| UID | constant | current user UID |
+| BLOG_URL | Constant | Full URL of the site |
+| ISLOGIN | Constant | Whether to log in, true to log in, false not to log in |
 
-module.php
+The above constants can be used in templates in the following way
 
-模板公共代码，包含侧边widgets、评论、引用、编辑等。 该文件由若干函数组成，被博客前台文件调用，可在内自定义函数实现更多功能。 如在自定义函数内调用emlog缓存时，假设读取user缓存信息，则形如： global $CACHE; $user_cache = $CACHE→readCache('user'); 如需要操作数据库，则形如： $DB = MySql::getInstance(); $res = $DB→query($sql); 以上两点与3.x不同，请注意区分。
+```php
+// Output the current site URL
+<?= BLOG_URL ?>
 
-### 404.php
+```
 
-用于自定义404页面的模板。
+## Asynchronous request
 
-最后附：前台模板部分挂载点一览
+By default, emlog's comment publishing, user registration, and user login interfaces will jump to the page regardless of error or success, which brings inconvenience to building a more friendly asynchronous ajax interaction request. Pro2.0 began to support asynchronous requests and return json information.
 
-doAction('index_footer'); 页脚底部挂载点
+### Post a comment
 
-doAction('index_loglist_top'); 首页日志列表顶部挂载点
+* Interface URL: https://www.yourdomain.com/index.php?action=addcom
+* Request method: POST
+* Return format: JSON
+* Request parameters:
 
-doAction('log_related', $logData); 相关日志挂载点
+| Parameter | Required | Description |
+|------------|--|-----|
+| gid | required | article id |
+| comname | required | name of commenter |
+| comment | Mandatory | Comment content |
+| commail | No | Commenter's Email |
+| comurl | No | Commenter's home page address |
+| imgcode | No | Image Verification Code |
+| pid | No | Replied comment ID |
+| resp | Required | Pass the string "json", and the data in json format will be returned |
 
-doAction('diff_side'); 侧边栏挂载点
+#### return result
 
+```json
+{
+  "code": 1,
+  "msg": "Comment content must contain Chinese",
+  "data": ""
+}
+```
 
-### t.php (仅5.3.1支持)
+#### js call case, for reference
 
-与之前相同的内容不再重复。 <?php echo $avatar; ?> 输出头像。
+```js
+const submitBtn = document.getElementById('submit-btn');
 
-<?php echo $author; ?> 输出作者名。
+submitBtn.addEventListener('click', async () => {
+    const params = new URLSearchParams({
+        gid: document.getElementById('gid').value,
+        comname: document.getElementById('comname').value,
+        comment: document.getElementById('comment').value,
+        commail: document.getElementById('commail').value,
+        comurl: document.getElementById('comurl').value,
+        imgcode: document.getElementById('imgcode').value,
+        pid: document.getElementById('pid').value,
+        resp: 'json',
+    });
 
-<?php echo $val['t'];?> 输出碎语内容。
+    try {
+        const response = await fetch('https://www.yourdomain.com/index.php?action=addcom', {
+            method: 'POST',
+            body: params,
+        });
 
-<?php echo DYNAMIC_BLOGURL; ?> 根据当前url输出博客地址，主要用于js，解决跨域问题。
+        const data = await response.json();
 
-<?php echo $tid;?> 输出碎语所在数据库中的id号。
+        if (data.code === 1) {
+            console.error(data.msg);
+        } else if (data.code === 0) {
+            console.log(data.data);
+        } else {
+            console.error('Unknown error');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+});
 
-<?php echo $val['date'];?> 发布碎语的时间。
+```
 
-$reply_code ：其值为‘n’或‘y’，后台设置是否启用碎语回复验证码。
+### User login
 
-<?php echo $rcode; ?> 输出验证码。
+* Interface URL: https://www.yourdomain.com/admin/account.php?action=dosignin
+* Request method: POST
+* Return format: JSON
+* Request parameters:
+
+| Parameter | Required | Description |
+|------------|--|-------|
+| user | required | username, email |
+| pw | Required | Password |
+| persist | No | Remember me, stay logged in |
+| login_code | No | Image Verification Code |
+| resp | Required | Pass the string "json", and the data in json format will be returned |
+
+#### return result (with login success cookie)
+
+```json
+{
+  "code": 0,
+  "msg": "ok",
+  "data": ""
+}
+```
+
+### User Registration
+
+* Interface URL: https://www.yourdomain.com/admin/account.php?action=dosignup
+* Request method: POST
+* Return format: JSON
+* Request parameters:
+
+| Parameter | Required | Description |
+|------------|--|-----|
+| mail | Required | Email |
+| passwd | required | password |
+| repasswd | required | repeat password |
+| login_code | No | Image Verification Code |
+| mail_code | No | Email Verification Code |
+| resp | Required | Pass the string "json", and the data in json format will be returned |
+
+#### return result
+
+```json
+{
+  "code": 1,
+  "msg": "Incorrect email format",
+  "data": ""
+}
+```
+
+## Template settings plugin
+
+The template setting plug-in provides richer setting functions for the template. This plug-in is jointly maintained by emlog official and enthusiast Blue Leaf, please feel free to use it.
+
+https://www.emlog.net/plugin/detail/377
+
+### How to make the template recognized by the plugin?
+
+Put *options.php* in the template directory, the content format is as follows, you can add settings items **arbitrarily**, pay attention to the $options variable and comments:
+
+```php
+<?php
+/*@support tpl_options*/
+!defined('EMLOG_ROOT') && exit('access deined!');
+$options = array(
+	'sidebar' => array(
+		'type' => 'radio',
+		'name' => 'sidebar position',
+		'values' => array(
+			'left' => 'left',
+			'right' => 'right'
+		),
+		'default' => 'right',
+	),
+	'sortIcon' => array(
+		'type' => 'image',
+		'name' => 'category icon settings',
+		'values' => array(
+			TEMPLATE_URL . 'images/star.png',
+		),
+		'depend' => 'sort',
+		'unsorted' => true,
+		'description' => 'Set different small icons for different categories, preferably 20×20',
+	),
+);
+```
+
+### In options.php, what should each element write?
+
+As shown above, in the *$options* array, the key is the id of the setting item, and the value is an array containing several elements. Among them, the type attribute and name attribute are mandatory, name is the name of the setting item, and type is used to specify the type of the setting item. The supported types are as follows:
+
+> - radio: radio buttons
+> - checkbox: check button
+> - text: text
+> - image: image
+> - page: page
+> - sort: classification
+> - tag: tag
+
+1. For all types, the default attribute is used to specify the default value. When default is not specified, the first value in values will be used. If none is specified, a strange default value will be used.
+2. For radio and chexkbox, the values attribute is used to set the value and display name of each button.
+3. In addition to sort, you can specify depend as sort, which means that this option can set different values ​​according to different categories. When specifying depend as sort, you can choose the unsorted attribute. When it is true, it means that it includes uncategorized. include, defaults to true.
+4. For sort and page, the multi attribute can be set to true, indicating multiple selections.
+5. The description attribute is optional and used to describe the option.
+6. If the type is text, you can set the multi attribute to true to indicate multi-line text, which is the difference between input and textarea. The optional attribute rich is used to support rich text. If this value is set, the editor will be loaded.
+7. If type is sort, page or tag, and multiple selection is set, the default value will be empty, otherwise it will be the first value of this type.
+
+### How to call the setting item in the template
+
+The plugin provides a simple method _g($key) to get settings
+
+like:
+
+- Use _g('sidebar') to get the sidebar settings, the value will be 0 or 1,
+- Use _g('sortIcon') to get all the settings of the classification icon, an array with the classification id as the key,
+- Use _g('sortIcon.1') to get the sortIcon with category id 1 (if it exists). It should be noted that if the type is page, the page id will be obtained; if the type is sort, the category id will be obtained; if the type is tag, the tag name will be obtained.
+
+If no parameters are passed, all setting items will be obtained by using the _g() method. For old template migration, you can use extract(_g()); to replace the original loading option file.
+
+## Common functions
+
+```php
+//subContent intercepts the content function of the specified length
+//The first parameter: the content to be intercepted
+//The second parameter: interception length
+//The third parameter: whether to filter the html tags in the content 1 to filter 0 not to filter
+//As follows: intercept the first 180 characters of the log content, and filter the html tags
+<?php echo subContent($value['log_description'], 180, 1); ?>
+
+```
+
+## Reference demo
+
+The default theme that comes with the emlog system is the best demo, and you can modify it based on this theme to develop your own theme, or refer to some elements and files of this theme.
+The directory where the default template is located: content/templates/default
+
+---
+
+--end--

@@ -1,166 +1,278 @@
-# 插件开发教程
+# 🍓 Plugin Development Guide
 
-emlog支持插件机制，这样使得开发者可以方便地向emlog中添加自己需要的功能。
+emlog supports the plug-in mechanism, so that developers can easily add the functions they need to the system.
 
-## 插件实现原理
-在emlog整个运行过程中我们设定了一些动作事件，遇到这些事件时emlog会自动的调用插件绑定到该事件的上的所有插件函数，从而实现插件的功能。
+## Implementation principle
 
-## 插件挂载点
-### 挂载点函数：doAction 
+During the whole operation of emlog, we set some action events. When encountering these events, emlog will automatically call all the plug-in functions bound to the event by the plug-in, so as to realize the function of the plug-in.
+
+## Mount point function: doAction
 
 ```php
-//这是emlog的添加日志事件,在添加日志后会触发,参数为新日志的$id号码. 那么系统会自动的将$id传入到每一个绑定到本事件的钩子函数中。
-doAction('save_log',$id);
+//This is emlog's adding article event, which will be triggered after adding an article, and the parameter is the $id number of the new article. Then the system will automatically pass $id into each hook function bound to this event.
+doAction('save_log', $id);
 ```
 
-本函数内置于emlog核心代码中，就是传说中的插件挂载点。 本函数有一个固定的参数： $hook， $hook是执行动作的名称 ，其他的参数则可以在调用本函数时依次传入,函数会自动的发送给钩子函数
+This function is built into the emlog core code, which is the legendary plug-in mount point. This function has a fixed parameter: $hook, $hook is the name of the execution action, and other parameters can be passed in sequentially when calling this function, and the function will be automatically sent to the hook function
 
-### 添加事件调用方法 函数: addAction
-本函数是插件用来向挂载点挂载方法的函数，写在插件文件中。 函数有两个参数：$hook, $actionFunc。
+## Add event call method Function: addAction
 
-  * $hook 是绑定事件的名称,
-  * $actionFunc  是绑定到该事件钩子上的函数名称
+This function is a function used by the plug-in to mount the method to the mount point, and is written in the plug-in file. The function has two parameters: $hook, $actionFunc.
+
+* $hook mount point name,
+* $actionFunc is the name of the function mounted on the mount point
+
 ```php
-addAction('save_log','plugin_addlog');
+addAction('save_log', 'plugin_addlog');
 ```
-上例中将plugin_addlog函数绑定到系统的save_log事件中,只要系统执行到了save_log挂载点时,就会调用plugin_addlog函数.
 
-### 插件文件系统 
-插件目录：/content/plugins/ 仅识别 “插件目录/插件名/插件名.php” 目录结构的插件。 
+In the above example, the plugin_addlog function is bound to the save_log event of the system. As long as the system executes to the save_log mount point, the plugin_addlog function will be called.
 
-例如：emlog默认的tips插件,其文件夹名称为tips,程序文件名称为tips.php
+## Development specification
 
-插件的激活与关闭 在emlog后台的插件管理中,点击每个插件后的状态按钮即可激活/关闭插件。 自emlog4.0.0起增加激活和关闭插件函数，来完成激活和关闭时的一些初始化工作。 如果插件需要，可以给插件增加 plugin_callback.php 文件，其中包含两个函数： 
-* callback_init()为插件激活时调用 
-* callback_rm()为插件关闭时调用
-插件前台显示页面 如果想让插件在前台输出一个页面，可以在插件中定义一个 pluginname_show.php 的文件。 此时插件的前台显示地址为：http:博客地址/?plugin=pluginname 这样就可以在pluginname_show.php文件构建插件的页面显示。 插件后台显示配置页面 如果你想让插件在后台输出一个设置页面，可以在插件中定义一个 pluginname_setting.php 的文件 此时插件的后台配置地址为：http:博客地址/admin/plugin.php?plugin=pluginname
+### File system
 
-##插件开发标准
+- Plugin directory: /content/plugins/
+- Only plugins with "plugin-dir/plugin-name/plugin-name.php" directory structure are recognized.
 
-### 插件命名规则
-* 插件名只能以半角的字母、数字、下划线(_)、横杠(-) 组合而成，且只能以字母作为开头
-* 函数/变量命名标准 插件的所有函数/变量采用 "插件名_" 作为前缀来命名
+For example: the default tips plug-in, its folder name is tips, and the program file name is tips.php
 
-例如:$emlogplugin_var 、emlogplugin_dosomething() 采用这样的命名方式可以避免于其他插件的函数或者变量出现冲突.
+### Activation and deactivation
 
-### 插件文件名称
+On the plug-in management page of the emlog background, click the status button behind each plug-in to activate/deactivate the plug-in. And it will trigger activation and shutdown callback functions to complete some initialization work during activation and shutdown.
 
-插件主文件名称必须与插件所在文件夹名称相同，设定插件参数的配置程序文件名称必须为 “插件名称_setting.php”
+If the plugin needs it, you can add a file to the plugin: pluginname_callback.php , which is used to add activation and deletion callback functions:
 
-(注:该文件为可选,如果你的插件需要用户配置参数才需要该文件来完成配置功能)
-例如:
+* callback_init() is only called when the plugin is activated
+* callback_rm() is only called when the plugin is removed and removed
+
+For example:
+
+tips_callback.php
+
+```php
+<?php
+!defined('EMLOG_ROOT') && exit('access deined!');
+
+// Called when the plugin is activated, the user can initialize the configuration
+function callback_init() {
+	$plugin_storage = Storage::getInstance('plugin_name');
+	$r = $plugin_storage->getValue('key');
+	if (empty($r)) {
+		$default_data = [
+			'ip'      => [],
+			'time'    => [],
+			'attempt' => [],
+		];
+		$plugin_storage->setValue('temp', json_encode($default_data), 'string');
+	}
+}
+
+// Called when the plugin is deleted and disassembled, it can be used for data cleaning
+function callback_rm() {
+	$plugin_storage = Storage::getInstance('plugin_name'); //Use the English name of the plugin to initialize a storage instance
+	$ak = $plugin_storage->deleteAllName('YES'); //Delete all data created by this plugin, please pass in uppercase "YES" to confirm deletion.
+}
+```
+
+### Foreground display page
+
+If you want the plugin to output a page in the foreground, you can add a file to the plugin: pluginname_show.php
+At this time, the foreground display address of the plugin is: https://youdomain.com/?plugin=pluginname
+This will be displayed on the page where the plugin is built in the pluginname_show.php file.
+
+### Background configuration page
+
+If you want the plugin to output a setting page in the background, you can add a file to the plugin: pluginname_setting.php
+At this time, the background configuration address of the plugin is: https://youdomain.com/admin/plugin.php?plugin=pluginname
+
+### Naming rules
+
+* The pluginname (plugin name) mentioned above should be composed of lowercase English letters, numbers, underscores (_), and dashes (-), and can only start with letters
+* Function/Variable Naming Standard All functions/variables of plugins are named with "plugin_name_" as a prefix
+
+For example: $emlogplugin_var, emlogplugin_dosomething() use this naming method to avoid conflicts with functions or variables of other plugins.
+
+### Plugin file name
+
+The name of the plugin main file must be the same as the name of the folder where the plugin is located, for example:
+
 ```
 emlogplugin/
       emlogplugin.php
       emlogplugin_setting.php
 ```
-      
-### 安全性
-在插件文件开头增加限制语句 
-插件函数文件需要增加:
+
+### safety
+
+Add a restriction statement at the beginning of the plug-in file. The plug-in function file needs to be added:
+
 ```php
 !defined('EMLOG_ROOT') && exit('access deined!');
 ```
-如果不增加该语句,那么直接访问插件的程序文件php会爆出博客的物理路径,对博客的安全造成威胁。
 
-如果你的插件需要接收一些参数,请务必严格过滤每一个变量的数据.
-例如：获取外部获取一个int型的参数，$id = $_GET['id']; 这样写是不安全的，要改为：$id = intval($_GET['id']); 
+If this statement is not added, then directly accessing the program file php of the plug-in will reveal the physical path of the blog, posing a threat to the security of the blog.
 
-如果是一个字符型的参数，$action = $_GET['action']; 这样写也是不安全的，
-要改为：$action = addslashes($_GET['action']);
+If your plug-in needs to receive some parameters, please be sure to strictly filter the data of each variable. For example: get an int parameter from the outside, $id = $_GET['id']; it is not safe to write like this, you need to change For: $id = intval($_GET['id']);
 
-## 当前插件挂载点及说明
+If it is a character parameter, $action = $_GET['action']; It is not safe to write like this, it should be changed to: $action = addslashes($_GET['action']);
 
-### 挂载点：doAction('adm_main_top')
-* 所在文件：admin/views/header.php
-* 描述：后台红线区域扩展：
+## Plugin data storage
 
-### 挂载点：doAction('adm_head')
-* 所在文件：admin/views/header.php
-* 描述：后台头部扩展：可以用于增加后台css样式、加载js等
+If the plug-in needs to save settings and other information, it can use the Storage class provided by the system to complete the storage and reading of data, and the data will be stored in the storage table of the MySQL database.
 
-### 挂载点：doAction('adm_siderbar_ext')
-* 所在文件：admin/views/header.php
-* 描述：后台侧边栏 功能扩展 子菜单扩展，用于插件单独页面。
+### data input
 
-### 挂载点：doAction('save_log', $blogid）
-* 所在文件：admin/save_log.php
-* 描述：新增日志、修改日志扩展点
+```php
+	$plugin_storage = Storage::getInstance('plugin_name');//Use the English name of the plugin to initialize a storage instance
+	$plugin_storage->setValue('key', 'xxx'); // Set the value of the key to xxx, which can store data with a maximum length of 65,535 characters.
+```
 
-### 挂载点：doAction('del_log', $key) 
-* 所在文件：admin/admin_log.php
-* 描述：删除日志操作扩展点
+#### Set the write data type
 
-### 挂载点：doAction('adm_writelog_head', $key)
-* 所在文件：
-* admin/add_log.phpadmin/add_page.phpadmin/edit_log.php
-* admin/edit_page.php
-* 描述：可以再红框处显示扩展内容，如插入网络相册照片的插件。
+Data storage also supports the third parameter to specify the type of stored data, and the corresponding data type will be returned when reading. Currently, 4 types are supported, and the default is string type.
 
-### 挂载点：doAction('comment_post')
-* 所在文件：./index.php
-* 描述：发表评论扩展点（写入评论前）。可用于垃圾评论防范
+- string // return string when reading
+- number // return float type when read
+- boolean // return boolean type when read
+- array // return array
 
-### 挂载点：doAction('comment_saved’)
-* 所在文件：include/model/comment_model.php
-* 描述：发表评论扩展点（写入评论后）。用于发布评论成功的后续操作，如发通知邮件
+like:
 
-### 挂载点：doAction('log_related',$logData)
-* 所在文件：content/templates/default/echo_log.php
-* 描述：阅读日志页面扩展点、用于增加日志相关内容
+```php
+	$plugin_storage = Storage::getInstance('plugin_name');
+	$data = ['name' => 'tom', 'age' => 19];
+	$plugin_storage->setValue('key', $data, 'array'); //Stored as an array type, so that the array will be serialized and stored in the database, and will be automatically deserialized when read.
+```
 
-### 挂载点：doAction('index_head')
-* 所在文件：Content/templates/default/header.php
-* 描述：前台头部扩展：可以用于增加前台css样式、加载js等
+### read data
 
-### 挂载点：doAction('index_footer')
-* 所在文件：content/templates/default/footer.php
-* 描述：首页底部扩展点
+```php
+	$plugin_storage = Storage::getInstance('plugin_name'); //Use the English name of the plugin to initialize a storage instance
+	$ak = $plugin_storage->getValue('key'); // read key value
 
-### 挂载点：doAction('comment_reply', $commentId, $reply)
-* 所在文件：admin/comment.php
-* 描述：回复评论扩展点
+```
 
-### 挂载点：doAction('data_prebakup')
-* 所在文件：admin/data.php
-* 描述：扩展备份数据库页面，可以对插件增加的表进行备份
+### Clean up and delete data
 
-### 挂载点：doAction('rss_display')
-* 所在文件：rss.php
-* 描述：Rss输出扩展
+```php
+	$plugin_storage = Storage::getInstance('plugin_name'); //Use the English name of the plugin to initialize a storage instance
+	$ak = $plugin_storage->deleteName('key') // Delete a row of data named key created by this plugin
+	$ak = $plugin_storage->deleteAllName('YES'); //Delete all data created by this plugin, please pass in uppercase "YES" to confirm deletion, generally used for plugin delete callback function.
+```
 
-### 挂载点：doAction('attach_upload')
-* 所在文件：include/lib/function.base.php
-* 描述：扩展附件上传，如增加图片水印效果等
+## Mount point type
 
-### 挂载点：doAction('url_rewrite')
-* 所在文件：include/lib/function.base.php
-* 描述：扩展url重写，可以自定义其他url优化方案
+### 1. Plug-in mount
 
-### 挂载点：doAction('adm_comment_display')
-* 所在文件：admin/views/comment.php
-* 后台评论显示扩展，可以用于查询评论人ip所在地域
+* Execution principle: sequentially execute the functions hung on the hook, and support multiple parameters
+* Applicable scenarios: Insert specified content at the mount point, or perform certain actions.
 
-### 挂载点：doAction('index_loglist_top')
-* 所在文件：content/templates/default/log_list.php
-* 描述：日志列表顶部扩展点，如显示公告等
+```php
+// mount point name: adm_main_top
+doAction('adm_main_top');
+```
 
-### 挂载点：doAction('diff_side')
-* 所在文件：content/templates/default/side.php
-* 描述：侧边栏控制扩展点
+```php
+// Plug-in development example: mount the tips function at the above mount point "adm_main_top", and insert a sentence in the management background.
+addAction('adm_main_top', 'tips');
+function tips() {
+echo "<div>Hello World</div>";
+}
+```
 
-### 挂载点：doAction('reply_twitter', $r, $name, $date, $tid)
-* 版本：5.3.1
-* 所在文件：t/index.php
-* 描述：回复碎语扩展点，用于回复邮件提醒等
+A mount point with parameters, the parameters will be passed to the function mounted on it in order. as the following example
 
-### 挂载点：doAction('post_twitter', $t)
-* 版本：5.3.1
-* 在文件：
-* /m/index.php
-* /admin/twitter.php
-* 描述：发布碎语扩展点，用于碎语和其他微博类产品同步等
+```php
+// Mount point name: save_log, the mount point to save the article, with the parameter $blogid
+doAction('save_log', $blogid);
+```
 
-### 挂载点：doAction('adm_footer')
-* 所在文件：admin/views/footer.php
-* 描述：后台底部扩展：可以用于增加后台js等
+```php
+// Plug-in development example: mount the function test_foo to the above save_log mount point, and receive the passed first parameter $blologid
+addAction('save_log', 'test_foo');
+function test_foo($blogid) {
+   
+}
+```
+
+#### List of mount points (plug-in mount)
+
+| mount point | in file | description |
+|-----------------------------------------------|----------------------------------------|-------------------------------------|
+| doAction('adm_main_top') | admin/views/header.php | The top area of the background homepage is expanded, and the official tip plugin uses this mount point |
+| doAction('adm_head') | admin/views/header.php | Background header extension: can be used to add background css styles, load js, etc. |
+| doAction('adm_menu') | admin/views/header.php | Backstage sidebar first-level menu, only visible to the administrator, used for a separate page of the plugin. |
+| doAction('user_menu') | admin/views/header.php | Backstage sidebar first-level menu, only visible to registered users, used for a separate page of the plugin. |
+| doAction('adm_menu_ext') | admin/views/header.php | background sideThe sidebar expands the secondary menu for plugin individual pages. |
+| doAction('save_log', $blogid） | admin/article_save.php | Add new articles, modify article extension points |
+| doAction('del_log', $key) | admin/article.php | Delete article action extension point |
+| doAction('adm_writelog_head', $key) | admin/article_write.php | Can add extended content in the upper part of the editor |
+| doAction('comment_post') | ./index.php | Post comment extension point (before writing a comment). Can be used for comment spam prevention |
+| doAction('comment_saved’) | include/model/comment_model.php | Post a comment extension point (after writing a comment). Follow-up actions for successful posting of comments, such as sending notification emails |
+| doAction('log_related',$logData) | content/templates/default/echo_log.php | Read article page extension point, used to add article related content |
+| doAction('index_head') | Content/templates/default/header.php | Foreground header extension: can be used to add front-end css styles, load js, etc. |
+| doAction('index_footer') | content/templates/default/footer.php | extension point at the bottom of the home page |
+| doAction('comment_reply', $commentId, $reply) | admin/comment.php | Reply to comment extension point |
+| doAction('data_prebakup') | admin/data.php | Extended backup database page, which can back up the tables added by the plugin |
+| doAction('rss_display') | rss.php | Rss output extension |
+| doAction('attach_upload') | include/lib/common.php | Extend attachment upload, such as adding image watermark effects, etc. |
+| doAction('adm_comment_display') | admin/views/comment.php | Background comment display extension, which can be used to query the commenter's ip location |
+| doAction('index_loglist_top') | content/templates/default/log_list.php | The top extension point of the article list, such as displaying announcements, etc. |
+| doAction('adm_footer') | admin/views/footer.php | Background bottom extension: can be used to increase background js, etc. |
+| doAction('adm_main_content') | admin/views/index.php | Admin background home page information module extension |
+| doAction('user_main_content') | admin/views/index_user.php | Registered user background home page information module extension |
+| doAction('login_ext') | admin/views/signin.php | Background login page extension: can be used to add third-party login buttons such as QQ login |
+
+### 2. Single takeover mount
+
+* Execution principle: Execute the first function hung on the hook, execute only once, receive input input, and modify the incoming variable $ret)
+* Applicable scenario: replace the core function, such as taking over the core file upload function, and changing the local upload to the cloud upload
+
+```php
+// Mount point name: upload_media, upload file mount point, with parameters $attach, $ret
+doOnceAction('upload_media', $attach, $ret);
+```
+
+```php
+// Plug-in development example: mount the function upload2qiniu to the upload_media mount point
+addAction('upload_media', 'upload2qiniu');
+
+function upload2qiniu($attach, &$result) {
+
+}
+```
+
+#### Mount point list (single takeover mount)
+
+| mount point | in file | description |
+|------------------------------------------------------|------------------------|------------------------|
+| doOnceAction('upload_media', $attach, $ret); | admin/media.php | Resource file upload mount point, which can be used for cloud storage plug-in development |
+| doOnceAction('get_Gravatar', $email, $gravatar_url); | include/lib/common.php | Avatar mount point for commenters, which can be used to change the way the avatar is generated |
+
+### 3. Take-over mount in turn
+
+* Execution principle: Execute all functions hung on the hook, the previous execution result is used as the next input, and the value of the second variable passed in will be modified.
+* Applicable scenario: modify the specified content, eg: different plug-ins modify and replace the content of the article.
+
+```php
+// Mount point name: article_content_echo, article content display mount point, with parameters $log_content, $log_content
+// The first parameter $logData: Enter the original article data, the array structure includes title, content, article id and other information
+// The second parameter $logData: The article data modified by the plug-in, complete the overwriting and replacement of content variables.
+doMultiAction('article_content_echo', $logData, $logData);
+```
+
+#### List of mount points (rotate takeover mount)
+
+| mount point | file in | description |
+|--------------------------------------------------------------------|---------------------------------------|---------------------|
+| doMultiAction('article_content_echo', $log_content, $log_content); | include/controller/log_controller.php | Article content input mount point, which can be used for article content replacement |
+
+## Reference demo
+
+The tips plug-in that comes with the emlog system is also an official plug-in demonstration demo, which can be modified based on this plug-in to develop your own plug-in.
+The directory where the tips plugin is located: content/plugins/tips
+
+---
+
+--end--
