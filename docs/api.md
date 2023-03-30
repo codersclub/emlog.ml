@@ -1,8 +1,13 @@
 # &#x1f34e; API documentation
 
-Emlog Pro version supports the interface (API) call function, and developers can interact with the emlog system by calling the API. For example: docking with article publishing software to realize automatic publishing of articles; docking with WeChat applets to realize diversified article display; docking with browser plug-ins to realize more convenient note publishing functions, etc. For detailed interface description, please refer to the following content.
+Emlog Pro version supports the interface (API) call function, and developers can interact with the emlog system by calling the API.
+For example:
+docking with article publishing software to realize automatic publishing of articles;
+docking with WeChat applets to realize diversified article display;
+docking with browser plug-ins to realize more convenient note publishing functions, etc.
+For detailed interface description, please refer to the following content.
 
-!> This document is written based on the latest version of emlog pro, the lower version may not be compatible, please upgrade to the latest version first.
+!> This document is written based on the latest version of Emlog pro, the lower version may not be compatible, please upgrade to the latest version first.
 
 ## Interface authentication
 
@@ -18,22 +23,25 @@ Emlog Pro version supports the interface (API) call function, and developers can
 
 #### Calculate the signature rule
 
-The unix timestamp and the API key are concatenated and then md5 encrypted. The API key can be found in the background system-settings-API interface settings
+The unix timestamp and the API key are concatenated and then md5 encrypted.
+The API key can be found in the background System-&gt;Settings-&gt;API interface settings
 
 PHP code example:
 
 ```php
-$apikey = '******'; // API key, which can be found in background system-settings-API interface settings
-$req_time = time(); // unix timestamp, in seconds
+$apikey = '******'; // API key, which can be found in background System-&gt;Settings-&gt;API interface settings
+$req_time = time(); // Unix timestamp, in seconds
 $req_sign = md5($req_time . $apikey); // MD5 signature
 ```
 
-### (2) cookie authentication
+### (2) Cookie authentication
 
-The request needs to be accompanied by the login status cookie after the user logs in to the emlog system, which is used to identify the current login status and the login user.
+The request needs to be accompanied by the login status cookie
+after the user logs in to the Emlog system,
+which is used to identify the current login status and the login user.
 
 ```
-// emlog login status cookie looks like:
+// Emlog login status cookie looks like:
 EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOnly;
 ```
 
@@ -49,16 +57,16 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Required | Description |
 |------------|--|-----|
-| gid | required | article id |
-| comname | required | name of commenter |
+| gid | required | Article id |
+| comname | required | Name of commenter |
 | comment | Mandatory | Comment content |
-| commail | No | Commenter's Email |
-| comurl | No | Commenter's home page address |
+| commail | No | Commenter Email |
+| comurl | No | Commenter home page address |
 | imgcode | No | Image Verification Code |
 | pid | No | Replied comment ID |
-| resp | required | pass string "json" |
+| resp | required | Pass string "json" |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -82,9 +90,9 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 | pw | Required | Password |
 | persist | No | Remember me, stay logged in |
 | login_code | No | Image Verification Code |
-| resp | required | pass string "json" |
+| resp | required | Pass string "json" |
 
-#### return result (with login success cookie)
+#### Return result (with login success cookie)
 
 ```json
 {
@@ -105,13 +113,13 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 | Parameter | Required | Description |
 |------------|--|-----|
 | mail | Required | Email |
-| passwd | required | password |
-| repasswd | required | repeat password |
+| passwd | required | Password |
+| repasswd | required | Repeat password |
 | login_code | No | Image Verification Code |
 | mail_code | No | Email Verification Code |
-| resp | required | pass string "json" |
+| resp | required | Pass string "json" |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -133,9 +141,9 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 |------------|--|-----|
 | mail | Required | Email |
 | login_code | No | Image Verification Code |
-| resp | required | pass string "json" |
+| resp | required | Pass string "json" |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -155,12 +163,12 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Required | Description |
 |------------|--|-----|
-| mail_code | yes | email verification code |
-| passwd | required | password |
-| repasswd | required | repeat password |
-| resp | required | pass string "json" |
+| mail_code | yes | Email verification code |
+| passwd | required | Password |
+| repasswd | required | Repeat password |
+| resp | required | Pass string "json" |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -172,14 +180,14 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ### User information interface
 
-* Get the current login user information interface
+* Get the current login user information
 * Interface URL: https://yourdomain/?rest-api=userinfo
 * Request method: GET
 * Interface authentication method: [cookie authentication]
 * Return format: JSON
 * Request parameters: none
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -211,17 +219,17 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Required | Description |
 |------------|------|------------------------------|
-| title | required | article title |
-| content | required | article content |
+| title | required | Article title |
+| content | required | Article content |
 | excerpt | No | Article Summary |
-| cover | No | Article cover |
+| cover | No | Article cover image |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
 | sort_id | No | Article category ID, which can be viewed on the background category management page |
-| tags | No | Article tags, separated by multiple half-width commas, such as: PHP,MySQL |
-| draft | No | Whether to publish as a draft, yes y, no n (default is n) |
+| tags | No | Article tags, separated by commas, such as: PHP,MySQL |
+| draft | No | Whether to publish as a draft. Yes "y", No "n" (default is "n") |
 | post_date | No | Release time, such as: `2022-05-03 23:30:16` |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -235,7 +243,7 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ### Article editing interface
 
-* Article editing interface
+* Article editing
 * Interface URL: https://yourdomain/?rest-api=article_update
 * Request method: POST
 * Interface authentication method: [API key authentication] or [cookie authentication]
@@ -245,17 +253,17 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 | Parameter | Required | Description |
 |------------|------|------------------------------|
 | id | Required | Article ID |
-| title | required | article title |
+| title | required | Article title |
 | content | No | Article content |
 | excerpt | No | Article Summary |
 | cover | No | Article cover |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
 | sort_id | No | Article category ID, which can be viewed on the background category management page |
-| tags | No | Article tags, separated by multiple half-width commas, such as: PHP,MySQL |
-| draft | No | Whether to publish as a draft, yes y, no n (default is n) |
+| tags | No | Article tags, separated by commas, such as: PHP,MySQL |
+| draft | No | Whether to publish as a draft. Yes "y", No "n" (default is "n") |
 | post_date | No | Release time, such as: `2022-05-03 23:30:16` |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -267,22 +275,22 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ### Article list interface
 
-* Get the list interface of articles
+* Get the article list
 * Interface URL: https://yourdomain/?rest-api=article_list
 * Request method: GET
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| parameter |Is it required | Description |
+| Parameter |Required | Description |
 |---------|------|---------------------|
 | page | No | The page number, starting from 1 by default |
 | count | No | The number of articles per page, follow the background settings by default |
 | sort_id | No | Article category ID, which can be viewed on the background category management page |
 | keyword | No | Search keywords, only match article titles |
-| tag | No | Article tag (pro 1.9.0+) |
+| tag | No | Article tags (pro 1.9.0+) |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -317,7 +325,7 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-| Parameters | Description |
+| Parameter | Description |
 |-------------|----------------|
 | id | Article ID |
 | title | article title |
@@ -326,18 +334,18 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 | description | Article summary |
 | date | Release date |
 | author_id | Author ID |
-| author_name | author nickname |
-| sort_id | sort ID |
-| sort_name | sort name |
-| views | Readings |
-| comnum | number of comments |
-| top | Top page yyes nno |
-| sortop | sort top y yes n no |
+| author_name | Author nickname |
+| sort_id | Category ID |
+| sort_name | Category name |
+| views | Number of readings |
+| comnum | Number of comments |
+| top | Top page: y=yes, n=no |
+| sortop | Category top: y=yes n=no |
 | tags | tags (pro 1.9.0+) |
 
 ### Article details interface
 
-* Get the detailed interface of the article
+* Get the article details
 * Interface URL: https://yourdomain/?rest-api=article_detail
 * Request method: GET
 * Interface authentication method: no authentication required
@@ -346,9 +354,9 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Required | Description |
 |-----|------|------|
-| id | is | article ID |
+| id | yes | Article ID |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -378,14 +386,14 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ### Category list interface
 
-* Interface to get all category lists (including subcategory columns)
+* Get all category list (including subcategories)
 * Interface URL: https://yourdomain/?rest-api=sort_list
 * Request method: GET
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters: none
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -422,7 +430,7 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ### Note publishing interface
 
-* Note publishing interface
+* Note publishing
 * Interface URL: https://yourdomain/?rest-api=note_post
 * Request method: POST
 * Interface authentication method: [API key authentication] or [cookie authentication]
@@ -431,10 +439,10 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Required | Description |
 |------------|------|----------------------|
-| t | required | note content |
+| t | required | Note content |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
 
-#### return result
+#### Return result
 
 ```json
 {
@@ -450,7 +458,7 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Error message | Description |
 |---------------------------|-----------------|
-| sign error | signature error |
+| sign error | Signature error |
 | api is closed | The API is not enabled, please enable it in the background setting |
 | API function is not exist | API method does not exist |
 | parameter error | Required parameter is missing |

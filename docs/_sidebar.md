@@ -4,7 +4,7 @@
 * [ChangeLog](changelog.md)
 * [Contacts](contact.md)
 * **Installation and use**
-    * [Installation Instructions](install.md)
+    * [Install](install.md)
     * [FAQ](faq.md)
 * **Extension Development**
     * [Template Development](template.md)
