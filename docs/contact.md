@@ -1,4 +1,4 @@
-# 🍺 Contact and exchange
+# &#x1f37a; Contact and exchange
 
 ## Follow emlog WeChat official account (WeChat scan code)
 

@@ -1,4 +1,4 @@
-# 🍓 Plugin Development Guide
+# &#x1f353; Plugin Development Guide
 
 emlog supports the plug-in mechanism, so that developers can easily add the functions they need to the system.
 

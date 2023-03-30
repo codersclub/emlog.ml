@@ -1,4 +1,4 @@
-# ? Template Development Guide
+# &#x1f349; Template Development Guide
 
 Emlog can easily replace the template. The template theme file is located in the content\templates\ folder of the installation directory. Each template is a separate folder, and the folder is named after the template. Templates uploaded and installed through the app store and background are stored in this directory.
 

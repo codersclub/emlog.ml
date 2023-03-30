@@ -1,4 +1,4 @@
-# 🍰emlog5.3.1 upgrade pro version operation guide
+# &#x1f370; emlog5.3.1 upgrade pro version operation guide
 
 ## Upgrade steps (please execute in order)
 

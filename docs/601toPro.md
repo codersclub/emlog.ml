@@ -1,4 +1,4 @@
-# 🍦 emlog6.0.1 unofficial version upgrade pro version operation guide
+# &#x1f366; emlog6.0.1 unofficial version upgrade pro version operation guide
 
 ## Upgrade steps (please execute in order)
 

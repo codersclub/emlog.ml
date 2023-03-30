@@ -6,7 +6,7 @@
 	<a href="https://www.emlog.net/docs/#/"><img src="https://img.shields.io/badge/docsify-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-brightgreen" alt="Document" /></a>
 </p>
 
-# ? Emlog
+# &#x1f680; Emlog
 
 Emlog is a lightweight blog and CMS website building system, dedicated to creating an easy-to-use personal cloud content management system.
 

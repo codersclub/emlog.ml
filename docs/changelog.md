@@ -1,4 +1,4 @@
-# ? Emlog version update records
+# &#x1f335; Emlog version update records
 
 ## Pro 2.0.3
 

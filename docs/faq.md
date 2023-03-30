@@ -1,4 +1,4 @@
-# 🍬Pro version FAQ
+# &#x1f36c; Pro version FAQ
 
 ## Is pro compatible with past templates and plugins?
 

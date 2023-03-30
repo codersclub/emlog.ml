@@ -1,4 +1,4 @@
-# ? API documentation
+# &#x1f34e; API documentation
 
 Emlog Pro version supports the interface (API) call function, and developers can interact with the emlog system by calling the API. For example: docking with article publishing software to realize automatic publishing of articles; docking with WeChat applets to realize diversified article display; docking with browser plug-ins to realize more convenient note publishing functions, etc. For detailed interface description, please refer to the following content.
 

@@ -1,4 +1,4 @@
-# 🥤 Pagoda panel one-click deployment and installation
+# &#x1f964; Pagoda panel one-click deployment and installation
 
 ## introduce
 

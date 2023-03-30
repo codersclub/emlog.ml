@@ -1,4 +1,4 @@
-# 🍇 Installation Instructions
+# &#x1f347; Installation Instructions
 
 ## Environment preparation
 

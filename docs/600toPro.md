@@ -1,4 +1,4 @@
-# 🍭 emlog6.0.0 upgrade pro version operation guide
+# &#x1f36d; emlog6.0.0 upgrade pro version operation guide
 
 ## Upgrade steps (please execute in order)
 

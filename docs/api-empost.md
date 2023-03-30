@@ -1,4 +1,4 @@
-# 🍒 API application: empost - chrome browser extension
+# &#x1f352; API application: empost - chrome browser extension
 
 emlog article and note publishing tool - chrome browser extension, this extension is for the convenience of users to publish articles and notes on the chrome browser. You can easily publish articles and notes without opening the blog site.
 
