@@ -8,7 +8,9 @@
 * Server recommendation: cloud server, such as: [Tencent Lightweight Application Server](https://url.cn/0EOuq6vG), [Aliyun ECS](https://www.aliyun.com/product/ecs?userCode=kjcf3grb ), [Hengchuang Hong Kong Cloud Server - No filing] (http://my.henghost.com/aff.php?aff=8851)
 * Server management panel software recommendation: [Pagoda Panel](https://www.bt.cn/) (Pagoda supports one-click emlog deployment, which is very convenient)
 * Browser recommendation: Chrome, Edge
-* Recommended local development integration environment: [phpEnv](https://www.phpenv.cn/)
+* Recommended local development integration environment:
+	- [Open Server](https://ospanel.io/)
+	- [phpEnv](https://www.phpenv.cn/)
 
 ## Download the installation package
 

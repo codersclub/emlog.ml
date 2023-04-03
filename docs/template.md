@@ -91,7 +91,7 @@ require_once View::getView('module'); // Load template common module.
 The above variables and constants can be output in the template in the following way
 
 ```php
-<?= $page_url?>
+<?= $page_url ?>
 <?= BLOG_URL ?>
 ```
 
@@ -108,7 +108,7 @@ The above variables and constants can be output in the template in the following
 ###log_list.php
 
 | variable, constant, method | type | description |
-|--------------------------------------------|----- |----------------------------------|
+|-------------------------------------------|-----|--------------------------------|
 | $value['log_cover'] | variable | article cover image URL |
 | $value['logid'] | variable | the id of the current post |
 | $value['log_url'] | variable | article address URL |
@@ -153,15 +153,15 @@ The function of this file is consistent with the list page, but the parameters a
 | blog_comments($comments) | method | output a list of comments on this article |
 | blog_comments_post($logid,$ckname,$ckmail,$ckurl,$verifyCode,$allow_remark) | Method | Output post comment box |
 
-###page.php
+### page.php
 
 The writing method of this file is similar to that of echo_log.php and will not be repeated here.
 
-###side.php
+### side.php
 
 The sidebar is mainly responsible for outputting the content of the sidebar according to the setting information of the background widgets. It is recommended that the code in this file remain unchanged.
 
-###module.php
+### module.php
 
 Template public code, including side widgets, comments, quotes, edits, etc.
 
@@ -171,11 +171,11 @@ For example, when calling emlog cache in a custom function, assuming that user c
 
 If you need to operate the database, the form is as follows: $DB = MySql::getInstance(); $res = $DB→query($sql);
 
-###404.php
+### 404.php
 
 Templates for custom 404 pages.
 
-###pw.php
+### pw.php
 
 It is used to customize the password input page of encrypted articles. If there is no template file, the system default style will be used, which will not affect the normal use of the password input function. For the template content, please refer to the default template.
 
@@ -296,7 +296,7 @@ submitBtn.addEventListener('click', async () => {
 * Request parameters:
 
 | Parameter | Required | Description |
-|------------|--|-------|
+|------------|--|--------|
 | user | required | username, email |
 | pw | Required | Password |
 | persist | No | Remember me, stay logged in |
@@ -356,10 +356,10 @@ Put *options.php* in the template directory, the content format is as follows, y
 $options = array(
 	'sidebar' => array(
 		'type' => 'radio',
-		'name' => 'sidebar position',
+		'name' => 'Sidebar position',
 		'values' => array(
-			'left' => 'left',
-			'right' => 'right'
+			'left' => 'Left',
+			'right' => 'Right'
 		),
 		'default' => 'right',
 	),

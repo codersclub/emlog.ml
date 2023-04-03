@@ -26,19 +26,6 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 - Data caching technology, faster site access
 - Site data backup/restore function
 
-## Download
-
-[Download Emlog pro installation package](https://www.emlog.net/download)
-
-## Changelog
-
-[changelog](https://www.emlog.net/docs/#/changelog)
-
-## Requirements
-
-* PHP5.6\7.x\8.x, recommended PHP7.4
-* MySQL5.6 or greater, recommended MySQL5.6, or MariaDB version 10.3 or greater.
-
 ## Install
 
 [Installation documentation](install.md)
@@ -47,12 +34,12 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 
 https://github.com/emlog/emlog
 
-## emlog official domain name list
+## Emlog official domain name list
 
+- Emlog.ML official site: https://emlog.ru
 - Official emlog website homepage: https://www.emlog.net
 - Officially maintained user community: https://emlog.cn
 - International English site: https://emlog.io
-- Multilingual site: https://emlog.ru
 
 !> Except for the domain names listed above, all others are unofficial domain names. For security reasons, please do not download installation packages and scripts from unofficial domain names.
 
