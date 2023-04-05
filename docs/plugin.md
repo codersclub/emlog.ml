@@ -200,34 +200,34 @@ function test_foo($blogid) {
 
 | Mount point | In file | Description |
 |-----------------------------------------------|----------------------------------------|-------------------------------------|
-| doAction('adm_main_top')	| admin/views/header.php | The top area of the background homepage is expanded, and the official tip plugin uses this mount point |
-| doAction('adm_head')		| admin/views/header.php | Background header extension: can be used to add background css styles, load js, etc. |
-| doAction('adm_menu')		| admin/views/header.php | Backstage sidebar first-level menu, only visible to the administrator, used for a separate page of the plugin. |
-| doAction('user_menu')		| admin/views/header.php | Backstage sidebar first-level menu, only visible to registered users, used for a separate page of the plugin. |
-| doAction('adm_menu_ext')	| admin/views/header.php | background sideThe sidebar expands the secondary menu for plugin individual pages. |
-| doAction('save_log', $blogid）	| admin/article_save.php | Add new articles, modify article extension points |
-| doAction('del_log', $key)	| admin/article.php | Delete article action extension point |
-| doAction('adm_writelog_head', $key) | admin/article_write.php | Can add extended content in the upper part of the editor |
-| doAction('comment_post')	| ./index.php | Post comment extension point (before writing a comment). Can be used for comment spam prevention |
-| doAction('comment_saved’)	| include/model/comment_model.php | Post a comment extension point (after writing a comment). Follow-up actions for successful posting of comments, such as sending notification emails |
+| doAction('adm_main_top')	| admin/views/header.php		| The top area of the background homepage extension, and the official tip plugin uses this mount point |
+| doAction('adm_head')		| admin/views/header.php		| Background header extension: can be used to add background css styles, load js, etc. |
+| doAction('adm_menu')		| admin/views/header.php		| Backstage sidebar first-level menu, only visible to the administrator, used for a separate page of the plugin. |
+| doAction('user_menu')		| admin/views/header.php		| Backstage sidebar first-level menu, only visible to registered users, used for a separate page of the plugin. |
+| doAction('adm_menu_ext')	| admin/views/header.php		| Background sidebar extension, expands the secondary menu for plugin individual pages. |
+| doAction('save_log', $blogid）	| admin/article_save.php		| Add new article, modify article extension point |
+| doAction('del_log', $key)	| admin/article.php			| Delete article action extension point |
+| doAction('adm_writelog_head', $key) | admin/article_write.php		| Can add extended content in the upper part of the editor |
+| doAction('comment_post')	| ./index.php				| Post comment extension point (before writing a comment). Can be used for comment spam prevention |
+| doAction('comment_saved’)	| include/model/comment_model.php	| Post a comment extension point (after writing a comment). Follow-up actions for successful posting of comments, such as sending notification emails |
 | doAction('log_related',$logData) | content/templates/default/echo_log.php | Read article page extension point, used to add article related content |
-| doAction('index_head')	| Content/templates/default/header.php | Foreground header extension: can be used to add front-end css styles, load js, etc. |
-| doAction('index_footer')	| content/templates/default/footer.php | extension point at the bottom of the home page |
-| doAction('comment_reply', $commentId, $reply) | admin/comment.php | Reply to comment extension point |
-| doAction('data_prebakup')	| admin/data.php | Extended backup database page, which can back up the tables added by the plugin |
-| doAction('rss_display')	| rss.php | Rss output extension |
-| doAction('attach_upload')	| include/lib/common.php | Extend attachment upload, such as adding image watermark effects, etc. |
-| doAction('adm_comment_display') | admin/views/comment.php | Background comment display extension, which can be used to query the commenter's ip location |
-| doAction('index_loglist_top')	| content/templates/default/log_list.php | The top extension point of the article list, such as displaying announcements, etc. |
-| doAction('adm_footer')	| admin/views/footer.php | Background bottom extension: can be used to increase background js, etc. |
-| doAction('adm_main_content')	| admin/views/index.php | Admin background home page information module extension |
-| doAction('user_main_content')	| admin/views/index_user.php | Registered user background home page information module extension |
-| doAction('login_ext')		| admin/views/signin.php | Background login page extension: can be used to add third-party login buttons such as QQ login |
+| doAction('index_head')	| content/templates/default/header.php	| Foreground header extension: can be used to add front-end css styles, load js, etc. |
+| doAction('index_footer')	| content/templates/default/footer.php	| The bottom of the home page extension point |
+| doAction('comment_reply', $commentId, $reply) | admin/comment.php	| Reply to comment extension point |
+| doAction('data_prebakup')	| admin/data.php			| Extended backup database page, which can back up the tables added by the plugin |
+| doAction('rss_display')	| rss.php				| Rss output extension |
+| doAction('attach_upload')	| include/lib/common.php		| Extend attachment upload, such as adding image watermark effects, etc. |
+| doAction('adm_comment_display') | admin/views/comment.php		| Background comment display extension, which can be used to query the commenter's ip location |
+| doAction('index_loglist_top')	| content/templates/default/log_list.php | The top of the article list extension point, such as displaying announcements, etc. |
+| doAction('adm_footer')	| admin/views/footer.php		| Background bottom extension: can be used to add custom background js, etc. |
+| doAction('adm_main_content')	| admin/views/index.php			| Admin background home page information module extension |
+| doAction('user_main_content')	| admin/views/index_user.php		| Registered user background home page information module extension |
+| doAction('login_ext')		| admin/views/signin.php		| Background login page extension: can be used to add third-party login buttons such as QQ login |
 
 ### 2. Single takeover mount
 
-* Execution principle: Execute the first function hung on the hook, execute only once, receive input input, and modify the incoming variable $ret)
-* Applicable scenario: replace the core function, such as taking over the core file upload function, and changing the local upload to the cloud upload
+* Execution principle: Execute the first function hung on the hook, execute only once, receive input data, and modify the incoming variable $ret)
+* Applicable scenario: Replace the core function, such as taking over the core file upload function, and changing the local upload to the cloud upload
 
 ```php
 // Mount point name: upload_media, upload file mount point, with parameters $attach, $ret
@@ -235,7 +235,7 @@ doOnceAction('upload_media', $attach, $ret);
 ```
 
 ```php
-// Plug-in development example: mount the function upload2qiniu to the upload_media mount point
+// Plug-in development example: mount the function upload2qiniu to the "upload_media" mount point
 addAction('upload_media', 'upload2qiniu');
 
 function upload2qiniu($attach, &$result) {
@@ -245,15 +245,15 @@ function upload2qiniu($attach, &$result) {
 
 #### Mount point list (single takeover mount)
 
-| mount point | in file | description |
+| Mount point | In file | Description |
 |------------------------------------------------------|------------------------|------------------------|
-| doOnceAction('upload_media', $attach, $ret); | admin/media.php | Resource file upload mount point, which can be used for cloud storage plug-in development |
+| doOnceAction('upload_media', $attach, $ret);         | admin/media.php        | Resource file upload mount point, which can be used for cloud storage plug-in development |
 | doOnceAction('get_Gravatar', $email, $gravatar_url); | include/lib/common.php | Avatar mount point for commenters, which can be used to change the way the avatar is generated |
 
 ### 3. Take-over mount in turn
 
-* Execution principle: Execute all functions hung on the hook, the previous execution result is used as the next input, and the value of the second variable passed in will be modified.
-* Applicable scenario: modify the specified content, eg: different plug-ins modify and replace the content of the article.
+* Execution principle: Execute ALL functions hung on the hook, the previous execution result is used as the next input, and the value of the second variable passed in will be modified.
+* Applicable scenario: Modify the specified content, eg: different plug-ins modify and replace the content of the article.
 
 ```php
 // Mount point name: article_content_echo, article content display mount point, with parameters $log_content, $log_content

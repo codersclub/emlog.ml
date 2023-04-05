@@ -78,15 +78,15 @@ require_once View::getView('module'); // Load template common module.
 
 #### Variables & Constants
 
-| Variables & Constants | Type | Description |
+| Variable / Constant | Type | Description |
 |-------------------|-----|------------------------------------------------------------------------------------|
 | $site_title | variable | site title (affected by background seo optimization settings) |
 | $site_key | variable | site key |
 | $site_description | variable | output site browser description (affected by background seo optimization settings) |
 | $blogname | variable | site title |
 | $bloginfo | variable | site subtitle |
-| BLOG_URL | Constant | The URL of the homepage of the site, the output is in the form of https://emlog.net/ |
-| TEMPLATE_URL | Constant | The URL of the template folder, used to load the css, js and other content in the template, the output is like http://emlog.net/blog/content/templates/default/ |
+| BLOG_URL | constant | The URL of the homepage of the site, the output is in the form of https://emlog.net/ |
+| TEMPLATE_URL | constant | The URL of the template folder, used to load the css, js and other content in the template, the output is like http://emlog.net/blog/content/templates/default/ |
 
 The above variables and constants can be output in the template in the following way
 
@@ -99,11 +99,11 @@ The above variables and constants can be output in the template in the following
 
 #### Variables & Constants
 
-| variable, constant | type | description |
+| Variable / Constant | Type | Description |
 |-----------------------|-----|-------------|
 | $icp | variable | ICP record number set in background |
-| $footer_info | Variables | Information at the bottom of the page set in the background |
-| Option::EMLOG_VERSION | Constant | Current emlog version number |
+| $footer_info | variable | Information at the bottom of the page set in the background |
+| Option::EMLOG_VERSION | constant | Current emlog version number |
 
 ###log_list.php
 

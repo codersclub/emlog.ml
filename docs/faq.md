@@ -16,7 +16,7 @@ Yes, please refer to the following upgrade guide:
 It uses the Markdown editor. Markdown is a lightweight markup language that allows to write documents in plain text that is easy to read and write.
 Markdown allows to focus to the content itself without having to worry about various text styles and layout issues, focusing on the structure of the article itself rather than the style. Since its release, it has been loved by many professional content creators.
 
-* Get familiar with the syntax of Markdown before starting: [Basic syntax of Markdown](https://www.markdown.xyz/basic-syntax/)
+* Get familiar with the syntax of Markdown before starting: [Markdown Basic syntax](https://www.markdownguide.org/basic-syntax)
 * Take a look at this markdown video tutorial, take 5 minutes to understand it: https://www.bilibili.com/video/BV1734y1e7QC
 * What if I still like the original WYSIWYG editor? It can be installed and used: [Rich Text Editor Plugin](https://www.emlog.net/plugin/detail/362).
 
