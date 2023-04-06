@@ -46,10 +46,9 @@
 								<?php if ($v['top'] === 1): ?>
 <!--vot-->                                <span class="badge badge-success p-1"><?=lang('recommend_today')?></span>
 								<?php endif; ?>
-                                <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= $v['name'] ?></a>
+                                <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= subString($v['name'], 0, 25) ?></a>
                             </p>
                             <p class="card-text text-muted">
-                                <small><?= $v['info'] ?></small><br><br>
 <!--vot-->                      <?= lang('price') ?>:<?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') ?> . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
                                 <small>
 <!--vot-->                          <?= lang('developer') ?>:<?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
