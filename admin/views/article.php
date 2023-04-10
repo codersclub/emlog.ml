@@ -212,12 +212,12 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         <div class="page"><?= $pageurl ?> (<?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?> <?= $draft ? lang('_drafts') : lang('_articles') ?>)</div>
     </div>
 </div>
-<!--驳回文章-->
+<!--Article reject-->
 <div class="modal fade" id="uncheckModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">驳回文章</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('article_reject') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -225,13 +225,13 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
             <form action="article.php?action=operate_log&operate=uncheck&token=<?= LoginAuth::genToken() ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <textarea name="feedback" type="text" maxlength="512" class="form-control" placeholder="请填写驳回文章的理由，不填请留空。"></textarea>
+                        <textarea name="feedback" type="text" maxlength="512" class="form-control" placeholder="<?= lang('article_reject_prompt') ?>"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" value="" name="gid" id="gid"/>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-sm btn-warning">驳回</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-warning"><?= lang('uncheck') ?></button>
                 </div>
             </form>
         </div>

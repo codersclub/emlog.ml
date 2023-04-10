@@ -4,7 +4,7 @@
 <?php if (isset($_GET['activate_install'])): ?>
 	<div class="alert alert-success"><?= lang('plugin_upload_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_upgrade'])): ?>
-	<div class="alert alert-success">插件更新成功</div><?php endif ?>
+	<div class="alert alert-success"><?=lang('plugin_update_ok')?></div><?php endif ?>
 <?php if (isset($_GET['active'])): ?>
     <div class="alert alert-success"><?= lang('plugin_active_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_del'])): ?>
@@ -28,9 +28,9 @@
 <?php if (isset($_GET['error_g'])): ?>
 <!--vot-->    <div class="alert alert-danger"><?=lang('php_size_limit')?></div><?php endif ?>
 <?php if (isset($_GET['error_h'])): ?>
-	<div class="alert alert-danger">更新失败，无法下载更新包，可能是服务器网络问题。</div><?php endif ?>
+	<div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
-	<div class="alert alert-danger">您的emlog pro尚未注册</div><?php endif ?>
+	<div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
@@ -162,17 +162,17 @@
                     $.each(pluginsToUpdate, function (index, item) {
                         var $tr = $('table tbody tr[data-plugin-alias="' + item.name + '"]');
                         var $updateBtn = $tr.find('.update-btn');
-                        $updateBtn.append($('<a>').addClass('btn btn-success btn-sm').text('更新').attr("href", "./plugin.php?action=upgrade&alias=" + item.name));
+/*vot*/                 $updateBtn.append($('<a>').addClass('btn btn-success btn-sm').text(lang('update')).attr("href", "./plugin.php?action=upgrade&alias=" + item.name));
                     });
                 } else {
-                    $('#upMsg').html('插件更新检查无法正常进行,错误码:' + response.code).addClass('alert alert-warning');
+                    $('#upMsg').html(lang('plugin_update_check_fail') + response.code).addClass('alert alert-warning');
                 }
             },
             error: function (xhr) {
                 var responseText = xhr.responseText;
                 var responseObject = JSON.parse(responseText);
                 var msgValue = responseObject.msg;
-                $('#upMsg').html('插件更新检查异常： ' + msgValue).addClass('alert alert-warning');
+/*vot*/         $('#upMsg').html(lang('plugin_update_check_exception') + msgValue).addClass('alert alert-warning');
             }
         });
     });

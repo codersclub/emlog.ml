@@ -21,7 +21,7 @@
                 <label><?= lang('post_description') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
             </div>
-            <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');">更多选项<i class="icofont-simple-right"></i></div>
+            <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?=lang('more_options')?><i class="icofont-simple-right"></i></div>
             <div id="advset" class="shadow-sm p-3 mb-2 bg-white rounded">
                 <div class="form-group">
                 <label><?= lang('article_cover') ?>:</label>
@@ -128,11 +128,11 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-between">
-                    <div><a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3">上传图片/文件</a></div>
+                    <div><a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?=lang('upload_files')?></a></div>
                     <div>
                         <?php if (User::haveEditPermission() && $mediaSorts): ?>
                             <select class="form-control" id="media-sort-select">
-                                <option value="">选择资源分类…</option>
+                                <option value=""><?=lang('select_file_category')?></option>
                                 <?php foreach ($mediaSorts as $v): ?>
                                     <option value="<?= $v['id'] ?>"><?= $v['sortname'] ?></option>
                                 <?php endforeach ?>
@@ -143,7 +143,7 @@
                 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
                     <div class="row" id="image-list"></div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-success btn-sm mt-2" id="load-more">加载更多…</button>
+                        <button type="button" class="btn btn-success btn-sm mt-2" id="load-more"><?=lang('load_more')?></button>
                     </div>
                 </form>
             </div>
@@ -153,7 +153,7 @@
 <div class="dropzone-previews" style="display: none;"></div>
 <script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>
-    // 插入资源列表
+    // Insert resource list
     let page = 1;
     let sid = 0;
 
@@ -169,18 +169,18 @@
                 $.each(resp.data.images, function (i, image) {
                     var insertBtnHtml = '';
                     if (image.media_type === 'image') {
-                        insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>' +
-                            '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="设为封面"><i class="icofont-image"></i></a>';
+                        insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="<?=lang('article_insert')?>"><i class="icofont-plus"></i></a>' +
+                            '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="<?=lang('set_cover')?>"><i class="icofont-image"></i></a>';
                     } else if (image.media_type === 'video') {
-                        insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                        insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="<?=lang('article_insert')?>"><i class="icofont-plus"></i></a>';
                     } else {
-                        insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                        insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="<?=lang('article_insert')?>"><i class="icofont-plus"></i></a>';
                     }
                     var cardHtml = '<div class="col-md-4">' +
                         '<div class="card mb-2 shadow-sm">' +
                         '<a href="' + image.media_url + '" target="_blank"><img class="card-img-top" src="' + image.media_icon + '"/></a>' +
                         '<div class="card-body">' +
-                        '<div class="card-text text-muted small">' + image.media_name + '<br>文件大小：' + image.attsize + '</div>' +
+                        '<div class="card-text text-muted small">' + image.media_name + '<br><?=lang('file_size')?>: ' + image.attsize + '</div>' +
                         '<p class="card-text d-flex justify-content-between">' + insertBtnHtml + '</p>' +
                         '</div></div></div>';
                     $('#image-list').append(cardHtml);

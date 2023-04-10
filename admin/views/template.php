@@ -6,7 +6,7 @@
 <?php if (isset($_GET['activate_install'])): ?>
     <div class="alert alert-success"><?= lang('template_upload_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_upgrade'])): ?>
-	<div class="alert alert-success">模板更新成功</div><?php endif ?>
+	<div class="alert alert-success"><?=lang('template_update_ok')?></div><?php endif ?>
 <?php if (isset($_GET['activate_del'])): ?>
     <div class="alert alert-success"><?= lang('template_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_f'])): ?>
@@ -26,9 +26,9 @@
 <?php if (isset($_GET['error_c'])): ?>
 	<div class="alert alert-danger"><?= lang('plugin_zip_nonsupport') ?></div><?php endif ?>
 <?php if (isset($_GET['error_h'])): ?>
-	<div class="alert alert-danger">更新失败，无法下载更新包，可能是服务器网络问题。</div><?php endif ?>
+	<div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
-	<div class="alert alert-danger">您的emlog pro尚未注册</div><?php endif ?>
+	<div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('template_manager') ?></h1>
@@ -51,7 +51,7 @@
 				<div class="card-footer">
 					<p><?= $value['tplname'] ?></p>
 					<?php if ($value['version']): ?>
-						<div class="small">版本号：<?= $value['version'] ?></div>
+						<div class="small"><?=lang('version_number')?>: <?= $value['version'] ?></div>
 					<?php endif ?>
 					<?php if ($value['author']): ?>
 						<div class="small"><?= lang('template_author') ?>: <?= $value['author'] ?></div>
@@ -131,14 +131,14 @@
                     $.each(pluginsToUpdate, function (index, item) {
                         var $tr = $('.app-list .card[data-app-alias="' + item.name + '"]');
                         var $updateBtn = $tr.find('.update-btn');
-                        $updateBtn.append($('<a>').addClass('badge badge-success').text('更新').attr("href", "./template.php?action=upgrade&alias=" + item.name));
+                        $updateBtn.append($('<a>').addClass('badge badge-success').text(lang('update')).attr("href", "./template.php?action=upgrade&alias=" + item.name));
                     });
                 } else {
-                    console.log('更新接口返回错误');
+                    console.log(lang('update_error'));
                 }
             },
             error: function () {
-                console.log('请求更新接口失败');
+                console.log(lang('update_request_error'));
             }
         });
     });

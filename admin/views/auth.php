@@ -11,17 +11,17 @@
             <?php if (isset($_GET['error_store'])): ?>
                 <p class="lead text-danger mb-4"><?= lang('ext_store_info') ?></p>
             <?php endif ?>
-            <p class="lead text-danger mb-4">您安装的emlog是尚未注册的普通版， 完成注册可升级到VIP版本，将获得如下权益：</p>
-            <div class="">
-                <li>1. 解锁在线升级功能，一键升级到最新版本，获得来自官方的安全和功能更新。</li>
-                <li>2. 解锁应用商店，获得更多模板和插件，并支持应用在线一键更新。</li>
-                <div>3. 去除所有未注册提示及功能限制。</div>
-                <div>4. 加入专属Q群，获得官方技术指导问题解答。</div>
-                <div>5. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。</div>
-            </div>
+            <p class="lead text-danger mb-4"><?=lang('emlog_reg_advantages')?></p>
+            <ul>
+                <li><?=lang('advantage1')?></li>
+                <li><?=lang('advantage2')?></li>
+                <li><?=lang('advantage3')?></li>
+                <li><?=lang('advantage4')?></li>
+                <li><?=lang('advantage5')?></li>
+            </ul>
             <hr>
             <a href="#" class="btn btn-sm btn-primary shadow-lg" data-toggle="modal" data-target="#exampleModal"><?= lang('ok_register_now') ?></a>
-            <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-success shadow-lg">支持一下，获取注册码-></a>
+            <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?=lang('get_emkey')?></a>
         </div>
     </div>
 <?php else: ?>

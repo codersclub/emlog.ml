@@ -106,9 +106,9 @@
                         <?php if (!Register::isRegLocal()) : ?>
 <!--vot-->                  <a href="auth.php"><span class="badge badge-primary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
                         <?php elseif (Register::getRegType() == 2): ?>
-                            <span class="badge badge-warning"><?= Option::EMLOG_VERSION ?> 铁杆SVIP版</span>
+                            <span class="badge badge-warning"><?= Option::EMLOG_VERSION ?> <?=lang('svip_hard')?></span>
                         <?php elseif (Register::getRegType() == 1): ?>
-                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> 友情VIP版</span>
+                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> <?=lang('vip_friend')?></span>
                         <?php else: ?>
                             <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> <?= lang('registered') ?></span>
                         <?php endif ?>
@@ -160,7 +160,7 @@
         $("#menu_panel").addClass('active');
         $.get("./upgrade.php?action=check_update", function (result) {
             if (result.code == 200) {
-                $("#upmsg").html("有可用的新版本 " + result.data.version + "，<a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">查看更新内容</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">现在更新</a>").removeClass();
+/*vot*/         $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
             }
         });
     </script>

@@ -56,6 +56,8 @@ $lang = array(
 //---------------------------
 //admin/plugin.php
 'plugin_upload_error'                     => '插件上传失败， 错误码：',//'Plugin upload failed, error code: ',
+'update_failed_network'			=> '请求更新失败，可能是网络问题',//'The update request failed, it may be a network problem',
+'pro_unregistered'			=> '未注册的pro版本',//'Unregistered pro version',
 
 //---------------------------
 //admin/setting.php
@@ -224,6 +226,8 @@ $lang = array(
 'delete_not_recover'			  => '删除后可能无法恢复',//'Deleted may not be recoverable',
 'daily_posts_exceed'			=> '超出每日发文数量',//'Number of daily posts exceeded',
 'feedback_review'			=> '审核反馈：',//'Review feedback: ',
+'article_reject'			=> '驳回文章',//'Reject article',
+'article_reject_prompt'			=> '请填写驳回文章的理由，不填请留空。',//'Please fill in the reasons for rejecting the article, please leave blank if not filled.',
 
 //---------------------------
 //admin/views/article_write.php
@@ -248,6 +252,8 @@ $lang = array(
 'jump_link'				=> '跳转链接',//'Jump link',
 'jump_link_info'			=> '（填写后不展示文章内容直接跳转该地址）',//'(directly jump to this address without displaying the content of the article after filling in)',
 'tags_tips'				=> '(也用于文章页关键词)',//'(also used for article page keywords)',
+'select_file_category'			=> '选择资源分类…',//'Select resource category...',
+'load_more'				=> '加载更多…',//'Load more…',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -496,6 +502,8 @@ $lang = array(
 'comments_received'			=> '收到评论',//'Received comments',
 'last_articles'				=> '最近发布的文章',//'Recent articles',
 'last_comments'				=> '最近收到的评论',//'Recent comments',
+'svip_hard'				=> '铁杆SVIP版',//'Hardcore SVIP Edition',
+'vip_friend'				=> '友情VIP版',//'Friendship VIP Edition',
 
 //---------------------------
 //admin/views/index_user.php
@@ -621,6 +629,8 @@ $lang = array(
 'plugin_install'                          => '安装插件',//'Install plugin',
 'plugin_new_install'                      => '安装插件',//'Install plugin',
 'php_size_limit'			=> '上传安装包大小超出PHP限制',//'The size of the uploaded installation package exceeds the PHP limit',
+'plugin_update_ok'			=> '插件更新成功',//'Plugin updated successfully',
+'plugin_update_fail'			=> '更新失败，无法下载更新包，可能是服务器网络问题。',//'The update failed, the update package could not be downloaded, it may be a server network problem.',
 
 //---------------------------
 //admin/views/plugin_install.php
@@ -899,6 +909,8 @@ $lang = array(
 'template_add'                      => '安装模板',//'Install template',
 'template_install'                  => '安装模板',//'Install template',
 'template_author'                   => '模板开发者',//'Template author',
+'template_update_ok'		=> '模板更新成功',//'Template updated successfully',
+'版本号：','',
 
 //---------------------------
 //admin/views/template_crop.php

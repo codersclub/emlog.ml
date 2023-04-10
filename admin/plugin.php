@@ -126,15 +126,15 @@ if ($action === 'check_update') {
 	$emcurl->request('https://www.emlog.net/plugin/upgrade');
 	$retStatus = $emcurl->getHttpStatus();
 	if ($retStatus !== MSGCODE_SUCCESS) {
-		Output::error('请求更新失败，可能是网络问题');
+/*vot*/		Output::error(lang('update_failed_network'));
 	}
 	$response = $emcurl->getRespone();
 	$ret = json_decode($response, 1);
 	if (empty($ret)) {
-		Output::error('请求更新失败，可能是网络问题');
+/*vot*/		Output::error(lang('update_failed_network'));
 	}
 	if ($ret['code'] === MSGCODE_EMKEY_INVALID) {
-		Output::error('未注册的pro版本');
+/*vot*/		Output::error(lang('pro_unregistered'));
 	}
 
 	Output::ok($ret['data']);
