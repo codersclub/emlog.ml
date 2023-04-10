@@ -58,7 +58,7 @@ class Log_Model {
 	/**
 	 * Gets the number of articles for the specified condition
 	 *
-	 * @param int $spot (0: foreground, 1: background)
+	 * @param int $spot 0:homepage 1:admin
 	 * @param string $hide
 	 * @param string $condition
 	 * @param string $type
@@ -220,9 +220,6 @@ class Log_Model {
 	}
 
 
-	/**
-	 * Get a list of all pages
-	 */
 	public function getAllPageList() {
 		$sql = "SELECT * FROM $this->table WHERE type='page'";
 		$res = $this->db->query($sql);
@@ -235,9 +232,6 @@ class Log_Model {
 		return $pages;
 	}
 
-	/**
-	 * delete article
-	 */
 	public function deleteLog($blogId) {
 /*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
 /*vot*/		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
@@ -251,12 +245,6 @@ class Log_Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "tag WHERE gid=',' ");
 	}
 
-	/**
-	 * Hide/Show the post by ID
-	 *
-	 * @param int $blogId
-	 * @param string $state
-	 */
 	public function hideSwitch($blogId, $state) {
 		$author = User::haveEditPermission() ? '' : 'and author=' . UID;
 		$this->db->query("UPDATE $this->table SET hide='$state' WHERE gid=$blogId $author");
@@ -265,12 +253,6 @@ class Log_Model {
 		$Comment_Model->updateCommentNum($blogId);
 	}
 
-	/**
-	 * Audit/Reject the post author
-	 *
-	 * @param int $blogId
-	 * @param string $state
-	 */
 	public function checkSwitch($blogId, $state) {
 		$this->db->query("UPDATE $this->table SET checked='$state' WHERE gid=$blogId");
 		$state = $state == 'y' ? 'n' : 'y';
@@ -279,11 +261,13 @@ class Log_Model {
 		$Comment_Model->updateCommentNum($blogId);
 	}
 
-	/**
-	 * Update the post view count
-	 *
-	 * @param int $blogId
-	 */
+    public function unCheck($blogId, $feedback) {
+        $this->db->query("UPDATE $this->table SET checked='n', feedback='$feedback' WHERE gid=$blogId");
+        $this->db->query("UPDATE " . DB_PREFIX . "comment SET hide='y' WHERE gid=$blogId");
+        $Comment_Model = new Comment_Model();
+        $Comment_Model->updateCommentNum($blogId);
+    }
+
 	public function updateViewCount($blogId) {
 		$this->db->query("UPDATE $this->table SET views=views+1 WHERE gid=$blogId");
 	}
@@ -295,12 +279,6 @@ class Log_Model {
 		return isset($row['gid']) ? (int)$row['gid'] : false;
 	}
 
-	/**
-	 * Make Link to the nearest posts
-	 *
-	 * @param int $date unix Timestamp
-	 * @return array
-	 */
 	public function neighborLog($date) {
 		$now = time();
 		$date_state = "and date<=$now";
@@ -316,9 +294,6 @@ class Log_Model {
 		return $neighborlog;
 	}
 
-	/**
-	 * Get Random Post
-	 */
 	public function getRandLog($num) {
 		global $CACHE;
 		$now = time();
@@ -337,9 +312,6 @@ class Log_Model {
 		return $logs;
 	}
 
-	/**
-	 * Get Hot Posts
-	 */
 	public function getHotLog($num) {
 		$now = time();
 		$date_state = "and date<=$now";
@@ -354,9 +326,6 @@ class Log_Model {
 		return $logs;
 	}
 
-	/**
-	 * Process Post alias, Prevent alias duplicated
-	 */
 	public function checkAlias($alias, $logalias_cache, $logid) {
 		static $i = 2;
 		$key = array_search($alias, $logalias_cache);
@@ -372,9 +341,6 @@ class Log_Model {
 		return $alias;
 	}
 
-	/**
-	 * Encrypted Post access authentication
-	 */
 	public function authPassword($postPwd, $cookiePwd, $logPwd, $logid) {
 		$url = BLOG_URL;
 		$pwd = $cookiePwd ?: $postPwd;
@@ -382,9 +348,9 @@ class Log_Model {
 			if (view::isTplExist('pw')) {
 				include view::getView('pw');
 			} else {
-				$page_pass = lang('page_password_enter');
-				$submit_pass = lang('submit_password');
-				$back = lang('back_home');
+/*vot*/				$page_pass = lang('page_password_enter');
+/*vot*/				$submit_pass = lang('submit_password');
+/*vot*/				$back = lang('back_home');
 				echo <<<EOT
 <!doctype html>
 <html>
@@ -400,7 +366,7 @@ class Log_Model {
 	<form action="" method="post" class="form-signin" style="width: 100%;max-width: 330px;padding: 15px;margin: 0 auto;">
       <input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
       <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
-      <p class="mt-5 mb-3 text-muted"><a href="{$url}">{$back}</a></p>
+      <p class="mt-5 mb-3 text-muted"><a href="$url">{$back}</a></p>
     </form>
 </body>
 </html>

@@ -99,7 +99,7 @@ if ($action == 'upload_zip') {
 	$ret = emUnZip($zipfile['tmp_name'], '../content/plugins/', 'plugin');
 	switch ($ret) {
 		case 0:
-			emDirect("./plugin.php?activate_install=1#tpllib");
+			emDirect("./plugin.php?activate_install=1");
 			break;
 		case -1:
 			emDirect("./plugin.php?error_e=1");
@@ -111,5 +111,63 @@ if ($action == 'upload_zip') {
 		case 3:
 			emDirect("./plugin.php?error_c=1");
 			break;
+	}
+}
+
+if ($action === 'check_update') {
+	$plugins = isset($_POST['plugins']) ? $_POST['plugins'] : [];
+
+	$emcurl = new EmCurl();
+	$post_data = [
+		'emkey' => Option::get('emkey'),
+		'apps'  => json_encode($plugins),
+	];
+	$emcurl->setPost($post_data);
+	$emcurl->request('https://www.emlog.net/plugin/upgrade');
+	$retStatus = $emcurl->getHttpStatus();
+	if ($retStatus !== MSGCODE_SUCCESS) {
+		Output::error('请求更新失败，可能是网络问题');
+	}
+	$response = $emcurl->getRespone();
+	$ret = json_decode($response, 1);
+	if (empty($ret)) {
+		Output::error('请求更新失败，可能是网络问题');
+	}
+	if ($ret['code'] === MSGCODE_EMKEY_INVALID) {
+		Output::error('未注册的pro版本');
+	}
+
+	Output::ok($ret['data']);
+}
+
+if ($action === 'upgrade') {
+	$alias = isset($_GET['alias']) ? trim($_GET['alias']) : '';
+
+	if (!Register::isRegLocal()) {
+		emDirect("./plugin.php?error_i=1");
+	}
+
+	$temp_file = emFetchFile('https://www.emlog.net/plugin/down/' . $alias);
+	if (!$temp_file) {
+		emDirect("./plugin.php?error_h=1");
+	}
+	$unzip_path = '../content/plugins/';
+	$ret = emUnZip($temp_file, $unzip_path, 'plugin');
+	@unlink($temp_file);
+	switch ($ret) {
+		case 0:
+			$Plugin_Model = new Plugin_Model();
+			$Plugin_Model->upCallback($alias);
+			emDirect("./plugin.php?activate_upgrade=1");
+			break;
+		case 1:
+		case 2:
+			emDirect("./plugin.php?error_b=1");
+			break;
+		case 3:
+			emDirect("./plugin.php?error_d=1");
+			break;
+		default:
+			emDirect("./plugin.php?error_e=1");
 	}
 }

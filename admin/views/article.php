@@ -1,6 +1,6 @@
 <?php
 if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 }
 $isdraft = $draft ? '&draft=1' : '';
 $isDisplaySort = !$sid ? "style=\"display:none;\"" : '';
@@ -46,46 +46,45 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                 <div id="f_t_sort" class="mx-1">
                     <select name="bysort" id="bysort" onChange="selectSort(this);" class="form-control">
                         <option value="" selected="selected"><?= lang('category_view') ?></option>
-						<?php
-						foreach ($sorts as $key => $value):
-							if ($value['pid'] != 0) {
-								continue;
-							}
-							$flg = $value['sid'] == $sid ? 'selected' : '';
-							?>
+                        <?php
+                        foreach ($sorts as $key => $value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                            $flg = $value['sid'] == $sid ? 'selected' : '';
+                            ?>
                             <option value="<?= $value['sid'] ?>" <?= $flg ?>><?= $value['sortname'] ?></option>
-							<?php
-							$children = $value['children'];
-							foreach ($children as $key):
-								$value = $sorts[$key];
-								$flg = $value['sid'] == $sid ? 'selected' : '';
-								?>
+                            <?php
+                            $children = $value['children'];
+                            foreach ($children as $key):
+                                $value = $sorts[$key];
+                                $flg = $value['sid'] == $sid ? 'selected' : '';
+                                ?>
                                 <option value="<?= $value['sid'] ?>" <?= $flg ?>>&nbsp; &nbsp; &nbsp; <?= $value['sortname'] ?></option>
-							<?php
-							endforeach;
-						endforeach;
-						?>
+                            <?php
+                            endforeach;
+                        endforeach;
+                        ?>
                         <option value="-1" <?php if ($sid == -1) echo 'selected'; ?>><?= lang('uncategorized') ?></option>
                     </select>
                 </div>
-				<?php if (User::haveEditPermission() && count($user_cache) > 1): ?>
+                <?php if (User::haveEditPermission() && count($user_cache) > 1): ?>
                     <div id="f_t_user" class="mx-1">
                         <select name="byuser" id="byuser" onChange="selectUser(this);" class="form-control">
                             <option value="" selected="selected"><?= lang('view_by_author') ?></option>
-							<?php
-							foreach ($user_cache as $key => $value):
-								$flg = $key == $uid ? 'selected' : '';
-								?>
+                            <?php
+                            foreach ($user_cache as $key => $value):
+                                $flg = $key == $uid ? 'selected' : '';
+                                ?>
                                 <option value="<?= $key ?>" <?= $flg ?>><?= $value['name'] ?></option>
-							<?php endforeach ?>
+                            <?php endforeach ?>
                         </select>
                     </div>
-				<?php endif ?>
+                <?php endif ?>
             </div>
             <form action="article.php" method="get">
                 <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="keyword" class="form-control m-1 small" placeholder="<?= lang('search_for') ?>" aria-label="<?= lang('search') ?>"
-                           aria-describedby="basic-addon2">
+                    <input type="text" name="keyword" class="form-control m-1 small" placeholder="<?= lang('search_for') ?>" aria-label="<?= lang('search') ?>" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-sm btn-success" type="submit">
                             <i class="icofont-search-2"></i>
@@ -106,7 +105,6 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                         <th><?= lang('title') ?></th>
                         <th><a href="article.php?sortComm=<?= $sortComm . $sorturl ?>"><?= lang('comments') ?></a></th>
                         <th><a href="article.php?sortView=<?= $sortView . $sorturl ?>"><?= lang('reads') ?></a></th>
-
                         <th><?= lang('user') ?></th>
                         <th><?= lang('category') ?></th>
                         <th><a href="article.php?sortDate=<?= $sortDate . $sorturl ?>"><?= lang('time') ?></a></th>
@@ -114,22 +112,25 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                     </tr>
                     </thead>
                     <tbody>
-					<?php foreach ($logs as $key => $value):
-						$sortName = isset($sorts[$value['sortid']]['sortname']) ? $sorts[$value['sortid']]['sortname'] : lang('uncategorized');
-						$sortName = $value['sortid'] == -1 ? lang('uncategorized') : $sortName;
-						$author = isset($user_cache[$value['author']]['name']) ? $user_cache[$value['author']]['name'] : lang('unknown_author');
-						$author_role = isset($user_cache[$value['author']]['role']) ? $user_cache[$value['author']]['role'] : lang('unknown_role');
-						?>
+                    <?php foreach ($logs as $key => $value):
+                        $sortName = isset($sorts[$value['sortid']]['sortname']) ? $sorts[$value['sortid']]['sortname'] : lang('uncategorized');
+                        $sortName = $value['sortid'] == -1 ? lang('uncategorized') : $sortName;
+                        $author = isset($user_cache[$value['author']]['name']) ? $user_cache[$value['author']]['name'] : lang('unknown_author');
+                        $author_role = isset($user_cache[$value['author']]['role']) ? $user_cache[$value['author']]['role'] : lang('unknown_role');
+                        ?>
                         <tr>
                             <td style="width: 20px;"><input type="checkbox" name="blog[]" value="<?= $value['gid'] ?>" class="ids"/></td>
                             <td>
                                 <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a><br>
-								<?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
-								<?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
-<!--vot-->								<?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
-								<?php if ($value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
-<!--Link Char-->						<?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
-								<?php if (!$draft && $value['checked'] == 'n'): ?><span class="badge small badge-danger"><?= lang('is_pending') ?></span><?php endif ?>
+                                <?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
+                                <?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
+                                <?php if ($value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
+<!--vot:Lock Char-->            <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
+<!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
+                                <?php if (!$draft && $value['checked'] == 'n'): ?>
+<!--vot-->                          <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
+<!--vot-->                          <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
+                                <?php endif ?>
                             </td>
                             <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info"><?= $value['comnum'] ?></a></td>
                             <td><a href="<?= Url::log($value['gid']) ?>" class="badge badge-secondary" target="_blank"><?= $value['views'] ?></a></td>
@@ -137,74 +138,73 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                             <td><a href="article.php?sid=<?= $value['sortid'] . $isdraft ?>"><?= $sortName ?></a></td>
                             <td class="small"><?= $value['date'] ?></td>
                             <td>
-								<?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>
+                                <?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>
                                     <a class="badge badge-success"
                                        href="article.php?action=operate_log&operate=check&gid=<?= $value['gid'] ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('check') ?></a>
-								<?php elseif (!$draft && User::haveEditPermission() && $author_role == User::ROLE_WRITER): ?>
+                                <?php endif ?>
+                                <?php if (!$draft && User::haveEditPermission() && $author_role == User::ROLE_WRITER): ?>
                                     <a class="badge badge-warning"
-                                       href="article.php?action=operate_log&operate=uncheck&gid=<?= $value['gid'] ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('uncheck') ?></a>
-								<?php endif ?>
-								<?php if ($draft): ?>
-                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-danger"><?= lang('delete') ?></a>
-								<?php else: ?>
-                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-danger"><?= lang('delete') ?></a>
-								<?php endif ?>
+<!--vot-->                             href="#" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#uncheckModel"><?= lang('uncheck') ?></a>
+                                <?php endif ?>
+                                <?php if ($draft): ?>
+                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                                <?php else: ?>
+                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                                <?php endif ?>
                             </td>
                         </tr>
-					<?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
             <input name="operate" id="operate" value="" type="hidden"/>
             <div class="form-inline">
-				<?php if (User::haveEditPermission()): ?>
+                <?php if (User::haveEditPermission()): ?>
                     <select name="top" id="top" onChange="changeTop(this);" class="form-control m-1">
                         <option value="" selected="selected"><?= lang('top') ?></option>
                         <option value="top"><?= lang('home_top') ?></option>
                         <option value="sortop"><?= lang('category_top') ?></option>
                         <option value="notop"><?= lang('untop') ?></option>
                     </select>
-				<?php endif ?>
+                <?php endif ?>
                 <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
                     <option value="" selected="selected"><?= lang('move_to_category') ?></option>
-					<?php
-					foreach ($sorts as $key => $value):
-						if ($value['pid'] != 0) {
-							continue;
-						}
-						?>
+                    <?php
+                    foreach ($sorts as $key => $value):
+                        if ($value['pid'] != 0) {
+                            continue;
+                        }
+                        ?>
                         <option value="<?= $value['sid'] ?>"><?= $value['sortname'] ?></option>
-						<?php
-						$children = $value['children'];
-						foreach ($children as $key):
-							$value = $sorts[$key];
-							?>
+                        <?php
+                        $children = $value['children'];
+                        foreach ($children as $key):
+                            $value = $sorts[$key];
+                            ?>
                             <option value="<?= $value['sid'] ?>">&nbsp; &nbsp;
                                 &nbsp; <?= $value['sortname'] ?></option>
-						<?php
-						endforeach;
-					endforeach;
-					?>
+                        <?php
+                        endforeach;
+                    endforeach;
+                    ?>
                     <option value="-1"><?= lang('uncategorized') ?></option>
                 </select>
-				<?php if (User::haveEditPermission() && count($user_cache) > 1): ?>
+                <?php if (User::haveEditPermission() && count($user_cache) > 1): ?>
                     <select name="author" id="author" onChange="changeAuthor(this);" class="form-control m-1">
                         <option value="" selected="selected"><?= lang('user_edit') ?></option>
-						<?php foreach ($user_cache as $key => $val): ?>
+                        <?php foreach ($user_cache as $key => $val): ?>
                             <option value="<?= $key ?>"><?= $val['name'] ?></option>
-						<?php endforeach ?>
+                        <?php endforeach ?>
                     </select>
-				<?php endif ?>
+                <?php endif ?>
 
                 <div class="btn-group btn-group-sm" role="group">
-					<?php if ($draft): ?>
+                    <?php if ($draft): ?>
                         <a href="javascript:logact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
-					<?php else: ?>
+                    <?php else: ?>
                         <a href="javascript:logact('hide');" class="btn btn-sm btn-success"><?= lang('add_draft') ?></a>
-					<?php endif ?>
+                    <?php endif ?>
                     <a href="javascript:logact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                 </div>
             </div>
@@ -212,11 +212,36 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
         <div class="page"><?= $pageurl ?> (<?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?> <?= $draft ? lang('_drafts') : lang('_articles') ?>)</div>
     </div>
 </div>
+<!--驳回文章-->
+<div class="modal fade" id="uncheckModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">驳回文章</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="article.php?action=operate_log&operate=uncheck&token=<?= LoginAuth::genToken() ?>" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <textarea name="feedback" type="text" maxlength="512" class="form-control" placeholder="请填写驳回文章的理由，不填请留空。"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" value="" name="gid" id="gid"/>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-sm btn-warning">驳回</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     $("#menu_category_content").addClass('active');
     $("#menu_content").addClass('show');
     $("#menu_<?= $draft ? 'draft' : 'log' ?>").addClass('active');
-    setTimeout(hideActived, 2600);
+    setTimeout(hideActived, 3600);
 
     $(document).ready(function () {
         $("#f_t_tag").click(function () {
@@ -282,10 +307,17 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
     }
 
     function selectSort(obj) {
-        window.open("./article.php?sid=" + obj.value + "<?= $isdraft ?>", "_self");
+        window.open("./article.php?sid=" + obj.value + "<?= $isdraft?>", "_self");
     }
 
     function selectUser(obj) {
-        window.open("./article.php?uid=" + obj.value + "<?= $isdraft ?>", "_self");
+        window.open("./article.php?uid=" + obj.value + "<?= $isdraft?>", "_self");
     }
+
+    $('#uncheckModel').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var gid = button.data('gid')
+        var modal = $(this)
+        modal.find('.modal-footer #gid').val(gid)
+    })
 </script>

@@ -62,7 +62,7 @@ $lang = array(
 'site_address'                            => '站点地址：',//'Site address',
 'verification_code_not_supported'         => '开启登录验证码失败!服务器空间不支持GD图形库',//'Failed to open the login verification code! The server space does not support the GD graphics library',
 'verification_code_comment_not_supported' => '开启评论验证码失败!服务器空间不支持GD图形库',//'Failed to open comment verification code! Server space does not support GD graphics library',
-'detect_url'                              => '自动检测站点地址 (可能和部分CDN解决方案不兼容)',//'Automatic detection of site address (may be incompatible with some CDN solutions)',
+'detect_url'                              => '自动检测站点地址 (如开启后首页样式丢失，请关闭并手动填写站点地址)',//'Automatically detect the site address (if the home page style is lost after opening, please close and fill in the site address manually)',
 'email_enter_please'                      => '请正确填写邮箱',//'Please enter correct email',
 'test_mail_subj'                          => '测试邮件',//'Test mail',
 'test_mail_body'                          => '这是一封测试邮件',//'This is a test email',
@@ -223,6 +223,7 @@ $lang = array(
 'ok'					  => '确定',//'OK',
 'delete_not_recover'			  => '删除后可能无法恢复',//'Deleted may not be recoverable',
 'daily_posts_exceed'			=> '超出每日发文数量',//'Number of daily posts exceeded',
+'feedback_review'			=> '审核反馈：',//'Review feedback: ',
 
 //---------------------------
 //admin/views/article_write.php
@@ -436,9 +437,9 @@ $lang = array(
 'emlog_version'                           => 'EMLOG版本',//'EMLOG version',
 'unregistered'                            => '未注册',//'unregistered',
 'emlog_unregistered'                      => '您的emlog pro尚未注册',//'Your emlog pro is not registered yet',
-'emlog_reg_advantages'                    => '您安装的emlog尚未注册，注册后将获得：',//'The emlog you installed has not been registered, after registration you will get:',
+'emlog_reg_advantages'                    => '您安装的emlog是尚未注册的普通版， 完成注册可升级到VIP版本，将获得如下权益：',//'The emlog you installed is a common version that has not been registered. After completing the registration, you can upgrade to the VIP version, and you will get the following benefits:',
 'advantage1'                              => '1. 解锁在线升级功能，一键升级到最新版本，获得来自官方的安全和功能更新。',//'1. Unlock the online upgrade function, upgrade to the latest version with one click, and get official security and function updates.',
-'advantage2'                              => '2. 解锁应用商店，获得更多模板和扩展插件。',//'2. Unlock the app store to get more templates and extensions.',
+'advantage2'                              => '2. 解锁应用商店，获得更多模板和插件，并支持应用在线一键更新。',//'2. Unlock the app store, get more templates and plug-ins, and support online one-click update of apps.',
 'advantage3'                              => '3. 去除所有未注册提示及功能限制。',//'3. Remove all unregistered prompts and functional restrictions.',
 'advantage4'                              => '4. 加入专属Q群，获得官方技术指导问题解答。',//'4. Join the exclusive Q group and get answers to official technical guidance questions.',
 'advantage5'                              => '5. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',//'5. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',
@@ -451,7 +452,7 @@ $lang = array(
 'reg_failed'                              => '注册失败',//'Registration failed',
 'reg_code_invalid'                        => '注册失败，无效的注册码',//'Registration failed, invalid registration code',
 'emkey_info'                              => 'EMKEY是官方分发给emlog pro付费用户的唯一识别码，请妥善保管',//'EMKEY is the only identification code officially distributed to paying users of emlog pro, please keep it properly',
-'get_emkey'                               => '获取注册码',//'Get registration code',
+'get_emkey'                               => '支持一下，获取注册码->',//'Support, get the registration code &rarr;',
 'registered'                              => '注册',//'registered',
 'registered_already'                      => '已注册',//'already registered',
 'mysql_version'                           => 'MySQL版本',//'MySQL version',
@@ -603,7 +604,7 @@ $lang = array(
 //---------------------------
 //admin/views/plugin.php
 'plugin_manage'                           => '插件扩展',//'Plug-ins',
-'plugin_upload_ok'                        => '插件上传成功，请开启使用',//'Plugin uploaded successfully, please activate it to use',
+'plugin_upload_ok'                        => '插件安装成功，请开启使用',//'The plug-in is installed successfully, please activate it',
 'plugin_active_ok'                        => '插件开启成功',//'Plug-in activated successfully',
 'plugin_active_failed'                    => '插件开启失败',//'Plug-in activation failed',
 'plugin_disable_ok'                       => '插件禁用成功',//'Plug-in disabled successfully',
@@ -625,7 +626,7 @@ $lang = array(
 //admin/views/plugin_install.php
 'plugin_zipped_only'                      => '只支持zip压缩格式的插件包',//'Supports plug-in package only in zip compression format',
 'plugin_not_writable'                     => '上传失败，插件目录(content/plugins)不可写',//'Upload failed, plugin directory (content/plugins) is not writable',
-'plugin_zip_nonsupport'                   => '空间不支持zip模块，请按照提示手动安装插件',//'Server does not support zip module, follow the prompts to install the plugin manually' ,
+'plugin_zip_nonsupport'                   => '服务器PHP不支持zip模块',//'Server does not support zip module' ,
 'plugin_zip_select'                       => '请选择一个zip插件安装包',//'Please select a zipped plug-in installation package',
 'plugin_wrong_format'                     => '安装失败，插件安装包不符合标准',//'Installation failed, plug-in installation package does not meet the standards',
 'plugin_install_manually'                 => '手动安装插件',//'Install the plug-in manually',
@@ -891,7 +892,7 @@ $lang = array(
 'template_damaged'                  => '已被删除或损坏，请选择其他模板。',//'This template has been damaged! Please choose another template.',
 'template_top_image'                => '自定义顶部图片',//'Custom top image',
 'template_library'                  => '模板库',//'Template library',
-'template_upload_ok'                => '模板上传成功',//'Template have been uploaded successfully',
+'template_upload_ok'                => '模板安装成功',//'Template installed successfully',
 'template_delete_ok'                => '删除模板成功',//'Template have been removed successfully',
 'template_delete_failed'            => '删除失败，请检查模板文件权限',//'Delete failed, check the template file permissions',
 'template_use_this'                 => '使用该模板',//'Use this template',

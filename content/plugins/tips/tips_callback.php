@@ -6,7 +6,12 @@ function callback_init() {
 	// do something
 }
 
-// This function is executed when the plugin is closed and deleted
+// Execute this function when the plugin is removed
 function callback_rm() {
+	// do something
+}
+
+// Execute this function when the plugin is updated
+function callback_up() {
 	// do something
 }

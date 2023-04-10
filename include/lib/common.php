@@ -65,7 +65,6 @@ function getBlogUrl() {
  */
 function realUrl() {
 	static $real_url = NULL;
-
 	if ($real_url !== NULL) {
 		return $real_url;
 	}
@@ -101,6 +100,7 @@ function realUrl() {
 
 	return $real_url;
 }
+
 
 /**
  * Check plugin
@@ -670,9 +670,9 @@ function getMonthDayNum($month, $year) {
 
 /**
  * Extract zip
- * @param type $zipfile Original Zip File
- * @param type $path Extract to the directory
- * @param type $type
+ * @param string $zipfile Original Zip File
+ * @param string $path Extract to the directory
+ * @param string $type
  * @return int
  */
 function emUnZip($zipfile, $path, $type = 'tpl') {

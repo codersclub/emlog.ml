@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-3">
     <div class="mb-0 text-gray-800">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </div>
-	<?php if (User::isAdmin()): ?>
+    <?php if (User::isAdmin()): ?>
     <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
             <h6 class="card-header"><?= lang('software_info') ?></h6>
@@ -103,11 +103,15 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         EMLOG
-						<?php if (!Register::isRegLocal()) : ?>
-<!--vot-->                  <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
-						<?php else: ?>
-                            <span class="badge <?php if (Register::getRegType() === 2): ?>badge-warning<?php else: ?>badge-success<?php endif; ?>"><?= Option::EMLOG_VERSION ?> <?= lang('registered') ?></span>
-						<?php endif ?>
+                        <?php if (!Register::isRegLocal()) : ?>
+<!--vot-->                  <a href="auth.php"><span class="badge badge-primary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
+                        <?php elseif (Register::getRegType() == 2): ?>
+                            <span class="badge badge-warning"><?= Option::EMLOG_VERSION ?> 铁杆SVIP版</span>
+                        <?php elseif (Register::getRegType() == 1): ?>
+                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> 友情VIP版</span>
+                        <?php else: ?>
+                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> <?= lang('registered') ?></span>
+                        <?php endif ?>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <a id="ckup" href="javascript:checkupdate();" class="btn btn-success btn-sm"><?= lang('update_check') ?></a>
@@ -119,10 +123,10 @@
     </div>
 </div>
     <div class="row">
-		<?php if (!Register::isRegLocal()) : ?>
+        <?php if (!Register::isRegLocal()) : ?>
             <div class="col-lg-6 mb-4">
                 <div class="card shadow">
-                    <div class="card-header bg-warning">
+                    <div class="card-header bg-danger text-white">
                         <h6 class="my-0"><?= lang('emlog_reg_advantages') ?></h6>
                     </div>
                     <div class="card-body">
@@ -133,12 +137,12 @@
                         <div><?= lang('advantage5') ?></div>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-primary shadow-lg"><?= lang('get_emkey') ?></a>
-                        <a href="auth.php" class="btn btn-sm btn-success shadow-lg"><?= lang('register_now') ?></a>
+                        <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>
+                        <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?= lang('get_emkey') ?></a>
                     </div>
                 </div>
             </div>
-		<?php endif ?>
+        <?php endif ?>
         <div class="col-lg-6 mb-4">
             <div class="card shadow mb-4">
                 <h6 class="card-header"><?= lang('official_news') ?></h6>
@@ -152,11 +156,16 @@
         </div>
     </div>
     <script>
-        setTimeout(hideActived, 2600);
+        setTimeout(hideActived, 3600);
         $("#menu_panel").addClass('active');
+        $.get("./upgrade.php?action=check_update", function (result) {
+            if (result.code == 200) {
+                $("#upmsg").html("有可用的新版本 " + result.data.version + "，<a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">查看更新内容</a>，<a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">现在更新</a>").removeClass();
+            }
+        });
     </script>
 <?php endif ?>
 
 <div class="row">
-	<?php doAction('adm_main_content') ?>
+    <?php doAction('adm_main_content') ?>
 </div>

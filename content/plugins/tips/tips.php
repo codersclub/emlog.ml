@@ -3,7 +3,7 @@
 Plugin Name: Tips
 Version: 3.0
 Plugin URL:
-Description: The world's first emlog plug-in. When it is turned on, it will show a warm reminder on the admin panel homepage.
+Description: Display a usage tip on the home page of the background, and it can also be used as a demo for plug-in development.
 Author: emlog
 Author URL: https://www.emlog.net
 */

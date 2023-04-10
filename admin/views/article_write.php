@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 }
 ?>
 <div id="msg" class="fixed-top alert" style="display: none"></div>
@@ -12,72 +12,68 @@
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('post_title') ?>" autofocus required/>
                 </div>
                 <div id="post_bar" class="small my-3">
-                    <a href="#mediaModal" data-remote="./media.php?action=lib" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
-					<?php doAction('adm_writelog_head') ?>
+                    <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
+                    <?php doAction('adm_writelog_head') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
             </div>
-
             <div class="form-group">
                 <label><?= lang('post_description') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
             </div>
-
-            <div class="form-group">
+            <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');">更多选项<i class="icofont-simple-right"></i></div>
+            <div id="advset" class="shadow-sm p-3 mb-2 bg-white rounded">
+                <div class="form-group">
                 <label><?= lang('article_cover') ?>:</label>
                 <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_placeholder') ?>" value="<?= $cover ?>"/>
-                <div class="row mt-3">
-                    <div class="col-md-4">
-                        <label for="upload_img">
-                            <img src="<?= $cover ?: './views/images/cover.svg' ?>" id="cover_image" class="rounded" title="<?= lang('cover_image') ?>"/>
-                            <input type="file" name="upload_img" class="image" id="upload_img" style="display:none"/>
-                            <button type="button" id="cover_rm" class="btn-sm btn btn-link" <?php if (!$cover): ?>style="display:none"<?php endif ?>>x</button>
-                        </label>
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <label for="upload_img">
+                                <img src="<?= $cover ?: './views/images/cover.svg' ?>" width="200" id="cover_image" class="rounded" title="<?= lang('cover_image') ?>"/>
+                                <input type="file" name="upload_img" class="image" id="upload_img" style="display:none"/>
+                                <button type="button" id="cover_rm" class="btn-sm btn btn-link" <?php if (!$cover): ?>style="display:none"<?php endif ?>>x</button>
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-<!--vot-->  <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('more_options') ?><i class="icofont-simple-right"></i></div>
-
-            <div id="advset" class="shadow-sm p-3 mb-2 bg-white rounded">
                 <div class="form-group">
                     <label><?= lang('category') ?>:</label>
                     <select name="sort" id="sort" class="form-control">
                         <option value="-1"><?= lang('category_select') ?></option>
-						<?php
-						foreach ($sorts as $key => $value):
-							if ($value['pid'] != 0) {
-								continue;
-							}
-							$flg = $value['sid'] == $sortid ? 'selected' : '';
-							?>
+                        <?php
+                        foreach ($sorts as $key => $value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                            $flg = $value['sid'] == $sortid ? 'selected' : '';
+                            ?>
                             <option value="<?= $value['sid'] ?>" <?= $flg ?>><?= $value['sortname'] ?></option>
-							<?php
-							$children = $value['children'];
-							foreach ($children as $key):
-								$value = $sorts[$key];
-								$flg = $value['sid'] == $sortid ? 'selected' : '';
-								?>
+                            <?php
+                            $children = $value['children'];
+                            foreach ($children as $key):
+                                $value = $sorts[$key];
+                                $flg = $value['sid'] == $sortid ? 'selected' : '';
+                                ?>
                                 <option value="<?= $value['sid'] ?>" <?= $flg ?>>&nbsp; &nbsp; &nbsp; <?= $value['sortname'] ?></option>
-							<?php
-							endforeach;
-						endforeach;
-						?>
+                            <?php
+                            endforeach;
+                        endforeach;
+                        ?>
                     </select>
                 </div>
                 <div class="form-group">
 <!--vot-->          <label><?= lang('tags') ?>: <small class="text-muted"><?= lang('tags_tips') ?></small></label>
                     <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>" placeholder="<?= lang('post_tags_separated') ?>"/>
-					<?php if ($tags): ?>
+                    <?php if ($tags): ?>
                         <span class="small"><a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
                         <div id="tags" style="display: none">
-							<?php
-							foreach ($tags as $val) {
-								echo " <a class=\"badge badge-primary\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
-							}
-							?>
+                            <?php
+                            foreach ($tags as $val) {
+                                echo " <a class=\"badge badge-primary\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
+                            }
+                            ?>
                         </div>
-					<?php endif; ?>
+                    <?php endif; ?>
                 </div>
                 <div class="form-group">
                     <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
@@ -100,23 +96,22 @@
                     <label for="allow_remark"><?= lang('allow_comments') ?></label>
                 </div>
             </div>
-
             <div id="post_button">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
                 <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>">
                 <input type="hidden" name="gid" value=<?= $logid ?>/>
                 <input type="hidden" name="author" id="author" value=<?= $author ?>/>
-				<?php if ($logid < 0): ?>
+                <?php if ($logid < 0): ?>
                     <input type="submit" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
-				<?php else: ?>
+                <?php else: ?>
                     <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
-					<?php if ($isdraft) : ?>
+                    <?php if ($isdraft) : ?>
                         <input type="submit" name="pubdf" id="pubdf" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-					<?php endif ?>
-				<?php endif ?>
+                    <?php endif ?>
+                <?php endif ?>
             </div>
         </div>
     </div>
@@ -132,9 +127,23 @@
                 </button>
             </div>
             <div class="modal-body">
-                <a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3"><?= lang('upload_files') ?></a>
+                <div class="d-flex justify-content-between">
+                    <div><a href="#" id="mediaAdd" class="btn btn-sm btn-success shadow-sm mb-3">上传图片/文件</a></div>
+                    <div>
+                        <?php if (User::haveEditPermission() && $mediaSorts): ?>
+                            <select class="form-control" id="media-sort-select">
+                                <option value="">选择资源分类…</option>
+                                <?php foreach ($mediaSorts as $v): ?>
+                                    <option value="<?= $v['id'] ?>"><?= $v['sortname'] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        <?php endif ?>
+                    </div>
+                </div>
                 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
-                    <div class="row">
+                    <div class="row" id="image-list"></div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success btn-sm mt-2" id="load-more">加载更多…</button>
                     </div>
                 </form>
             </div>
@@ -144,6 +153,66 @@
 <div class="dropzone-previews" style="display: none;"></div>
 <script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>
+    // 插入资源列表
+    let page = 1;
+    let sid = 0;
+
+    function loadImages() {
+        $.ajax({
+            type: 'GET',
+            url: './media.php?action=lib',
+            data: {
+                page: page,
+                sid: sid
+            },
+            success: function (resp) {
+                $.each(resp.data.images, function (i, image) {
+                    var insertBtnHtml = '';
+                    if (image.media_type === 'image') {
+                        insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>' +
+                            '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="设为封面"><i class="icofont-image"></i></a>';
+                    } else if (image.media_type === 'video') {
+                        insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                    } else {
+                        insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                    }
+                    var cardHtml = '<div class="col-md-4">' +
+                        '<div class="card mb-2 shadow-sm">' +
+                        '<a href="' + image.media_url + '" target="_blank"><img class="card-img-top" src="' + image.media_icon + '"/></a>' +
+                        '<div class="card-body">' +
+                        '<div class="card-text text-muted small">' + image.media_name + '<br>文件大小：' + image.attsize + '</div>' +
+                        '<p class="card-text d-flex justify-content-between">' + insertBtnHtml + '</p>' +
+                        '</div></div></div>';
+                    $('#image-list').append(cardHtml);
+                });
+                if (resp.data.hasMore) {
+                    page++;
+                } else {
+                    $('#load-more').hide();
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+
+    $('#mediaModal').on('show.bs.modal', function () {
+        page = 1;
+        $('#image-list').empty();
+        loadImages();
+        $('#load-more').show();
+    });
+    $('#media-sort-select').change(function () {
+        sid = $(this).val();
+        page = 1;
+        $('#image-list').empty();
+        loadImages();
+        $('#load-more').show();
+    });
+    $('#load-more').click(function () {
+        loadImages();
+    });
     // Upload resources
     Dropzone.autoDiscover = false;
     var myDropzone = new Dropzone("#mediaAdd", {
@@ -163,19 +232,15 @@
                 alert(response);
             });
             this.on("queuecomplete", function (file) {
-                $('#mediaModal').find('.modal-body .row').load("./media.php?action=lib");
-                $('#mediaAdd').html("<?=lang('upload_files')?>");
+                page = 1;
+                $('#image-list').empty();
+                loadImages();
+                $('#load-more').show();
+                $('#mediaAdd').html("<?= lang('upload_files') ?>");
             });
         }
     });
-    // Load file list
-    $('#mediaModal').on('show.bs.modal', function (e) {
-        var button = $(e.relatedTarget);
-        var modal = $(this);
-        modal.find('.modal-body .row').load(button.data("remote"));
-    });
 </script>
-
 <!-- Cover image cropping -->
 <div class="modal fade" id="modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
