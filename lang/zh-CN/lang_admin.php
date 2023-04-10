@@ -4,7 +4,7 @@ $lang = array(
 
 //---------------------------
 //admin/account.php
-'registration_disabled'                   => '系统已关闭注册！',//'The system has closed registration!',
+'registration_disabled'		=> '系统已关闭注册！',//'The system has closed registration!',
 'auth_error'			=> '验证错误',//'Authentication Error',
 'wrong_user_password'		=> '用户或密码错误',//'Incorrect user or password',
 'captcha_error'			=> '图形验证码错误',//'Captcha verification error',
@@ -910,7 +910,6 @@ $lang = array(
 'template_install'                  => '安装模板',//'Install template',
 'template_author'                   => '模板开发者',//'Template author',
 'template_update_ok'		=> '模板更新成功',//'Template updated successfully',
-'版本号：','',
 
 //---------------------------
 //admin/views/template_crop.php

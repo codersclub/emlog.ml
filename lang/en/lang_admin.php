@@ -56,6 +56,8 @@ $lang = array(
 //---------------------------
 //admin/plugin.php
 'plugin_upload_error'                   => 'Plugin upload failed',//'插件上传失败',
+'update_failed_network'			=> 'The update request failed, it may be a network problem',//'请求更新失败，可能是网络问题',
+'pro_unregistered'			=> 'Unregistered pro version',//'未注册的pro版本',
 
 //---------------------------
 //admin/setting.php
@@ -223,6 +225,9 @@ $lang = array(
 'ok'					  => 'OK',//'确定',
 'delete_not_recover'			  => 'Deleted may not be recoverable',//'删除后可能无法恢复',
 'daily_posts_exceed'			=> 'Number of daily posts exceeded',//'超出每日发文数量',
+'feedback_review'			=> 'Review feedback: ',//'审核反馈：',
+'article_reject'			=> 'Reject article',//'驳回文章',
+'article_reject_prompt'			=> 'Please fill in the reasons for rejecting the article, please leave blank if not filled.',//'请填写驳回文章的理由，不填请留空。',
 
 //---------------------------
 //admin/views/article_write.php
@@ -246,6 +251,9 @@ $lang = array(
 'recently_used'                           => 'Recently used+',//'近期使用的+',
 'jump_link'				=> 'Jump link',//'跳转链接',
 'jump_link_info'			=> '(directly jump to this address without displaying the content of the article after filling in)',//'（填写后不展示文章内容直接跳转该地址）',
+'tags_tips'				=> '(also used for article page keywords)',//'(也用于文章页关键词)',
+'select_file_category'			=> 'Select resource category...',//'选择资源分类…',
+'load_more'				=> 'Load more…',//'加载更多…',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -494,6 +502,8 @@ $lang = array(
 'comments_received'			=> 'Received comments',//'收到评论',
 'last_articles'				=> 'Recent articles',//'最近发布的文章',
 'last_comments'				=> 'Recent comments',//'最近收到的评论',
+'svip_hard'				=> 'Hardcore SVIP Edition',//'铁杆SVIP版',
+'vip_friend'				=> 'Friendship VIP Edition',//'友情VIP版',
 
 //---------------------------
 //admin/views/index_user.php
@@ -620,6 +630,8 @@ $lang = array(
 'plugin_install'                          => 'Install plugin',//'安装插件',
 'plugin_new_install'                      => 'Install plugin',//'安装插件',
 'php_size_limit'			=> 'The size of the uploaded installation package exceeds the PHP limit',//'上传安装包大小超出PHP限制',
+'plugin_update_ok'			=> 'Plugin updated successfully',//'插件更新成功',
+'plugin_update_fail'			=> 'The update failed, the update package could not be downloaded, it may be a server network problem.',//'更新失败，无法下载更新包，可能是服务器网络问题。',
 
 //---------------------------
 //admin/views/plugin_install.php
@@ -891,6 +903,7 @@ $lang = array(
 'template_add'                      => 'Install template',//'安装模板',
 'template_install'                  => 'Install template',//'安装模板',
 'template_author'                   => 'Template author',//'模板开发者',
+'template_update_ok'		=> 'Template updated successfully',//'模板更新成功',
 
 //---------------------------
 //admin/views/template_crop.php

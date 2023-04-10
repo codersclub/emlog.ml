@@ -7,7 +7,7 @@ var LNG = {
 //---------------------------
 //admin/views/plugin.php
     'update'				: '更新',//'Update',
-    'plugin_update_check_fail'		: '插件更新检查无法正常进行,错误码:',//'Plug-in update check failed, error code: '
+    'plugin_update_check_fail'		: '插件更新检查无法正常进行,错误码:',//'Plug-in update check failed, error code: ',
     'plugin_update_check_exception'	: '插件更新检查异常： ',//'Plugin update check exception: ',
 
 //---------------------------

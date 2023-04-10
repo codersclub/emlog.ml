@@ -5,6 +5,12 @@ var LNG = {
     'already_edited': '[already edited] ',//'[已修改] ',
 
 //---------------------------
+//admin/views/plugin.php
+    'update'				: 'Update',//'更新',
+    'plugin_update_check_fail'		: 'Plug-in update check failed, error code: ',//'插件更新检查无法正常进行,错误码:',
+    'plugin_update_check_exception'	: 'Plugin update check exception: ',//'插件更新检查异常： ',
+
+//---------------------------
 //admin/views/signup.php
     'send_email_code'	: 'Send email verification code',//'发送邮件验证码',
     'code_valid_for'	: 'Sent successfully, please check your email in ',//'发送成功，请查收邮件 ',
@@ -15,6 +21,11 @@ var LNG = {
 //admin/views/tag.php
     'tag_select_del': 'Please select a tag to delete',//'请选择要删除的标签',
     'tag_delete_sure': 'Are you sure you want to delete the selected tags',//'确定要删除所选标签吗',
+
+//---------------------------
+//admin/views/template.php
+'update_api_error':	'The update interface returned an error',//'更新接口返回错误',
+'update_request_error':	'The request to update the interface failed',//'请求更新接口失败',
 
 //---------------------------
 //admin/views/js/common.js
