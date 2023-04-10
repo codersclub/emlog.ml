@@ -1,5 +1,16 @@
 # &#x1f335; Emlog version update records
 
+## pro2.1.0
+
+Release time: 2023-04-10
+
+- [feature] Support automatic checking for updates of templates and plugins, and supports one-click online updates.
+- [feature] Support filling in rejection reasons on the article review.
+- [feature] Background home page automatically checks and prompts the core program updates.
+- [feature] Support loading more and filtering by category when inserting resource images on the finished article page.
+- [fix] Adjust the store display style for different screen sizes.
+- [fix] Fix the problem that the sender name of the mail notification service is invalid.
+
 ## Pro 2.0.3
 
 Release time: 2023-3-19
