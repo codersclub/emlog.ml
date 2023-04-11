@@ -136,7 +136,7 @@
                         <a class="nav-link" href=".." target="_blank" role="button">
                             <?php
                             $blog_name = Option::get('blogname');
-							echo empty($blog_name) ? lang('to_site') : subString($blog_name, 0, 12);
+                            echo empty($blog_name) ? lang('to_site') : subString($blog_name, 0, 12);
                             ?>
                         </a>
                     </li>

@@ -1,12 +1,12 @@
 <?php
 if (!defined('EMLOG_ROOT')) {
-	die('err');
+    die('err');
 }
 function plugin_setting_view() {
-	?>
-	<?php if (isset($_GET['succ'])): ?>
+    ?>
+    <?php if (isset($_GET['succ'])): ?>
         <div class="alert alert-success"><?= lang('got_it') ?></div>
-	<?php endif; ?>
+    <?php endif; ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?= lang('tips_plugin') ?></h1>
     </div>
@@ -15,7 +15,7 @@ function plugin_setting_view() {
             <form method="post">
                 <div class="form-group">
                     <p><?= lang('tips_plugin_info') ?></p>
-					<?php tips(); ?>
+                    <?php tips(); ?>
                     <hr/>
                     <p><?= lang('tips_plugin_info2') ?></p>
                 </div>
@@ -33,7 +33,7 @@ function plugin_setting_view() {
 <?php }
 
 if (!empty($_POST)) {
-	$ak = isset($_POST['ak']) ? addslashes(trim($_POST['ak'])) : '';
+    $ak = isset($_POST['ak']) ? addslashes(trim($_POST['ak'])) : '';
 
-	header('Location:./plugin.php?plugin=tips&succ=1');
+    header('Location:./plugin.php?plugin=tips&succ=1');
 }

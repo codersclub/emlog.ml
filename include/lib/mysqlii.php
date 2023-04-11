@@ -24,14 +24,14 @@ class MySqlii {
     private $result;
 
     /**
-	 * Internal object instance
+     * Internal object instance
      * @var object MySql
      */
     private static $instance;
 
     private function __construct() {
         if (!class_exists('mysqli')) {
-			emMsg(lang('mysqli_not_supported'));
+            emMsg(lang('mysqli_not_supported'));
         }
 
         mysqli_report(MYSQLI_REPORT_ERROR);
@@ -41,18 +41,18 @@ class MySqlii {
             switch ($this->conn->connect_errno) {
                 case 1044:
                 case 1045:
-					emMsg(lang('db_credential_error'));
+                    emMsg(lang('db_credential_error'));
                     break;
                 case 1049:
-					emMsg(lang('db_not_found'));
+                    emMsg(lang('db_not_found'));
                     break;
                 case 2003:
                 case 2005:
                 case 2006:
-					emMsg(lang('db_unavailable'));
+                    emMsg(lang('db_unavailable'));
                     break;
                 default :
-					emMsg(lang('db_error_code') . $this->conn->connect_error);
+                    emMsg(lang('db_error_code') . $this->conn->connect_error);
                     break;
             }
         }
@@ -76,13 +76,13 @@ class MySqlii {
         $this->result = $this->conn->query($sql);
         $this->queryCount++;
         if (!$ignore_err && 1046 == $this->getErrNo()) {
-			emMsg(lang('db_error_name'));
+            emMsg(lang('db_error_name'));
         }
         if (!$ignore_err && 1115 == $this->getErrNo()) {
-/*vot*/			emMsg(lang('utf8mb4_not_support'));
+/*vot*/            emMsg(lang('utf8mb4_not_support'));
         }
         if (!$ignore_err && !$this->result) {
-/*vot*/			emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());
+/*vot*/            emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());
         } else {
             return $this->result;
         }

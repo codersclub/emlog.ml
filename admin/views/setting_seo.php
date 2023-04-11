@@ -49,11 +49,11 @@
             </div>
 
             <div class="alert alert-warning">
-				<?= lang('post_url_rewriting') ?><br>
+                <?= lang('post_url_rewriting') ?><br>
             </div>
 
             <div class="alert alert-primary">
-				<?= lang('nginx_rewrite') ?>:<br><br>
+                <?= lang('nginx_rewrite') ?>:<br><br>
                 location / {<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;index index.php index.html;<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;if (!-e $request_filename){<br>

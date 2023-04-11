@@ -37,7 +37,7 @@ if (empty($action)) {
         $ex4 = 'selected="selected"';
     }
 
-	include EMLOG_ROOT . '/lang/' . LANG . '/lang_tz.php'; // Load Time Zone List
+    include EMLOG_ROOT . '/lang/' . LANG . '/lang_tz.php'; // Load Time Zone List
     include View::getAdmView('header');
     require_once(View::getAdmView('setting'));
     include View::getAdmView('footer');
@@ -70,15 +70,15 @@ if ($action == 'save') {
         'att_type'            => isset($_POST['att_type']) ? str_replace('php', 'x', strtolower(addslashes($_POST['att_type']))) : '',
         'att_imgmaxw'         => isset($_POST['att_imgmaxw']) ? (int)$_POST['att_imgmaxw'] : 420,
         'att_imgmaxh'         => isset($_POST['att_imgmaxh']) ? (int)$_POST['att_imgmaxh'] : 460,
-		'detect_url'          => isset($_POST['detect_url']) ? addslashes($_POST['detect_url']) : 'n', // Automatically detect site URL
+        'detect_url'          => isset($_POST['detect_url']) ? addslashes($_POST['detect_url']) : 'n', // Automatically detect site URL
         'admin_perpage_num'   => Input::postIntVar('admin_perpage_num'),
     ];
 
     if ($getData['login_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-		emMsg(lang('verification_code_not_supported'), "setting.php");
+        emMsg(lang('verification_code_not_supported'), "setting.php");
     }
     if ($getData['comment_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-		emMsg(lang('verification_code_comment_not_supported'), "setting.php");
+        emMsg(lang('verification_code_comment_not_supported'), "setting.php");
     }
     if ($getData['blogurl'] && substr($getData['blogurl'], -1) != '/') {
         $getData['blogurl'] .= '/';
@@ -204,7 +204,7 @@ if ($action == 'mail_test') {
     ];
 
     if (!checkMail($data['testTo'])) {
-		exit("<small class='text-info'>" . lang('email_enter_please') . "</small>");
+        exit("<small class='text-info'>" . lang('email_enter_please') . "</small>");
     }
 
     $mail = new PHPMailer(true);
@@ -219,13 +219,13 @@ if ($action == 'mail_test') {
     $mail->From = $data['smtp_mail'];
     $mail->FromName = $data['smtp_from_name'];
     $mail->AddAddress($data['testTo']);
-	$mail->Subject = lang('test_mail_subj');
-	$mail->Body = lang('test_mail_body');
+    $mail->Subject = lang('test_mail_subj');
+    $mail->Body = lang('test_mail_body');
 
     try {
         return $mail->Send();
     } catch (Exception $exc) {
-		exit("<small class='text-danger'>" . lang('test_mail_failed') . "</small>");
+        exit("<small class='text-danger'>" . lang('test_mail_failed') . "</small>");
     }
 }
 

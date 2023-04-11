@@ -88,7 +88,7 @@
                 <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
             </div>
             <div class="form-group form-inline">
-		<?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
+        <?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
                     <option value="newer" <?= $ex3 ?>><?= lang('new_first') ?></option>
                     <option value="older" <?= $ex4 ?>><?= lang('old_first') ?></option>
                 </select>
@@ -99,47 +99,47 @@
 
             <hr>
 
-			<h4><?= lang('article_settigs') ?></h4>
+            <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
-				<label><?= lang('posts_per_page') ?></label>
+                <label><?= lang('posts_per_page') ?></label>
                 <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number"/>
             </div>
 
             <div class="form-group form-inline">
-				RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
+                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control">
-					<option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
-					<option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
+                    <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
+                    <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
                 </select>
             </div>
             <div class="alert alert-primary">
-<!--vot-->			<?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
+<!--vot-->            <?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
             </div>
 
             <hr>
 
-			<h4><?= lang('upload_settings') ?></h4>
+            <h4><?= lang('upload_settings') ?></h4>
             <div class="form-group form-inline">
-				<?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> KB (1M=1024KB)
+                <?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> KB (1M=1024KB)
             </div>
             <div class="form-group form-inline">
-				<?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('separate_by_comma') ?>
+                <?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('separate_by_comma') ?>
             </div>
             <div class="form-group form-inline">
-				<input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> /> <?= lang('thumbnail_max_size') ?>
+                <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> /> <?= lang('thumbnail_max_size') ?>
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
-				<input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
+                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
             </div>
             <hr>
 
-<!--vot-->		<h4><?=lang('other_settings')?></h4>
+<!--vot-->        <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
 <!--vot-->                <label><?=lang('admin_per_page')?></label>
 <!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number"/> <?=lang('admin_per_page_tips')?>
             </div>
 
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-			<input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
+            <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
         </form>
     </div>
 </div>

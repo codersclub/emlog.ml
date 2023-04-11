@@ -37,27 +37,27 @@ class Comment_Controller {
         $Comment_Model->setCommentCookie($name, $mail, $url);
         $err = '';
         if ($Comment_Model->isLogCanComment($blogId) === false) {
-			$err = lang('comment_error_comment_disabled');
+            $err = lang('comment_error_comment_disabled');
         } elseif ($Comment_Model->isCommentExist($blogId, $name, $content) === true) {
-			$err = lang('comment_error_content_exists');
+            $err = lang('comment_error_content_exists');
         } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
-			$err = lang('comment_error_flood_control');
+            $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
-			$err = lang('comment_error_name_enter');
+            $err = lang('comment_error_name_enter');
         } elseif (strlen($name) > 20) {
-			$err = lang('comment_error_name_invalid');
+            $err = lang('comment_error_name_invalid');
         } elseif ($mail !== '' && !checkMail($mail)) {
-			$err = lang('comment_error_email_invalid');
+            $err = lang('comment_error_email_invalid');
         } elseif (!empty($url) && preg_match("/^(http|https)\:\/\/[^<>'\"]*$/", $url) == false) {
-			$err = lang('comment_error_url_invalid');
+            $err = lang('comment_error_url_invalid');
         } elseif (empty($content)) {
-			$err = lang('comment_error_empty');
+            $err = lang('comment_error_empty');
         } elseif (strlen($content) > 60000) {
-			$err = lang('comment_error_content_invalid');
+            $err = lang('comment_error_content_invalid');
         } elseif (User::isVistor() && Option::get('comment_needchinese') == 'y' && !preg_match('/[\x{4e00}-\x{9fa5}]/iu', $content)) {
-			$err = lang('comment_error_national_chars');
+            $err = lang('comment_error_national_chars');
         } elseif (ISLOGIN === false && Option::get('comment_code') == 'y' && session_start() && (empty($imgcode) || $imgcode !== $_SESSION['code'])) {
-			$err = lang('comment_error_captcha_invalid');
+            $err = lang('comment_error_captcha_invalid');
         }
 
         if ($err) {
@@ -71,7 +71,7 @@ class Comment_Controller {
         notice::sendNewCommentMail($content, $blogId);
 
         if ($hide === 'y') {
-/*vot*/			$msg = lang('comment_wait_approve');
+/*vot*/            $msg = lang('comment_wait_approve');
             $resp === 'json' ? Output::ok($msg) : emMsg($msg);
         }
         if ($resp === 'json') {

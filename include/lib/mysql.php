@@ -13,7 +13,7 @@ class MySql {
             return MySqlii::getInstance();
         }
 
-		emMsg(lang('mysql_not_supported'));
+        emMsg(lang('mysql_not_supported'));
     }
 
 }

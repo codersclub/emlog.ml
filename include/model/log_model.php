@@ -95,7 +95,7 @@ class Log_Model {
         $sql = "SELECT * FROM $this->table WHERE gid=$blogId $author";
         $res = $this->db->query($sql);
         if ($this->db->affected_rows() < 1) {
-			emMsg(lang('no_permission'), './');
+            emMsg(lang('no_permission'), './');
         }
         $row = $this->db->fetch_array($res);
         if ($row) {
@@ -147,8 +147,8 @@ class Log_Model {
     public function getLogsForAdmin($condition = '', $hide_state = '', $page = 1, $type = 'blog') {
         $perpage_num = Option::get('admin_perpage_num');
         $start_limit = !empty($page) ? ($page - 1) * $perpage_num : 0;
-/*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
-/*vot*/		$hide_state = $hide_state ? "AND hide='$hide_state'" : '';
+/*vot*/        $author = User::haveEditPermission() ? '' : 'AND author=' . UID;
+/*vot*/        $hide_state = $hide_state ? "AND hide='$hide_state'" : '';
         $limit = "LIMIT $start_limit, " . $perpage_num;
         $sql = "SELECT * FROM $this->table WHERE type='$type' $author $hide_state $condition $limit";
         $res = $this->db->query($sql);
@@ -156,7 +156,7 @@ class Log_Model {
         while ($row = $this->db->fetch_array($res)) {
             $row['timestamp'] = $row['date'];
             $row['date'] = date("Y-m-d H:i", $row['date']);
-			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
+            $row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
             $logs[] = $row;
         }
         return $logs;
@@ -176,7 +176,7 @@ class Log_Model {
             $row['logid'] = $row['gid'];
             $cookiePassword = isset($_COOKIE['em_logpwd_' . $row['gid']]) ? addslashes(trim($_COOKIE['em_logpwd_' . $row['gid']])) : '';
             if (!empty($row['password']) && $cookiePassword != $row['password']) {
-				$row['excerpt'] = '<p>[' . lang('post_protected_by_password_click_title') . ']</p>';
+                $row['excerpt'] = '<p>[' . lang('post_protected_by_password_click_title') . ']</p>';
             }
 
             $row['log_description'] = $this->Parsedown->text(empty($row['excerpt']) ? $row['content'] : $row['excerpt']);
@@ -205,14 +205,14 @@ class Log_Model {
             $re['title'] = htmlspecialchars($re['title']);
             $re['content'] = $this->Parsedown->text($re['content']);
             if (!empty($re['pwd'])) {
-				$re['content'] = '<p>' . lang('article_encrypted') . ']</p>';
+                $re['content'] = '<p>' . lang('article_encrypted') . ']</p>';
             } elseif (Option::get('rss_output_fulltext') == 'n') {
                 if (!empty($re['excerpt'])) {
                     $re['content'] = $re['excerpt'];
                 } else {
                     $re['content'] = extractHtmlData($re['content'], 330);
                 }
-				$re['content'] .= ' <a href="' . Url::log($re['id']) . '">' . lang('read_more') . '</a>';
+                $re['content'] .= ' <a href="' . Url::log($re['id']) . '">' . lang('read_more') . '</a>';
             }
             $d[] = $re;
         }
@@ -226,17 +226,17 @@ class Log_Model {
         $pages = [];
         while ($row = $this->db->fetch_array($res)) {
             $row['date'] = date("Y-m-d H:i", $row['date']);
-			$row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
+            $row['title'] = !empty($row['title']) ? htmlspecialchars($row['title']) : lang('no_title');
             $pages[] = $row;
         }
         return $pages;
     }
 
     public function deleteLog($blogId) {
-/*vot*/		$author = User::haveEditPermission() ? '' : 'AND author=' . UID;
-/*vot*/		$this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
+/*vot*/        $author = User::haveEditPermission() ? '' : 'AND author=' . UID;
+/*vot*/        $this->db->query("DELETE FROM $this->table WHERE gid=$blogId $author");
         if ($this->db->affected_rows() < 1) {
-			emMsg(lang('no_permission'), './');
+            emMsg(lang('no_permission'), './');
         }
         // comment
         $this->db->query("DELETE FROM " . DB_PREFIX . "comment where gid=$blogId");
@@ -273,7 +273,7 @@ class Log_Model {
     }
 
     public function isRepeatPost($title, $time) {
-/*vot*/		$sql = "SELECT gid FROM $this->table WHERE title='$title' AND date='$time' LIMIT 1";
+/*vot*/        $sql = "SELECT gid FROM $this->table WHERE title='$title' AND date='$time' LIMIT 1";
         $res = $this->db->query($sql);
         $row = $this->db->fetch_array($res);
         return isset($row['gid']) ? (int)$row['gid'] : false;
@@ -348,9 +348,9 @@ class Log_Model {
             if (view::isTplExist('pw')) {
                 include view::getView('pw');
             } else {
-/*vot*/				$page_pass = lang('page_password_enter');
-/*vot*/				$submit_pass = lang('submit_password');
-/*vot*/				$back = lang('back_home');
+/*vot*/                $page_pass = lang('page_password_enter');
+/*vot*/                $submit_pass = lang('submit_password');
+/*vot*/                $back = lang('back_home');
                 echo <<<EOT
 <!doctype html>
 <html>
@@ -358,12 +358,12 @@ class Log_Model {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name=renderer  content=webkit>
+    <meta name=renderer  content=webkit>
 <title>{$page_pass}</title>
 <link rel="stylesheet" type="text/css" href="{$url}admin/views/css/bootstrap.min.css">
 </head>
 <body class="text-center">
-	<form action="" method="post" class="form-signin" style="width: 100%;max-width: 330px;padding: 15px;margin: 0 auto;">
+    <form action="" method="post" class="form-signin" style="width: 100%;max-width: 330px;padding: 15px;margin: 0 auto;">
       <input type="password" id="logpwd" name="logpwd" class="form-control" placeholder="{$page_pass}" required autofocus>
       <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">{$submit_pass}"></button>
       <p class="mt-5 mb-3 text-muted"><a href="$url">{$back}</a></p>

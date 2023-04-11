@@ -38,7 +38,7 @@ if (!$action) {
 if ($action === 'delbyip') {
     LoginAuth::checkToken();
     if (!User::haveEditPermission()) {
-		emMsg(lang('no_permission'), './');
+        emMsg(lang('no_permission'), './');
     }
     $ip = $_GET['ip'] ? addslashes($_GET['ip']) : '';
     $Comment_Model->delCommentByIp($ip);
@@ -93,7 +93,7 @@ if ($action === 'doreply') {
         emDirect("./comment.php?error_c=1");
     }
 
-	//Reply the comment pending review, need to be public (including reply content)
+    //Reply the comment pending review, need to be public (including reply content)
     if ($hide == 'y') {
         $Comment_Model->showComment($commentId);
         $hide = 'n';

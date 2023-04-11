@@ -90,9 +90,9 @@ switch ($action) {
             if ($checked == 'n') {
                 notice::sendNewPostMail($title);
             }
-			emDirect("./article.php?active_post=1");//The article was published successfully
+            emDirect("./article.php?active_post=1");//The article was published successfully
         } else {
-			emDirect("./article.php?active_savelog=1");//The article was saved successfully
+            emDirect("./article.php?active_savelog=1");//The article was saved successfully
         }
         break;
 }

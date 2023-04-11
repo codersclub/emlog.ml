@@ -46,12 +46,12 @@ class Sort_Controller {
             $site_description = $sort_cache[$sortid]['description'];
         }
         if ($sort['pid'] != 0 || empty($sort['children'])) {
-/*vot*/			$sqlSegment = "AND sortid=$sortid";
+/*vot*/            $sqlSegment = "AND sortid=$sortid";
         } else {
             $sortids = array_merge(array($sortid), $sort['children']);
-/*vot*/			$sqlSegment = "AND sortid in (" . implode(',', $sortids) . ")";
+/*vot*/            $sqlSegment = "AND sortid in (" . implode(',', $sortids) . ")";
         }
-/*vot*/		$sqlSegment .= " ORDER BY sortop DESC, date DESC";
+/*vot*/        $sqlSegment .= " ORDER BY sortop DESC, date DESC";
         $lognum = $Log_Model->getLogNum('n', $sqlSegment);
         $total_pages = ceil($lognum / $index_lognum);
         if ($page > $total_pages) {

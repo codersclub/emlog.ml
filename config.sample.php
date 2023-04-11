@@ -22,26 +22,26 @@ const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc.
 // Icons: https://unicode.bootstrap-4.ru/emoji/flags/
 const LANG_LIST = [
 /*
-	'ar' => [
-		'name'=>'العربية',
-		'title'=>'Arabic',
-		'icon'=>'🇦🇪',
-		'dir'=>'rtl',
-	],
+    'ar' => [
+        'name'=>'العربية',
+        'title'=>'Arabic',
+        'icon'=>'🇦🇪',
+        'dir'=>'rtl',
+    ],
 */
-	'en'    => [
-		'name'  => 'English',
-		'title' => 'English',
-		'dir'   => 'ltr',
-	],
-	'ru'    => [
-		'name'  => 'Русский',
-		'title' => 'Russian',
-		'dir'   => 'ltr',
-	],
-	'zh-CN' => [
-		'name'  => '简体中文',
-		'title' => 'Simplified Chinese',
-		'dir'   => 'ltr',
-	],
+    'en'    => [
+        'name'  => 'English',
+        'title' => 'English',
+        'dir'   => 'ltr',
+    ],
+    'ru'    => [
+        'name'  => 'Русский',
+        'title' => 'Russian',
+        'dir'   => 'ltr',
+    ],
+    'zh-CN' => [
+        'name'  => '简体中文',
+        'title' => 'Simplified Chinese',
+        'dir'   => 'ltr',
+    ],
 ];

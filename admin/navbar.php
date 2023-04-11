@@ -103,7 +103,7 @@ if ($action == 'mod') {
     $naviData = $Navi_Model->getOneNavi($naviId);
     extract($naviData);
     if ($type != Navi_Model::navitype_custom) {
-		$url = lang('address_generated');
+        $url = lang('address_generated');
     }
     $conf_newtab = $newtab == 'y' ? 'checked="checked"' : '';
     $conf_isdefault = $type != Navi_Model::navitype_custom ? 'disabled="disabled"' : '';

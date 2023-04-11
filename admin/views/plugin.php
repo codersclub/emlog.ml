@@ -2,9 +2,9 @@
     exit('error!');
 } ?>
 <?php if (isset($_GET['activate_install'])): ?>
-	<div class="alert alert-success"><?= lang('plugin_upload_ok') ?></div><?php endif ?>
+    <div class="alert alert-success"><?= lang('plugin_upload_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_upgrade'])): ?>
-	<div class="alert alert-success"><?=lang('plugin_update_ok')?></div><?php endif ?>
+    <div class="alert alert-success"><?=lang('plugin_update_ok')?></div><?php endif ?>
 <?php if (isset($_GET['active'])): ?>
     <div class="alert alert-success"><?= lang('plugin_active_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_del'])): ?>
@@ -28,9 +28,9 @@
 <?php if (isset($_GET['error_g'])): ?>
 <!--vot-->    <div class="alert alert-danger"><?=lang('php_size_limit')?></div><?php endif ?>
 <?php if (isset($_GET['error_h'])): ?>
-	<div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
+    <div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
-	<div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
+    <div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
@@ -56,15 +56,15 @@
                     foreach ($plugins as $key => $val):
                         $plug_state = 'inactive';
                         $plug_action = 'active';
-						$plug_state_des = lang('plugin_active_click');
+                        $plug_state_des = lang('plugin_active_click');
                         if (in_array($key, $active_plugins)) {
                             $plug_state = 'active';
                             $plug_action = 'inactive';
-							$plug_state_des = lang('plugin_disable_click');
+                            $plug_state_des = lang('plugin_disable_click');
                         }
                         $i++;
                         if (TRUE === $val['Setting']) {
-							$val['Name'] = "<a href=\"./plugin.php?plugin={$val['Plugin']}\" title=\"" . lang('plugin_settings_click') . "\">{$val['Name']}</a>";
+                            $val['Name'] = "<a href=\"./plugin.php?plugin={$val['Plugin']}\" title=\"" . lang('plugin_settings_click') . "\">{$val['Name']}</a>";
                         }
                         ?>
                         <tr data-plugin-alias="<?= $val['Plugin'] ?>" data-plugin-version="<?= $val['Version'] ?>">
@@ -75,11 +75,11 @@
                             </td>
                             <td>
                                 <?= $val['Description'] ?>
-								<?php if ($val['Url'] != ''): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_info') ?></a><?php endif ?>
+                                <?php if ($val['Url'] != ''): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_info') ?></a><?php endif ?>
                                 <div class="small mt-3">
-									<?php if ($val['ForEmlog'] != ''): ?><?= lang('ok_for_emlog') ?>: <?= $val['ForEmlog'] ?>&nbsp | &nbsp<?php endif ?>
+                                    <?php if ($val['ForEmlog'] != ''): ?><?= lang('ok_for_emlog') ?>: <?= $val['ForEmlog'] ?>&nbsp | &nbsp<?php endif ?>
                                     <?php if ($val['Author'] != ''): ?>
-<!--vot-->									<?= lang('author') ?>:
+<!--vot-->                                    <?= lang('author') ?>:
                                         <?php if ($val['AuthorUrl'] != ''): ?>
                                             <a href="<?= $val['AuthorUrl'] ?>" target="_blank"><?= $val['Author'] ?></a>
                                         <?php else: ?>
@@ -96,7 +96,7 @@
                         </tr>
                     <?php endforeach; else: ?>
                     <tr>
-						<td colspan="5"><?= lang('plugin_no_installed') ?></td>
+                        <td colspan="5"><?= lang('plugin_no_installed') ?></td>
                     </tr>
                 <?php endif ?>
                 </tbody>
@@ -110,7 +110,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"><?= lang('plugin_install') ?></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('plugin_install') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -118,13 +118,13 @@
             <form action="./plugin.php?action=upload_zip" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div id="plugin_new" class="form-group">
-						<li><?= lang('upload_install_info') ?></li>
+                        <li><?= lang('upload_install_info') ?></li>
                         <li><input name="pluzip" type="file"/></li>
                     </div>
                 </div>
                 <div class="modal-footer">
-					<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
-					<button type="submit" class="btn btn-sm btn-success"><?= lang('upload') ?>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('upload') ?>
                     <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 </div>
             </form>

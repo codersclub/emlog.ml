@@ -29,22 +29,22 @@ class Sort_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "sort SET $upStr WHERE sid=$sid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "sort SET $upStr WHERE sid=$sid");
     }
 
     function addSort($name, $alias, $pid, $description, $template) {
-/*vot*/		$sql = "INSERT INTO " . DB_PREFIX . "sort (sortname,alias,pid,description,template) VALUES('$name','$alias',$pid,'$description', '$template')";
+/*vot*/        $sql = "INSERT INTO " . DB_PREFIX . "sort (sortname,alias,pid,description,template) VALUES('$name','$alias',$pid,'$description', '$template')";
         $this->db->query($sql);
     }
 
     function deleteSort($sid) {
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "blog SET sortid=-1 WHERE sortid=$sid");
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "sort SET pid=0 WHERE pid=$sid");
-/*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "sort WHERE sid=$sid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "blog SET sortid=-1 WHERE sortid=$sid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "sort SET pid=0 WHERE pid=$sid");
+/*vot*/        $this->db->query("DELETE FROM " . DB_PREFIX . "sort WHERE sid=$sid");
     }
 
     function getOneSortById($sid) {
-/*vot*/		$sql = "SELECT * FROM " . DB_PREFIX . "sort WHERE sid=$sid";
+/*vot*/        $sql = "SELECT * FROM " . DB_PREFIX . "sort WHERE sid=$sid";
         $res = $this->db->query($sql);
         $row = $this->db->fetch_array($res);
         $sortData = [];
@@ -66,7 +66,7 @@ class Sort_Model {
             $row = $this->db->fetch_array($res);
             $sortName = htmlspecialchars($row['sortname']);
         } else {
-			$sortName = lang('uncategorized');
+            $sortName = lang('uncategorized');
         }
         return $sortName;
     }

@@ -15,13 +15,13 @@ class Url {
         $logUrl = '';
         $CACHE = Cache::getInstance();
 
-		//Open the Post alias
+        //Open the Post alias
         if (Option::get('isalias') == 'y') {
             $logalias_cache = $CACHE->readCache('logalias');
             if (!empty($logalias_cache[$blogId])) {
                 $logsort_cache = $CACHE->readCache('logsort');
                 $sort = '';
-				//url in category mode
+                //url in category mode
                 if (3 == $urlMode && isset($logsort_cache[$blogId])) {
                     $sort = !empty($logsort_cache[$blogId]['alias']) ?
                         $logsort_cache[$blogId]['alias'] :
@@ -29,7 +29,7 @@ class Url {
                     $sort .= '/';
                 }
                 $logUrl = BLOG_URL . $sort . urlencode($logalias_cache[$blogId]);
-				//Enable alias html suffix
+                //Enable alias html suffix
                 if (Option::get('isalias_html') == 'y') {
                     $logUrl .= '.html';
                 }
@@ -38,16 +38,16 @@ class Url {
         }
 
         switch ($urlMode) {
-			case '0'://default: dynamic
+            case '0'://default: dynamic
                 $logUrl = BLOG_URL . '?post=' . $blogId;
                 break;
-			case '1'://static
+            case '1'://static
                 $logUrl = BLOG_URL . 'post-' . $blogId . '.html';
                 break;
-			case '2'://Table of contents
+            case '2'://Table of contents
                 $logUrl = BLOG_URL . 'post/' . $blogId;
                 break;
-			case '3'://category
+            case '3'://category
                 $log_sort = $CACHE->readCache('logsort');
                 if (!empty($log_sort[$blogId]['alias'])) {
                     $logUrl = BLOG_URL . $log_sort[$blogId]['alias'] . '/' . $blogId;
@@ -62,9 +62,9 @@ class Url {
         return $logUrl;
     }
 
-	/**
-	 * Get the archive link
-	 */
+    /**
+     * Get the archive link
+     */
     static function record($record, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -83,9 +83,9 @@ class Url {
         return $recordUrl;
     }
 
-	/**
-	 * Get Category Link
-	 */
+    /**
+     * Get Category Link
+     */
     static function sort($sortId, $page = null) {
         $CACHE = Cache::getInstance();
         $sort_cache = $CACHE->readCache('sort');
@@ -107,9 +107,9 @@ class Url {
         return $sortUrl;
     }
 
-	/**
-	 * Get author link
-	 */
+    /**
+     * Get author link
+     */
     static function author($authorId, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -128,9 +128,9 @@ class Url {
         return $authorUrl;
     }
 
-	/**
-	 * Get tag link
-	 */
+    /**
+     * Get tag link
+     */
     static function tag($tag, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -149,9 +149,9 @@ class Url {
         return $tagUrl;
     }
 
-	/**
-	 * Get the Home Post pagination links
-	 */
+    /**
+     * Get the Home Post pagination links
+     */
     static function logPage() {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -164,9 +164,9 @@ class Url {
         return $logPageUrl;
     }
 
-	/**
-	 * Get Comment Link
-	 */
+    /**
+     * Get Comment Link
+     */
     static function comment($blogId, $pageId, $cid) {
         $commentUrl = Url::log($blogId);
         if ($pageId > 1) {
@@ -182,7 +182,7 @@ class Url {
     }
 
     /**
-	 * Get navigation link
+     * Get navigation link
      */
     static function navi($type, $typeId, $url) {
         switch ($type) {

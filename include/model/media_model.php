@@ -17,9 +17,9 @@ class Media_Model {
         $this->table_sort = DB_PREFIX . 'media_sort';
     }
 
-	/**
-	 * Get a list of resources
-	 */
+    /**
+     * Get a list of resources
+     */
     function getMedias($page = 1, $perpage_count = 24, $uid = UID, $sid = 0) {
         $startId = ($page - 1) * $perpage_count;
         $author = $uid ? 'and author=' . UID : '';
@@ -70,7 +70,7 @@ class Media_Model {
         }
 
         $query = "INSERT INTO $this->table (author, sortid, filename, filesize, filepath, addtime, width, height, mimetype, thumfor)
-		 VALUES('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
+         VALUES('%d', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')";
         $query = sprintf($query, UID, $sortid, $file_name, $file_size, $file_path, $create_time, $img_width, $img_height, $file_mime_type, 0);
         $this->db->query($query);
         return $this->db->insert_id();
@@ -86,10 +86,10 @@ class Media_Model {
         $filepath_thum = $attach['filepath'];
         $filepath = str_replace("thum-", "", $attach['filepath']);
         if (file_exists($filepath_thum)) {
-			@unlink($filepath_thum) or emMsg(lang('del_failed'));
+            @unlink($filepath_thum) or emMsg(lang('del_failed'));
         }
         if (file_exists($filepath)) {
-			@unlink($filepath) or emMsg(lang('del_failed'));
+            @unlink($filepath) or emMsg(lang('del_failed'));
         }
 
         return $this->db->query("DELETE FROM $this->table WHERE aid = $media_id $author");

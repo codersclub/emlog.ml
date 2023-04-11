@@ -163,7 +163,7 @@ if ($action == 'operate_log') {
             break;
         case 'change_author':
             if (!User::haveEditPermission()) {
-				emMsg(lang('no_permission'), './');
+                emMsg(lang('no_permission'), './');
             }
             foreach ($logs as $val) {
                 $Log_Model->updateLog(array('author' => $author), $val);
@@ -173,7 +173,7 @@ if ($action == 'operate_log') {
             break;
         case 'check':
             if (!User::haveEditPermission()) {
-				emMsg(lang('no_permission'), './');
+                emMsg(lang('no_permission'), './');
             }
             $Log_Model->checkSwitch($gid, 'y');
             $CACHE->updateCache();
@@ -181,7 +181,7 @@ if ($action == 'operate_log') {
             break;
         case 'uncheck':
             if (!User::haveEditPermission()) {
-				emMsg(lang('no_permission'), './');
+                emMsg(lang('no_permission'), './');
             }
             $gid = Input::postIntVar('gid');
             $feedback = Input::postStrVar('feedback');
@@ -211,7 +211,7 @@ if ($action === 'write') {
     extract($blogData);
 
     $isdraft = false;
-	$containertitle = lang('post_write');
+    $containertitle = lang('post_write');
     $orig_date = '';
     $sorts = $CACHE->readCache('sort');
     $tagStr = '';
@@ -236,7 +236,7 @@ if ($action === 'edit') {
     extract($blogData);
 
     $isdraft = $hide == 'y' ? true : false;
-	$containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
+    $containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
     $postDate = date('Y-m-d H:i:s', $date);
     $sorts = $CACHE->readCache('sort');
 

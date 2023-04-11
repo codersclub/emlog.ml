@@ -39,7 +39,7 @@ class Cache {
     /**
      * update cache
      *
-	 * @param mixed $cacheMethodName cache name:'options', multi use array:['options', 'user'], Leave blank for update all
+     * @param mixed $cacheMethodName cache name:'options', multi use array:['options', 'user'], Leave blank for update all
      */
     public function updateCache($cacheMethodName = null) {
         // update single cache
@@ -78,8 +78,8 @@ class Cache {
     public function cacheWrite($cacheData, $cacheName) {
         $cachefile = EMLOG_ROOT . '/content/cache/' . $cacheName . '.php';
         $cacheData = "<?php exit;//" . $cacheData;
-		@ $fp = fopen($cachefile, 'wb') or emMsg(lang('cache_read_error'));
-		@ fwrite($fp, $cacheData) or emMsg(lang('cache_not_writable'));
+        @ $fp = fopen($cachefile, 'wb') or emMsg(lang('cache_read_error'));
+        @ fwrite($fp, $cacheData) or emMsg(lang('cache_not_writable'));
         $this->{$cacheName . '_cache'} = null;
         fclose($fp);
     }
@@ -366,20 +366,20 @@ class Cache {
     }
 
     private function mc_record() {
-/*vot*/		$query = $this->db->query('SELECT date FROM ' . DB_PREFIX . "blog WHERE hide='n' AND checked='y' AND type='blog' ORDER BY date DESC");
+/*vot*/        $query = $this->db->query('SELECT date FROM ' . DB_PREFIX . "blog WHERE hide='n' AND checked='y' AND type='blog' ORDER BY date DESC");
         $record = 'xxxx_x';
         $p = 0;
         $lognum = 1;
         $record_cache = [];
         while ($show_record = $this->db->fetch_array($query)) {
-/*vot*/			$f_record = gmdate('Y_m', $show_record['date']);
+/*vot*/            $f_record = gmdate('Y_m', $show_record['date']);
             if ($record != $f_record) {
                 $h = $p - 1;
                 if ($h != -1) {
                     $record_cache[$h]['lognum'] = $lognum;
                 }
                 $record_cache[$p] = array(
-/*vot*/					'record' => gmdate('Y-m', $show_record['date']),
+/*vot*/                    'record' => gmdate('Y-m', $show_record['date']),
                     'date'   => gmdate('Ym', $show_record['date'])
                 );
                 $p++;

@@ -22,12 +22,12 @@ class Tag_Controller {
 
         $Tag_Model = new Tag_Model();
         $blogIdStr = $Tag_Model->getTagByName($tag);
-/*vot*/		$blogIdStr = trim($blogIdStr, ',');
-/*vot*/		$blogIdStr = preg_replace('/\,+/', ',', $blogIdStr);
+/*vot*/        $blogIdStr = trim($blogIdStr, ',');
+/*vot*/        $blogIdStr = preg_replace('/\,+/', ',', $blogIdStr);
         if (!$blogIdStr) {
             show_404_page();
         }
-/*vot*/		$sqlSegment = "AND gid IN ($blogIdStr) ORDER BY date DESC";
+/*vot*/        $sqlSegment = "AND gid IN ($blogIdStr) ORDER BY date DESC";
         $lognum = $Log_Model->getLogNum('n', $sqlSegment);
         $total_pages = ceil($lognum / $index_lognum);
         if ($page > $total_pages) {

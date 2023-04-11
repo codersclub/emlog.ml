@@ -45,7 +45,7 @@
             </div>
         </form>
         <div class="alert alert-warning">
-			<?= lang('groups_about') ?>
+            <?= lang('groups_about') ?>
         </div>
     </div>
 </div>

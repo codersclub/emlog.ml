@@ -68,7 +68,7 @@ if ($action === 'lib') {
 
 if ($action === 'upload') {
     $sid = Input::getIntVar('sid');
-	$editor = isset($_GET['editor']) ? 1 : 0; // Whether the upload is from the Markdown editor
+    $editor = isset($_GET['editor']) ? 1 : 0; // Whether the upload is from the Markdown editor
     $attach = isset($_FILES['file']) ? $_FILES['file'] : '';
     if ($editor) {
         $attach = isset($_FILES['editormd-image-file']) ? $_FILES['editormd-image-file'] : '';
@@ -138,7 +138,7 @@ if ($action === 'operate_media') {
 
 if ($action === 'add_media_sort') {
     if (!User::isAdmin()) {
-		emMsg(lang('no_permission'), './');
+        emMsg(lang('no_permission'), './');
     }
     $sortname = Input::postStrVar('sortname');
     if (empty($sortname)) {
@@ -151,7 +151,7 @@ if ($action === 'add_media_sort') {
 
 if ($action === 'update_media_sort') {
     if (!User::isAdmin()) {
-		emMsg(lang('no_permission'), './');
+        emMsg(lang('no_permission'), './');
     }
     $sortname = Input::postStrVar('sortname');
     $id = isset($_POST['id']) ? (int)$_POST['id'] : '';
@@ -166,7 +166,7 @@ if ($action === 'update_media_sort') {
 
 if ($action === 'del_media_sort') {
     if (!User::isAdmin()) {
-		emMsg(lang('no_permission'), './');
+        emMsg(lang('no_permission'), './');
     }
     $id = Input::getIntVar('id');
 

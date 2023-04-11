@@ -20,8 +20,8 @@ class Notice {
         $_SESSION['mail_code'] = $randCode;
         $_SESSION['mail'] = $mail;
 
-/*vot*/		$title = lang('email_verif_code_title');
-/*vot*/		$content = lang('email_verif_code') . $randCode;
+/*vot*/        $title = lang('email_verif_code_title');
+/*vot*/        $content = lang('email_verif_code') . $randCode;
         $sendmail = new SendMail();
         $ret = $sendmail->send($mail, $title, $content);
         if ($ret) {
@@ -41,8 +41,8 @@ class Notice {
         $_SESSION['mail_code'] = $randCode;
         $_SESSION['mail'] = $mail;
 
-		$title = lang('reset_password_code');
-		$content = lang('email_verify_code') . $randCode;
+        $title = lang('reset_password_code');
+        $content = lang('email_verify_code') . $randCode;
         $sendmail = new SendMail();
         $ret = $sendmail->send($mail, $title, $content);
         if ($ret) {
@@ -62,8 +62,8 @@ class Notice {
         if (!$email) {
             return false;
         }
-		$title = lang('new_article_review');
-		$content = lang('new_article_title') . $post_title;
+        $title = lang('new_article_review');
+        $content = lang('new_article_title') . $post_title;
         $sendmail = new SendMail();
         $ret = $sendmail->send($email, $title, $content);
         if ($ret) {
@@ -81,12 +81,12 @@ class Notice {
         }
 
         $sendmail = new SendMail();
-/*vot*/		$title = lang('new_comment_review');
-/*vot*/		$content = lang('new_comment_is') . $comment;
+/*vot*/        $title = lang('new_comment_review');
+/*vot*/        $content = lang('new_comment_is') . $comment;
 
         $r = self::getArticleInfo($gid);
         if ($r) {
-/*vot*/			$content .= '<br><br>' . lang('from_article') . $r['log_title'];
+/*vot*/            $content .= '<br><br>' . lang('from_article') . $r['log_title'];
             $email = self::getArticleAuthorEmail($r['author']);
             if (!$email) {
                 return false;

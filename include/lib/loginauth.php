@@ -7,8 +7,8 @@
 
 class LoginAuth {
 
-	const LOGIN_ERROR_USER = -1;     //User does not exist
-	const LOGIN_ERROR_PASSWD = -2;   //Wrong password
+    const LOGIN_ERROR_USER = -1;     //User does not exist
+    const LOGIN_ERROR_PASSWD = -2;   //Wrong password
 
 
     public static function isLogin() {
@@ -163,7 +163,7 @@ class LoginAuth {
     public static function checkToken() {
         $token = isset($_REQUEST['token']) ? addslashes($_REQUEST['token']) : '';
         if ($token !== self::genToken()) {
-			emMsg(lang('no_permission') . ' token error');
+            emMsg(lang('no_permission') . ' token error');
         }
     }
 }

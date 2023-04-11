@@ -51,17 +51,17 @@
                                 case Navi_Model::navitype_home:
                                 case Navi_Model::navitype_t:
                                 case Navi_Model::navitype_admin:
-									$value['type_name'] = lang('system');
+                                    $value['type_name'] = lang('system');
                                     $value['url'] = '/' . $value['url'];
                                     break;
                                 case Navi_Model::navitype_sort:
-									$value['type_name'] = '<span class="text-primary">' . lang('category') . '</span>';
+                                    $value['type_name'] = '<span class="text-primary">' . lang('category') . '</span>';
                                     break;
                                 case Navi_Model::navitype_page:
-									$value['type_name'] = '<span class="text-success">' . lang('page') . '</span>';
+                                    $value['type_name'] = '<span class="text-success">' . lang('page') . '</span>';
                                     break;
                                 case Navi_Model::navitype_custom:
-									$value['type_name'] = '<span class="text-danger">' . lang('custom') . '</span>';
+                                    $value['type_name'] = '<span class="text-danger">' . lang('custom') . '</span>';
                                     break;
                             }
                             doAction('adm_navi_display');
@@ -197,7 +197,7 @@
                             <input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>">
                         </div>
                     <?php else: ?>
-						<?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
+                        <?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
                     <?php endif ?>
                 </div>
             </form>

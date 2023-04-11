@@ -133,17 +133,17 @@ class Option {
 
     static function getWidgetTitle() {
         return [
-			'blogger'     => lang('blogger'),
-			'calendar'    => lang('calendar'),
-			'tag'         => lang('tags'),
-			'sort'        => lang('categories'),
-			'archive'     => lang('archive'),
-			'newcomm'     => lang('new_comments'),
-			'newlog'      => lang('new_posts'),
-			'hotlog'      => lang('hot_posts'),
-			'link'        => lang('links'),
-			'search'      => lang('search'),
-			'custom_text' => lang('widget_custom')
+            'blogger'     => lang('blogger'),
+            'calendar'    => lang('calendar'),
+            'tag'         => lang('tags'),
+            'sort'        => lang('categories'),
+            'archive'     => lang('archive'),
+            'newcomm'     => lang('new_comments'),
+            'newlog'      => lang('new_posts'),
+            'hotlog'      => lang('hot_posts'),
+            'link'        => lang('links'),
+            'search'      => lang('search'),
+            'custom_text' => lang('widget_custom')
         ];
     }
 
@@ -164,7 +164,7 @@ class Option {
     static function updateOption($name, $value, $isSyntax = false) {
         $DB = Database::getInstance();
         $value = $isSyntax ? $value : "'$value'";
-/*vot*/		$sql = 'INSERT INTO ' . DB_PREFIX . "options (option_name, option_value) VALUES ('$name', $value) ON DUPLICATE KEY UPDATE option_value=$value, option_name='$name'";
+/*vot*/        $sql = 'INSERT INTO ' . DB_PREFIX . "options (option_name, option_value) VALUES ('$name', $value) ON DUPLICATE KEY UPDATE option_value=$value, option_name='$name'";
         $DB->query($sql);
     }
 }

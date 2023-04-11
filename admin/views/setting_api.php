@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" disabled value="<?= $apikey ?>">
                 <div class="input-group-append">
                     <button class="btn btn-outline-success" type="button" onclick="window.location.href='setting.php?action=api_reset&token=<?= LoginAuth::genToken() ?>'">
-						<?= lang('api_key_reset') ?>
+                        <?= lang('api_key_reset') ?>
                     </button>
                 </div>
             </div>
@@ -41,12 +41,12 @@
         </form>
         <div class="alert alert-warning">
             <b><?= lang('api_list') ?>:</b><br>
-			<?= lang('api_1') ?><br>
-			<?= lang('api_2') ?><br>
-			<?= lang('api_3') ?><br>
-			<?= lang('api_4') ?><br>
-			<?= lang('api_5') ?><br><br>
-			<?= lang('api_more') ?>: <a href="https://www.emlog.net/docs/#/api" target="_blank" class="small"><?= lang('api_docs') ?></a>
+            <?= lang('api_1') ?><br>
+            <?= lang('api_2') ?><br>
+            <?= lang('api_3') ?><br>
+            <?= lang('api_4') ?><br>
+            <?= lang('api_5') ?><br><br>
+            <?= lang('api_more') ?>: <a href="https://www.emlog.net/docs/#/api" target="_blank" class="small"><?= lang('api_docs') ?></a>
         </div>
     </div>
 </div>

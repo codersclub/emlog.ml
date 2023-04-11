@@ -90,7 +90,7 @@ if ($action == 'upload_zip') {
         emDirect("./plugin.php?error_g=1");
     }
     if (!$zipfile || $zipfile['error'] >= 1 || empty($zipfile['tmp_name'])) {
-		emMsg(lang('plugin_upload_error') . $zipfile['error']);
+        emMsg(lang('plugin_upload_error') . $zipfile['error']);
     }
     if (getFileSuffix($zipfile['name']) != 'zip') {
         emDirect("./plugin.php?error_f=1");
@@ -126,15 +126,15 @@ if ($action === 'check_update') {
     $emcurl->request('https://www.emlog.net/plugin/upgrade');
     $retStatus = $emcurl->getHttpStatus();
     if ($retStatus !== MSGCODE_SUCCESS) {
-/*vot*/		Output::error(lang('update_failed_network'));
+/*vot*/        Output::error(lang('update_failed_network'));
     }
     $response = $emcurl->getRespone();
     $ret = json_decode($response, 1);
     if (empty($ret)) {
-/*vot*/		Output::error(lang('update_failed_network'));
+/*vot*/        Output::error(lang('update_failed_network'));
     }
     if ($ret['code'] === MSGCODE_EMKEY_INVALID) {
-/*vot*/		Output::error(lang('pro_unregistered'));
+/*vot*/        Output::error(lang('pro_unregistered'));
     }
 
     Output::ok($ret['data']);

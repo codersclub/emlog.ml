@@ -6,7 +6,7 @@
 <?php if (isset($_GET['activate_install'])): ?>
     <div class="alert alert-success"><?= lang('template_upload_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_upgrade'])): ?>
-	<div class="alert alert-success"><?=lang('template_update_ok')?></div><?php endif ?>
+    <div class="alert alert-success"><?=lang('template_update_ok')?></div><?php endif ?>
 <?php if (isset($_GET['activate_del'])): ?>
     <div class="alert alert-success"><?= lang('template_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_f'])): ?>
@@ -24,11 +24,11 @@
 <?php if (isset($_GET['error_f'])): ?>
     <div class="alert alert-danger"><?=lang('php_size_limit')?></div><?php endif ?>
 <?php if (isset($_GET['error_c'])): ?>
-	<div class="alert alert-danger"><?= lang('plugin_zip_nonsupport') ?></div><?php endif ?>
+    <div class="alert alert-danger"><?= lang('plugin_zip_nonsupport') ?></div><?php endif ?>
 <?php if (isset($_GET['error_h'])): ?>
-	<div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
+    <div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
-	<div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
+    <div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('template_manager') ?></h1>
@@ -51,10 +51,10 @@
                 <div class="card-footer">
                     <p><?= $value['tplname'] ?></p>
                     <?php if ($value['version']): ?>
-						<div class="small"><?=lang('version_number')?>: <?= $value['version'] ?></div>
+                        <div class="small"><?=lang('version_number')?>: <?= $value['version'] ?></div>
                     <?php endif ?>
                     <?php if ($value['author']): ?>
-						<div class="small"><?= lang('template_author') ?>: <?= $value['author'] ?></div>
+                        <div class="small"><?= lang('template_author') ?>: <?= $value['author'] ?></div>
                     <?php endif ?>
                     <div class="small">
                         <?= $value['tpldes'] ?>

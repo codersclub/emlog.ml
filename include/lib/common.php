@@ -8,7 +8,7 @@
 function emAutoload($class) {
     $class = strtolower($class);
 
-	load_language($class);
+    load_language($class);
 
     if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
         require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
@@ -70,7 +70,7 @@ function realUrl() {
     }
 
     $emlog_path = EMLOG_ROOT . DIRECTORY_SEPARATOR;
-/*vot*/	$emlog_path = str_replace('\\', '/', $emlog_path);
+/*vot*/    $emlog_path = str_replace('\\', '/', $emlog_path);
     $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
     $script_path = str_replace('\\', '/', $script_path);
     $path_element = explode('/', $script_path);
@@ -83,7 +83,7 @@ function realUrl() {
 
     while ($current_deep < $max_deep) {
         $this_match .= $path_element[$current_deep] . DIRECTORY_SEPARATOR;
-/*vot*/		$this_match = str_replace('\\', '/', $this_match);
+/*vot*/        $this_match = str_replace('\\', '/', $this_match);
 
         if (substr($emlog_path, strlen($this_match) * (-1)) === $this_match) {
             $best_match = $this_match;
@@ -142,8 +142,8 @@ function subString($strings, $start, $length) {
 function extractHtmlData($data, $len) {
     $data = subString(strip_tags($data), 0, $len + 30);
     $search = array(
-		"/([\r\n])[\s]+/", // Remove whitespace characters
-		"/&(quot|#34);/i", // Replace HTML entities
+        "/([\r\n])[\s]+/", // Remove whitespace characters
+        "/&(quot|#34);/i", // Replace HTML entities
         "/&(amp|#38);/i",
         "/&(lt|#60);/i",
         "/&(gt|#62);/i",
@@ -172,7 +172,7 @@ function changeFileSize($fileSize) {
     } elseif ($fileSize >= 1024) {
         $fileSize = round($fileSize / 1024, 2) . ' KB';
     } else {
-		$fileSize .= lang('_bytes');
+        $fileSize .= lang('_bytes');
     }
     return $fileSize;
 }
@@ -302,7 +302,7 @@ function pagination($count, $perlogs, $page, $url, $anchor = '') {
  * This function is called in the plug-in, and the plug-in function is mounted on the reserved hook
  */
 function addAction($hook, $actionFunc) {
-	// Store plug-in functions mounted on the mount point through global variables
+    // Store plug-in functions mounted on the mount point through global variables
     global $emHooks;
     if (!isset($emHooks[$hook]) || !in_array($actionFunc, $emHooks[$hook])) {
         $emHooks[$hook][] = $actionFunc;
@@ -371,11 +371,11 @@ function subContent($content, $len, $clean = 0) {
 function smartDate($timestamp, $format = 'Y-m-d H:i') {
     $sec = time() - $timestamp;
     if ($sec < 60) {
-		$op = $sec . lang('_sec_ago');
+        $op = $sec . lang('_sec_ago');
     } elseif ($sec < 3600) {
-		$op = floor($sec / 60) . lang('_min_ago');
+        $op = floor($sec / 60) . lang('_min_ago');
     } elseif ($sec < 3600 * 24) {
-		$op = lang('about_') . floor($sec / 3600) . lang('_hour_ago');
+        $op = lang('about_') . floor($sec / 3600) . lang('_hour_ago');
     } else {
         $op = date($format, $timestamp);
     }
@@ -413,30 +413,30 @@ function upload2local($attach, &$result) {
     $success = 0;
     switch ($ret) {
         case '100':
-			$message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
+            $message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
             break;
         case '101':
         case '104':
-			$message = lang('upload_failed_error_code') . $errorNum;
+            $message = lang('upload_failed_error_code') . $errorNum;
             break;
         case '102':
-			$message = lang('file_type_not_supported');
+            $message = lang('file_type_not_supported');
             break;
         case '103':
             $r = changeFileSize(Option::getAttMaxSize());
-			$message = lang('file_size_exceeds_') . $r . lang('_of_limit');
+            $message = lang('file_size_exceeds_') . $r . lang('_of_limit');
             break;
         case '105':
-			$message = lang('upload_folder_unwritable');
+            $message = lang('upload_folder_unwritable');
             break;
         default:
-			$message = lang('upload_ok');
+            $message = lang('upload_ok');
             $success = 1;
             break;
     }
 
     $result = [
-		'success'   => $success, // 1 success, 0 failure
+        'success'   => $success, // 1 success, 0 failure
         'message'   => $message,
         'url'       => $success ? getFileUrl($ret['file_path']) : '',
         'file_info' => $success ? $ret : [],
@@ -466,16 +466,16 @@ function upload2local($attach, &$result) {
  */
 function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail = true) {
     if ($errorNum == 1) {
-		return '100'; //File size exceeds the system limit
+        return '100'; //File size exceeds the system limit
     } elseif ($errorNum > 1) {
-		return '101'; //File upload failed
+        return '101'; //File upload failed
     }
     $extension = getFileSuffix($fileName);
     if (!in_array($extension, $type)) {
-		return '102'; //Incorrect file type
+        return '102'; //Incorrect file type
     }
     if ($fileSize > Option::getAttMaxSize()) {
-		return '103'; //File size exceeds the emlog limit
+        return '103'; //File size exceeds the emlog limit
     }
     $file_info = [];
     $file_info['file_name'] = $fileName;
@@ -491,19 +491,19 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
         @umask(0);
         $ret = @mkdir(Option::UPLOADFILE_PATH, 0777);
         if ($ret === false) {
-			return '104'; //Create the file upload directory failed
+            return '104'; //Create the file upload directory failed
         }
     }
     if (!is_dir($uppath)) {
         @umask(0);
         $ret = @mkdir($uppath, 0777);
         if ($ret === false) {
-			return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
+            return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
         }
     }
     doAction('attach_upload', $tmpFile);
 
-	// Generate thumbnail
+    // Generate thumbnail
     $thum = $uppath . 'thum-' . $fname;
     if ($is_thumbnail && resizeImage($tmpFile, $thum, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
         $file_info['thum_file'] = $thum;
@@ -511,10 +511,10 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
 
     if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $attachpath)) {
         @unlink($tmpFile);
-		return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
+        return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
     }
 
-	// Extract image width and height
+    // Extract image width and height
     if (in_array($file_info['mime_type'], array('image/jpeg', 'image/png', 'image/gif', 'image/bmp'))) {
         $size = getimagesize($file_info['file_path']);
         if ($size) {
@@ -625,10 +625,10 @@ function chImageSize($img, $max_w, $max_h) {
     }
     $w = $size[0];
     $h = $size[1];
-	//Calculate zoom ratio
+    //Calculate zoom ratio
     @$w_ratio = $max_w / $w;
     @$h_ratio = $max_h / $h;
-	//Verify the Image width and height
+    //Verify the Image width and height
     if (($w <= $max_w) && ($h <= $max_h)) {
         $tn['w'] = $w;
         $tn['h'] = $h;
@@ -650,8 +650,8 @@ function chImageSize($img, $max_w, $max_h) {
 if (!function_exists('getGravatar')) {
     function getGravatar($email, $s = 40) {
         $hash = md5($email);
-//vot		$gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
-/*vot*/		$gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
+//vot        $gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
+/*vot*/        $gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
         doOnceAction('get_Gravatar', $email, $gravatar_url);
 
         return $gravatar_url;
@@ -677,11 +677,11 @@ function getMonthDayNum($month, $year) {
  */
 function emUnZip($zipfile, $path, $type = 'tpl') {
     if (!class_exists('ZipArchive', FALSE)) {
-		return 3;//zip Module problem
+        return 3;//zip Module problem
     }
     $zip = new ZipArchive();
     if (@$zip->open($zipfile) !== TRUE) {
-		return 2;//File permissions problem
+        return 2;//File permissions problem
     }
     $r = explode('/', $zip->getNameIndex(0), 2);
     $dir = isset($r[0]) ? $r[0] . '/' : '';
@@ -713,7 +713,7 @@ function emUnZip($zipfile, $path, $type = 'tpl') {
         return 0;
     }
 
-	return 1; //File permissions problem
+    return 1; //File permissions problem
 }
 
 /**
@@ -784,11 +784,11 @@ function emDownFile($source) {
 
     $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
     if ($temp_file === false) {
-/*vot*/		emMsg('emDownFile: Failed to create temporary file.');
+/*vot*/        emMsg('emDownFile: Failed to create temporary file.');
     }
     $ret = file_put_contents($temp_file, $content);
     if ($ret === false) {
-/*vot*/		emMsg('emDownFile: Failed to write temporary file.');
+/*vot*/        emMsg('emDownFile: Failed to write temporary file.');
     }
 
     return $temp_file;
@@ -861,11 +861,11 @@ function emDirect($directUrl) {
 function emMsg($msg, $url = 'javascript:history.back(-1);', $isAutoGo = false) {
     if ($msg == '404') {
         header("HTTP/1.1 404 Not Found");
-		$msg = lang('404_description');
+        $msg = lang('404_description');
     }
-	$lang = LANG;
-	$dir = LANG_DIR;
-	$title = lang('prompt');
+    $lang = LANG;
+    $dir = LANG_DIR;
+    $title = lang('prompt');
     echo <<<EOT
 <!doctype html>
 <html lang="$lang" dir="$dir">
@@ -900,7 +900,7 @@ body {
     margin: 10px 20px;
 }
 a {
-	color: #333333;
+    color: #333333;
 }
 </style>
 </head>
@@ -909,7 +909,7 @@ a {
 <p>$msg</p>
 EOT;
     if ($url != 'none') {
-		echo '<p><a href="' . $url . '">&larr; ' . lang('click_return') . '</a></p>';
+        echo '<p><a href="' . $url . '">&larr; ' . lang('click_return') . '</a></p>';
     }
     echo <<<EOT
 </div>
@@ -1051,14 +1051,14 @@ function emStrtotime($timeStr) {
         $unixPostDate -= (int)$timezone * 3600;
     } elseif ($serverTimeZone) {
         /*
-		 * If the server is configured with a default time zone, then PHP will recognize the incoming time as the local time in the time zone
-		 * But the time we pass in is actually the local time of the time zone configured by the blog, not the local time of the server time zone
-		 * Therefore, we need to remove/add the time difference between the two time zones to the time obtained by strtotime to get the utc time
+         * If the server is configured with a default time zone, then PHP will recognize the incoming time as the local time in the time zone
+         * But the time we pass in is actually the local time of the time zone configured by the blog, not the local time of the server time zone
+         * Therefore, we need to remove/add the time difference between the two time zones to the time obtained by strtotime to get the utc time
          */
         $offset = getTimeZoneOffset($serverTimeZone);
-		// First subtract/add the time difference configured for the local time zone
+        // First subtract/add the time difference configured for the local time zone
         $unixPostDate -= (int)$timezone * 3600;
-		// Then subtract/add the time difference between the server time zone and utc to get the utc time
+        // Then subtract/add the time difference between the server time zone and utc to get the utc time
         $unixPostDate -= $offset;
     }
     return $unixPostDate;
@@ -1177,35 +1177,35 @@ if (!function_exists('get_browse')) {
  * @author Valery Votintsev, codersclub.org
  */
 function load_language($model = '') {
-	global $LANGUAGE;
-	global $LANGLIST;
+    global $LANGUAGE;
+    global $LANGLIST;
 
-	$model = strtolower($model);
-	$model = str_replace(array('_controller', '_model'), '', $model);
+    $model = strtolower($model);
+    $model = str_replace(array('_controller', '_model'), '', $model);
 
-	if (!isset($LANGUAGE)) {
-		$LANGUAGE = array();
-	}
-	if (!isset($LANGLIST)) {
-		$LANGLIST = array();
-	}
+    if (!isset($LANGUAGE)) {
+        $LANGUAGE = array();
+    }
+    if (!isset($LANGLIST)) {
+        $LANGLIST = array();
+    }
 
-	if ($model && !isset($LANGLIST[$model])) {
-		if(substr($model, 0, 7) == 'plugin/') {
-			$file = EMLOG_ROOT . '/content/plugins/' . substr($model, 7) . '/lang/' . LANG . '/lang.php';
-		} else {
-			$file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
-		}
-		if (is_file($file)) {
-			$lang = array();
-			@require $file;
+    if ($model && !isset($LANGLIST[$model])) {
+        if(substr($model, 0, 7) == 'plugin/') {
+            $file = EMLOG_ROOT . '/content/plugins/' . substr($model, 7) . '/lang/' . LANG . '/lang.php';
+        } else {
+            $file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
+        }
+        if (is_file($file)) {
+            $lang = array();
+            @require $file;
 
-			// Language file must contain $lang = array(...);
-			$LANGUAGE = array_merge($LANGUAGE, $lang);
-			unset($lang);
-			$LANGLIST[$model] = 1;
-		}
-	}
+            // Language file must contain $lang = array(...);
+            $LANGUAGE = array_merge($LANGUAGE, $lang);
+            unset($lang);
+            $LANGLIST[$model] = 1;
+        }
+    }
 }
 
 /**
@@ -1216,8 +1216,8 @@ function load_language($model = '') {
  * @author Valery Votintsev, codersclub.org
  */
 function lang($key = '') {
-	global $LANGUAGE;
-	return isset($LANGUAGE[$key]) ? $LANGUAGE[$key] : '{' . $key . '}';
+    global $LANGUAGE;
+    return isset($LANGUAGE[$key]) ? $LANGUAGE[$key] : '{' . $key . '}';
 }
 
 /**
@@ -1229,9 +1229,9 @@ function lang($key = '') {
  * @author Valery Votintsev, codersclub.org
  */
 function emdate($date = 0, $show_time = 0) {
-	$format = $show_time ? 'date_time_format' : 'date_format';
+    $format = $show_time ? 'date_time_format' : 'date_format';
 
-	return gmdate(lang($format), $date);
+    return gmdate(lang($format), $date);
 }
 
 /**
@@ -1240,19 +1240,19 @@ function emdate($date = 0, $show_time = 0) {
  * @param string $name
  */
 function dump($data, $name = '') {
-	$buf = var_export($data, true);
+    $buf = var_export($data, true);
 
-	$buf = str_replace('\\r', '', $buf);
-	$buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
+    $buf = str_replace('\\r', '', $buf);
+    $buf = preg_replace('/\=\>\s*\n\s*array/s', '=> array', $buf);
 
-	echo '<pre>';
+    echo '<pre>';
 
-	if ($name) {
-		echo $name, '=';
-	}
+    if ($name) {
+        echo $name, '=';
+    }
 
-	echo $buf;
-	echo "</pre>\n";
+    echo $buf;
+    echo "</pre>\n";
 }
 
 /**
@@ -1264,97 +1264,97 @@ function dump($data, $name = '') {
  * @author Valery Votintsev, codersclub.org
  */
 function udir($file = '', $remove_drive = false) {
-	$file = str_replace('\\', '/', $file);
-	if ($remove_drive) {
-		$file = preg_replace("/^\w:/", '', $file);
-	}
-	return $file;
+    $file = str_replace('\\', '/', $file);
+    if ($remove_drive) {
+        $file = preg_replace("/^\w:/", '', $file);
+    }
+    return $file;
 }
 
 
 function backtrace() {
-	$raw = debug_backtrace();
+    $raw = debug_backtrace();
 
-	echo '<div><b>BackTrace:</b>', "\n";
-	echo '<table border="1" cellPadding="4">', "\n";
-	echo '<tr>', "\n";
-	echo '<th>File</th>', "\n";
-	echo '<th>Line</th>', "\n";
-	echo '<th>Function</th>', "\n";
-	echo '<th>Args</th>', "\n";
-	echo '</tr>', "\n";
+    echo '<div><b>BackTrace:</b>', "\n";
+    echo '<table border="1" cellPadding="4">', "\n";
+    echo '<tr>', "\n";
+    echo '<th>File</th>', "\n";
+    echo '<th>Line</th>', "\n";
+    echo '<th>Function</th>', "\n";
+    echo '<th>Args</th>', "\n";
+    echo '</tr>', "\n";
 
-	foreach ($raw as $entry) {
-		$args = '';
-		if ($entry['function'] != 'backtrace') {
-			echo '<tr>', "\n";
-			echo '<td>', $entry['file'], '</td>', "\n";
-			echo '<td>', $entry['line'], '</td>', "\n";
-			echo '<td>', $entry['function'], '</td>', "\n";
+    foreach ($raw as $entry) {
+        $args = '';
+        if ($entry['function'] != 'backtrace') {
+            echo '<tr>', "\n";
+            echo '<td>', $entry['file'], '</td>', "\n";
+            echo '<td>', $entry['line'], '</td>', "\n";
+            echo '<td>', $entry['function'], '</td>', "\n";
 
-			foreach ($entry['args'] as $a) {
-				if (!empty($args)) {
-					$args .= ', ';
-				}
-				switch (gettype($a)) {
-					case 'integer':
-					case 'double':
-						$args .= $a;
-						break;
-					case 'string':
-						$a = htmlspecialchars(substr($a, 0, 64)) . ((strlen($a) > 64) ? '...' : '');
-						$args .= "\"$a\"";
-						break;
-					case 'array':
-						$args .= 'Array(' . count($a) . ')';
-						break;
-					case 'object':
-						$args .= 'Object(' . get_class($a) . ')';
-						break;
-					case 'resource':
+            foreach ($entry['args'] as $a) {
+                if (!empty($args)) {
+                    $args .= ', ';
+                }
+                switch (gettype($a)) {
+                    case 'integer':
+                    case 'double':
+                        $args .= $a;
+                        break;
+                    case 'string':
+                        $a = htmlspecialchars(substr($a, 0, 64)) . ((strlen($a) > 64) ? '...' : '');
+                        $args .= "\"$a\"";
+                        break;
+                    case 'array':
+                        $args .= 'Array(' . count($a) . ')';
+                        break;
+                    case 'object':
+                        $args .= 'Object(' . get_class($a) . ')';
+                        break;
+                    case 'resource':
 //            $args .= 'Resource('.strstr($a, '#').')';
-						$args .= $a;
-						break;
-					case 'boolean':
-						$args .= $a ? 'True' : 'False';
-						break;
-					case 'NULL':
-						$args .= 'Null';
-						break;
-					default:
-						$args .= 'Unknown';
-				}
-			}
-			if (!$args) $args = '&nbsp;';
-			echo '<td>', $args, '</td>', "\n";
-			echo '</tr>', "\n";
-		}
-	}
+                        $args .= $a;
+                        break;
+                    case 'boolean':
+                        $args .= $a ? 'True' : 'False';
+                        break;
+                    case 'NULL':
+                        $args .= 'Null';
+                        break;
+                    default:
+                        $args .= 'Unknown';
+                }
+            }
+            if (!$args) $args = '&nbsp;';
+            echo '<td>', $args, '</td>', "\n";
+            echo '</tr>', "\n";
+        }
+    }
 
-	echo '</table>', "\n";
+    echo '</table>', "\n";
 }
 
 // Removes parameter '$key' from '$sourceURL' query string (if present)
 function removeParam($key, $sourceURL) {
-	$url = parse_url($sourceURL);
-	if (!isset($url['query'])) return $sourceURL;
-	parse_str($url['query'], $query_data);
-	if (!isset($query_data[$key])) return $sourceURL;
-	unset($query_data[$key]);
-	$url['query'] = http_build_query($query_data);
-	return build_url($url);
+    $url = parse_url($sourceURL);
+    if (!isset($url['query'])) return $sourceURL;
+    parse_str($url['query'], $query_data);
+    if (!isset($query_data[$key])) return $sourceURL;
+    unset($query_data[$key]);
+    $url['query'] = http_build_query($query_data);
+    return build_url($url);
 }
 
 function build_url($parsed_url) {
-	$scheme = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
-	$host = isset($parsed_url['host']) ? $parsed_url['host'] : '';
-	$port = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
-	$user = isset($parsed_url['user']) ? $parsed_url['user'] : '';
-	$pass = isset($parsed_url['pass']) ? ':' . $parsed_url['pass'] : '';
-	$pass = ($user || $pass) ? "$pass@" : '';
-	$path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
-	$query = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
-	$query = ($query == '?') ? '' : $query;
-	$fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
-	return "$scheme$user$pass$host$port$path$query$fragment";
+    $scheme = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+    $host = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+    $port = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+    $user = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+    $pass = isset($parsed_url['pass']) ? ':' . $parsed_url['pass'] : '';
+    $pass = ($user || $pass) ? "$pass@" : '';
+    $path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+    $query = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+    $query = ($query == '?') ? '' : $query;
+    $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+    return "$scheme$user$pass$host$port$path$query$fragment";
 }

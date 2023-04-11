@@ -27,7 +27,7 @@ if (empty($action)) {
     $role_name = User::getRoleName($role, UID);
     if (function_exists('curl_init')) {
         $c = curl_version();
-/*vot*/		$php_ver .= ', curl' . $c['version'];
+/*vot*/ $php_ver .= ', curl' . $c['version'];
     }
     if (class_exists('ZipArchive', false)) {
         $php_ver .= ',zip';

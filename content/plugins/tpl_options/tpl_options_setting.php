@@ -6,7 +6,7 @@ Plugin Name: Template options plugin
 
 //Plugin settings page
 function plugin_setting_view() {
-	TplOptions::getInstance()->setting();
+    TplOptions::getInstance()->setting();
 }
 
 //Plugin settings empty function

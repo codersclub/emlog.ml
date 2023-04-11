@@ -60,12 +60,12 @@
                     <div class="card-body">
                         <p class="card-text text-muted small">
                             <?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
-							<?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
-							<?= lang('founder') ?>: <?= $author ?><br>
-							<?= lang('file_size') ?>: <?= $value['attsize'] ?>,
+                            <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
+                            <?= lang('founder') ?>: <?= $author ?><br>
+                            <?= lang('file_size') ?>: <?= $value['attsize'] ?>,
                             <?php if ($value['width'] && $value['height']): ?>
-								<?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
-								<?= lang('image_address_original') ?>: <span class="text-gray-400"><?= $media_url ?></span>
+                                <?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
+                                <?= lang('image_address_original') ?>: <span class="text-gray-400"><?= $media_url ?></span>
                             <?php endif ?>
                         </p>
                         <p class="card-text d-flex justify-content-between">

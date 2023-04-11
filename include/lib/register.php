@@ -15,12 +15,12 @@ class Register {
         $emkey = isset($options_cache['emkey']) ? $options_cache['emkey'] : '';
 
         if (strlen($emkey) !== self::EMKEY_LEN) {
-/*vot*/			if (defined('DEV_MODE')) {
-				return true;
-			} else {
-				return false;
-			}
-		}
+/*vot*/            if (defined('DEV_MODE')) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         return true;
     }
 

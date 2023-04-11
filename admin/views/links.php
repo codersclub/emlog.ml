@@ -54,7 +54,7 @@
                             </td>
                             <td>
                                 <?php if ($value['hide'] == 'n'): ?>
-<!--vot-->			<a href="link.php?action=hide&amp;linkid=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('hide') ?></a>
+<!--vot-->                      <a href="link.php?action=hide&amp;linkid=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('hide') ?></a>
                                 <?php else: ?>
 <!--vot-->                      <a href="link.php?action=show&amp;linkid=<?= $value['id'] ?>" class="badge badge-warning"><?= lang('show') ?></a>
                                 <?php endif ?>

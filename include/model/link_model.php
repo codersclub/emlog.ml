@@ -31,16 +31,16 @@ class Link_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "link SET $upStr WHERE id=$linkId");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "link SET $upStr WHERE id=$linkId");
     }
 
     function addLink($name, $url, $des) {
-/*vot*/		$sql = "INSERT INTO " . DB_PREFIX . "link (sitename,siteurl,description) VALUES('$name','$url','$des')";
+/*vot*/        $sql = "INSERT INTO " . DB_PREFIX . "link (sitename,siteurl,description) VALUES('$name','$url','$des')";
         $this->db->query($sql);
     }
 
     function deleteLink($linkId) {
-/*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "link WHERE id=$linkId");
+/*vot*/        $this->db->query("DELETE FROM " . DB_PREFIX . "link WHERE id=$linkId");
     }
 
 }

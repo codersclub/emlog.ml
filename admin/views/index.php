@@ -38,7 +38,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-						<?= lang('pending_review') ?>
+                        <?= lang('pending_review') ?>
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./comment.php?hide=y"><?= $sta_cache['hidecomnum'] ?></a></div>
                                         </div>
@@ -55,7 +55,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-						<?= lang('user_num') ?>
+                                                <?= lang('user_num') ?>
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./user.php"><?= count($user_cache) ?></a></div>
                                         </div>

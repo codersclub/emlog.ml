@@ -3,15 +3,15 @@
 
 // Execute this function when the plugin is started
 function callback_init() {
-	// do something
+    // do something
 }
 
 // Execute this function when the plugin is removed
 function callback_rm() {
-	// do something
+    // do something
 }
 
 // Execute this function when the plugin is updated
 function callback_up() {
-	// do something
+    // do something
 }

@@ -14,7 +14,7 @@
                             <h2 class="mb-0">
                                 <button class="btn btn-link widget-title" type="button" data-toggle="collapse" data-target="#bloggerForm" aria-expanded="true"
                                         aria-controls="blogger">
-									<?= lang('blogger') ?>
+                                    <?= lang('blogger') ?>
                                 </button>
                                 <li class="widget-act-add"></li>
                                 <li class="widget-act-del"></li>
@@ -234,7 +234,7 @@
                     <?php
                     foreach ($custom_widget as $key => $val):
                         preg_match("/^custom_wg_(\d+)/", $key, $matches);
-						$custom_wg_title = empty($val['title']) ? lang('widget_untitled') . ' (' . $matches[1] . ')' : $val['title'];
+                        $custom_wg_title = empty($val['title']) ? lang('widget_untitled') . ' (' . $matches[1] . ')' : $val['title'];
                         ?>
                         <div class="card" id="<?= $key ?>">
                             <div class="card-header">
@@ -306,11 +306,11 @@
                     <div id="sortable" class="adm_widget_box">
                         <?php
                         foreach ($widgets as $widget):
-							$flg = strpos($widget, 'custom_wg_') === 0;                                                         //If it is a custom widgets
-							$title = ($flg && isset($custom_widget[$widget]['title'])) ? $custom_widget[$widget]['title'] : ''; //Get custom widget title
+                            $flg = strpos($widget, 'custom_wg_') === 0;                                                         //If it is a custom widgets
+                            $title = ($flg && isset($custom_widget[$widget]['title'])) ? $custom_widget[$widget]['title'] : ''; //Get custom widget title
                             if ($flg && empty($title)) {
                                 preg_match("/^custom_wg_(\d+)/", $widget, $matches);
-								$title = lang('widget_untitled') . ' (' . $matches[1] . ')';
+                                $title = lang('widget_untitled') . ' (' . $matches[1] . ')';
                             }
                             ?>
                             <div class="card m-1 active_widget" style="cursor: move" id="em_<?= $widget ?>">

@@ -8,22 +8,22 @@
 
 class StorageType {
     /**
-	 * String
+     * String
      */
     const STRING = "string";
 
     /**
-	 * Number
+     * Number
      */
     const NUMBER = "number";
 
     /**
-	 * Boolean
+     * Boolean
      */
     const BOOLEAN = "boolean";
 
     /**
-	 * Array/object
+     * Array/object
      */
     const ARRAY_OBJECT = "array";
 }
@@ -32,32 +32,32 @@ class Storage {
     const API_VERSION = 1;
 
     /**
-	 * Default data storage type
-	 * @var string Default data storage type
+     * Default data storage type
+     * @var string Default data storage type
      */
     private static $default_storage_type = "string";
 
     /**
-	 * Available data storage types
-	 * @var array Available data storage types
+     * Available data storage types
+     * @var array Available data storage types
      */
     private static $available_storage_type = array("string", "number", "boolean", "array");
 
     /**
-	 * The name of the currently called plugin
-	 * @var string The name of the currently called plugin
+     * The name of the currently called plugin
+     * @var string The name of the currently called plugin
      */
     private $plugin_name = NULL;
 
     /**
-	 * Database connection instance
-	 * @var MySql Database connection instance
+     * Database connection instance
+     * @var MySql Database connection instance
      */
     private $db_conn = NULL;
 
     /**
-	 * Constructor
-	 * @param string $plugin_name Plug-in name
+     * Constructor
+     * @param string $plugin_name Plug-in name
      */
     private function __construct($plugin_name) {
         $this->plugin_name = $plugin_name;
@@ -65,9 +65,9 @@ class Storage {
     }
 
     /**
-	 * Get Storage instance
-	 * @param string $plugin_name Plug-in name
-	 * @return Storage Storage Instance
+     * Get Storage instance
+     * @param string $plugin_name Plug-in name
+     * @return Storage Storage Instance
      */
     public static function getInstance($plugin_name) {
         $plugin_name = self::_filterPlugin($plugin_name);
@@ -75,12 +75,12 @@ class Storage {
     }
 
     /**
-	 * Add/update data
-	 * Create new data when the data to be updated does not exist
-	 * When the data to be updated exists, the type and value of the data are updated at the same time
-	 * @param string $name Data name
-	 * @param mixed $value Data value
-	 * @param string $type Data type
+     * Add/update data
+     * Create new data when the data to be updated does not exist
+     * When the data to be updated exists, the type and value of the data are updated at the same time
+     * @param string $name Data name
+     * @param mixed $value Data value
+     * @param string $type Data type
      */
     public function setValue($name, $value = NULL, $type = NULL) {
         $name = $this->_filterName($name);
@@ -119,12 +119,12 @@ class Storage {
     }
 
     /**
-	 * Update data
-	 * Update the value of the data when the data to be updated exists
-	 * FALSE is returned when the data to be updated does not exist
-	 * @param string $name Data name
-	 * @param string $value Data value
-	 * @return bool Update result
+     * Update data
+     * Update the value of the data when the data to be updated exists
+     * FALSE is returned when the data to be updated does not exist
+     * @param string $name Data name
+     * @param string $value Data value
+     * @return bool Update result
      */
     public function updateValue($name, $value = NULL) {
         $name = $this->_filterName($name);
@@ -163,11 +163,11 @@ class Storage {
     }
 
     /**
-	 * Get data value
-	 * When the data exists, return the value of the data (automatic type conversion)
-	 * When the data does not exist, return FALSE
-	 * @param string $name Data name
-	 * @return mixed/FALSE Data value
+     * Get data value
+     * When the data exists, return the value of the data (automatic type conversion)
+     * When the data does not exist, return FALSE
+     * @param string $name Data name
+     * @return mixed/FALSE Data value
      */
     public function getValue($name) {
         $name = $this->_filterName($name);
@@ -195,11 +195,11 @@ class Storage {
     }
 
     /**
-	 * Get data type
-	 * When data exists, return the type of data
-	 * When the data does not exist, return FALSE
-	 * @param string $name Data name
-	 * @return string/FALSE Data value
+     * Get data type
+     * When data exists, return the type of data
+     * When the data does not exist, return FALSE
+     * @param string $name Data name
+     * @return string/FALSE Data value
      */
     public function getType($name) {
         $name = $this->_filterName($name);
@@ -215,9 +215,9 @@ class Storage {
     }
 
     /**
-	 * Get all data names
-	 * Return all data names created by the current plugin
-	 * @return array Data name array
+     * Get all data names
+     * Return all data names created by the current plugin
+     * @return array Data name array
      */
     public function getAllName() {
         $names = [];
@@ -230,9 +230,9 @@ class Storage {
     }
 
     /**
-	 * Number of statistics
-	 * Returns the amount of data created by the current plugin
-	 * @return integer Number of data
+     * Number of statistics
+     * Returns the amount of data created by the current plugin
+     * @return integer Number of data
      */
     public function countStorage() {
         $sql = "SELECT count(`name`) as 'count' FROM " . DB_PREFIX . "storage WHERE `plugin` = '" . $this->db_conn->escape_string($this->plugin_name) . "'";
@@ -241,9 +241,9 @@ class Storage {
     }
 
     /**
-	 * Check if the data exists
-	 * @param string $name Data name
-	 * @return bool Test result
+     * Check if the data exists
+     * @param string $name Data name
+     * @return bool Test result
      */
     public function checkNameExist($name) {
         $name = $this->_filterName($name);
@@ -255,11 +255,11 @@ class Storage {
     }
 
     /**
-	 * Returns the creation time of the data
-	 * Data existence is the timestamp of when the data was created
-	 * FALSE if the data does not exist
-	 * @param mixed $name Data name
-	 * @return integer/FALSE Creation time
+     * Returns the creation time of the data
+     * Data existence is the timestamp of when the data was created
+     * FALSE if the data does not exist
+     * @param mixed $name Data name
+     * @return integer/FALSE Creation time
      */
     public function getNameCreateDate($name) {
         $name = $this->_filterName($name);
@@ -275,11 +275,11 @@ class Storage {
     }
 
     /**
-	 * Return the last edit time of the data
-	 * Data existence is to return the timestamp of the last modification time of the data
-	 * FALSE if the data does not exist
-	 * @param mixed $name Data name
-	 * @return integer/FALSE Edit time
+     * Return the last edit time of the data
+     * Data existence is to return the timestamp of the last modification time of the data
+     * FALSE if the data does not exist
+     * @param mixed $name Data name
+     * @return integer/FALSE Edit time
      */
     public function getNameLastUpdateDate($name) {
         $name = $this->_filterName($name);
@@ -295,8 +295,8 @@ class Storage {
     }
 
     /**
-	 * Delete a data
-	 * @param mixed $name Data name
+     * Delete a data
+     * @param mixed $name Data name
      */
     public function deleteName($name) {
         $name = $this->_filterName($name);
@@ -306,9 +306,9 @@ class Storage {
     }
 
     /**
-	 * Delete all data created by this plugin
-	 * @param mixed $confirm Please pass in uppercase "YES" to confirm deletion
-	 * @return bool Deleting result
+     * Delete all data created by this plugin
+     * @param mixed $confirm Please pass in uppercase "YES" to confirm deletion
+     * @return bool Deleting result
      */
     public function deleteAllName($confirm) {
         if ($confirm !== "YES") {
@@ -321,9 +321,9 @@ class Storage {
     }
 
     /**
-	 * Internal function: filter plug-in name
-	 * @param string $plugin Plug-in name
-	 * @return string Plug-in name
+     * Internal function: filter plug-in name
+     * @param string $plugin Plug-in name
+     * @return string Plug-in name
      */
     public static function _filterPlugin($plugin) {
         $plugin = trim($plugin);
@@ -340,9 +340,9 @@ class Storage {
     }
 
     /**
-	 * Internal function: filter data name
-	 * @param string $name Data name
-	 * @return string Data name
+     * Internal function: filter data name
+     * @param string $name Data name
+     * @return string Data name
      */
     public function _filterName($name) {
         $name = trim($name);
@@ -359,9 +359,9 @@ class Storage {
     }
 
     /**
-	 * Internal function: filter Type name
-	 * @param string $type Type name
-	 * @return string Type name
+     * Internal function: filter Type name
+     * @param string $type Type name
+     * @return string Type name
      */
     public function _filterType($type) {
         $type = strtolower(trim($type));

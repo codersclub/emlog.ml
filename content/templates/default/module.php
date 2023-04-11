@@ -13,7 +13,7 @@ if (!defined('EMLOG_ROOT')) {
 function widget_link($title) {
     global $CACHE;
     $link_cache = $CACHE->readCache('link');
-	//if (!blog_tool_ishome()) return;//Only show the friend link on the homepage and remove the double slash comment
+    //if (!blog_tool_ishome()) return;//Only show the friend link on the homepage and remove the double slash comment
     ?>
     <div class="widget shadow-theme">
         <div class="widget-title">
@@ -77,8 +77,8 @@ function widget_tag($title) {
         </div>
         <div class="unstyle-li tag-container">
             <?php foreach ($tag_cache as $value): ?>
-				<span style="font-size:<?= $value['fontsize'] ?>pt; line-height:30px;">
-          	<a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> <?=lang('_posts')?>" class='tags_side' ><?= $value['tagname'] ?></a></span>
+                <span style="font-size:<?= $value['fontsize'] ?>pt; line-height:30px;">
+              <a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> <?=lang('_posts')?>" class='tags_side' ><?= $value['tagname'] ?></a></span>
             <?php endforeach ?>
         </div>
     </div>
@@ -196,17 +196,17 @@ function widget_hotlog($title) {
  * Sidebar: Search
  */
 function widget_search($title) { ?>
-	<div class="widget shadow-theme">
-		<div class="widget-title">
-			<h3><?= $title ?></h3>
-		</div>
-		<div class="unstyle-li" style="text-align: center;">
-			<form name="keyform" method="get" action="<?= BLOG_URL ?>index.php">
+    <div class="widget shadow-theme">
+        <div class="widget-title">
+            <h3><?= $title ?></h3>
+        </div>
+        <div class="unstyle-li" style="text-align: center;">
+            <form name="keyform" method="get" action="<?= BLOG_URL ?>index.php">
 <!--vot-->                  <input name="keyword" class="search form-control" autocomplete="off" aria-label="<?= lang('search') ?>" type="text"/>
-          	<input type="submit" value="<?=lang('search')?>">
-			</form>
-		</div>
-	</div>
+              <input type="submit" value="<?=lang('search')?>">
+            </form>
+        </div>
+    </div>
 <?php } ?>
 <?php
 /**
@@ -314,8 +314,8 @@ function blog_navi() {
  * blog:Top
  */
 function topflg($top, $sortop = 'n', $sortid = null) {
-	$ishome_flg = '<span title="' . lang('home_top') . '" class="log-topflg" >' . lang('top') . '</span>';
-	$issort_flg = '<span title="' . lang('category_top') . '" class="log-topflg" >' . lang('category_top') . '</span>';
+    $ishome_flg = '<span title="' . lang('home_top') . '" class="log-topflg" >' . lang('top') . '</span>';
+    $issort_flg = '<span title="' . lang('category_top') . '" class="log-topflg" >' . lang('category_top') . '</span>';
     if (blog_tool_ishome()) {
         echo $top == 'y' ? $ishome_flg : '';
     } elseif ($sortid) {
@@ -329,7 +329,7 @@ function topflg($top, $sortop = 'n', $sortid = null) {
  * Article details page: edit link
  */
 function editflg($logid, $author) {
-	$editflg = User::haveEditPermission() || $author == UID ? '&nbsp;&nbsp;&nbsp;<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank">' . lang('edit') . '</a>' : '';
+    $editflg = User::haveEditPermission() || $author == UID ? '&nbsp;&nbsp;&nbsp;<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank">' . lang('edit') . '</a>' : '';
     echo $editflg;
 }
 
@@ -358,8 +358,8 @@ function bloglist_sort($blogid) {
     ?>
     <?php if (!empty($log_cache_sort[$blogid])) { ?>
         <span class="loglist-sort">
-			<a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
-		</span>
+            <a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
+        </span>
     <?php }
 } ?>
 <?php
@@ -371,9 +371,9 @@ function blog_tag($blogid) {
     $tag_ids = $tag_model->getTagIdsFromBlogId($blogid);
     $tag_names = $tag_model->getNamesFromIds($tag_ids);
     if (!empty($tag_names)) {
-/*vot*/         $tag = lang('tags') . ': ';
+/*vot*/        $tag = lang('tags') . ': ';
         foreach ($tag_names as $key => $value) {
-/*vot*/			$tag .= "	<a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
+/*vot*/        $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
         }
         echo $tag;
     }
@@ -402,10 +402,10 @@ function blog_author($uid) {
 function neighbor_log($neighborLog) {
     extract($neighborLog) ?>
     <?php if ($prevLog): ?>
-          <span class="prev-log"><a href="<?= Url::log($prevLog['gid']) ?>" title="<?= $prevLog['title'] ?>"><?=lang('prev')?></a></span>
+        <span class="prev-log"><a href="<?= Url::log($prevLog['gid']) ?>" title="<?= $prevLog['title'] ?>"><?=lang('prev')?></a></span>
     <?php endif ?>
     <?php if ($nextLog): ?>
-          <span class="next-log"><a href="<?= Url::log($nextLog['gid']) ?>" title="<?= $nextLog['title'] ?>"><?=lang('next')?></a></span>
+        <span class="next-log"><a href="<?= Url::log($nextLog['gid']) ?>" title="<?= $nextLog['title'] ?>"><?=lang('next')?></a></span>
     <?php endif ?>
 <?php } ?>
 <?php
@@ -415,7 +415,7 @@ function neighbor_log($neighborLog) {
 function blog_comments($comments) {
     extract($comments);
     if ($commentStacks): ?>
-              <div class="comment-header"><b><?=lang('comments')?>:</b></div>
+        <div class="comment-header"><b><?=lang('comments')?>:</b></div>
     <?php endif ?>
     <?php
     $isGravatar = Option::get('isgravatar');
@@ -478,10 +478,11 @@ function blog_comments_children($comments, $children) {
                     <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                     <div class="comment-content"><?= $comment['content'] ?></div>
                     <?php if ($comment['level'] < 4): ?>
-          					<div class="comment-reply">
-          						<button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
-						</div><?php endif ?>
-				</div>
+                        <div class="comment-reply">
+                            <button class="com-reply comment-replay-btn"><?=lang('reply')?></button>
+                        </div>
+                    <?php endif ?>
+                </div>
             <?php endif ?>
             <?php blog_comments_children($comments, $comment['children']) ?>
         </div>
@@ -495,50 +496,50 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
     $isNeedChinese = Option::get('comment_needchinese');
     if ($allow_remark == 'y'): ?>
         <div id="comments">
-			<div class="comment-post" id="comment-post">
-          			<div class="cancel-reply" id="cancel-reply" style="display:none">
-          				<button class="comment-replay-btn"><?=lang('cancel_reply')?></button>
-          			</div>
-				<form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform"
-					  is-chinese="<?= $isNeedChinese ?>">
-					<input type="hidden" name="gid" value="<?= $logid ?>"/>
-					<textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" required></textarea>
+            <div class="comment-post" id="comment-post">
+                <div class="cancel-reply" id="cancel-reply" style="display:none">
+                    <button class="comment-replay-btn"><?=lang('cancel_reply')?></button>
+                </div>
+                <form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform"
+                      is-chinese="<?= $isNeedChinese ?>">
+                    <input type="hidden" name="gid" value="<?= $logid ?>"/>
+                    <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" required></textarea>
                     <?php if (User::isVistor()): ?>
-						<div class="comment-info" id="comment-info">
-          							<input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"
-								   value="<?= $ckname ?>" size="22"
+                        <div class="comment-info" id="comment-info">
+                            <input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"
+                                   value="<?= $ckname ?>" size="22"
                                    tabindex="1" placeholder="<?=lang('nickname')?>*" required/>
                             <input class="form-control com_control comment-mail" id="info_m" autocomplete="off" type="text" name="commail" maxlength="128"
-								   value="<?= $ckmail ?>" size="22"
+                                   value="<?= $ckmail ?>" size="22"
                                    tabindex="2" placeholder="<?=lang('homepage')?>" />
                             <input class="form-control com_control comment-url" id="info_u" autocomplete="off" type="text" name="comurl" maxlength="128"
-				value="<?= $ckurl ?>" size="22"
+                                   value="<?= $ckurl ?>" size="22"
                                    tabindex="3" placeholder="<?=lang('homepage')?>"/>
-			</div>
+                        </div>
                     <?php endif ?>
 
-					<span class="com_submit_p">
-						<input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
+                    <span class="com_submit_p">
+                        <input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
                                id="comment_submit" value="<?=lang('comment_leave')?>" tabindex="6"/>
-					</span>
+                    </span>
                     <?php if ($verifyCode != "") { ?>
-			<!-- Verification window -->
-						<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content" style="display: table-cell;">
+                        <!-- Verification window -->
+                        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="display: table-cell;">
                                     <div class="modal-header" style="border-bottom: 0px;">
-					<?=lang('enter_captcha')?>
-				    </div>
+                                        <?=lang('enter_captcha')?>
+                                    </div>
                                     <?= $verifyCode ?>
-									<div class="modal-footer" style="border-top: 0px;">
-          				<button type="button" class="btn" id="close-modal" data-dismiss="modal"><?=lang('close')?></button>
-          				<button type="submit" class="btn" id="comment_submit2"><?=lang('submit')?></button>
-									</div>
-								</div>
-							</div>
-							<div class="lock-screen"></div>
-						</div>
-			<!-- Verification window (end)  -->
+                                    <div class="modal-footer" style="border-top: 0px;">
+                                        <button type="button" class="btn" id="close-modal" data-dismiss="modal"><?=lang('close')?></button>
+                                        <button type="submit" class="btn" id="comment_submit2"><?=lang('submit')?></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lock-screen"></div>
+                        </div>
+                        <!-- Verification window (end)  -->
                     <?php } ?>
                     <input type="hidden" name="pid" id="comment-pid" value="0" tabindex="1"/>
                 </form>

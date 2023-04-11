@@ -106,37 +106,37 @@ if ($action == 'dosignup') {
 
     if (!checkMail($mail)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('email_format_error'));
+/*vot*/     Output::error(lang('email_format_error'));
         }
         emDirect('./account.php?action=signup&error_login=1');
     }
     if (!User::checkLoginCode($login_code)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('captcha_error'));
+/*vot*/     Output::error(lang('captcha_error'));
         }
         emDirect('./account.php?action=signup&err_ckcode=1');
     }
     if (Option::get('email_code') === 'y' && !User::checkMailCode($mail_code)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('verification_error'));
+/*vot*/     Output::error(lang('verification_error'));
         }
         emDirect('./account.php?action=signup&err_mail_code=1');
     }
     if ($User_Model->isMailExist($mail)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('email_in_use'));
+/*vot*/     Output::error(lang('email_in_use'));
         }
         emDirect('./account.php?action=signup&error_exist=1');
     }
 /*vot*/ if (strlen($passwd) < 5) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('password_short'));
+/*vot*/     Output::error(lang('password_short'));
         }
         emDirect('./account.php?action=signup&error_pwd_len=1');
     }
     if ($passwd !== $repasswd) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('password_not_equal'));
+/*vot*/     Output::error(lang('password_not_equal'));
         }
         emDirect('./account.php?action=signup&error_pwd2=1');
     }
@@ -156,14 +156,14 @@ if ($action == 'send_email_code') {
     $mail = Input::postStrVar('mail');
 
     if (!checkMail($mail)) {
-/*vot*/		Output::error(lang('email_wrong'));
+/*vot*/ Output::error(lang('email_wrong'));
     }
 
     $ret = Notice::sendRegMailCode($mail);
     if ($ret) {
         Output::ok();
     } else {
-/*vot*/		Output::error(lang('test_mail_failed'));
+/*vot*/ Output::error(lang('test_mail_failed'));
     }
 }
 
@@ -175,7 +175,7 @@ if ($action == 'reset') {
     $login_code = Option::get('login_code') === 'y';
     $error_msg = '';
 
-	$page_title = lang('retrieve_password');
+    $page_title = lang('retrieve_password');
     include View::getAdmView('user_head');
     require_once View::getAdmView('reset');
     View::output();
@@ -190,13 +190,13 @@ if ($action == 'doreset') {
 
     if (!User::checkLoginCode($login_code)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('captcha_error'));
+/*vot*/     Output::error(lang('captcha_error'));
         }
         emDirect('./account.php?action=reset&err_ckcode=1');
     }
     if (!$mail || !$User_Model->isMailExist($mail)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('email_invalid'));
+/*vot*/     Output::error(lang('email_invalid'));
         }
         emDirect('./account.php?action=reset&error_mail=1');
     }
@@ -209,7 +209,7 @@ if ($action == 'doreset') {
         emDirect("./account.php?action=reset2&succ_mail=1");
     } else {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('email_send_error'));
+/*vot*/     Output::error(lang('email_send_error'));
         }
         emDirect("./account.php?action=reset&error_sendmail=1");
     }
@@ -223,7 +223,7 @@ if ($action == 'reset2') {
     $login_code = Option::get('login_code') === 'y';
     $error_msg = '';
 
-	$page_title = lang('retrieve_password');
+    $page_title = lang('retrieve_password');
     include View::getAdmView('user_head');
     require_once View::getAdmView('reset2');
     View::output();
@@ -237,19 +237,19 @@ if ($action == 'doreset2') {
 
     if (strlen($passwd) < 6) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('password_length_invalid'));
+/*vot*/     Output::error(lang('password_length_invalid'));
         }
         emDirect('./account.php?action=reset2&error_pwd_len=1');
     }
     if ($passwd !== $repasswd) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('password_not_equal'));
+/*vot*/     Output::error(lang('password_not_equal'));
         }
         emDirect('./account.php?action=reset2&error_pwd2=1');
     }
     if (!$mail_code || !User::checkMailCode($mail_code)) {
         if ($resp === 'json') {
-/*vot*/			Output::error(lang('mail_code_invalid'));
+/*vot*/     Output::error(lang('mail_code_invalid'));
         }
         emDirect('./account.php?action=reset2&err_mail_code=1');
     }

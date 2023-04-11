@@ -65,7 +65,7 @@ if ($action === 'update' && User::isAdmin()) {
         array_unshift($sql, $setchar);
         $query = '';
         foreach ($sql as $value) {
-			// Only perform updates required for the current version
+            // Only perform updates required for the current version
             if (!empty($value) && $value[0] == '#') {
                 preg_match("/#\s(pro\s[\.\d]+)/i", $value, $v);
                 $ver = isset($v[1]) ? trim($v[1]) : '';

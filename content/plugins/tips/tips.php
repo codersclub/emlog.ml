@@ -21,16 +21,16 @@ load_language('plugin/tips');
 
 
 function tips() {
-/*vot*/	$array_tips = lang('array_tips');
-	$i = mt_rand(0, count($array_tips) - 1);
-	$tip = $array_tips[$i];
-	echo "<div id=\"tip\"> $tip</div>";
+/*vot*/    $array_tips = lang('array_tips');
+    $i = mt_rand(0, count($array_tips) - 1);
+    $tip = $array_tips[$i];
+    echo "<div id=\"tip\"> $tip</div>";
 }
 
 addAction('adm_main_top', 'tips');
 
 function tips_css() {
-	echo "<style>
+    echo "<style>
     #tip{
         background:url(../content/plugins/tips/icon_tips.gif) no-repeat left 3px;
         padding:3px 18px;

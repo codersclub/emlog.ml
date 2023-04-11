@@ -31,8 +31,8 @@ if (!defined('EMLOG_ROOT')) {
                             <hr class="list-line"/>
                             <div class="row info-row">
                                 <div class="log-info">
-          							<?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
-								<?= date('Y-m-d H:i', $value['date']) ?>&nbsp;
+                                    <?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
+                                    <?= date('Y-m-d H:i', $value['date']) ?>&nbsp;
                                     <span class="mh"><?php editflg($value['logid'], $value['author']) ?></span>
                                 </div>
                                 <div class="log-count">

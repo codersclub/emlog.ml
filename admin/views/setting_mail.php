@@ -44,7 +44,7 @@
                 <input type="button" value="<?= lang('send_test') ?>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#testMail"/>
             </div>
             <div class="alert alert-warning">
-				<?= lang('send_test_prompt') ?>
+                <?= lang('send_test_prompt') ?>
             </div>
             <!-- Set the modal box for receiving mailboxes -->
             <div class="modal fade" id="testMail">

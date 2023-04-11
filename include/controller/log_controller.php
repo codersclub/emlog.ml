@@ -95,7 +95,7 @@ class Log_Controller {
             }
             $neighborLog = $Log_Model->neighborLog($timestamp);
             $tb = [];
-			$tb_url = '';//Compatible not delete references Templates
+            $tb_url = '';//Compatible not delete references Templates
             include View::getView('echo_log');
         } elseif ($type == 'page') {
             $template = !empty($template) && file_exists(TEMPLATE_PATH . $template . '.php') ? $template : 'page';

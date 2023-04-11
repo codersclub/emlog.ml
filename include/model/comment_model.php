@@ -22,7 +22,7 @@ class Comment_Model {
         $andQuery .= $hide ? " and a.hide='$hide'" : '';
         $condition = '';
 
-/*vot*/		$sql = "SELECT * FROM " . DB_PREFIX . "comment AS a WHERE $andQuery ORDER BY a.top ASC, a.date ASC $condition";
+/*vot*/        $sql = "SELECT * FROM " . DB_PREFIX . "comment AS a WHERE $andQuery ORDER BY a.top ASC, a.date ASC $condition";
 
         $ret = $this->db->query($sql);
         $comments = [];
@@ -76,8 +76,8 @@ class Comment_Model {
     function getCommentsForAdmin($blogId = null, $hide = null, $page = null) {
         $orderBy = $blogId ? "ORDER BY a.top DESC, a.date DESC" : 'ORDER BY a.date DESC';
         $andQuery = '1=1';
-/*vot*/		$andQuery .= $blogId ? " AND a.gid=$blogId" : '';
-/*vot*/		$andQuery .= $hide ? " AND a.hide='$hide'" : '';
+/*vot*/        $andQuery .= $blogId ? " AND a.gid=$blogId" : '';
+/*vot*/        $andQuery .= $hide ? " AND a.hide='$hide'" : '';
         $condition = '';
         if ($page) {
             $perpage_num = Option::get('admin_perpage_num');
@@ -88,8 +88,8 @@ class Comment_Model {
             $condition = "LIMIT $startId, " . $perpage_num;
         }
 
-/*vot*/		$andQuery .= !User::haveEditPermission() ? ' AND b.author=' . UID : '';
-/*vot*/		$sql = "SELECT *,a.hide,a.date,a.top FROM " . DB_PREFIX . "comment AS a, " . DB_PREFIX . "blog AS b WHERE $andQuery AND a.gid=b.gid $orderBy $condition";
+/*vot*/        $andQuery .= !User::haveEditPermission() ? ' AND b.author=' . UID : '';
+/*vot*/        $sql = "SELECT *,a.hide,a.date,a.top FROM " . DB_PREFIX . "comment AS a, " . DB_PREFIX . "blog AS b WHERE $andQuery AND a.gid=b.gid $orderBy $condition";
 
         $ret = $this->db->query($sql);
         $comments = [];
@@ -110,7 +110,7 @@ class Comment_Model {
     }
 
     function getOneComment($commentId, $nl2br = false) {
-/*vot*/		$sql = "SELECT * FROM " . DB_PREFIX . "comment WHERE cid=$commentId";
+/*vot*/        $sql = "SELECT * FROM " . DB_PREFIX . "comment WHERE cid=$commentId";
         $res = $this->db->query($sql);
         if ($this->db->affected_rows() < 1) {
             return false;
@@ -124,12 +124,12 @@ class Comment_Model {
 
     function getCommentNum($blogId = null, $hide = null) {
         $andQuery = '1=1';
-/*vot*/		$andQuery .= $blogId ? " AND a.gid=$blogId" : '';
-/*vot*/		$andQuery .= $hide ? " AND a.hide='$hide'" : '';
+/*vot*/        $andQuery .= $blogId ? " AND a.gid=$blogId" : '';
+/*vot*/        $andQuery .= $hide ? " AND a.hide='$hide'" : '';
         if (User::haveEditPermission()) {
-/*vot*/			$sql = "SELECT count(*) FROM " . DB_PREFIX . "comment AS a WHERE $andQuery";
+/*vot*/            $sql = "SELECT count(*) FROM " . DB_PREFIX . "comment AS a WHERE $andQuery";
         } else {
-/*vot*/			$sql = "SELECT count(*) FROM " . DB_PREFIX . "comment AS a, " . DB_PREFIX . "blog AS b WHERE $andQuery AND a.gid=b.gid AND b.author=" . UID;
+/*vot*/            $sql = "SELECT count(*) FROM " . DB_PREFIX . "comment AS a, " . DB_PREFIX . "blog AS b WHERE $andQuery AND a.gid=b.gid AND b.author=" . UID;
         }
         $res = $this->db->once_fetch_array($sql);
         return $res['count(*)'];
@@ -168,7 +168,7 @@ class Comment_Model {
         $row = $this->db->once_fetch_array("SELECT gid FROM " . DB_PREFIX . "comment WHERE cid=$commentId");
         $blogId = (int)$row['gid'];
         $commentIds = array($commentId);
-		/* Get sub-comment ID */
+        /* Get sub-comment ID */
         $query = $this->db->query("SELECT cid,pid FROM " . DB_PREFIX . "comment WHERE gid=$blogId AND cid>$commentId ");
         while ($row = $this->db->fetch_array($query)) {
             if (in_array($row['pid'], $commentIds)) {
@@ -214,7 +214,7 @@ class Comment_Model {
             $utctimestamp = time();
             if ($pid != 0) {
                 $comment = $this->getOneComment($pid);
-				$content = '@' . addslashes($comment['poster']) . ': ' . $content;
+                $content = '@' . addslashes($comment['poster']) . ': ' . $content;
             }
             $this->db->query("INSERT INTO " . DB_PREFIX . "comment (date,poster,gid,comment,mail,url,hide,ip,pid)
                     VALUES ('$utctimestamp','$name','$blogId','$content','$mail','$url','$hide','$ipaddr','$pid')");
@@ -273,7 +273,7 @@ class Comment_Model {
 
         if ($pid > 0) {
             $comment = $this->getOneComment($pid);
-			$content = '@' . addslashes($comment['poster']) . ': ' . $content;
+            $content = '@' . addslashes($comment['poster']) . ': ' . $content;
         }
 
         $hide = Option::get('ischkcomment') == 'y' && !User::haveEditPermission() ? 'y' : 'n';
@@ -304,10 +304,10 @@ class Comment_Model {
         if (User::haveEditPermission() || User::isVistor()) {
             return true;
         }
-/*vot*/		$query = $this->db->query("SELECT a.cid FROM " . DB_PREFIX . "comment AS a," . DB_PREFIX . "blog AS b WHERE a.cid=$cid AND a.gid=b.gid AND b.author=" . UID);
+/*vot*/        $query = $this->db->query("SELECT a.cid FROM " . DB_PREFIX . "comment AS a," . DB_PREFIX . "blog AS b WHERE a.cid=$cid AND a.gid=b.gid AND b.author=" . UID);
         $result = $this->db->num_rows($query);
         if ($result <= 0) {
-			emMsg(lang('no_permission'), './');
+            emMsg(lang('no_permission'), './');
         }
     }
 
@@ -328,7 +328,7 @@ class Comment_Model {
         $ipaddr = getIp();
         $utctimestamp = time() - Option::get('comment_interval');
 
-/*vot*/		$sql = 'SELECT count(*) AS num FROM ' . DB_PREFIX . "comment WHERE date > $utctimestamp AND ip='$ipaddr'";
+/*vot*/        $sql = 'SELECT count(*) AS num FROM ' . DB_PREFIX . "comment WHERE date > $utctimestamp AND ip='$ipaddr'";
         $res = $this->db->query($sql);
         $row = $this->db->fetch_array($res);
 

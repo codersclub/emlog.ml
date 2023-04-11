@@ -16,7 +16,7 @@ class User_Model {
     public function getUsers($email = '', $nickname = '', $page = 1) {
         $condition = $limit = '';
         if ($email) {
-/*vot*/			$condition = " AND email LIKE '$email%'";
+/*vot*/            $condition = " AND email LIKE '$email%'";
         }
         if ($nickname) {
             $condition = " and nickname like '%$nickname%'";
@@ -26,7 +26,7 @@ class User_Model {
             $startId = ($page - 1) * $perpage_num;
             $limit = "LIMIT $startId, " . $perpage_num;
         }
-/*vot*/		$res = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE 1=1 $condition ORDER BY uid DESC $limit");
+/*vot*/        $res = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE 1=1 $condition ORDER BY uid DESC $limit");
         $users = [];
         while ($row = $this->db->fetch_array($res)) {
             $row['name'] = htmlspecialchars($row['nickname']);
@@ -42,7 +42,7 @@ class User_Model {
     }
 
     public function getOneUser($uid) {
-/*vot*/		$row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/        $row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
         $userData = [];
         if ($row) {
             $row['nickname'] = empty($row['nickname']) ? $row['username'] : $row['nickname'];
@@ -69,7 +69,7 @@ class User_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
     }
 
     public function updateUserByMail($userData, $mail) {
@@ -79,34 +79,34 @@ class User_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
     }
 
     public function addUser($username, $mail, $password, $role) {
         $timestamp = time();
         $nickname = getRandStr(8, false);
-/*vot*/		$sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
+/*vot*/        $sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
         $this->db->query($sql);
     }
 
     public function deleteUser($uid) {
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
-/*vot*/		$this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
+/*vot*/        $this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
     }
 
     public function forbidUser($uid) {
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
     }
 
     public function unforbidUser($uid) {
-/*vot*/		$this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
     }
 
     /**
      * check the username exists
      *
      * @param string $user_name
-	 * @param int $uid Compatible with the case that the user name has not changed when updating the author's information
+     * @param int $uid Compatible with the case that the user name has not changed when updating the author's information
      * @return boolean
      */
     public function isUserExist($user_name, $uid = '') {

@@ -109,7 +109,7 @@ if ($action == 'update') {
     if (UID == $uid) {
         emDirect('./user.php');
     }
-	//Founder account can not be edited by others
+    //Founder account can not be edited by others
     if ($uid == 1) {
         emDirect('./user.php?error_del_b=1');
     }
@@ -159,7 +159,7 @@ if ($action == 'del') {
         emDirect('./user.php');
     }
 
-	//Founder account can not be deleted
+    //Founder account can not be deleted
     if ($uid == 1) {
         emDirect('./user.php?error_del_a=1');
     }
@@ -177,7 +177,7 @@ if ($action == 'forbid') {
         emDirect('./user.php');
     }
 
-	// Founder account cannot be disabled
+    // Founder account cannot be disabled
     if ($uid == 1) {
         emDirect('./user.php');
     }

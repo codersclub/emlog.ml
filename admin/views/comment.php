@@ -34,10 +34,10 @@
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link <?php if ($hide == '') {
                     echo 'active';
-				} ?>" href="./comment.php?<?= $addUrl_1 ?>"><?= lang('all') ?></a></li>
+                } ?>" href="./comment.php?<?= $addUrl_1 ?>"><?= lang('all') ?></a></li>
             <li class="nav-item"><a class="nav-link <?php if ($hide == 'y') {
                     echo 'active';
-				} ?>" href="./comment.php?hide=y&<?= $addUrl_1 ?>"><?= lang('pending') ?><?php
+                } ?>" href="./comment.php?hide=y&<?= $addUrl_1 ?>"><?= lang('pending') ?><?php
                     $hidecmnum = User::haveEditPermission() ? $sta_cache['hidecomnum'] : $sta_cache[UID]['hidecommentnum'];
                     if ($hidecmnum > 0) echo '(' . $hidecmnum . ')';
                     ?></a>
@@ -62,12 +62,12 @@
                     </thead>
                     <tbody>
                     <?php foreach ($comment as $key => $value):
-						$ishide = $value['hide'] == 'y' ? '<span class="text-danger">[' . lang('pending') . ']</span>' : '';
+                        $ishide = $value['hide'] == 'y' ? '<span class="text-danger">[' . lang('pending') . ']</span>' : '';
                         $mail = $value['mail'] ? "({$value['mail']})" : '';
                         $ip = $value['ip'];
                         $gid = $value['gid'];
                         $cid = $value['cid'];
-						$ip_info = $ip ? '<br />' . lang('from_ip') . ': ' . $ip : '';
+                        $ip_info = $ip ? '<br />' . lang('from_ip') . ': ' . $ip : '';
                         $comment = $value['comment'];
                         $poster = !empty($value['url']) ? '<a href="' . $value['url'] . '" target="_blank">' . $value['poster'] . '</a>' : $value['poster'];
                         $title = subString($value['title'], 0, 42);
@@ -81,7 +81,7 @@
                             <td>
                                 <?= $comment ?>
                                 <?= $ishide ?>
-								<?php if ($top == 'y'): ?><span class="flag-indexTop" title="<?= lang('top') ?>"><?= lang('top') ?></span><?php endif ?>
+                                <?php if ($top == 'y'): ?><span class="flag-indexTop" title="<?= lang('top') ?>"><?= lang('top') ?></span><?php endif ?>
                             </td>
                             <td class="small">
                                 <?= $poster ?><?= $mail ?><?= $ip_info ?>
