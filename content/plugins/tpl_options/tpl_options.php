@@ -16,7 +16,7 @@ class TplOptions {
 
     //Plug-in ID
     const ID = 'tpl_options';
-    const NAME = 'Template Options';
+    const NAME = 'Template options';
     const VERSION = '4.2';
 
     //DB table prefix
@@ -1066,7 +1066,7 @@ class TplOptions {
     /**
      * Get template parameter configuration
      * @param string $optionFile
-     * @return mixed False means this plugin is not supported
+     * @return mixed false means this plugin is not supported
      */
     private function getTemplateDefinedOptions($template) {
         if (!is_file($optionFile = TPLS_PATH . $template . '/options.php')) {
