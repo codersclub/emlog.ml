@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['error'])): ?>
 <!--vot-->    <div class="alert alert-danger"><?=lang('store_unavailable')?></div><?php endif ?>
@@ -16,11 +16,11 @@
     </ul>
 </div>
 <div class="row">
-	<?php if (!empty($addons)): ?>
+    <?php if (!empty($addons)): ?>
         <div class="d-flex flex-wrap app-list">
-			<?php foreach ($addons as $k => $v):
-				$icon = $v['icon'] ?: "./views/images/theme.png";
-				?>
+            <?php foreach ($addons as $k => $v):
+                $icon = $v['icon'] ?: "./views/images/theme.png";
+                ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
                         <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
                             <p class="card-text text-muted">
-								<?= $v['info'] ?><br><br>
+                                <?= $v['info'] ?><br><br>
 <!--vot-->                  <?=lang('developer')?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
                                 <small>
 <!--vot-->                          <?=lang('developer')?>: <?= $v['author'] ?><br>
@@ -44,13 +44,13 @@
                         </div>
                     </div>
                 </div>
-			<?php endforeach ?>
+            <?php endforeach ?>
         </div>
-	<?php else: ?>
+    <?php else: ?>
         <div class="col-md-12">
 <!--vot-->            <p class="alert alert-warning m-3"><?=lang('not_svip')?>, <a href="https://www.emlog.net/register"><?=lang('paid_support')?></a></p>
         </div>
-	<?php endif ?>
+    <?php endif ?>
 </div>
 <script>
     $("#menu_store").addClass('active');

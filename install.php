@@ -35,7 +35,7 @@ $env_db_user = getenv('EMLOG_DB_USER');
 $env_db_password = getenv('EMLOG_DB_PASSWORD');
 
 if (!$act) {
-	?>
+    ?>
     <!doctype html>
     <html dir="<?= LANG_DIR ?>" lang="<?= LANG ?>">
     <head>
@@ -122,7 +122,7 @@ if (!$act) {
         <div class="main">
             <p class="logo"></p>
             <p class="title">emlog <?php echo Option::EMLOG_VERSION ?></p>
-			<?php if ($env_db_user): ?>
+            <?php if ($env_db_user): ?>
                 <div class="b">
                     <input name="hostname" type="hidden" value="<?= $env_db_host ?>">
                     <input name="dbuser" type="hidden" value="<?= $env_db_user ?>">
@@ -130,7 +130,7 @@ if (!$act) {
                     <input name="dbname" type="hidden" value="<?= $env_db_name ?>">
                     <input name="dbprefix" type="hidden" value="emlog_">
                 </div>
-			<?php elseif (strpos($bt_db_username, 'BT_DB_') === false): ?>
+            <?php elseif (strpos($bt_db_username, 'BT_DB_') === false): ?>
                 <div class="b">
                     <input name="hostname" type="hidden" value="<?= $bt_db_host ?>">
                     <input name="dbuser" type="hidden" value="<?= $bt_db_username ?>">
@@ -138,7 +138,7 @@ if (!$act) {
                     <input name="dbname" type="hidden" value="<?= $bt_db_name ?>">
                     <input name="dbprefix" type="hidden" value="emlog_">
                 </div>
-			<?php else: ?>
+            <?php else: ?>
                 <div class="b">
                     <p class="title2"><?= lang('mysql_settings') ?></p>
                     <li>
@@ -163,7 +163,7 @@ if (!$act) {
                         <span class="care"><?= lang('db_prefix_info') ?></span>
                     </li>
                 </div>
-			<?php endif; ?>
+            <?php endif; ?>
             <div class="c">
                 <p class="title2"><?= lang('admin_settings') ?></p>
                 <li>
@@ -193,46 +193,46 @@ if (!$act) {
     <div class=" footer">Powered by <a href="http://www.emlog.net">emlog</a></div>
     </body>
     </html>
-	<?php
+    <?php
 }
 if ($act == 'install' || $act == 'reinstall') {
-	$db_host = isset($_POST['hostname']) ? addslashes(trim($_POST['hostname'])) : '';
-	$db_user = isset($_POST['dbuser']) ? addslashes(trim($_POST['dbuser'])) : '';
-	$db_pw = isset($_POST['dbpasswd']) ? addslashes(trim($_POST['dbpasswd'])) : '';
-	$db_name = isset($_POST['dbname']) ? addslashes(trim($_POST['dbname'])) : '';
-	$db_prefix = isset($_POST['dbprefix']) ? addslashes(trim($_POST['dbprefix'])) : '';
-	$username = isset($_POST['username']) ? addslashes(trim($_POST['username'])) : '';
-	$password = isset($_POST['password']) ? addslashes(trim($_POST['password'])) : '';
-	$repassword = isset($_POST['repassword']) ? addslashes(trim($_POST['repassword'])) : '';
-	$email = isset($_POST['email']) ? addslashes(trim($_POST['email'])) : '';
+    $db_host = isset($_POST['hostname']) ? addslashes(trim($_POST['hostname'])) : '';
+    $db_user = isset($_POST['dbuser']) ? addslashes(trim($_POST['dbuser'])) : '';
+    $db_pw = isset($_POST['dbpasswd']) ? addslashes(trim($_POST['dbpasswd'])) : '';
+    $db_name = isset($_POST['dbname']) ? addslashes(trim($_POST['dbname'])) : '';
+    $db_prefix = isset($_POST['dbprefix']) ? addslashes(trim($_POST['dbprefix'])) : '';
+    $username = isset($_POST['username']) ? addslashes(trim($_POST['username'])) : '';
+    $password = isset($_POST['password']) ? addslashes(trim($_POST['password'])) : '';
+    $repassword = isset($_POST['repassword']) ? addslashes(trim($_POST['repassword'])) : '';
+    $email = isset($_POST['email']) ? addslashes(trim($_POST['email'])) : '';
 
-	if ($db_prefix === '') {
+    if ($db_prefix === '') {
 		emMsg(lang('db_prefix_empty'));
-	} elseif (!preg_match("/^[\w_]+_$/", $db_prefix)) {
+    } elseif (!preg_match("/^[\w_]+_$/", $db_prefix)) {
 		emMsg(lang('db_prefix_empty'));
-	} elseif (!$username || !$password) {
+    } elseif (!$username || !$password) {
 		emMsg(lang('username_password_empty'));
 	} elseif (strlen($password) < 5) {
 		emMsg(lang('password_short'));
-	} elseif ($password != $repassword) {
+    } elseif ($password != $repassword) {
 		emMsg(lang('password_not_equal'));
-	}
+    }
 
 	//Initialize the database class
-	define('DB_HOST', $db_host);
-	define('DB_USER', $db_user);
-	define('DB_PASSWD', $db_pw);
-	define('DB_NAME', $db_name);
-	define('DB_PREFIX', $db_prefix);
+    define('DB_HOST', $db_host);
+    define('DB_USER', $db_user);
+    define('DB_PASSWD', $db_pw);
+    define('DB_NAME', $db_name);
+    define('DB_PREFIX', $db_prefix);
 
-	$DB = Database::getInstance();
-	$CACHE = Cache::getInstance();
+    $DB = Database::getInstance();
+    $CACHE = Cache::getInstance();
 
-	if ($act != 'reinstall' && $DB->num_rows($DB->query("SHOW TABLES LIKE '{$db_prefix}blog'")) == 1) {
+    if ($act != 'reinstall' && $DB->num_rows($DB->query("SHOW TABLES LIKE '{$db_prefix}blog'")) == 1) {
 		$installed = lang('already_installed');
 		$continue = lang('continue');
 		$return_back = lang('return');
-		echo <<<EOT
+        echo <<<EOT
 <!DOCTYPE html>
 <html>
 <head>
@@ -265,29 +265,29 @@ body {background-color:#F7F7F7;font-family: Arial;font-size: 12px;line-height:15
 </body>
 </html>
 EOT;
-		exit;
-	}
+        exit;
+    }
 
-	if (!is_writable('config.php')) {
+    if (!is_writable('config.php')) {
 		emMsg(lang('config_not_writable'));
-	}
-	if (!is_writable(EMLOG_ROOT . '/content/cache')) {
+    }
+    if (!is_writable(EMLOG_ROOT . '/content/cache')) {
 		emMsg(lang('cache_not_writable'));
-	}
-	$config = "<?php\n"
-		. "//MySQL database host\n"
-		. "const DB_HOST = '$db_host';"
-		. "\n//Database username\n"
-		. "const DB_USER = '$db_user';"
-		. "\n//Database user password\n"
-		. "const DB_PASSWD = '$db_pw';"
-		. "\n//Database name\n"
-		. "const DB_NAME = '$db_name';"
-		. "\n//Database Table Prefix\n"
-		. "const DB_PREFIX = '$db_prefix';"
-		. "\n//Auth key\n"
-		. "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
-		. "\n//Cookie name\n"
+    }
+    $config = "<?php\n"
+        . "//MySQL database host\n"
+        . "const DB_HOST = '$db_host';"
+        . "\n//Database username\n"
+        . "const DB_USER = '$db_user';"
+        . "\n//Database user password\n"
+        . "const DB_PASSWD = '$db_pw';"
+        . "\n//Database name\n"
+        . "const DB_NAME = '$db_name';"
+        . "\n//Database Table Prefix\n"
+        . "const DB_PREFIX = '$db_prefix';"
+        . "\n//Auth key\n"
+        . "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
+        . "\n//Cookie name\n"
 		. "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
 
 		. "\n// Default blog language"
@@ -319,29 +319,29 @@ EOT;
 		. "\n]);"
 		. "\n";
 
-	$fp = @fopen('config.php', 'w');
-	$fw = @fwrite($fp, $config);
-	if (!$fw) {
+    $fp = @fopen('config.php', 'w');
+    $fw = @fwrite($fp, $config);
+    if (!$fw) {
 		emMsg(lang('config_not_writable'));
-	}
-	fclose($fp);
+    }
+    fclose($fp);
 
 	//Encrypt Password
-	$PHPASS = new PasswordHash(8, true);
-	$password = $PHPASS->HashPassword($password);
+    $PHPASS = new PasswordHash(8, true);
+    $password = $PHPASS->HashPassword($password);
 
-	$table_charset_sql = 'DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
-	$DB->query("ALTER DATABASE `{$db_name}` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;", true);
+    $table_charset_sql = 'DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
+    $DB->query("ALTER DATABASE `{$db_name}` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;", true);
 
-	$widget_title = serialize(Option::getWidgetTitle());
-	$def_widgets = serialize(Option::getDefWidget());
-	$def_plugin = serialize(Option::getDefPlugin());
+    $widget_title = serialize(Option::getWidgetTitle());
+    $def_widgets = serialize(Option::getDefWidget());
+    $def_plugin = serialize(Option::getDefPlugin());
 
-	$apikey = md5(getRandStr(32));
+    $apikey = md5(getRandStr(32));
 
-	define('BLOG_URL', realUrl());
+    define('BLOG_URL', realUrl());
 
-	$sql = "
+    $sql = "
 DROP TABLE IF EXISTS {$db_prefix}blog;
 CREATE TABLE {$db_prefix}blog (
   gid int(11) unsigned NOT NULL auto_increment COMMENT 'Article table',
@@ -583,23 +583,23 @@ CREATE TABLE {$db_prefix}tpl_options_data (
   UNIQUE KEY `template` (`template`,`name`)
 )" . $table_charset_sql;
 
-	$array_sql = preg_split("/;[\r\n]/", $sql);
-	foreach ($array_sql as $sql) {
-		$sql = trim($sql);
-		if ($sql) {
-			$DB->query($sql);
-		}
-	}
-	$CACHE->updateCache();
+    $array_sql = preg_split("/;[\r\n]/", $sql);
+    foreach ($array_sql as $sql) {
+        $sql = trim($sql);
+        if ($sql) {
+            $DB->query($sql);
+        }
+    }
+    $CACHE->updateCache();
 
 	$result = "
         <p style=\"font-size:24px; border-bottom:1px solid #E6E6E6; padding:10px 0px;\">" . lang('emlog_installed') . "</p>
         <p>" . lang('emlog_installed_info') . "</p>
         <p><b>" . lang('user_name') . "</b>: {$username}</p>
         <p><b>" . lang('password') . "</b>: " . lang('password_entered') . "</p>";
-	if ($env_emlog_env === 'develop' || ($env_emlog_env !== 'develop' && !@unlink('./install.php'))) {
+    if ($env_emlog_env === 'develop' || ($env_emlog_env !== 'develop' && !@unlink('./install.php'))) {
 		$result .= '<p style="color:#ff0000;margin:10px 20px;">' . lang('delete_install') . '</p> ';
-	}
+    }
 	$result .= "<p style=\"text-align:right;\"><a href=\"./\">" . lang('go_to_front') . "</a> | <a href=\"./admin/\">" . lang('go_to_admincp') . "</a></p>";
-	emMsg($result, 'none');
+    emMsg($result, 'none');
 }

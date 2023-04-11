@@ -7,7 +7,7 @@ Author: emlog official
 Author Url:https://www.emlog.net
 */
 if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 }
 require_once View::getView('module');
 ?>
@@ -28,7 +28,7 @@ require_once View::getView('module');
     <script>function sendinfo(url) {  // Calendar generation and page turning
             $("#calendar").load(url)
         }</script>
-	<?php doAction('index_head') ?>
+    <?php doAction('index_head') ?>
 </head>
 
 <body>
@@ -44,8 +44,8 @@ require_once View::getView('module');
             </svg>
         </div>
 
-		<?php blog_navi() ?>
-		<?php doAction('index_navi_ext') ?>
+        <?php blog_navi() ?>
+        <?php doAction('index_navi_ext') ?>
 
     </div>
 </nav>

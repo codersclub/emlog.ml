@@ -8,12 +8,12 @@
 
 class MySql {
 
-	public static function getInstance() {
-		if (class_exists('mysqli', FALSE)) {
-			return MySqlii::getInstance();
-		}
+    public static function getInstance() {
+        if (class_exists('mysqli', FALSE)) {
+            return MySqlii::getInstance();
+        }
 
-		emMsg('mysql_not_supported');
-	}
+		emMsg(lang('mysql_not_supported'));
+    }
 
 }

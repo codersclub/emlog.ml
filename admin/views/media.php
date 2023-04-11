@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['active_del'])): ?>
     <div class="alert alert-success"><?= lang('deleted_ok') ?></div><?php endif ?>
@@ -18,9 +18,9 @@
 <?php if (User::isAdmin()): ?>
     <div class="row mb-4 ml-1">
         <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
-		<?php foreach ($sorts as $key => $val):
-			$cur_tab = $val['id'] == $sid ? "btn-success" : "btn-primary";
-			?>
+        <?php foreach ($sorts as $key => $val):
+            $cur_tab = $val['id'] == $sid ? "btn-success" : "btn-primary";
+            ?>
             <div class="btn-group mr-2 my-1">
                 <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
                 <button type="button" class="btn <?= $cur_tab ?> btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false"></button>
@@ -29,44 +29,44 @@
                     <a class="dropdown-item text-danger" href="javascript: em_confirm(<?= $val['id'] ?>, 'media_sort', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
                 </div>
             </div>
-		<?php endforeach ?>
+        <?php endforeach ?>
         <a href="#" class="btn btn-success btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i></a>
     </div>
 <?php endif; ?>
 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
     <div class="row">
-		<?php foreach ($medias as $key => $value):
-			$media_url = rmUrlParams(getFileUrl($value['filepath']));
-			$sort_name = $value['sortname'];
-			$media_name = $value['filename'];
-			$author = $user_cache[$value['author']]['name'];
-			if (isImage($value['mimetype'])) {
-				$media_icon = getFileUrl($value['filepath_thum']);
-				$imgviewer = 'class="highslide" onclick="return hs.expand(this)"';
-			} elseif (isZip($value['filename'])) {
-				$media_icon = "./views/images/zip.jpg";
-				$imgviewer = '';
-			} elseif (isVideo($value['filename'])) {
-				$media_icon = "./views/images/video.png";
-				$imgviewer = '';
-			} else {
-				$media_icon = "./views/images/fnone.png";
-				$imgviewer = '';
-			}
-			?>
+        <?php foreach ($medias as $key => $value):
+            $media_url = rmUrlParams(getFileUrl($value['filepath']));
+            $sort_name = $value['sortname'];
+            $media_name = $value['filename'];
+            $author = $user_cache[$value['author']]['name'];
+            if (isImage($value['mimetype'])) {
+                $media_icon = getFileUrl($value['filepath_thum']);
+                $imgviewer = 'class="highslide" onclick="return hs.expand(this)"';
+            } elseif (isZip($value['filename'])) {
+                $media_icon = "./views/images/zip.jpg";
+                $imgviewer = '';
+            } elseif (isVideo($value['filename'])) {
+                $media_icon = "./views/images/video.png";
+                $imgviewer = '';
+            } else {
+                $media_icon = "./views/images/fnone.png";
+                $imgviewer = '';
+            }
+            ?>
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
                     <a href="<?= $media_url ?>" <?= $imgviewer ?> target="_blank"><img class="card-img-top" src="<?= $media_icon ?>"/></a>
                     <div class="card-body">
                         <p class="card-text text-muted small">
-							<?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
+                            <?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
 							<?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
 							<?= lang('founder') ?>: <?= $author ?><br>
 							<?= lang('file_size') ?>: <?= $value['attsize'] ?>,
-							<?php if ($value['width'] && $value['height']): ?>
+                            <?php if ($value['width'] && $value['height']): ?>
 								<?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
 								<?= lang('image_address_original') ?>: <span class="text-gray-400"><?= $media_url ?></span>
-							<?php endif ?>
+                            <?php endif ?>
                         </p>
                         <p class="card-text d-flex justify-content-between">
                             <a href="javascript: em_confirm(<?= $value['aid'] ?>, 'media', '<?= LoginAuth::genToken() ?>');" class="text-danger small"><?= lang('delete') ?></a>
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-		<?php endforeach ?>
+        <?php endforeach ?>
     </div>
     <div class="form-row align-items-center">
         <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
@@ -88,15 +88,15 @@
         </div>
         <div class="col-auto my-1 form-inline">
             <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-			<?php if (User::isAdmin()): ?>
+            <?php if (User::isAdmin()): ?>
                 <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
                     <option value="" selected="selected"><?= lang('move_to') ?></option>
-					<?php foreach ($sorts as $key => $value): ?>
+                    <?php foreach ($sorts as $key => $value): ?>
                         <option value="<?= $value['id'] ?>"><?= $value['sortname'] ?></option>
-					<?php endforeach; ?>
+                    <?php endforeach; ?>
                     <option value="0"><?= lang('uncategorized') ?></option>
                 </select>
-			<?php endif; ?>
+            <?php endif; ?>
         </div>
     </div>
 </form>

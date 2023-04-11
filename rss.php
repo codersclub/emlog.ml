@@ -22,13 +22,13 @@ echo '<?xml version="1.0" encoding="utf-8"?>
 <language>' . LANG . '</language>
 <generator>www.emlog.net</generator>';
 if (!empty($articles)) {
-	foreach ($articles as $value) {
-		$link = Url::log($value['id']);
-		$abstract = str_replace('[break]', '', $value['content']);
-		$pubdate = date('r', $value['date']);
-		$author = $value['nickname'];
-		doAction('rss_display');
-		echo <<< END
+    foreach ($articles as $value) {
+        $link = Url::log($value['id']);
+        $abstract = str_replace('[break]', '', $value['content']);
+        $pubdate = date('r', $value['date']);
+        $author = $value['nickname'];
+        doAction('rss_display');
+        echo <<< END
 
 <item>
     <title>{$value['title']}</title>
@@ -39,7 +39,7 @@ if (!empty($articles)) {
     <guid>$link</guid>
 </item>
 END;
-	}
+    }
 }
 echo <<< END
 </channel>

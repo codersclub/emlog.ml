@@ -3,27 +3,27 @@
  * Homepage template
  */
 if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 }
 ?>
     <main class="container blog-container">
         <div class="row">
             <div class="column-big">
-				<?php doAction('index_loglist_top');
-				if (!empty($logs)):
-					foreach ($logs as $value):
-						?>
+                <?php doAction('index_loglist_top');
+                if (!empty($logs)):
+                    foreach ($logs as $value):
+                        ?>
                         <div class="shadow-theme bottom-5">
-							<?php if (!empty($value['log_cover'])) : ?>
+                            <?php if (!empty($value['log_cover'])) : ?>
                                 <div class="loglist-cover">
                                     <img src="<?= $value['log_cover'] ?>" alt="article cover" class="rea-width" data-action="zoom">
                                 </div>
-							<?php endif ?>
+                            <?php endif ?>
                             <div class="card-padding loglist-body">
                                 <h3 class="card-title">
                                     <a href="<?= $value['log_url'] ?>" class="loglist-title"><?= $value['log_title'] ?></a>
-									<?php topflg($value['top'], $value['sortop'], isset($sortid) ? $sortid : '') ?>
-									<?php bloglist_sort($value['logid']) ?>
+                                    <?php topflg($value['top'], $value['sortop'], isset($sortid) ? $sortid : '') ?>
+                                    <?php bloglist_sort($value['logid']) ?>
                                 </h3>
                                 <div class="loglist-content markdown"><?= $value['log_description'] ?></div>
                                 <div class="loglist-tag"><?php blog_tag($value['logid']) ?></div>
@@ -41,17 +41,17 @@ if (!defined('EMLOG_ROOT')) {
                                 </div>
                             </div>
                         </div>
-					<?php
-					endforeach;
-				else:
-					?>
+                    <?php
+                    endforeach;
+                else:
+                    ?>
                     <p><?=lang('sorry_no_results')?></p>
-				<?php endif ?>
+                <?php endif ?>
                 <div class="pagination bottom-5">
-					<?= $page_url ?>
+                    <?= $page_url ?>
                 </div>
             </div>
-			<?php include View::getView('side') ?>
+            <?php include View::getView('side') ?>
         </div>
     </main>
 

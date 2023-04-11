@@ -6,99 +6,99 @@
  */
 
 function emAutoload($class) {
-	$class = strtolower($class);
+    $class = strtolower($class);
 
 	load_language($class);
 
-	if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
-		require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
-	} elseif (file_exists(EMLOG_ROOT . '/include/lib/' . $class . '.php')) {
-		require_once(EMLOG_ROOT . '/include/lib/' . $class . '.php');
-	} elseif (file_exists(EMLOG_ROOT . '/include/controller/' . $class . '.php')) {
-		require_once(EMLOG_ROOT . '/include/controller/' . $class . '.php');
-	} elseif (file_exists(EMLOG_ROOT . '/include/service/' . $class . '.php')) {
-		require_once(EMLOG_ROOT . '/include/service/' . $class . '.php');
-	}
+    if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
+        require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
+    } elseif (file_exists(EMLOG_ROOT . '/include/lib/' . $class . '.php')) {
+        require_once(EMLOG_ROOT . '/include/lib/' . $class . '.php');
+    } elseif (file_exists(EMLOG_ROOT . '/include/controller/' . $class . '.php')) {
+        require_once(EMLOG_ROOT . '/include/controller/' . $class . '.php');
+    } elseif (file_exists(EMLOG_ROOT . '/include/service/' . $class . '.php')) {
+        require_once(EMLOG_ROOT . '/include/service/' . $class . '.php');
+    }
 }
 
 /**
  * Convert HTML Code
  */
 function htmlClean($content, $nl2br = true) {
-	$content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
-	if ($nl2br) {
-		$content = nl2br($content);
-	}
-	$content = str_replace('  ', '&nbsp;&nbsp;', $content);
-	$content = str_replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', $content);
-	return $content;
+    $content = htmlspecialchars($content, ENT_QUOTES, 'UTF-8');
+    if ($nl2br) {
+        $content = nl2br($content);
+    }
+    $content = str_replace('  ', '&nbsp;&nbsp;', $content);
+    $content = str_replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', $content);
+    return $content;
 }
 
 if (!function_exists('getIp')) {
-	function getIp() {
-		$ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-		if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-			$list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-			$ip = $list[0];
-		}
-		if (!ip2long($ip)) {
-			$ip = '';
-		}
-		return $ip;
-	}
+    function getIp() {
+        $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+            $ip = $list[0];
+        }
+        if (!ip2long($ip)) {
+            $ip = '';
+        }
+        return $ip;
+    }
 }
 
 /**
  * Get site URL (Only for the root directory script, currently used only for home ajax request)
  */
 function getBlogUrl() {
-	$phpself = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
-	if (preg_match("/^.*\//", $phpself, $matches)) {
-		return 'http://' . $_SERVER['HTTP_HOST'] . $matches[0];
-	} else {
-		return BLOG_URL;
-	}
+    $phpself = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
+    if (preg_match("/^.*\//", $phpself, $matches)) {
+        return 'http://' . $_SERVER['HTTP_HOST'] . $matches[0];
+    } else {
+        return BLOG_URL;
+    }
 }
 
 /**
  * Get the currently visited base url
  */
 function realUrl() {
-	static $real_url = NULL;
-	if ($real_url !== NULL) {
-		return $real_url;
-	}
+    static $real_url = NULL;
+    if ($real_url !== NULL) {
+        return $real_url;
+    }
 
-	$emlog_path = EMLOG_ROOT . DIRECTORY_SEPARATOR;
+    $emlog_path = EMLOG_ROOT . DIRECTORY_SEPARATOR;
 /*vot*/	$emlog_path = str_replace('\\', '/', $emlog_path);
-	$script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
-	$script_path = str_replace('\\', '/', $script_path);
-	$path_element = explode('/', $script_path);
+    $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
+    $script_path = str_replace('\\', '/', $script_path);
+    $path_element = explode('/', $script_path);
 
-	$this_match = '';
-	$best_match = '';
+    $this_match = '';
+    $best_match = '';
 
-	$current_deep = 0;
-	$max_deep = count($path_element);
+    $current_deep = 0;
+    $max_deep = count($path_element);
 
-	while ($current_deep < $max_deep) {
-		$this_match .= $path_element[$current_deep] . DIRECTORY_SEPARATOR;
+    while ($current_deep < $max_deep) {
+        $this_match .= $path_element[$current_deep] . DIRECTORY_SEPARATOR;
 /*vot*/		$this_match = str_replace('\\', '/', $this_match);
 
-		if (substr($emlog_path, strlen($this_match) * (-1)) === $this_match) {
-			$best_match = $this_match;
-		}
+        if (substr($emlog_path, strlen($this_match) * (-1)) === $this_match) {
+            $best_match = $this_match;
+        }
 
-		$current_deep++;
-	}
+        $current_deep++;
+    }
 
-	$best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
-	$real_url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
-	$real_url .= $_SERVER['SERVER_NAME'];
-	$real_url .= in_array($_SERVER['SERVER_PORT'], array(80, 443)) ? '' : ':' . $_SERVER['SERVER_PORT'];
-	$real_url .= $best_match;
+    $best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
+    $real_url = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+    $real_url .= $_SERVER['SERVER_NAME'];
+    $real_url .= in_array($_SERVER['SERVER_PORT'], array(80, 443)) ? '' : ':' . $_SERVER['SERVER_PORT'];
+    $real_url .= $best_match;
 
-	return $real_url;
+    return $real_url;
 }
 
 
@@ -106,22 +106,22 @@ function realUrl() {
  * Check plugin
  */
 function checkPlugin($plugin) {
-	if (is_string($plugin) && preg_match("/^[\w\-\/]+\.php$/", $plugin) && file_exists(EMLOG_ROOT . '/content/plugins/' . $plugin)) {
-		return true;
-	}
+    if (is_string($plugin) && preg_match("/^[\w\-\/]+\.php$/", $plugin) && file_exists(EMLOG_ROOT . '/content/plugins/' . $plugin)) {
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 /**
  * Verify email address format
  */
 function checkMail($email) {
-	if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-		return true;
-	}
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -132,31 +132,31 @@ function checkMail($email) {
  * @param int $length Length
  */
 function subString($strings, $start, $length) {
-	$sub_str = mb_substr($strings, $start, $length, 'utf8');
-	return mb_strlen($sub_str, 'utf8') < mb_strlen($strings, 'utf8') ? $sub_str . '...' : $sub_str;
+    $sub_str = mb_substr($strings, $start, $length, 'utf8');
+    return mb_strlen($sub_str, 'utf8') < mb_strlen($strings, 'utf8') ? $sub_str . '...' : $sub_str;
 }
 
 /**
  * Extract plain text from html content
  */
 function extractHtmlData($data, $len) {
-	$data = subString(strip_tags($data), 0, $len + 30);
-	$search = array(
+    $data = subString(strip_tags($data), 0, $len + 30);
+    $search = array(
 		"/([\r\n])[\s]+/", // Remove whitespace characters
 		"/&(quot|#34);/i", // Replace HTML entities
-		"/&(amp|#38);/i",
-		"/&(lt|#60);/i",
-		"/&(gt|#62);/i",
-		"/&(nbsp|#160);/i",
-		"/&(iexcl|#161);/i",
-		"/&(cent|#162);/i",
-		"/&(pound|#163);/i",
-		"/&(copy|#169);/i",
-		"/\"/i",
-	);
-	$replace = array(" ", "\"", "&", " ", " ", "", chr(161), chr(162), chr(163), chr(169), "");
-	$data = trim(subString(preg_replace($search, $replace, $data), 0, $len));
-	return $data;
+        "/&(amp|#38);/i",
+        "/&(lt|#60);/i",
+        "/&(gt|#62);/i",
+        "/&(nbsp|#160);/i",
+        "/&(iexcl|#161);/i",
+        "/&(cent|#162);/i",
+        "/&(pound|#163);/i",
+        "/&(copy|#169);/i",
+        "/\"/i",
+    );
+    $replace = array(" ", "\"", "&", " ", " ", "", chr(161), chr(162), chr(163), chr(169), "");
+    $data = trim(subString(preg_replace($search, $replace, $data), 0, $len));
+    return $data;
 }
 
 /**
@@ -165,73 +165,73 @@ function extractHtmlData($data, $len) {
  * @param string $fileSize //File Size kb
  */
 function changeFileSize($fileSize) {
-	if ($fileSize >= 1073741824) {
-		$fileSize = round($fileSize / 1073741824, 2) . ' GB';
-	} elseif ($fileSize >= 1048576) {
-		$fileSize = round($fileSize / 1048576, 2) . ' MB';
-	} elseif ($fileSize >= 1024) {
-		$fileSize = round($fileSize / 1024, 2) . ' KB';
-	} else {
+    if ($fileSize >= 1073741824) {
+        $fileSize = round($fileSize / 1073741824, 2) . ' GB';
+    } elseif ($fileSize >= 1048576) {
+        $fileSize = round($fileSize / 1048576, 2) . ' MB';
+    } elseif ($fileSize >= 1024) {
+        $fileSize = round($fileSize / 1024, 2) . ' KB';
+    } else {
 		$fileSize .= lang('_bytes');
-	}
-	return $fileSize;
+    }
+    return $fileSize;
 }
 
 /**
  * Get the file name suffix
  */
 function getFileSuffix($fileName) {
-	return strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    return strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 }
 
 /**
  * Convert relative path to full URL, eg: ../content/uploadfile/xxx.jpeg
  */
 function getFileUrl($filePath) {
-	if (!stristr($filePath, 'http')) {
-		return BLOG_URL . substr($filePath, 3);
-	}
-	return $filePath;
+    if (!stristr($filePath, 'http')) {
+        return BLOG_URL . substr($filePath, 3);
+    }
+    return $filePath;
 }
 
 /**
  * Remove the url parameter
  */
 function rmUrlParams($url) {
-	$urlInfo = explode("?", $url);
-	if (empty($urlInfo[0])) {
-		return $url;
-	}
-	return $urlInfo[0];
+    $urlInfo = explode("?", $url);
+    if (empty($urlInfo[0])) {
+        return $url;
+    }
+    return $urlInfo[0];
 }
 
 /**
  * Check if the file is an image, based on the file name extension
  */
 function isImage($mimetype) {
-	if (strpos($mimetype, "image") !== false) {
-		return true;
-	}
-	return false;
+    if (strpos($mimetype, "image") !== false) {
+        return true;
+    }
+    return false;
 }
 
 /**
  * Check is this a video based on the file name suffix
  */
 function isVideo($fileName) {
-	$suffix = getFileSuffix($fileName);
-	return $suffix === 'mp4';
+    $suffix = getFileSuffix($fileName);
+    return $suffix === 'mp4';
 }
 
 /**
  * Determine whether to compress the package according to the file name suffix
  */
 function isZip($fileName) {
-	$suffix = getFileSuffix($fileName);
-	if (in_array($suffix, ['zip', 'rar'])) {
-		return true;
-	}
-	return false;
+    $suffix = getFileSuffix($fileName);
+    if (in_array($suffix, ['zip', 'rar'])) {
+        return true;
+    }
+    return false;
 }
 
 /**
@@ -244,58 +244,58 @@ function isZip($fileName) {
  * @return string
  */
 function pagination($count, $perlogs, $page, $url, $anchor = '') {
-	$pnums = @ceil($count / $perlogs);
-	$re = '';
-	$urlHome = preg_replace("|[\?&/][^\./\?&=]*page[=/\-]|", "", $url);
+    $pnums = @ceil($count / $perlogs);
+    $re = '';
+    $urlHome = preg_replace("|[\?&/][^\./\?&=]*page[=/\-]|", "", $url);
 
-	$frontContent = '';
-	$paginContent = '';
-	$endContent = '';
-	$circle_a = 1;
-	$circle_b = $pnums;
-	$neighborNum = 1;
-	$minKey = 4;
+    $frontContent = '';
+    $paginContent = '';
+    $endContent = '';
+    $circle_a = 1;
+    $circle_b = $pnums;
+    $neighborNum = 1;
+    $minKey = 4;
 
-	if ($pnums == 1) return $re;
-	if ($page >= 1 && $pnums >= 7) {
-		$frontContent .= " <a href=\"$urlHome$anchor\">1</a> ";
-		$frontContent .= " <em> ... </em> ";
-		$endContent .= " <em> ... </em> ";
-		$endContent .= " <a href=\"$url$pnums$anchor\">$pnums</a> ";
-		if ($pnums >= 12) {
-			$minKey = 7;
-			$neighborNum = 3;
-		}
-		if ($page < $minKey) {
-			$circle_b = $minKey;
-			$frontContent = '';
-		}
-		if ($page > ($pnums - $minKey + 1)) {
-			$circle_a = $pnums - $minKey + 1;
-			$endContent = '';
-		}
-		if ($page > ($minKey - 1) && $page < ($pnums - $minKey + 2)) {
-			$circle_a = $page - $neighborNum;
-			$circle_b = $page + $neighborNum;
-		}
-		if ($page != 1) {
-			$frontContent = " <a href=\"$url" . ($page - 1) . "$anchor\" title=\"Previous Page\">&laquo;</a> " . $frontContent;
-		}
-		if ($page != $pnums) {
-			$endContent .= " <a href=\"$url" . ($page + 1) . "$anchor\" title=\"Next Page\">&raquo;</a> ";
-		}
-	}
-	for ($i = $circle_a; $i <= $circle_b; $i++) {
-		if ($i == $page) {
-			$paginContent .= " <span>$i</span> ";
-		} elseif ($i == 1) {
-			$paginContent .= " <a href=\"$urlHome$anchor\">$i</a> ";
-		} else {
-			$paginContent .= " <a href=\"$url$i$anchor\">$i</a> ";
-		}
-	}
-	$re = $frontContent . $paginContent . $endContent;
-	return $re;
+    if ($pnums == 1) return $re;
+    if ($page >= 1 && $pnums >= 7) {
+        $frontContent .= " <a href=\"$urlHome$anchor\">1</a> ";
+        $frontContent .= " <em> ... </em> ";
+        $endContent .= " <em> ... </em> ";
+        $endContent .= " <a href=\"$url$pnums$anchor\">$pnums</a> ";
+        if ($pnums >= 12) {
+            $minKey = 7;
+            $neighborNum = 3;
+        }
+        if ($page < $minKey) {
+            $circle_b = $minKey;
+            $frontContent = '';
+        }
+        if ($page > ($pnums - $minKey + 1)) {
+            $circle_a = $pnums - $minKey + 1;
+            $endContent = '';
+        }
+        if ($page > ($minKey - 1) && $page < ($pnums - $minKey + 2)) {
+            $circle_a = $page - $neighborNum;
+            $circle_b = $page + $neighborNum;
+        }
+        if ($page != 1) {
+            $frontContent = " <a href=\"$url" . ($page - 1) . "$anchor\" title=\"Previous Page\">&laquo;</a> " . $frontContent;
+        }
+        if ($page != $pnums) {
+            $endContent .= " <a href=\"$url" . ($page + 1) . "$anchor\" title=\"Next Page\">&raquo;</a> ";
+        }
+    }
+    for ($i = $circle_a; $i <= $circle_b; $i++) {
+        if ($i == $page) {
+            $paginContent .= " <span>$i</span> ";
+        } elseif ($i == 1) {
+            $paginContent .= " <a href=\"$urlHome$anchor\">$i</a> ";
+        } else {
+            $paginContent .= " <a href=\"$url$i$anchor\">$i</a> ";
+        }
+    }
+    $re = $frontContent . $paginContent . $endContent;
+    return $re;
 }
 
 /**
@@ -303,11 +303,11 @@ function pagination($count, $perlogs, $page, $url, $anchor = '') {
  */
 function addAction($hook, $actionFunc) {
 	// Store plug-in functions mounted on the mount point through global variables
-	global $emHooks;
-	if (!isset($emHooks[$hook]) || !in_array($actionFunc, $emHooks[$hook])) {
-		$emHooks[$hook][] = $actionFunc;
-	}
-	return true;
+    global $emHooks;
+    if (!isset($emHooks[$hook]) || !in_array($actionFunc, $emHooks[$hook])) {
+        $emHooks[$hook][] = $actionFunc;
+    }
+    return true;
 }
 
 /**
@@ -315,13 +315,13 @@ function addAction($hook, $actionFunc) {
  * eg: Insert extended content at the mount point
  */
 function doAction($hook) {
-	global $emHooks;
-	$args = array_slice(func_get_args(), 1);
-	if (isset($emHooks[$hook])) {
-		foreach ($emHooks[$hook] as $function) {
-			call_user_func_array($function, $args);
-		}
-	}
+    global $emHooks;
+    $args = array_slice(func_get_args(), 1);
+    if (isset($emHooks[$hook])) {
+        foreach ($emHooks[$hook] as $function) {
+            call_user_func_array($function, $args);
+        }
+    }
 }
 
 /**
@@ -329,12 +329,12 @@ function doAction($hook) {
  * eg: Take over the file upload function and change the upload from local to cloud
  */
 function doOnceAction($hook, $input, &$ret) {
-	global $emHooks;
-	$args = [$input, &$ret];
-	$func = !empty($emHooks[$hook][0]) ? $emHooks[$hook][0] : '';
-	if ($func) {
-		call_user_func_array($func, $args);
-	}
+    global $emHooks;
+    $args = [$input, &$ret];
+    $func = !empty($emHooks[$hook][0]) ? $emHooks[$hook][0] : '';
+    if ($func) {
+        call_user_func_array($func, $args);
+    }
 }
 
 /**
@@ -342,24 +342,24 @@ function doOnceAction($hook, $input, &$ret) {
  * eg: Different plug-ins make different modifications and replacements to the content of the article.
  */
 function doMultiAction($hook, $input, &$ret) {
-	global $emHooks;
-	$args = [$input, &$ret];
-	if (isset($emHooks[$hook])) {
-		foreach ($emHooks[$hook] as $function) {
-			call_user_func_array($function, $args);
-			$args = [&$ret, &$ret];
-		}
-	}
+    global $emHooks;
+    $args = [$input, &$ret];
+    if (isset($emHooks[$hook])) {
+        foreach ($emHooks[$hook] as $function) {
+            call_user_func_array($function, $args);
+            $args = [&$ret, &$ret];
+        }
+    }
 }
 
 /**
  * Intercept the first len characters of the article content
  */
 function subContent($content, $len, $clean = 0) {
-	if ($clean) {
-		$content = strip_tags($content);
-	}
-	return subString($content, 0, $len);
+    if ($clean) {
+        $content = strip_tags($content);
+    }
+    return subString($content, 0, $len);
 }
 
 /**
@@ -369,29 +369,29 @@ function subContent($content, $len, $clean = 0) {
  * @return false|string
  */
 function smartDate($timestamp, $format = 'Y-m-d H:i') {
-	$sec = time() - $timestamp;
-	if ($sec < 60) {
+    $sec = time() - $timestamp;
+    if ($sec < 60) {
 		$op = $sec . lang('_sec_ago');
-	} elseif ($sec < 3600) {
+    } elseif ($sec < 3600) {
 		$op = floor($sec / 60) . lang('_min_ago');
-	} elseif ($sec < 3600 * 24) {
+    } elseif ($sec < 3600 * 24) {
 		$op = lang('about_') . floor($sec / 3600) . lang('_hour_ago');
-	} else {
-		$op = date($format, $timestamp);
-	}
-	return $op;
+    } else {
+        $op = date($format, $timestamp);
+    }
+    return $op;
 }
 
 function getRandStr($length = 12, $special_chars = true) {
-	$chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-	if ($special_chars) {
-		$chars .= '!@#$%^&*()';
-	}
-	$randStr = '';
-	for ($i = 0; $i < $length; $i++) {
-		$randStr .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
-	}
-	return $randStr;
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    if ($special_chars) {
+        $chars .= '!@#$%^&*()';
+    }
+    $randStr = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randStr .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+    }
+    return $randStr;
 }
 
 /**
@@ -400,47 +400,47 @@ function getRandStr($length = 12, $special_chars = true) {
  * @param $result array Upload result
  */
 function upload2local($attach, &$result) {
-	$fileName = $attach['name'];
-	$errorNum = $attach['error'];
-	$tmpFile = $attach['tmp_name'];
-	$fileSize = $attach['size'];
+    $fileName = $attach['name'];
+    $errorNum = $attach['error'];
+    $tmpFile = $attach['tmp_name'];
+    $fileSize = $attach['size'];
 
-	$isthum = Option::get('isthumbnail') === 'y';
-	$fileName = Database::getInstance()->escape_string($fileName);
-	$type = Option::getAttType();
+    $isthum = Option::get('isthumbnail') === 'y';
+    $fileName = Database::getInstance()->escape_string($fileName);
+    $type = Option::getAttType();
 
-	$ret = upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $isthum);
-	$success = 0;
-	switch ($ret) {
-		case '100':
+    $ret = upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $isthum);
+    $success = 0;
+    switch ($ret) {
+        case '100':
 			$message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
-			break;
-		case '101':
-		case '104':
+            break;
+        case '101':
+        case '104':
 			$message = lang('upload_failed_error_code') . $errorNum;
-			break;
-		case '102':
+            break;
+        case '102':
 			$message = lang('file_type_not_supported');
-			break;
-		case '103':
-			$r = changeFileSize(Option::getAttMaxSize());
+            break;
+        case '103':
+            $r = changeFileSize(Option::getAttMaxSize());
 			$message = lang('file_size_exceeds_') . $r . lang('_of_limit');
-			break;
-		case '105':
+            break;
+        case '105':
 			$message = lang('upload_folder_unwritable');
-			break;
-		default:
+            break;
+        default:
 			$message = lang('upload_ok');
-			$success = 1;
-			break;
-	}
+            $success = 1;
+            break;
+    }
 
-	$result = [
+    $result = [
 		'success'   => $success, // 1 success, 0 failure
-		'message'   => $message,
-		'url'       => $success ? getFileUrl($ret['file_path']) : '',
-		'file_info' => $success ? $ret : [],
-	];
+        'message'   => $message,
+        'url'       => $success ? getFileUrl($ret['file_path']) : '',
+        'file_info' => $success ? $ret : [],
+    ];
 }
 
 /**
@@ -465,64 +465,64 @@ function upload2local($attach, &$result) {
  *
  */
 function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail = true) {
-	if ($errorNum == 1) {
+    if ($errorNum == 1) {
 		return '100'; //File size exceeds the system limit
-	} elseif ($errorNum > 1) {
+    } elseif ($errorNum > 1) {
 		return '101'; //File upload failed
-	}
-	$extension = getFileSuffix($fileName);
-	if (!in_array($extension, $type)) {
+    }
+    $extension = getFileSuffix($fileName);
+    if (!in_array($extension, $type)) {
 		return '102'; //Incorrect file type
-	}
-	if ($fileSize > Option::getAttMaxSize()) {
+    }
+    if ($fileSize > Option::getAttMaxSize()) {
 		return '103'; //File size exceeds the emlog limit
-	}
-	$file_info = [];
-	$file_info['file_name'] = $fileName;
-	$file_info['mime_type'] = get_mimetype($extension);
-	$file_info['size'] = $fileSize;
-	$file_info['width'] = 0;
-	$file_info['height'] = 0;
-	$uppath = Option::UPLOADFILE_PATH . gmdate('Ym') . '/';
-	$fname = substr(md5($fileName), 0, 4) . time() . '.' . $extension;
-	$attachpath = $uppath . $fname;
-	$file_info['file_path'] = $attachpath;
-	if (!is_dir(Option::UPLOADFILE_PATH)) {
-		@umask(0);
-		$ret = @mkdir(Option::UPLOADFILE_PATH, 0777);
-		if ($ret === false) {
+    }
+    $file_info = [];
+    $file_info['file_name'] = $fileName;
+    $file_info['mime_type'] = get_mimetype($extension);
+    $file_info['size'] = $fileSize;
+    $file_info['width'] = 0;
+    $file_info['height'] = 0;
+    $uppath = Option::UPLOADFILE_PATH . gmdate('Ym') . '/';
+    $fname = substr(md5($fileName), 0, 4) . time() . '.' . $extension;
+    $attachpath = $uppath . $fname;
+    $file_info['file_path'] = $attachpath;
+    if (!is_dir(Option::UPLOADFILE_PATH)) {
+        @umask(0);
+        $ret = @mkdir(Option::UPLOADFILE_PATH, 0777);
+        if ($ret === false) {
 			return '104'; //Create the file upload directory failed
-		}
-	}
-	if (!is_dir($uppath)) {
-		@umask(0);
-		$ret = @mkdir($uppath, 0777);
-		if ($ret === false) {
+        }
+    }
+    if (!is_dir($uppath)) {
+        @umask(0);
+        $ret = @mkdir($uppath, 0777);
+        if ($ret === false) {
 			return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
-		}
-	}
-	doAction('attach_upload', $tmpFile);
+        }
+    }
+    doAction('attach_upload', $tmpFile);
 
 	// Generate thumbnail
-	$thum = $uppath . 'thum-' . $fname;
-	if ($is_thumbnail && resizeImage($tmpFile, $thum, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
-		$file_info['thum_file'] = $thum;
-	}
+    $thum = $uppath . 'thum-' . $fname;
+    if ($is_thumbnail && resizeImage($tmpFile, $thum, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
+        $file_info['thum_file'] = $thum;
+    }
 
-	if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $attachpath)) {
-		@unlink($tmpFile);
+    if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $attachpath)) {
+        @unlink($tmpFile);
 		return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
-	}
+    }
 
 	// Extract image width and height
-	if (in_array($file_info['mime_type'], array('image/jpeg', 'image/png', 'image/gif', 'image/bmp'))) {
-		$size = getimagesize($file_info['file_path']);
-		if ($size) {
-			$file_info['width'] = $size[0];
-			$file_info['height'] = $size[1];
-		}
-	}
-	return $file_info;
+    if (in_array($file_info['mime_type'], array('image/jpeg', 'image/png', 'image/gif', 'image/bmp'))) {
+        $size = getimagesize($file_info['file_path']);
+        if ($size) {
+            $file_info['width'] = $size[0];
+            $file_info['height'] = $size[1];
+        }
+    }
+    return $file_info;
 }
 
 /**
@@ -535,22 +535,22 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
  * @return unknown
  */
 function resizeImage($img, $thum_path, $max_w, $max_h) {
-	if (!in_array(getFileSuffix($thum_path), array('jpg', 'png', 'jpeg', 'gif'))) {
-		return false;
-	}
-	if (!function_exists('ImageCreate')) {
-		return false;
-	}
+    if (!in_array(getFileSuffix($thum_path), array('jpg', 'png', 'jpeg', 'gif'))) {
+        return false;
+    }
+    if (!function_exists('ImageCreate')) {
+        return false;
+    }
 
-	$size = chImageSize($img, $max_w, $max_h);
-	$newwidth = $size['w'];
-	$newheight = $size['h'];
-	$w = $size['rc_w'];
-	$h = $size['rc_h'];
-	if ($w <= $max_w && $h <= $max_h) {
-		return false;
-	}
-	return imageCropAndResize($img, $thum_path, 0, 0, 0, 0, $newwidth, $newheight, $w, $h);
+    $size = chImageSize($img, $max_w, $max_h);
+    $newwidth = $size['w'];
+    $newheight = $size['h'];
+    $w = $size['rc_w'];
+    $h = $size['rc_h'];
+    if ($w <= $max_w && $h <= $max_h) {
+        return false;
+    }
+    return imageCropAndResize($img, $thum_path, 0, 0, 0, 0, $newwidth, $newheight, $w, $h);
 }
 
 /**
@@ -568,46 +568,46 @@ function resizeImage($img, $thum_path, $max_w, $max_h) {
  * @param int $src_h Original height
  */
 function imageCropAndResize($src_image, $dst_path, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h) {
-	if (!function_exists('imagecreatefromstring')) {
-		return false;
-	}
+    if (!function_exists('imagecreatefromstring')) {
+        return false;
+    }
 
-	$src_img = imagecreatefromstring(file_get_contents($src_image));
-	if (!$src_img) {
-		return false;
-	}
+    $src_img = imagecreatefromstring(file_get_contents($src_image));
+    if (!$src_img) {
+        return false;
+    }
 
-	if (function_exists('imagecopyresampled')) {
-		$new_img = imagecreatetruecolor($dst_w, $dst_h);
-		imagecopyresampled($new_img, $src_img, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-	} elseif (function_exists('imagecopyresized')) {
-		$new_img = imagecreate($dst_w, $dst_h);
-		imagecopyresized($new_img, $src_img, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
-	} else {
-		return false;
-	}
+    if (function_exists('imagecopyresampled')) {
+        $new_img = imagecreatetruecolor($dst_w, $dst_h);
+        imagecopyresampled($new_img, $src_img, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
+    } elseif (function_exists('imagecopyresized')) {
+        $new_img = imagecreate($dst_w, $dst_h);
+        imagecopyresized($new_img, $src_img, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h);
+    } else {
+        return false;
+    }
 
-	switch (getFileSuffix($dst_path)) {
-		case 'png':
-			if (function_exists('imagepng') && imagepng($new_img, $dst_path)) {
-				ImageDestroy($new_img);
-				return true;
-			}
-			return false;
-		case 'jpg':
-		default:
-			if (function_exists('imagejpeg') && imagejpeg($new_img, $dst_path)) {
-				ImageDestroy($new_img);
-				return true;
-			}
-			return false;
-		case 'gif':
-			if (function_exists('imagegif') && imagegif($new_img, $dst_path)) {
-				ImageDestroy($new_img);
-				return true;
-			}
-			return false;
-	}
+    switch (getFileSuffix($dst_path)) {
+        case 'png':
+            if (function_exists('imagepng') && imagepng($new_img, $dst_path)) {
+                ImageDestroy($new_img);
+                return true;
+            }
+            return false;
+        case 'jpg':
+        default:
+            if (function_exists('imagejpeg') && imagejpeg($new_img, $dst_path)) {
+                ImageDestroy($new_img);
+                return true;
+            }
+            return false;
+        case 'gif':
+            if (function_exists('imagegif') && imagegif($new_img, $dst_path)) {
+                ImageDestroy($new_img);
+                return true;
+            }
+            return false;
+    }
 }
 
 /**
@@ -619,43 +619,43 @@ function imageCropAndResize($src_image, $dst_path, $dst_x, $dst_y, $src_x, $src_
  * @return array
  */
 function chImageSize($img, $max_w, $max_h) {
-	$size = @getimagesize($img);
-	if (!$size) {
-		return [];
-	}
-	$w = $size[0];
-	$h = $size[1];
+    $size = @getimagesize($img);
+    if (!$size) {
+        return [];
+    }
+    $w = $size[0];
+    $h = $size[1];
 	//Calculate zoom ratio
-	@$w_ratio = $max_w / $w;
-	@$h_ratio = $max_h / $h;
+    @$w_ratio = $max_w / $w;
+    @$h_ratio = $max_h / $h;
 	//Verify the Image width and height
-	if (($w <= $max_w) && ($h <= $max_h)) {
-		$tn['w'] = $w;
-		$tn['h'] = $h;
-	} else if (($w_ratio * $h) < $max_h) {
-		$tn['h'] = ceil($w_ratio * $h);
-		$tn['w'] = $max_w;
-	} else {
-		$tn['w'] = ceil($h_ratio * $w);
-		$tn['h'] = $max_h;
-	}
-	$tn['rc_w'] = $w;
-	$tn['rc_h'] = $h;
-	return $tn;
+    if (($w <= $max_w) && ($h <= $max_h)) {
+        $tn['w'] = $w;
+        $tn['h'] = $h;
+    } else if (($w_ratio * $h) < $max_h) {
+        $tn['h'] = ceil($w_ratio * $h);
+        $tn['w'] = $max_w;
+    } else {
+        $tn['w'] = ceil($h_ratio * $w);
+        $tn['h'] = $max_h;
+    }
+    $tn['rc_w'] = $w;
+    $tn['rc_h'] = $h;
+    return $tn;
 }
 
 /**
  * Get Gravatar Avatar
  */
 if (!function_exists('getGravatar')) {
-	function getGravatar($email, $s = 40) {
-		$hash = md5($email);
+    function getGravatar($email, $s = 40) {
+        $hash = md5($email);
 //vot		$gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
 /*vot*/		$gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
-		doOnceAction('get_Gravatar', $email, $gravatar_url);
+        doOnceAction('get_Gravatar', $email, $gravatar_url);
 
-		return $gravatar_url;
-	}
+        return $gravatar_url;
+    }
 }
 
 /**
@@ -665,7 +665,7 @@ if (!function_exists('getGravatar')) {
  * @return false|string
  */
 function getMonthDayNum($month, $year) {
-	return date("t", strtotime($year . $month . '01'));
+    return date("t", strtotime($year . $month . '01'));
 }
 
 /**
@@ -676,42 +676,42 @@ function getMonthDayNum($month, $year) {
  * @return int
  */
 function emUnZip($zipfile, $path, $type = 'tpl') {
-	if (!class_exists('ZipArchive', FALSE)) {
+    if (!class_exists('ZipArchive', FALSE)) {
 		return 3;//zip Module problem
-	}
-	$zip = new ZipArchive();
-	if (@$zip->open($zipfile) !== TRUE) {
+    }
+    $zip = new ZipArchive();
+    if (@$zip->open($zipfile) !== TRUE) {
 		return 2;//File permissions problem
-	}
-	$r = explode('/', $zip->getNameIndex(0), 2);
-	$dir = isset($r[0]) ? $r[0] . '/' : '';
-	switch ($type) {
-		case 'tpl':
-			$re = $zip->getFromName($dir . 'header.php');
-			if (false === $re) {
-				return -2;
-			}
-			break;
-		case 'plugin':
-			$plugin_name = substr($dir, 0, -1);
-			$re = $zip->getFromName($dir . $plugin_name . '.php');
-			if (false === $re) {
-				return -1;
-			}
-			break;
-		case 'backup':
-			$sql_name = substr($dir, 0, -1);
-			if (getFileSuffix($sql_name) != 'sql') {
-				return -3;
-			}
-			break;
-		case 'update':
-			break;
-	}
-	if (true === @$zip->extractTo($path)) {
-		$zip->close();
-		return 0;
-	}
+    }
+    $r = explode('/', $zip->getNameIndex(0), 2);
+    $dir = isset($r[0]) ? $r[0] . '/' : '';
+    switch ($type) {
+        case 'tpl':
+            $re = $zip->getFromName($dir . 'header.php');
+            if (false === $re) {
+                return -2;
+            }
+            break;
+        case 'plugin':
+            $plugin_name = substr($dir, 0, -1);
+            $re = $zip->getFromName($dir . $plugin_name . '.php');
+            if (false === $re) {
+                return -1;
+            }
+            break;
+        case 'backup':
+            $sql_name = substr($dir, 0, -1);
+            if (getFileSuffix($sql_name) != 'sql') {
+                return -3;
+            }
+            break;
+        case 'update':
+            break;
+    }
+    if (true === @$zip->extractTo($path)) {
+        $zip->close();
+        return 0;
+    }
 
 	return 1; //File permissions problem
 }
@@ -720,21 +720,21 @@ function emUnZip($zipfile, $path, $type = 'tpl') {
  * Zip compression
  */
 function emZip($orig_fname, $content) {
-	if (!class_exists('ZipArchive', FALSE)) {
-		return false;
-	}
-	$zip = new ZipArchive();
-	$tempzip = EMLOG_ROOT . '/content/cache/emtemp.zip';
-	$res = $zip->open($tempzip, ZipArchive::CREATE);
-	if ($res === TRUE) {
-		$zip->addFromString($orig_fname, $content);
-		$zip->close();
-		$zip_content = file_get_contents($tempzip);
-		unlink($tempzip);
-		return $zip_content;
-	}
+    if (!class_exists('ZipArchive', FALSE)) {
+        return false;
+    }
+    $zip = new ZipArchive();
+    $tempzip = EMLOG_ROOT . '/content/cache/emtemp.zip';
+    $res = $zip->open($tempzip, ZipArchive::CREATE);
+    if ($res === TRUE) {
+        $zip->addFromString($orig_fname, $content);
+        $zip->close();
+        $zip_content = file_get_contents($tempzip);
+        unlink($tempzip);
+        return $zip_content;
+    }
 
-	return false;
+    return false;
 }
 
 /**
@@ -743,30 +743,30 @@ function emZip($orig_fname, $content) {
  * @return string Temporary file path
  */
 function emFetchFile($source) {
-	$temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
-	$wh = fopen($temp_file, 'w+b');
+    $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
+    $wh = fopen($temp_file, 'w+b');
 
-	$r = parse_url($source);
-	if (isset($r['host']) && sha1($r['host']) !== '1ca2f71c0b27a1c6dbbf1583dc4d4e422b0683ac') {
-		return FALSE;
-	}
+    $r = parse_url($source);
+    if (isset($r['host']) && sha1($r['host']) !== '1ca2f71c0b27a1c6dbbf1583dc4d4e422b0683ac') {
+        return FALSE;
+    }
 
-	$ctx_opt = set_ctx_option();
-	$ctx = stream_context_create($ctx_opt);
-	$rh = @fopen($source, 'rb', false, $ctx);
+    $ctx_opt = set_ctx_option();
+    $ctx = stream_context_create($ctx_opt);
+    $rh = @fopen($source, 'rb', false, $ctx);
 
-	if (!$rh || !$wh) {
-		return FALSE;
-	}
+    if (!$rh || !$wh) {
+        return FALSE;
+    }
 
-	while (!feof($rh)) {
-		if (fwrite($wh, fread($rh, 4096)) === FALSE) {
-			return FALSE;
-		}
-	}
-	fclose($rh);
-	fclose($wh);
-	return $temp_file;
+    while (!feof($rh)) {
+        if (fwrite($wh, fread($rh, 4096)) === FALSE) {
+            return FALSE;
+        }
+    }
+    fclose($rh);
+    fclose($wh);
+    return $temp_file;
 }
 
 /**
@@ -775,80 +775,80 @@ function emFetchFile($source) {
  * @return string Temporary file path
  */
 function emDownFile($source) {
-	$ctx_opt = set_ctx_option();
-	$context = stream_context_create($ctx_opt);
-	$content = file_get_contents($source, false, $context);
-	if ($content === false) {
-		return false;
-	}
+    $ctx_opt = set_ctx_option();
+    $context = stream_context_create($ctx_opt);
+    $content = file_get_contents($source, false, $context);
+    if ($content === false) {
+        return false;
+    }
 
-	$temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
-	if ($temp_file === false) {
-		emMsg('emDownFile: Failed to create temporary file.');
-	}
-	$ret = file_put_contents($temp_file, $content);
-	if ($ret === false) {
-		emMsg('emDownFile: Failed to write temporary file.');
-	}
+    $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
+    if ($temp_file === false) {
+/*vot*/		emMsg('emDownFile: Failed to create temporary file.');
+    }
+    $ret = file_put_contents($temp_file, $content);
+    if ($ret === false) {
+/*vot*/		emMsg('emDownFile: Failed to write temporary file.');
+    }
 
-	return $temp_file;
+    return $temp_file;
 }
 
 function set_ctx_option() {
-	$data = http_build_query(['emkey' => Option::get('emkey')]);
-	return [
-		'http' => [
-			'timeout' => 120,
-			'method'  => 'POST',
-			'header'  => "Content-type: application/x-www-form-urlencoded\r\n"
-				. "Content-Length: " . strlen($data) . "\r\n"
-				. "Referer: " . BLOG_URL . "\r\n"
-				. "User-Agent: emlog " . Option::EMLOG_VERSION . "\r\n",
-			'content' => $data
-		],
-		"ssl"  => [
-			"verify_peer"      => false,
-			"verify_peer_name" => false,
-		]
-	];
+    $data = http_build_query(['emkey' => Option::get('emkey')]);
+    return [
+        'http' => [
+            'timeout' => 120,
+            'method'  => 'POST',
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n"
+                . "Content-Length: " . strlen($data) . "\r\n"
+                . "Referer: " . BLOG_URL . "\r\n"
+                . "User-Agent: emlog " . Option::EMLOG_VERSION . "\r\n",
+            'content' => $data
+        ],
+        "ssl"  => [
+            "verify_peer"      => false,
+            "verify_peer_name" => false,
+        ]
+    ];
 }
 
 /**
  * Deleting a file or directory
  */
 function emDeleteFile($file) {
-	if (empty($file)) {
-		return false;
-	}
-	if (@is_file($file)) {
-		return @unlink($file);
-	}
-	$ret = true;
-	if ($handle = @opendir($file)) {
-		while ($filename = @readdir($handle)) {
-			if ($filename == '.' || $filename == '..') {
-				continue;
-			}
-			if (!emDeleteFile($file . '/' . $filename)) {
-				$ret = false;
-			}
-		}
-	} else {
-		$ret = false;
-	}
-	@closedir($handle);
-	if (file_exists($file) && !rmdir($file)) {
-		$ret = false;
-	}
-	return $ret;
+    if (empty($file)) {
+        return false;
+    }
+    if (@is_file($file)) {
+        return @unlink($file);
+    }
+    $ret = true;
+    if ($handle = @opendir($file)) {
+        while ($filename = @readdir($handle)) {
+            if ($filename == '.' || $filename == '..') {
+                continue;
+            }
+            if (!emDeleteFile($file . '/' . $filename)) {
+                $ret = false;
+            }
+        }
+    } else {
+        $ret = false;
+    }
+    @closedir($handle);
+    if (file_exists($file) && !rmdir($file)) {
+        $ret = false;
+    }
+    return $ret;
 }
 
 /**
  * Page Redirection
  */
 function emDirect($directUrl) {
-	header("Location: $directUrl");
-	exit;
+    header("Location: $directUrl");
+    exit;
 }
 
 /**
@@ -859,23 +859,23 @@ function emDirect($directUrl) {
  * @param boolean $isAutoGo Whether or not auto-return true false
  */
 function emMsg($msg, $url = 'javascript:history.back(-1);', $isAutoGo = false) {
-	if ($msg == '404') {
-		header("HTTP/1.1 404 Not Found");
+    if ($msg == '404') {
+        header("HTTP/1.1 404 Not Found");
 		$msg = lang('404_description');
-	}
+    }
 	$lang = LANG;
 	$dir = LANG_DIR;
 	$title = lang('prompt');
-	echo <<<EOT
+    echo <<<EOT
 <!doctype html>
 <html lang="$lang" dir="$dir">
 <head>
     <meta charset="utf-8">
 EOT;
-	if ($isAutoGo) {
-		echo "<meta http-equiv=\"refresh\" content=\"2;url=$url\" />";
-	}
-	echo <<<EOT
+    if ($isAutoGo) {
+        echo "<meta http-equiv=\"refresh\" content=\"2;url=$url\" />";
+    }
+    echo <<<EOT
 <title>$title</title>
 <style>
 body {
@@ -908,30 +908,30 @@ a {
 <div class="main">
 <p>$msg</p>
 EOT;
-	if ($url != 'none') {
+    if ($url != 'none') {
 		echo '<p><a href="' . $url . '">&larr; ' . lang('click_return') . '</a></p>';
-	}
-	echo <<<EOT
+    }
+    echo <<<EOT
 </div>
 </body>
 </html>
 EOT;
-	exit;
+    exit;
 }
 
 function show_404_page($show_404_only = false) {
-	if ($show_404_only) {
-		header("HTTP/1.1 404 Not Found");
-		exit;
-	}
+    if ($show_404_only) {
+        header("HTTP/1.1 404 Not Found");
+        exit;
+    }
 
-	if (is_file(TEMPLATE_PATH . '404.php')) {
-		header("HTTP/1.1 404 Not Found");
-		include View::getView('404');
-		exit;
-	}
+    if (is_file(TEMPLATE_PATH . '404.php')) {
+        header("HTTP/1.1 404 Not Found");
+        include View::getView('404');
+        exit;
+    }
 
-	emMsg('404', BLOG_URL);
+    emMsg('404', BLOG_URL);
 }
 
 /**
@@ -943,144 +943,144 @@ function show_404_page($show_404_only = false) {
  * @return unknown
  */
 if (!function_exists('hash_hmac')) {
-	function hash_hmac($algo, $data, $key) {
-		$packs = array('md5' => 'H32', 'sha1' => 'H40');
+    function hash_hmac($algo, $data, $key) {
+        $packs = array('md5' => 'H32', 'sha1' => 'H40');
 
-		if (!isset($packs[$algo])) {
-			return false;
-		}
+        if (!isset($packs[$algo])) {
+            return false;
+        }
 
-		$pack = $packs[$algo];
+        $pack = $packs[$algo];
 
-		if (strlen($key) > 64) {
-			$key = pack($pack, $algo($key));
-		} elseif (strlen($key) < 64) {
-			$key = str_pad($key, 64, chr(0));
-		}
+        if (strlen($key) > 64) {
+            $key = pack($pack, $algo($key));
+        } elseif (strlen($key) < 64) {
+            $key = str_pad($key, 64, chr(0));
+        }
 
-		$ipad = (substr($key, 0, 64) ^ str_repeat(chr(0x36), 64));
-		$opad = (substr($key, 0, 64) ^ str_repeat(chr(0x5C), 64));
+        $ipad = (substr($key, 0, 64) ^ str_repeat(chr(0x36), 64));
+        $opad = (substr($key, 0, 64) ^ str_repeat(chr(0x5C), 64));
 
-		return $algo($opad . pack($pack, $algo($ipad . $data)));
-	}
+        return $algo($opad . pack($pack, $algo($ipad . $data)));
+    }
 }
 
 /**
  * Get the MIME type based on the file extension
  */
 function get_mimetype($extension) {
-	$ct['htm'] = 'text/html';
-	$ct['html'] = 'text/html';
-	$ct['txt'] = 'text/plain';
-	$ct['asc'] = 'text/plain';
-	$ct['bmp'] = 'image/bmp';
-	$ct['gif'] = 'image/gif';
-	$ct['jpeg'] = 'image/jpeg';
-	$ct['jpg'] = 'image/jpeg';
-	$ct['jpe'] = 'image/jpeg';
-	$ct['png'] = 'image/png';
-	$ct['ico'] = 'image/vnd.microsoft.icon';
-	$ct['mpeg'] = 'video/mpeg';
-	$ct['mpg'] = 'video/mpeg';
-	$ct['mpe'] = 'video/mpeg';
-	$ct['qt'] = 'video/quicktime';
-	$ct['mov'] = 'video/quicktime';
-	$ct['avi'] = 'video/x-msvideo';
-	$ct['wmv'] = 'video/x-ms-wmv';
-	$ct['mp2'] = 'audio/mpeg';
-	$ct['mp3'] = 'audio/mpeg';
-	$ct['rm'] = 'audio/x-pn-realaudio';
-	$ct['ram'] = 'audio/x-pn-realaudio';
-	$ct['rpm'] = 'audio/x-pn-realaudio-plugin';
-	$ct['ra'] = 'audio/x-realaudio';
-	$ct['wav'] = 'audio/x-wav';
-	$ct['css'] = 'text/css';
-	$ct['zip'] = 'application/zip';
-	$ct['pdf'] = 'application/pdf';
-	$ct['doc'] = 'application/msword';
-	$ct['bin'] = 'application/octet-stream';
-	$ct['exe'] = 'application/octet-stream';
-	$ct['class'] = 'application/octet-stream';
-	$ct['dll'] = 'application/octet-stream';
-	$ct['xls'] = 'application/vnd.ms-excel';
-	$ct['ppt'] = 'application/vnd.ms-powerpoint';
-	$ct['wbxml'] = 'application/vnd.wap.wbxml';
-	$ct['wmlc'] = 'application/vnd.wap.wmlc';
-	$ct['wmlsc'] = 'application/vnd.wap.wmlscriptc';
-	$ct['dvi'] = 'application/x-dvi';
-	$ct['spl'] = 'application/x-futuresplash';
-	$ct['gtar'] = 'application/x-gtar';
-	$ct['gzip'] = 'application/x-gzip';
-	$ct['js'] = 'application/x-javascript';
-	$ct['swf'] = 'application/x-shockwave-flash';
-	$ct['tar'] = 'application/x-tar';
-	$ct['xhtml'] = 'application/xhtml+xml';
-	$ct['au'] = 'audio/basic';
-	$ct['snd'] = 'audio/basic';
-	$ct['midi'] = 'audio/midi';
-	$ct['mid'] = 'audio/midi';
-	$ct['m3u'] = 'audio/x-mpegurl';
-	$ct['tiff'] = 'image/tiff';
-	$ct['tif'] = 'image/tiff';
-	$ct['rtf'] = 'text/rtf';
-	$ct['wml'] = 'text/vnd.wap.wml';
-	$ct['wmls'] = 'text/vnd.wap.wmlscript';
-	$ct['xsl'] = 'text/xml';
-	$ct['xml'] = 'text/xml';
+    $ct['htm'] = 'text/html';
+    $ct['html'] = 'text/html';
+    $ct['txt'] = 'text/plain';
+    $ct['asc'] = 'text/plain';
+    $ct['bmp'] = 'image/bmp';
+    $ct['gif'] = 'image/gif';
+    $ct['jpeg'] = 'image/jpeg';
+    $ct['jpg'] = 'image/jpeg';
+    $ct['jpe'] = 'image/jpeg';
+    $ct['png'] = 'image/png';
+    $ct['ico'] = 'image/vnd.microsoft.icon';
+    $ct['mpeg'] = 'video/mpeg';
+    $ct['mpg'] = 'video/mpeg';
+    $ct['mpe'] = 'video/mpeg';
+    $ct['qt'] = 'video/quicktime';
+    $ct['mov'] = 'video/quicktime';
+    $ct['avi'] = 'video/x-msvideo';
+    $ct['wmv'] = 'video/x-ms-wmv';
+    $ct['mp2'] = 'audio/mpeg';
+    $ct['mp3'] = 'audio/mpeg';
+    $ct['rm'] = 'audio/x-pn-realaudio';
+    $ct['ram'] = 'audio/x-pn-realaudio';
+    $ct['rpm'] = 'audio/x-pn-realaudio-plugin';
+    $ct['ra'] = 'audio/x-realaudio';
+    $ct['wav'] = 'audio/x-wav';
+    $ct['css'] = 'text/css';
+    $ct['zip'] = 'application/zip';
+    $ct['pdf'] = 'application/pdf';
+    $ct['doc'] = 'application/msword';
+    $ct['bin'] = 'application/octet-stream';
+    $ct['exe'] = 'application/octet-stream';
+    $ct['class'] = 'application/octet-stream';
+    $ct['dll'] = 'application/octet-stream';
+    $ct['xls'] = 'application/vnd.ms-excel';
+    $ct['ppt'] = 'application/vnd.ms-powerpoint';
+    $ct['wbxml'] = 'application/vnd.wap.wbxml';
+    $ct['wmlc'] = 'application/vnd.wap.wmlc';
+    $ct['wmlsc'] = 'application/vnd.wap.wmlscriptc';
+    $ct['dvi'] = 'application/x-dvi';
+    $ct['spl'] = 'application/x-futuresplash';
+    $ct['gtar'] = 'application/x-gtar';
+    $ct['gzip'] = 'application/x-gzip';
+    $ct['js'] = 'application/x-javascript';
+    $ct['swf'] = 'application/x-shockwave-flash';
+    $ct['tar'] = 'application/x-tar';
+    $ct['xhtml'] = 'application/xhtml+xml';
+    $ct['au'] = 'audio/basic';
+    $ct['snd'] = 'audio/basic';
+    $ct['midi'] = 'audio/midi';
+    $ct['mid'] = 'audio/midi';
+    $ct['m3u'] = 'audio/x-mpegurl';
+    $ct['tiff'] = 'image/tiff';
+    $ct['tif'] = 'image/tiff';
+    $ct['rtf'] = 'text/rtf';
+    $ct['wml'] = 'text/vnd.wap.wml';
+    $ct['wmls'] = 'text/vnd.wap.wmlscript';
+    $ct['xsl'] = 'text/xml';
+    $ct['xml'] = 'text/xml';
 
-	return isset($ct[strtolower($extension)]) ? $ct[strtolower($extension)] : 'text/html';
+    return isset($ct[strtolower($extension)]) ? $ct[strtolower($extension)] : 'text/html';
 }
 
 /**
  * Convert a string to a time zone independent UNIX timestamp
  */
 function emStrtotime($timeStr) {
-	if (!$timeStr) {
-		return false;
-	}
+    if (!$timeStr) {
+        return false;
+    }
 
-	$timezone = Option::get('timezone');
+    $timezone = Option::get('timezone');
 
-	$unixPostDate = strtotime($timeStr);
-	if (!$unixPostDate) {
-		return false;
-	}
+    $unixPostDate = strtotime($timeStr);
+    if (!$unixPostDate) {
+        return false;
+    }
 
-	$serverTimeZone = date_default_timezone_get();
-	if (empty($serverTimeZone) || $serverTimeZone == 'UTC') {
-		$unixPostDate -= (int)$timezone * 3600;
-	} elseif ($serverTimeZone) {
-		/*
+    $serverTimeZone = date_default_timezone_get();
+    if (empty($serverTimeZone) || $serverTimeZone == 'UTC') {
+        $unixPostDate -= (int)$timezone * 3600;
+    } elseif ($serverTimeZone) {
+        /*
 		 * If the server is configured with a default time zone, then PHP will recognize the incoming time as the local time in the time zone
 		 * But the time we pass in is actually the local time of the time zone configured by the blog, not the local time of the server time zone
 		 * Therefore, we need to remove/add the time difference between the two time zones to the time obtained by strtotime to get the utc time
-		 */
-		$offset = getTimeZoneOffset($serverTimeZone);
+         */
+        $offset = getTimeZoneOffset($serverTimeZone);
 		// First subtract/add the time difference configured for the local time zone
-		$unixPostDate -= (int)$timezone * 3600;
+        $unixPostDate -= (int)$timezone * 3600;
 		// Then subtract/add the time difference between the server time zone and utc to get the utc time
-		$unixPostDate -= $offset;
-	}
-	return $unixPostDate;
+        $unixPostDate -= $offset;
+    }
+    return $unixPostDate;
 }
 
 /**
  * Load jQuery
  */
 function emLoadJQuery() {
-	static $isJQueryLoaded = false;
-	if (!$isJQueryLoaded) {
-		global $emHooks;
-		if (!isset($emHooks['index_head'])) {
-			$emHooks['index_head'] = array();
-		}
-		array_unshift($emHooks['index_head'], 'loadJQuery');
-		$isJQueryLoaded = true;
+    static $isJQueryLoaded = false;
+    if (!$isJQueryLoaded) {
+        global $emHooks;
+        if (!isset($emHooks['index_head'])) {
+            $emHooks['index_head'] = array();
+        }
+        array_unshift($emHooks['index_head'], 'loadJQuery');
+        $isJQueryLoaded = true;
 
-		function loadJQuery() {
-			echo '<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>';
-		}
-	}
+        function loadJQuery() {
+            echo '<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>';
+        }
+    }
 }
 
 /**
@@ -1091,79 +1091,79 @@ function emLoadJQuery() {
  * @throws Exception
  */
 function getTimeZoneOffset($remote_tz, $origin_tz = 'UTC') {
-	if (($origin_tz === null) && !is_string($origin_tz = date_default_timezone_get())) {
-		return false; // A UTC timestamp was returned -- bail out!
-	}
-	$origin_dtz = new DateTimeZone($origin_tz);
-	$remote_dtz = new DateTimeZone($remote_tz);
-	$origin_dt = new DateTime('now', $origin_dtz);
-	$remote_dt = new DateTime('now', $remote_dtz);
-	return $origin_dtz->getOffset($origin_dt) - $remote_dtz->getOffset($remote_dt);
+    if (($origin_tz === null) && !is_string($origin_tz = date_default_timezone_get())) {
+        return false; // A UTC timestamp was returned -- bail out!
+    }
+    $origin_dtz = new DateTimeZone($origin_tz);
+    $remote_dtz = new DateTimeZone($remote_tz);
+    $origin_dt = new DateTime('now', $origin_dtz);
+    $remote_dt = new DateTime('now', $remote_dtz);
+    return $origin_dtz->getOffset($origin_dt) - $remote_dtz->getOffset($remote_dt);
 }
 
 /**
  * Upload the cut pictures (cover and avatar)
  */
 function uploadCropImg() {
-	$attach = isset($_FILES['image']) ? $_FILES['image'] : '';
-	if (!$attach || $attach['error'] === 4) {
-		echo "error";
-		exit;
-	}
+    $attach = isset($_FILES['image']) ? $_FILES['image'] : '';
+    if (!$attach || $attach['error'] === 4) {
+        echo "error";
+        exit;
+    }
 
-	$ret = '';
-	upload2local($attach, $ret);
-	if (empty($ret['success'])) {
-		echo "error";
-		exit;
-	}
-	return $ret;
+    $ret = '';
+    upload2local($attach, $ret);
+    if (empty($ret['success'])) {
+        echo "error";
+        exit;
+    }
+    return $ret;
 }
 
 if (!function_exists('split')) {
-	function split($str, $delimiter) {
-		return preg_split($str, $delimiter);
-	}
+    function split($str, $delimiter) {
+        return preg_split($str, $delimiter);
+    }
 }
 
 if (!function_exists('get_os')) {
-	function get_os($user_agent) {
-		if (false !== stripos($user_agent, "win")) {
-			$os = 'Windows';
-		} else if (false !== stripos($user_agent, "mac")) {
-			$os = 'MAC';
-		} else if (false !== stripos($user_agent, "linux")) {
-			$os = 'Linux';
-		} else if (false !== stripos($user_agent, "unix")) {
-			$os = 'Unix';
-		} else if (false !== stripos($user_agent, "bsd")) {
-			$os = 'BSD';
-		} else {
-			$os = 'unknown';
-		}
-		return $os;
-	}
+    function get_os($user_agent) {
+        if (false !== stripos($user_agent, "win")) {
+            $os = 'Windows';
+        } else if (false !== stripos($user_agent, "mac")) {
+            $os = 'MAC';
+        } else if (false !== stripos($user_agent, "linux")) {
+            $os = 'Linux';
+        } else if (false !== stripos($user_agent, "unix")) {
+            $os = 'Unix';
+        } else if (false !== stripos($user_agent, "bsd")) {
+            $os = 'BSD';
+        } else {
+            $os = 'unknown';
+        }
+        return $os;
+    }
 }
 
 if (!function_exists('get_browse')) {
-	function get_browse($user_agent) {
-		if (false !== stripos($user_agent, "MSIE")) {
-			$br = 'MSIE';
-		} else if (false !== stripos($user_agent, "Edg")) {
-			$br = 'Edge';
-		} else if (false !== stripos($user_agent, "Firefox")) {
-			$br = 'Firefox';
-		} else if (false !== stripos($user_agent, "Chrome")) {
-			$br = 'Chrome';
-		} else if (false !== stripos($user_agent, "Safari")) {
-			$br = 'Safari';
-		} else if (false !== stripos($user_agent, "Opera")) {
-			$br = 'Opera';
-		} else {
-			$br = 'unknown';
-		}
-		return $br;
-	}
+    function get_browse($user_agent) {
+        if (false !== stripos($user_agent, "MSIE")) {
+            $br = 'MSIE';
+        } else if (false !== stripos($user_agent, "Edg")) {
+            $br = 'Edge';
+        } else if (false !== stripos($user_agent, "Firefox")) {
+            $br = 'Firefox';
+        } else if (false !== stripos($user_agent, "Chrome")) {
+            $br = 'Chrome';
+        } else if (false !== stripos($user_agent, "Safari")) {
+            $br = 'Safari';
+        } else if (false !== stripos($user_agent, "Opera")) {
+            $br = 'Opera';
+        } else {
+            $br = 'unknown';
+        }
+        return $br;
+    }
 }
 
 //------------------------------------------------------------------

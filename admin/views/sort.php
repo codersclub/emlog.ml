@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['active_taxis'])): ?>
     <div class="alert alert-success"><?= lang('category_update_ok') ?></div><?php endif ?>
@@ -41,12 +41,12 @@
                     </tr>
                     </thead>
                     <tbody>
-					<?php
-					foreach ($sorts as $key => $value):
-						if ($value['pid'] != 0) {
-							continue;
-						}
-						?>
+                    <?php
+                    foreach ($sorts as $key => $value):
+                        if ($value['pid'] != 0) {
+                            continue;
+                        }
+                        ?>
                         <tr>
                             <td>
                                 <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id"/>
@@ -66,11 +66,11 @@
                                 <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                             </td>
                         </tr>
-						<?php
-						$children = $value['children'];
-						foreach ($children as $key):
-							$value = $sorts[$key];
-							?>
+                        <?php
+                        $children = $value['children'];
+                        foreach ($children as $key):
+                            $value = $sorts[$key];
+                            ?>
                             <tr>
                                 <td>
                                     <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id"/>
@@ -89,8 +89,8 @@
                                        class="badge badge-danger"><?= lang('delete') ?></a>
                                 </td>
                             </tr>
-						<?php endforeach ?>
-					<?php endforeach ?>
+                        <?php endforeach ?>
+                    <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -126,14 +126,14 @@
                         <label><?= lang('category_parent') ?></label>
                         <select name="pid" id="pid" class="form-control">
                             <option value="0"><?= lang('no') ?></option>
-							<?php
-							foreach ($sorts as $key => $value):
-								if ($value['pid'] != 0) {
-									continue;
-								}
-								?>
+                            <?php
+                            foreach ($sorts as $key => $value):
+                                if ($value['pid'] != 0) {
+                                    continue;
+                                }
+                                ?>
                                 <option value="<?= $key ?>"><?= $value['sortname'] ?></option>
-							<?php endforeach ?>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="form-group">

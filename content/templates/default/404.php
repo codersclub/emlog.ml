@@ -3,7 +3,7 @@
  * Custom 404 page
  */
 if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 }
 ?>
 <!doctype html>

@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['ok'])): ?>
     <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>

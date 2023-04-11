@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['error'])): ?>
     <div class="alert alert-danger"><?= lang('store_unavailable') ?></div><?php endif ?>
@@ -31,11 +31,11 @@
     <a href="./store.php?tag=paid" class="badge badge-warning m-1 ml-2 p-2"><?= lang('paid_zone') ?></a>
 </div>
 <div class="mb-3">
-	<?php if (!empty($templates)): ?>
+    <?php if (!empty($templates)): ?>
         <div class="d-flex flex-wrap app-list">
-			<?php foreach ($templates as $k => $v):
-				$icon = $v['icon'] ?: "./views/images/theme.png";
-				?>
+            <?php foreach ($templates as $k => $v):
+                $icon = $v['icon'] ?: "./views/images/theme.png";
+                ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
                         <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
@@ -43,9 +43,9 @@
                         </a>
                         <div class="card-body">
                             <p class="card-text font-weight-bold">
-								<?php if ($v['top'] === 1): ?>
+                                <?php if ($v['top'] === 1): ?>
 <!--vot-->                                <span class="badge badge-success p-1"><?=lang('recommend_today')?></span>
-								<?php endif; ?>
+                                <?php endif; ?>
                                 <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= subString($v['name'], 0, 25) ?></a>
                             </p>
                             <p class="card-text text-muted">
@@ -58,23 +58,23 @@
                             </p>
                             <div class="card-text d-flex justify-content-between">
                                 <div class="installMsg"></div>
-								<?php if ($v['price'] > 0): ?>
+                                <?php if ($v['price'] > 0): ?>
 <!--vot-->                          <a href="https://www.emlog.net/order/submit/tpl/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
-								<?php else: ?>
+                                <?php else: ?>
 <!--vot-->                                <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="tpl"><?= lang('install_free') ?></a>
-								<?php endif ?>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
                 </div>
-			<?php endforeach ?>
+            <?php endforeach ?>
         </div>
         <div class="col-md-12 page my-5"><?= $pageurl ?> (<?=lang('have')?> <?= $count ?><?=lang('_templates')?>)</div>
-	<?php else: ?>
+    <?php else: ?>
         <div class="col-md-12">
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>
         </div>
-	<?php endif ?>
+    <?php endif ?>
 </div>
 <script>
     $("#menu_store").addClass('active');

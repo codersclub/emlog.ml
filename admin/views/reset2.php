@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <div class="container">
     <div class="row justify-content-center">
@@ -13,9 +13,9 @@
                                     <h1 class="h4 text-gray-900 mb-4"><?= lang('password_recover') ?></h1>
                                 </div>
                                 <form method="post" class="user" action="./account.php?action=doreset2">
-									<?php if (isset($_GET['succ_mail'])): ?>
+                                    <?php if (isset($_GET['succ_mail'])): ?>
                                         <div class="alert alert-success"><?= lang('enter_code_from_email') ?></div><?php endif ?>
-									<?php if (isset($_GET['err_mail_code'])): ?>
+                                    <?php if (isset($_GET['err_mail_code'])): ?>
                                         <div class="alert alert-danger"><?= lang('verification_error') ?></div><?php endif ?>
                                     <div class="form-group">
                                         <input type="text" cla ss="form-control form-control-user" id="mail_code" name="mail_code" placeholder="<?= lang('email_verification_code') ?>" required>

@@ -1,5 +1,5 @@
 <?php if (!defined('EMLOG_ROOT')) {
-	exit('error!');
+    exit('error!');
 } ?>
 <?php if (isset($_GET['active_taxis'])): ?>
     <div class="alert alert-success"><?= lang('nav_cat_update_ok') ?></div><?php endif ?>
@@ -40,33 +40,33 @@
                     </tr>
                     </thead>
                     <tbody>
-					<?php
-					if ($navis):
-						foreach ($navis as $key => $value):
-							if ($value['pid'] != 0) {
-								continue;
-							}
-							$value['type_name'] = '';
-							switch ($value['type']) {
-								case Navi_Model::navitype_home:
-								case Navi_Model::navitype_t:
-								case Navi_Model::navitype_admin:
+                    <?php
+                    if ($navis):
+                        foreach ($navis as $key => $value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                            $value['type_name'] = '';
+                            switch ($value['type']) {
+                                case Navi_Model::navitype_home:
+                                case Navi_Model::navitype_t:
+                                case Navi_Model::navitype_admin:
 									$value['type_name'] = lang('system');
-									$value['url'] = '/' . $value['url'];
-									break;
-								case Navi_Model::navitype_sort:
+                                    $value['url'] = '/' . $value['url'];
+                                    break;
+                                case Navi_Model::navitype_sort:
 									$value['type_name'] = '<span class="text-primary">' . lang('category') . '</span>';
-									break;
-								case Navi_Model::navitype_page:
+                                    break;
+                                case Navi_Model::navitype_page:
 									$value['type_name'] = '<span class="text-success">' . lang('page') . '</span>';
-									break;
-								case Navi_Model::navitype_custom:
+                                    break;
+                                case Navi_Model::navitype_custom:
 									$value['type_name'] = '<span class="text-danger">' . lang('custom') . '</span>';
-									break;
-							}
-							doAction('adm_navi_display');
+                                    break;
+                            }
+                            doAction('adm_navi_display');
 
-							?>
+                            ?>
                             <tr>
                                 <td><input class="form-control em-small" name="navi[<?= $value['id'] ?>]" value="<?= $value['taxis'] ?>" maxlength="4"/></td>
                                 <td><a href="navbar.php?action=mod&amp;navid=<?= $value['id'] ?>"><?= $value['naviname'] ?></a></td>
@@ -78,21 +78,21 @@
                                 </td>
                                 <td><?= $value['url'] ?></td>
                                 <td>
-									<?php if ($value['hide'] == 'n'): ?>
+                                    <?php if ($value['hide'] == 'n'): ?>
                                         <a href="navbar.php?action=hide&amp;id=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('visible') ?></a>
-									<?php else: ?>
+                                    <?php else: ?>
                                         <a href="navbar.php?action=show&amp;id=<?= $value['id'] ?>" class="badge badge-warning"><?= lang('hidden') ?></a>
-									<?php endif ?>
-									<?php if ($value['isdefault'] == 'n'): ?>
+                                    <?php endif ?>
+                                    <?php if ($value['isdefault'] == 'n'): ?>
                                         <a href="javascript: em_confirm(<?= $value['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
                                            class="badge badge-danger"><?= lang('delete') ?></a>
-									<?php endif ?>
+                                    <?php endif ?>
                                 </td>
                             </tr>
-							<?php
-							if (!empty($value['childnavi'])):
-								foreach ($value['childnavi'] as $val):
-									?>
+                            <?php
+                            if (!empty($value['childnavi'])):
+                                foreach ($value['childnavi'] as $val):
+                                    ?>
                                     <tr>
                                         <td><input class="form-control em-small" name="navi[<?= $val['id'] ?>]" value="<?= $val['taxis'] ?>" maxlength="4"/></td>
                                         <td>---- <a href="navbar.php?action=mod&amp;navid=<?= $val['id'] ?>"><?= $val['naviname'] ?></a></td>
@@ -103,23 +103,23 @@
                                         </td>
                                         <td><?= $val['url'] ?></td>
                                         <td>
-											<?php if ($val['hide'] == 'n'): ?>
+                                            <?php if ($val['hide'] == 'n'): ?>
                                                 <a href="navbar.php?action=hide&amp;id=<?= $val['id'] ?>" class="badge badge-primary"><?= lang('visible') ?></a>
-											<?php else: ?>
+                                            <?php else: ?>
                                                 <a href="navbar.php?action=show&amp;id=<?= $val['id'] ?>" class="badge badge-warning"><?= lang('hidden') ?></a>
-											<?php endif ?>
-											<?php if ($val['isdefault'] == 'n'): ?>
+                                            <?php endif ?>
+                                            <?php if ($val['isdefault'] == 'n'): ?>
                                                 <a href="javascript: em_confirm(<?= $val['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
                                                    class="badge badge-danger"><?= lang('delete') ?></a>
-											<?php endif ?>
+                                            <?php endif ?>
                                         </td>
                                     </tr>
-								<?php endforeach;endif ?>
-						<?php endforeach; else: ?>
+                                <?php endforeach;endif ?>
+                        <?php endforeach; else: ?>
                         <tr>
                             <td colspan="4"><?= lang('nav_no') ?></td>
                         </tr>
-					<?php endif ?>
+                    <?php endif ?>
                     </tbody>
                 </table>
             </div>
@@ -144,14 +144,14 @@
                     <label><?= lang('nav_parent') ?></label>
                     <select name="pid" id="pid" class="form-control">
                         <option value="0"><?= lang('no') ?></option>
-						<?php
-						foreach ($navis as $key => $value):
-							if ($value['type'] != Navi_Model::navitype_custom || $value['pid'] != 0) {
-								continue;
-							}
-							?>
+                        <?php
+                        foreach ($navis as $key => $value):
+                            if ($value['type'] != Navi_Model::navitype_custom || $value['pid'] != 0) {
+                                continue;
+                            }
+                            ?>
                             <option value="<?= $value['id'] ?>"><?= $value['naviname'] ?></option>
-						<?php endforeach ?>
+                        <?php endforeach ?>
                     </select>
                 </div>
                 <div class="form-check">
@@ -170,35 +170,35 @@
         <div class="card-body">
             <form action="navbar.php?action=add_sort" method="post" name="navi" id="navi">
                 <div class="form-group">
-					<?php
-					if ($sorts):
-						foreach ($sorts as $key => $value):
-							if ($value['pid'] != 0) {
-								continue;
-							}
-							?>
+                    <?php
+                    if ($sorts):
+                        foreach ($sorts as $key => $value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                            ?>
                             <div class="form-group"><input type="checkbox" style="vertical-align:middle;" name="sort_ids[]" value="<?= $value['sid'] ?>" class="ids"/>
-								<?= $value['sortname'] ?>
+                                <?= $value['sortname'] ?>
                             </div>
-							<?php
-							$children = $value['children'];
-							foreach ($children as $key):
-								$value = $sorts[$key];
-								?>
+                            <?php
+                            $children = $value['children'];
+                            foreach ($children as $key):
+                                $value = $sorts[$key];
+                                ?>
                                 <div class="form-group">
                                     &nbsp; &nbsp; &nbsp; <input type="checkbox" style="vertical-align:middle;" name="sort_ids[]" value="<?= $value['sid'] ?>" class="ids"/>
-									<?= $value['sortname'] ?>
+                                    <?= $value['sortname'] ?>
                                 </div>
-							<?php
-							endforeach;
-						endforeach;
-						?>
+                            <?php
+                            endforeach;
+                        endforeach;
+                        ?>
                         <div class="form-group">
                             <input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>">
                         </div>
-					<?php else: ?>
+                    <?php else: ?>
 						<?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
-					<?php endif ?>
+                    <?php endif ?>
                 </div>
             </form>
         </div>
@@ -209,19 +209,19 @@
         </div>
         <div class="card-body">
             <form action="navbar.php?action=add_page" method="post" name="navi" id="navi">
-				<?php
-				if ($pages):
-					foreach ($pages as $key => $value):
-						?>
+                <?php
+                if ($pages):
+                    foreach ($pages as $key => $value):
+                        ?>
                         <div class="form-group">
                             <input type="checkbox" style="vertical-align:middle;" name="pages[<?= $value['gid'] ?>]" value="<?= $value['title'] ?>" class="ids"/>
-							<?= $value['title'] ?>
+                            <?= $value['title'] ?>
                         </div>
-					<?php endforeach ?>
+                    <?php endforeach ?>
                     <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>"></div>
-				<?php else: ?>
+                <?php else: ?>
                     <div class="form-group"><?= lang('pages_no') ?>, <a href="page.php?action=new"><?= lang('add_page') ?></a></div>
-				<?php endif ?>
+                <?php endif ?>
             </form>
         </div>
     </div>
