@@ -15,7 +15,6 @@ function timestamp() {
 function em_confirm(id, property, token) {
     let url, msg;
 /*vot*/    let text = lang('delete_not_recover')
-
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
@@ -277,8 +276,9 @@ function autosave(act) {
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-/*vot*/            $("#save_info").html(lang('save_system_error')).addClass("alert-danger");
+/*vot*/     $("#save_info").html(lang('save_system_error')).addClass("alert-danger");
             $('title').text(lang('save_failed') + titleText);
+/*vot*/     alert(lang('save_system_error');
         }
     });
     if (act == 1) {
@@ -287,24 +287,25 @@ function autosave(act) {
 }
 
 // editor.md: Page AutoSave shortcut: Ctrl + S
+const pagetitle = $('title').text();
 function pagesave() {
 /*vot*/ document.addEventListener('keydown', function (e) {  // Prevents the browser default action from autosave
         if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
             e.preventDefault();
         }
     });
-
     let url = "page.php?action=save";
-
+    if ($("[name='pageid']").attr("value") < 0) return alert(lang('save_first'));
+	if (!$("[name='pagecontent']").html()) return alert(lang('content_empty'));
+/*vot*/	$('title').text(lang('saving_in') + ' ' + pagetitle);
     $.post(url, $("#addlog").serialize(), function (data) {
-        let titleText = $('title').text();
-/*vot*/ $('title').text(lang('saved_ok') + titleText);
+/*vot*/ $('title').text(lang('saved_ok') + pagetitle);
         setTimeout(function () {
-            $('title').text(titleText);
+            $('title').text(pagetitle);
         }, 2000);
         pageText = $("textarea").text();
     }).fail(function () {
-/*vot*/ $('title').text(lang('save_failed') + $('title').text());
+/*vot*/ $('title').text(lang('save_failed') + pagetitle);
 /*vot*/ alert(lang('save_failed!'))
     });
 }
@@ -455,15 +456,15 @@ function imgPasteExpand(thisEditor) {
                 }
                 return xhr;
             }, success: function (result) {
-                let imgUrl, thumbImgUrl;
                 console.log(lang('upload_ok_get_result'));
                 $.get(emMediaPhpUrl, function (resp) {
-                    console.log(lang('result_ok'));
                     var image = resp.data.images[0];
                     if (image) {
-/*vot*/                 replaceByNum(`[![](${image.media_url})](${image.media_icon})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
+/*vot*/                 console.log(lang('result_ok'))
+/*vot*/                 replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
 /*vot*/                 console.log(lang('get_result_fail'))
+/*vot*/                 alert(lang('get_result_fail');
                     }
                 })
             }, error: function (result) {
@@ -511,6 +512,18 @@ function doup(source, upsql) {
     });
 }
 
+// When in article edit page, auto full Sort by Cookies
+function autoFullSort(changeCookie) {
+	if(!$("#sort")) return
+	if(changeCookie === true) {
+		Cookies.set('em_saveLastSortId', $("#sort").val());
+		return
+	}
+	if(Cookies.get('em_saveLastSortId')) {
+		$("#sort").find("option[value='"+ Cookies.get('em_saveLastSortId') +"']").prop("selected",true);
+	}
+}
+
 $(document).ready(function () {
     // Check once the page is loaded
     // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid
@@ -541,4 +554,10 @@ $(document).ready(function () {
             link.prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
         });
     });
+
+	// auto full Sort by Cookies
+	autoFullSort();
+	$("#sort").change(function () {
+		autoFullSort(true);
+	})
 })
