@@ -66,6 +66,7 @@ var LNG = {
     'upload_failed_error': '上传失败,图片类型错误或网络错误',//'Upload failed, wrong image type or network error',
     'installing': '安装中…',//'Installing...',
     'install_free': '免费安装',//'Install for free',
+    'get_result_fail': '获取结果失败！',//'Failed to get result!',
 
 //----
     'backup_import_sure': '你确定要导入该备份文件吗？',//'Are you sure you want to import the backup files?',

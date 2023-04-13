@@ -463,7 +463,7 @@ function imgPasteExpand(thisEditor) {
                     if (image) {
 /*vot*/                 replaceByNum(`[![](${image.media_url})](${image.media_icon})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
-                        console.log('获取结果失败！')
+/*vot*/                 console.log(lang('get_result_fail'))
                     }
                 })
             }, error: function (result) {
