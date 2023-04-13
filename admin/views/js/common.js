@@ -86,11 +86,7 @@ function em_confirm(id, property, token) {
             break;
     }
     swal({
-        title: msg,
-        text: text,
-        icon: "warning",
-/*vot*/ buttons: [lang('cancel'), lang('ok')],
-        dangerMode: true,
+/*vot*/        title: msg, text: text, icon: "warning", buttons: [lang('cancel'), lang('ok')], dangerMode: true,
     }).then((willDelete) => {
         if (willDelete) {
             window.location = url + '&token=' + token;
@@ -461,11 +457,14 @@ function imgPasteExpand(thisEditor) {
             }, success: function (result) {
                 let imgUrl, thumbImgUrl;
                 console.log(lang('upload_ok_get_result'));
-                $.get(emMediaPhpUrl, function (data) {  // Get the result asynchronously, append to the editor
+                $.get(emMediaPhpUrl, function (resp) {
                     console.log(lang('result_ok'));
-                    imgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[0];
-                    thumbImgUrl = data.match(/[a-zA-z]+:\/[^\s\"\']*/g)[1];
-                    replaceByNum(`[![](${thumbImgUrl})](${imgUrl})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
+                    var image = resp.data.images[0];
+                    if (image) {
+/*vot*/                 replaceByNum(`[![](${image.media_url})](${image.media_icon})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
+                    } else {
+                        console.log('获取结果失败！')
+                    }
                 })
             }, error: function (result) {
                 alert(lang('upload_failed_error'));
