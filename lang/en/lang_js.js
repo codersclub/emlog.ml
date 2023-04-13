@@ -98,6 +98,8 @@ var LNG = {
  'unzip_fail'		: 'Failed to decompress and update. your server does not support zip',//'解压更新失败，可能是你的服务器空间不支持zip模块',
  'update_not_writable'	: 'Update failed, the directory is not writable',//'更新失败，目录不可写',
  'update_fail'		: 'Update failed',//'更新失败',
+ 'save_first'		: '请先保存页面！',//'Please save the page first!',
+ 'content_empty'	: '页面内容不能为空！',//'Page content cannot be empty!',
 
 //---------------------------
 //include/lib/js/common_tpl.js
