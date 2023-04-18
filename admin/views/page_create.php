@@ -71,7 +71,7 @@
                 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
                     <div class="row" id="image-list"></div>
                     <div class="text-center">
-                        <button type="button" class="btn btn-success btn-sm mt-2" id="load-more">加载更多…</button>
+                        <button type="button" class="btn btn-success btn-sm mt-2" id="load-more"><?=lang('load_more')?></button>
                     </div>
                 </form>
             </div>

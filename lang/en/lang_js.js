@@ -98,8 +98,13 @@ var LNG = {
  'unzip_fail'		: 'Failed to decompress and update. your server does not support zip',//'解压更新失败，可能是你的服务器空间不支持zip模块',
  'update_not_writable'	: 'Update failed, the directory is not writable',//'更新失败，目录不可写',
  'update_fail'		: 'Update failed',//'更新失败',
- 'save_first'		: '请先保存页面！',//'Please save the page first!',
- 'content_empty'	: '页面内容不能为空！',//'Page content cannot be empty!',
+ 'save_first'		: 'Please save the page first!',//'请先保存页面！',
+ 'content_empty'	: 'Page content cannot be empty!',//'页面内容不能为空！',
+ 'plugin'		: 'Plugin: ',//'插件：',
+ 'template'		: 'Template: ',//'模板：',
+ 'buy'			: 'Buy',//'购买',
+ 'go_store_install'	: 'Go to the store to install',//'去商店安装',
+ 'free'			: 'Free',//'免费',
 
 //---------------------------
 //include/lib/js/common_tpl.js
@@ -119,6 +124,12 @@ var LNG = {
 //---------------------------
 //admin/views/js/dropzone.min.js
     'drag_message': 'Drag the file here, or click to upload',//'拖动文件到这里，或者点击后选择上传',
+
+//---------------------------
+//admin/views/js/media-lib.js
+'insert_to_article'	: 'Insert to the article',//'插入文章',
+'set_cover'		: 'Set as cover',//'设为封面',
+'file_size'		: 'File size: ',//'文件大小：',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

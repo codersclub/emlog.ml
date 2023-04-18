@@ -100,6 +100,11 @@ var LNG = {
  'update_fail'		: '更新失败',//'Update failed',
  'save_first'		: '请先保存页面！',//'Please save the page first!',
  'content_empty'	: '页面内容不能为空！',//'Page content cannot be empty!',
+ 'plugin'		: '插件：',//'Plugin: ',
+ 'template'		: '模板：',//'Template: ',
+ 'buy'			: '购买',//'Buy',
+ 'go_store_install'	: '去商店安装',//'Go to the store to install',
+ 'free'			: '免费',//'Free',
 
 //---------------------------
 //include/lib/js/common_tpl.js
@@ -119,6 +124,12 @@ var LNG = {
 //---------------------------
 //admin/views/js/dropzone.min.js
     'drag_message': '拖动文件到这里，或者点击后选择上传',//'Drag the file here, or click to upload',
+
+//---------------------------
+//admin/views/js/media-lib.js
+'insert_to_article'	: '插入文章',//'Insert to the article',
+'set_cover'		: '设为封面',//'Set as cover',
+'file_size'		: '文件大小：',//'File size: ',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

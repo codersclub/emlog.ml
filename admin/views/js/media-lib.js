@@ -14,20 +14,20 @@ function loadImages() {
             $.each(resp.data.images, function (i, image) {
                 var insertBtnHtml = '';
                 if (image.media_type === 'image') {
-                    insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>' +
-                        '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="设为封面"><i class="icofont-image"></i></a>';
+                    insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>' +
+                        '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="' + lang('set_cover') + '"><i class="icofont-image"></i></a>';
                 } else if (image.media_type === 'video') {
-                    insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                    insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
                 } else if (image.media_type === 'audio') {
-                    insertBtnHtml = '<a href="javascript:insert_media_audio(\'' + image.media_url + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                    insertBtnHtml = '<a href="javascript:insert_media_audio(\'' + image.media_url + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
                 }else {
-                    insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="插入文章"><i class="icofont-plus"></i></a>';
+                    insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="' + <?=lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
                 }
                 var cardHtml = '<div class="col-md-4">' +
                     '<div class="card mb-2 shadow-sm">' +
                     '<a href="' + image.media_url + '" target="_blank"><img class="card-img-top" src="' + image.media_icon + '"/></a>' +
                     '<div class="card-body">' +
-                    '<div class="card-text text-muted small">' + image.media_name + '<br>文件大小：' + image.attsize + '</div>' +
+                    '<div class="card-text text-muted small">' + image.media_name + '<br>' + lang('file_size') + image.attsize + '</div>' +
                     '<p class="card-text d-flex justify-content-between">' + insertBtnHtml + '</p>' +
                     '</div></div></div>';
                 $('#image-list').append(cardHtml);

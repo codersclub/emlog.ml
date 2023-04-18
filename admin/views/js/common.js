@@ -536,16 +536,16 @@ function loadTopAddons() {
         success: function (resp) {
             $.each(resp.data, function (i, app) {
                 let insertBtnHtml;
-                let typeName = '模板：';
+                let typeName = lang('template');
                 let storeUlr = './store.php';
                 if (app.type === 'plu') {
-                    typeName = '插件：';
+                    typeName = lang('plugin');
                     storeUlr = './store.php?action=plu';
                 }
                 if (app.price > 0) {
-                    insertBtnHtml = '¥' + app.price + '<a href="' + app.buy_url + '" target="_blank">购买</a>';
+                    insertBtnHtml = '&yen;' + app.price + '<a href="' + app.buy_url + '" target="_blank">' + lang('buy') + '</a>';
                 } else {
-                    insertBtnHtml = '免费<a href="' + storeUlr + '">去商店安装</a>';
+                    insertBtnHtml = lang('free') + ' <a href="' + storeUlr + '">' + lang('go_store_install') + '</a>';
                 }
                 const cardHtml = '<div class="col-md-4">' +
                     '<div class="card">' +

@@ -149,16 +149,16 @@
                 <div class="card-body" id="admindex_msg">
                     <ul class="list-group list-group-flush">
                         <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?=lang('help_faq')?></a></li>
-                        <li class="msg_type_0"><a href="http://www.emlog.co/template/add" target="_blank">应用开发 | 开发文档</a></li>
-                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank">联系交流 | 加入Q群</a></li>
-                        <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank">问题反馈 | 官方社区</a></li>
+                        <li class="msg_type_0"><a href="http://www.emlog.co/template/add" target="_blank"><?=lang('app_development')?></a></li>
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?=lang('contacts')?></a></li>
+                        <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank"><?=lang('feedback')?></a></li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-lg-6 mb-4">
             <div class="card mb-4">
-                <h6 class="card-header">今日应用</h6>
+                <h6 class="card-header"><?=lang('applied_today')?></h6>
                 <div class="card-body" id="admindex_msg">
                     <div class="row" id="app-list"></div>
                 </div>
