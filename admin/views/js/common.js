@@ -196,6 +196,10 @@ function insert_media_video(fileurl) {
     Editor.insertValue('<video class=\"video-js\" controls preload=\"auto\" width=\"100%\" data-setup=\'{"aspectRatio":"16:9"}\'> <source src="' + fileurl + '" type=\'video/mp4\' > </video>');
 }
 
+function insert_media_audio(fileurl) {
+    Editor.insertValue('<audio src="' + fileurl + '" preload="none" controls loop></audio>');
+}
+
 function insert_media(fileurl, filename) {
     Editor.insertValue('[' + filename + '](' + fileurl + ')\n\n');
 }
@@ -288,6 +292,7 @@ function autosave(act) {
 
 // editor.md: Page AutoSave shortcut: Ctrl + S
 const pagetitle = $('title').text();
+
 function pagesave() {
 /*vot*/ document.addEventListener('keydown', function (e) {  // Prevents the browser default action from autosave
         if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
@@ -296,8 +301,8 @@ function pagesave() {
     });
     let url = "page.php?action=save";
     if ($("[name='pageid']").attr("value") < 0) return alert(lang('save_first'));
-	if (!$("[name='pagecontent']").html()) return alert(lang('content_empty'));
-/*vot*/	$('title').text(lang('saving_in') + ' ' + pagetitle);
+/*vot*/ if (!$("[name='pagecontent']").html()) return alert(lang('content_empty'));
+/*vot*/ $('title').text(lang('saving_in') + ' ' + pagetitle);
     $.post(url, $("#addlog").serialize(), function (data) {
 /*vot*/ $('title').text(lang('saved_ok') + pagetitle);
         setTimeout(function () {
@@ -514,14 +519,45 @@ function doup(source, upsql) {
 
 // When in article edit page, auto full Sort by Cookies
 function autoFullSort(changeCookie) {
-	if(!$("#sort")) return
-	if(changeCookie === true) {
-		Cookies.set('em_saveLastSortId', $("#sort").val());
-		return
-	}
-	if(Cookies.get('em_saveLastSortId')) {
-		$("#sort").find("option[value='"+ Cookies.get('em_saveLastSortId') +"']").prop("selected",true);
-	}
+    if (!$("#sort")) return
+    if (changeCookie === true) {
+        Cookies.set('em_saveLastSortId', $("#sort").val());
+        return
+    }
+    if (Cookies.get('em_saveLastSortId')) {
+        $("#sort").find("option[value='" + Cookies.get('em_saveLastSortId') + "']").prop("selected", true);
+    }
+}
+
+function loadTopAddons() {
+    $.ajax({
+        type: 'GET',
+        url: './store.php?action=top',
+        success: function (resp) {
+            $.each(resp.data, function (i, app) {
+                let insertBtnHtml;
+                let typeName = '模板：';
+                let storeUlr = './store.php';
+                if (app.type === 'plu') {
+                    typeName = '插件：';
+                    storeUlr = './store.php?action=plu';
+                }
+                if (app.price > 0) {
+                    insertBtnHtml = '¥' + app.price + '<a href="' + app.buy_url + '" target="_blank">购买</a>';
+                } else {
+                    insertBtnHtml = '免费<a href="' + storeUlr + '">去商店安装</a>';
+                }
+                const cardHtml = '<div class="col-md-4">' +
+                    '<div class="card">' +
+                    '<a href="' + app.buy_url + '" target="_blank"><img class="card-img-top" style="max-height: 90px;" src="' + app.icon + '" alt="icon"/></a>' +
+                    '<div class="card-body">' +
+                    '<div class="card-text text-muted small">' + typeName + app.name + '</div>' +
+                    '<p class="card-text d-flex justify-content-between small">' + insertBtnHtml + '</p>' +
+                    '</div></div></div>';
+                $('#app-list').append(cardHtml);
+            });
+        },
+    });
 }
 
 $(document).ready(function () {
@@ -555,9 +591,9 @@ $(document).ready(function () {
         });
     });
 
-	// auto full Sort by Cookies
-	autoFullSort();
-	$("#sort").change(function () {
-		autoFullSort(true);
-	})
+    // auto full Sort by Cookies
+    autoFullSort();
+    $("#sort").change(function () {
+        autoFullSort(true);
+    })
 })

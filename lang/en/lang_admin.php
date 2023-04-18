@@ -131,7 +131,7 @@ $lang = array(
 //admin/views/add_log.php
 'post_write'                              => 'Add article',//'写文章',
 'enter_post_title'                        => 'Enter the article title',//'输入文章标题',
-'upload_insert'                           => 'Insert media resources',//'插入图文资源',
+'upload_insert'                           => 'Upload & Insert image',//'上传插入图片',
 'category_select'                         => 'Select Category...',//'选择分类...',
 'post_time'                               => 'Posted on',//'发布于',
 'more_options'                            => 'More options',//'更多选项',
@@ -495,7 +495,7 @@ $lang = array(
 'update_expired'                          => 'The update service has expired, ',//'更新服务已到期，',
 'log_in_to_renew'                         => 'Log in to the official website to renew',//'登录官网续期',
 'articles_pending'                        => 'Pending Articles',//'待审文章',
-'help_faq'				  => 'Help | FAQ',//'帮助文档 | 常见问题',
+'help_faq'				  => 'Help | FAQ',//'使用帮助 | 常见问题',
 'contacts'				  => 'Contact and exchange | Join Q group',//'联系交流 | 加入Q群',
 'feedback'				  => 'Problem Feedback | Official Community',//'问题反馈 | 官方社区',
 'issues'				  => 'Issues',//'Issues',
@@ -771,8 +771,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_mail.php
-'comment_new_notify'                      => 'Email notification of new comments (sent to the article author email only)',//'新评论邮件通知（仅发送到文章作者邮箱）',
-'article_new_notify'                      => 'Email notification of new articles submitted (sent to founder email only)',//'新文章投稿邮件通知（仅发送到创始人邮箱）',
+'comment_new_notify'                      => 'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',//'评论通知（评论通知文章作者，回复评论通知评论人）',
+'article_new_notify'                      => 'Email notification of new articles submitted (sent to founder email only)',//'文章投稿通知（仅发送到创始人邮箱）',
 
 //---------------------------
 //admin/views/setting_user.php

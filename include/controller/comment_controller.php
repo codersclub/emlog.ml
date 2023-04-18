@@ -68,7 +68,7 @@ class Comment_Controller {
         $hide = isset($r['hide']) ? $r['hide'] : '';
 
         $_SESSION['code'] = null;
-        notice::sendNewCommentMail($content, $blogId);
+        notice::sendNewCommentMail($content, $blogId, $pid);
 
         if ($hide === 'y') {
 /*vot*/            $msg = lang('comment_wait_approve');

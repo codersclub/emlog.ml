@@ -205,9 +205,6 @@ function rmUrlParams($url) {
     return $urlInfo[0];
 }
 
-/**
- * Check if the file is an image, based on the file name extension
- */
 function isImage($mimetype) {
     if (strpos($mimetype, "image") !== false) {
         return true;
@@ -215,17 +212,16 @@ function isImage($mimetype) {
     return false;
 }
 
-/**
- * Check is this a video based on the file name suffix
- */
 function isVideo($fileName) {
     $suffix = getFileSuffix($fileName);
     return $suffix === 'mp4';
 }
 
-/**
- * Determine whether to compress the package according to the file name suffix
- */
+function isAudio($fileName) {
+    $suffix = getFileSuffix($fileName);
+    return $suffix === 'mp3';
+}
+
 function isZip($fileName) {
     $suffix = getFileSuffix($fileName);
     if (in_array($suffix, ['zip', 'rar'])) {

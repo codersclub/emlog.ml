@@ -131,7 +131,7 @@ $lang = array(
 //admin/views/add_log.php
 'post_write'                              => '写文章',//'Add post',
 'enter_post_title'                        => '输入文章标题',//'Enter the post title',
-'upload_insert'                           => '插入图文资源',//'Insert graphic resources',
+'upload_insert'                           => '上传插入图片',//'Upload & Insert image',
 'category_select'                         => '选择分类...',//'Select Category...',
 'post_time'                               => '发布于',//'Posted on',
 'more_options'                            => '更多选项',//'More Options',
@@ -770,8 +770,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_mail.php
-'comment_new_notify'                      => '新评论通知（仅发送到文章作者邮箱）',//'Email notification of new comments (sent to the article author email only)',
-'article_new_notify'                      => '新文章投稿通知（仅发送到创始人邮箱）',//'Email notification of new articles submitted (sent to founder email only)',
+'comment_new_notify'                      => '评论通知（评论通知文章作者，回复评论通知评论人）',//'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',
+'article_new_notify'                      => '文章投稿通知（仅发送到创始人邮箱）',//'Notification of new articles submitted (sent to founder email only)',
 
 //---------------------------
 //admin/views/setting_user.php

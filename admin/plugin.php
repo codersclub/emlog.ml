@@ -134,7 +134,7 @@ if ($action === 'check_update') {
 /*vot*/        Output::error(lang('update_failed_network'));
     }
     if ($ret['code'] === MSGCODE_EMKEY_INVALID) {
-/*vot*/        Output::error(lang('pro_unregistered'));
+/*vot*/        Output::error(lang('emlog_unregistered') . ', <a href="auth.php">' . lang('go_to_register') . '</a>');
     }
 
     Output::ok($ret['data']);

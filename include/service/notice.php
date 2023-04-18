@@ -72,7 +72,7 @@ class Notice {
         return false;
     }
 
-    public static function sendNewCommentMail($comment, $gid) {
+    public static function sendNewCommentMail($comment, $gid, $pid) {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -81,18 +81,27 @@ class Notice {
         }
 
         $sendmail = new SendMail();
-/*vot*/        $title = lang('new_comment_review');
 /*vot*/        $content = lang('new_comment_is') . $comment;
+        $article = self::getArticleInfo($gid);
 
-        $r = self::getArticleInfo($gid);
-        if ($r) {
-/*vot*/            $content .= '<br><br>' . lang('from_article') . $r['log_title'];
-            $email = self::getArticleAuthorEmail($r['author']);
-            if (!$email) {
-                return false;
-            }
-            $sendmail->send($email, $title, $content);
+        if (empty($article)) {
+            return false;
         }
+
+        if ($pid) {
+            $title = lang('new_comment_reply_review');
+            $content .= '<br><br>' . lang('from_article') . $article['log_title'];
+            $email = self::getCommentAuthorEmail($pid);
+        } else {
+            $title = lang('new_comment_review');
+            $content .= '<br><br>' . lang('from_article') . $article['log_title'];
+            $email = self::getArticleAuthorEmail($article['author']);
+        }
+        if (!$email) {
+            return false;
+        }
+        $sendmail->send($email, $title, $content);
+        return true;
     }
 
     private static function smtpServerReady() {
@@ -125,6 +134,15 @@ class Notice {
         $r = $User_Model->getOneUser($uid);
         if (isset($r['email'])) {
             return $r['email'];
+        }
+        return false;
+    }
+
+    private static function getCommentAuthorEmail($cid) {
+        $Comment_Model = new Comment_Model();
+        $r = $Comment_Model->getOneComment($cid);
+        if (isset($r['mail'])) {
+            return $r['mail'];
         }
         return false;
     }

@@ -15,7 +15,7 @@
 <!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
-<div class="row">
+<div class="mb-3">
     <?php if (!empty($addons)): ?>
         <div class="d-flex flex-wrap app-list">
             <?php foreach ($addons as $k => $v):
