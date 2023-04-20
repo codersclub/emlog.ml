@@ -543,9 +543,9 @@ function loadTopAddons() {
                     storeUlr = './store.php?action=plu';
                 }
                 if (app.price > 0) {
-                    insertBtnHtml = '&yen;' + app.price + '<a href="' + app.buy_url + '" target="_blank">' + lang('buy') + '</a>';
+/*vot*/                    insertBtnHtml = lang('price') + app.price + lang('price_unit') + ' <a href="' + app.buy_url + '" target="_blank">' + lang('buy') + '</a>';
                 } else {
-                    insertBtnHtml = lang('free') + ' <a href="' + storeUlr + '">' + lang('go_store_install') + '</a>';
+/*vot*/                    insertBtnHtml = lang('price') + lang('free') + ' <a href="' + storeUlr + '">' + lang('go_store_install') + '</a>';
                 }
                 const cardHtml = '<div class="col-md-4">' +
                     '<div class="card">' +

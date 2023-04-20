@@ -149,21 +149,24 @@
                 <div class="card-body" id="admindex_msg">
                     <ul class="list-group list-group-flush">
                         <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?=lang('help_faq')?></a></li>
-                        <li class="msg_type_0"><a href="http://www.emlog.co/template/add" target="_blank"><?=lang('app_development')?></a></li>
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/" target="_blank"><?=lang('app_development')?></a></li>
                         <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?=lang('contacts')?></a></li>
                         <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank"><?=lang('feedback')?></a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 mb-4">
-            <div class="card mb-4">
-                <h6 class="card-header"><?=lang('applied_today')?></h6>
-                <div class="card-body" id="admindex_msg">
-                    <div class="row" id="app-list"></div>
+        <?php if (option::get('accept_app_recs') === 'y'): ?>
+            <div class="col-lg-6 mb-4">
+                <div class="card mb-4">
+                <h6 class="card-header"><?=lang('applied_today')?> - <a href="./store.php"><?= lang('app_store') ?></a></h6>
+                    <div class="card-body" id="admindex_msg">
+                        <div class="row" id="app-list"></div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <script>loadTopAddons();</script>
+        <?php endif; ?>
     </div>
     <script>
         setTimeout(hideActived, 3600);
@@ -174,7 +177,6 @@
 /*vot*/         $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://www.emlog.net/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
             }
         });
-        loadTopAddons();
     </script>
 <?php endif ?>
 <div class="row">
