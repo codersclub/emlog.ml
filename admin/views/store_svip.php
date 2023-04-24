@@ -28,14 +28,10 @@
                         </a>
                         <div class="card-body">
                             <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
-                            <p class="card-text text-muted">
-                                <?= $v['info'] ?><br><br>
-<!--vot-->                  <?=lang('developer')?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
-                                <small>
-<!--vot-->                          <?=lang('developer')?>: <?= $v['author'] ?><br>
-<!--vot-->                          <?=lang('version_number')?>: <?= $v['ver'] ?><br>
-<!--vot-->                          <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
-                                </small>
+                            <p class="card-text text-muted small">
+<!--vot-->                      <?=lang('developer')?>: <?= $v['author'] ?><br>
+<!--vot-->                      <?=lang('version_number')?>: <?= $v['ver'] ?><br>
+<!--vot-->                      <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
                             </p>
                             <div class="card-text d-flex justify-content-between">
                             <div class="installMsg"></div>

@@ -85,7 +85,7 @@
                 <label><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number"/>
+                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0"/>
             </div>
             <div class="form-group form-inline">
         <?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
@@ -94,7 +94,7 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number"/>
+                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number" min="0"/>
             </div>
 
             <hr>
@@ -102,11 +102,11 @@
             <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('posts_per_page') ?></label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number"/>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number" min="0"/>
             </div>
 
             <div class="form-group form-inline">
-                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
+                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" min="0" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control">
                     <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
                     <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
@@ -135,7 +135,7 @@
 <!--vot-->        <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
 <!--vot-->                <label><?=lang('admin_per_page')?></label>
-<!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number"/> <?=lang('admin_per_page_tips')?>
+<!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number" min="0"/> <?=lang('admin_per_page_tips')?>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="accept_app_recs" id="accept_app_recs" <?= $conf_accept_app_recs ?> />

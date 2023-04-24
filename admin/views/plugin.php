@@ -57,7 +57,7 @@
                         $plug_state = 'inactive';
                         $plug_action = 'active';
                         $plug_state_des = lang('plugin_active_click');
-                        if (in_array($key, $active_plugins)) {
+                        if ($val['active']) {
                             $plug_state = 'active';
                             $plug_action = 'inactive';
                             $plug_state_des = lang('plugin_disable_click');
