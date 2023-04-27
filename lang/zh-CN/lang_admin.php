@@ -754,6 +754,7 @@ $lang = array(
 'other_settings'			=> '其他设置',//'Other settings',
 'admin_per_page'			=> '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
 'admin_per_page_tips'			=> '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
+'today_app_news'			=> '接收来自官方的应用推荐（影响后台首页今日应用的展示）',//'Receive official app recommendations (affects the display of today's apps on the background homepage)',
 
 //---------------------------
 //admin/views/setting_api.php

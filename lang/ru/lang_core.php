@@ -9,8 +9,8 @@ $lang = array(
 //---------------------------
 //include/lib/cache.php
 'cache_date_format'	=> 'm.Y',//'Y年n月',
-'cache_read_error'	=> 'Ошибка чтения кэша',//'读取缓存失败',
-'cache_not_writable'	=> 'Нет прав записи в папку кэша: content/cache.',//'写入缓存失败，缓存目录 (content/cache) 不可写',
+'cache_read_error'	=> 'Не удалось записать в кеш, возможно, каталог кеша (content/cache) недоступен для записи',//'读取缓存失败',
+'cache_not_writable'	=> 'Ошибка записи в кеш, каталог кеша (content/cache) недоступен для записи',//'写入缓存失败，缓存目录 (content/cache) 不可写',
 
 //---------------------------
 //include/lib/calendar.php
@@ -68,7 +68,7 @@ $lang = array(
 'user_name_wrong_reenter'	=> 'Недопустимое имя. Введите другой вариант.',//'用户名错误，请重新输入',
 'password_wrong_reenter'	=> 'Недопустимый пароль. Введите другой вариант.',//'密码错误，请重新输入',
 // 'no_permission'		=> 'Insufficient permissions!',//'权限不足！',
-'token_error'			=> 'Неверный токен',
+'token_error'                => 'Ошибка проверки токена безопасности. Попробуйте обновить страницу или сменить браузер и повторить попытку.',//'安全Token校验失败，请尝试刷新页面或者更换浏览器重试',
 
 //---------------------------
 //include/lib/option.php
