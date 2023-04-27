@@ -9,8 +9,8 @@ $lang = array(
 //---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'Y年n月',//'m.Y',
-'cache_read_error'   => '读取缓存失败',//'Cache read failed',
-'cache_not_writable' => '写入缓存失败，缓存目录 (content/cache) 不可写',//'The cache directory (content/cache) is not writable.',
+'cache_read_error'   => '写入缓存失败，可能是缓存目录(content/cache)不可写',//'Failed to write to the cache, it may be that the cache directory (content/cache) is not writable',
+'cache_not_writable' => '写入缓存失败，缓存目录(content/cache)不可写',//'Failed to write to the cache, the cache directory (content/cache) is not writable',
 
 //---------------------------
 //include/lib/calendar.php
@@ -68,7 +68,7 @@ $lang = array(
 'user_name_wrong_reenter'    => '用户名错误，请重新输入',//'Wrong username. Please, re-enter.',
 'password_wrong_reenter'     => '密码错误，请重新输入',//'Wrong password. Please, re-enter.',
 // 'no_permission'		=> '权限不足！',//'Insufficient permissions!',
-'token_error'                => 'token error', 'Token error',
+'token_error'                => '安全Token校验失败，请尝试刷新页面或者更换浏览器重试',//'Security Token verification failed, please try to refresh the page or change the browser and try again',
 
 //---------------------------
 //include/lib/option.php
