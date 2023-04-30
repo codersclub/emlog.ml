@@ -212,29 +212,15 @@ function insert_cover(imgsrc) {
 
 // act 1:auto save 2:save
 function autosave(act) {
-    var nodeid = "as_logid";
-    var timeout = 60000;
-    var url = "article_save.php?action=autosave";
-    var title = $.trim($("#title").val());
-    var cover = $.trim($("#cover").val());
-    var alias = $.trim($("#alias").val());
-    var link = $.trim($("#link").val());
-    var sort = $.trim($("#sort").val());
-    var postdate = $.trim($("#postdate").val());
-    var date = $.trim($("#date").val());
-    var logid = $("#as_logid").val();
-    var author = $("#author").val();
-    var content = Editor.getMarkdown();
-    var excerpt = Editor_summary.getMarkdown();
-    var tag = $.trim($("#tag").val());
-    var top = $("#top").is(":checked") ? 'y' : 'n';
-    var sortop = $("#sortop").is(":checked") ? 'y' : 'n';
-    var allow_remark = $("#allow_remark").is(":checked") ? 'y' : 'n';
-    var password = $.trim($("#password").val());
-    var ishide = $.trim($("#ishide").val());
-    var token = $.trim($("#token").val());
-    var ishide = ishide == "" ? "y" : ishide;
-    var querystr = "logcontent=" + encodeURIComponent(content) + "&logexcerpt=" + encodeURIComponent(excerpt) + "&title=" + encodeURIComponent(title) + "&cover=" + encodeURIComponent(cover) + "&alias=" + encodeURIComponent(alias) + "&link=" + encodeURIComponent(link) + "&author=" + author + "&sort=" + sort + "&postdate=" + postdate + "&date=" + date + "&tag=" + encodeURIComponent(tag) + "&top=" + top + "&sortop=" + sortop + "&allow_remark=" + allow_remark + "&password=" + password + "&token=" + token + "&ishide=" + ishide + "&as_logid=" + logid;
+    const nodeid = "as_logid";
+    const timeout = 60000;
+    const url = "article_save.php?action=autosave";
+    const alias = $.trim($("#alias").val());
+    const content = Editor.getMarkdown();
+    let ishide = $.trim($("#ishide").val());
+    if (ishide === "") {
+        $("#ishide").val("y")
+    }
 
     if (alias != '' && 0 != isalias(alias)) {
         $("#msg").show().html(lang('alias_link_error_not_saved'));
@@ -257,32 +243,31 @@ function autosave(act) {
         alert(lang('too_quick'));
         return;
     }
-    var btname = $("#savedf").val();
+    const btname = $("#savedf").val();
     $("#savedf").val(lang('saving'));
     $('title').text(lang('saving_in') + titleText);
     $("#savedf").attr("disabled", "disabled");
-    $.post(url, querystr, function (data) {
+    $.post(url, $("#addlog").serialize(), function (data) {
         data = $.trim(data);
         var isresponse = /.*autosave\_gid\:\d+\_.*/;
         if (isresponse.test(data)) {
-            var getvar = data.match(/\_gid\:([\d]+)\_/);
-            var logid = getvar[1];
-            var d = new Date();
-            var h = d.getHours();
-            var m = d.getMinutes();
-            var s = d.getSeconds();
-            var tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+            const getvar = data.match(/_gid:([\d]+)_/);
+            const logid = getvar[1];
+            const d = new Date();
+            const h = d.getHours();
+            const m = d.getMinutes();
+            const s = d.getSeconds();
+            const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
             $("#save_info").html(lang('saved_ok_time') + tm);
             $('title').text(lang('saved_ok') + titleText);
-            articleTextRecord = $("textarea[name=logcontent]").text();  // After the save is successful, replace the original text record value with the current text
-            Cookies.set('em_saveLastTime', new Date().getTime());  // Put (or update) the save success timestamp into a cookie
+            articleTextRecord = $("#addlog textarea[name=logcontent]").val(); // After the save is successful, replace the original text record value with the current text
+            Cookies.set('em_saveLastTime', new Date().getTime()); // Put (or update) the save success timestamp into a cookie
             $("#" + nodeid).val(logid);
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
 /*vot*/     $("#save_info").html(lang('save_system_error')).addClass("alert-danger");
             $('title').text(lang('save_failed') + titleText);
-/*vot*/     alert(lang('save_system_error');
         }
     });
     if (act == 1) {
@@ -590,10 +575,4 @@ $(document).ready(function () {
             link.prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
         });
     });
-
-    // auto full Sort by Cookies
-    autoFullSort();
-    $("#sort").change(function () {
-        autoFullSort(true);
-    })
 })

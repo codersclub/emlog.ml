@@ -18,6 +18,7 @@
                 <li><?=lang('advantage3')?></li>
                 <li><?=lang('advantage4')?></li>
                 <li><?=lang('advantage5')?></li>
+                <li><?=lang('advantage6')?></li>
             </ul>
             <hr>
             <a href="#" class="btn btn-sm btn-primary shadow-lg" data-toggle="modal" data-target="#exampleModal"><?= lang('ok_register_now') ?></a>

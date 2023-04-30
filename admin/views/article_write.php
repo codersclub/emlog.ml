@@ -29,7 +29,7 @@
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="upload_img">
-                                <img src="<?= $cover ?: './views/images/cover.svg' ?>" width="200" id="cover_image" class="rounded" title="<?= lang('cover_image') ?>"/>
+                                <img src="<?= $cover ?: './views/images/cover.svg' ?>" width="200" id="cover_image" class="rounded" alt="<?= lang('cover_image') ?>"/>
                                 <input type="file" name="upload_img" class="image" id="upload_img" style="display:none"/>
                                 <button type="button" id="cover_rm" class="btn-sm btn btn-link" <?php if (!$cover): ?>style="display:none"<?php endif ?>>x</button>
                             </label>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group">
 <!--vot-->          <label><?= lang('tags') ?>: <small class="text-muted"><?= lang('tags_tips') ?></small></label>
-                    <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>" placeholder="<?= lang('post_tags_separated') ?>"/>
+                    <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>"/>
                     <?php if ($tags): ?>
                         <span class="small"><a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
                         <div id="tags" style="display: none">
@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
-                    <input maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
+                    <input type="datetime-local" id="postdate" name="postdate" value="<?= $postDate ?>" class="form-control postdate"/>
                 </div>
                 <div class="form-group">
                     <label><?= lang('link_alias') ?></label>
@@ -98,9 +98,9 @@
             </div>
             <div id="post_button">
                 <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
-                <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>">
-                <input type="hidden" name="gid" value=<?= $logid ?>/>
-                <input type="hidden" name="author" id="author" value=<?= $author ?>/>
+                <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>"/>
+                <input type="hidden" name="gid" value="<?= $logid ?>"/>
+                <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
                 <?php if ($logid < 0): ?>
                     <input type="submit" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
@@ -353,4 +353,10 @@
     } else {
         $(".icofont-simple-right").attr("class", "icofont-simple-down")
     }
+
+    // auto full Sort by Cookies
+    autoFullSort();
+    $("#sort").change(function () {
+        autoFullSort(true);
+    })
 </script>

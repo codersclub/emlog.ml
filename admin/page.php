@@ -17,7 +17,8 @@ if (empty($action)) {
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-    $pages = $emPage->getLogsForAdmin('', '', $page, 'page');
+    $sqlSegment = ' ORDER BY date DESC';
+    $pages = $emPage->getLogsForAdmin($sqlSegment, '', $page, 'page');
     $pageNum = $emPage->getLogNum('', '', 'page', 1);
 
     $pageurl = pagination($pageNum, Option::get('admin_perpage_num'), $page, "./page.php?page=");
@@ -45,6 +46,9 @@ if ($action == 'new') {
     $MediaSort_Model = new MediaSort_Model();
     $mediaSorts = $MediaSort_Model->getSorts();
 
+    $Template_Model = new Template_Model();
+    $customTemplates = $Template_Model->getCustomTemplates('page');
+
     include View::getAdmView('header');
     require_once(View::getAdmView('page_create'));
     include View::getAdmView('footer');
@@ -53,6 +57,9 @@ if ($action == 'new') {
 
 if ($action == 'mod') {
     $emPage = new Log_Model();
+
+    $Template_Model = new Template_Model();
+    $customTemplates = $Template_Model->getCustomTemplates('page');
 
     $containertitle = lang('page_edit');
     $pageId = isset($_GET['id']) ? (int)$_GET['id'] : '';

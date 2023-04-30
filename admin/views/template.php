@@ -11,8 +11,8 @@
     <div class="alert alert-success"><?= lang('template_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_f'])): ?>
     <div class="alert alert-danger"><?= lang('template_delete_failed') ?></div><?php endif ?>
-<?php if (!$nonce_templet_data): ?>
-    <div class="alert alert-danger"><?= lang('template_current_use') ?>(<?= $nonce_templet ?>) <?= lang('template_damaged') ?></div><?php endif ?>
+<?php if (!$nonce_template_data): ?>
+    <div class="alert alert-danger"><?= lang('template_current_use') ?>(<?= $nonce_template ?>) <?= lang('template_damaged') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('template_zip_support') ?></div><?php endif ?>
 <?php if (isset($_GET['error_b'])): ?>
@@ -35,16 +35,16 @@
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('template_add') ?></a>
 </div>
 <div class="row app-list">
-    <?php foreach ($tpls as $key => $value): ?>
+    <?php foreach ($templates as $key => $value): ?>
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm" data-app-alias="<?= $value['tplfile'] ?>" data-app-version="<?= $value['version'] ?>">
-                <div class="card-header <?php if ($nonce_templet == $value['tplfile']) {
+                <div class="card-header <?php if ($nonce_template == $value['tplfile']) {
                     echo "bg-success text-white font-weight-bold";
                 } ?>">
                     <?= $value['tplname'] ?>
                 </div>
                 <div class="card-body">
-                    <a href="template.php?action=usetpl&tpl=<?= $value['tplfile'] ?>&token=<?= LoginAuth::genToken() ?>">
+                    <a href="template.php?action=use&tpl=<?= $value['tplfile'] ?>&token=<?= LoginAuth::genToken() ?>">
                         <img class="card-img-top" src="<?= TPLS_URL . $value['tplfile'] ?>/preview.jpg" alt="Card image cap">
                     </a>
                 </div>

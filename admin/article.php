@@ -219,10 +219,14 @@ if ($action === 'write') {
     $is_top = '';
     $is_sortop = '';
     $is_allow_remark = 'checked="checked"';
-    $postDate = date('Y-m-d H:i:s');
+    $postDate = date('Y-m-d H:i');
 
     $MediaSort_Model = new MediaSort_Model();
     $mediaSorts = $MediaSort_Model->getSorts();
+
+    if (!Register::isRegLocal() && $sta_cache['lognum'] > 20) {
+        emDirect("auth.php?error_article=1");
+    }
 
     include View::getAdmView('header');
     require_once View::getAdmView('article_write');
@@ -237,7 +241,7 @@ if ($action === 'edit') {
 
     $isdraft = $hide == 'y' ? true : false;
     $containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
-    $postDate = date('Y-m-d H:i:s', $date);
+    $postDate = date('Y-m-d H:i', $date);
     $sorts = $CACHE->readCache('sort');
 
     //tag

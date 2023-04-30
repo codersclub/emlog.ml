@@ -104,7 +104,7 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         EMLOG
                         <?php if (!Register::isRegLocal()) : ?>
-<!--vot-->                  <a href="auth.php"><span class="badge badge-primary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
+<!--vot-->                  <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
                         <?php elseif (Register::getRegType() == 2): ?>
                             <span class="badge badge-warning"><?= Option::EMLOG_VERSION ?> <?=lang('svip_hard')?></span>
                         <?php elseif (Register::getRegType() == 1): ?>
@@ -135,6 +135,7 @@
                         <div><?= lang('advantage3') ?></div>
                         <div><?= lang('advantage4') ?></div>
                         <div><?= lang('advantage5') ?></div>
+                        <div><?= lang('advantage6') ?></div>
                     </div>
                     <div class="card-footer text-center">
                         <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>

@@ -15,28 +15,30 @@ class Tag_Controller {
         $page = isset($params[4]) && $params[4] == 'page' ? abs((int)$params[5]) : 1;
         $tag = isset($params[1]) && $params[1] == 'tag' ? addslashes(urldecode(trim($params[2]))) : '';
 
-        $pageurl = '';
-
         //page meta
         $site_title = stripslashes($tag) . ' - ' . $site_title;
 
         $Tag_Model = new Tag_Model();
-        $blogIdStr = $Tag_Model->getTagByName($tag);
-/*vot*/        $blogIdStr = trim($blogIdStr, ',');
-/*vot*/        $blogIdStr = preg_replace('/\,+/', ',', $blogIdStr);
-        if (!$blogIdStr) {
+
+        if (!$Tag_Model->getIdFromName($tag)) {
             show_404_page();
         }
-/*vot*/        $sqlSegment = "AND gid IN ($blogIdStr) ORDER BY date DESC";
-        $lognum = $Log_Model->getLogNum('n', $sqlSegment);
+
+        $lognum = 0;
+        $logs = [];
+        $blogIdStr = $Tag_Model->getTagByName($tag);
+        if ($blogIdStr) {
+/*vot*/     $sqlSegment = "AND gid IN ($blogIdStr) ORDER BY date DESC";
+            $lognum = $Log_Model->getLogNum('n', $sqlSegment);
+            $logs = $Log_Model->getLogsForHome($sqlSegment, $page, $index_lognum);
+        }
+
         $total_pages = ceil($lognum / $index_lognum);
         if ($page > $total_pages) {
             $page = $total_pages;
         }
-        $pageurl .= Url::tag(urlencode($tag), 'page');
 
-        $logs = $Log_Model->getLogsForHome($sqlSegment, $page, $index_lognum);
-        $page_url = pagination($lognum, $index_lognum, $page, $pageurl);
+        $page_url = pagination($lognum, $index_lognum, $page, Url::tag(urlencode($tag), 'page'));
 
         include View::getView('header');
         include View::getView('log_list');

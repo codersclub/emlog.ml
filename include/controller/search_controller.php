@@ -17,9 +17,6 @@ class Search_Controller {
         $keyword = addslashes(htmlspecialchars(urldecode($keyword)));
         $keyword = str_replace(array('%', '_'), array('\%', '\_'), $keyword);
 
-
-        $pageurl = '';
-
 /*vot*/        $sqlSegment = "AND title LIKE '%{$keyword}%' ORDER BY date DESC";
         $lognum = $Log_Model->getLogNum('n', $sqlSegment);
         $total_pages = ceil($lognum / $index_lognum);
@@ -27,10 +24,9 @@ class Search_Controller {
             $page = $total_pages;
         }
 
-        $pageurl .= BLOG_URL . '?keyword=' . urlencode($keyword) . '&page=';
-
+        $url = BLOG_URL . '?keyword=' . urlencode($keyword) . '&page=';
         $logs = $Log_Model->getLogsForHome($sqlSegment, $page, $index_lognum);
-        $page_url = pagination($lognum, $index_lognum, $page, $pageurl);
+        $page_url = pagination($lognum, $index_lognum, $page, $url);
 
         include View::getView('header');
         include View::getView('log_list');
