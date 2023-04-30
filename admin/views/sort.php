@@ -137,22 +137,22 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="alias">分类描述</label>
+                        <label for="alias"><?=lang('category_description')?></label>
                         <textarea name="description" type="text" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="template">分类模板</label>
+                        <label for="template"><?=lang('category_template')?></label>
                         <?php if ($customTemplates):
-                            $sortListHtml = '<option value="">默认</option>';
+                            $sortListHtml = '<option value=""><?=lang('default')?></option>';
                             foreach ($customTemplates as $v) {
                                 $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '">' . ($v['comment']) . '</option>';
                             }
                             ?>
                             <select id="template" name="template" class="form-control"><?= $sortListHtml; ?></select>
-                            <small class="form-text text-muted">(选择当前模板支持的分类模板，可不选)</small>
+                            <small class="form-text text-muted"><?=lang('category_template_intro')?></small>
                         <?php else: ?>
                             <input class="form-control" id="template" name="template">
-                            <small class="form-text text-muted">(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)</small>
+                            <small class="form-text text-muted"><?=lang('custom_template_intro')?></small>
                         <?php endif; ?>
                     </div>
                 </div>

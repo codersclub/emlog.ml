@@ -81,7 +81,7 @@ switch ($action) {
     case 'add':
     case 'edit':
         if ($ishide === 'y') {
-            emDirect("./article.php?draft=1&active_savedraft=1"); //草稿保存成功
+            emDirect("./article.php?draft=1&active_savedraft=1"); //Draft saved successfully
         }
         if ($action === 'add' || isset($_POST['pubdf'])) {
             if ($checked === 'n') {

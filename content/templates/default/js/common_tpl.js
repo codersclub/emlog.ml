@@ -343,7 +343,7 @@ $("[toc-date='title']").append('<a class="toc-link">[' + lang('toc') + ']</a>')
 		})
 	},
 	/**
-	* 桌面端的 toc 目录关闭
+	* The toc directory on the desktop is closed
 	*/
 	tocClose: function () {
 		let logLeftMar = parseInt($(".log-con").css('margin-left')) - 150;

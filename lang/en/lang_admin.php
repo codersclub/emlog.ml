@@ -611,6 +611,12 @@ $lang = array(
 'setting_items'                           => 'Setting items',//'设置项',
 
 //---------------------------
+//admin/views/page_create.php
+'default'				=> 'Default',//'默认',
+'select_tmpl_option'			=> '(Select the page template supported by the current template, <optional></optional>)',//'(选择当前模板支持的页面模板，<可不></可不>选)',
+'custom_tmpl_info'			=> '(Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',//'(用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',
+
+//---------------------------
 //admin/views/plugin.php
 'plugin_manage'                           => 'Plug-ins',//'插件扩展',
 'plugin_upload_ok'                        => 'Plugin uploaded successfully, please activate it to use',//'插件上传成功，请开启使用',
@@ -807,6 +813,13 @@ $lang = array(
 'tag_add'                                 => 'Add Tag',//'新建标签',
 'template_name'                           => 'Template name',//'模板名',
 'category_id'                             => 'Category ID',//'分类ID',
+
+//---------------------------
+//admin/views/sort_edit.php
+'category_description'		=> 'Category description',//'分类描述',
+'category_template'		=> 'Category template',//'分类模板',
+'category_template_intro'	=> '(Select the category template supported by the current template, you can not choose)',//'(选择当前模板支持的分类模板，可不选)',
+'custom_template_intro'		=> '(Used to customize the category page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',//'(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',
 
 //---------------------------
 //admin/views/store.php
