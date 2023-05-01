@@ -157,7 +157,7 @@
                 </div>
             </div>
         </div>
-        <?php if (option::get('accept_app_recs') === 'y'): ?>
+        <?php if (Register::isRegLocal() && option::get('accept_app_recs') === 'y'): ?>
             <div class="col-lg-6 mb-4">
                 <div class="card mb-4">
                 <h6 class="card-header"><?=lang('applied_today')?> - <a href="./store.php"><?= lang('app_store') ?></a></h6>
