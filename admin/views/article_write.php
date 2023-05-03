@@ -99,16 +99,16 @@
             <div id="post_button">
                 <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
                 <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>"/>
-                <input type="hidden" name="gid" value="<?= $logid ?>"/>
+                <input type="hidden" name="gid" id="gid" value="<?= $logid ?>"/>
                 <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
                 <?php if ($logid < 0): ?>
-                    <input type="submit" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="submit" name="pubPost" id="pubPost" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
                 <?php else: ?>
                     <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
                     <?php if ($isdraft) : ?>
-                        <input type="submit" name="pubdf" id="pubdf" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                        <input type="submit" name="pubPost" id="pubPost" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
                     <?php endif ?>
                 <?php endif ?>
             </div>
@@ -355,8 +355,10 @@
     }
 
     // auto full Sort by Cookies
-    autoFullSort();
-    $("#sort").change(function () {
-        autoFullSort(true);
-    })
+    if ($('#gid').val() <= 0) {
+        autoFullSort();
+        $("#sort").change(function () {
+            autoFullSort(true);
+        })
+    }
 </script>

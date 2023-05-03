@@ -508,7 +508,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
                                    tabindex="1" placeholder="<?=lang('nickname')?>*" required/>
                             <input class="form-control com_control comment-mail" id="info_m" autocomplete="off" type="text" name="commail" maxlength="128"
                                    value="<?= $ckmail ?>" size="22"
-                                   tabindex="2" placeholder="<?=lang('homepage')?>" />
+                                   tabindex="2" placeholder="<?=lang('email')?>" />
                             <input class="form-control com_control comment-url" id="info_u" autocomplete="off" type="text" name="comurl" maxlength="128"
                                    value="<?= $ckurl ?>" size="22"
                                    tabindex="3" placeholder="<?=lang('homepage')?>"/>

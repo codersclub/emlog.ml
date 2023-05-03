@@ -502,18 +502,6 @@ function doup(source, upsql) {
     });
 }
 
-// When in article edit page, auto full Sort by Cookies
-function autoFullSort(changeCookie) {
-    if (!$("#sort")) return
-    if (changeCookie === true) {
-        Cookies.set('em_saveLastSortId', $("#sort").val());
-        return
-    }
-    if (Cookies.get('em_saveLastSortId')) {
-        $("#sort").find("option[value='" + Cookies.get('em_saveLastSortId') + "']").prop("selected", true);
-    }
-}
-
 function loadTopAddons() {
     $.ajax({
         type: 'GET',
@@ -543,6 +531,18 @@ function loadTopAddons() {
             });
         },
     });
+}
+
+// When in article edit page, auto full Sort by Cookies
+function autoFullSort(changeCookie) {
+    if (!$("#sort")) return
+    if (changeCookie === true) {
+        Cookies.set('em_saveLastSortId', $("#sort").val());
+        return
+    }
+    if (Cookies.get('em_saveLastSortId')) {
+        $("#sort").find("option[value='" + Cookies.get('em_saveLastSortId') + "']").prop("selected", true);
+    }
 }
 
 $(document).ready(function () {

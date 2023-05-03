@@ -38,8 +38,6 @@ class Comment_Controller {
         $err = '';
         if ($Comment_Model->isLogCanComment($blogId) === false) {
             $err = lang('comment_error_comment_disabled');
-        } elseif ($Comment_Model->isCommentExist($blogId, $name, $content) === true) {
-            $err = lang('comment_error_content_exists');
         } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
             $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
@@ -48,8 +46,6 @@ class Comment_Controller {
             $err = lang('comment_error_name_invalid');
         } elseif ($mail !== '' && !checkMail($mail)) {
             $err = lang('comment_error_email_invalid');
-        } elseif (!empty($url) && preg_match("/^(http|https)\:\/\/[^<>'\"]*$/", $url) == false) {
-            $err = lang('comment_error_url_invalid');
         } elseif (empty($content)) {
             $err = lang('comment_error_empty');
         } elseif (strlen($content) > 60000) {
