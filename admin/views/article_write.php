@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
-                    <input type="datetime-local" id="postdate" name="postdate" value="<?= $postDate ?>" class="form-control postdate"/>
+                    <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label><?= lang('link_alias') ?></label>
@@ -352,13 +352,5 @@
         $(".icofont-simple-down").attr("class", "icofont-simple-right")
     } else {
         $(".icofont-simple-right").attr("class", "icofont-simple-down")
-    }
-
-    // auto full Sort by Cookies
-    if ($('#gid').val() <= 0) {
-        autoFullSort();
-        $("#sort").change(function () {
-            autoFullSort(true);
-        })
     }
 </script>

@@ -533,18 +533,6 @@ function loadTopAddons() {
     });
 }
 
-// When in article edit page, auto full Sort by Cookies
-function autoFullSort(changeCookie) {
-    if (!$("#sort")) return
-    if (changeCookie === true) {
-        Cookies.set('em_saveLastSortId', $("#sort").val());
-        return
-    }
-    if (Cookies.get('em_saveLastSortId')) {
-        $("#sort").find("option[value='" + Cookies.get('em_saveLastSortId') + "']").prop("selected", true);
-    }
-}
-
 $(document).ready(function () {
     // Check once the page is loaded
     // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid
