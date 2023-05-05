@@ -449,7 +449,7 @@ $lang = array(
 'advantage3'                              => '3. 去除所有未注册提示及功能限制。',//'3. Remove all unregistered prompts and functional restrictions.',
 'advantage4'                              => '4. 加入专属Q群，获得官方技术指导问题解答。',//'4. Join the exclusive Q group and get answers to official technical guidance questions.',
 'advantage5'                              => '5. 附赠多款收费应用（限铁杆SVIP）。',//'5. Comes with a variety of paid applications (limited to hardcore SVIP).',
-'advantage6'                              => '6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',//'5. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',
+'advantage6'                              => '6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',//'6. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',
 'register_now'                            => '现在去注册',//'Register now',
 'click_to_register'			=> '点击注册',//'Click to register',
 'emlog_registered_ok'                     => '恭喜，您的EMLOG已经完成注册。',//'Congratulations, your EMLOG has been registered.',
@@ -567,6 +567,7 @@ $lang = array(
 'media_all'                               => '全部资源',//'All media files',
 'move_to'                                 => '移动到',//'Move to',
 'original_file'				=> '原文件',//'Original file',
+'link_copied'				=> '链接已复制',//'Link copied',
 
 //---------------------------
 //admin/views/media_lib.php

@@ -448,7 +448,8 @@ $lang = array(
 'advantage2'                              => '2. Unlock the app store to get more templates and extensions.',//'2. 解锁应用商店，获得更多模板和扩展插件。',
 'advantage3'                              => '3. Remove all unregistered prompts and functional restrictions.',//'3. 去除所有未注册提示及功能限制。',
 'advantage4'                              => '4. Join the exclusive Q group and get answers to official technical guidance questions.',//'4. 加入专属Q群，获得官方技术指导问题解答。',
-'advantage5'                              => '5. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',//'5. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',
+'advantage5'                              => '5. Comes with a variety of paid applications (limited to hardcore SVIP).',//'5. 附赠多款收费应用（限铁杆SVIP）。',
+'advantage6'                              => '6. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',//'6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',
 'register_now'                            => 'Register now',//'现在去注册',
 'click_to_register'			=> 'click to register',//'点击去注册',
 'emlog_registered_ok'                     => 'Congratulations, your EMLOG has been registered.',//'恭喜，您的EMLOG已经完成注册。',
@@ -504,6 +505,8 @@ $lang = array(
 'last_comments'				=> 'Recent comments',//'最近收到的评论',
 'svip_hard'				=> 'Hardcore SVIP Edition',//'铁杆SVIP版',
 'vip_friend'				=> 'Friendship VIP Edition',//'友情VIP版',
+'applied_today'				=> 'Applied today',//'今日应用',
+'app_development'			=> 'Application Development | Development Documentation',//'应用开发 | 开发文档',
 
 //---------------------------
 //admin/views/index_user.php
@@ -551,7 +554,6 @@ $lang = array(
 'upload_files'                            => 'Upload image/file',//'上传图片/文件',
 'media_deleted_ok'                        => 'Media file deleted successfully',//'媒体文件删除成功',
 '_resources'                              => 'resources',//'个资源',
-'resource_del_selected'                   => 'Delete selected resources',//'删除所选资源',
 'resource_select'                         => 'Please select the resource to be deleted',//'请选择要删除的资源',
 'resource_del_sure'                       => 'Are you sure you want to delete the selected resource?',//'确定要删除所选资源吗？',
 'founder'                                 => 'Founder',//'创建人',
@@ -564,6 +566,8 @@ $lang = array(
 'modified_ok'                             => 'Successfully modified',//'修改成功',
 'media_all'                               => 'All media files',//'全部资源',
 'move_to'                                 => 'Move to',//'移动到',
+'original_file'				=> 'Original file',//'原文件',
+'link_copied'				=> 'Link copied',//'链接已复制',
 
 //---------------------------
 //admin/views/media_lib.php
@@ -783,7 +787,14 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_user.php
-'groups_about'                            => '<b>User Group</b><br>Registered users: generated through registration, can publish articles, notes, upload pictures, etc.<br>Content editor: responsible for the management of articles, resources, comments, etc.<br>Administrator: Has all site management rights, can manage users, perform system settings, etc.<br>',//'<b>用户组</b><br>注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>内容编辑：负责文章、资源、评论等内容的管理<br>管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+'groups_about'                            => '<b>User Group</b><br>
+						Registered users: generated through registration, can publish articles, notes, upload pictures, etc.<br>
+						Content editor: responsible for the management of articles, resources, comments, etc.<br>
+						Administrator: Has all site management rights, can manage users, perform system settings, etc.<br>',
+					//'<b>用户组</b><br>
+						//注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>
+						//内容编辑：负责文章、资源、评论等内容的管理<br>
+						//管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
 'groups_alert'				=> 'Registered users: Generated after registration, you can publish articles, notes, upload pictures, etc.<br>
 					Content editor: Responsible for the management of articles, resources, comments, etc.<br>
 					Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',

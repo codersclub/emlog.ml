@@ -105,6 +105,7 @@ var LNG = {
  'buy'			: 'Buy',//'购买',
  'go_store_install'	: 'Go to the store to install',//'去商店安装',
  'free'			: 'Free',//'免费',
+ 'price'		: 'Price: ',//'应用售价',
 
 //---------------------------
 //include/lib/js/common_tpl.js

@@ -251,7 +251,7 @@
             var link = $(this).data('url');
             navigator.clipboard.writeText(link);
             $(this).popover({
-                content: '链接已复制',
+                content: '<?= lang('link_copied') ?>',
                 placement: 'top',
                 trigger: 'manual'
             }).popover('show');
