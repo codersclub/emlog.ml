@@ -65,11 +65,11 @@
                             <?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
                             <?= lang('founder') ?>: <?= $author ?><br>
-                            <?= lang('file_size') ?>: <?= $value['attsize'] ?>,
+                            <?= lang('file_size') ?>: <?= $value['attsize'] ?>
                             <?php if ($value['width'] && $value['height']): ?>
                                 <?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
-                                <?= lang('image_address_original') ?>: <span class="text-gray-400"><?= $media_url ?></span>
-                            <?php endif ?>
+                            <?php endif ?><br>
+                            <?= lang('original_file') ?>: <a href="#" class="copy-link text-gray-400" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a>
                         </p>
                         <p class="card-text d-flex justify-content-between">
                             <a href="javascript: em_confirm(<?= $value['aid'] ?>, 'media', '<?= LoginAuth::genToken() ?>');" class="text-danger small"><?= lang('delete') ?></a>
@@ -245,4 +245,17 @@
     } else {
         $('.highslide').removeAttr('onclick')  // If it is a mobile terminal, do not use the highslide function
     }
+    $(function () {
+        $('.copy-link').click(function (e) {
+            e.preventDefault();
+            var link = $(this).data('url');
+            navigator.clipboard.writeText(link);
+            $(this).popover({
+                content: '链接已复制',
+                placement: 'top',
+                trigger: 'manual'
+            }).popover('show');
+            setTimeout(() => $(this).popover('hide'), 1000);
+        });
+    });
 </script>

@@ -566,6 +566,7 @@ $lang = array(
 'modified_ok'                             => '修改成功',//'Successfully modified',
 'media_all'                               => '全部资源',//'All media files',
 'move_to'                                 => '移动到',//'Move to',
+'original_file'				=> '原文件',//'Original file',
 
 //---------------------------
 //admin/views/media_lib.php
