@@ -160,10 +160,26 @@ class LoginAuth {
         return $token;
     }
 
+    public static function getToken() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $token = '';
+        if (!empty($_SESSION['em_csrf_token'])) {
+            $token = $_SESSION['em_csrf_token'];
+        }
+        return $token;
+    }
+
     public static function checkToken() {
         $token = isset($_REQUEST['token']) ? addslashes($_REQUEST['token']) : '';
-        if ($token !== self::genToken()) {
-            emMsg(lang('no_permission') . ' token error');
+        $sessionToken = self::getToken();
+        // The session is abnormal, the /tmp directory may not be writable, skip the check
+        if (empty($sessionToken)) {
+            return;
+        }
+        if ($token !== $sessionToken) {
+            emMsg(lang('no_permission'));
         }
     }
 }
