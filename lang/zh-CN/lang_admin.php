@@ -878,7 +878,7 @@ $lang = array(
 //---------------------------
 //admin/views/store_plu.php
 'install_free'                      => '免费安装',//'Install for free',
-'plugin_search'                     => '搜索插件',//'Search plugin',
+'plugin_search'                     => '搜索插件...',//'Search plugin...',
 'show_free_only'                    => '仅看免费',//'Show only free',
 'store_no_results'                  => '暂未找到结果，应用商店进货中，敬请期待：）',//'No results have been found yet, the app store is in stock, so stay tuned :)',
 'plugin_publish'                    => '发布插件',//'Publish plugin',

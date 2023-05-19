@@ -15,12 +15,12 @@ function loadImages() {
                 var insertBtnHtml = '';
                 if (image.media_type === 'image') {
                     insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>' +
-                        '<a href="javascript:insert_cover(\'' + image.media_path + '\')" class="btn" title="' + lang('set_cover') + '"><i class="icofont-image"></i></a>';
+                        '<a href="javascript:insert_cover(\'' + image.media_icon + '\')" class="btn" title="' + lang('set_cover') + '"><i class="icofont-image"></i></a>';
                 } else if (image.media_type === 'video') {
                     insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
                 } else if (image.media_type === 'audio') {
                     insertBtnHtml = '<a href="javascript:insert_media_audio(\'' + image.media_url + '\')" class="btn" title="' + lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
-                }else {
+                } else {
                     insertBtnHtml = '<a href="javascript:insert_media(\'' + image.media_url + '\', \'' + image.media_name + '\')" class="btn" title="' + <?=lang('insert_to_article') + '"><i class="icofont-plus"></i></a>';
                 }
                 var cardHtml = '<div class="col-md-4">' +
