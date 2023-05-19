@@ -18,9 +18,9 @@
 
 <div class="d-flex flex-column flex-sm-row justify-content-between mb-4 ml-1">
     <div class="mb-3 mb-sm-0">
-        <a href="./store.php" class="badge badge-success m-1 p-2">全部</a>
-        <a href="./store.php?tag=free" class="badge badge-success m-1 p-2">仅看免费</a>
-        <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2">仅看付费</a>
+        <a href="./store.php" class="badge badge-success m-1 p-2"><?= lang('all') ?></a>
+        <a href="./store.php?tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
+        <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
@@ -32,9 +32,9 @@
         </form>
         <form action="./store.php" method="get" class="form-inline ml-2">
             <div class="input-group">
-                <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="搜索模板...">
+                <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="<?= lang('temlate_search') ?>">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="submit">搜索</button>
+                    <button class="btn btn-outline-success" type="submit"><?= lang('search' ?></button>
                 </div>
             </div>
         </form>

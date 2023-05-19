@@ -21,12 +21,12 @@ if (empty($action)) {
     $author_id = Input::getStrVar('author_id');
     $sid = Input::getStrVar('sid');
 
-    $categories = [
-        0  => '选择模板分类',
-        8  => '博客自媒体',
-        7  => '资源下载',
-        9  => '社区论坛',
-        10 => '其他',
+/*vot*/    $categories = [
+        0  => lang('tpl_category_0'),
+        8  => lang('tpl_category_8'),
+        7  => lang('tpl_category_7'),
+        9  => lang('tpl_category_9'),
+        10 => lang('tpl_category_10'),
     ];
 
     $r = $Store_Model->getTemplates($tag, $keyword, $page, $author_id, $sid);
@@ -61,19 +61,19 @@ if ($action === 'plu') {
     $author_id = Input::getIntVar('author_id');
     $sid = Input::getIntVar('sid');
 
-    $categories = [
-        0  => '选择插件分类',
-        1  => '资源下载',
-        2  => 'SEO优化',
-        3  => '多媒体',
-        4  => '装饰特效',
-        5  => '文件存储',
-        11 => '用户互动',
-        12 => '内容运营',
-        13 => '移动端',
-        14 => '编程开发',
-        15 => '内容创作',
-        6  => '其他'
+/*vot*/    $categories = [
+        0  => lang('plu_category_0'),
+        1  => lang('plu_category_1'),
+        2  => lang('plu_category_2'),
+        3  => lang('plu_category_3'),
+        4  => lang('plu_category_4'),
+        5  => lang('plu_category_5'),
+        11 => lang('plu_category_11'),
+        12 => lang('plu_category_12'),
+        13 => lang('plu_category_13'),
+        14 => lang('plu_category_14'),
+        15 => lang('plu_category_15'),
+        6  => lang('plu_category_6'),
     ];
 
     $r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id, $sid);
