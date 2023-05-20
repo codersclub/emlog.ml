@@ -236,6 +236,6 @@
     $("#menu_view").addClass('show');
     $("#menu_navi").addClass('active');
 
-    // 初始化拖动排序
+    // Initialize drag sorting
     $('#dataTable tbody').sortable().disableSelection();
 </script>

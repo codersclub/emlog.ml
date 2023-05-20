@@ -161,6 +161,6 @@
         modal.find('.modal-footer #linkid').val(linkid)
     })
 
-    // 初始化拖动排序
+    // Initialize drag sorting
     $('#dataTable tbody').sortable().disableSelection();
 </script>

@@ -205,6 +205,6 @@
     $("#menu_content").addClass('show');
     $("#menu_sort").addClass('active');
 
-    // 初始化拖动排序
+    // Initialize drag sorting
     $('#dataTable tbody').sortable().disableSelection();
 </script>
