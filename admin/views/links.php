@@ -24,7 +24,6 @@
                 <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>
                     <tr>
-                        <th><?= lang('order') ?></th>
                         <th><?= lang('link') ?></th>
                         <th><?= lang('description') ?></th>
                         <th><?= lang('status') ?></th>
@@ -36,9 +35,9 @@
                     foreach ($links as $key => $value):
                         doAction('adm_link_display');
                         ?>
-                        <tr>
-                            <td><input class="form-control" style="width:60px;" name="link[<?= $value['id'] ?>]" value="<?= $value['taxis'] ?>" maxlength="5" type="number"/></td>
+                        <tr style="cursor: move">
                             <td>
+                                <input name="link[]" value="<?= $value['id'] ?>" type="hidden"/>
                                 <a href="#" data-toggle="modal" data-target="#editModal"
                                    data-linkid="<?= $value['id'] ?>"
                                    data-sitename="<?= $value['sitename'] ?>"
@@ -68,7 +67,7 @@
         </div>
     </div>
     <div class="list_footer">
-        <input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success shadow-sm">
+        <input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success shadow-sm"/>
     </div>
 </form>
 <!--Add Link popup-->
@@ -161,4 +160,7 @@
         modal.find('.modal-body #description').val(description)
         modal.find('.modal-footer #linkid').val(linkid)
     })
+
+    // 初始化拖动排序
+    $('#dataTable tbody').sortable().disableSelection();
 </script>
