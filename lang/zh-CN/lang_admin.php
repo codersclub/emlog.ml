@@ -990,6 +990,7 @@ $lang = array(
 'twitter_save'                      => '保存笔记',//'Save the note',
 'twitters'                          => '笔记',//'Notes',
 '_twitters'                         => '条笔记',//' note(s)',
+'twitter_edit'			=> '编辑笔记',//'Edit note',
 
 //---------------------------
 //admin/views/upload.php
