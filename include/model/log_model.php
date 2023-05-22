@@ -391,7 +391,7 @@ EOT;
             return;
         }
         if ($r['checked'] === 'y' && Option::get('article_uneditable') === 'y') {
-            emMsg('审核通过的文章不可编辑和删除');
+            emMsg(lang('not_editable'));
         }
     }
 }

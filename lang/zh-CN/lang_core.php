@@ -37,6 +37,10 @@ $lang = array(
 'month_12'                   => '十二月',
 
 //---------------------------
+//include/lib/common.php
+'not_editable'				=> '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
+
+//---------------------------
 //include/lib/function.base.php
 '_load_failed'               => '加载失败。',//' load failed.',
 '_bytes'                     => '字节',//' bytes',

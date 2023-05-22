@@ -10,7 +10,7 @@
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('twitter_empty') ?></div><?php endif ?>
 <?php if (isset($_GET['error_forbid'])): ?>
-    <div class="alert alert-danger">抱歉，系统限制用户发布笔记</div><?php endif ?>
+    <div class="alert alert-danger"><?= lang('twitter_post_disabled') ?></div><?php endif ?>
 <h1 class="h3 mb-2 text-gray-800"><?= lang('twitter_add') ?></h1>
 <p class="mb-4"><?= lang('twitter_prompt') ?></p>
 <form method="post" action="twitter.php?action=post">
@@ -59,7 +59,7 @@
                 <div class="modal-footer">
                     <input type="hidden" value="" name="id" id="id"/>
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
-                    <button type="submit" class="btn btn-sm btn-success">保存</button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </form>
         </div>

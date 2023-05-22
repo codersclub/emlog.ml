@@ -54,6 +54,10 @@ $lang = array(
 'released'                              => ' released',
 
 //---------------------------
+//admin/media.php
+'upload_restricted'			=> 'Sorry, the system restricts users from uploading resources',//'抱歉，系统限制用户上传资源',
+
+//---------------------------
 //admin/plugin.php
 'plugin_upload_error'                   => 'Plugin upload failed',//'插件上传失败',
 'update_failed_network'			=> 'The update request failed, it may be a network problem',//'请求更新失败，可能是网络问题',
@@ -822,6 +826,7 @@ $lang = array(
                  		       	   //管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
 'limit_daily_posts'			=> 'Registered users limit the number of posts (including drafts) within 24 hours',//'注册用户限制24小时发文数量（包括草稿）',
 'enable_email_code'			=> 'Enable email verification code on registration (you need to configure the email notification service to open it)',//'开启注册邮件验证码（开启需配置邮件通知服务）',
+'if_0_upload_disabled'			=> 'If it is 0, it is forbidden to publish notes and upload graphic resources at the same time',//'为0同时禁止发布笔记和上传图文资源',
 
 //---------------------------
 //admin/views/signin.php
@@ -991,6 +996,7 @@ $lang = array(
 'twitters'                          => 'Notes',//'笔记',
 '_twitters'                         => ' note(s)',//'条笔记',
 'twitter_edit'			=> 'Edit note',//'编辑笔记',
+'twitter_post_disabled'		=> 'Sorry, the system restricts users from posting notes',//'抱歉，系统限制用户发布笔记',
 
 //---------------------------
 //admin/views/upload.php
