@@ -504,9 +504,7 @@ function doup(source, upsql) {
 
 function loadTopAddons() {
     $.ajax({
-        type: 'GET',
-        url: './store.php?action=top',
-        success: function (resp) {
+        type: 'GET', url: './store.php?action=top', success: function (resp) {
             $.each(resp.data, function (i, app) {
                 let insertBtnHtml;
                 let typeName = lang('template');
@@ -520,13 +518,7 @@ function loadTopAddons() {
                 } else {
 /*vot*/                    insertBtnHtml = lang('price') + lang('free') + ' <a href="' + storeUlr + '&keyword=' + app.name + '">' + lang('go_store_install') + '</a>';
                 }
-                const cardHtml = '<div class="col-md-4">' +
-                    '<div class="card">' +
-                    '<a href="' + app.buy_url + '" target="_blank"><img class="card-img-top" style="max-height: 90px;" src="' + app.icon + '" alt="icon"/></a>' +
-                    '<div class="card-body">' +
-                    '<div class="card-text text-muted small">' + typeName + app.name + '</div>' +
-                    '<p class="card-text d-flex justify-content-between small">' + insertBtnHtml + '</p>' +
-                    '</div></div></div>';
+                const cardHtml = '<div class="col-md-4">' + '<div class="card">' + '<a href="' + app.buy_url + '" target="_blank"><img class="card-img-top" style="max-height: 90px;" src="' + app.icon + '" alt="icon"/></a>' + '<div class="card-body">' + '<div class="card-text text-muted small">' + typeName + app.name + '</div>' + '<p class="card-text d-flex justify-content-between small">' + insertBtnHtml + '</p>' + '</div></div></div>';
                 $('#app-list').append(cardHtml);
             });
         },

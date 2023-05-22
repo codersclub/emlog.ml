@@ -114,12 +114,10 @@ $lang = array(
 'install_failed_permission'		=> '安装失败，请检查content下目录是否可写',//'Installation failed, please check whether the directory under content is writable',
 'install_failed_zip'			=> '安装失败，请安装php的Zip扩展',//'Installation failed, please install the Zip extension for php',
 'svip'					=> '铁杆svip专属',//'Hardcore svip exclusive',
-'tpl_category_0'	=> '选择模板分类',//'Select template classification',
 'tpl_category_8'	=> '博客自媒体',//'Blog We Media',
 'tpl_category_7'	=> '资源下载',//'Resource download',
 'tpl_category_9'	=> '社区论坛',//'Community Forum',
 'tpl_category_10'	=> '其他',//'Other',
-'plu_category_0'	=> '选择插件分类',//'Select plugin category',
 'plu_category_1'	=> '资源下载',//'Resource download',
 'plu_category_2'	=> 'SEO优化',//'SEO optimization',
 'plu_category_3'	=> '多媒体',//'Multimedia',
@@ -133,6 +131,7 @@ $lang = array(
 'plu_category_6'	=> '其他',//'Other'
 'free_zone'		=> '仅看免费',//'Free only',
 'paid_zone'		=> '仅看付费',//'Paid only',
+'search_by_category'	=> '按分类查找',//'Search by category',
 
 //---------------------------
 //admin/style.php
@@ -510,13 +509,13 @@ $lang = array(
 'publish'                                 => '发布',//'Publish',
 'write_article'                           => '去写文章',//'Write an article',
 'pending_review'                          => '待审评论',//'Review pendings',
-'user_num'                                => '用户数',//'Number of users',
+'user_num'                                => '用户数量',//'Number of users',
 'go_to_register'                          => '去注册',//'Go to register',
 'update_expired'                          => '更新服务已到期，',//'The update service has expired, ',
 'log_in_to_renew'                         => '登录官网续期',//'Log in to the official website to renew',
 'articles_pending'                        => '待审文章',//'Pending Articles',
 'help_faq'				  => '使用帮助 | 常见问题',//'FAQ',
-'contacts'				  => '联系交流 | 加入Q群',//'Contact and exchange | Join Q group',
+'contacts'				  => '联系交流 | 加入社群',//'Contact and exchange | Join Q group',
 'feedback'				  => '问题反馈 | 官方社区',//'Problem Feedback | Official Community',
 'issues'				  => 'Issues',//'Issues',
 'comments_received'			=> '收到评论',//'Received comments',

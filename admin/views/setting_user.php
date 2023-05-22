@@ -31,13 +31,18 @@
                 <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
 <!--vot-->                <label class="form-check-label"><?=lang('enable_email_code')?></label>
             </div>
+            <hr>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkarticle" id="ischkarticle" <?= $conf_ischkarticle ?> />
                 <label class="form-check-label"><?= lang('writer_need_approve') ?></label>
             </div>
             <div class="form-group form-inline">
+                <input class="form-check-input" type="checkbox" value="y" name="article_uneditable" id="article_uneditable" <?= $conf_article_uneditable ?> />
+                <label>审核通过的文章用户不可编辑、删除</label>
+            </div>
+            <div class="form-group form-inline">
                 <label><?=lang('limit_daily_posts')?>:</label>
-                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/>
+                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/>，为0同时禁止发布笔记和上传图文资源
             </div>
             <div class="form-group">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>

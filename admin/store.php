@@ -22,7 +22,7 @@ if (empty($action)) {
     $sid = Input::getStrVar('sid');
 
 /*vot*/    $categories = [
-        0  => lang('tpl_category_0'),
+        0  => lang('search_by_category'),
         8  => lang('tpl_category_8'),
         7  => lang('tpl_category_7'),
         9  => lang('tpl_category_9'),
@@ -62,7 +62,7 @@ if ($action === 'plu') {
     $sid = Input::getIntVar('sid');
 
 /*vot*/    $categories = [
-        0  => lang('plu_category_0'),
+        0  => lang('search_by_category'),
         1  => lang('plu_category_1'),
         2  => lang('plu_category_2'),
         3  => lang('plu_category_3'),

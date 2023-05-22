@@ -50,7 +50,7 @@ var LNG = {
 // 'saving'		: 'Saving',//'正在保存',
     'saving': 'Saving...',//'正在保存中...',
     'saved_ok_time': 'Saved at ',//'保存于：',
-    'save_system_error': 'Failed to save, there may be an exception in the system or the daily posting limit has been reached',//'保存失败，可能系统出现异常或者达到每日发文限额',
+    'save_system_error': 'Failed to save, maybe the article cannot be edited or the daily post limit has been reached',//'保存失败，可能文章不可编辑或达到每日发文限额',
     'too_quick': 'Do not operate frequently!',//'请勿频繁操作！',
     'saving_in': '[Saving] ',//'[保存中] ',
     'saved_ok': '[Saved successfully]: ',//'[保存成功] ',
