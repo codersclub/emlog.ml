@@ -236,16 +236,20 @@
         $("#form_media").submit();
     }
 </script>
-<link rel="stylesheet" type="text/css" href="./views/highslide/highslide.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
-<script src="./views/highslide/highslide.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<link rel="stylesheet" type="text/css" href="./views/components/highslide/highslide.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
+<script src="./views/components/highslide/highslide.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<link rel="stylesheet" type="text/css" href="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
+<script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+
 <script>
-    if (window.outerWidth > 767) {
-        hs.graphicsDir = './views/highslide/graphics/';
-        hs.wrapperClassName = 'rounded-white';
-    } else {
-        $('.highslide').removeAttr('onclick')  // If it is a mobile terminal, do not use the highslide function
-    }
     $(function () {
+        if (window.outerWidth > 767) {
+            hs.graphicsDir = './views/components/highslide/graphics/';
+            hs.wrapperClassName = 'rounded-white';
+        } else {
+        $('.highslide').removeAttr('onclick')  // If it is a mobile terminal, do not use the highslide function
+        }
+
         $('.copy-link').click(function (e) {
             e.preventDefault();
             var link = $(this).data('url');
