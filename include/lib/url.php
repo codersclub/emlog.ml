@@ -13,22 +13,22 @@ class Url {
     static function log($blogId) {
         $urlMode = Option::get('isurlrewrite');
         $logUrl = '';
-        $CACHE = Cache::getInstance();
 
         //Open the Post alias
         if (Option::get('isalias') == 'y') {
-            $logalias_cache = $CACHE->readCache('logalias');
-            if (!empty($logalias_cache[$blogId])) {
-                $logsort_cache = $CACHE->readCache('logsort');
+            $Log_Model = new Log_Model();
+            $logInfo = $Log_Model->getDetail($blogId);
+            $sortName = isset($logInfo['sortname']) ? $logInfo['sortname'] : '';
+            $sortAlias = isset($logInfo['sort_alias']) ? $logInfo['sort_alias'] : '';
+            $logAlias = isset($logInfo['alias']) ? $logInfo['alias'] : '';
+            if (!empty($logAlias)) {
                 $sort = '';
-                //url in category mode
-                if (3 == $urlMode && isset($logsort_cache[$blogId])) {
-                    $sort = !empty($logsort_cache[$blogId]['alias']) ?
-                        $logsort_cache[$blogId]['alias'] :
-                        $logsort_cache[$blogId]['name'];
+                //url in category mode /category/1.html
+                if (3 == $urlMode && $sortName) {
+                    $sort = !empty($sortAlias) ? $sortAlias : $sortName;
                     $sort .= '/';
                 }
-                $logUrl = BLOG_URL . $sort . urlencode($logalias_cache[$blogId]);
+                $logUrl = BLOG_URL . $sort . urlencode($logAlias);
                 //Enable alias html suffix
                 if (Option::get('isalias_html') == 'y') {
                     $logUrl .= '.html';
@@ -48,11 +48,14 @@ class Url {
                 $logUrl = BLOG_URL . 'post/' . $blogId;
                 break;
             case '3'://category
-                $log_sort = $CACHE->readCache('logsort');
-                if (!empty($log_sort[$blogId]['alias'])) {
-                    $logUrl = BLOG_URL . $log_sort[$blogId]['alias'] . '/' . $blogId;
-                } elseif (!empty($log_sort[$blogId]['name'])) {
-                    $logUrl = BLOG_URL . $log_sort[$blogId]['name'] . '/' . $blogId;
+                $Log_Model = new Log_Model();
+                $logInfo = $Log_Model->getDetail($blogId);
+                $sortName = isset($logInfo['sortname']) ? $logInfo['sortname'] : '';
+                $sortAlias = isset($logInfo['sort_alias']) ? $logInfo['sort_alias'] : '';
+                if (!empty($sortAlias)) {
+                    $logUrl = BLOG_URL . $sortAlias . '/' . $blogId;
+                } elseif (!empty($sortName)) {
+                    $logUrl = BLOG_URL . $sortName . '/' . $blogId;
                 } else {
                     $logUrl = BLOG_URL . $blogId;
                 }

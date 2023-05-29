@@ -391,7 +391,8 @@ CREATE TABLE {$db_prefix}attachment (
   mimetype varchar(64) NOT NULL default '' COMMENT 'File mime type',
   thumfor int(11) NOT NULL default 0 COMMENT 'Thumbnail for original resource ID (obsolete)',
   PRIMARY KEY  (aid),
-  KEY thum_uid (thumfor,author)
+  KEY thum_uid (thumfor,author),
+  KEY addtime (addtime)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}media_sort;
 CREATE TABLE {$db_prefix}media_sort (

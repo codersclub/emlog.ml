@@ -525,7 +525,7 @@ function loadTopAddons() {
     });
 }
 
-$(document).ready(function () {
+$(function () {
     // Check once the page is loaded
     // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid
     if ($("#detect_url").prop("checked")) {

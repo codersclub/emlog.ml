@@ -339,11 +339,13 @@ function editflg($logid, $author) {
  * Article details page: Category
  */
 function blog_sort($blogid) {
-    global $CACHE;
-    $log_cache_sort = $CACHE->readCache('logsort');
+    $Log_Model = new Log_Model();
+    $logInfo = $Log_Model->getDetail($blogid);
+    $sortID = isset($logInfo['sid']) ? $logInfo['sid'] : '';
+    $sortName = isset($logInfo['sortname']) ? $logInfo['sortname'] : '';
     ?>
-    <?php if (!empty($log_cache_sort[$blogid])) { ?>
-          <a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
+    <?php if (!empty($sortName)) { ?>
+        <a href="<?= Url::sort($sortID) ?>"><?= $sortName ?></a>
     <?php } else { ?>
           <a href="#" title="<?=lang('uncategorized')?>"><?=lang('no')?></a>
     <?php }
@@ -353,12 +355,14 @@ function blog_sort($blogid) {
  * Home Article List: Categories
  */
 function bloglist_sort($blogid) {
-    global $CACHE;
-    $log_cache_sort = $CACHE->readCache('logsort');
+    $Log_Model = new Log_Model();
+    $logInfo = $Log_Model->getDetail($blogid);
+    $sortID = isset($logInfo['sid']) ? $logInfo['sid'] : '';
+    $sortName = isset($logInfo['sortname']) ? $logInfo['sortname'] : '';
     ?>
-    <?php if (!empty($log_cache_sort[$blogid])) { ?>
+    <?php if (!empty($sortName)) { ?>
         <span class="loglist-sort">
-            <a href="<?= Url::sort($log_cache_sort[$blogid]['id']) ?>" title="<?=lang('category')?>: <?= $log_cache_sort[$blogid]['name'] ?>"><?= $log_cache_sort[$blogid]['name'] ?></a>
+            <a href="<?= Url::sort($sortID) ?>"><?= $sortName ?></a>
         </span>
     <?php }
 } ?>

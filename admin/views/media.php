@@ -16,21 +16,26 @@
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target=" #exampleModal"><i class="icofont-plus"></i> <?= lang('upload_files') ?></a>
 </div>
 <?php if (User::isAdmin()): ?>
-    <div class="row mb-4 ml-1">
+    <div class="row mb-4 ml-1 justify-content-between">
+        <div>
         <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
-        <?php foreach ($sorts as $key => $val):
-            $cur_tab = $val['id'] == $sid ? "btn-success" : "btn-primary";
-            ?>
-            <div class="btn-group mr-2 my-1">
-                <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
-                <button type="button" class="btn <?= $cur_tab ?> btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false"></button>
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-sortname="<?= $val['sortname'] ?>"><?= lang('edit') ?></a>
-                    <a class="dropdown-item text-danger" href="javascript: em_confirm(<?= $val['id'] ?>, 'media_sort', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
+            <?php foreach ($sorts as $key => $val):
+                $cur_tab = $val['id'] == $sid ? "btn-success" : "btn-primary";
+                ?>
+                <div class="btn-group mr-2 my-1">
+                    <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
+                    <button type="button" class="btn <?= $cur_tab ?> btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false"></button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-sortname="<?= $val['sortname'] ?>"><?= lang('edit') ?></a>
+                        <a class="dropdown-item text-danger" href="javascript: em_confirm(<?= $val['id'] ?>, 'media_sort', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach ?>
-        <a href="#" class="btn btn-success btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i></a>
+            <?php endforeach ?>
+            <a href="#" class="btn btn-success btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i></a>
+        </div>
+        <div class="mr-3">
+            <input type="text" id="datePicker" class="form-control" placeholder="查看该日期及之前的资源">
+        </div>
     </div>
 <?php endif; ?>
 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
@@ -174,75 +179,74 @@
 </div>
 
 <script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<script>
-    $("#menu_media").addClass('active');
-    setTimeout(hideActived, 3600);
-    $('#exampleModal').on('hidden.bs.modal', function (e) {
-        window.location.reload();
-    })
-    Dropzone.options.myAwesomeDropzone = {
-        maxFilesize: 2048,// MB
-        paramName: "file",
-        timeout: 3600000,// milliseconds
-        init: function () {
-            this.on("error", function (file, response) {
-                // alert(response);
-            });
-        }
-    };
-
-    function mediaact(act) {
-        if (getChecked('aids') === false) {
-/*vot*/     swal("", lang('resource_select'), "info");
-            return;
-        }
-
-        if (act == 'del') {
-            swal({
-/*vot*/         title: lang('resource_del_sure'),
-/*vot*/         text: lang('delete_not_recover'),
-                icon: 'warning',
-/*vot*/         buttons: [lang('cancel'), lang('ok')],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    $("#operate").val(act);
-                    $("#form_media").submit();
-                }
-            });
-            return;
-        }
-        $("#operate").val(act);
-        $("#form_media").submit();
-    }
-
-    $('#editModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget)
-        var sortname = button.data('sortname')
-        var id = button.data('id')
-        var modal = $(this)
-        modal.find('.modal-body input').val(sortname)
-        modal.find('.modal-footer input').val(id)
-    })
-
-    // Change category
-    function changeSort(obj) {
-        if (getChecked('aids') === false) {
-/*vot*/     swal("", lang('media_select'), "info");
-            return;
-        }
-        if ($('#sort').val() == '') return;
-        $("#operate").val('move');
-        $("#form_media").submit();
-    }
-</script>
 <link rel="stylesheet" type="text/css" href="./views/components/highslide/highslide.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
 <script src="./views/components/highslide/highslide.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <link rel="stylesheet" type="text/css" href="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
 <script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-
+<script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.zh-CN.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>
     $(function () {
+        $("#menu_media").addClass('active');
+        setTimeout(hideActived, 3600);
+        $('#exampleModal').on('hidden.bs.modal', function (e) {
+            window.location.reload();
+        })
+        Dropzone.options.myAwesomeDropzone = {
+            maxFilesize: 2048,// MB
+            paramName: "file",
+            timeout: 3600000,// milliseconds
+            init: function () {
+                this.on("error", function (file, response) {
+                    // alert(response);
+                });
+            }
+        };
+
+        function mediaact(act) {
+            if (getChecked('aids') === false) {
+/*vot*/         swal("", lang('resource_select'), "info");
+                return;
+            }
+
+            if (act == 'del') {
+                swal({
+/*vot*/             title: lang('resource_del_sure'),
+/*vot*/             text: lang('delete_not_recover'),
+                    icon: 'warning',
+/*vot*/             buttons: [lang('cancel'), lang('ok')],
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $("#operate").val(act);
+                        $("#form_media").submit();
+                    }
+                });
+                return;
+            }
+            $("#operate").val(act);
+            $("#form_media").submit();
+        }
+
+        $('#editModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var sortname = button.data('sortname')
+            var id = button.data('id')
+            var modal = $(this)
+            modal.find('.modal-body input').val(sortname)
+            modal.find('.modal-footer input').val(id)
+        })
+
+        // Change category
+        function changeSort(obj) {
+            if (getChecked('aids') === false) {
+/*vot*/         swal("", lang('media_select'), "info");
+                return;
+            }
+            if ($('#sort').val() == '') return;
+            $("#operate").val('move');
+            $("#form_media").submit();
+        }
+
         if (window.outerWidth > 767) {
             hs.graphicsDir = './views/components/highslide/graphics/';
             hs.wrapperClassName = 'rounded-white';
@@ -250,6 +254,7 @@
         $('.highslide').removeAttr('onclick')  // If it is a mobile terminal, do not use the highslide function
         }
 
+        // copy url
         $('.copy-link').click(function (e) {
             e.preventDefault();
             var link = $(this).data('url');
@@ -260,6 +265,25 @@
                 trigger: 'manual'
             }).popover('show');
             setTimeout(() => $(this).popover('hide'), 1000);
+        });
+
+        // 日期选择器
+        var datePicker = $('#datePicker').datepicker({
+            format: 'yyyy-mm-dd',
+            language: 'zh-CN',
+            autoclose: true,
+            todayHighlight: true,
+        });
+        var defaultDate = '<?= $date ?>';
+        if (defaultDate) {
+            selectedDate = new Date(defaultDate);
+            datePicker.datepicker('setDate', defaultDate);
+        }
+        datePicker.on('changeDate', function (e) {
+            selectedDate = e.date;
+            var formattedDate = selectedDate.toLocaleDateString();
+            var url = 'media.php?date=' + formattedDate;
+            window.location.href = url;
         });
     });
 </script>

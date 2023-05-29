@@ -85,21 +85,23 @@
     </div>
 </div>
 <script>
-    $("#menu_category_sys").addClass('active');
-    $("#menu_sys").addClass('show');
-    $("#menu_setting").addClass('active');
-    setTimeout(hideActived, 3600);
+    $(function () {
+        $("#menu_category_sys").addClass('active');
+        $("#menu_sys").addClass('show');
+        $("#menu_setting").addClass('active');
+        setTimeout(hideActived, 3600);
 
-    $("#testSendBtn").click(function () {
-        $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?>...<small>");
+        $("#testSendBtn").click(function () {
+            $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?>...<small>");
 
-        $.post("setting.php?action=mail_test", $("#mail_config").serialize(), function (data) {
-            if (data == '') {
-                $("#testMailMsg").html("<small class='text-success'><?=lang('send_ok')?></small>");
-            } else {
-                $("#testMailMsg").html(data);
-            }
+            $.post("setting.php?action=mail_test", $("#mail_config").serialize(), function (data) {
+                if (data == '') {
+                    $("#testMailMsg").html("<small class='text-success'><?=lang('send_ok')?></small>");
+                } else {
+                    $("#testMailMsg").html(data);
+                }
 
-        });
-    })
+            });
+        })
+    });
 </script>

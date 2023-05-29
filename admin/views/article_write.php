@@ -242,8 +242,9 @@
         Editor.setToolbarAutoFixed(false);
         Editor_summary.setToolbarAutoFixed(false);
     });
+
     // Cover image
-    $(document).ready(function () {
+    $(function () {
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');
         var cropper;

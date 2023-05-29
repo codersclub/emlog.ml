@@ -153,11 +153,12 @@
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(function () {
         $("#role").change(function () {
             $("#ischeck").toggle()
         })
+
+        setTimeout(hideActived, 3600);
+        $("#menu_user").addClass('active');
     });
-    setTimeout(hideActived, 3600);
-    $("#menu_user").addClass('active');
 </script>

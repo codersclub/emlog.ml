@@ -59,12 +59,15 @@
 </form>
 
 <script>
-    $("#menu_category_content").addClass('active');
-    $("#menu_content").addClass('show');
-    $("#menu_sort").addClass('active');
+    $(function () {
+        setTimeout(hideActived, 3600);
+        $("#menu_category_content").addClass('active');
+        $("#menu_content").addClass('show');
+        $("#menu_sort").addClass('active');
 
-    $("#alias").keyup(function () {
-        checksortalias();
+        $("#alias").keyup(function () {
+            checksortalias();
+        });
     });
 
     function issortalias(a) {
