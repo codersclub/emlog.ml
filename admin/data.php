@@ -42,7 +42,7 @@ if ($action === 'backup') {
     $dumpfile .= $sqldump;
     $dumpfile .= "\n#the end of backup";
 
-    $filename = 'emlog_' . date('Ymd_His');
+    $filename = 'emlog_' . Option::EMLOG_VERSION . '_' . date('Ymd_His');
     if ($zipbak == 'y') {
         if (($dumpfile = emZip($filename . '.sql', $dumpfile)) === false) {
             emDirect('./data.php?error_f=1');
@@ -179,7 +179,14 @@ function dataBak($table) {
         $comma = '';
         $sql .= "INSERT INTO $table VALUES(";
         for ($i = 0; $i < $numfields; $i++) {
-            $sql .= $comma . "'" . $DB->escape_string($row[$i]) . "'";
+            $fieldValue = $row[$i];
+            if (is_null($fieldValue)) {
+                // Handle default value of NULL
+                $sql .= $comma . 'NULL';
+            } else {
+                // Escape and add the field value
+                $sql .= $comma . "'" . $DB->escape_string($fieldValue) . "'";
+            }
             $comma = ',';
         }
         $sql .= ");\n";
