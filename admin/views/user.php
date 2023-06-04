@@ -134,11 +134,11 @@
                     </div>
                     <div class="form-group">
                         <label for="password"><?= lang('password_min_length') ?></label>
-                        <input class="form-control" id="password" name="password" autocomplete="new-password" type="password" required>
+                        <input class="form-control" id="password" minlength="6" name="password" autocomplete="new-password" type="password" required>
                     </div>
                     <div class="form-group">
                         <label for="password2"><?= lang('password_repeat') ?></label>
-                        <input class="form-control" id="password2" name="password2" type="password" required>
+                        <input class="form-control" id="password2" minlength="6" name="password2" type="password" required>
                     </div>
                 </div>
                 <div class="modal-footer">

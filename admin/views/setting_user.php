@@ -36,7 +36,7 @@
                 <input class="form-check-input" type="checkbox" value="y" name="ischkarticle" id="ischkarticle" <?= $conf_ischkarticle ?> />
                 <label class="form-check-label"><?= lang('writer_need_approve') ?></label>
             </div>
-            <div class="form-group form-inline">
+            <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="article_uneditable" id="article_uneditable" <?= $conf_article_uneditable ?> />
                 <label><?= lang('not_editable') ?></label>
             </div>
