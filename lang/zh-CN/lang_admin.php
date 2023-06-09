@@ -590,6 +590,7 @@ $lang = array(
 'move_to'                                 => '移动到',//'Move to',
 'original_file'				=> '原文件',//'Original file',
 'link_copied'				=> '链接已复制',//'Link copied',
+'view_from_date'			=> '查看该日期及之前的资源',//'View resources from this date and earlier',
 
 //---------------------------
 //admin/views/media_lib.php

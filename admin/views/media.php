@@ -193,7 +193,7 @@
             window.location.reload();
         })
         Dropzone.options.myAwesomeDropzone = {
-            maxFilesize: Number.MAX_SAFE_INTEGER,// 不限制
+            maxFilesize: Number.MAX_SAFE_INTEGER,// Not limited
             paramName: "file",
             timeout: 3600000,// milliseconds
             init: function () {
@@ -232,10 +232,10 @@
             setTimeout(() => $(this).popover('hide'), 1000);
         });
 
-        // 日期选择器
+        // Date picker
         var datePicker = $('#datePicker').datepicker({
             format: 'yyyy-mm-dd',
-            language: 'zh-CN',
+/*vot*/     language: em_lang, // Global current language
             autoclose: true,
             todayHighlight: true,
         });
