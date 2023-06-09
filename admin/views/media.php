@@ -94,8 +94,8 @@
                 <label class="custom-control-label" for="checkAllCard"><?=lang('select_all')?></label>
             </div>
         </div>
+        <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
         <div class="col-auto my-1 form-inline">
-            <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
             <?php if (User::isAdmin()): ?>
                 <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
                     <option value="" selected="selected"><?= lang('move_to') ?></option>
@@ -108,7 +108,8 @@
         </div>
     </div>
 </form>
-<div class="page my-5"><?= $page ?> (<?= lang('have') ?> <?= $count ?> <?= lang('_resources') ?>)</div>
+<div class="page"><?= $page ?> </div>
+<div class="text-center small">(<?= lang('have') ?> <?= $count ?> <?= lang('_resources') ?>)</div>
 
 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -192,7 +193,7 @@
             window.location.reload();
         })
         Dropzone.options.myAwesomeDropzone = {
-            maxFilesize: 2048,// MB
+            maxFilesize: Number.MAX_SAFE_INTEGER,// 不限制
             paramName: "file",
             timeout: 3600000,// milliseconds
             init: function () {
@@ -202,31 +203,6 @@
             }
         };
 
-        function mediaact(act) {
-            if (getChecked('aids') === false) {
-/*vot*/         swal("", lang('resource_select'), "info");
-                return;
-            }
-
-            if (act == 'del') {
-                swal({
-/*vot*/             title: lang('resource_del_sure'),
-/*vot*/             text: lang('delete_not_recover'),
-                    icon: 'warning',
-/*vot*/             buttons: [lang('cancel'), lang('ok')],
-                    dangerMode: true,
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        $("#operate").val(act);
-                        $("#form_media").submit();
-                    }
-                });
-                return;
-            }
-            $("#operate").val(act);
-            $("#form_media").submit();
-        }
-
         $('#editModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var sortname = button.data('sortname')
@@ -235,17 +211,6 @@
             modal.find('.modal-body input').val(sortname)
             modal.find('.modal-footer input').val(id)
         })
-
-        // Change category
-        function changeSort(obj) {
-            if (getChecked('aids') === false) {
-/*vot*/         swal("", lang('media_select'), "info");
-                return;
-            }
-            if ($('#sort').val() == '') return;
-            $("#operate").val('move');
-            $("#form_media").submit();
-        }
 
         if (window.outerWidth > 767) {
             hs.graphicsDir = './views/components/highslide/graphics/';
@@ -286,4 +251,40 @@
             window.location.href = url;
         });
     });
+
+    function mediaact(act) {
+        if (getChecked('aids') === false) {
+/*vot*/     swal("", lang('resource_select'), "info");
+            return;
+        }
+
+        if (act == 'del') {
+            swal({
+/*vot*/         title: lang('resource_del_sure'),
+/*vot*/         text: lang('delete_not_recover'),
+                icon: 'warning',
+/*vot*/         buttons: [lang('cancel'), lang('ok')],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $("#operate").val(act);
+                    $("#form_media").submit();
+                }
+            });
+            return;
+        }
+        $("#operate").val(act);
+        $("#form_media").submit();
+    }
+
+    // Change category
+    function changeSort(obj) {
+        if (getChecked('aids') === false) {
+/*vot*/     swal("", lang('media_select'), "info");
+            return;
+        }
+        if ($('#sort').val() == '') return;
+        $("#operate").val('move');
+        $("#form_media").submit();
+    }
 </script>

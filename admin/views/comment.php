@@ -120,7 +120,8 @@
                 </div>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>
-            <div class="page"><?= $pageurl ?> (<?= lang('have') ?> <?= $cmnum ?> <?= lang('_comments') ?>)</div>
+            <div class="page"><?= $pageurl ?> </div>
+            <div class="text-center small">(<?= lang('have') ?> <?= $cmnum ?> <?= lang('_comments') ?>)</div>
         </div>
     </div>
 </form>

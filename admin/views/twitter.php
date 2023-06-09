@@ -31,7 +31,7 @@
                 <p class="text-muted small card-text d-flex justify-content-between">
                     <?= $val['date'] ?> | by <?= $author ?>
                     <span>
-                    <a href="#" class="text-muted" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-t="<?= $val['t'] ?>"><?= lang('edit') ?></a>
+                    <a href="#" class="text-muted" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-t="<?= htmlspecialchars($val['t']) ?>"><?= lang('edit') ?></a>
                     <a href="javascript: em_confirm(<?= $tid ?>, 'tw', '<?= LoginAuth::genToken() ?>');" class="care"><?= lang('delete') ?></a>
                     </span>
                 </p>
@@ -65,8 +65,9 @@
         </div>
     </div>
 </div>
+<div class="page"><?= $pageurl ?> </div>
+<div class="text-center small">(<?= lang('have') ?> <?= $twnum ?><?= lang('_twitters') ?>)</div>
 
-<div class="page my-5"><?= $pageurl ?> (<?= lang('have') ?> <?= $twnum ?><?= lang('_twitters') ?>)</div>
 <link rel="stylesheet" type="text/css" href="./views/css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>

@@ -60,7 +60,8 @@
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>
-            <div class="page"><?= $pageurl ?> (<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
+            <div class="page"><?= $pageurl ?></div>
+            <div class="text-center small">(<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
         </div>
     </div>
 </form>

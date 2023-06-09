@@ -198,8 +198,7 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                         <?php endforeach ?>
                     </select>
                 <?php endif ?>
-
-                <div class="btn-group btn-group-sm" role="group">
+                <div class="btn-group btn-group-sm ml-1" role="group">
                     <?php if ($draft): ?>
                         <a href="javascript:logact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
                     <?php else: ?>
@@ -209,7 +208,8 @@ $isDisplayUser = !$uid ? "style=\"display:none;\"" : '';
                 </div>
             </div>
         </form>
-        <div class="page"><?= $pageurl ?> (<?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?> <?= $draft ? lang('_drafts') : lang('_articles') ?>)</div>
+        <div class="page"><?= $pageurl ?> </div>
+        <div class="text-center small">(<?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?> <?= $draft ? lang('_drafts') : lang('_articles') ?>)</div>
     </div>
 </div>
 <!--Article reject-->
