@@ -150,7 +150,7 @@ if (!$act) {
                         <?= lang('db_user') ?>:<br><input name="dbuser" type="text" class="input" value="">
                     </li>
                     <li>
-                        <?= lang('db_password') ?>:<br><input name="dbpassw" type="password" class="input">
+                        <?= lang('db_password') ?>:<br><input name="dbpasswd" type="password" class="input">
                     </li>
                     <li>
                         <?= lang('db_name') ?>:<br>
