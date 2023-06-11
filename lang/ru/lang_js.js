@@ -4,6 +4,22 @@ var LNG = {
     'leave_prompt'	: 'Сообщение при покидании страницы',//'离开页面提示',
     'already_edited'	: '[было изменено] ',//'[已修改] ',
 
+// admin/views/article.php
+    'select_article': 'Пожалуйста, выберите статью',//'请选择文章',
+    'sure_delete_articles': 'Вы уверены, что хотите удалить выбранную статью',//'确定要删除所选文章吗',
+
+// admin/views/comment.php
+    'comment_operation_select': 'Пожалуйста, выберите комментарий',//'请选择评论',
+    'comment_selected_delete_sure': 'Вы уверены, что хотите удалить выбранные комментарии',//'确定要删除所选评论吗',
+
+// admin/views/media.php
+    'resource_select': 'Пожалуйста, выберите файл ресурсов',//'请选择资源文件',
+    'resource_del_sure': 'Вы уверены, что хотите удалить выбранные файлы ресурсов',//'确定要删除所选资源文件吗',
+
+// admin/views/page.php
+    'select_page_to_operate': 'Пожалуйста, выберите страницу',//'请选择页面',
+    'sure_delete_selected_pages': 'Вы уверены, что хотите удалить выбранные страницы',//'确定要删除所选页面吗',
+
 //---------------------------
 //admin/views/plugin.php
     'update'				: 'Обновить',//'更新',

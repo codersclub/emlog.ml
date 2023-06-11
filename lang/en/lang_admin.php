@@ -276,6 +276,7 @@ $lang = array(
     'tags_tips' => '(also used for article page keywords)',//'(也用于文章页关键词)',
     'select_file_category' => 'Select resource category...',//'选择资源分类…',
     'load_more' => 'Load more…',//'加载更多…',
+    'crop_hold_shift' => 'Hold Shift to adjust the cropping area proportionally',//'按住 Shift 等比例调整裁剪区域',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -635,6 +636,7 @@ $lang = array(
 //admin/views/page.php
     'page_title' => 'Page title',//'页面标题',
     'setting_items' => 'Setting items',//'设置项',
+    'alias' => 'Alias',//'别名',
 
 //---------------------------
 //admin/views/page_create.php
@@ -866,10 +868,10 @@ $lang = array(
     'install_failed_zip' => 'Installation failed, unable to decompress, please install php Zip extension',//'安装失败，无法解压，请安装php的Zip扩展',
     'install_invalid_ext' => 'Installation failed, not a valid installation package',//'安装失败，不是有效的安装包',
     'store_unavailable' => 'The store is temporarily unavailable, it may be a network problem',//'商店暂不可用，可能是网络问题',
-// 'back_home'				=> 'Back to home',//'返回首页',
+// 'back_home'		=> 'Back to home',//'返回首页',
     'ext_store' => 'Extension Store',//'扩展商店',
     'ext_store_templates' => 'Template themes',//'模板主题',
-// 'template'				=> 'Template',//'模板',
+// 'template'		=> 'Template',//'模板',
     'extensions' => 'Extensions',//'扩展插件',
     'ext_store_plugins' => 'Extensions',//'扩展插件',
 
