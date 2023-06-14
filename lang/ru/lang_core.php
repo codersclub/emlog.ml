@@ -7,6 +7,10 @@ $lang = array(
 'language'		=> 'Язык',//'语言',
 
 //---------------------------
+//include\controller\api_controller.php
+'article_private'	=> 'Эта страница является приватной',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'	=> 'm.Y',//'Y年n月',
 'cache_read_error'	=> 'Не удалось записать в кеш, возможно, каталог кеша (content/cache) недоступен для записи',//'读取缓存失败',

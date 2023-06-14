@@ -7,6 +7,10 @@ $lang = array(
 'language'           => '语言',//'Language',
 
 //---------------------------
+//include\controller\api_controller.php
+'article_private'	=> 'This article is private',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'Y年n月',//'m.Y',
 'cache_read_error'   => '写入缓存失败，可能是缓存目录(content/cache)不可写',//'Failed to write to the cache, it may be that the cache directory (content/cache) is not writable',
