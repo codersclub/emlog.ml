@@ -272,7 +272,7 @@ $lang = array(
 'cover_image'                             => '封面图片',//'Cover image',
 'recently_used'                           => '近期使用的+',//'Recently used+',
 'jump_link'				=> '跳转链接',//'Jump link',
-'jump_link_info'			=> '（填写后不展示文章内容直接跳转该地址）',//'(directly jump to this address without displaying the content of the article after filling in)',
+'jump_link_info'			=> '（填写后不展示页面内容，直接跳转该地址）',//'(The content of the page will not be displayed after filling in, and the address will be redirected to this link)',
 'tags_tips'				=> '(也用于文章页关键词， 多个用英文逗号分隔)',//'(Also used for article page keywords, multiple separated by commas)',
 'select_file_category'			=> '选择资源分类…',//'Select resource category...',
 'load_more'				=> '加载更多…',//'Load more…',
@@ -640,7 +640,7 @@ $lang = array(
 //---------------------------
 //admin/views/page_create.php
 'default'				=> '默认',//'Default',
-'select_tmpl_option'			=> '(选择当前模板支持的页面模板，<可不></可不>选)',//'(Select the page template supported by the current template, <optional></optional>)',
+'select_tmpl_option'			=> '(选择当前模板支持的页面模板，可不选)',//'(Choose a page template supported by the current template, optional)',
 'custom_tmpl_info'			=> '(用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',//'(Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',
 
 //---------------------------

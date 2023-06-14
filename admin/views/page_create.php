@@ -23,6 +23,10 @@
                 <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
             </div>
             <div class="form-group">
+                <label><?= lang('jump_link') ?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+                <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+            </div>
+            <div class="form-group">
                 <label><?= lang('page_template') ?>:</label>
                 <?php if ($customTemplates):
                     $sortListHtml = '<option value=""><?= lang('default') ?></option>';
