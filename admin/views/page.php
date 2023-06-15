@@ -40,7 +40,7 @@
                                 <input type="checkbox" name="page[]" value="<?= $value['gid'] ?>" class="ids"/></td>
                             <td>
                                 <a href="page.php?action=mod&id=<?= $value['gid'] ?>"><?= $value['title'] ?></a><br>
-                                <?php if ($value['link']): ?><span class="small">🔗</span><?php endif ?>
+                                <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                             </td>
                             <td>
                                 <a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info"><?= $value['comnum'] ?></a>
