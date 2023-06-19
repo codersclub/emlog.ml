@@ -1,15 +1,16 @@
 <?php
 /*
 Template Name: Default template
-Template Url: https://www.emlog.net/template/
+Template Url: https://emlog.io/template/
 Description: Emlog Pro Default template
 Author: emlog official
-Author Url:https://www.emlog.net
+Author Url:https://emlog.io
 */
 if (!defined('EMLOG_ROOT')) {
     exit('error!');
 }
 require_once View::getView('module');
+load_language('templates/default');
 ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">

@@ -129,7 +129,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="list_footer"><input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success"/></div>
+            <div class="list_footer"><input type="submit" value="<?= lang('order_change') ?>"
+                                            class="btn btn-sm btn-success"/></div>
         </form>
     </div>
 </div>
@@ -144,8 +145,8 @@
                     <input class="form-control" name="naviname" placeholder="<?= lang('nav_name') ?>" required/>
                 </div>
                 <div class="form-group">
-                    <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url" id="url"
-                              required/></textarea>
+                    <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url"
+                              id="url" required/></textarea>
                 </div>
                 <div class="form-group">
                     <label><?= lang('nav_parent') ?></label>
@@ -229,10 +230,11 @@
                             <?= $value['title'] ?>
                         </div>
                     <?php endforeach ?>
-                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>">
-                    </div>
+                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name=""
+                                                   value="<?= lang('save') ?>"></div>
                 <?php else: ?>
-                    <div class="form-group"><?= lang('pages_no') ?>, <a href="page.php?action=new"><?= lang('add_page') ?></a></div>
+                    <div class="form-group"><?= lang('pages_no') ?>, <a
+                                href="page.php?action=new"><?= lang('add_page') ?></a></div>
                 <?php endif ?>
             </form>
         </div>

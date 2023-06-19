@@ -2,7 +2,7 @@
 /**
  * install
  * @package EMLOG
- * @link https://www.emlog.net
+ * @link https://emlog.io
  */
 
 define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
@@ -190,7 +190,7 @@ if (!$act) {
             </div>
         </div>
     </form>
-    <div class=" footer">Powered by <a href="http://www.emlog.net">emlog</a></div>
+    <div class=" footer">Powered by <a href="http://emlog.io">emlog</a></div>
     </body>
     </html>
     <?php
@@ -289,35 +289,21 @@ EOT;
         . "const AUTH_KEY = '" . getRandStr(32) . md5($_SERVER['HTTP_USER_AGENT']) . "';"
         . "\n//Cookie name\n"
         . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
-
-        . "\n// Default blog language"
-        . "\ndefine('DEFAULT_LANG', 'en'); //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc."
-        . "\n// Enabled language list"
-        . "\ndefine('LANG_LIST', ["
-        . "\n    'en' => ["
-        . "\n        'name'=>'English',"
-        . "\n        'title'=>'English',"
-        . "\n        'dir'=>'ltr',"
-        . "\n    ],"
-        . "\n    'ru' => ["
-        . "\n        'name'=>'Русский',"
-        . "\n        'title'=>'Russian',"
-        . "\n        'dir'=>'ltr',"
-        . "\n    ],"
-        . "\n    'zh-CN' => ["
-        . "\n        'name'=>'简体中文',"
-        . "\n        'title'=>'Simplified Chinese',"
-        . "\n        'dir'=>'ltr',"
-        . "\n    ],"
-        . "\n/*"
-        . "\n    'ar' => ["
-        . "\n        'name'=>'العربية',"
-        . "\n        'title'=>'Arabic',"
-        . "\n        'dir'=>'rtl',"
-        . "\n    ],"
-        . "\n*/"
-        . "\n]);"
-        . "\n";
+        . "\n// Default blog language\n"
+        . "const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc."
+        . "\n// Enabled language list\n"
+        . "const LANG_LIST = [\n"
+        . "    'en' => [\n"
+        . "        'name'=>'English',\n"
+        . "        'title'=>'English',\n"
+        . "        'dir'=>'ltr',\n"
+        . "    ],\n"
+        . "    'zh-CN' => [\n"
+        . "      'name'=>'简体中文',\n"
+        . "        'title'=>'Simplified Chinese',\n"
+        . "        'dir'=>'ltr',\n"
+        . "    ],\n"
+        . "];\n";
 
     $fp = @fopen('config.php', 'w');
     $fw = @fwrite($fp, $config);
@@ -438,7 +424,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('log_title_style','0'),
 ('blogurl','" . BLOG_URL . "'),
 ('icp',''),
-('footer_info','powered by <a href=\"https://www.emlog.net\">emlog pro</a>'),
+('footer_info','powered by <a href=\"https://emlog.io\">emlog pro</a>'),
 ('admin_perpage_num','15'),
 ('rss_output_num','10'),
 ('rss_output_fulltext','y'),
@@ -497,7 +483,7 @@ CREATE TABLE {$db_prefix}link (
   taxis int(11) unsigned NOT NULL default '0' COMMENT 'Sort order',
   PRIMARY KEY  (id)
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}link (id, sitename, siteurl, description, taxis) VALUES (1, 'emlog.net', 'http://www.emlog.net', '" . lang('emlog_official_site') . "', 0);
+INSERT INTO {$db_prefix}link (id, sitename, siteurl, description, taxis) VALUES (1, 'emlog', 'http://emlog.io', '" . lang('emlog_official_site') . "', 0);
 DROP TABLE IF EXISTS {$db_prefix}navi;
 CREATE TABLE {$db_prefix}navi (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Navigation table',
