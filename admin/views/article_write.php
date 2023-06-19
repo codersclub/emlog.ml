@@ -171,17 +171,21 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
-                <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
+            <div class="modal-footer justify-content-between">
+                <div><?= lang('crop_hold_shift') ?></div>
+                <div>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<!--vot--><?php if (strtolower(LANG) !== 'zh-cn') { ?>
-<!--vot--><script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
-<!--vot--><?php } ?>
+<!-- vot: Load Editor.MD current language file -->
+<?php if (strtolower(LANG) !== 'zh-cn') { ?>
+<script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
+<?php } ?>
 <script>
     $("#alias").keyup(function () {
         checkalias();
@@ -264,7 +268,7 @@
         });
         $modal.on('shown.bs.modal', function () {
             cropper = new Cropper(image, {
-                aspectRatio: 16 / 9,
+                aspectRatio: NaN,
                 viewMode: 1
             });
         }).on('hidden.bs.modal', function () {

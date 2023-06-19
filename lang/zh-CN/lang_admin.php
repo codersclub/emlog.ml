@@ -275,7 +275,8 @@ $lang = array(
     'jump_link_info' => '（填写后不展示页面内容，直接跳转该地址）',//'(The content of the page will not be displayed after filling in, and the address will be redirected to this link)',
     'tags_tips' => '(也用于文章页关键词， 多个用英文逗号分隔)',//'(Also used for article page keywords, multiple separated by commas)',
     'select_file_category' => '选择资源分类…',//'Select resource category...',
-    'load_more' => '加载更多…',//'Load more…',
+    'load_more' => '加载更多…',//'Load more...',
+    'crop_hold_shift' => '按住 Shift 等比例调整裁剪区域',//'Hold Shift to adjust the cropping area proportionally',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -635,6 +636,7 @@ $lang = array(
 //admin/views/page.php
     'page_title' => '页面标题',//'Page title',
     'setting_items' => '设置项',//'Setting items',
+    'alias' => '别名',//'Alias',
 
 //---------------------------
 //admin/views/page_create.php
