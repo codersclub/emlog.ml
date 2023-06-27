@@ -69,7 +69,10 @@
                         <p class="card-text text-muted small">
                             <?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
-                            <?= lang('founder') ?>: <?= $author ?><br>
+                            <?= lang('founder') ?>: <?= $author ?>,
+                            <?php if (User::haveEditPermission()): ?>
+                                <a href="./media.php?uid=<?= $value['author'] ?>">仅看TA的</a><br>
+                            <?php endif ?>
                             <?= lang('file_size') ?>: <?= $value['attsize'] ?>
                             <?php if ($value['width'] && $value['height']): ?>
                                 <?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
