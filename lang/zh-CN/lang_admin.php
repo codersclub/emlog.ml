@@ -338,7 +338,7 @@ $lang = array(
     'new_password_info' => '新密码（不小于5位，不修改请留空）',//'New Password (not less than 5 characters, left blank if do not need to modify)',
     'new_password_repeat' => '再输入一次新密码',//'Repeat new password',
     'save_data' => '保存资料',//'Save Data',
-    'api_interface' => 'API接口',//'API interface',
+    'api_interface' => 'API',//'API',
     'account_password' => '账号密码',//'Account password',
 
 //---------------------------
@@ -713,7 +713,7 @@ $lang = array(
 //admin/views/seo.php
     'htaccess_not_writable' => '保存失败：根目录下的.htaccess不可写',//'Save failed: .htaccess file in the root directory is not writable',
     'post_url_settings' => '文章链接设置',//'Post URL settings',
-    'post_url_rewriting' => '如果修改后文章无法访问，可能是服务器空间不支持URL重写，请修改回默认形式、关闭文章连接别名。',//'If the article cannot be accessed after the modification, it may be that the server space does not support URL rewriting. Please modify it back to the default form and turn off the article connection alias.',
+    'post_url_rewriting' => '如果修改后文章无法访问，可能是服务器空间不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',//'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',
     'post_url' => '文章链接',//'Article URL',
     'default_format' => '默认格式',//'Default format',
     'file_format' => '文件格式',//'File format',
@@ -722,7 +722,7 @@ $lang = array(
     'enable_html_suffix' => '启用链接别名html后缀',//'Enable html suffix for link alias',
     'meta_settings' => '页头信息',//'Header Meta settings',
     'meta_title' => '站点浏览器标题(title)',//'Site Browser Title (title)',
-    'meta_keywords' => '站点关键字(keywords)',//'Site keywords (keywords)',
+    'meta_keywords' => '站点关键字(keywords)，多个用英文逗号分隔',//'Site keywords, separated by commas',
     'meta_description' => '站点浏览器描述(description)',//'Site Browser Description (description)',
     'meta_title_scheme' => '文章浏览器标题方案',//'Post browser title scheme',
     'post_title' => '文章标题',//'Post title',

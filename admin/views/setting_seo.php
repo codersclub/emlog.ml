@@ -53,13 +53,17 @@
             </div>
 
             <div class="alert alert-primary">
+                <p>
                 <?= lang('nginx_rewrite') ?>:<br><br>
-                location / {<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;index index.php index.html;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;if (!-e $request_filename){<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite ^/(.*)$ /index.php last;<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-                }<br>
+                    location / {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;index index.php index.html;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;if (!-e $request_filename){<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rewrite ^/(.*)$ /index.php last;<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                    }
+                </p>
+                <hr>
+                <p>其他服务器配置见官网文档：<a href="https://www.emlog.net/docs/#/faq" target="_blank">常见问题</a></p>
             </div>
 
             <h4 class="mt-4"><?= lang('meta_settings') ?>:</h4>
@@ -76,7 +80,7 @@
                 <textarea name="site_description" class="form-control"><?= $site_description ?></textarea>
             </div>
             <div class="form-group">
-                <label><?= lang('meta_title_scheme') ?>:</label>
+                <label><?= lang('meta_title_scheme') ?></label>
                 <select name="log_title_style" class="form-control">
                     <option value="0" <?= $opt0 ?>><?= lang('post_title') ?></option>
                     <option value="1" <?= $opt1 ?>><?= lang('post_title_site_title') ?></option>

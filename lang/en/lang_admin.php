@@ -338,7 +338,7 @@ $lang = array(
     'new_password_info' => 'New Password (not less than 5 characters, left blank if do not need to modify)',//'新密码（不小于5位，不修改请留空）',
     'new_password_repeat' => 'Repeat new password',//'再输入一次新密码',
     'save_data' => 'Save Data',//'保存资料',
-    'api_interface' => 'API interface',//'API接口',
+    'api_interface' => 'API',//'API',
     'account_password' => 'Account password',//'账号密码',
 
 //---------------------------
@@ -713,7 +713,7 @@ $lang = array(
 //admin/views/seo.php
     'htaccess_not_writable' => 'Save failed: .htaccess file in the root directory is not writable',//'保存失败：根目录下的.htaccess不可写',
     'post_url_settings' => 'Post URL settings',//'文章链接设置',
-    'post_url_rewriting' => 'If the article cannot be accessed after the modification, it may be that the server space does not support URL rewriting. Please modify it back to the default form and turn off the article connection alias.',//'如果修改后文章无法访问，可能是服务器空间不支持URL重写，请修改回默认形式、关闭文章连接别名。 启用链接别名后可以自定义文章和页面的链接地址。',
+    'post_url_rewriting' => 'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',//'如果修改后文章无法访问，可能是服务器空间不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',
     'post_url' => 'Article URL',//'文章链接',
     'default_format' => 'Default format',//'默认格式',
     'file_format' => 'File format',//'文件格式',
@@ -722,7 +722,7 @@ $lang = array(
     'enable_html_suffix' => 'Enable html suffix for link alias',//'启用链接别名html后缀',
     'meta_settings' => 'Header Meta settings',//'meta信息设置',
     'meta_title' => 'Site Browser Title (title)',//'站点浏览器标题(title)',
-    'meta_keywords' => 'Site keywords (keywords)',//'站点关键字(keywords)',
+    'meta_keywords' => 'Site keywords, separated by commas',//'站点关键字(keywords)，多个用英文逗号分隔',
     'meta_description' => 'Site Browser Description (description)',//'站点浏览器描述(description)',
     'meta_title_scheme' => 'Post browser title scheme',//'文章浏览器标题方案',
     'post_title' => 'Article title',//'文章标题',

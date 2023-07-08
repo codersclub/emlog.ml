@@ -78,22 +78,26 @@ $CACHE->updateArticleCache();
 
 doAction('save_log', $blogid);
 
-switch ($action) {
-    case 'autosave':
-        echo 'autosave_gid:' . $blogid . '_';
-        break;
-    case 'add':
-    case 'edit':
-        if ($ishide === 'y') {
-            emDirect("./article.php?draft=1&active_savedraft=1"); //Draft saved successfully
-        }
-        if ($action === 'add' || isset($_POST['pubPost'])) {
-            if ($checked === 'n') {
-                notice::sendNewPostMail($title);
-            }
-            emDirect("./article.php?active_post=1");//The article was published successfully
-        } else {
-            emDirect("./article.php?active_savelog=1");//The article was saved successfully
-        }
-        break;
+// Save asynchronously
+if ($action === 'autosave') {
+    exit('autosave_gid:' . $blogid . '_');
 }
+
+// Save draft
+if ($ishide === 'y') {
+    emDirect("./article.php?draft=1&active_savedraft=1");
+}
+
+// Article (draft) saved as public
+if (isset($_POST['pubPost'])) {
+    if ($checked === 'n') {
+        notice::sendNewPostMail($title);
+    }
+    emDirect("./article.php?active_post=1");
+}
+
+// Edit article (save and return)
+$page = $Log_Model->getPageOffset($postDate, Option::get('admin_perpage_num'));
+emDirect("./article.php?active_savelog=1&page=" . $page);
+
+

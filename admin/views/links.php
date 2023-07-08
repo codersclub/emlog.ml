@@ -24,9 +24,9 @@
                 <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>
                     <tr>
+                        <th><?= lang('name') ?></th>
                         <th><?= lang('link') ?></th>
                         <th><?= lang('description') ?></th>
-                        <th><?= lang('status') ?></th>
                         <th><?= lang('operation') ?></th>
                     </tr>
                     </thead>
@@ -47,10 +47,10 @@
 <!--vot-->                          <br/><span class="badge badge-warning"><?= lang('hidden') ?></span>
                                 <?php endif ?>
                             </td>
-                            <td><?= $value['description'] ?></td>
                             <td>
-                                <a href="<?= $value['siteurl'] ?>" target="_blank"><img src="./views/images/vlog.gif"/></a>
+                                <a href="<?= $value['siteurl'] ?>" target="_blank"><?= subString($value['siteurl'], 0, 39) ?></a>
                             </td>
+                            <td><?= $value['description'] ?></td>
                             <td>
                                 <?php if ($value['hide'] == 'n'): ?>
 <!--vot-->                      <a href="link.php?action=hide&amp;linkid=<?= $value['id'] ?>" class="badge badge-primary"><?= lang('hide') ?></a>
