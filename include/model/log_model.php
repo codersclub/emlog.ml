@@ -232,7 +232,7 @@ class Log_Model {
     }
 
     /**
-     * 获取文章所在页码
+     * Get the page number of the article
      * @param $date
      * @param $pageSize
      * @param $type

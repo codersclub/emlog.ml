@@ -638,6 +638,8 @@ $lang = array(
     'page_title' => 'Page title',//'页面标题',
     'setting_items' => 'Setting items',//'设置项',
     'alias' => 'Alias',//'别名',
+    'as_home' => '- it has been set as the home page, please visit the original default home page: ',//'已设为首页，原默认首页请访问：',
+    'set_as_home' => 'Set as the homepage, and the original default homepage will be changed to: ',//'设为首页，同时原默认首页将变更为：',
 
 //---------------------------
 //admin/views/page_create.php
@@ -710,7 +712,7 @@ $lang = array(
     'email_verification_code' => 'Email verification code',//'邮件验证码',
 
 //---------------------------
-//admin/views/seo.php
+//admin/views/setting_seo.php
     'htaccess_not_writable' => 'Save failed: .htaccess file in the root directory is not writable',//'保存失败：根目录下的.htaccess不可写',
     'post_url_settings' => 'Post URL settings',//'文章链接设置',
     'post_url_rewriting' => 'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',//'如果修改后文章无法访问，可能是服务器空间不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',
@@ -729,6 +731,8 @@ $lang = array(
     'post_title_site_title' => 'Article title - Site title',//'文章标题 - 站点标题',
     'post_title_site_meta_title' => 'Article title - Site browser title',//'文章标题 - 站点浏览器标题',
     'nginx_rewrite' => 'Please configure the following pseudo-static rules for the Nginx server',//'Nginx服务器请配置如下伪静态规则',
+    'other_config' => 'For other server configurations, see the official website documentation: ',//'其他服务器配置见官网文档：',
+    'common_problems' => 'Common problems',//'常见问题',
 
 //---------------------------
 //admin/views/setting.php
@@ -901,6 +905,9 @@ $lang = array(
 //admin/views/store_mine.php
     'contact_to_install' => 'Please contact the author to install',//'请联系作者安装',
     'no_my_apps' => 'You have not purchased any apps.',//'你还没有购买任何应用。',
+    'install_app' => 'Install app',//'安装应用',
+    'not_paid_user' => 'You are not a paid registered user and cannot use the functions purchased in the app store.',//'您还不是付费注册用户，无法使用应用商店已购功能，',
+    'paid_support' => 'Paid Support',//'付费支持',
 
 
 //---------------------------

@@ -71,7 +71,7 @@
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
                             <?= lang('founder') ?>: <?= $author ?>,
                             <?php if (User::haveEditPermission()): ?>
-                                <a href="./media.php?uid=<?= $value['author'] ?>">仅看TA的</a><br>
+                                <a href="./media.php?uid=<?= $value['author'] ?>"><?= lang 'this_user_files' ?></a><br>
                             <?php endif ?>
                             <?= lang('file_size') ?>: <?= $value['attsize'] ?>
                             <?php if ($value['width'] && $value['height']): ?>

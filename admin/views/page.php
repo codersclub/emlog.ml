@@ -34,7 +34,7 @@
                     <?php foreach ($pages as $key => $value):
                         $isHide = '';
                         if ($value['hide'] == 'y') {
-                            $isHide = '<span class="text-danger ml-2"> - 草稿</span>';
+                            $isHide = '<span class="text-danger ml-2"> - <?= lang('draft') ?></span>';
                         }
                         ?>
                         <tr>
@@ -46,7 +46,7 @@
                                 <?php if ($value['gid'] == Option::get('home_page_id')): ?>
                                     <br>
                                     <span class="text-secondary">
-                                        <span class="badge small badge-danger">首页</span> 已设为首页，原默认首页请访问：<a href="<?= BLOG_URL ?>posts" target="_blank"><?= BLOG_URL ?>posts</a>
+                                        <span class="badge small badge-danger"><?= lang('home') ?></span> <?= lang('as_home') ?><a href="<?= BLOG_URL ?>posts" target="_blank"><?= BLOG_URL ?>posts</a>
                                     </span>
                                 <?php endif; ?>
                                 <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>

@@ -63,7 +63,7 @@
                     }
                 </p>
                 <hr>
-                <p>其他服务器配置见官网文档：<a href="https://www.emlog.net/docs/#/faq" target="_blank">常见问题</a></p>
+                <p><?= lang('other_config') ?><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('common_problems') ?></a></p>
             </div>
 
             <h4 class="mt-4"><?= lang('meta_settings') ?>:</h4>

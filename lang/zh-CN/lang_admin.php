@@ -638,6 +638,8 @@ $lang = array(
     'page_title' => '页面标题',//'Page title',
     'setting_items' => '设置项',//'Setting items',
     'alias' => '别名',//'Alias',
+    'as_home' => '已设为首页，原默认首页请访问',//'- it has been set as the home page, please visit the original default home page',
+    'set_as_home' => '设为首页，同时原默认首页将变更为：',//'Set as the homepage, and the original default homepage will be changed to: ',
 
 //---------------------------
 //admin/views/page_create.php
@@ -710,7 +712,7 @@ $lang = array(
     'email_verification_code' => '邮件验证码',//'Email verification code',
 
 //---------------------------
-//admin/views/seo.php
+//admin/views/setting_seo.php
     'htaccess_not_writable' => '保存失败：根目录下的.htaccess不可写',//'Save failed: .htaccess file in the root directory is not writable',
     'post_url_settings' => '文章链接设置',//'Post URL settings',
     'post_url_rewriting' => '如果修改后文章无法访问，可能是服务器空间不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',//'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',
@@ -729,6 +731,8 @@ $lang = array(
     'post_title_site_title' => '文章标题 - 站点标题',//'Post title - Site title',
     'post_title_site_meta_title' => '文章标题 - 站点浏览器标题',//'Post title - Site browser title',
     'nginx_rewrite' => 'Nginx服务器请配置如下伪静态规则',//'Please configure the following pseudo-static rules for the Nginx server',
+    'other_config' => '其他服务器配置见官网文档：',//'For other server configurations, see the official website documentation: ',
+    'common_problems' => '常见问题',//'Common problems',
 
 //---------------------------
 //admin/views/setting.php
@@ -902,6 +906,8 @@ $lang = array(
     'contact_to_install' => '请联系作者安装',//'Please contact the author to install',
     'no_my_apps' => '您还没有购买任何应用。',//'You have not purchased any apps.',
     'install_app' => '安装应用',//'Install app',
+    'not_paid_user' => '您还不是付费注册用户，无法使用应用商店已购功能，',//'You are not a paid registered user and cannot use the functions purchased in the app store.',
+    'paid_support' => '付费支持',//'Paid Support',
 
 //---------------------------
 //admin/views/store_plu.php
