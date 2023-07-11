@@ -76,12 +76,14 @@ class Cache {
     }
 
     public function cacheWrite($cacheData, $cacheName) {
-        $cachefile = EMLOG_ROOT . '/content/cache/' . $cacheName . '.php';
+        $cacheFile = EMLOG_ROOT . '/content/cache/' . $cacheName . '.php';
         $cacheData = "<?php exit;//" . $cacheData;
-        @ $fp = fopen($cachefile, 'wb') or emMsg(lang('cache_read_error'));
-        @ fwrite($fp, $cacheData) or emMsg(lang('cache_not_writable'));
+
+        if (!file_put_contents($cacheFile, $cacheData)) {
+            emMsg(lang('cache_not_writable');
+        }
+
         $this->{$cacheName . '_cache'} = null;
-        fclose($fp);
     }
 
     public function readCache($cacheName) {

@@ -121,7 +121,7 @@ $isdraft = $draft ? '&draft=1' : '';
                                 <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a><br>
                                 <?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
                                 <?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
-                                <?php if ($value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
+                                <?php if ($draft && $value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
                                 <!--vot:Lock Char--> <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
                                 <!--vot:Link Char--> <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                                 <?php if (!$draft && $value['checked'] == 'n'): ?>
