@@ -42,7 +42,8 @@ $lang = array(
 
 //---------------------------
 //include/lib/common.php
-'not_editable'				=> '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
+'not_editable'               => '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
+'file_upload_failed'         => '文件上传失败',//'File upload failed',
 
 //---------------------------
 //include/lib/function.base.php
