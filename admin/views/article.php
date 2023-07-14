@@ -62,7 +62,9 @@ $isdraft = $draft ? '&draft=1' : '';
                             endforeach;
                         endforeach;
                         ?>
-                        <option value="-1" <?php if ($sid == -1) echo 'selected'; ?>><?= lang('uncategorized') ?></option>
+                        <option value="-1" <?php if ($sid == -1)
+                            echo 'selected' ?>><?= lang('uncategorized') ?>
+                        </option>
                     </select>
                 </div>
                 <?php if (User::haveEditPermission() && count($user_cache) > 1): ?>

@@ -120,7 +120,7 @@
 
             <h4><?= lang('upload_settings') ?></h4>
             <div class="form-group form-inline">
-                <?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> KB (1M=1024KB)
+                <?= lang('php_upload_max_size') ?> <input maxlength="20" style="width:120px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> <?= lang('unit_kb') ?>
             </div>
             <div class="form-group form-inline">
                 <?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('separate_by_comma') ?>

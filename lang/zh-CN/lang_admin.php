@@ -240,7 +240,7 @@ $lang = array(
     'tags' => '标签',//'Tags',
     'tags_no' => '还没有标签',//'No tags',
     'tag_by_view' => '按标签查看',//'View by tags',
-    'top' => '置顶',//'Top',
+    'top' => '选择置顶',//'Select Top place',
     'unknown_author' => '未知作者',//'Unknown author',
     'unknown_role' => '未知角色',//'Unknown role',
     'publish_regular' => '定时发布',//'Regular publishing',
@@ -793,6 +793,7 @@ $lang = array(
     'admin_per_page' => '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
     'admin_per_page_tips' => '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
     'today_app_news' => '接收来自官方的应用推荐（影响后台首页今日应用的展示）',//'Receive official app recommendations (affects the display of today's apps on the background homepage)',
+    'unit_kb' => '（单位：KB，1MB=1024KB）',//'(unit: KB, 1MB=1024KB)',
 
 //---------------------------
 //admin/views/setting_api.php

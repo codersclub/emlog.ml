@@ -1101,15 +1101,13 @@ function getTimeZoneOffset($remote_tz, $origin_tz = 'UTC') {
 function uploadCropImg() {
     $attach = isset($_FILES['image']) ? $_FILES['image'] : '';
     if (!$attach || $attach['error'] === 4) {
-        echo "error";
-        exit;
+        Output::error('文件上传失败');
     }
 
     $ret = '';
     upload2local($attach, $ret);
     if (empty($ret['success'])) {
-        echo "error";
-        exit;
+        Output::error($ret['message']);
     }
     return $ret;
 }
