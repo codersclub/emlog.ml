@@ -64,7 +64,7 @@ class Log_Controller {
             show_404_page();
         }
 
-        // 作者和管理可以预览草稿及待审核文章
+        // Authors and admins can preview draft and pending articles
         if (($logData['hide'] === 'y' || $logData['checked'] === 'n') && $logData['author'] != UID && !User::haveEditPermission()) {
             show_404_page();
         }
