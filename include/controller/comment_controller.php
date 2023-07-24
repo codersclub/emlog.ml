@@ -42,7 +42,7 @@ class Comment_Controller {
             $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
             $err = lang('comment_error_name_enter');
-        } elseif (strlen($name) > 20) {
+        } elseif (strlen($name) > 100) {
             $err = lang('comment_error_name_invalid');
         } elseif ($mail !== '' && !checkMail($mail)) {
             $err = lang('comment_error_email_invalid');

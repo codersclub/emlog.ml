@@ -257,8 +257,8 @@ function autosave(act) {
             const h = d.getHours();
             const m = d.getMinutes();
             const s = d.getSeconds();
-            const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-            $("#save_info").html(lang('saved_ok_time') + tm);
+            const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
+            $("#save_info").html(lang('saved_ok_time') + tm + ' <a href="../?post=' + logid + '" target="_blank">' + lang('article_preview') + '</a>');
             $('title').text(lang('saved_ok') + titleText);
             articleTextRecord = $("#addlog textarea[name=logcontent]").val(); // After the save is successful, replace the original text record value with the current text
             Cookies.set('em_saveLastTime', new Date().getTime()); // Put (or update) the save success timestamp into a cookie

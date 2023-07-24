@@ -60,7 +60,7 @@ var LNG = {
     'alias_link_error': '链接别名错误',//'Link Alias error',
     'alias_invalid_chars': '别名错误，应由字母、数字、下划线、短横线组成',//'Alias should contain only latin letters, numbers, underscores and dashes',
     'alias_digital': '别名错误，不能为纯数字',//'Alias cannot contain numbers only',
-    'alias_format_must_be': '别名错误，不能为\'post\'或\'post-数字\'',//'Invalid alias. It can not contain \'post\' or \'post-digits\'',
+    'alias_format_must_be': '别名错误，不能为"post"或"post-数字"',//'Invalid alias. It can not contain "post" or "post-digits"',
     'alias_system_conflict': '别名错误，与系统链接冲突',//'Alias error (system conflict)',
     'alias_link_error_not_saved': '链接别名错误，自动保存失败',//'Invalid Link Alias. Can not be saved automatically.',
 // 'saving'		: '正在保存',//'Saving',
@@ -122,6 +122,7 @@ var LNG = {
     'go_store_install': '去商店安装',//'Go to the store to install',
     'free': '免费',//'Free',
     'price': '应用售价',//'Price: ',
+    'article_preview': '预览文章',//'Preview article',
 
 //---------------------------
 //include/lib/js/common_tpl.js
