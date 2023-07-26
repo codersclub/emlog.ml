@@ -40,14 +40,15 @@
             </div>
         </form>
         <div class="alert alert-warning">
-            <b><?= lang('api_list') ?>:</b><br>
+            <b><?= lang('api_list') ?>:</b><br><br>
             <?= lang('api_1') ?><br>
             <?= lang('api_2') ?><br>
             <?= lang('api_3') ?><br>
             <?= lang('api_4') ?><br>
             <?= lang('api_5') ?><br>
             <?= lang('api_6') ?><br>
-            <?= lang('api_7') ?><br><br>
+            <?= lang('api_7') ?><br>
+            <?= lang('api_8') ?><br><br>
             <?= lang('api_more') ?>: <a href="https://emlog.io/docs/#/api" target="_blank" class="small"><?= lang('api_docs') ?></a>
         </div>
     </div>

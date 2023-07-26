@@ -63,7 +63,6 @@
                 <input class="form-check-input" type="checkbox" value="y" name="iscomment" id="iscomment" <?= $conf_iscomment ?> />
                 <label><?= lang('enable_comments') ?></label>
             </div>
-
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkcomment" id="ischkcomment" <?= $conf_ischkcomment ?> />
                 <label><?= lang('comment_moderation') ?></label>
@@ -75,6 +74,10 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="isgravatar" id="isgravatar" <?= $conf_isgravatar ?> />
                 <label><?= lang('comment_avatar') ?></label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
+                <label>登录后评论，开启后仅登录用户可评论</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_needchinese" id="comment_needchinese" <?= $conf_comment_needchinese ?> />

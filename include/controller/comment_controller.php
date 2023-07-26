@@ -36,7 +36,10 @@ class Comment_Controller {
         $Comment_Model = new Comment_Model();
         $Comment_Model->setCommentCookie($name, $mail, $url);
         $err = '';
-        if ($Comment_Model->isLogCanComment($blogId) === false) {
+
+        if (!ISLOGIN && Option::get('login_comment') === 'y') {
+            $err = lang('login_before_comment');
+        } elseif ($Comment_Model->isLogCanComment($blogId) === false) {
             $err = lang('comment_error_comment_disabled');
         } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
             $err = lang('comment_error_flood_control');

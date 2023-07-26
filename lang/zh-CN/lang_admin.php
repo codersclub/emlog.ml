@@ -767,7 +767,7 @@ $lang = array(
     'comment_moderation' => '评论审核',//'Comment moderation',
     'comment_verification_code' => '评论验证码',//'Comments Verification Code',
     'comment_avatar' => '评论人头像',//'Comments author avatar',
-    'comment_must_contain_chinese' => '评论内容必须包含中文',//'Comments must contain Chinese',
+    'comment_must_contain_chinese' => '评论内容必须包含中文（防御国外垃圾评论）',//'Comments must contain Chinese (Defense against foreign spam comments)',
     'comment_per_page' => '评论分页，',//'Comments per page',
     'comments_per_page' => '每页显示评论条数',//'Display the number of comments per page',
     'standing_in_front' => '排在前面',//'Standing in front',
@@ -809,6 +809,7 @@ $lang = array(
     'api_5' => '5. 笔记发布',//'5. Category list',
     'api_6' => '6. 笔记发布',//'6. Publish note',
     'api_7' => '7. 笔记列表',//'7. Note list',
+    'api_8' => '8. 资源文件上传',//'8. Resource file upload',
     'api_more' => '更多接口',//'More info',
     'api_docs' => '详见接口文档→',//'See the API documentation for details→',
 

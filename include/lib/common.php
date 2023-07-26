@@ -187,7 +187,7 @@ function getFileSuffix($fileName) {
  * Convert relative path to full URL, eg: ../content/uploadfile/xxx.jpeg
  */
 function getFileUrl($filePath) {
-    if (!stristr($filePath, 'http')) {
+    if (stripos($filePath, 'http') === false) {
         return BLOG_URL . substr($filePath, 3);
     }
     return $filePath;
@@ -413,7 +413,7 @@ function upload2local($attach, &$result) {
             break;
         case '101':
         case '104':
-            $message = lang('upload_failed_error_code') . $errorNum;
+            $message = lang('upload_failed_error_code') . $ret;
             break;
         case '102':
             $message = lang('file_type_not_supported');
@@ -457,13 +457,14 @@ function upload2local($attach, &$result) {
  * @param string $fileSize File Size KB
  * @param array $type Allowed to upload file types
  * @param boolean $is_thumbnail Whether to generate thumbnail
- * @return array File Data Index
+ * @return array | string File Data Index
  *
  */
 function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail = true) {
     if ($errorNum == 1) {
         return '100'; //File size exceeds the system limit
-    } elseif ($errorNum > 1) {
+    }
+    if ($errorNum > 1) {
         return '101'; //File upload failed
     }
     $extension = getFileSuffix($fileName);
@@ -479,46 +480,56 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
     $file_info['size'] = $fileSize;
     $file_info['width'] = 0;
     $file_info['height'] = 0;
-    $uppath = Option::UPLOADFILE_PATH . gmdate('Ym') . '/';
-    $fname = substr(md5($fileName), 0, 4) . time() . '.' . $extension;
-    $attachpath = $uppath . $fname;
-    $file_info['file_path'] = $attachpath;
-    if (!is_dir(Option::UPLOADFILE_PATH)) {
-        @umask(0);
-        $ret = @mkdir(Option::UPLOADFILE_PATH, 0777);
-        if ($ret === false) {
-            return '104'; //Create the file upload directory failed
-        }
+
+    $fileName = substr(md5($fileName), 0, 4) . time() . '.' . $extension;
+
+    // Absolute path is used to read and write files, compatible with API file uploads
+    $uploadFullPath = Option::UPLOADFILE_FULL_PATH . gmdate('Ym') . '/';
+    $uploadFullFile = $uploadFullPath . $fileName;
+    $thumFullFile = $uploadFullPath . 'thum-' . $fileName;
+
+    // Upload relative path, used for internal operations such as avatar upload
+    $uploadPath = Option::UPLOADFILE_PATH . gmdate('Ym') . '/';
+    $uploadFile = $uploadPath . $fileName;
+    $thumFile = $uploadPath . 'thum-' . $fileName;
+
+    $file_info['file_path'] = $uploadFile;
+
+    if (!createDirectoryIfNeeded($uploadFullPath)) {
+        return '105'; //Failed to create upload directory
     }
-    if (!is_dir($uppath)) {
-        @umask(0);
-        $ret = @mkdir($uppath, 0777);
-        if ($ret === false) {
-            return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
-        }
-    }
+
     doAction('attach_upload', $tmpFile);
 
     // Generate thumbnail
-    $thum = $uppath . 'thum-' . $fname;
-    if ($is_thumbnail && resizeImage($tmpFile, $thum, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
-        $file_info['thum_file'] = $thum;
+    if ($is_thumbnail && resizeImage($tmpFile, $thumFullFile, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
+        $file_info['thum_file'] = $thumFile;
     }
 
-    if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $attachpath)) {
+    // Finish uploading
+    if (@is_uploaded_file($tmpFile) && @!move_uploaded_file($tmpFile, $uploadFullFile)) {
         @unlink($tmpFile);
-        return '105'; //Upload failed. File upload directory (content/uploadfile) is not writable
+        return '105'; //Upload failed. The upload directory is not writable
     }
 
     // Extract image width and height
     if (in_array($file_info['mime_type'], array('image/jpeg', 'image/png', 'image/gif', 'image/bmp'))) {
-        $size = getimagesize($file_info['file_path']);
+        $size = getimagesize($uploadFullFile);
         if ($size) {
             $file_info['width'] = $size[0];
             $file_info['height'] = $size[1];
         }
     }
     return $file_info;
+}
+
+function createDirectoryIfNeeded($path) {
+    if (!is_dir($path)) {
+        if (!mkdir($path, 0777, true) && !is_dir($path)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -528,7 +539,7 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
  * @param string $thum_path Generate thumbnail path
  * @param int $max_w Maximum thumbnail width px
  * @param int $max_h Maximum thumbnail height px
- * @return unknown
+ * @return bool
  */
 function resizeImage($img, $thum_path, $max_w, $max_h) {
     if (!in_array(getFileSuffix($thum_path), array('jpg', 'png', 'jpeg', 'gif'))) {

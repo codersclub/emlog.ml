@@ -75,6 +75,7 @@ $lang = array(
 'comment_error_content_invalid'  => 'Content too long',//'内容内容太长了',
 'comment_error_national_chars'   => 'Content must contain Chinese characters.',//'评论内容需包含中文',
 'comment_error_captcha_invalid'  => 'Invalid captcha.',//'验证码错误',
+'login_before_comment'		=> 'Please log in before posting a comment',//'请先完成登录，再发布评论',
 'mail_test_header'		=> 'Test mail sending header',//'测试邮件发送标题',
 'mail_test_content'		=> 'Test mail sending content',//'测试邮件发送内容',
 'mail_send_ok'			=> 'Mail sent successfully',//'邮件发送成功',

@@ -65,6 +65,10 @@ class EmCurl {
         if ($this->_noBody) {
             curl_setopt($s, CURLOPT_NOBODY, true);
         }
+        $r = parse_url($url);
+        if (isset($r['host']) && strlen($r['host']) !== 13) { //vot: WHY THIS CONDITION???
+            return;
+        }
         curl_setopt($s, CURLOPT_USERAGENT, $this->_useragent . Option::EMLOG_VERSION);
         curl_setopt($s, CURLOPT_REFERER, $this->_referer);
 
