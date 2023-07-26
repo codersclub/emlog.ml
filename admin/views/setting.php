@@ -77,7 +77,7 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
-                <label>登录后评论，开启后仅登录用户可评论</label>
+                <label><?= lang('login_before_comment_on') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_needchinese" id="comment_needchinese" <?= $conf_comment_needchinese ?> />
@@ -91,7 +91,7 @@
                 <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0"/>
             </div>
             <div class="form-group form-inline">
-        <?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
+                <?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
                     <option value="newer" <?= $ex3 ?>><?= lang('new_first') ?></option>
                     <option value="older" <?= $ex4 ?>><?= lang('old_first') ?></option>
                 </select>

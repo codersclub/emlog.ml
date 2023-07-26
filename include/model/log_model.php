@@ -123,8 +123,8 @@ class Log_Model {
     /**
      * get single article
      * @param $blogId
-     * @param bool $ignoreHide 忽略隐藏状态
-     * @param bool $ignoreChecked 忽略审核状态
+     * @param bool $ignoreHide Ignore hidden state
+     * @param bool $ignoreChecked Ignore premoderation status
      * @return array|false
      */
     public function getOneLogForHome($blogId, $ignoreHide = false, $ignoreChecked = false) {

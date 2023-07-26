@@ -794,6 +794,7 @@ $lang = array(
     'admin_per_page_tips' => '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
     'today_app_news' => '接收来自官方的应用推荐（影响后台首页今日应用的展示）',//'Receive official app recommendations (affects the display of today's apps on the background homepage)',
     'unit_kb' => '（单位：KB，1MB=1024KB）',//'(unit: KB, 1MB=1024KB)',
+    'login_before_comment_on' => '登录后评论，开启后仅登录用户可评论',//'Comment after login. Only logged-in users can comment after this is turned on',
 
 //---------------------------
 //admin/views/setting_api.php
