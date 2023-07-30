@@ -48,6 +48,14 @@ emlog is a lightweight blog and CMS website building system, dedicated to creati
 
 ## Docker
 
+### Start via `docker run`
+
+```bash
+$ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
+```
+
+### Start via `docker-compose`
+
 1. cp config.sample.php config.php
 2. docker network create emlog_network
 3. docker-compose up
