@@ -90,7 +90,7 @@ if ($ishide === 'y') {
 
 // Article (draft) saved as public
 if (isset($_POST['pubPost'])) {
-    if ($checked === 'n') {
+    if (!User::haveEditPermission()) {
         notice::sendNewPostMail($title);
     }
     emDirect("./article.php?active_post=1");
