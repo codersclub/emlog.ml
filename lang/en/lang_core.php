@@ -150,7 +150,7 @@ $lang = array(
 
 //---------------------------------------
 //include/service/notice.php
-'new_article_review'         => 'Your site has received new submissions for review',//'你的站点收到新的待审核文章投稿',
+'new_article_review'         => 'Your site has received new submissions',//'你的站点收到新的文章投稿',
 'new_article_title'          => 'The article title is: ',//'文章标题是：',
 'new_comment_reply_review'	=> 'Your comment has received a new reply',//'你的评论收到一条回复',
 'new_comment_review'         => 'Your article has received a new comment',//'你的文章收到新的评论',
