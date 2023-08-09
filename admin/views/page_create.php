@@ -4,7 +4,7 @@
 <form action="page.php?action=save" method="post" enctype="multipart/form-data" id="addlog" name="addlog">
     <h1 class="h3 mb-4 text-gray-800"><?= $containertitle ?></h1>
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-xl-9">
             <div id="post" class="form-group">
                 <div>
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('page_title') ?>"/>
@@ -17,47 +17,48 @@
                 </div>
                 <div id="pagecontent"><textarea><?= $content ?></textarea></div>
             </div>
-
-            <div class="form-group">
-                <label><?= lang('link_alias') ?></label>
-                <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
-            </div>
-            <div class="form-group">
-                <label><?= lang('jump_link') ?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
-                <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
-            </div>
-            <div class="form-group">
-                <label><?= lang('page_template') ?>:</label>
-                <?php if ($customTemplates):
-                    $sortListHtml = '<option value="">' . lang('default') . '</option>';
-                    foreach ($customTemplates as $v) {
-                        $select = $v['filename'] == $template ? 'selected="selected"' : '';
-                        $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '" ' . $select . '>' . ($v['comment']) . '</option>';
-                    }
-                    ?>
-                    <select id="template" name="template" class="form-control"><?= $sortListHtml; ?></select>
-                    <small class="form-text text-muted"><?= lang('select_tmpl_option') ?></small>
-                <?php else: ?>
-                    <input class="form-control" id="template" name="template" value="<?= $template ?>">
-                    <small class="form-text text-muted"><?= lang('custom_tmpl_info') ?></small>
-                <?php endif; ?>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                <label for="allow_remark"><?= lang('allow_comments') ?></label>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" value="y" name="home_page" id="home_page" <?= $is_home_page ?> />
-                <label for="allow_remark"><?= lang('set_as_home') ?><?= BLOG_URL ?>posts</label>
-            </div>
+        </div>
+        <div class="col-xl-3">
             <div id="post_button">
                 <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
                 <input type="hidden" name="pageid" value="<?= $pageId ?>"/>
                 <?php if ($pageId < 0): ?>
-                    <input type="submit" value="<?= lang('page_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="submit" value="发布页面" onclick="return checkform();" class="btn btn-success"/>
                 <?php else: ?>
-                    <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
+                    <input type="submit" value="保存并返回" onclick="return checkform();" class="btn btn-success"/>
                 <?php endif ?>
+            </div>
+            <div class="shadow-sm p-3 mb-2 bg-white rounded">
+                <div class="form-group">
+                    <label><?= lang('link_alias') ?></label>
+                    <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                </div>
+                <div class="form-group">
+                    <label><?= lang('jump_link') ?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+                    <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                </div>
+                <div class="form-group">
+                    <label><?= lang('page_template') ?>:</label>
+                    <?php if ($customTemplates):
+                        $sortListHtml = '<option value="">' . lang('default') . '</option>';
+                        foreach ($customTemplates as $v) {
+                            $select = $v['filename'] == $template ? 'selected="selected"' : '';
+                            $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '" ' . $select . '>' . ($v['comment']) . '</option>';
+                        }
+                        ?>
+                        <select id="template" name="template" class="form-control"><?= $sortListHtml; ?></select>
+                        <small class="form-text text-muted"><?= lang('select_tmpl_option') ?></small>
+                    <?php else: ?>
+                        <input class="form-control" id="template" name="template" value="<?= $template ?>">
+                        <small class="form-text text-muted"><?= lang('custom_tmpl_info') ?></small>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
+                    <label for="allow_remark"><?= lang('allow_comments') ?></label><br>
+                    <input type="checkbox" value="y" name="home_page" id="home_page" <?= $is_home_page ?> />
+                    <label for="allow_remark"><?= lang('set_as_home') ?><small class="text-muted"><?= lang('original_home') ?><?= BLOG_URL ?>posts</small></label>
+                </div>
             </div>
         </div>
     </div>
@@ -128,30 +129,24 @@
             width: "100%",
             height: 640,
             toolbarIcons: function () {
-                return ["undo", "redo", "|",
-                    "bold", "del", "italic", "quote", "|",
+                return ["bold", "del", "italic", "quote", "|",
                     "h1", "h2", "h3", "|",
                     "list-ul", "list-ol", "hr", "|",
-                    "link", "image", "preformatted-text", "table", "|", "watch", "help"]
+                    "link", "image", "preformatted-text", "table", "|", "preview", "help"]
             },
             path: "editor.md/lib/",
             tex: false,
             flowChart: false,
             watch: false,
             htmlDecode: true,
+            lineNumbers: false,
             sequenceDiagram: false,
             syncScrolling: "single",
             onload: function () {
                 hooks.doAction("page_loaded", this);
-                //In the large screen mode, the editor displays the preview by default
-                if ($(window).width() > 767) {
-                    this.watch();
-                }
             }
         });
         Editor.setToolbarAutoFixed(false);
-
-
     });
     // When leaving the page, if the page content has been modified, ask the user whether to leave
     var pageText;
@@ -164,7 +159,6 @@
         if (e) e.returnValue = lang('leave_prompt');
         return lang('leave_prompt');
     }
-
     // Global shortcut keys on page editing interface Ctrl (Cmd) + S to save content
     document.addEventListener('keydown', function (e) {
         if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {

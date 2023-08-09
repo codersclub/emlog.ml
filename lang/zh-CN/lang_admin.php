@@ -254,7 +254,7 @@ $lang = array(
 //---------------------------
 //admin/views/article_write.php
     'publish_time' => '发布时间',//'Publish time',
-    'publish_time_tips' => '（当设置未来的时间点时，文章将在该时间点后定时发布）',//'(When a future time point is set, the article will be published regularly after that time point)',
+    'publish_time_tips' => '（当设置未来时间，文章将在该时间点定时发布）',//'(When the future time is set, the article will be published regularly at that point in time)',
     'access_password' => '访问密码',//'Access Password',
     'choose_file' => '选择文件上传...',//'Choose a file for upload...',
     'tags_have' => '已有标签+',//'Have tags+',
@@ -639,7 +639,8 @@ $lang = array(
     'setting_items' => '设置项',//'Setting items',
     'alias' => '别名',//'Alias',
     'as_home' => '已设为首页，原默认首页请访问',//'- it has been set as the home page, please visit the original default home page',
-    'set_as_home' => '设为首页，同时原默认首页将变更为：',//'Set as the homepage, and the original default homepage will be changed to: ',
+    'set_as_home' => '设为首页，',//'Set as the homepage, ',
+    'original_home' => '原首页：',//'Original homepage: ',
 
 //---------------------------
 //admin/views/page_create.php

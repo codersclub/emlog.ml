@@ -6,23 +6,37 @@
 <h1 class="h3 mb-4 text-gray-800"><?= $containertitle ?> <span id="save_info"></span></h1>
 <form action="article_save.php" method="post" enctype="multipart/form-data" id="addlog" name="addlog">
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-xl-9">
             <div id="post" class="form-group">
                 <div>
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('post_title') ?>" autofocus required/>
                 </div>
                 <div id="post_bar" class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
-                    <?php doAction('adm_writelog_head') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
-            </div>
-            <div class="form-group">
                 <label><?= lang('post_description') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
             </div>
-            <div class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?=lang('more_options')?><i class="icofont-simple-right"></i></div>
-            <div id="advset" class="shadow-sm p-3 mb-2 bg-white rounded">
+        </div>
+        <div class="col-xl-3">
+            <div id="post_button">
+                <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
+                <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>"/>
+                <input type="hidden" name="gid" id="gid" value="<?= $logid ?>"/>
+                <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
+                <?php if ($logid < 0): ?>
+                    <input type="submit" name="pubPost" id="pubPost" value="发布文章" onclick="return checkform();" class="btn btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="保存草稿" onclick="autosave(2);" class="btn btn-primary"/>
+                <?php else: ?>
+                    <input type="submit" value="保存并返回" onclick="return checkform();" class="btn btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="保存" onclick="autosave(2);" class="btn btn-primary"/>
+                    <?php if ($isdraft) : ?>
+                        <input type="submit" name="pubPost" id="pubPost" value="发布" onclick="return checkform();" class="btn btn-success"/>
+                    <?php endif ?>
+                <?php endif ?>
+            </div>
+            <div class="shadow-sm p-3 bg-white rounded">
                 <div class="form-group">
                 <label><?= lang('article_cover') ?>:</label>
                 <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_placeholder') ?>" value="<?= $cover ?>"/>
@@ -37,7 +51,6 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label><?= lang('category') ?>:</label>
                     <select name="sort" id="sort" class="form-control">
                         <option value="-1"><?= lang('category_select') ?></option>
                         <?php
@@ -79,43 +92,38 @@
                     <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
                     <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                 </div>
-                <div class="form-group">
-                    <label><?= lang('link_alias') ?></label>
-                    <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
-                </div>
-                <div class="form-group">
-<!--vot-->          <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
-                    <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
-                </div>
-                <div class="form-group">
-                    <label><?= lang('access_password') ?>:</label>
-                    <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
-                </div>
-                <div class="form-group">
+                <div>
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                    <label for="allow_remark"><?= lang('allow_comments') ?></label>
+                    <label for="allow_remark" style="margin-right: 20px;">允许评论</label>
+                    <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
+                    <label for="top" style="margin-right: 20px;">首页置顶</label>
+                    <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
+                    <label for="sortop" style="margin-right: 20px;">分类置顶</label>
                 </div>
-            </div>
-            <div id="post_button">
-                <input type="hidden" name="ishide" id="ishide" value="<?= $hide ?>"/>
-                <input type="hidden" name="as_logid" id="as_logid" value="<?= $logid ?>"/>
-                <input type="hidden" name="gid" id="gid" value="<?= $logid ?>"/>
-                <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
-                <?php if ($logid < 0): ?>
-                    <input type="submit" name="pubPost" id="pubPost" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
-                <?php else: ?>
-                    <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-sm btn-primary"/>
-                    <?php if ($isdraft) : ?>
-                        <input type="submit" name="pubPost" id="pubPost" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-sm btn-success"/>
-                    <?php endif ?>
-                <?php endif ?>
+                <hr>
+                <a class="show_advset" id="displayToggle" onclick="displayToggle('advset');">高级选项<i class="icofont-simple-right"></i></a>
+                <div id="advset">
+                    <div class="form-group">
+                        <label><?= lang('link_alias') ?></label>
+                        <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                    </div>
+                    <div class="form-group">
+<!--vot-->              <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+                        <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                    </div>
+                    <div class="form-group">
+                        <label><?= lang('access_password') ?>:</label>
+                        <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
+                    </div>
+                    <hr>
+                    <div id="post_bar" class="small my-3">
+                        <?php doAction('adm_writelog_head') ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </form>
-
 <div class="modal" id="mediaModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
@@ -202,12 +210,13 @@
             width: "100%",
             height: 640,
             toolbarIcons: function () {
-                return ["undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|",
-                    "link", "image", "video", "preformatted-text", "code-block", "table", "|", "search", "watch", "help", "fullscreen"]
+                return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|",
+                    "link", "image", "video", "preformatted-text", "code-block", "table", "|", "search", "preview", "fullscreen", "help"]
             },
             path: "editor.md/lib/",
             tex: false,
             watch: false,
+            lineNumbers: false,
             htmlDecode: true,
             flowChart: false,
             autoFocus: false,
@@ -217,19 +226,21 @@
             imageUploadURL: "media.php?action=upload&editor=1",
             videoUpload: false, //Enable video upload
             syncScrolling: "single",
+            onfullscreen: function () {
+                this.watch();
+            },
+            onfullscreenExit: function () {
+                this.unwatch();
+            },
             onload: function () {
                 hooks.doAction("loaded", this);
-                //In the large screen mode, the editor displays the preview by default
-                if ($(window).width() > 767) {
-                    this.watch();
-                }
             }
         });
         Editor_summary = editormd("logexcerpt", {
             width: "100%",
             height: 300,
             toolbarIcons: function () {
-                return ["undo", "redo", "|", "bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "|", "watch"]
+                return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "preview"]
             },
             path: "editor.md/lib/",
             tex: false,
@@ -237,6 +248,7 @@
             htmlDecode: true,
             flowChart: false,
             autoFocus: false,
+            lineNumbers: false,
             sequenceDiagram: false,
             placeholder: "<?=lang('enter_summary')?>",
             onload: function () {
