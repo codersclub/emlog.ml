@@ -43,7 +43,7 @@ class Comment_Controller {
         if (!ISLOGIN && Option::get('login_comment') === 'y') {
             $err = lang('login_before_comment');
         } elseif ($blogId <= 0 || empty($log)) {
-            $err = '文章不存在';
+            $err = lang('comment_error_article_no');
         } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
             $err = lang('comment_error_comment_disabled');
         } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {

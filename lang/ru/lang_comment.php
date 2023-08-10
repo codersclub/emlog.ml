@@ -63,6 +63,7 @@ $lang = array(
 
 //---------------------------
 //include/controller/comment_controller.php
+'comment_error_article_no'		=> 'Указанная статья не найдена',//'文章不存在',
 'comment_error_comment_disabled'	=> 'Комментирование данной статьи запрещено.',//'评论失败：该文章已关闭评论',
 'comment_error_content_exists'		=> 'Аналогичный текст уже существует.',//'评论失败：已存在相同内容评论',
 'comment_error_flood_control'		=> 'Вы отправляете комментарии слишком часто',//'评论发布太频繁',

@@ -277,6 +277,7 @@ $lang = array(
     'select_file_category' => '选择资源分类…',//'Select resource category...',
     'load_more' => '加载更多…',//'Load more...',
     'crop_hold_shift' => '按住 Shift 等比例调整裁剪区域',//'Hold Shift to adjust the cropping area proportionally',
+    'advanced_options' => '高级选项',//'Advanced options',
 
 //---------------------------
 //admin/views/admin_page.php

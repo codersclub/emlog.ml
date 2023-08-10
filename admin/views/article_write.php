@@ -26,13 +26,13 @@
                 <input type="hidden" name="gid" id="gid" value="<?= $logid ?>"/>
                 <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
                 <?php if ($logid < 0): ?>
-                    <input type="submit" name="pubPost" id="pubPost" value="发布文章" onclick="return checkform();" class="btn btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="保存草稿" onclick="autosave(2);" class="btn btn-primary"/>
+                    <input type="submit" name="pubPost" id="pubPost" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-primary"/>
                 <?php else: ?>
-                    <input type="submit" value="保存并返回" onclick="return checkform();" class="btn btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="保存" onclick="autosave(2);" class="btn btn-primary"/>
+                    <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-success"/>
+                    <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-primary"/>
                     <?php if ($isdraft) : ?>
-                        <input type="submit" name="pubPost" id="pubPost" value="发布" onclick="return checkform();" class="btn btn-success"/>
+                        <input type="submit" name="pubPost" id="pubPost" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-success"/>
                     <?php endif ?>
                 <?php endif ?>
             </div>
@@ -94,14 +94,14 @@
                 </div>
                 <div>
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                    <label for="allow_remark" style="margin-right: 20px;">允许评论</label>
+                    <label for="allow_remark" style="margin-right: 20px;"><?= lang('allow_comments') ?></label>
                     <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
-                    <label for="top" style="margin-right: 20px;">首页置顶</label>
+                    <label for="top" style="margin-right: 20px;"><?= lang('home_top') ?></label>
                     <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
-                    <label for="sortop" style="margin-right: 20px;">分类置顶</label>
+                    <label for="sortop" style="margin-right: 20px;"><?= lang('category_top') ?></label>
                 </div>
                 <hr>
-                <a class="show_advset" id="displayToggle" onclick="displayToggle('advset');">高级选项<i class="icofont-simple-right"></i></a>
+                <a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a>
                 <div id="advset">
                     <div class="form-group">
                         <label><?= lang('link_alias') ?></label>
