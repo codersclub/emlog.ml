@@ -65,7 +65,7 @@ $lang = array(
 //include/controller/comment_controller.php
 'comment_error_comment_disabled'	=> 'Комментирование данной статьи запрещено.',//'评论失败：该文章已关闭评论',
 'comment_error_content_exists'		=> 'Аналогичный текст уже существует.',//'评论失败：已存在相同内容评论',
-'comment_error_flood_control'		=> 'Неоходима небольшая пауза перед отправкой следующего комментария.',//'评论失败：您写评论的速度太快了，请稍后再试',
+'comment_error_flood_control'		=> 'Вы отправляете комментарии слишком часто',//'评论发布太频繁',
 'comment_error_name_enter'		=> 'Пожалуйста, укажите своё имя.',//'评论失败：请填写姓名',
 'comment_error_name_invalid'		=> 'Имя не соотвтствует требованиям.',//'评论失败：姓名不符合规范',
 'comment_error_email_invalid'		=> 'E-mail не соответствует требованиям.',//'评论失败：邮件地址不符合规范',

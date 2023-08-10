@@ -876,6 +876,10 @@ function emMsg($msg, $url = 'javascript:history.back(-1);', $isAutoGo = false) {
 <html lang="$lang" dir="$dir">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="applicable-device" content="pc,mobile">
 EOT;
     if ($isAutoGo) {
         echo "<meta http-equiv=\"refresh\" content=\"2;url=$url\" />";
@@ -906,6 +910,11 @@ body {
 }
 a {
     color: #333333;
+}
+@media (max-width: 768px) {
+    .main{
+        width: unset;   
+    }
 }
 </style>
 </head>

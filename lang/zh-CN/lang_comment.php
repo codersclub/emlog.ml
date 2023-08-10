@@ -65,7 +65,7 @@ $lang = array(
 //include/controller/comment_controller.php
 'comment_error_comment_disabled' => '该文章未开启评论',//'This article has no comments',
 'comment_error_content_exists'   => '已存在相同内容评论',//'The same content already exists.',
-'comment_error_flood_control'    => '评论发布太频繁了，休息下吧',//'Comments are posted too often, take a break',
+'comment_error_flood_control'    => '评论发布太频繁',//'Comments are posted too often',
 'comment_error_name_enter'       => '请填写昵称',//'Please, enter your nickname.',
 'comment_error_name_invalid'     => '昵称太长了',//'Nickname is too long',
 'comment_error_email_invalid'    => '不是有效的邮箱',//'Invalid email address',

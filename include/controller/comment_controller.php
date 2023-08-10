@@ -34,12 +34,17 @@ class Comment_Controller {
         doAction('comment_post');
 
         $Comment_Model = new Comment_Model();
+        $Log_Model = new Log_Model();
+
+        $log = $Log_Model->getDetail($blogId);
         $Comment_Model->setCommentCookie($name, $mail, $url);
         $err = '';
 
         if (!ISLOGIN && Option::get('login_comment') === 'y') {
             $err = lang('login_before_comment');
-        } elseif ($Comment_Model->isLogCanComment($blogId) === false) {
+        } elseif ($blogId <= 0 || empty($log)) {
+            $err = '文章不存在';
+        } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
             $err = lang('comment_error_comment_disabled');
         } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
             $err = lang('comment_error_flood_control');
