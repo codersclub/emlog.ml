@@ -48,12 +48,12 @@ if (!$act) {
         <style>
             body {
                 background-color: #F7F7F7;
-                font-family: Arial;
+                font-family: Arial, sans-serif;
                 font-size: 12px;
                 line-height: 150%;
             }
 
-            hr{
+            hr {
                 margin: 1rem 0;
                 color: inherit;
                 border: 0;
@@ -61,11 +61,11 @@ if (!$act) {
                 opacity: .25;
             }
 
-            .mb10{
+            .mb10 {
                 margin-bottom: 10px;
             }
 
-            .mb20{
+            .mb20 {
                 margin-bottom: 20px;
             }
 
@@ -98,6 +98,7 @@ if (!$act) {
                 flex-wrap: wrap;
                 align-items: stretch;
                 width: 100%;
+                margin-top: 30px;
             }
 
             .input-group-text {
@@ -113,9 +114,10 @@ if (!$act) {
                 background-color: #fff;
                 border: 1px solid #dee2e6;
                 border-radius: 0.375rem 0 0 0.375rem;
+                width: 80px;
             }
 
-            .form-control{
+            .form-control {
                 display: block;
                 padding: 0.375rem 0.75rem;
                 font-size: 14px;
@@ -134,18 +136,19 @@ if (!$act) {
                 min-width: 0;
                 border-radius: 0 0.375rem 0.375rem 0;
                 margin-left: calc(1px * -1);
-                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
             }
+
             .form-label {
                 margin-bottom: 0.5rem;
             }
 
-            .btn{
+            .btn {
                 cursor: pointer;
                 color: #008cff;
                 letter-spacing: .5px;
-                padding-right: 3rem!important;
-                padding-left: 3rem!important;
+                padding-right: 3rem !important;
+                padding-left: 3rem !important;
                 display: inline-block;
                 font-size: 1rem;
                 font-weight: 400;
@@ -157,24 +160,24 @@ if (!$act) {
                 border: 1px solid #008cff;
                 border-radius: 5px;
                 background-color: transparent;
-                transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
             }
 
-            .btn:hover{
+            .btn:hover {
                 color: #fff;
                 background-color: #008cff;
                 border-color: #008cff;
             }
 
             .care {
-                color: #008cff;
+                color: gray;
             }
 
             .install-title {
-                text-transform: uppercase!important;
+                margin-top: 50px;
                 margin-bottom: 0;
                 font-size: 18px;
-                font-weight:normal;
+                font-weight: normal;
             }
 
             .next_btn {
@@ -186,8 +189,9 @@ if (!$act) {
                 margin: 20px 0 30px 0;
                 text-align: center;
             }
+
             @media (max-width: 768px) {
-                .main{
+                .main {
                     width: unset;
                 }
             }
@@ -216,10 +220,9 @@ if (!$act) {
                 </div>
             <?php else: ?>
                 <div class="b mb20">
-                    <span class="install-title"><?= lang('mysql_settings') ?></span>
-                    <hr>
+                    <p class="install-title"><?= lang('mysql_settings') ?></p>
                     <div class="input-group mb10">
-                        <span class="input-group-text"><?= lang('db_hostname') ?></span>
+                        <label class="input-group-text"><?= lang('db_hostname') ?></label>
                         <input name="hostname" type="text" class="form-control" value="127.0.0.1">
                     </div>
                     <div class="mb10">
@@ -250,18 +253,14 @@ if (!$act) {
                 </div>
             <?php endif; ?>
             <div class="c">
-                <span class="install-title"><?= lang('admin_settings') ?></span>
-                <hr>
+                <p class="install-title"><?= lang('admin_settings') ?></p>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_name') ?></span>
                     <input name="username" type="text" class="form-control">
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password') ?></span>
-                    <input name="password" type="password" class="form-control">
-                </div>
-                <div class="mb10">
-                    <label class="form-label care"><?= lang('admin_password_info') ?></label>
+                    <input name="password" type="password" class="form-control" placeholder="不小于6位">
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
@@ -271,16 +270,13 @@ if (!$act) {
                     <span class="input-group-text"><?= lang('email') ?></span>
                     <input name="email" type="text" class="form-control">
                 </div>
-                <div class="mb10">
-                    <label class="form-label care"><?= lang('email_prompt') ?></label>
-                </div>
             </div>
             <div class="next_btn">
-                <button type="submit" class="btn">下一步，开始安装</button>
+                <button type="submit" class="btn"><?= lang('install_emlog') ?></button>
             </div>
         </div>
     </form>
-    <div class=" footer">Powered by <a href="http://emlog.io">emlog</a></div>
+    <div class="footer">Powered by <a href="http://www.emlog.net">emlog</a></div>
     </body>
     </html>
     <?php
@@ -566,7 +562,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('smtp_pw',''),
 ('smtp_server',''),
 ('smtp_port',''),
-('is_openapi','y'),
+('is_openapi','n'),
 ('apikey','$apikey'),
 ('accept_app_recs','y');
 DROP TABLE IF EXISTS {$db_prefix}link;

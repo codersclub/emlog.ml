@@ -1,9 +1,9 @@
 <p align="center">
   <img src="./admin/views/images/logo.png" width=100 />
 </p>
+
 <p align="center">
-	<a href="https://github.com/emlog/emlog/releases/latest"><img src="https://img.shields.io/github/v/release/emlog/emlog?logo=github" alt="GitHub release" /></a>
-	<a href="https://emlog.io/docs/#/"><img src="https://img.shields.io/badge/docsify-document-brightgreen" alt="Document" /></a>
+  中文 | <a href="./README.en.md">English</a>
 </p>
 
 # emlog
@@ -25,14 +25,6 @@ emlog is a lightweight blog and CMS website building system, dedicated to creati
 - [x] tag, secondary classification
 - [x] Data caching technology, faster site access
 - [x] Site data backup/restore
-
-## Download
-
-[Download emlog pro](https://emlog.io/download)
-
-## Changelog
-
-[changelog](https://emlog.io/docs/#/changelog)
 
 ## Requirements
 

@@ -11,12 +11,16 @@
                 <div>
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('post_title') ?>" autofocus required/>
                 </div>
-                <div id="post_bar" class="small my-3">
+                <div class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <label><?= lang('post_description') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
+                <label id="post_bar_label">插件扩展：</label>
+                <div id="post_bar">
+                    <?php doAction('adm_writelog_head') ?>
+                </div>
             </div>
         </div>
         <div class="col-xl-3">
@@ -36,10 +40,10 @@
                     <?php endif ?>
                 <?php endif ?>
             </div>
-            <div class="shadow-sm p-3 bg-white rounded">
+            <div class="shadow-sm p-3 bg-white rounded" id="post_side">
                 <div class="form-group">
-                <label><?= lang('article_cover') ?>:</label>
-                <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_placeholder') ?>" value="<?= $cover ?>"/>
+                    <label><?= lang('article_cover') ?>:</label>
+                    <input name="cover" id="cover" class="form-control" placeholder="封面图地址URL，手动填写或点击下方图片区域上传" value="<?= $cover ?>"/>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="upload_img">
@@ -92,16 +96,16 @@
                     <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
                     <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                 </div>
-                <div>
+                <div class="form-group">
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                    <label for="allow_remark" style="margin-right: 20px;"><?= lang('allow_comments') ?></label>
+                    <label for="allow_remark" style="margin-right: 8px;"><?= lang('allow_comments') ?></label>
                     <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
-                    <label for="top" style="margin-right: 20px;"><?= lang('home_top') ?></label>
+                    <label for="top" style="margin-right: 8px;"><?= lang('home_top') ?></label>
                     <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
-                    <label for="sortop" style="margin-right: 20px;"><?= lang('category_top') ?></label>
+                    <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
                 </div>
                 <hr>
-                <a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a>
+                <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
                 <div id="advset">
                     <div class="form-group">
                         <label><?= lang('link_alias') ?></label>
@@ -116,8 +120,8 @@
                         <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
                     </div>
                     <hr>
-                    <div id="post_bar" class="small my-3">
-                        <?php doAction('adm_writelog_head') ?>
+                    <div id="post_side_ext">
+                        <?php doAction('adm_writelog_side') ?>
                     </div>
                 </div>
             </div>
@@ -380,5 +384,11 @@
         $(".icofont-simple-down").attr("class", "icofont-simple-right")
     } else {
         $(".icofont-simple-right").attr("class", "icofont-simple-down")
+    }
+
+    // 显示插件扩展label
+    const postBar = $("#post_bar");
+    if (postBar.children().length === 0) {
+        $("#post_bar_label").hide();
     }
 </script>
