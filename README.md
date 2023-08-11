@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  中文 | <a href="./README.en.md">English</a>
+  <a href="./README.zh.md">中文</a> | <a href="./README.md">English</a>
 </p>
 
 # emlog
