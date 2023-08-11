@@ -17,7 +17,7 @@
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <label><?= lang('post_description') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
-                <label id="post_bar_label">插件扩展：</label>
+                <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
                 <div id="post_bar">
                     <?php doAction('adm_writelog_head') ?>
                 </div>
@@ -43,7 +43,7 @@
             <div class="shadow-sm p-3 bg-white rounded" id="post_side">
                 <div class="form-group">
                     <label><?= lang('article_cover') ?>:</label>
-                    <input name="cover" id="cover" class="form-control" placeholder="封面图地址URL，手动填写或点击下方图片区域上传" value="<?= $cover ?>"/>
+                    <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_placeholder') ?>" value="<?= $cover ?>"/>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="upload_img">
@@ -386,7 +386,7 @@
         $(".icofont-simple-right").attr("class", "icofont-simple-down")
     }
 
-    // 显示插件扩展label
+    // Show plugin extension label
     const postBar = $("#post_bar");
     if (postBar.children().length === 0) {
         $("#post_bar_label").hide();

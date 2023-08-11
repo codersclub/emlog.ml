@@ -260,7 +260,7 @@ if (!$act) {
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password') ?></span>
-                    <input name="password" type="password" class="form-control" placeholder="不小于6位">
+                    <input name="password" type="password" class="form-control" placeholder="<?= lang 'admin_password_info' ?>">
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
