@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Service: Notice
  *
@@ -6,10 +7,12 @@
  * @link https://emlog.io
  */
 
-class Notice {
+class Notice
+{
 
     // Send user registration verification code email
-    public static function sendRegMailCode($mail) {
+    public static function sendRegMailCode($mail)
+    {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -30,7 +33,8 @@ class Notice {
         return false;
     }
 
-    public static function sendResetMailCode($mail) {
+    public static function sendResetMailCode($mail)
+    {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -51,7 +55,8 @@ class Notice {
         return false;
     }
 
-    public static function sendNewPostMail($post_title) {
+    public static function sendNewPostMail($post_title)
+    {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -72,7 +77,8 @@ class Notice {
         return false;
     }
 
-    public static function sendNewCommentMail($comment, $gid, $pid) {
+    public static function sendNewCommentMail($comment, $gid, $pid)
+    {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -90,11 +96,11 @@ class Notice {
 
         if ($pid) {
             $title = lang('new_comment_reply_review');
-            $content .= '<br><br>' . lang('from_article') . $article['log_title'];
+            $content .= '<hr/>' . lang('from_article') . ' <a href="' . Url::log($article['logid']) . '" target="_blank">' . $article['log_title'] . '</a>';
             $email = self::getCommentAuthorEmail($pid);
         } else {
             $title = lang('new_comment_review');
-            $content .= '<br><br>' . lang('from_article') . $article['log_title'];
+            $content .= '<hr/>' . lang('from_article') . ' <a href="' . Url::log($article['logid']) . '" target="_blank">' . $article['log_title'] . '</a>';
             $email = self::getArticleAuthorEmail($article['author']);
         }
         if (!$email) {
@@ -104,23 +110,26 @@ class Notice {
         return true;
     }
 
-    private static function smtpServerReady() {
+    private static function smtpServerReady()
+    {
         if (empty(Option::get('smtp_pw')) || empty(Option::get('smtp_mail'))) {
             return false;
         }
         return true;
     }
 
-    private static function getFounderEmail() {
+    private static function getFounderEmail()
+    {
         $User_Model = new User_Model();
         $user_info = $User_Model->getOneUser(1);
-        if (empty($user_info['email'])) {
+        if (empty($user_info['email']) || !checkMail($user_info['email'])) {
             return false;
         }
         return $user_info['email'];
     }
 
-    private static function getArticleInfo($gid) {
+    private static function getArticleInfo($gid)
+    {
         $Log_Model = new Log_Model();
         $r = $Log_Model->getOneLogForHome($gid);
         if (isset($r['author'])) {
@@ -129,22 +138,23 @@ class Notice {
         return false;
     }
 
-    private static function getArticleAuthorEmail($uid) {
+    private static function getArticleAuthorEmail($uid)
+    {
         $User_Model = new User_Model();
         $r = $User_Model->getOneUser($uid);
-        if (isset($r['email'])) {
+        if (isset($r['email']) && checkMail($r['email'])) {
             return $r['email'];
         }
         return false;
     }
 
-    private static function getCommentAuthorEmail($cid) {
+    private static function getCommentAuthorEmail($cid)
+    {
         $Comment_Model = new Comment_Model();
         $r = $Comment_Model->getOneComment($cid);
-        if (isset($r['mail'])) {
+        if (isset($r['mail']) && checkMail($r['mail'])) {
             return $r['mail'];
         }
         return false;
     }
-
 }
