@@ -39,7 +39,8 @@
                     echo 'active';
                 } ?>" href="./comment.php?hide=y&<?= $addUrl_1 ?>"><?= lang('pending') ?><?php
                     $hidecmnum = User::haveEditPermission() ? $sta_cache['hidecomnum'] : $sta_cache[UID]['hidecommentnum'];
-                    if ($hidecmnum > 0) echo '(' . $hidecmnum . ')';
+                    if ($hidecmnum > 0)
+                        echo '(' . $hidecmnum . ')';
                     ?></a>
             </li>
         </ul>
@@ -63,13 +64,13 @@
                     <tbody>
                     <?php foreach ($comment as $key => $value):
                         $ishide = $value['hide'] == 'y' ? '<span class="text-danger">[' . lang('pending') . ']</span>' : '';
-                        $mail = $value['mail'] ? "({$value['mail']})" : '';
+                        $mail = $value['mail'] ? " <br />email: {$value['mail']}" : '';
                         $ip = $value['ip'];
                         $gid = $value['gid'];
                         $cid = $value['cid'];
-                        $ip_info = $ip ? '<br />' . lang('from_ip') . ': ' . $ip : '';
+                        $ip_info = $ip ? "<br />IP: {$ip}" : '';
                         $comment = $value['comment'];
-                        $poster = !empty($value['url']) ? '<a href="' . $value['url'] . '" target="_blank">' . $value['poster'] . '</a>' : $value['poster'];
+                        $poster = !empty($value['uid']) ? '<a href="./comment.php?uid=' . $value['uid'] . '">' . $value['poster'] . '</a>' : $value['poster'];
                         $title = subString($value['title'], 0, 42);
                         $hide = $value['hide'];
                         $date = $value['date'];
@@ -113,7 +114,7 @@
             <div class="list_footer">
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="javascript:commentact('top');" class="btn btn-sm btn-primary"><?= lang('top') ?></a>
-                    <a href="javascript:commentact('untop');" class="btn btn-sm btn-secondary"><?= lang('untop') ?></a>
+                    <a href="javascript:commentact('untop');" class="btn btn-sm btn-primary"><?= lang('untop') ?></a>
                     <a href="javascript:commentact('hide');" class="btn btn-sm btn-warning"><?= lang('hide') ?></a>
                     <a href="javascript:commentact('pub');" class="btn btn-sm btn-success"><?= lang('approve') ?></a>
                     <a href="javascript:commentact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>

@@ -147,7 +147,7 @@
         <div class="col-lg-6 mb-4">
             <div class="card shadow mb-4">
                 <h6 class="card-header"><?= lang('official_news') ?></h6>
-                <div class="card-body" id="admindex_msg">
+                <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
                         <li class="msg_type_0"><a href="https://emlog.io/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
                         <li class="msg_type_0"><a href="https://emlog.io/docs/#/" target="_blank"><?= lang('app_development') ?></a></li>
@@ -161,7 +161,7 @@
             <div class="col-lg-6 mb-4">
                 <div class="card mb-4">
                     <h6 class="card-header"><?= lang('applied_today') ?> - <a href="./store.php"><?= lang('app_store') ?></a></h6>
-                    <div class="card-body" id="admindex_msg">
+                    <div class="card-body">
                         <div class="row" id="app-list"></div>
                     </div>
                 </div>

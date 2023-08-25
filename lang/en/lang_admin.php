@@ -355,7 +355,7 @@ $lang = array(
     'no_comments_yet' => 'Yet no comments',//'还没有收到评论',
     'operation' => 'Operation',//'操作',
     'comment_selected_delete_sure' => 'Are you sure you want to delete the selected comments?',//'确定要删除所选评论吗？',
-    'article_all_comments' => 'All comments on this article',//'该文所有评论',
+    'article_all_comments' => 'This article comments',//'该文所有评论',
 
 //---------------------------
 //admin/views/data.php

@@ -16,11 +16,11 @@ function plugin_setting_view() {
                 <div class="form-group">
                     <p><?= lang('tips_plugin_info') ?></p>
                     <?php tips(); ?>
-                    <hr/>
+                    <hr>
                     <p><?= lang('tips_plugin_info2') ?></p>
                 </div>
                 <input name="test" type="hidden" class="form-control" value="hello">
-                <input type="submit" class="btn btn-success btn-sm" value="<?= lang('ok_i_know') ?>"/>
+                <input type="submit" class="btn btn-success btn-sm" value="<?= lang('ok_i_know') ?>">
             </form>
         </div>
     </div>

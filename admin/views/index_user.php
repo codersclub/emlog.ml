@@ -59,7 +59,7 @@
     <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
             <h6 class="card-header"><?= lang('last_articles') ?></h6>
-            <div class="card-body" id="admindex_msg">
+            <div class="card-body admin_index_list">
                 <ul class="list-group list-group-flush">
                     <?php
                     if ($logs):
@@ -79,7 +79,7 @@
     <div class="col-lg-6 mb-4">
         <div class="card shadow mb-4">
             <h6 class="card-header"><?= lang('last_comments') ?></h6>
-            <div class="card-body" id="admindex_msg">
+            <div class="card-body admin_index_list">
                 <ul class="list-group list-group-flush">
                     <?php
                     if ($comments):
