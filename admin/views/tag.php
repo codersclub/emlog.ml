@@ -32,16 +32,14 @@
         <div class="card-body">
             <div>
                 <?php if ($tags): ?>
-                    <?php foreach ($tags
-
-                                   as $key => $v):
-                        $count = count(explode(',', $v['gid']));
+                    <?php foreach ($tags as $key => $v):
+                        $count = empty($v['gid']) ? 0 : count(explode(',', $v['gid']));
                         $count_style = $count > 0 ? 'text-muted' : 'text-danger';
                         ?>
                         <div class="badge badge-light m-3 p-2">
                             <h5><a href="#" data-toggle="modal" data-target="#editModal" data-tid="<?= $v['tid'] ?>"
                                    data-tagname="<?= $v['tagname'] ?>"><?= $v['tagname'] ?></a></h5>
-                            <small class="<?= $count_style ?>">(<?= lang('articles') ?>: <?= $count ?>)</small>
+                            <small class="<?= $count_style ?>">(<?= lang('articles') ?>: <a href="./article.php?tagid=<?= $v['tid'] ?>" target="_blank"><?= $count ?></a>）</small>
                             <input type="checkbox" name="tids[]" value="<?= $v['tid'] ?>" class="tids align-top"/>
                         </div>
                     <?php endforeach ?>
