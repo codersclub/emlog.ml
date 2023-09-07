@@ -396,12 +396,9 @@ EOT;
         . "    ],\n"
         . "];\n";
 
-    $fp = @fopen('config.php', 'w');
-    $fw = @fwrite($fp, $config);
-    if (!$fw) {
+    if (!file_put_contents('config.php', $config)) {
         emMsg(lang('config_not_writable'));
     }
-    fclose($fp);
 
     //Encrypt Password
     $PHPASS = new PasswordHash(8, true);
