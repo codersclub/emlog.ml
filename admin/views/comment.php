@@ -120,7 +120,7 @@
                         <a href="javascript:commentact('pub');" class="btn btn-sm btn-success"><?= lang('approve') ?></a>
                     <?php endif; ?>
                     <a href="javascript:commentact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-                    <?php endif; ?>
+
                 </div>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>

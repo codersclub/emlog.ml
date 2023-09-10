@@ -80,7 +80,7 @@ class Cache {
         $cacheData = "<?php exit;//" . $cacheData;
 
         if (!file_put_contents($cacheFile, $cacheData)) {
-            emMsg(lang('cache_not_writable');
+            emMsg(lang('cache_not_writable'));
         }
 
         $this->{$cacheName . '_cache'} = null;
