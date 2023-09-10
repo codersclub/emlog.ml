@@ -409,6 +409,10 @@ $lang = array(
 'welcome_using'			=> 'Добро пожаловать в',//'欢迎使用',
 
 //---------------------------
+//admin/views/footer_user.php
+    'all_rights_reserved'	=> 'Все права защищены',//'版权所有',
+
+//---------------------------
 //admin/views/header.php
 'admin_center'			=> 'АдминПанель',//'管理中心',
 'return_to_admin_center'	=> 'Вернуться в АдминПанель',//'返回管理首页',
@@ -438,7 +442,11 @@ $lang = array(
 'search'		=> 'Поиск',//'Search',
 'resources'		=> 'Файлы',//'资源',
 'twitters'		=> 'Заметки',//'笔记',
-'user_center'		=> 'Юзер Центр',//'用户中心',
+
+//---------------------------
+//admin/views/header_user.php
+    'user_center'	=> 'Юзер Центр',//'个人中心',
+    'front_end'		=> 'Фронтенд',//'首页',
 
 //---------------------------
 //admin/views/index.php
@@ -534,8 +542,9 @@ $lang = array(
 
 //---------------------------
 //admin/views/index_user.php
-'article_no_yet'			=> 'Ещё нет статей.',//'还没有发布过文章。',
-'comment_no_yet'			=> 'Ещё нет комментариев.',//'还没收到评论。',
+'article_no_yet'		=> 'Ещё нет статей.',//'还没有发布过文章。',
+'comment_no_yet'		=> 'Ещё нет комментариев.',//'还没收到评论。',
+'user_des'			=> 'Улыбнись, если дует ветер',//'当风吹过，留下微笑',
 
 //---------------------------
 //admin/views/links.php

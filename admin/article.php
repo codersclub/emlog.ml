@@ -212,7 +212,7 @@ if ($action === 'write') {
     extract($blogData);
 
     $isdraft = false;
-    $containerTitle = User::isAdmin() ? lang('post_write') : '发布' . Option::get('posts_name');
+    $containerTitle = lang('post_write');
     $orig_date = '';
     $sorts = $CACHE->readCache('sort');
     $tagStr = '';
@@ -243,8 +243,8 @@ if ($action === 'edit') {
     extract($blogData);
 
     $isdraft = $hide == 'y' ? true : false;
-    $postsName = User::isAdmin() ? '文章' : Option::get('posts_name');
-    $containerTitle = $isdraft ? lang('draft_edit') : '编辑' . $postsName;
+//vot    $postsName = User::isAdmin() ? lang('article') : Option::get('posts_name');
+/*vot*/    $containerTitle = $isdraft ? lang('draft_edit') : lang('post_edit');
     $postDate = date('Y-m-d H:i', $date);
     $sorts = $CACHE->readCache('sort');
 

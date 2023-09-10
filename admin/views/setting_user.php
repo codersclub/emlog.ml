@@ -44,10 +44,12 @@
                 <label><?=lang('limit_daily_posts')?>:</label>
                 <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/>, <?= lang('if_0_upload_disabled') ?>
             </div>
+<!--vot
             <div class="form-group form-inline">
-                <label>用户中心文章别名：</label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> 如：帖子、投稿、资源等
+                <label>User center article alias:</label><!--用户中心文章别名：-->
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> Such as: posts, contributions, resources, etc.<!--如：帖子、投稿、资源等-->
             </div>
+-->
             <div class="form-group">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>

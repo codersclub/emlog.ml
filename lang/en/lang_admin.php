@@ -409,6 +409,10 @@ $lang = array(
     'welcome_using' => 'Welcome using the',//'欢迎使用',
 
 //---------------------------
+//admin/views/footer_user.php
+    'all_rights_reserved' => 'All rights reserved',//'版权所有',
+
+//---------------------------
 //admin/views/header.php
     'admin_center' => 'AdminCP',//'管理中心',
     'return_to_admin_center' => 'Return to AdminCP',//'返回管理首页',
@@ -438,7 +442,11 @@ $lang = array(
     'search' => 'Search',//'Search',
     'resources' => 'Resources',//'资源',
     'twitters' => 'Notes',//'笔记',
-    'user_center' => 'User Center',//'用户中心',
+
+//---------------------------
+//admin/views/header_user.php
+    'user_center' => 'User Center',//'个人中心',
+    'front_end' => 'Front end',//'首页',
 
 //---------------------------
 //admin/views/index.php
@@ -536,6 +544,7 @@ $lang = array(
 //admin/views/index_user.php
     'article_no_yet' => 'No articles have been published yet.',//'还没有发布过文章。',
     'comment_no_yet' => 'No comments received yet.',//'还没收到评论。',
+    'user_des' => 'When the wind blows, leave a smile',//'当风吹过，留下微笑',
 
 //---------------------------
 //admin/views/links.php

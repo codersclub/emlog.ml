@@ -13,14 +13,14 @@
         <div class="flex-grow-1 ms-3">
             <div class="align-items-center mb-2">
                 <p class="mb-0 m-2"><?= $user_cache[UID]['name'] ?></p>
-                <p class="mb-0 m-2 small"><?= $user_cache[UID]['des'] ?: "当风吹过，留下微笑" ?></p>
+                <p class="mb-0 m-2 small"><?= $user_cache[UID]['des'] ?: lang('user_des') ?></p>
             </div>
         </div>
     </div>
 
     <a class="btn btn-primary px-4 py-3" href="./article.php?action=write">
         <div class="d-inline-block bi bi-download me-2"></div>
-        <i class="icofont-plus"></i>发新<?= Option::get("posts_name") ?>
+        <i class="icofont-plus"></i><?= lang('article_add') ?>
     </a>
 </div>
 <!-- Experience Card 1-->

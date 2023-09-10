@@ -46,7 +46,7 @@
             <?= lang('api_6') ?><br>
             <?= lang('api_7') ?><br>
             <?= lang('api_8') ?><br>
-            ……<br><br>
+            ...<br><br>
             <?= lang('api_more') ?>: <a href="https://emlog.net/docs/#/api" target="_blank" class="small"><?= lang('api_docs') ?></a>
         </div>
     </div>

@@ -37,14 +37,14 @@ $isdraft = $draft ? '&draft=1' : '';
         <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('draft_manage') : lang('post_manage') ?></h1>
         <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
     <?php else: ?>
-        <h1 class="h3 mb-0 text-gray-800"><?= $draft ? '草稿' : Option::get("posts_name") ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('drafts') : lang('articles') ?></h1>
         <div>
             <?php if (!$draft) : ?>
-                <a href="article.php?draft=1" class="btn btn-sm btn-primary shadow-sm mt-4">草稿箱</a>
+                <a href="article.php?draft=1" class="btn btn-sm btn-primary shadow-sm mt-4"><?= lang('drafts') ?></a>
             <?php else: ?>
-                <a href="article.php" class="btn btn-sm btn-primary shadow-sm mt-4"><?= Option::get("posts_name") ?></a>
+                <a href="article.php" class="btn btn-sm btn-primary shadow-sm mt-4"><?= lang('articles') ?></a>
             <?php endif; ?>
-            <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-plus"></i> 发新<?= Option::get("posts_name") ?></a>
+            <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-plus"></i> <?= lang('article_add') ?></a>
         </div>
     <?php endif; ?>
 </div>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=renderer content=webkit>
-    <title>个人中心 - <?= Option::get('blogname') ?></title>
+    <title><?= lang('user_center') ?> - <?= Option::get('blogname') ?></title>
     <link rel="stylesheet" type="text/css" href="./views/css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
     <link rel="stylesheet" type="text/css" href="./editor.md/css/editormd.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
     <link rel="stylesheet" type="text/css" href="./views/css/bootstrap-sbadmin-4.5.3.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
@@ -31,11 +31,11 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" id="top-bar">
         <h3 class="my-0 mr-md-5 font-weight-normal"><a href="./"><?= Option::get('blogname') ?></a></h3>
         <nav class="my-2 my-md-0 mr-md-auto">
-            <a class="p-2 text-dark" href="/">首页</a>
-            <a class="p-2 text-dark" href="./">个人中心</a>
-            <a class="p-2 text-dark" href="article.php"><?= Option::get("posts_name") ?></a>
-            <a class="p-2 text-dark" href="media.php">资源</a>
-            <a class="p-2 text-dark" href="comment.php">评论</a>
+            <a class="p-2 text-dark" href="/"><?= lang('front_end') ?></a>
+            <a class="p-2 text-dark" href="./"><?= lang('user_center') ?></a>
+            <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
+            <a class="p-2 text-dark" href="media.php"><?= lang('resources') ?></a>
+            <a class="p-2 text-dark" href="comment.php"><?= lang('comments') ?></a>
             <?php doAction('user_menu') ?>
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">
@@ -43,7 +43,7 @@
                 <img width="30" height="30" class="img-profile rounded-circle" src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
             </a>
             <a class="text-dark" href="account.php?action=logout">
-                <i class="icofont-logout icofont-1x"></i>退出
+                <i class="icofont-logout icofont-1x"></i><?= lang('logout') ?>
             </a>
         </nav>
     </div>
