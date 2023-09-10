@@ -3,13 +3,13 @@
 }
 ?>
 <div id="msg" class="fixed-top alert" style="display: none"></div>
-<h1 class="h3 mb-4 text-gray-800"><?= $containertitle ?> <span id="save_info"></span></h1>
+<h1 class="h3 mb-4 text-gray-800"><?= $containerTitle ?> <span id="save_info"></span></h1>
 <form action="article_save.php" method="post" enctype="multipart/form-data" id="addlog" name="addlog">
     <div class="row">
         <div class="col-xl-9">
             <div id="post" class="form-group">
                 <div>
-                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('post_title') ?>" autofocus required/>
+                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('title') ?>" autofocus required/>
                 </div>
                 <div class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
@@ -92,34 +92,38 @@
                         </div>
                     <?php endif; ?>
                 </div>
-                <div class="form-group">
-                    <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
-                    <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                    <label for="allow_remark" style="margin-right: 8px;"><?= lang('allow_comments') ?></label>
-                    <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
-                    <label for="top" style="margin-right: 8px;"><?= lang('home_top') ?></label>
-                    <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
-                    <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
-                </div>
-                <hr>
-                <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
-                <div id="advset">
+                <?php if (User::isAdmin()): ?>
                     <div class="form-group">
-                        <label><?= lang('link_alias') ?></label>
-                        <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                        <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
+                        <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
                     </div>
                     <div class="form-group">
-<!--vot-->              <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
-                        <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
-                    </div>
-                    <div class="form-group">
-                        <label><?= lang('access_password') ?>:</label>
-                        <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
+                        <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
+                        <label for="allow_remark" style="margin-right: 8px;"><?= lang('allow_comments') ?></label>
+                        <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
+                        <label for="top" style="margin-right: 8px;"><?= lang('home_top') ?></label>
+                        <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
+                        <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
                     </div>
                     <hr>
+                    <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
+                <?php endif; ?>
+                <div id="advset">
+                    <?php if (User::isAdmin()): ?>
+                        <div class="form-group">
+                            <label><?= lang('link_alias') ?></label>
+                            <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                        </div>
+                        <div class="form-group">
+<!--vot-->                  <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+                            <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                        </div>
+                        <div class="form-group">
+                            <label><?= lang('access_password') ?>:</label>
+                            <input type="text" name="password" id="password" class="form-control" value="<?= $password ?>"/>
+                        </div>
+                        <hr>
+                    <?php endif; ?>
                     <div id="post_side_ext">
                         <?php doAction('adm_writelog_side') ?>
                     </div>

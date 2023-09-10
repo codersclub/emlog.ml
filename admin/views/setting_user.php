@@ -25,7 +25,7 @@
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="login_code" id="login_code" <?= $conf_login_code ?> >
-                <label class="form-check-label"><?= lang('registration_captcha') ?> <?= lang('registration_captcha_info') ?></label>
+                <label class="form-check-label"><?= lang('registration_captcha') ?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
@@ -43,6 +43,10 @@
             <div class="form-group form-inline">
                 <label><?=lang('limit_daily_posts')?>:</label>
                 <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/>, <?= lang('if_0_upload_disabled') ?>
+            </div>
+            <div class="form-group form-inline">
+                <label>用户中心文章别名：</label>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> 如：帖子、投稿、资源等
             </div>
             <div class="form-group">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>

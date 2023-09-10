@@ -23,7 +23,7 @@ $lang = array(
     'uncheck' => '驳回',//'Uncheck',
     'view_by_tag' => '按标签查看',//'View by tag',
     'article_add' => '写新文章',//'Write a new article',
-    'enter_summary' => '如果留空，则使用文章内容作为摘要...',//'If left blank, use the content of the article as a summary...',
+    'enter_summary' => '如果留空，则使用内容作为摘要...',//'If left blank, the content will be used as a summary...',
     'attachment_delete_error' => '删除失败!',//'Failed to delete the file!',
 
 //---------------------------
@@ -157,7 +157,7 @@ $lang = array(
     'category_select' => '选择分类...',//'Select Category...',
     'post_time' => '发布于',//'Posted on',
     'more_options' => '更多选项',//'More Options',
-    'post_description' => '文章摘要',//'Post Description',
+    'post_description' => '摘要',//'Description',
     'post_alias' => '文章链接别名',//'Post Link Alias',
     'post_alias_info' => '用于自定义文章链接。需要',//'Used to customize the post link. Required',
     'post_alias_enable' => '启用链接别名',//'Enable post link alias',
@@ -165,7 +165,7 @@ $lang = array(
     'home_top' => '首页置顶',//'Home Top',
     'category_top' => '分类置顶',//'Category Top',
     'allow_comments' => '允许评论',//'Allow Comments',
-    'post_publish' => '发布文章',//'Publish Post',
+    'post_publish' => '立即发布',//'Publish Post',
     'save_draft' => '保存草稿',//'Save Draft',
 
 //---------------------------
@@ -265,7 +265,7 @@ $lang = array(
     'img_insert' => '插入图片',//'Insert image',
     'video_insert' => '插入视频',//'Insert video',
     'go_upload' => '去上传',//'Go Upload',
-    'article_cover' => '文章封面',//'Article cover',
+    'article_cover' => '封面',//'Cover',
     'crop_upload' => '裁剪并上传',//'Crop and upload',
     'uploading' => '上传中……',//'Uploading...',
     'cover_placeholder' => '封面图地址URL，手动填写或点击下方图片区域上传',//'Cover image address URL, fill in manually or click the image area below to upload',
@@ -273,7 +273,7 @@ $lang = array(
     'recently_used' => '近期使用的+',//'Recently used+',
     'jump_link' => '跳转链接',//'Jump link',
     'jump_link_info' => '（填写后不展示页面内容，直接跳转该地址）',//'(The content of the page will not be displayed after filling in, and the address will be redirected to this link)',
-    'tags_tips' => '(也用于文章页关键词，英文逗号分隔)',//'(Also used for article page keywords, separated by commas)',
+    'tags_tips' => '(也用于页面关键词，英文逗号分隔)',//'(Also used for page keywords, separated by English commas)',
     'select_file_category' => '选择资源分类…',//'Select resource category...',
     'load_more' => '加载更多…',//'Load more...',
     'crop_hold_shift' => '按住 Shift 等比例调整裁剪区域',//'Hold Shift to adjust the cropping area proportionally',

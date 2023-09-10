@@ -49,10 +49,10 @@ if (empty($action)) {
     $note_amount = $Note_Model->getCount();
     $comment_amount = $Comment_Model->getCommentNum();
     $logs = $Log_Model->getLogsForAdmin();
-    $comments = $Comment_Model->getCommentsForAdmin();
+    $comments = $Comment_Model->getCommentsForAdmin(0, 0, null, 1);
 
-    include View::getAdmView('header');
+    include View::getAdmView('header_user');
     require_once(View::getAdmView('index_user'));
-    include View::getAdmView('footer');
+    include View::getAdmView('footer_user');
     View::output();
 }

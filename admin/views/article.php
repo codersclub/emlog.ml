@@ -33,8 +33,20 @@ $isdraft = $draft ? '&draft=1' : '';
 <?php if (isset($_GET['error_post_per_day'])): ?>
     <div class="alert alert-danger"><?= lang('daily_posts_exceed') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('draft_manage') : lang('post_manage') ?></h1>
-    <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
+    <?php if (User::isAdmin()): ?>
+        <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('draft_manage') : lang('post_manage') ?></h1>
+        <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
+    <?php else: ?>
+        <h1 class="h3 mb-0 text-gray-800"><?= $draft ? '草稿' : Option::get("posts_name") ?></h1>
+        <div>
+            <?php if (!$draft) : ?>
+                <a href="article.php?draft=1" class="btn btn-sm btn-primary shadow-sm mt-4">草稿箱</a>
+            <?php else: ?>
+                <a href="article.php" class="btn btn-sm btn-primary shadow-sm mt-4"><?= Option::get("posts_name") ?></a>
+            <?php endif; ?>
+            <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-plus"></i> 发新<?= Option::get("posts_name") ?></a>
+        </div>
+    <?php endif; ?>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -119,10 +131,10 @@ $isdraft = $draft ? '&draft=1' : '';
                                     <!--vot-->                          <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
                                 <?php endif ?>
                             </td>
-                            <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info"><?= $value['comnum'] ?></a></td>
-                            <td><a href="<?= Url::log($value['gid']) ?>" class="badge badge-secondary" target="_blank"><?= $value['views'] ?></a></td>
-                            <td><a href="article.php?uid=<?= $value['author'] . $isdraft ?>"><?= $author ?></a></td>
-                            <td><a href="article.php?sid=<?= $value['sortid'] . $isdraft ?>"><?= $sortName ?></a></td>
+                            <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info mx-2 px-2"><?= $value['comnum'] ?></a></td>
+                            <td><a href="<?= Url::log($value['gid']) ?>" class="badge badge-secondary  mx-2 px-2" target="_blank"><?= $value['views'] ?></a></td>
+                            <td class="small"><a href="article.php?uid=<?= $value['author'] . $isdraft ?>"><?= $author ?></a></td>
+                            <td class="small"><a href="article.php?sid=<?= $value['sortid'] . $isdraft ?>"><?= $sortName ?></a></td>
                             <td class="small"><?= $value['date'] ?></td>
                             <td>
                                 <?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>

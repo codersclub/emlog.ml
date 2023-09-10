@@ -34,18 +34,12 @@
 <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sd-hidden" id="accordionSidebar">
         <li class="nav-item active emlog_title" id="menu_home">
-            <?php if (User::isAdmin()): ?>
-                <a class="nav-link" href="./">EMLOG PRO <?php if (!Register::isRegLocal()) : ?><small><?= lang('unregistered') ?></small><?php endif ?></a>
-            <?php else: ?>
-                <a class="nav-link" href="./"><?= lang('user_center') ?></a>
-            <?php endif ?>
+            <a class="nav-link" href="./">EMLOG PRO <?php if (!Register::isRegLocal()) : ?><small><?= lang('unregistered') ?></small><?php endif ?></a>
         </li>
         <hr class="sidebar-divider my-0">
-        <?php if (User::isAdmin()): ?>
-            <li class="nav-item" id="menu_panel">
-                <a class="nav-link" href="./"><i class="icofont-dashboard icofont-1x"></i><span><?= lang('admincp') ?></span></a>
-            </li>
-        <?php endif ?>
+        <li class="nav-item" id="menu_panel">
+            <a class="nav-link" href="./"><i class="icofont-dashboard icofont-1x"></i><span><?= lang('admincp') ?></span></a>
+        </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item" id="menu_category_content">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_content" aria-expanded="true" aria-controls="menu_content">
@@ -72,55 +66,50 @@
         <li class="nav-item" id="menu_media">
             <a class="nav-link" href="media.php"><i class="icofont-image"></i><span><?= lang('resources') ?></span></a>
         </li>
-        <?php if (User::isAdmin()): ?>
-            <li class="nav-item" id="menu_user">
-                <a class="nav-link" href="user.php"><i class="icofont-user"></i><span><?= lang('users') ?></span></a>
-            </li>
-            <li class="nav-item" id="menu_category_view">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_view" aria-expanded="true" aria-controls="menu_view">
-                    <i class="icofont-paint"></i><span><?= lang('exterior') ?></span>
-                </a>
-                <div id="menu_view" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" id="menu_tpl" href="template.php"><?= lang('templates') ?></a>
-                        <a class="collapse-item" id="menu_navi" href="navbar.php"><?= lang('navigation') ?></a>
-                        <a class="collapse-item" id="menu_widget" href="widgets.php"><?= lang('sidebar') ?></a>
-                        <a class="collapse-item" id="menu_page" href="page.php"><?= lang('page_management') ?></a>
-                        <a class="collapse-item" id="menu_link" href="link.php"><?= lang('friend_links') ?></a>
-                    </div>
+        <li class="nav-item" id="menu_user">
+            <a class="nav-link" href="user.php"><i class="icofont-user"></i><span><?= lang('users') ?></span></a>
+        </li>
+        <li class="nav-item" id="menu_category_view">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_view" aria-expanded="true" aria-controls="menu_view">
+                <i class="icofont-paint"></i><span><?= lang('exterior') ?></span>
+            </a>
+            <div id="menu_view" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" id="menu_tpl" href="template.php"><?= lang('templates') ?></a>
+                    <a class="collapse-item" id="menu_navi" href="navbar.php"><?= lang('navigation') ?></a>
+                    <a class="collapse-item" id="menu_widget" href="widgets.php"><?= lang('sidebar') ?></a>
+                    <a class="collapse-item" id="menu_page" href="page.php"><?= lang('page_management') ?></a>
+                    <a class="collapse-item" id="menu_link" href="link.php"><?= lang('friend_links') ?></a>
                 </div>
-            </li>
-            <li class="nav-item" id="menu_store">
-                <a class="nav-link" href="store.php"><i class="icofont-shopping-cart"></i><span><?= lang('app_store') ?></span></a>
-            </li>
-            <li class="nav-item" id="menu_category_sys">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_sys" aria-expanded="true" aria-controls="menu_sys">
-                    <i class="icofont-options"></i><span><?= lang('system') ?></span>
-                </a>
-                <div id="menu_sys" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" id="menu_data" href="data.php"><?= lang('data') ?></a>
-                        <a class="collapse-item" id="menu_setting" href="setting.php"><?= lang('settings') ?></a>
-                    </div>
+            </div>
+        </li>
+        <li class="nav-item" id="menu_store">
+            <a class="nav-link" href="store.php"><i class="icofont-shopping-cart"></i><span><?= lang('app_store') ?></span></a>
+        </li>
+        <li class="nav-item" id="menu_category_sys">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_sys" aria-expanded="true" aria-controls="menu_sys">
+                <i class="icofont-options"></i><span><?= lang('system') ?></span>
+            </a>
+            <div id="menu_sys" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" id="menu_data" href="data.php"><?= lang('data') ?></a>
+                    <a class="collapse-item" id="menu_setting" href="setting.php"><?= lang('settings') ?></a>
                 </div>
-            </li>
-            <li class="nav-item" id="menu_category_ext">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_ext" aria-expanded="true" aria-controls="menu_ext">
-                    <i class="icofont-plugin"></i><span><?= lang('extensions') ?></span>
-                </a>
-                <div id="menu_ext" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" id="menu_plug" href="plugin.php"><?= lang('plugins') ?></a>
-                        <?php doAction('adm_menu_ext') ?>
-                    </div>
+            </div>
+        </li>
+        <li class="nav-item" id="menu_category_ext">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_ext" aria-expanded="true" aria-controls="menu_ext">
+                <i class="icofont-plugin"></i><span><?= lang('extensions') ?></span>
+            </a>
+            <div id="menu_ext" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" id="menu_plug" href="plugin.php"><?= lang('plugins') ?></a>
+                    <?php doAction('adm_menu_ext') ?>
                 </div>
-            </li>
-            <hr class="sidebar-divider d-none d-md-block">
-            <?php doAction('adm_menu') ?>
-        <?php else: ?>
-            <hr class="sidebar-divider d-none d-md-block">
-            <?php doAction('user_menu') ?>
-        <?php endif ?>
+            </div>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+        <?php doAction('adm_menu') ?>
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>

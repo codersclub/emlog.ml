@@ -74,9 +74,9 @@ if (empty($action)) {
     }
     $pageurl = pagination($logNum, Option::get('admin_perpage_num'), $page, "article.php?{$subPage}&page=");
 
-    include View::getAdmView('header');
+    include View::getAdmView(User::isAdmin() ? 'header' : 'header_user');
     require_once View::getAdmView('article');
-    include View::getAdmView('footer');
+    include View::getAdmView(User::isAdmin() ? 'footer' : 'footer_user');
     View::output();
 }
 
@@ -212,7 +212,7 @@ if ($action === 'write') {
     extract($blogData);
 
     $isdraft = false;
-    $containertitle = lang('post_write');
+    $containerTitle = User::isAdmin() ? lang('post_write') : '发布' . Option::get('posts_name');
     $orig_date = '';
     $sorts = $CACHE->readCache('sort');
     $tagStr = '';
@@ -229,9 +229,9 @@ if ($action === 'write') {
         emDirect("auth.php?error_article=1");
     }
 
-    include View::getAdmView('header');
-    require_once View::getAdmView('article_write');
-    include View::getAdmView('footer');
+    include View::getAdmView(User::isAdmin() ? 'header' : 'header_user');
+    require_once(View::getAdmView('article_write'));
+    include View::getAdmView(User::isAdmin() ? 'footer' : 'footer_user');
     View::output();
 }
 
@@ -243,7 +243,8 @@ if ($action === 'edit') {
     extract($blogData);
 
     $isdraft = $hide == 'y' ? true : false;
-    $containertitle = $isdraft ? lang('draft_edit') : lang('post_edit');
+    $postsName = User::isAdmin() ? '文章' : Option::get('posts_name');
+    $containerTitle = $isdraft ? lang('draft_edit') : '编辑' . $postsName;
     $postDate = date('Y-m-d H:i', $date);
     $sorts = $CACHE->readCache('sort');
 
@@ -263,9 +264,9 @@ if ($action === 'edit') {
     $is_sortop = $sortop == 'y' ? 'checked="checked"' : '';
     $is_allow_remark = $allow_remark == 'y' ? 'checked="checked"' : '';
 
-    include View::getAdmView('header');
-    require_once View::getAdmView('article_write');
-    include View::getAdmView('footer');
+    include View::getAdmView(User::isAdmin() ? 'header' : 'header_user');
+    require_once(View::getAdmView('article_write'));
+    include View::getAdmView(User::isAdmin() ? 'footer' : 'footer_user');
     View::output();
 }
 

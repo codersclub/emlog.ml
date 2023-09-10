@@ -1,21 +1,37 @@
 <?php if (!defined('EMLOG_ROOT')) {
     exit('error!');
 } ?>
-<div class="d-sm-flex align-items-center justify-content-between mb-3">
-    <div class="mb-0 text-gray-800">
-        <span class="h3"><?= lang('welcome') ?>, <a class="small" href="./blogger.php"><?= $user_cache[UID]['name'] ?></a></span>
-        <span class="badge badge-primary ml-2"><?= $role_name ?></span>
+<div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="d-flex align-items-center mb-4">
+        <div class="flex-shrink-0">
+            <a class="mr-2" href="blogger.php">
+                <img src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>"
+                     alt="avatar" class="img-fluid rounded-circle border border-secondary border-3"
+                     style="width: 60px;">
+            </a>
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <div class="align-items-center mb-2">
+                <p class="mb-0 m-2"><?= $user_cache[UID]['name'] ?></p>
+                <p class="mb-0 m-2 small"><?= $user_cache[UID]['des'] ?: "当风吹过，留下微笑" ?></p>
+            </div>
+        </div>
     </div>
-    <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
+
+    <a class="btn btn-primary px-4 py-3" href="./article.php?action=write">
+        <div class="d-inline-block bi bi-download me-2"></div>
+        <i class="icofont-plus"></i>发新<?= Option::get("posts_name") ?>
+    </a>
 </div>
+<!-- Experience Card 1-->
 <div class="row">
-    <div class="mb-3 col-lg-4">
+    <div class="mb-3 col-lg-6">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles') ?></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php?checked=n"><?= $article_amount ?></a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php"><?= $article_amount ?></a></div>
                     </div>
                     <div class="col-auto">
                         <i class="icofont-pencil-alt-5 fa-2x text-gray-300"></i>
@@ -24,31 +40,16 @@
             </div>
         </div>
     </div>
-    <div class="mb-3 col-lg-4">
+    <div class="mb-3 col-lg-6">
         <div class="card border-left-info shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col">
                         <div class="text-xs font-weight-bold text-info text-uppercase mb-1"><?= lang('comments_received') ?></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./comment.php?hide=y"><?= $comment_amount ?></a></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./comment.php"><?= $comment_amount ?></a></div>
                     </div>
                     <div class="col-auto">
                         <i class="icofont-comment fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="mb-3 col-lg-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1"><?= lang('twitters') ?></div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./twitter.php"><?= $note_amount ?></a></div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="icofont-user fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -65,7 +66,10 @@
                     if ($logs):
                         foreach ($logs as $v) :
                             ?>
-                            <li class="msg_type_0"><a href="<?= Url::log($v['gid']) ?>" target="_blank"><?= $v['title'] ?></a></li>
+                            <li class="msg_type_0 d-flex justify-content-between align-items-center">
+                                <a href="<?= Url::log($v['gid']) ?>" target="_blank"><?= $v['title'] ?></a>
+                                <span class="badge badge-primary rounded-pill"><?= $v['views'] ?></span>
+                            </li>
                         <?php
                         endforeach;
                     else:
@@ -84,7 +88,7 @@
                     <?php
                     if ($comments):
                         foreach ($comments as $v) : ?>
-                            <li class="msg_type_0"><a href="<?= Url::log($v['gid']) ?>" target="_blank"><?= $v['comment'] ?></a></li>
+                            <li class="msg_type_0"><a href="<?= Url::log($v['gid']) ?>" target="_blank"><?= subString($v['comment'], 0, 25) ?></a></li>
                         <?php endforeach;
                     else:
                         ?>
@@ -94,8 +98,7 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="row">
-    <?php doAction('user_main_content') ?>
+    <div class="row">
+        <?php doAction('user_main_content') ?>
+    </div>
 </div>

@@ -113,11 +113,14 @@
             </div>
             <div class="list_footer">
                 <div class="btn-group btn-group-sm" role="group">
-                    <a href="javascript:commentact('top');" class="btn btn-sm btn-primary"><?= lang('top') ?></a>
-                    <a href="javascript:commentact('untop');" class="btn btn-sm btn-primary"><?= lang('untop') ?></a>
-                    <a href="javascript:commentact('hide');" class="btn btn-sm btn-warning"><?= lang('hide') ?></a>
-                    <a href="javascript:commentact('pub');" class="btn btn-sm btn-success"><?= lang('approve') ?></a>
+                    <?php if (User::isAdmin()): ?>
+                        <a href="javascript:commentact('top');" class="btn btn-sm btn-primary"><?= lang('top') ?></a>
+                        <a href="javascript:commentact('untop');" class="btn btn-sm btn-primary"><?= lang('untop') ?></a>
+                        <a href="javascript:commentact('hide');" class="btn btn-sm btn-warning"><?= lang('hide') ?></a>
+                        <a href="javascript:commentact('pub');" class="btn btn-sm btn-success"><?= lang('approve') ?></a>
+                    <?php endif; ?>
                     <a href="javascript:commentact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+                    <?php endif; ?>
                 </div>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>
