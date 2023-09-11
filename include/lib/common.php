@@ -48,6 +48,12 @@ if (!function_exists('getIp')) {
     }
 }
 
+if (!function_exists('getUA')) {
+    function getUA() {
+        return isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+    }
+}
+
 /**
  * Get site URL (Only for the root directory script, currently used only for home ajax request)
  */

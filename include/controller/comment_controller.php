@@ -17,6 +17,7 @@ class Comment_Controller {
         $pid = Input::postIntVar('pid');
         $resp = Input::postStrVar('resp'); // eg: json (only support json now)
         $uid = 0;
+        $ua = getUA();
 
         if (ISLOGIN === true) {
             $User_Model = new User_Model();
@@ -62,6 +63,8 @@ class Comment_Controller {
             $err = lang('comment_error_national_chars');
         } elseif (ISLOGIN === false && Option::get('comment_code') == 'y' && session_start() && (empty($imgcode) || $imgcode !== $_SESSION['code'])) {
             $err = lang('comment_error_captcha_invalid');
+        } elseif (empty($ua) || preg_match('/bot|crawler|spider|robot|crawling/i', $ua)) {
+            $err = '非正常请求';
         }
 
         if ($err) {

@@ -27,24 +27,27 @@
     <h1 class="h3 mb-0 text-gray-800"><?= lang('user_management') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#exampleModal"><i class="icofont-plus"></i> <?= lang('user_add') ?></a>
 </div>
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <div class="row justify-content-between">
-            <div class="form-inline">
-                <h6 class="m-2 font-weight-bold"><?= lang('users_total') ?> (<?= $usernum ?>)</h6>
+<div class="panel-heading justify-content-between d-flex">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link <?= $admin == '' ? 'active' : '' ?>" href="./user.php"><?= lang('all') ?></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $admin == 'y' ? 'active' : '' ?>" href="./user.php?admin=y"><?= lang('admins') ?></a>
+        </li>
+    </ul>
+    <form action="user.php" method="get">
+        <div class="form-inline search-inputs-nowrap">
+            <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-success" type="submit">
+                    <i class="icofont-search-2"></i>
+                </button>
             </div>
-            <form action="user.php" method="get">
-                <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
-                    <div class="input-group-append">
-                        <button class="btn btn-sm btn-success" type="submit">
-                            <i class="icofont-search-2"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
         </div>
-    </div>
+    </form>
+</div>
+<div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover dataTable no-footer" id="adm_comment_list">
@@ -105,6 +108,7 @@
     </div>
 </div>
 <div class="page"><?= $pageurl ?></div>
+<div class="text-center small">(有 <?= $userCount ?> 用户 )</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

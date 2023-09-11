@@ -1048,6 +1048,7 @@ $lang = array(
     'founder_not_edit' => 'Information about Founder cannot be modified',//'不能修改创始人信息',
     'founder' => 'Founder',//'创始人',
     'admin' => 'Administrator',//'管理员',
+    'admins' => 'Administrators',//'管理员',
     'posts_need_audit' => 'Posts need to be verified',//'(文章需审核)',
     'edit' => 'Edit',//'编辑',
     'delete' => 'Delete',//'删除',
