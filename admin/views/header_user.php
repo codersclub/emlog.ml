@@ -33,7 +33,7 @@
         <nav class="my-2 my-md-0 mr-md-auto">
             <a class="p-2 text-dark" href="/"><?= lang('front_end') ?></a>
             <a class="p-2 text-dark" href="./"><?= lang('user_center') ?></a>
-            <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
+<!--vot-->  <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
             <a class="p-2 text-dark" href="media.php"><?= lang('resources') ?></a>
             <a class="p-2 text-dark" href="comment.php"><?= lang('comments') ?></a>
             <?php doAction('user_menu') ?>

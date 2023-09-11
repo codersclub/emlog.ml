@@ -212,7 +212,7 @@ if ($action === 'write') {
     extract($blogData);
 
     $isdraft = false;
-    $containerTitle = lang('post_write');
+/*vot*/    $containerTitle = lang('post_write');
     $orig_date = '';
     $sorts = $CACHE->readCache('sort');
     $tagStr = '';

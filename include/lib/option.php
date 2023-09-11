@@ -18,7 +18,7 @@ class Option {
         if (!isset($options_cache[$option])) {
             switch ($option) {
                 case 'posts_name':
-//vot                    return lang('article');
+/*vot*/             return lang('article');
                 default:
                     return '';
             }

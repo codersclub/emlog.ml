@@ -20,7 +20,7 @@
 
     <a class="btn btn-primary px-4 py-3" href="./article.php?action=write">
         <div class="d-inline-block bi bi-download me-2"></div>
-        <i class="icofont-plus"></i><?= lang('article_add') ?>
+<!--vot--><i class="icofont-plus"></i><?= lang('article_add') ?>
     </a>
 </div>
 <!-- Experience Card 1-->
@@ -30,7 +30,7 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles') ?></div>
+<!--vot-->              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles') ?></div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php"><?= $article_amount ?></a></div>
                     </div>
                     <div class="col-auto">
