@@ -23,7 +23,8 @@ $lang = array(
     'uncheck' => 'Uncheck',//'驳回',
     'view_by_tag' => 'View by tag',//'按标签查看',
     'article_add' => 'Write a new article',//'写新文章',
-    'enter_summary' => 'If left blank, use the content of the article as a summary...',//'如果留空，则使用文章内容作为摘要...',
+    'use_markdown' => 'Start your creation using Markdown...',//'使用 Markdown 开始你的创作吧...',
+    'enter_summary' => 'If left blank, the content will be used as a summary.',//'如果留空，则使用正文作为摘要。',
     'attachment_delete_error' => 'Failed to delete the file!',//'删除失败!',
 
 //---------------------------

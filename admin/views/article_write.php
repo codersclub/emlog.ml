@@ -234,6 +234,7 @@
             imageUploadURL: "media.php?action=upload&editor=1",
             videoUpload: false, //Enable video upload
             syncScrolling: "single",
+            placeholder: "使用 Markdown 开始你的创作吧...",
             onfullscreen: function () {
                 this.watch();
             },
