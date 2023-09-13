@@ -82,6 +82,7 @@ $lang = array(
 'mail_send_ok'			=> 'Mail sent successfully',//'邮件发送成功',
 'mail_send_error'		=> 'Mail sending failed',//'邮件发送失败',
 'comment_wait_approve'		=> 'The comment is saved successfully, please wait for the administrator to approve',//'评论成功，请等待管理员审核',
+'invalid_request'		=> 'Invalid request',//'非正常请求',
 
 
 //---------------------------

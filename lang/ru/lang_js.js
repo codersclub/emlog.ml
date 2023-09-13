@@ -3,6 +3,8 @@ var LNG = {
 //admin/views/article_write.php
     'leave_prompt'	: 'Сообщение при покидании страницы',//'离开页面提示',
     'already_edited'	: '[было изменено] ',//'[已修改] ',
+    'use_markdown'	: 'Используйте Markdown при создании статьи...',//'使用 Markdown 开始你的创作吧...',
+    'enter_summary'	: 'Если пусто, то в качестве краткого описания будет использован текст статьи.',//'如果留空，则使用正文作为摘要。',
 
 // admin/views/article.php
     'select_article': 'Пожалуйста, выберите статью',//'请选择文章',

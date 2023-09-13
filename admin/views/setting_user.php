@@ -46,8 +46,8 @@
             </div>
 <!--vot NOT COMPATIBLE WITH MULTILINGUAL!
             <div class="form-group form-inline">
-                <label>User center article alias:</label><!--用户中心文章别名：-->
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> Such as: posts, contributions, resources, etc.<!--如：帖子、投稿、资源等-->
+                <label><?= lang('article_alias_prompt') ?></label>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> <?= lang('article_alias_prompt') ?>
             </div>
 -->
             <div class="form-group">

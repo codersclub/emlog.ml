@@ -23,8 +23,6 @@ $lang = array(
     'uncheck' => '驳回',//'Uncheck',
     'view_by_tag' => '按标签查看',//'View by tag',
     'article_add' => '写新文章',//'Write a new article',
-    'use_markdown' => '使用 Markdown 开始你的创作吧...',//'Start your creation using Markdown...',
-    'enter_summary' => '如果留空，则使用正文作为摘要。',//'If left blank, the content will be used as a summary.',
     'attachment_delete_error' => '删除失败!',//'Failed to delete the file!',
 
 //---------------------------
@@ -850,6 +848,8 @@ $lang = array(
     'limit_daily_posts' => '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
     'enable_email_code' => '开启注册邮件验证码（开启需配置邮件通知服务）',//'Enable email verification code on registration (you need to configure the email notification service to open it)',
     'if_0_upload_disabled' => '为0同时禁止发布笔记和上传图文资源',//'If it is 0, it is forbidden to publish notes and upload graphic resources at the same time',
+    'article_alias' => '用户中心文章别名：',//'User center article alias:',
+    'article_alias_prompt' => '如：帖子、投稿、资源等',//'Such as: posts, contributions, resources, etc.',
 
 //---------------------------
 //admin/views/signin.php
