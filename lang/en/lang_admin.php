@@ -832,22 +832,22 @@ $lang = array(
 //---------------------------
 //admin/views/setting_user.php
     'groups_about' => '<b>User Group</b><br>
-						Registered users: generated through registration, can publish articles, notes, upload pictures, etc.<br>
-						Content editor: responsible for the management of articles, resources, comments, etc.<br>
-						Administrator: Has all site management rights, can manage users, perform system settings, etc.<br>',
-    //'<b>用户组</b><br>
-    //注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>
-    //内容编辑：负责文章、资源、评论等内容的管理<br>
-    //管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-    'groups_alert' => 'Registered users: Generated after registration, you can publish articles, notes, upload pictures, etc.<br>
-					Content editor: Responsible for the management of articles, resources, comments, etc.<br>
-					Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
-    //'注册用户：通过注册产生，可以发布文章、笔记、上传图片等<br>
-    //内容编辑：负责文章、资源、评论等内容的管理<br>
-    //管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+                      Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+                      Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+                      Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
+                      //'<b>用户组</b><br>
+                      //注册用户：可以发文投稿、管理自己的文章、图文资源<br>
+                      //内容编辑：负责全站文章、资源、评论等内容的管理<br>
+                      //管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+    'groups_alert' => 'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+                       Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+                       Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
+                      //'注册用户：可以发文投稿、管理自己的文章、图文资源<br>
+                      // 内容编辑：负责全站文章、资源、评论等内容的管理<br>
+                      // 管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
     'limit_daily_posts' => 'Registered users limit the number of posts (including drafts) within 24 hours',//'注册用户限制24小时发文数量（包括草稿）',
     'enable_email_code' => 'Enable email verification code on registration (you need to configure the email notification service to open it)',//'开启注册邮件验证码（开启需配置邮件通知服务）',
-    'if_0_upload_disabled' => 'If it is 0, it is forbidden to publish notes and upload graphic resources at the same time',//'为0同时禁止发布笔记和上传图文资源',
+    'if_0_upload_disabled' => '(0 means prohibit uploading of graphic resources)',//'（为0同时禁止上传图文资源）',
     'article_alias' => 'User center article alias:',//'用户中心文章别名：',
     'article_alias_prompt' => 'Such as: posts, contributions, resources, etc.',//'如：帖子、投稿、资源等',
 

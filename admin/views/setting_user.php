@@ -42,7 +42,7 @@
             </div>
             <div class="form-group form-inline">
                 <label><?=lang('limit_daily_posts')?>:</label>
-                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/>, <?= lang('if_0_upload_disabled') ?>
+                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/> <?= lang('if_0_upload_disabled') ?>
             </div>
 <!--vot NOT COMPATIBLE WITH MULTILINGUAL!
             <div class="form-group form-inline">

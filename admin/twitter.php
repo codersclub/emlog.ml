@@ -46,11 +46,6 @@ if ($action == 'post') {
         emDirect("twitter.php?error_a=1");
     }
 
-    // Registered users are limited in the number of posts (including drafts) within 24 hours, when it is 0, it is forbidden to post notes and upload graphic resources
-    if (!User::haveEditPermission() && Option::get('posts_per_day') <= 0) {
-        emDirect("twitter.php?error_forbid=1");
-    }
-
     $data = [
         'content' => $t,
         'author'  => UID,

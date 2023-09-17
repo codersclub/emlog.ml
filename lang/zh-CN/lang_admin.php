@@ -831,23 +831,23 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_user.php
-    'groups_about' => '<b>用户组</b><br>
-						注册用户：可以发文投稿、管理自己的文章、笔记、图片资源等<br>
-						内容编辑：负责全站文章、资源、评论等内容的管理<br>
-						管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-    //'<b>User Group</b><br>
-    //Registered users: can post and contribute articles, manage their own articles, notes, picture resources, etc.<br>
-    //Content editor: Responsible for the management of articles, resources, comments and other content on the site<br>
-    //Administrator: has all the management rights of the site, can manage users, make system settings, etc.<br>',
-    'groups_alert' => '注册用户：可以发文投稿、管理自己的文章、笔记、图片资源等<br>
-					内容编辑：负责全站文章、资源、评论等内容的管理<br>
-					管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-    //'Registered users: can post and contribute articles, manage their own articles, notes, picture resources, etc.<br>
-    //Content editor: Responsible for the management of articles, resources, comments and other content on the site<br>
-    //Administrator: has full management authority of the site, can manage users, make system settings, etc.<br>',
+    'groups_about' => '            <b>用户组</b><br>
+            注册用户：可以发文投稿、管理自己的文章、图文资源<br>
+            内容编辑：负责全站文章、资源、评论等内容的管理<br>
+            管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+             //'<b>User Group</b><br>
+             //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+             //' Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+             //'Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
+    'groups_alert' => '注册用户：可以发文投稿、管理自己的文章、图文资源<br>
+                       内容编辑：负责全站文章、资源、评论等内容的管理<br>
+                       管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+                       //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+                       // Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+                       // Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
     'limit_daily_posts' => '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
     'enable_email_code' => '开启注册邮件验证码（开启需配置邮件通知服务）',//'Enable email verification code on registration (you need to configure the email notification service to open it)',
-    'if_0_upload_disabled' => '为0同时禁止发布笔记和上传图文资源',//'If it is 0, it is forbidden to publish notes and upload graphic resources at the same time',
+    'if_0_upload_disabled' => '（为0同时禁止上传图文资源）',//'(0 means prohibit uploading of graphic resources)',
     'article_alias' => '用户中心文章别名：',//'User center article alias:',
     'article_alias_prompt' => '如：帖子、投稿、资源等',//'Such as: posts, contributions, resources, etc.',
 
