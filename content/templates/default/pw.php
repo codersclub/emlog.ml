@@ -14,7 +14,7 @@ if (!defined('EMLOG_ROOT')) {
 <!--vot-->    <title><?= lang('page_password_enter') ?></title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: helvetica neue, Helvetica, Arial, sans-serif
             background-color: #f5f5f5;
         }
 
