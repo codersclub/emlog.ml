@@ -5,6 +5,9 @@ var LNG = {
     'already_edited': '[已修改] ',//'[already edited] ',
     'use_markdown' : '使用 Markdown 开始你的创作吧...',//'Start your creation using Markdown...',
     'enter_summary' : '如果留空，则使用正文作为摘要。',//'If left blank, the content will be used as a summary.',
+    'save_draft' : '放入草稿',//'Save as draft',
+    'del_completely' : '彻底删除',//'Remove completely',
+    'sure_del_draft' : '确定要删除所选草稿吗',//'Are you sure you want to delete the selected draft',
 
 // admin/views/article.php
     'select_article': '请选择文章',//'Please select an article',

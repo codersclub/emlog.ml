@@ -105,7 +105,7 @@
                                 <?php if (User::haveEditPermission()): ?>
                                     <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
                                        class="badge badge-pill badge-warning"><?= lang('del_from_ip') ?></a>
-                                    <a href="javascript: em_confirm(<?= $cid ?>, 'comment', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
+                                    <a href="javascript: em_confirm(<?= $cid ?>, 'comment', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php endif ?>
                             </td>
                         </tr>

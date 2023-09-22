@@ -19,8 +19,8 @@ function em_confirm(id, property, token) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
             msg = lang('article_del_sure');
-            text = '彻底删除将无法恢复'
-            swalDelArticle(msg, text, url, token)
+            text = lang('delete_not_recover');
+            swalDelArticle(msg, text, url, token);
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
@@ -109,8 +109,8 @@ function swalDel(msg, text, url, token) {
         icon: 'warning',
         text: text,
         showCancelButton: true,
-        cancelButtonText: '取消',
-        confirmButtonText: '删除',
+        cancelButtonText: lang('cancel'),
+        confirmButtonText: lang('delete'),
     }).then((result) => {
         if (result.isConfirmed) {
             window.location = url + '&token=' + token;
@@ -125,9 +125,9 @@ function swalDelArticle(msg, text, url, token) {
         text: text,
         showDenyButton: true,
         showCancelButton: true,
-        cancelButtonText: '取消',
-        confirmButtonText: '放入草稿',
-        denyButtonText: '彻底删除',
+        cancelButtonText: lang('cancel'),
+        confirmButtonText: lang('save_draft'),
+        denyButtonText: lang('del_completely'),
     }).then((result) => {
         if (result.isConfirmed) {
             window.location = url + '&token=' + token;

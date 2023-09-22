@@ -248,14 +248,14 @@ $isdraft = $draft ? '&draft=1' : '';
 
         if (act === 'del') {
             Swal.fire({
-                /*vot*/         title: lang('sure_delete_articles'),
-                /*vot*/         text: lang('delete_not_recover'),
+                title: lang('sure_delete_articles'),
+                text: lang('delete_not_recover'),
                 icon: 'warning',
                 showDenyButton: true,
                 showCancelButton: true,
-                cancelButtonText: '取消',
-                confirmButtonText: '放入草稿',
-                denyButtonText: '彻底删除',
+                cancelButtonText: lang('cancel'),
+                confirmButtonText: lang('save_draft'),
+                denyButtonText: lang('del_completely'),
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#operate").val("hide");
@@ -270,12 +270,12 @@ $isdraft = $draft ? '&draft=1' : '';
 
         if (act === 'del_draft') {
             Swal.fire({
-                title: '确定要删除所选草稿吗',
-                text: '删除将无法恢复',
+                title: lang('sure_del_draft'),
+                text: lang('delete_not_recover'),
                 icon: 'warning',
                 showCancelButton: true,
-                cancelButtonText: '取消',
-                confirmButtonText: '确定',
+                cancelButtonText: lang('cancel'),
+                confirmButtonText: lang('ok'),
             }).then((result) => {
                 if (result.isConfirmed) {
                     $("#operate").val("del");

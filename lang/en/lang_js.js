@@ -3,8 +3,11 @@ var LNG = {
 //admin/views/article_write.php
     'leave_prompt': 'Leave page prompt',//'离开页面提示',
     'already_edited': '[already edited] ',//'[已修改] ',
-    'use_markdown' : 'Start your creation using Markdown...',//'使用 Markdown 开始你的创作吧...',
-    'enter_summary' : 'If left blank, the content will be used as a summary.',//'如果留空，则使用正文作为摘要。',
+    'use_markdown': 'Start your creation using Markdown...',//'使用 Markdown 开始你的创作吧...',
+    'enter_summary': 'If left blank, the content will be used as a summary.',//'如果留空，则使用正文作为摘要。',
+    'save_draft': 'Save as draft',//'放入草稿',
+    'del_completely': 'Remove completely',//'彻底删除',
+    'sure_del_draft': 'Are you sure you want to delete the selected draft',//'确定要删除所选草稿吗',
 
 // admin/views/article.php
     'select_article': 'Please select an article',//'请选择文章',
