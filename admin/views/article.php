@@ -201,11 +201,12 @@ $isdraft = $draft ? '&draft=1' : '';
                 <?php endif ?>
                 <div class="btn-group btn-group-sm ml-1" role="group">
                     <?php if ($draft): ?>
+                        <a href="javascript:logact('del_draft');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                         <a href="javascript:logact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
                     <?php else: ?>
+                        <a href="javascript:logact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                         <a href="javascript:logact('hide');" class="btn btn-sm btn-success"><?= lang('add_draft') ?></a>
                     <?php endif ?>
-                    <a href="javascript:logact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                 </div>
             </div>
         </form>
@@ -240,60 +241,80 @@ $isdraft = $draft ? '&draft=1' : '';
 </div>
 <script>
     function logact(act) {
-        if (getChecked('ids') == false) {
-            /*vot*/
-            swal("", lang('select_article'), "info");
+        if (getChecked('ids') === false) {
+            Swal.fire("", lang('select_article'), "info");
             return;
         }
 
-        if (act == 'del') {
-            swal({
+        if (act === 'del') {
+            Swal.fire({
                 /*vot*/         title: lang('sure_delete_articles'),
                 /*vot*/         text: lang('delete_not_recover'),
                 icon: 'warning',
-                /*vot*/         buttons: [lang('cancel'), lang('ok')],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
+                showDenyButton: true,
+                showCancelButton: true,
+                cancelButtonText: '取消',
+                confirmButtonText: '放入草稿',
+                denyButtonText: '彻底删除',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#operate").val("hide");
+                    $("#form_log").submit();
+                } else if (result.isDenied) {
                     $("#operate").val(act);
                     $("#form_log").submit();
                 }
             });
             return;
         }
+
+        if (act === 'del_draft') {
+            Swal.fire({
+                title: '确定要删除所选草稿吗',
+                text: '删除将无法恢复',
+                icon: 'warning',
+                showCancelButton: true,
+                cancelButtonText: '取消',
+                confirmButtonText: '确定',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#operate").val("del");
+                    $("#form_log").submit();
+                }
+            });
+            return;
+        }
+
         $("#operate").val(act);
         $("#form_log").submit();
     }
 
     function changeSort(obj) {
-        if (getChecked('ids') == false) {
-            /*vot*/
-            swal("", lang('select_article'), "info");
+        if (getChecked('ids') === false) {
+            Swal.fire("", lang('select_article'), "info");
             return;
         }
-        if ($('#sort').val() == '') return;
+        if ($('#sort').val() === '') return;
         $("#operate").val('move');
         $("#form_log").submit();
     }
 
     function changeAuthor(obj) {
-        if (getChecked('ids') == false) {
-            /*vot*/
-            swal("", lang('select_article'), "info");
+        if (getChecked('ids') === false) {
+            Swal.fire("", lang('select_article'), "info");
             return;
         }
-        if ($('#author').val() == '') return;
+        if ($('#author').val() === '') return;
         $("#operate").val('change_author');
         $("#form_log").submit();
     }
 
     function changeTop(obj) {
-        if (getChecked('ids') == false) {
-            /*vot*/
-            swal("", lang('select_article'), "info");
+        if (getChecked('ids') === false) {
+            Swal.fire("", lang('select_article'), "info");
             return;
         }
-        if ($('#top').val() == '') return;
+        if ($('#top').val() === '') return;
         $("#operate").val(obj.value);
         $("#form_log").submit();
     }

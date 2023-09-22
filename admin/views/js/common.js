@@ -19,76 +19,120 @@ function em_confirm(id, property, token) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
             msg = lang('article_del_sure');
+            text = '彻底删除将无法恢复'
+            swalDelArticle(msg, text, url, token)
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
             msg = lang('draft_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
             msg = lang('twitter_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'comment':
             url = 'comment.php?action=del&id=' + id;
             msg = lang('comment_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'commentbyip':
             url = 'comment.php?action=delbyip&ip=' + id;
             msg = lang('comment_ip_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'link':
             url = 'link.php?action=dellink&linkid=' + id;
             msg = lang('link_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'navi':
             url = 'navbar.php?action=del&id=' + id;
             msg = lang('navi_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'media':
             url = 'media.php?action=delete&aid=' + id;
             msg = lang('attach_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'avatar':
             url = 'blogger.php?action=delicon';
             msg = lang('avatar_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'sort':
             url = 'sort.php?action=del&sid=' + id;
             msg = lang('category_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'del_user':
             url = 'user.php?action=del&uid=' + id;
             msg = lang('user_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
             msg = lang('user_disable_sure');
             text = '';
+            swalDel(msg, text, url, token)
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
             msg = lang('template_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
             msg = lang('plugin_reset_sure');
             text = '';
+            swalDel(msg, text, url, token)
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
             msg = lang('plugin_del_sure');
+            swalDel(msg, text, url, token)
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
             msg = lang('media_category_del_sure');
 /*vot*/     text = lang('category_not_deleted');
+            swalDel(msg, text, url, token)
             break;
     }
-    swal({
-/*vot*/        title: msg, text: text, icon: "warning", buttons: [lang('cancel'), lang('ok')], dangerMode: true,
-    }).then((willDelete) => {
-        if (willDelete) {
+}
+
+function swalDel(msg, text, url, token) {
+    Swal.fire({
+        title: msg,
+        icon: 'warning',
+        text: text,
+        showCancelButton: true,
+        cancelButtonText: '取消',
+        confirmButtonText: '删除',
+    }).then((result) => {
+        if (result.isConfirmed) {
             window.location = url + '&token=' + token;
+        }
+    });
+}
+
+function swalDelArticle(msg, text, url, token) {
+    Swal.fire({
+        title: msg,
+        icon: 'warning',
+        text: text,
+        showDenyButton: true,
+        showCancelButton: true,
+        cancelButtonText: '取消',
+        confirmButtonText: '放入草稿',
+        denyButtonText: '彻底删除',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location = url + '&token=' + token;
+        } else if (result.isDenied) {
+            window.location = url + '&rm=1&token=' + token;
         }
     });
 }

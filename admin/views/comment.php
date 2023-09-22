@@ -64,7 +64,7 @@
                     </thead>
                     <tbody>
                     <?php foreach ($comment as $key => $value):
-                        $ishide = $value['hide'] == 'y' ? '<span class="text-danger">[' . lang('pending') . ']</span>' : '';
+                        $ishide = $value['hide'] == 'y' ? '<span class="text-danger">' . lang('pending') . '</span>' : '';
                         $mail = $value['mail'] ? " <br />email: {$value['mail']}" : '';
                         $ip = $value['ip'];
                         $gid = $value['gid'];
@@ -83,7 +83,7 @@
                             <td>
                                 <?= $comment ?>
                                 <?= $ishide ?>
-                                <?php if ($top == 'y'): ?><span class="flag-indexTop" title="<?= lang('top') ?>"><?= lang('top') ?></span><?php endif ?>
+                                <?php if ($top == 'y'): ?><span class="text-success"><?= lang('top') ?></span><?php endif ?>
                             </td>
                             <td class="small">
                                 <?= $poster ?><?= $mail ?><?= $ip_info ?>
@@ -105,6 +105,7 @@
                                 <?php if (User::haveEditPermission()): ?>
                                     <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
                                        class="badge badge-pill badge-warning"><?= lang('del_from_ip') ?></a>
+                                    <a href="javascript: em_confirm(<?= $cid ?>, 'comment', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
                                 <?php endif ?>
                             </td>
                         </tr>
@@ -160,20 +161,21 @@
 
 <script>
     function commentact(act) {
-        if (getChecked('ids') == false) {
-/*vot*/     swal("", lang('comment_operation_select'), "info");
+        if (getChecked('ids') === false) {
+            Swal.fire("", lang('comment_operation_select'), "info");
             return;
         }
 
-        if (act == 'del') {
-            swal({
+        if (act === 'del') {
+            Swal.fire({
 /*vot*/         title: lang('comment_selected_delete_sure'),
 /*vot*/         text: lang('delete_not_recover'),
                 icon: 'warning',
-/*vot*/         buttons: [lang('cancel'), lang('ok')],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
+                showCancelButton: true,
+                cancelButtonText: lang('cancel'),
+                confirmButtonText: lang('ok'),
+            }).then((result) => {
+                if (result.isConfirmed) {
                     $("#operate").val(act);
                     $("#form_com").submit();
                 }

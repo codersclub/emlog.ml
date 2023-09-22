@@ -110,19 +110,20 @@
 
     function tagact(act) {
         if (getChecked('tids') === false) {
-            swal("", lang('tag_select_del'), "info");
+            Swal.fire("", lang('tag_select_del'), "info");
             return;
         }
 
-        if (act == 'del') {
-            swal({
+        if (act === 'del') {
+            Swal.fire({
                 title: lang('tag_delete_sure'),
                 text: lang('delete_not_recover'),
                 icon: 'warning',
-                buttons: [lang('cancel'), lang('ok')],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
+                showCancelButton: true,
+                cancelButtonText: lang('cancel'),
+                confirmButtonText: lang('ok'),
+            }).then((result) => {
+                if (result.isConfirmed) {
                     $("#operate").val(act);
                     $("#form_tag").submit();
                 }
@@ -135,14 +136,15 @@
 
     function deltags() {
         var tid = $('#tid').val()
-        swal({
+        Swal.fire({
             /*vot*/     title: lang('tag_delete_sure'),
             /*vot*/     text: lang('delete_not_recover'),
             icon: 'warning',
-            /*vot*/     buttons: [lang('cancel'), lang('ok')],
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
+            showCancelButton: true,
+            cancelButtonText: lang('cancel'),
+            confirmButtonText: lang('ok'),
+        }).then((result) => {
+            if (result.isConfirmed) {
                 window.open("./tag.php?action=del_tag&token=<?= LoginAuth::genToken() ?>&tid=" + tid, "_self");
             }
         });

@@ -257,19 +257,20 @@
 
     function mediaact(act) {
         if (getChecked('aids') === false) {
-/*vot*/     swal("", lang('resource_select'), "info");
+/*vot*/     Swal.fire("", lang('resource_select'), "info");
             return;
         }
 
-        if (act == 'del') {
-            swal({
+        if (act === 'del') {
+            Swal.fire({
 /*vot*/         title: lang('resource_del_sure'),
 /*vot*/         text: lang('delete_not_recover'),
                 icon: 'warning',
-/*vot*/         buttons: [lang('cancel'), lang('ok')],
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
+                showCancelButton: true,
+                cancelButtonText: lang('cancel'),
+                confirmButtonText: lang('ok'),
+            }).then((result) => {
+                if (result.isConfirmed) {
                     $("#operate").val(act);
                     $("#form_media").submit();
                 }
@@ -283,10 +284,10 @@
     // Change category
     function changeSort(obj) {
         if (getChecked('aids') === false) {
-/*vot*/     swal("", lang('media_select'), "info");
+/*vot*/     Swal.fire("", lang('media_select'), "info");
             return;
         }
-        if ($('#sort').val() == '') return;
+        if ($('#sort').val() === '') return;
         $("#operate").val('move');
         $("#form_media").submit();
     }
