@@ -569,6 +569,17 @@ function loadTopAddons() {
     });
 }
 
+//------------------------------
+// Return the language var value
+function lang(key) {
+    if (LNG[key]) {
+        val = LNG[key];
+    } else {
+        val = '{' + key + '}';
+    }
+    return val;
+}
+
 $(function () {
     // Check once the page is loaded
     // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid

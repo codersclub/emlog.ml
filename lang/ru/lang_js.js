@@ -158,14 +158,3 @@ var LNG = {
 // The LAST key. DO NOT EDIT!!!
   '@' : '@'
 };
-
-//------------------------------
-// Return the language var value
-function lang(key) {
-    if (LNG[key]) {
-        val = LNG[key];
-    } else {
-        val = '{' + key + '}';
-    }
-    return val;
-}
