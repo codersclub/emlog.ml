@@ -30,13 +30,13 @@
                 <input type="hidden" name="gid" id="gid" value="<?= $logid ?>"/>
                 <input type="hidden" name="author" id="author" value="<?= $author ?>"/>
                 <?php if ($logid < 0): ?>
-                    <input type="submit" name="pubPost" id="pubPost" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-primary"/>
+                    <input type="submit" name="pubPost" id="pubPost" value="<?= lang('post_publish') ?>" onclick="return checkform();" class="btn btn-success btn-sm"/>
+                    <input type="button" name="savedf" id="savedf" value="<?= lang('save_draft') ?>" onclick="autosave(2);" class="btn btn-primary btn-sm"/>
                 <?php else: ?>
-                    <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-success"/>
-                    <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-primary"/>
+                    <input type="submit" value="<?= lang('save_and_return') ?>" onclick="return checkform();" class="btn btn-success btn-sm"/>
+                    <input type="button" name="savedf" id="savedf" value="<?= lang('save') ?>" onclick="autosave(2);" class="btn btn-primary btn-sm"/>
                     <?php if ($isdraft) : ?>
-                        <input type="submit" name="pubPost" id="pubPost" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-success"/>
+                        <input type="submit" name="pubPost" id="pubPost" value="<?= lang('publish') ?>" onclick="return checkform();" class="btn btn-success btn-sm"/>
                     <?php endif ?>
                 <?php endif ?>
             </div>
@@ -111,7 +111,7 @@
                 <div id="advset">
                     <?php if (User::isAdmin()): ?>
                         <div class="form-group">
-                            <label><?= lang('link_alias') ?></label>
+<!--vot-->                  <label><?= lang('link_alias_info') ?>: <small class="text-muted">(<?= lang('link_alias_info') ?> <a href="./setting.php?action=seo">&rarr;</a>)</small></label>
                             <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
                         </div>
                         <div class="form-group">

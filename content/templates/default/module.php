@@ -362,11 +362,9 @@ function blog_tag($blogid) {
     $tag_ids = $tag_model->getTagIdsFromBlogId($blogid);
     $tag_names = $tag_model->getNamesFromIds($tag_ids);
     if (!empty($tag_names)) {
-        /*vot*/
-        $tag = lang('tags') . ': ';
-        foreach ($tag_names as $key => $value) {
-            /*vot*/
-            $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
+/*vot*/ $tag = lang('tags') . ': ';
+        foreach ($tag_names as $value) {
+/*vot*/     $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
         }
         echo $tag;
     }

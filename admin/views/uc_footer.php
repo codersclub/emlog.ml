@@ -3,7 +3,7 @@
 } ?>
 <footer class="py-4">
     <div class="text-center">
-        <span>Copyright &copy; <?= date("Y") ?> <?= Option::get('blogname') ?> <?= lang('all_rights_reserved') ?></span>
+        <span>Copyright &copy; <?= date("Y") ?> </span>
     </div>
 </footer>
 </div>

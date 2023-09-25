@@ -104,13 +104,13 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         EMLOG
                         <?php if (!Register::isRegLocal()) : ?>
-                            <!--vot-->                  <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
+<!--vot-->                  <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
                         <?php elseif (Register::getRegType() == 2): ?>
-                            <span class="badge badge-warning"><?= Option::EMLOG_VERSION ?> <?= lang('svip_hard') ?></span>
+                            <span class="badge badge-warning"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('svip_hard') ?></span>
                         <?php elseif (Register::getRegType() == 1): ?>
-                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> <?= lang('vip_friend') ?></span>
+                            <span class="badge badge-success"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('vip_friend') ?></span>
                         <?php else: ?>
-                            <span class="badge badge-success"><?= Option::EMLOG_VERSION ?> <?= lang('registered') ?></span>
+                            <span class="badge badge-success"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('registered') ?></span>
                         <?php endif ?>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
