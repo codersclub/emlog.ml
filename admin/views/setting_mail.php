@@ -67,12 +67,12 @@
                     </div>
                 </div>
             </div>
-            <h4>邮件模板</h4>
+            <h4><?= lang('email_template') ?></h4>
             <div class="my-3">
-                <div class="mb-3" id="mail_template_box">选择模板：<a href="javascript:useDefaultTemplate();">简约</a> <span id="mail_template_box_ext"></span></div>
+                <div class="mb-3" id="mail_template_box"><?= lang('select_email_template') ?>: <a href="javascript:useDefaultTemplate();"><?= lang('simple') ?></a> <span id="mail_template_box_ext"></span></div>
                 <div class="row">
                     <div class="col-md-6">
-                        <textarea id="mail_template" name="mail_template" rows="10" class="form-control" placeholder="邮件模板(支持html)，不使用模板请留空。"><?= $mail_template ?></textarea>
+                        <textarea id="mail_template" name="mail_template" rows="10" class="form-control" placeholder="<?= lang('email_template_placeholer') ?>"><?= $mail_template ?></textarea>
                     </div>
                     <div class="col-md-6">
                         <iframe id="mail_review_frame"></iframe>

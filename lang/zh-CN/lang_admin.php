@@ -828,6 +828,10 @@ $lang = array(
 //admin/views/setting_mail.php
     'comment_new_notify' => '评论通知（评论通知文章作者，回复评论通知评论人）',//'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',
     'article_new_notify' => '文章投稿通知（仅发送到创始人邮箱）',//'Notification of new articles submitted (sent to founder email only)',
+    'email_template' => '邮件模板',//'Email Template',
+    'select_email_template' => '选择模板',//'Select template',//+:
+    'simple' => '简约',//'Simple',
+    'email_template_placeholer' => '邮件模板(支持html)，不使用模板请留空。',//'Email template (supports html). Please leave it blank if you do not use a template.',
 
 //---------------------------
 //admin/views/setting_user.php

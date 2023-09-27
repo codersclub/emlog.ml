@@ -419,7 +419,7 @@ $lang = array(
     'to_site' => 'View My site',//'查看我的站点',
     'settings' => 'Settings',//'设置',
     'logout' => 'Logout',//'退出',
-// 'post_write'				=> 'Add article',//'写文章',
+// 'post_write'		=> 'Add article',//'写文章',
     'draft' => 'Draft',//'草稿',
 // 'posts'		=> 'Posts',//'文章',
     'posts_pending' => ' Pending posts',//'篇文章待审',
@@ -828,6 +828,10 @@ $lang = array(
 //admin/views/setting_mail.php
     'comment_new_notify' => 'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',//'评论通知（评论通知文章作者，回复评论通知评论人）',
     'article_new_notify' => 'Email notification of new articles submitted (sent to founder email only)',//'文章投稿通知（仅发送到创始人邮箱）',
+    'email_template' => 'Email Template',//'邮件模板',
+    'select_email_template' => 'Select template',//'选择模板',//+:
+    'simple' => 'Simple',//'简约',
+    'email_template_placeholer' => 'Email template (supports html). Please leave it blank if you do not use a template.',//'邮件模板(支持html)，不使用模板请留空。',
 
 //---------------------------
 //admin/views/setting_user.php
@@ -853,7 +857,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/signin.php
-// 'em_reg_ok'				=> 'Registration is successful, please log in',//'注册成功，请登录',
+// 'em_reg_ok'		=> 'Registration is successful, please log in',//'注册成功，请登录',
     'password_reset_ok' => 'Password reset successfully, please log in',//'密码重置成功，请登录',
 
 //---------------------------
@@ -923,7 +927,6 @@ $lang = array(
     'install_app' => 'Install app',//'安装应用',
     'not_paid_user' => 'You are not a paid registered user and cannot use the functions purchased in the app store.',//'您还不是付费注册用户，无法使用应用商店已购功能，',
     'paid_support' => 'Paid Support',//'付费支持',
-
 
 //---------------------------
 //admin/views/store_plu.php
