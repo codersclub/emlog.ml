@@ -67,7 +67,18 @@
                     </div>
                 </div>
             </div>
-
+            <h4>邮件模板</h4>
+            <div class="my-3">
+                <div class="mb-3" id="mail_template_box">选择模板：<a href="javascript:useDefaultTemplate();">简约</a> <span id="mail_template_box_ext"></span></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <textarea id="mail_template" name="mail_template" rows="10" class="form-control" placeholder="邮件模板(支持html)，不使用模板请留空。"><?= $mail_template ?></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <iframe id="mail_review_frame"></iframe>
+                    </div>
+                </div>
+            </div>
             <h4><?= lang('email_notify') ?></h4>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="mail_notice_comment" id="mail_notice_comment" <?= $conf_mail_notice_comment ?> />
@@ -78,6 +89,7 @@
                 <label class="form-check-label"><?= lang('article_new_notify') ?></label>
             </div>
             <div class="form-group">
+                <hr>
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
             </div>
@@ -85,6 +97,37 @@
     </div>
 </div>
 <script>
+    const htmlInput = document.getElementById('mail_template');
+    const previewFrame = document.getElementById('mail_review_frame');
+
+    updatePreview();
+    htmlInput.addEventListener('input', updatePreview);
+
+    function updatePreview() {
+        const htmlCode = htmlInput.value;
+        const previewDocument = previewFrame.contentDocument;
+        previewDocument.open();
+        previewDocument.write(htmlCode);
+        previewDocument.close();
+    }
+
+    function useDefaultTemplate() {
+        const defaultTemplate = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f0f0f0;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 5px; padding: 20px;">
+        <p>{{mail_content}}</p>
+    </div>
+</body>
+</html>`;
+        $('#mail_template').val(defaultTemplate);
+        updatePreview();
+    }
+
     $(function () {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
@@ -95,7 +138,7 @@
             $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?>...<small>");
 
             $.post("setting.php?action=mail_test", $("#mail_config").serialize(), function (data) {
-                if (data == '') {
+                if (data === '') {
                     $("#testMailMsg").html("<small class='text-success'><?=lang('send_ok')?></small>");
                 } else {
                     $("#testMailMsg").html(data);

@@ -115,7 +115,7 @@
             </div>
             <div class="list_footer">
                 <div class="btn-group btn-group-sm" role="group">
-                    <?php if (User::isAdmin()): ?>
+                    <?php if (User::haveEditPermission()): ?>
                         <a href="javascript:commentact('top');" class="btn btn-sm btn-primary"><?= lang('top') ?></a>
                         <a href="javascript:commentact('untop');" class="btn btn-sm btn-primary"><?= lang('untop') ?></a>
                         <a href="javascript:commentact('hide');" class="btn btn-sm btn-warning"><?= lang('hide') ?></a>

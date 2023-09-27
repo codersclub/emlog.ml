@@ -92,7 +92,7 @@
                         </div>
                     <?php endif; ?>
                 </div>
-                <?php if (User::isAdmin()): ?>
+                <?php if (User::haveEditPermission()): ?>
                     <div class="form-group">
                         <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
                         <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
@@ -109,7 +109,7 @@
                     <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
                 <?php endif; ?>
                 <div id="advset">
-                    <?php if (User::isAdmin()): ?>
+                    <?php if (User::haveEditPermission()): ?>
                         <div class="form-group">
 <!--vot-->                  <label><?= lang('link_alias_info') ?>: <small class="text-muted">(<?= lang('link_alias_info') ?> <a href="./setting.php?action=seo">&rarr;</a>)</small></label>
                             <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>

@@ -22,13 +22,8 @@ class Notice {
         $_SESSION['mail'] = $mail;
 
 /*vot*/        $title = lang('email_verif_code_title');
-/*vot*/        $content = lang('email_verif_code') . $randCode;
-        $sendmail = new SendMail();
-        $ret = $sendmail->send($mail, $title, $content);
-        if ($ret) {
-            return true;
-        }
-        return false;
+        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<span>%s</span><div>', $randCode);
+        return self::sendMail($mail, $title, $content);
     }
 
     public static function sendResetMailCode($mail) {
@@ -43,34 +38,24 @@ class Notice {
         $_SESSION['mail'] = $mail;
 
         $title = lang('reset_password_code');
-        $content = lang('email_verify_code') . $randCode;
-        $sendmail = new SendMail();
-        $ret = $sendmail->send($mail, $title, $content);
-        if ($ret) {
-            return true;
-        }
-        return false;
+/*vot*/        $content = sprintf('<div id="email_code">' . lang('email_verify_code') . '<span>%s</span><div>', $randCode);
+        return self::sendMail($mail, $title, $content);
     }
 
-    public static function sendNewPostMail($post_title) {
+    public static function sendNewPostMail($postTitle) {
         if (!self::smtpServerReady()) {
             return false;
         }
         if (Option::get('mail_notice_post') === 'n') {
             return false;
         }
-        $email = self::getFounderEmail();
-        if (!$email) {
+        $mail = self::getFounderEmail();
+        if (!$mail) {
             return false;
         }
         $title = lang('new_article_review');
-        $content = lang('new_article_title') . $post_title;
-        $sendmail = new SendMail();
-        $ret = $sendmail->send($email, $title, $content);
-        if ($ret) {
-            return true;
-        }
-        return false;
+/*vot*/        $content = sprintf(lang('new_article_title').'%s', $postTitle);
+        return self::sendMail($mail, $title, $content);
     }
 
     public static function sendNewCommentMail($comment, $gid, $pid) {
@@ -81,7 +66,6 @@ class Notice {
             return false;
         }
 
-        $sendmail = new SendMail();
 /*vot*/        $content = lang('new_comment_is') . $comment;
         $article = self::getArticleInfo($gid);
 
@@ -92,17 +76,16 @@ class Notice {
         if ($pid) {
             $title = lang('new_comment_reply_review');
             $content .= '<hr>' . lang('from_article') . ' <a href="' . Url::log($article['logid']) . '" target="_blank">' . $article['log_title'] . '</a>';
-            $email = self::getCommentAuthorEmail($pid);
+            $mail = self::getCommentAuthorEmail($pid);
         } else {
             $title = lang('new_comment_review');
             $content .= '<hr>' . lang('from_article') . ' <a href="' . Url::log($article['logid']) . '" target="_blank">' . $article['log_title'] . '</a>';
-            $email = self::getArticleAuthorEmail($article['author']);
+            $mail = self::getArticleAuthorEmail($article['author']);
         }
-        if (!$email) {
+        if (!$mail) {
             return false;
         }
-        $sendmail->send($email, $title, $content);
-        return true;
+        return self::sendMail($mail, $title, $content);
     }
 
     private static function smtpServerReady() {
@@ -146,5 +129,23 @@ class Notice {
             return $r['mail'];
         }
         return false;
+    }
+
+    public static function sendMail($mail, $title, $content) {
+        $content = self::getMailTemplate($content);
+        $sendmail = new SendMail();
+        $ret = $sendmail->send($mail, $title, $content);
+        if ($ret) {
+            return true;
+        }
+        return false;
+    }
+
+    private static function getMailTemplate($content) {
+        $mailTemplate = Option::get('mail_template');
+        if (!empty(trim($mailTemplate))) {
+            return str_replace('{{mail_content}}', $content, $mailTemplate);
+        }
+        return $content;
     }
 }

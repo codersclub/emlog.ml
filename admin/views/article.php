@@ -33,7 +33,7 @@ $isdraft = $draft ? '&draft=1' : '';
 <?php if (isset($_GET['error_post_per_day'])): ?>
     <div class="alert alert-danger"><?= lang('daily_posts_exceed') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <?php if (User::isAdmin()): ?>
+    <?php if (User::haveEditPermission()): ?>
         <h1 class="h3 mb-0 text-gray-800"><?= $draft ? lang('draft_manage') : lang('post_manage') ?></h1>
         <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
     <?php else: ?>

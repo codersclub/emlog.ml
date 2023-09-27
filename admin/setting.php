@@ -166,6 +166,7 @@ if ($action == 'mail') {
     $smtp_port = isset($options_cache['smtp_port']) ? $options_cache['smtp_port'] : '';
     $mail_notice_comment = isset($options_cache['mail_notice_comment']) ? $options_cache['mail_notice_comment'] : '';
     $mail_notice_post = isset($options_cache['mail_notice_post']) ? $options_cache['mail_notice_post'] : '';
+    $mail_template = isset($options_cache['mail_template']) ? $options_cache['mail_template'] : '';
 
     $conf_mail_notice_comment = $mail_notice_comment == 'y' ? 'checked="checked"' : '';
     $conf_mail_notice_post = $mail_notice_post == 'y' ? 'checked="checked"' : '';
@@ -180,17 +181,19 @@ if ($action == 'mail') {
 if ($action == 'mail_save') {
     LoginAuth::checkToken();
     $data = [
-        'smtp_mail'           => isset($_POST['smtp_mail']) ? addslashes($_POST['smtp_mail']) : '',
-        'smtp_pw'             => isset($_POST['smtp_pw']) ? addslashes($_POST['smtp_pw']) : '',
-        'smtp_from_name'      => isset($_POST['smtp_from_name']) ? addslashes($_POST['smtp_from_name']) : '',
-        'smtp_server'         => isset($_POST['smtp_server']) ? addslashes($_POST['smtp_server']) : '',
-        'smtp_port'           => isset($_POST['smtp_port']) ? addslashes($_POST['smtp_port']) : '',
-        'mail_notice_comment' => isset($_POST['mail_notice_comment']) ? $_POST['mail_notice_comment'] : 'n',
-        'mail_notice_post'    => isset($_POST['mail_notice_post']) ? $_POST['mail_notice_post'] : 'n',
+        'smtp_pw'             => Input::postStrVar('smtp_pw'),
+        'smtp_from_name'      => Input::postStrVar('smtp_from_name'),
+        'smtp_server'         => Input::postStrVar('smtp_server'),
+        'smtp_port'           => Input::postStrVar('smtp_port'),
+        'mail_notice_comment' => Input::postStrVar('mail_notice_comment', 'n'),
+        'mail_notice_post'    => Input::postStrVar('mail_notice_post', 'n'),
+        'mail_template'       => Input::postStrVar('mail_template'),
     ];
+
     foreach ($data as $key => $val) {
         Option::updateOption($key, $val);
     }
+
     $CACHE->updateCache(array('options'));
     header('Location: ./setting.php?action=mail&activated=1');
 }
@@ -222,7 +225,8 @@ if ($action == 'mail_test') {
     $mail->FromName = $data['smtp_from_name'];
     $mail->AddAddress($data['testTo']);
     $mail->Subject = lang('test_mail_subj');
-    $mail->Body = lang('test_mail_body');
+    $mail->isHTML();
+    $mail->Body = Notice::getMailTemplate(lang('test_mail_body'));
 
     try {
         return $mail->Send();

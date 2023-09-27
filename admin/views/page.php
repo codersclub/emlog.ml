@@ -6,7 +6,7 @@
 <?php if (isset($_GET['active_hide_n'])): ?>
     <div class="alert alert-success"><?= lang('page_published_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_hide_y'])): ?>
-    <div class="alert alert-success"><?= lang('page_disabled_ok') ?></div><?php endif ?>
+    <div class="alert alert-success"><?= lang('page_drafted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_pubpage'])): ?>
     <div class="alert alert-success"><?= lang('page_saved_ok') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
