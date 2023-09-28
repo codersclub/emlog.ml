@@ -33,7 +33,7 @@ class Option {
                 return $options_cache['blogurl'];
             case 'posts_name':
                 if (empty($options_cache['posts_name'])) {
-                    return '文章';
+/*vot*/             return lang('article');
                 }
             default:
                 return isset($options_cache[$option]) ? $options_cache[$option] : '';
