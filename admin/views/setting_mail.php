@@ -128,6 +128,20 @@
         updatePreview();
     }
 
+    function base64Encode(str) {
+        return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function prepareMailTemplate() {
+        const mailTemplateInput = document.getElementById('mail_template');
+        const encodedTemplate = base64Encode(mailTemplateInput.value);
+        mailTemplateInput.value = encodedTemplate;
+    }
+
+    // Attach the function to the form's onsubmit event
+    const mailConfigForm = document.getElementById('mail_config');
+    mailConfigForm.onsubmit = prepareMailTemplate;
+
     $(function () {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');

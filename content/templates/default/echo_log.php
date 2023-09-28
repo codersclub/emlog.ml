@@ -12,7 +12,7 @@ if (!defined('EMLOG_ROOT')) {
     <p class="date">
             <b><?=lang('time')?>:</b> <?= date('Y-m-d H:i', $date) ?>&nbsp;&nbsp;&nbsp;&nbsp;
             <b><?=lang('author')?>:</b> <?php blog_author($author) ?>&nbsp;&nbsp;&nbsp;&nbsp;
-            <b><?=lang('category')?>:</b> <?php blog_sort($logid) ?>
+            <b><?=lang('category')?>:</b> <?php blog_sort($sortid) ?>
         <?php editflg($logid, $author) ?>
     </p>
     <hr class="bottom-5"/>
