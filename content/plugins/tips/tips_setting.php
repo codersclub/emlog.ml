@@ -12,15 +12,17 @@ function plugin_setting_view() {
     </div>
     <div class="card shadow mb-4 mt-2">
         <div class="card-body">
-            <form method="post">
+            <form method="post" action="./plugin.php?plugin=tips&action=setting">
                 <div class="form-group">
                     <p><?= lang('tips_plugin_info') ?></p>
                     <?php tips(); ?>
                     <hr>
                     <p><?= lang('tips_plugin_info2') ?></p>
                 </div>
-                <input name="test" type="hidden" class="form-control" value="hello">
-                <input type="submit" class="btn btn-success btn-sm" value="<?= lang('ok_i_know') ?>">
+                <div class="form-inline">
+                    <input name="hello" class="form-control" style="width: 200px;" value="hello world">
+                    <input type="submit" class="btn btn-success btn-sm mx-2" value="<?= lang('ok_i_know') ?>">
+                </div>
             </form>
         </div>
     </div>
@@ -32,8 +34,7 @@ function plugin_setting_view() {
     </script>
 <?php }
 
-if (!empty($_POST)) {
-    $ak = isset($_POST['ak']) ? addslashes(trim($_POST['ak'])) : '';
-
-    header('Location:./plugin.php?plugin=tips&succ=1');
+function plugin_setting() {
+    $hello = Input::postStrVar('hello');
+    emDirect('./plugin.php?plugin=tips&succ=1');
 }
