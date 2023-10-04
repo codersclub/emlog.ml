@@ -22,7 +22,7 @@ class Notice {
         $_SESSION['mail'] = $mail;
 
 /*vot*/        $title = lang('email_verif_code_title');
-        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<span>%s</span><div>', $randCode);
+        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<span>%s</span></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }
 
@@ -38,7 +38,7 @@ class Notice {
         $_SESSION['mail'] = $mail;
 
         $title = lang('reset_password_code');
-/*vot*/        $content = sprintf('<div id="email_code">' . lang('email_verify_code') . '<span>%s</span><div>', $randCode);
+/*vot*/        $content = sprintf('<div id="email_code">' . lang('email_verify_code') . '<span>%s</span></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }
 
