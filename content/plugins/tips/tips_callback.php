@@ -1,5 +1,5 @@
 <?php
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('access denied!');
 
 // Execute this function when the plugin is started
 function callback_init() {

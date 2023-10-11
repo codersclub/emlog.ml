@@ -7,7 +7,7 @@ Description: Emlog PRO template options plug-in, which provides richer setting f
 Author: Adventure, Blue Leaf, emlog official
 */
 
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('access denied!');
 
 load_language('plugins/tpl_options');
 

@@ -8,7 +8,7 @@ Author: emlog
 Author URL: https://www.emlog.net
 */
 
-!defined('EMLOG_ROOT') && exit('access deined!');
+!defined('EMLOG_ROOT') && exit('access denied!');
 
 /*vot: Moved to /lang/XX/lang_plugin_tips.php
 $array_tips = [
