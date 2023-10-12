@@ -171,9 +171,6 @@ class TplOptions {
 
         //Register each hook
         $scriptBaseName = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
-        addAction('data_prebakup', function () {
-            TplOptions::getInstance()->hookDataPreBackup();
-        });
         if ($scriptBaseName == 'template') {
             addAction('adm_head', function () {
                 TplOptions::getInstance()->hookAdminMainTopData();
@@ -197,18 +194,6 @@ class TplOptions {
             )),
         );
         echo sprintf('<script>var tplOptions = %s;</script>', json_encode($data));
-    }
-
-    /**
-     * Backup data table
-     * @return void
-     */
-    public function hookDataPreBackup() {
-        global $tables;
-        $prefixLen = strlen(DB_PREFIX);
-        foreach ($this->getTable() as $table) {
-            $tables[] = substr($table, $prefixLen);
-        }
     }
 
     /**

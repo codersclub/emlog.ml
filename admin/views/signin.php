@@ -42,15 +42,15 @@
                                     </div>
                                 </div>
                                     <button class="btn btn-primary btn-user btn-block" type="submit"><?= lang('login') ?></button>
-                                <hr>
                                 <?php if ($is_signup): ?>
-                                        <div class="text-center mt-3"><a href="./account.php?action=signup"><?= lang('account_register') ?></a></div>
-                                    <hr>
+                                        <div class="text-center my-3"><a href="./account.php?action=signup"><?= lang('account_register') ?></a></div>
                                 <?php endif ?>
-                                <div><?php doAction('login_ext') ?></div>
-                                    <div class="text-center"><a class="small" href="./account.php?action=reset"><?= lang('password_forget') ?></a></div>
+                                <div class="text-center"><?php doAction('login_ext') ?></div>
                                 <hr>
-                                    <div class="text-center"><a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
+                                <div class="text-center">
+                                    <a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
+                                    <a class="small" href="./account.php?action=reset"><?= lang('password_forget') ?></a>
+                                </div>
                             </form>
                         </div>
                     </div>
