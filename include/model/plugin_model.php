@@ -2,7 +2,7 @@
 /**
  * plugin model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Plugin_Model {
@@ -102,7 +102,7 @@ class Plugin_Model {
                         if ($subFile == $file . '.php') {
                             $filePath = $pluginPath . '/' . $file;
                             $fileLastModified = filemtime($filePath);
-                            if (in_array($file, ['tips', 'tpl_options'])) { //防止更新带来文件时间变更，默认插件排序始终靠后。
+                            if (in_array($file, ['tips', 'tpl_options'])) { //To prevent file time changes caused by updates, the default plug-in sorting is always at the bottom.
                                 $fileLastModified = 0;
                             }
                             $pluginFiles[] = [

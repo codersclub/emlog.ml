@@ -35,13 +35,13 @@
 <div class="panel-heading">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link <?= $filter == '' ? 'active' : '' ?>" href="./plugin.php">全部</a>
+            <a class="nav-link <?= $filter == '' ? 'active' : '' ?>" href="./plugin.php"><?= lang('all') ?></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= $filter == 'on' ? 'active' : '' ?>" href="./plugin.php?filter=on">已开启</a>
+            <a class="nav-link <?= $filter == 'on' ? 'active' : '' ?>" href="./plugin.php?filter=on"><?= lang('active') ?></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= $filter == 'off' ? 'active' : '' ?>" href="./plugin.php?filter=off">未开启</a>
+            <a class="nav-link <?= $filter == 'off' ? 'active' : '' ?>" href="./plugin.php?filter=off"><?= lang('inactive') ?></a>
         </li>
     </ul>
 </div>

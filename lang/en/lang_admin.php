@@ -277,6 +277,7 @@ $lang = array(
     'load_more' => 'Load more…',//'加载更多…',
     'crop_hold_shift' => 'Hold Shift to adjust the cropping area proportionally',//'按住 Shift 等比例调整裁剪区域',
     'advanced_options' => 'Advanced options',//'高级选项',
+    'article_template' => 'Article template',//'文章模板',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -674,11 +675,14 @@ $lang = array(
     'plugin_settings_click' => 'Click to plug-in settings',//'点击设置插件',
     'more_info' => 'More Info&raquo;',//'更多信息&raquo;',
     'plugin_no_installed' => 'No installed plugins',//'还没有安装插件',
+    'plugin_not_found' => 'Plugin not found',//'未找到插件',
     'plugin_install' => 'Install plugin',//'安装插件',
     'plugin_new_install' => 'Install plugin',//'安装插件',
     'php_size_limit' => 'The size of the uploaded installation package exceeds the PHP limit',//'上传安装包大小超出PHP限制',
     'plugin_update_ok' => 'Plugin updated successfully',//'插件更新成功',
     'plugin_update_fail' => 'The update failed, the update package could not be downloaded, it may be a server network problem.',//'更新失败，无法下载更新包，可能是服务器网络问题。',
+    'active' => 'Active',//'已开启',
+    'inactive' => 'Inactive',//'未开启',
 
 //---------------------------
 //admin/views/plugin_install.php

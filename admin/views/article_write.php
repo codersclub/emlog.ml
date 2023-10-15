@@ -124,9 +124,9 @@
                         </div>
                         <?php if ($customTemplates): ?>
                             <div class="form-group">
-                                <label>文章模板：</label>
+                                <label><?= lang('article_template') ?>:</label>
                                 <?php
-                                $sortListHtml = '<option value="">默认</option>';
+                                $sortListHtml = '<option value=""><?= lang('default') ?></option>';
                                 foreach ($customTemplates as $v) {
                                     $select = $v['filename'] == $template ? 'selected="selected"' : '';
                                     $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '" ' . $select . '>' . ($v['comment']) . '</option>';
