@@ -75,7 +75,7 @@ class Plugin_Model {
         }
     }
 
-    function getPlugins() {
+    function getPlugins($filter = '') {
         global $emPlugins;
         if (isset($emPlugins)) {
             return $emPlugins;
@@ -83,7 +83,7 @@ class Plugin_Model {
         $emPlugins = [];
         $pluginFiles = [];
         $pluginPath = EMLOG_ROOT . '/content/plugins';
-        $pluginDir = @ dir($pluginPath);
+        $pluginDir = @dir($pluginPath);
         if (!$pluginDir) {
             return $emPlugins;
         }
@@ -93,14 +93,22 @@ class Plugin_Model {
                 continue;
             }
             if (is_dir($pluginPath . '/' . $file)) {
-                $pluginsSubDir = @ dir($pluginPath . '/' . $file);
+                $pluginsSubDir = @dir($pluginPath . '/' . $file);
                 if ($pluginsSubDir) {
                     while (($subFile = $pluginsSubDir->read()) !== false) {
                         if (preg_match('|^\.+$|', $subFile)) {
                             continue;
                         }
                         if ($subFile == $file . '.php') {
-                            $pluginFiles[] = "$file/$subFile";
+                            $filePath = $pluginPath . '/' . $file;
+                            $fileLastModified = filemtime($filePath);
+                            if (in_array($file, ['tips', 'tpl_options'])) { //防止更新带来文件时间变更，默认插件排序始终靠后。
+                                $fileLastModified = 0;
+                            }
+                            $pluginFiles[] = [
+                                'file'          => $file . '/' . $subFile,
+                                'last_modified' => $fileLastModified
+                            ];
                         }
                     }
                 }
@@ -112,15 +120,31 @@ class Plugin_Model {
 
         $active_plugins = Option::get('active_plugins');
         foreach ($pluginFiles as $plugin) {
-            $pluginData = $this->getPluginData($plugin);
+            $active = in_array($plugin['file'], $active_plugins) ? 1 : 0;
+            if ($filter == 'on' && !$active) {
+                continue;
+            }
+            if ($filter == 'off' && $active) {
+                continue;
+            }
+            $pluginData = $this->getPluginData($plugin['file']);
             if (empty($pluginData['Name'])) {
                 continue;
             }
-            $pluginData['active'] = in_array($plugin, $active_plugins) ? 1 : 0;
-            $emPlugins[$plugin] = $pluginData;
+            $pluginData['active'] = $active;
+            $pluginData['alias'] = $plugin['file'];
+            $pluginData['last_modified'] = $plugin['last_modified'];
+            $emPlugins[] = $pluginData;
         }
+
+        // Sort plugins by last modified time
+        usort($emPlugins, function ($a, $b) {
+            return $b['last_modified'] - $a['last_modified'];
+        });
+
         return $emPlugins;
     }
+
 
     function getPluginData($pluginFile) {
         $pluginPath = EMLOG_ROOT . '/content/plugins/';
@@ -133,7 +157,6 @@ class Plugin_Model {
         preg_match("/Version:(.*)/i", $pluginData, $version);
         preg_match("/Plugin URL:(.*)/i", $pluginData, $plugin_url);
         preg_match("/Description:(.*)/i", $pluginData, $description);
-        preg_match("/ForEmlog:(.*)/i", $pluginData, $emlog_version);
         preg_match("/Author:(.*)/i", $pluginData, $author_name);
         preg_match("/Author URL:(.*)/i", $pluginData, $author_url);
 
@@ -147,7 +170,6 @@ class Plugin_Model {
         $description = isset($description[1]) ? strip_tags(trim($description[1])) : '';
         $plugin_url = isset($plugin_url[1]) ? strip_tags(trim($plugin_url[1])) : '';
         $author = isset($author_name[1]) ? strip_tags(trim($author_name[1])) : '';
-        $emlog_version = isset($emlog_version[1]) ? strip_tags(trim($emlog_version[1])) : '';
         $author_url = isset($author_url[1]) ? strip_tags(trim($author_url[1])) : '';
 
         return [
@@ -156,7 +178,6 @@ class Plugin_Model {
             'Description' => $description,
             'Url'         => $plugin_url,
             'Author'      => $author,
-            'ForEmlog'    => $emlog_version,
             'AuthorUrl'   => $author_url,
             'Setting'     => $have_setting,
             'Plugin'      => $plugin,

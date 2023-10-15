@@ -2,13 +2,11 @@
 /**
  * init.
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
-session_start();
-
-/*vot*/ if (getenv('EMLOG_ENV') === 'develop'
-/*vot*/    || defined('DEV_MODE')) {
+const ENVIRONMENT = 'production'; // Operating environment: production production environment, develop development environment
+if (getenv('EMLOG_ENV') === 'develop' || ENVIRONMENT === 'develop') {
     error_reporting(E_ALL);
 } else {
     error_reporting(1);

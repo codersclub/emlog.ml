@@ -32,6 +32,19 @@
     <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
 </div>
+<div class="panel-heading">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link <?= $filter == '' ? 'active' : '' ?>" href="./plugin.php">全部</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $filter == 'on' ? 'active' : '' ?>" href="./plugin.php?filter=on">已开启</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?= $filter == 'off' ? 'active' : '' ?>" href="./plugin.php?filter=off">未开启</a>
+        </li>
+    </ul>
+</div>
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
@@ -49,7 +62,7 @@
                 <?php
                 if ($plugins):
                     $i = 0;
-                    foreach ($plugins as $key => $val):
+                    foreach ($plugins as $val):
                         $plug_state = '';
                         $plug_action = 'active';
                         if ($val['active']) {
@@ -60,17 +73,17 @@
                         if (TRUE === $val['Setting']) {
                             $val['Name'] = "<a href=\"./plugin.php?plugin={$val['Plugin']}\" title=\"" . lang('plugin_settings_click') . "\">{$val['Name']}</a>";
                         }
+                        $alias = $val['alias'];
                         ?>
                         <tr data-plugin-alias="<?= $val['Plugin'] ?>" data-plugin-version="<?= $val['Version'] ?>">
                             <td><?= $val['Name'] ?></td>
                             <td>
-                                <input class="mui-switch mui-switch-animbg" type="checkbox" id="sw<?= $i ?>" <?= $plug_state ?> onchange="toggleSwitch('<?= $key ?>', '<?= 'sw' . $i ?>', '<?= LoginAuth::genToken() ?>')">
+                                <input class="mui-switch mui-switch-animbg" type="checkbox" id="sw<?= $i ?>" <?= $plug_state ?> onchange="toggleSwitch('<?= $alias ?>', '<?= 'sw' . $i ?>', '<?= LoginAuth::genToken() ?>')">
                             </td>
                             <td>
                                 <?= $val['Description'] ?>
                                 <?php if ($val['Url'] != ''): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_info') ?></a><?php endif ?>
                                 <div class="small mt-3">
-                                    <?php if ($val['ForEmlog'] != ''): ?><?= lang('ok_for_emlog') ?>: <?= $val['ForEmlog'] ?>&nbsp | &nbsp<?php endif ?>
                                     <?php if ($val['Author'] != ''): ?>
 <!--vot-->                                    <?= lang('author') ?>:
                                         <?php if ($val['AuthorUrl'] != ''): ?>
@@ -83,13 +96,13 @@
                             </td>
                             <td><?= $val['Version'] ?></td>
                             <td>
-                                <a href="javascript: em_confirm('<?= $key ?>', 'plu', '<?= LoginAuth::genToken() ?>');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+                                <a href="javascript: em_confirm('<?= $alias ?>', 'plu', '<?= LoginAuth::genToken() ?>');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
                                 <span class="update-btn"></span>
                             </td>
                         </tr>
                     <?php endforeach; else: ?>
                     <tr>
-                        <td colspan="5"><?= lang('plugin_no_installed') ?></td>
+                        <td colspan="5"><?= lang('plugin_not_found') ?></td>
                     </tr>
                 <?php endif ?>
                 </tbody>
