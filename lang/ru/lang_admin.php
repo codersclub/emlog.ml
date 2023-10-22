@@ -943,6 +943,7 @@ $lang = array(
 'this_author_only'		=> 'Показать объекты только этого автора',//'仅看Ta的作品',
 '_plugins'			=> ' плагинов',//'个插件',// Number of plugins
 'recommend_today'		=> 'Рекомендовано сегодня',//'今日推荐',
+'limited_offer'			=> 'Ограниченное по времени предложение',//'限时优惠',
 
 //---------------------------
 //admin/views/store_svip.php

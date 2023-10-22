@@ -942,6 +942,7 @@ $lang = array(
     'this_author_only' => 'View only this author items',//'仅看Ta的作品',
     '_plugins' => ' plugins',//'个插件',// Number of plugins
     'recommend_today' => 'Recommended today',//'今日推荐',
+    'limited_offer' => 'Limited Time Offer',//'限时优惠',
 
 //---------------------------
 //admin/views/store_svip.php
