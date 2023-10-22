@@ -11,9 +11,7 @@
     <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link active" href="./store.php"><i class="icofont-paint"></i> <?= lang('ext_store_templates') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?= lang('ext_store_plugins') ?></a></li>
-        <!--vot-->
         <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
-        <!--vot-->
         <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?= lang('my_apps') ?></a></li>
     </ul>
 </div>
@@ -23,6 +21,7 @@
         <a href="./store.php" class="badge badge-success m-1 p-2"><?= lang('all') ?></a>
         <a href="./store.php?tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
         <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
+        <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
@@ -64,6 +63,17 @@
                             <p class="card-text text-muted">
                                 <small><?= subString($v['info'], 0, 56) ?></small><br><br>
                                 <!--vot--> <?= lang('price') ?>:<?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+                                <?php if ($v['price'] > 0): ?>
+                                    <?php if ($v['promo_price'] > 0): ?>
+                                        <span style="text-decoration:line-through"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
+                                        <span class="text-danger"><?= $v['promo_price'] ?><small><?= lang('price_unit') ?></small></span>
+                                    <?php else: ?>
+                                        <span class="text-danger"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <span class="text-success"><?= lang('free') ?></span>
+                                <?php endif; ?>
+                                <br>
                                 <small>
                                     <!--vot--> <?= lang('developer') ?>:<?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= lang('this_author_only') ?></a><br>
                                     <!--vot--> <?= lang('version_number') ?>:<?= $v['ver'] ?><br>

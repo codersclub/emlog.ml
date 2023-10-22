@@ -158,11 +158,7 @@ class TplOptions {
             'checkbox',
             'tag',
         );
-        //Load plugin extension configuration
-        $template = Option::get('nonce_templet');
-        if (is_file($pluginsFile = TPLS_PATH . $template . '/plugins.php')) {
-            include $pluginsFile;
-        }
+
         //Set template directory
         $this->_view = __DIR__ . '/views/';
         $this->_assets = BLOG_URL . 'content/plugins/' . self::ID . '/assets/';

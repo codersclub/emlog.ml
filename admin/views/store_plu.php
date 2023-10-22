@@ -20,6 +20,7 @@
         <a href="./store.php?action=plu" class="badge badge-success m-1 p-2"><?= lang('all') ?></a>
         <a href="./store.php?action=plu&tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
         <a href="./store.php?action=plu&tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
+        <a href="./store.php?action=plu&tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
@@ -61,6 +62,17 @@
                             <p class="card-text text-muted">
                                 <small><?= subString($v['info'], 0, 56) ?></small><br><br>
 <!--vot-->                      <?= lang('price') ?>: <?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+                                <?php if ($v['price'] > 0): ?>
+                                    <?php if ($v['promo_price'] > 0): ?>
+                                        <span style="text-decoration:line-through"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
+                                        <span class="text-danger"><?= $v['promo_price'] ?><small><?= lang('price_unit') ?></small></span>
+                                    <?php else: ?>
+                                        <span class="text-danger"><?= $v['price'] ?><small><?= lang('price') ?></small></span>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <span class="text-success"><?= lang('free') ?></span>
+                                <?php endif; ?>
+                                <br>
                                 <small>
 <!--vot-->                          <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?action=plu&author_id=<?= $v['author_id'] ?>"><?=lang('this_author_only')?></a><br>
 <!--vot-->                          <?= lang('version_number') ?>: <?= $v['ver'] ?><br>

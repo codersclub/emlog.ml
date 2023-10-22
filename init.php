@@ -93,3 +93,9 @@ if ($active_plugins && is_array($active_plugins)) {
         }
     }
 }
+
+// Load template file system call
+define('TEMPLATE_HOOK_PATH', TPLS_PATH . Option::get('nonce_templet') . '/plugins.php');
+if (file_exists(TEMPLATE_HOOK_PATH)) {
+    include_once(TEMPLATE_HOOK_PATH);
+}
