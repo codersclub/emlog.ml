@@ -65,12 +65,12 @@
                     <div class="card-text d-flex justify-content-between mt-3">
                         <span>
                         <?php if ($nonce_template !== $value['tplfile']): ?>
-                            <a class="badge badge-success" href="template.php?action=use&tpl=<?= $value['tplfile'] ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('enable') ?></a>
+                            <a class="btn btn-success btn-sn" href="template.php?action=use&tpl=<?= $value['tplfile'] ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('enable') ?></a>
                         <?php endif; ?>
                             <span class="update-btn"></span>
                         </span>
                         <span>
-                            <a class="badge badge-danger" href="javascript: em_confirm('<?= $value['tplfile'] ?>', 'tpl', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
+                            <a class="btn btn-danger btn-sm" href="javascript: em_confirm('<?= $value['tplfile'] ?>', 'tpl', '<?= LoginAuth::genToken() ?>');"><?= lang('delete') ?></a>
                         </span>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     $.each(pluginsToUpdate, function (index, item) {
                         var $tr = $('.app-list .card[data-app-alias="' + item.name + '"]');
                         var $updateBtn = $tr.find('.update-btn');
-                        $updateBtn.append($('<a>').addClass('badge badge-warning').text(lang('update')).attr("href", "./template.php?action=upgrade&alias=" + item.name));
+                        $updateBtn.append($('<a>').addClass('btn btn-warning btn-sm').text(lang('update')).attr("href", "./template.php?action=upgrade&alias=" + item.name));
                     });
                 } else {
                     console.log(lang('update_error'));

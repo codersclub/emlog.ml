@@ -68,12 +68,15 @@ define('BLOG_URL', Option::get('blogurl'));
 const TPLS_URL = BLOG_URL . 'content/templates/';
 //Template Library Path
 const TPLS_PATH = EMLOG_ROOT . '/content/templates/';
-//Resolve the front domain for ajax
-define('DYNAMIC_BLOGURL', Option::get("blogurl"));
+
+//Site URL
+define('DYNAMIC_BLOGURL', Option::get('blogurl'));
 //Front template URL
 define('TEMPLATE_URL', TPLS_URL . Option::get('nonce_templet') . '/');
 //Admin Template Path
-const ADMIN_TEMPLATE_PATH = EMLOG_ROOT . '/admin/views/';
+define('ADMIN_TEMPLATE_PATH', EMLOG_ROOT . '/admin/views/');
+//前台模板的绝对路径
+define('TEMPLATE_PATH', TPLS_PATH . Option::get('nonce_templet') . '/');
 
 //Error code
 const MSGCODE_EMKEY_INVALID = 1001;

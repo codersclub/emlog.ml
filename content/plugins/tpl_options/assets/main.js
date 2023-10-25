@@ -31,7 +31,7 @@ $(function () {
         xps.style.fontSize = '12px';
         xps.style.marginLeft = '4px';
         now.parentNode.appendChild(xps);
-/*vot*/        $('<span class="badge badge-dange">' + lang('options') + '</span>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
+/*vot*/        $('<a class="btn btn-primary btn-sm">' + lang('options') + '</a>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
     }
     //Bind event handler
     body.on('click', '.' + attr('setting'), function () {

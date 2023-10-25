@@ -512,7 +512,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('log_title_style','0'),
 ('blogurl','" . BLOG_URL . "'),
 ('icp',''),
-('footer_info','powered by <a href=\"https://www.emlog.net\">emlog pro</a>'),
+('footer_info','powered by <a href=\"https://www.emlog.net\">emlog</a>'),
 ('admin_perpage_num','15'),
 ('rss_output_num','10'),
 ('rss_output_fulltext','y'),
@@ -605,6 +605,7 @@ CREATE TABLE {$db_prefix}sort (
   taxis int(11) unsigned NOT NULL default '0' COMMENT 'Sort order',
   pid int(11) unsigned NOT NULL default '0' COMMENT 'Parent category ID',
   description text NOT NULL COMMENT 'Description',
+  kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
   PRIMARY KEY  (sid)
 )" . $table_charset_sql . "

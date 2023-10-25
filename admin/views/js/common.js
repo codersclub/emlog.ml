@@ -43,7 +43,7 @@ function em_confirm(id, property, token) {
             swalDel(msg, text, url, token)
             break;
         case 'link':
-            url = 'link.php?action=dellink&linkid=' + id;
+            url = 'link.php?action=del&linkid=' + id;
             msg = lang('link_del_sure');
             swalDel(msg, text, url, token)
             break;
@@ -512,39 +512,6 @@ function imgPasteExpand(thisEditor) {
 // Attach the paste upload image function to the js hook located in the article editor and page editor
 hooks.addAction("loaded", imgPasteExpand);
 hooks.addAction("page_loaded", imgPasteExpand);
-
-function checkupdate() {
-    $("#upmsg").html("").addClass("spinner-border text-primary");
-    $.get("./upgrade.php?action=check_update", function (result) {
-        if (result.code == 1001) {
-/*vot*/            $("#upmsg").html(lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register') + "</a>").removeClass();
-        } else if (result.code == 1002) {
-/*vot*/            $("#upmsg").html(lang('is_latest_version')).removeClass();
-        } else if (result.code == 200) {
-/*vot*/            $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://emlog.io/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "', '" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
-        } else {
-/*vot*/            $("#upmsg").html(lang('check_failed')).removeClass();
-        }
-    });
-}
-
-function doup(source, upsql) {
-/*vot*/    $("#upmsg").html(lang('updating_now')).addClass("ajaxload");
-    $.get('./upgrade.php?action=update&source=' + source + "&upsql=" + upsql, function (data) {
-        $("#upmsg").removeClass();
-        if (data.match("succ")) {
-/*vot*/            $("#upmsg").html(lang('updated_ok'));
-        } else if (data.match("error_down")) {
-/*vot*/            $("#upmsg").html(lang('update_download_fail'));
-        } else if (data.match("error_zip")) {
-/*vot*/            $("#upmsg").html(lang('unzip_fail'));
-        } else if (data.match("error_dir")) {
-/*vot*/            $("#upmsg").html(lang('update_not_writable'));
-        } else {
-/*vot*/            $("#upmsg").html(lang('update_fail'));
-        }
-    });
-}
 
 function loadTopAddons() {
     $.ajax({

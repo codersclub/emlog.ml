@@ -59,13 +59,6 @@
 <script>
     $(function () {
         setTimeout(hideActived, 3600);
-        $("#menu_category_sys").addClass('active');
-        $("#menu_sys").addClass('show');
         $("#menu_user").addClass('active');
-
-        if ($("#role").val() == 'admin') $("#ischeck").hide();
-        $("#role").change(function () {
-            $("#ischeck").toggle()
-        })
     });
 </script>

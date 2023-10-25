@@ -503,7 +503,7 @@ $lang = array(
     'official_news' => 'Official news',//'官方消息',
     'using_emlog' => 'You are using emlog',//'您正在使用emlog',
     'view_changelog' => 'View changelog',//'查看更新内容',
-    'update_check' => 'Check for updates',//'检查更新',
+    'update_check' => 'Check for updates',//'更新',
     'reading' => 'Is reading...',//'正在读取...',
     'checking_wait' => 'Is checking, please wait',//'正在检查，请稍后',
     'updates_no' => 'Already the latest version',//'已经是最新版本',
@@ -872,7 +872,7 @@ $lang = array(
 //admin/views/sort.php
     'category_management' => 'Article categories',//'文章分类',
     'category_name' => 'Category name',//'分类名',
-    'alias_prompt' => 'Used for friendly display of URL, optional',//'用于URL的友好显示，可不填',
+    'alias_prompt' => 'Composed of English letters, used for SEO settings, optional',//'英文字母组成，用于seo设置，可不填',
     'category_parent' => 'Parent category',//'父分类',
 //'submit'                                  => 'Submit',//'提交',
     'category_add' => 'Add Category',//'添加分类',
@@ -882,7 +882,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/sort_edit.php
-    'category_description' => 'Category description',//'分类描述',
+    'category_description' => 'Description (also used for description on category pages)',//'描述（也用于分类页的 description）',
     'category_template' => 'Category template',//'分类模板',
     'category_template_intro' => '(Select the category template supported by the current template, you can not choose)',//'(选择当前模板支持的分类模板，可不选)',
     'custom_template_intro' => '(Used to customize the category page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',//'(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',
@@ -1086,7 +1086,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/user_edit.php
-    'user_manage' => 'User management',//'修改作者资料',
+    'user_manage' => 'Edit user information',//'编辑用户信息',
     'password_new' => 'New password (leave blank, if you do not want to modify)',//'新密码(不修改请留空)',
     'password_new_repeat' => 'Repeat new password',//'重复新密码',
     'user_role' => 'User role',//'用户组',

@@ -6,12 +6,13 @@
 <?php if (isset($_GET['error_b'])): ?>
     <div class="alert alert-danger"><?= lang('reg_failed') ?></div><?php endif ?>
 <?php if (!Register::isRegLocal()) : ?>
-    <div class="container-fluid">
+<div class="card shadow mb-4 mt-2">
+    <div class="card-body">
         <div>
             <?php if (isset($_GET['error_store'])): ?>
                 <p class="lead text-danger mb-4"><?= lang('ext_store_info') ?></p>
             <?php endif ?>
-            <p class="lead text-danger mb-4"><?=lang('emlog_reg_advantages')?></p>
+            <h1 class="lead text-danger mb-4"><?=lang('emlog_reg_advantages')?></h1>
             <ul>
                 <li><?=lang('advantage1')?></li>
                 <li><?=lang('advantage2')?></li>
@@ -24,14 +25,15 @@
             <a href="#" class="btn btn-sm btn-primary shadow-lg" data-toggle="modal" data-target="#exampleModal"><?= lang('ok_register_now') ?></a>
             <a href="https://emlog.io/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?=lang('get_emkey')?></a>
         </div>
+        <?php else: ?>
+            <div class="container-fluid">
+                <div class="text-center">
+                    <p class="lead text-success mb-4"><?= lang('emlog_reg_ok') ?></p>
+                </div>
+            </div>
+        <?php endif ?>
     </div>
-<?php else: ?>
-    <div class="container-fluid">
-        <div class="text-center">
-            <p class="lead text-success mb-4"><?= lang('emlog_reg_ok') ?></p>
-        </div>
-    </div>
-<?php endif ?>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -62,6 +64,6 @@
 <script>
     $(function () {
         $("#menu_store").addClass('active');
-        setTimeout(hideActived, 3600);
+        setTimeout(hideActived, 10000);
     });
 </script>

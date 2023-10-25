@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Template options plugin
+Template setting plug-in
 Version: 4.2.1
-Plugin URL: https://emlog.io/plugin/detail/377
-Description: Emlog PRO template options plug-in, which provides richer setting functions for templates.
-Author: Adventure, Blue Leaf, emlog official
+Plugin URL: https://www.emlog.net/docs/#/template
+Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
+Author: emlog
 */
 
 !defined('EMLOG_ROOT') && exit('access denied!');
 
-load_language('plugins/tpl_options');
+/*vot*/ load_language('plugins/tpl_options');
 
 /**
  * Template settings class

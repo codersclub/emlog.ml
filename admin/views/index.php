@@ -102,20 +102,24 @@
                             <span class="small"><?= $server_app ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            EMLOG
-                            <?php if (!Register::isRegLocal()) : ?>
-                                <a href="auth.php"><span class="badge badge-secondary"><?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
-                            <?php elseif (Register::getRegType() == 2): ?>
-                                <span class="badge badge-warning"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('svip_hard') ?></span>
-                            <?php elseif (Register::getRegType() == 1): ?>
-                                <span class="badge badge-success"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('vip_friend') ?></span>
-                            <?php else: ?>
-                                <span class="badge badge-success"><?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('registered') ?></span>
-                            <?php endif ?>
+                            操作系统
+                            <span class="small"><?= $os ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a id="ckup" href="javascript:checkupdate();" class="btn btn-success btn-sm"><?= lang('update_check') ?></a>
-                            <span id="upmsg"></span>
+                        <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+                            <span>
+                            <?php if (!Register::isRegLocal()) : ?>
+                                <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
+                            <?php elseif (Register::getRegType() == 2): ?>
+                                <span class="badge badge-warning">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('svip_hard') ?></span>
+                            <?php elseif (Register::getRegType() == 1): ?>
+                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('vip_friend') ?></span>
+                            <?php else: ?>
+                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('registered') ?></span>
+                            <?php endif ?>
+                                </span>
+                            <span>
+                                <a id="ckup" href="javascript:checkUpdate();" class="badge badge-success d-flex align-items-center"><span><?= lang('update_check') ?></span></a>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -169,16 +173,101 @@
             <script>loadTopAddons();</script>
         <?php endif; ?>
     </div>
+    <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="update-modal-label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="update-modal-label">检查更新</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="update-modal-loading"></div>
+                    <div id="update-modal-msg" class="text-center"></div>
+                    <div id="update-modal-changes"></div>
+                    <div id="update-modal-btn" class="mt-2 text-right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         setTimeout(hideActived, 3600);
-        // upgrade
-        $("#menu_panel").addClass('active');
+        const menuPanel = $("#menu_panel").addClass('active');
+
+        // Check for updates
         $.get("./upgrade.php?action=check_update", function (result) {
-            if (result.code == 200) {
-                /*vot*/
-                $("#upmsg").html(lang('new_ver_available') + result.data.version + ", <a href=\"https://emlog.io/docs/#/changelog\" target=\"_blank\">" + lang('check_for_new') + "</a>, <a id=\"doup\" href=\"javascript:doup('" + result.data.file + "','" + result.data.sql + "');\">" + lang('update_now') + "</a>").removeClass();
+            if (result.code === 200) {
+                $("#ckup").append('<span class="badge bg-danger ml-1">!</span>');
             }
         });
+
+        function checkUpdate() {
+            const updateModal = $("#update-modal");
+            const updateModalLoading = $("#update-modal-loading");
+            const updateModalMsg = $("#update-modal-msg");
+            const updateModalChanges = $("#update-modal-changes");
+            const updateModalBtn = $("#update-modal-btn");
+
+            updateModal.modal('show');
+            updateModalLoading.addClass("spinner-border text-primary");
+
+            let rep_msg = "";
+            let rep_changes = "";
+            let rep_btn = "";
+
+            updateModalMsg.html(rep_msg);
+            updateModalChanges.html(rep_changes);
+            updateModalBtn.html(rep_btn);
+
+            $.get("./upgrade.php?action=check_update", function (result) {
+                if (result.code === 1001) {
+                    rep_msg = "您的emlog pro尚未注册，<a href=\"auth.php\">去注册</a>";
+                } else if (result.code === 1002) {
+                    rep_msg = "已经是最新版本";
+                } else if (result.code === 200) {
+                    rep_msg = `有可用的新版本：<span class="text-danger">${result.data.version}</span> <br><br>`;
+                    rep_changes = "<b>更新内容</b>:<br>" + result.data.changes;
+                    rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" class="btn btn-success btn-sm">现在更新</a>`;
+                } else {
+                    rep_msg = "检查失败，可能是网络问题";
+                }
+
+                updateModalLoading.removeClass();
+                updateModalMsg.html(rep_msg);
+                updateModalChanges.html(rep_changes);
+                updateModalBtn.html(rep_btn);
+            });
+        }
+
+        function doUp(source, upSQL) {
+            const updateModalLoading = $("#update-modal-loading");
+            const updateModalMsg = $("#update-modal-msg");
+            const updateModalChanges = $("#update-modal-changes");
+            const upmsg = $("#upmsg");
+
+            updateModalLoading.addClass("spinner-border text-primary");
+            updateModalMsg.html("更新中... 请耐心等待");
+            updateModalChanges.html("");
+
+            $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
+                upmsg.removeClass();
+
+                if (data.includes("succ")) {
+                    updateModalMsg.html('🎉恭喜，更新成功了🎉，<a href="./">刷新页面</a> 开始体验新版本');
+                } else if (data.includes("error_down")) {
+                    updateModalMsg.html('下载更新失败，可能是服务器网络问题');
+                } else if (data.includes("error_zip")) {
+                    updateModalMsg.html('解压更新失败，可能是你的服务器空间不支持zip模块');
+                } else if (data.includes("error_dir")) {
+                    updateModalMsg.html('更新失败，目录不可写');
+                } else {
+                    updateModalMsg.html('更新失败');
+                }
+
+                updateModalLoading.removeClass();
+            });
+        }
     </script>
 <?php endif ?>
 <?php if (User::isAdmin()): ?>
