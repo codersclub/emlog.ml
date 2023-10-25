@@ -75,7 +75,7 @@ define('DYNAMIC_BLOGURL', Option::get('blogurl'));
 define('TEMPLATE_URL', TPLS_URL . Option::get('nonce_templet') . '/');
 //Admin Template Path
 define('ADMIN_TEMPLATE_PATH', EMLOG_ROOT . '/admin/views/');
-//前台模板的绝对路径
+//Frontend template absolute path
 define('TEMPLATE_PATH', TPLS_PATH . Option::get('nonce_templet') . '/');
 
 //Error code

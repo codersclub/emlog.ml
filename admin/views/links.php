@@ -113,7 +113,7 @@
         $("#menu_link").addClass('active');
         setTimeout(hideActived, 3600);
 
-        // 编辑链接
+        // Edit link
         $('#linkModel').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var linkid = button.data('linkid')

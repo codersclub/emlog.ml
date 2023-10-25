@@ -485,10 +485,10 @@ $lang = array(
     'register_now' => 'Register now',//'现在去注册',
     'click_to_register' => 'click to register',//'点击去注册',
     'emlog_registered_ok' => 'Congratulations, your EMLOG has been registered.',//'恭喜，您的EMLOG已经完成注册。',
-    'em_reg_ok' => 'Congratulations, the registration is successful',//'恭喜，注册成功了',
+    'em_reg_ok' => '🎉 Congratulations, registered successfully 🎉',//'🎉 恭喜，注册成功 🎉',
     'register_emlog' => 'Register EMLOG PRO',//'注册EMLOG PRO',
     'enter_emkey' => 'Enter EMKEY',//'输入EMKEY',
-    'reg_failed' => 'Registration failed',//'注册失败',
+    'reg_failed' => 'Registration failed. May be the registration code is incorrect, or the server cannot access the official website emlog.net.',//'注册失败了，可能是注册码不正确，或服务器无法访问官网 emlog.net',
     'reg_code_invalid' => 'Registration failed, invalid registration code',//'注册失败，无效的注册码',
     'emkey_info' => 'EMKEY is the only identification code officially distributed to paying users of emlog pro, please keep it properly',//'EMKEY是官方分发给emlog pro付费用户的唯一识别码，请妥善保管',
     'get_emkey' => 'Get registration key',//'获取注册码',
@@ -503,7 +503,7 @@ $lang = array(
     'official_news' => 'Official news',//'官方消息',
     'using_emlog' => 'You are using emlog',//'您正在使用emlog',
     'view_changelog' => 'View changelog',//'查看更新内容',
-    'update_check' => 'Check for updates',//'更新',
+    'update_check' => 'Check for updates',//'检查更新',
     'reading' => 'Is reading...',//'正在读取...',
     'checking_wait' => 'Is checking, please wait',//'正在检查，请稍后',
     'updates_no' => 'Already the latest version',//'已经是最新版本',
@@ -539,6 +539,7 @@ $lang = array(
     'vip_friend' => 'Friendship VIP Edition',//'友情VIP版',
     'applied_today' => 'Applied today',//'今日应用',
     'app_development' => 'Application Development | Development Documentation',//'应用开发 | 开发文档',
+    'os' => 'Operating system',//'操作系统',
 
 //---------------------------
 //admin/views/index_user.php
@@ -879,6 +880,8 @@ $lang = array(
     'tag_add' => 'Add Tag',//'新建标签',
     'template_name' => 'Template name',//'模板名',
     'category_id' => 'Category ID',//'分类ID',
+    'keywords' => 'Keywords',//'关键词',
+    'keywords_info' => ' (English characters comma separated. Keywords used for a page classification)',//'（英文逗号分割，用于分类页的 keywords）',
 
 //---------------------------
 //admin/views/sort_edit.php

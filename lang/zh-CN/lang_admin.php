@@ -503,7 +503,7 @@ $lang = array(
     'official_news' => '官方消息',//'Official news',
     'using_emlog' => '您正在使用emlog',//'You are using emlog',
     'view_changelog' => '查看更新内容',//'View changelog',
-    'update_check' => '更新',//'Check for updates',
+    'update_check' => '检查更新',//'Check for updates',
     'reading' => '正在读取...',//'Is reading...',
     'checking_wait' => '正在检查，请稍后',//'Is checking, please wait',
     'updates_no' => '已经是最新版本',//'Already the latest version',
@@ -539,6 +539,7 @@ $lang = array(
     'vip_friend' => '友情VIP',//'Friendship VIP',
     'applied_today' => '今日应用',//'Applied today',
     'app_development' => '应用开发 | 开发文档',//'Application Development | Development Documentation',
+    'os' => '操作系统',//'Operating system',
 
 //---------------------------
 //admin/views/index_user.php
@@ -872,17 +873,19 @@ $lang = array(
 //admin/views/sort.php
     'category_management' => '文章分类',//'Article categories',
     'category_name' => '分类名',//'Category name',
-    'alias_prompt' => '用于URL的友好显示，可不填',//'Used for friendly display of URL, optional',
+    'alias_prompt' => '英文字母组成，用于seo设置，可不填',//'Composed of English letters, used for SEO settings, optional',
     'category_parent' => '父分类',//'Parent category',
 //'submit'                                  => '提交',//'Submit',
     'category_add' => '添加分类',//'添加分类+',//'Add Category',
     'tag_add' => '新建标签',//'Add Tag',
     'template_name' => '模板名',//'Template name',
     'category_id' => '分类ID',//'Category ID',
+    'keywords' => '关键词',//'Keywords',
+    'keywords_info' => '（英文逗号分割，用于分类页的 keywords）',//' (English characters comma separated. Keywords used for a page classification)',
 
 //---------------------------
 //admin/views/sort_edit.php
-    'category_description' => '分类描述',//'Category description',
+    'category_description' => '描述（也用于分类页的 description）',//'Description (also used for description on category pages)',
     'category_template' => '分类模板',//'Category template',
     'category_template_intro' => '(选择当前模板支持的分类模板，可不选)',//'(Select the category template supported by the current template, you can not choose)',
     'custom_template_intro' => '(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',//'(Used to customize the category page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',
@@ -1086,7 +1089,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/user_edit.php
-    'user_manage' => '修改作者资料',//'User management',
+    'user_manage' => '编辑用户信息',//'Edit user information',
     'password_new' => '新密码(不修改请留空)',//'New password (leave blank, if you do not want to modify)',
     'password_new_repeat' => '重复新密码',//'Repeat new password',
     'user_role' => '用户组',//'User role',

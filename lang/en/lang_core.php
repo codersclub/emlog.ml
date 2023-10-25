@@ -208,6 +208,17 @@ $lang = array(
 'comment_leave'              => 'Post a comment',//'发布评论',
 
 //---------------------------
+//content/templates/default/options.php
+'tpl_setting_tab_name'	=> 'Define settings tab name',//'定义设置项标签页名称',
+'tpl_setting_header'	=> 'Header settings',//'头部设置',
+'tpl_setting_descr'	=> 'Hello, this is the setting interface of the default template. Please click the menu above to enter the setting item.',//'你好，这是默认模板的设置界面，请点击上方菜单进入设置项。',
+'tpl_logo_mode'		=> 'LOGO display mode',//'LOGO显示模式',
+'tpl_logo_text'		=> 'Text',//'文字',
+'tpl_logo_image'	=> 'Image',//'图片',
+'tpl_logo_upload'	=> 'LOGO upload',//'LOGO上传',
+'tpl_logo_upload_descr'	=> 'Upload the LOGO image.',//'上传LOGO图片。',
+
+//---------------------------
 //content/templates/default/pw.php
 'submit'                                  => 'Submit',//'提交',
 

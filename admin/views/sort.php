@@ -94,8 +94,7 @@
                                 </td>
                                 <td><a href="article.php?sid=<?= $value['sid'] ?>"><?= $value['lognum'] ?></a></td>
                                 <td>
-                                    <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');"
-                                       class="badge badge-danger"><?= lang('delete') ?></a>
+                                    <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -150,7 +149,7 @@
                         <textarea name="description" id="description" type="text" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="kw">关键词（英文逗号分割，用于分类页的 keywords）</label>
+                        <label for="kw"><?= lang('keywords') ?><?= lang('keywords_info') ?></label>
                         <textarea name="kw" id="kw" type="text" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
@@ -200,9 +199,9 @@
         const aliasMsgHook = $("#alias_msg_hook");
 
         const errorMessages = {
-            1: '别名错误，应由字母、数字、下划线、短横线组成',
-            2: '别名错误，不能为纯数字',
-            3: '别名错误，与系统链接冲突'
+            1: lang('alias_invalid_chars'),
+            2: lang('alias_digital'),
+            3: lang('alias_system_conflict')
         };
 
         const result = issortalias(alias);
@@ -230,7 +229,7 @@
         // Initialize drag sorting
         $('#dataTable tbody').sortable().disableSelection();
 
-        // 分类编辑
+        // Edit category
         $('#sortModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var sid = button.data('sid')

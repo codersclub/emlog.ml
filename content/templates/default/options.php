@@ -2,8 +2,8 @@
 /*@support tpl_options*/
 
 /**
- * 模板设置的配置文件
- * 详见官网文档-模板开发：https://www.emlog.net/docs/#/template
+ * Configuration file for template settings
+ * For details, please refer to the official website documentation-template development: https://www.emlog.net/docs/#/template
  */
 
 !defined('EMLOG_ROOT') && exit('access denied!');
@@ -11,29 +11,29 @@
 $options = [
     'TplOptionsNavi' => [
         'type'        => 'radio',
-        'name'        => '定义设置项标签页名称',
+        'name'        => lang('tpl_setting_tab_name'),
         'values'      => [
-            'tpl-head' => '头部设置',
+            'tpl-head' => lang('tpl_setting_header'),
         ],
-        'description' => '<p>你好，这是默认模板的设置界面，请点击上方菜单进入设置项。</p>'
+        'description' => '<p>' . lang('tpl_setting_descr') .'</p>'
     ],
     'logotype'       => [
         'labels'  => 'tpl-head',
         'type'    => 'radio',
-        'name'    => 'LOGO显示模式',
+        'name'    => lang('tpl_logo_mode'),
         'values'  => [
-            '1' => '文字',
-            '0' => '图片',
+            '1' => lang('tpl_logo_text'),
+            '0' => lang('tpl_logo_image'),
         ],
         'default' => '1',
     ],
     'logoimg'        => [
         'labels'      => 'tpl-head',
         'type'        => 'image',
-        'name'        => 'LOGO上传',
+        'name'        => lang('tpl_logo_upload'),
         'values'      => [
             TEMPLATE_URL . 'images/logo.png',
         ],
-        'description' => '上传LOGO图片。'
+        'description' => lang('tpl_logo_upload_descr')
     ],
 ];
