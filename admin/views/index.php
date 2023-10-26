@@ -154,9 +154,10 @@
                 <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
                         <li class="msg_type_0"><a href="https://emlog.io/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
-                        <li class="msg_type_0"><a href="https://emlog.io/docs/#/" target="_blank"><?= lang('app_development') ?></a></li>
                         <li class="msg_type_0"><a href="https://emlog.io/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
                         <li class="msg_type_0"><a href="https://github.com/emlog/emlog-ml/discussions" target="_blank"><?= lang('feedback') ?></a></li>
+                        <li class="msg_type_0"><a href="https://emlog.io/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
+
                     </ul>
                 </div>
             </div>

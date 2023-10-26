@@ -19,7 +19,7 @@ class TplOptions {
     //Plug-in ID
     const ID = 'tpl_options';
     const NAME = 'Template options';
-    const VERSION = '4.2';
+    const VERSION = '4.2.1';
 
     //DB table prefix
     private $_prefix = 'tpl_options_';
@@ -197,8 +197,8 @@ class TplOptions {
      * @return void
      */
     public function hookAdminHead() {
-        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(self::VERSION));
-        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(self::VERSION));
+        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(Option::EMLOG_VERSION_TIMESTAMP));
+        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(Option::EMLOG_VERSION_TIMESTAMP));
         /*vot*/
         echo sprintf('<script src="%s"></script>', $this->_lang . '/lang_js.js?ver=' . urlencode(self::VERSION));
     }

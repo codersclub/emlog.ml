@@ -10,7 +10,12 @@ if (!defined('EMLOG_ROOT')) {
     exit('error!');
 }
 require_once View::getView('module');
-load_language('templates/default');
+/*vot*/ load_language('templates/default');
+
+if (!function_exists('_g')) {
+    emMsg('请开启【模板设置】插件, <a href="/admin/plugin.php">去开启</a>');
+}
+
 ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">

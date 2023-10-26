@@ -27,6 +27,8 @@
     <div class="alert alert-danger"><?=lang('plugin_update_fail')?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
     <div class="alert alert-danger"><?=lang('emlog_unregistered')?></div><?php endif ?>
+<?php if (isset($_GET['error_sys'])): ?>
+    <div class="alert alert-danger">系统依赖插件，请勿删除和关闭</div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
@@ -63,9 +65,6 @@
                 if ($plugins):
                     $i = 0;
                     foreach ($plugins as $val):
-                        if ($val['Plugin'] === 'tpl_options') {
-                            continue;
-                        }
                         $plug_state = '';
                         $plug_action = 'active';
                         if ($val['active']) {
