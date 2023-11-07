@@ -1,5 +1,5 @@
 <?php
-!defined('EMLOG_ROOT') && exit('access denied!');
+defined('EMLOG_ROOT') || exit('access denied!');
 
 /*
  * Display plug-in front page

@@ -1,6 +1,4 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['error'])): ?>
 <!--vot-->    <div class="alert alert-danger"><?=lang('store_unavailable')?></div><?php endif ?>
 

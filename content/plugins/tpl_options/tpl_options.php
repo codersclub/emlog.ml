@@ -7,7 +7,7 @@ Description: Add rich setting functions to the template, please see the official
 Author: emlog
 */
 
-!defined('EMLOG_ROOT') && exit('access denied!');
+defined('EMLOG_ROOT') || exit('access denied!');
 
 /*vot*/ load_language('plugins/tpl_options');
 

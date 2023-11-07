@@ -2,9 +2,7 @@
 /**
  * Custom 404 page
  */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">

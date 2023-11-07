@@ -1,6 +1,4 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['activated'])): ?>
     <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>
 <h1 class="h3 mb-4 text-gray-800"><?= lang('widget_manage') ?></h1>

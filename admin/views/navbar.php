@@ -1,6 +1,4 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['active_taxis'])): ?>
     <div class="alert alert-success"><?= lang('nav_cat_update_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_del'])): ?>

@@ -2,9 +2,7 @@
 /**
  * Homepage template
  */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
     <main class="container blog-container">
         <div class="row">

@@ -2,9 +2,7 @@
 /**
  * Input the article password page
  */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <!doctype html>
 <html lang="zh-cn">

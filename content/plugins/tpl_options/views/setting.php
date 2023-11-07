@@ -1,5 +1,5 @@
 <?php
-!defined('EMLOG_ROOT') && exit('access denied!');
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <div id="tpl-options">
 <!--vot-->    <div class="tpl-options-close"><?= lang('back') ?></div>

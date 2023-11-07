@@ -1,6 +1,4 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <footer class="py-4">
     <div class="text-center">
         <span>Copyright &copy; <?= date("Y") ?> </span>

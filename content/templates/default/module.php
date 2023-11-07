@@ -2,9 +2,7 @@
 /**
  * Sidebar components, modules page
  */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <?php
 /**

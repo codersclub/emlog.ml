@@ -2,9 +2,7 @@
 /**
  * Page Bottom Information
  */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <footer class="blog-footer">
     <div class="container footinfo">

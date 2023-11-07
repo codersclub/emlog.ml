@@ -1,7 +1,4 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
-
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['active_del'])): ?>
     <div class="alert alert-success"><?= lang('comment_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_show'])): ?>

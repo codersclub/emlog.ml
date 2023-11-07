@@ -1,9 +1,7 @@
-<?php if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-} ?>
+<?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-3">
         <div class="mb-0 text-gray-800">
-            <span class="h3"><?= lang('welcome') ?>, <a class="small" href="./blogger.php"><?= $user_cache[UID]['name'] ?></a></span>
+            <span class="h4"><?= lang('welcome') ?>, <a class="small" href="./blogger.php"><?= $user_cache[UID]['name'] ?></a></span>
             <span class="badge badge-primary ml-2"><?= $role_name ?></span>
         </div>
         <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
@@ -21,7 +19,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles_pending') ?></div>
+                                                <div class="small font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles_pending') ?></div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php?checked=n"><?= $sta_cache['checknum'] ?></a></div>
                                             </div>
                                             <div class="col-auto">
@@ -37,7 +35,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col">
-                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                <div class="small font-weight-bold text-warning text-uppercase mb-1">
                                                     <?= lang('pending_review') ?>
                                                 </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./comment.php?hide=y"><?= $sta_cache['hidecomnum'] ?></a></div>
@@ -54,7 +52,7 @@
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                <div class="small font-weight-bold text-success text-uppercase mb-1">
                                                     <?= lang('user_num') ?>
                                                 </div>
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./user.php"><?= count($user_cache) ?></a></div>
@@ -165,7 +163,7 @@
         <?php if (Register::isRegLocal() && option::get('accept_app_recs') === 'y'): ?>
             <div class="col-lg-6 mb-4">
                 <div class="card mb-4">
-                    <h6 class="card-header"><?= lang('applied_today') ?> - <a href="./store.php"><?= lang('app_store') ?></a></h6>
+                    <h6 class="card-header"><?= lang('app_recommended') ?></h6>
                     <div class="card-body">
                         <div class="row" id="app-list"></div>
                     </div>

@@ -4,9 +4,7 @@
  * After the template is enabled, this file will be automatically loaded by the system. Can be used to implement plug-in-like functionality.
  */
 
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 
 /* eg:
 

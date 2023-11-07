@@ -6,9 +6,7 @@ Description: Emlog Pro Default template
 Author: emlog official
 Author Url:https://emlog.io
 */
-if (!defined('EMLOG_ROOT')) {
-    exit('error!');
-}
+defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
 /*vot*/ load_language('templates/default');
 

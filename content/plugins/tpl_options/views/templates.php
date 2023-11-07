@@ -1,5 +1,5 @@
 <?php
-!defined('EMLOG_ROOT') && exit('access denied!');
+defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <div class="containertitle2">
 <!--vot-->    <a class="navi3" href="<?php echo $this->url(); ?>"><?=lang('tpl_list')?></a>
