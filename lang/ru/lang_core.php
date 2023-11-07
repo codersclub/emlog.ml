@@ -181,6 +181,10 @@ $lang = array(
 'powered_by_emlog'	=> 'Powered by Emlog',//'采用emlog系统',
 
 //---------------------------
+//content/templates/default/header.php
+'enable_tpl_settings'        => 'Пожалуйста, активируйте плагин [Настройки шаблонов], <a href="./admin/plugin.php">Активировать</a>',//'请开启【模板设置】插件, <a href="./admin/plugin.php">去开启</a>',
+
+//---------------------------
 //content/templates/default/module.php
 // '_posts'			=> 'posts',//'篇文章',
 // 'subscribe_category'	=> 'Subscribe this category',//'订阅该分类',

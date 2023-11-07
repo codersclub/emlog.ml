@@ -684,6 +684,7 @@ $lang = array(
     'plugin_update_fail' => '更新失败，无法下载更新包，可能是服务器网络问题。',//'The update failed, the update package could not be downloaded, it may be a server network problem.',
     'active' => '已开启',//'Active',
     'inactive' => '未开启',//'Inactive',
+    'sys_plugin' => '系统依赖插件，请勿删除和关闭',//'The system depends on this plug-in, please do not delete or close them',
 
 //---------------------------
 //admin/views/plugin_install.php

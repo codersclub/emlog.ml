@@ -181,6 +181,10 @@ $lang = array(
 'powered_by_emlog'           => '采用emlog系统',//'Powered by Emlog',
 
 //---------------------------
+//content/templates/default/header.php
+'enable_tpl_settings'        => '请开启【模板设置】插件, <a href="./admin/plugin.php">去开启</a>',//'Please enable the [Template Settings] plug-in, <a href="./admin/plugin.php">Enable</a>',
+
+//---------------------------
 //content/templates/default/module.php
 // '_posts'			=> '篇文章',//'posts',
 // 'subscribe_category'	=> '订阅该分类',//'Subscribe this category',

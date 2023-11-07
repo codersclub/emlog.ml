@@ -153,6 +153,8 @@ var LNG = {
     'insert_to_article': 'Insert to the article',//'插入文章',
     'set_cover': 'Set as cover',//'设为封面',
     'file_size': 'File size: ',//'文件大小：',
+    'del_media_sure': 'Are you sure you want to delete this resource?',//'确定要删除该资源吗？',
+    'delete': 'Delete',//'删除',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

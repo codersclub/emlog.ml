@@ -23,11 +23,11 @@ function insert_cover(imgsrc) {
 
 async function delete_media(id) {
     const confirmed = await Swal.fire({
-        title: '确定要删除该资源吗？',
+        title: lang('del_media_sure'),
         icon: 'warning',
         showCancelButton: true,
-        cancelButtonText: '取消',
-        confirmButtonText: '删除',
+        cancelButtonText: lang('cancel'),
+        confirmButtonText: lang('delete'),
     }).then((result) => result.isConfirmed);
 
     if (confirmed) {
@@ -38,6 +38,7 @@ async function delete_media(id) {
     }
 }
 
+// Insert resource list
 let page = 1;
 let sid = 0;
 

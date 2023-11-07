@@ -11,7 +11,7 @@ require_once View::getView('module');
 /*vot*/ load_language('templates/default');
 
 if (!function_exists('_g')) {
-    emMsg('请开启【模板设置】插件, <a href="/admin/plugin.php">去开启</a>');
+    emMsg(lang('enable_tpl_settings'));
 }
 
 ?>
