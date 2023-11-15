@@ -46,7 +46,7 @@
                                 <div class="text-center"><?php doAction('login_ext') ?></div>
                                 <hr>
                                 <div class="text-center">
-                                    <a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
+                                    <a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a>&nbsp&nbsp&nbsp
                                     <a class="small" href="./account.php?action=reset"><?= lang('password_forget') ?></a>
                                 </div>
                             </form>
