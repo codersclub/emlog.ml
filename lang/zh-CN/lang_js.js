@@ -75,6 +75,8 @@ var LNG = {
     'too_quick': '请勿频繁操作！',//'Do not operate frequently!',
     'saving_in': '[保存中] ',//'[Saving] ',
     'saved_ok': '[保存成功] ',//'[Saved successfully]: ',
+    'save_success': '保存成功';//'Saved successfully';
+
     'save_failed': '[保存失败] ',//'[Save failed]: ',
     'save_failed!': '保存失败！',//'Save failed!',
     'save_failed_prompt': '保存失败，请备份内容和刷新页面后重试！',//'Failed to save, please backup content, refresh the page and try again!',

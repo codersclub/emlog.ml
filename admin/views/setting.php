@@ -154,7 +154,7 @@
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
-        // 提交表单
+        // submit Form
         $("#setting_form").submit(function (event) {
             event.preventDefault();
             submitForm("#setting_form");

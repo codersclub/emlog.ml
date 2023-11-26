@@ -69,12 +69,14 @@ var LNG = {
     'alias_system_conflict': 'Alias error (system conflict)',//'别名错误，与系统链接冲突',
     'alias_link_error_not_saved': 'Invalid Link Alias. Can not be saved automatically.',//'链接别名错误，自动保存失败',
 // 'saving': 'Saving...',//'正在保存中...',
-    'saving': '正在保存中...',//'Saving...',
+    'saving': 'Saving...',//'正在保存中...',
     'saved_ok_time': 'Saved at ',//'保存于：',
     'save_system_error': 'Failed to save, maybe the article cannot be edited or the daily post limit has been reached',//'保存失败，可能文章不可编辑或达到每日发文限额',
     'too_quick': 'Do not operate frequently!',//'请勿频繁操作！',
     'saving_in': '[Saving] ',//'[保存中] ',
     'saved_ok': '[Saved successfully]: ',//'[保存成功] ',
+    'save_success': 'Saved successfully';//'保存成功';
+
     'save_failed': '[Save failed]: ',//'[保存失败] ',
     'save_failed!': 'Save failed!',//'保存失败！',
     'save_failed_prompt': 'Failed to save, please backup content, refresh the page and try again!',//'保存失败，请备份内容和刷新页面后重试！',

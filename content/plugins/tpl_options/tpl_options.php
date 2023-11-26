@@ -1,6 +1,6 @@
 <?php
 /*
-Template setting plug-in
+Template options plug-in
 Version: 4.2.3
 Plugin URL: https://www.emlog.net/docs/#/template
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
@@ -70,7 +70,7 @@ class TplOptions {
     //Pages
     private $_pages;
 
-    //文章
+    //Articles
     private $_posts;
 
     /**
@@ -110,56 +110,49 @@ class TplOptions {
         //Initialize template settings types
         $this->_types = array(
             'radio'    => array(
-                /*vot*/
-                'name'       => lang('ftype_radio'),
+/*vot*/         'name'       => lang('ftype_radio'),
                 'allowMulti' => false,
             ),
             'color'    => array(
-                /*vot*/
-                'name'       => lang('ftype_color'),
+/*vot*/         'name'       => lang('ftype_color'),
                 'allowMulti' => false,
             ),
             'checkon'  => array(
-                /*vot*/
-                'name'       => lang('ftype_checkon'),
+/*vot*/         'name'       => lang('ftype_checkon'),
                 'allowMulti' => false,
             ),
             'checkbox' => array(
-                /*vot*/
-                'name'       => lang('ftype_checkbox'),
+/*vot*/         'name'       => lang('ftype_checkbox'),
                 'allowMulti' => true,
             ),
             'text'     => array(
-                /*vot*/
-                'name'       => lang('ftype_text'),
+/*vot*/         'name'       => lang('ftype_text'),
                 'allowMulti' => true,
                 'allowRich'  => true,
             ),
             'image'    => array(
-                /*vot*/
-                'name'       => lang('ftype_image'),
+/*vot*/         'name'       => lang('ftype_image'),
                 'allowMulti' => false,
             ),
             'page'     => array(
-                /*vot*/
-                'name'       => lang('ftype_page'),
+/*vot*/         'name'       => lang('ftype_page'),
                 'allowMulti' => true,
             ),
             'sort'     => array(
-                /*vot*/
-                'name'        => lang('ftype_category'),
+/*vot*/         'name'        => lang('ftype_category'),
                 'allowMulti'  => true,
                 'allowDepend' => true,
             ),
             'tag'      => array(
-                /*vot*/
-                'name'       => lang('ftype_tag'),
+/*vot*/         'name'       => lang('ftype_tag'),
+                'allowMulti' => true,
+            ),
             'select'   => array(
-                'name'       => '选择',
+/*vot*/         'name'       => lang('ftype_select'),
                 'allowMulti' => true,
             ),
             'block'    => array(
-                'name'       => '组合块',
+/*vot*/         'name'       => lang('ftype_block'),
                 'allowMulti' => true,
             ),
         );
@@ -913,15 +906,15 @@ class TplOptions {
             case 'select':
                 $type = '';
                 if ($option['pattern'] == 'post') {
-                    $type = '文章';
+/*vot*/             $type = lang('article');
                     $data = $this->getPosts();
                 }
                 if ($option['pattern'] == 'cate') {
-                    $type = '分类';
+/*vot*/             $type = lang('category');
                     $data = $this->getSorts(false, true);
                 }
                 if ($option['pattern'] == 'page') {
-                    $type = '页面';
+/*vot*/             $type = lang('page');
                     $data = $this->getPages();
                 }
 
@@ -936,11 +929,11 @@ class TplOptions {
                     ));
                 }
                 echo '<li class="search-field ">';
-                echo sprintf('<input class="chosen-search-input" data-opt="%s" data-s-name="%s" data-url="%s" type="text" autocomplete="off" placeholder="输入%s标题关键词以搜索%s">', $option['pattern'], $option['id'], BLOG_URL, $type, $type);
+/*vot*/         echo sprintf('<input class="chosen-search-input" data-opt="%s" data-s-name="%s" data-url="%s" type="text" autocomplete="off" placeholder="' . lang('enter_keyword_for') .'">', $option['pattern'], $option['id'], BLOG_URL, $type, $type);
                 echo '</li>';
                 echo '</ul>';
                 echo '<div class="chosen-drop">';
-                echo sprintf('<ul class="chosen-results"><li class="no-results">请输入%s标题</li></ul>', $type);
+/*vot*/         echo sprintf('<ul class="chosen-results"><li class="no-results">' . lang('enter_title_for') . '</li></ul>', $type);
                 echo '</div>';
                 echo '</div>';
                 break;
@@ -975,7 +968,7 @@ class TplOptions {
                     }
                 }
 
-                echo sprintf('<a class="badge badge-success tpl-add-block" data-b-name="%s" data-type="%s" data-url="%s"><i class="ri-add-line"></i> 添加</a>', $option['id'], $this_data_type, BLOG_URL);
+/*vot*/         echo sprintf('<a class="badge badge-success tpl-add-block" data-b-name="%s" data-type="%s" data-url="%s"><i class="ri-add-line"></i> ' . lang('add') . '</a>', $option['id'], $this_data_type, BLOG_URL);
                 echo '</div>';
                 echo '<script>
                           $(".tpl-sortable-block").sortable({
@@ -1094,8 +1087,8 @@ class TplOptions {
             if ($max === '' && $min !== '' && is_numeric($min)) {
                 $limit_html = 'oninput="if(value<' . $min . ')value=' . $min . '"';
             }
-            $tpl = '<div class="tpl-number-input-item">
-                        <input type="number" class="tpl-number-input" placeholder="填入数字" name="{name}" value="{value}" ' . $limit_html . '>
+/*vot*/     $tpl = '<div class="tpl-number-input-item">
+                        <input type="number" class="tpl-number-input" placeholder="' . lang('enter_numbers') . '" name="{name}" value="{value}" ' . $limit_html . '>
                         ' . $unit_html . '
                     </div>';
         }
@@ -1149,9 +1142,9 @@ class TplOptions {
     private function renderBlock($option) {
         $tpl = '';
         if (isset($option['pattern']) && trim($option['pattern']) === 'image') {
-            $tpl .= '<div class="tpl-block-upload">
-                        <span class="image-tip">友情提示：选择文件后将会立刻上传覆盖原图</span>
-                        <span>填写块标题：</span>
+/*vot*/     $tpl .= '<div class="tpl-block-upload">
+                        <span class="image-tip">' . lang('tpl_upload_tips') . '</span>
+                        <span>' . lang('enter_block_title') . ':</span>
                         <input class="block-title-input" type="text" name="{title}" value="{tvalue}">
                          <div class="tpl-image-preview">
                             <img src="{value}">
@@ -1159,15 +1152,15 @@ class TplOptions {
                          <div class="tpl-block-upload-input">
                              <input type="text" name="{name}" value="{value}">
                              <label>
-                                <a class="btn btn-primary"><i class="icofont-plus"></i>上传</a>
+                                <a class="btn btn-primary"><i class="icofont-plus"></i>' . lang('upload') . '</a>
                                 <input class="d-none tpl-image" type="file" name="image" data-url="' . BLOG_URL . '" accept="image/gif,image/jpeg,image/jpg,image/png">
                              </label>
                          </div>
                      </div>';
         } else {
-            $tpl = '<span>填写块标题：</span>';
+/*vot*/     $tpl = '<span>' . lang('enter_block_title') . ':</span>';
             $tpl .= '<input class="block-title-input" type="text" name="{title}" value="{tvalue}">';
-            $tpl .= '<span>填写块内容：</span>';
+/*vot*/     $tpl .= '<span>' . lang('enter_block_content') . ':</span>';
             $tpl .= '<textarea rows="8" name="{name}">{value}</textarea>';
         }
         $option['depend'] = 'block';

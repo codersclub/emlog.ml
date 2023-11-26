@@ -8,7 +8,12 @@
 
 # emlog
 
-emlog is a lightweight blog and CMS website building system, dedicated to creating an easy-to-use personal cloud content management system.
+A fast and stable lightweight blog and CMS website building system to create an easy-to-use cloud content management system.
+
+<p align="center">
+<a href="https://github.com/emlog/emlog/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/emlog/emlog.svg?style=flat-square&include_prereleases" /></a>
+<a href="https://github.com/emlog/emlog/commits"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/emlog/emlog.svg?style=flat-square" /></a>
+</p>
 
 ## Function introduction
 
@@ -22,29 +27,24 @@ emlog is a lightweight blog and CMS website building system, dedicated to creati
 - Custom pages: Supports the creation of custom pages, including message boards, personal introductions, etc., to help you create a more personalized and functional site.
 - Tags and categories: Articles can be easily categorized and tagged, providing better information organization and retrieval capabilities.
 
-## Environmental requirements
-
-* PHP5.6, PHP7, PHP8, PHP7.4 recommended
-* MySQL5.6 and above, 5.6 is recommended
-* Recommended server environment: Linux + nginx
-* Server panel software recommendation: Pagoda panel
-* Recommended browsers: Chrome, Edge
-
-## Installation Notes
-
-1. Upload all decompressed files to the web root directory of the server or virtual host. You can also upload the zip package and decompress it online.
-2. Access the pre-resolved domain name on the browser, and the program will automatically jump to the emlog installation page. Just follow the prompts to install it.
-3. The installation process will not create a database. You need to create it in advance. Click to confirm the installation. The installation is successful.
-
-## Docker
-
-### Start via `docker run`
+## Quick Start (Docker)
 
 ```bash
 $ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
 ```
 
-### Start via `docker-compose`
+## Environmental requirements
+
+* PHP5.6, PHP7, PHP8. PHP7.4 recommended
+* MySQL5.6 and above. 5.6 is recommended
+* Recommended server environment: Linux + Nginx
+
+## Installation and deployment
+
+- [Pagoda one-click deployment](https://www.emlog.net/docs/#/install_bt)
+- [1Panel deployment](https://www.emlog.net/docs/#/install_1panel)
+
+## Start via `docker-compose`
 
 1. cp config.sample.php config.php
 2. docker network create emlog_network
@@ -54,3 +54,9 @@ $ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
 ## License Agreement
 
 The license under which the Emlog software is released is the Free Software Foundation's GPLv3 (or higher): [LICENSE](/license.txt)
+
+## Installation Notes
+
+1. Upload all decompressed files to the web root directory of the server or virtual host. You can also upload the zip package and decompress it online.
+2. Access the pre-resolved domain name on the browser, and the program will automatically jump to the emlog installation page. Just follow the prompts to install it.
+3. The installation process will not create a database. You need to create it in advance. Click to confirm the installation. The installation is successful.

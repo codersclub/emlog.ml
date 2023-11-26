@@ -281,6 +281,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/admin_page.php
+    'page' => 'Page',//'页面',
     'page_management' => 'Page',//'页面',
     'page_deleted_ok' => 'Page has been removed successfully',//'删除页面成功',
     'page_published_ok' => 'Page has been published successfully',//'发布页面成功',
@@ -811,6 +812,8 @@ $lang = array(
     'today_app_news' => 'Receive official app recommendations (affects the display of today\'s apps on the background homepage)',//'接收来自官方的应用推荐（影响后台首页今日应用的展示）',
     'unit_kb' => '(unit: KB, 1MB=1024KB)',//'（单位：KB，1MB=1024KB）',
     'login_before_comment_on' => 'Comment after login. Only logged-in users can comment after this is turned on',//'登录后评论，开启后仅登录用户可评论',
+    'app_recommended' => 'Recommended applications',//'应用推荐',
+    'menu' => 'Menu',//'菜单',
 
 //---------------------------
 //admin/views/setting_api.php
@@ -819,14 +822,11 @@ $lang = array(
     'api_key' => 'API key',//'API秘钥',
     'api_key_reset' => 'Reset API key',//'重置API秘钥',
     'api_list' => 'List of API interfaces',//'API接口列表',
-    'api_1' => 'Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',//'文章发布 (可用于对接内容发布软件，文章发布接口URL：',
-    'api_2' => 'Edit article',//'文章列表',
-    'api_3' => 'Article list',//'文章详情',
-    'api_4' => 'Article details',//'分类列表',
-    'api_5' => 'Category list',//'笔记发布',
-    'api_6' => 'Publish note',//'笔记发布',
-    'api_7' => 'Note list',//'笔记列表',
-    'api_8' => 'Resource file upload',//'资源文件上传',
+    'api_1' => '1. Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',//'1. 文章发布 (可用于对接内容发布软件，文章发布接口URL：',
+    'api_2' => '2. Article details',//'2. 分类列表',
+    'api_3' => '3. Category list',//'3. 笔记发布',
+    'api_4' => '4. Note list',//'4. 笔记列表',
+    'api_5' => '5. Resource file upload',//'5. 资源文件上传',
     'api_more' => 'More info',//'更多接口',
     'api_docs' => 'See the API documentation for details→',//'详见接口文档→',
 

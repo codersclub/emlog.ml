@@ -143,7 +143,7 @@ function submitForm(formId) {
         url: $(formId).attr('action'),
         data: $(formId).serialize(),
         success: function () {
-            cocoMessage.success('保存成功')
+/*vot*/     cocoMessage.success(lang('save_success'))
         },
         error: function (xhr) {
             const errorMsg = JSON.parse(xhr.responseText).msg;

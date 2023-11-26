@@ -143,7 +143,7 @@ if ($action == 'seo_save') {
                        RewriteRule . ' . $t['path'] . 'index.php [L]
                     </IfModule>';
         if (!file_put_contents(EMLOG_ROOT . '/.htaccess', $rw_rule)) {
-            Output::error('保存失败：根目录下的.htaccess不可写');
+            Output::error(lang('htaccess_not_writable'));
         }
     }
 

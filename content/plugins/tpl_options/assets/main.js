@@ -161,19 +161,19 @@ $(function () {
         let _url = $(this).attr('data-url')
         let type_html = ''
         if (_type === 'image') {
-            type_html = '<div class="tpl-block-upload"><span>填写块标题：</span>' +
-                '<span class="image-tip">友情提示：选择文件后将会立刻上传覆盖原图</span>' +
+/*vot*/     type_html = '<div class="tpl-block-upload"><span>' + lang('enter_block_title') + ':</span>' +
+                '<span class="image-tip">' + lang('overwrite_tips') + '</span>' +
                 '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">' +
                 '<div class="tpl-image-preview"><img src=""></div><div class="tpl-block-upload-input">' +
                 '<input type="text" name="' + _name + '[content][]" value=""><label>\n' +
-                '<a class="btn btn-primary"><i class="icofont-plus"></i>上传</a>\n' +
+                '<a class="btn btn-primary"><i class="icofont-plus"></i>' + lang('upload') + '</a>\n' +
                 '<input class="d-none tpl-image" type="file" name="image" data-url="' + _url + '" accept="image/gif,image/jpeg,image/jpg,image/png">\n' +
                 '</label>'
             type_html += '</div></div>';
         } else {
-            type_html += '<span>填写块标题：</span>'
+/*vot*/     type_html += '<span>' + lang('enter_block_title') + ':</span>'
             type_html += '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">';
-            type_html += '<span>填写块内容：</span>'
+/*vot*/     type_html += '<span>' + lang('enter_block_content') + ':</span>'
             type_html += '<textarea rows="8" name="' + _name + '[content][]"></textarea>';
         }
         $(this).before('<div class="tpl-block-item">\n' +
@@ -220,13 +220,13 @@ $(function () {
                 }
             },
             error: function (data) {
-                cocoMessage.error('网络异常', 2500);
+                cocoMessage.error(lang('network_error'), 2500);
             }
 
         });
 
     }).on('click', '.tpl-block-remove', function () {
-        if (confirm('真的要删除吗？')) {
+/*vot*/ if (confirm(lang('delete_sure'))) {
             $(this).parent().parent().remove()
             $('form.tpl-options-form').trigger('submit');
         }

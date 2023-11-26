@@ -98,13 +98,13 @@
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
-        // 提交表单
+        // submit Form
         $("#profile_setting_form").submit(function (event) {
             event.preventDefault();
             submitForm("#profile_setting_form");
         });
 
-        // 裁剪上传头像
+        // Crop and upload avatar
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');
         var cropper;

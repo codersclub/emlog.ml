@@ -94,7 +94,7 @@
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
 
-        // 提交表单
+        // submit Form
         $("#seo_setting_form").submit(function (event) {
             event.preventDefault();
             submitForm("#seo_setting_form");

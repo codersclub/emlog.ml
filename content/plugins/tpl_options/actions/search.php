@@ -1,38 +1,38 @@
 <?php
 /*
- * Author: Vaimibao-曦颜XY
- * Description: 模板设置插件AJAX处理。
+ * Author: Vaimibao-Xiyan XY
+ * Description: Template options plug-in AJAX processing.
 */
 
 require_once '../../../../init.php';
 
 if (!User::isAdmin()) {
-    echo '权限不足！';
+    echo lang('no_permission');
     exit;
 }
 
-//处理AJAX action
+//Handle AJAX actions
 $action = Input::postStrVar('action', '');
 if (!isset($action)) {
-    echo '操作失败，请刷新网页！';
+    echo lang('failed_refresh');
     exit;
 }
 
-//处理AJAX传入值
+//Handle AJAX incoming values
 $_s_type = '';
 $s_key = Input::postStrVar('kywd', '');
 $s_key = htmlspecialchars($s_key) ?: '';
 $name = Input::postStrVar('name', '');
 $type = Input::postStrVar('type', '');
 
-//处理模板设置插件文件异常
+//Handle exceptions in template options plug-in files
 $type_arr = [
-    'post' => '文章',
-    'cate' => '分类',
-    'page' => '页面',
+/*vot*/ 'post' => lang('article'),
+/*vot*/ 'cate' => lang('category'),
+/*vot*/ 'page' => lang('page'),
 ];
 
-$exit_tip = '<li class="no-results">插件文件异常，请重新安装Emlog Pro</li>';
+/*vot*/ $exit_tip = '<li class="no-results">' . lang('plugin_invalid') . '</li>';
 $is_type_exists = array_key_exists(trim($type), $type_arr);
 
 if (empty($name) || !$is_type_exists) {
@@ -41,10 +41,10 @@ if (empty($name) || !$is_type_exists) {
 }
 $_s_type = $type_arr[$type];
 
-//处理AJAX请求
+//Handle AJAX requests
 if ($action === 'tpl_select_search') {
     if (empty(trim($s_key))) {
-        echo '<li class="no-results">请输入' . $_s_type . '标题关键字</li>';
+/*vot*/ echo '<li class="no-results">' . lang('please_enter') . $_s_type . lang('title_keywords') . '</li>';
         exit;
     }
     switch ($type) {
@@ -70,7 +70,7 @@ if ($action === 'tpl_select_search') {
                 echo $html;
                 exit;
             } else {
-                echo '<li class="no-results">未查询到相关' . $_s_type . '</li>';
+/*vot*/         echo '<li class="no-results">' . lang('no_results_of') . $_s_type . '</li>';
                 exit;
             }
         }
@@ -83,7 +83,7 @@ if ($action === 'tpl_select_search') {
                     $html .= '<li class="active-result" data-opt="' . $type . '" data-id="' . $sort['sid'] . '" data-s-name="' . $name . '">' . $sort['sortname'] . '</li>';
                 }
             }
-            echo $html ?: '<li class="no-results">未查询到相关' . $_s_type . '</li>';
+/*vot*/     echo $html ?: '<li class="no-results">' . lang('no_results_of') . $_s_type . '</li>';
             exit;
         }
     }
