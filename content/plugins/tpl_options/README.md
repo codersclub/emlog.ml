@@ -11,6 +11,7 @@ Place the `options.php` file in the template directory. The content format is as
 !defined('EMLOG_ROOT') && exit('access denied!');
 
 $options = [
+    /** 此项必需存在 */
     'TplOptionsNavi'   => [
         'type'         => 'radio',
         'name'         => 'Define setting item tab name',

@@ -227,7 +227,7 @@
                 } else if (result.code === 200) {
 /*vot*/             rep_msg = lang('new_ver_available') + ': <span class="text-danger">' + result.data.version + '</span> <br><br>';
                     rep_changes = "<b>" + lang('view_changelog') + "</b>:<br>" + result.data.changes;
-/*vot*/             rep_btn = '<hr><a href="javascript:doUp(\'' + result.data.file + '\',\'' + result.data.sql + '\');" class="btn btn-success btn-sm">' + lang('update_now') + '</a>';
+/*vot*/             rep_btn = '<hr><a href="javascript:doUp(\'' + result.data.file + '\',\'' + result.data.sql + '\');" id="upbtn" class="btn btn-success btn-sm">' + lang('update_now') + '</a>';
                 } else {
                     rep_msg = lang('check_failed');
                 }
@@ -244,6 +244,7 @@
             const updateModalMsg = $("#update-modal-msg");
             const updateModalChanges = $("#update-modal-changes");
             const upmsg = $("#upmsg");
+            const upbtn = $("#upbtn");
 
             updateModalLoading.addClass("spinner-border text-primary");
             updateModalMsg.html(lang('updating_now'));
@@ -251,9 +252,10 @@
 
             $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
                 upmsg.removeClass();
-
                 if (data.includes("succ")) {
-                    updateModalMsg.html(lang('updated_ok'));
+/*vot*/             upbtn.text(lang('refresh_page'));
+                    upbtn.attr('href', './');
+/*vot*/             updateModalMsg.html(lang('updated_ok'));
                 } else if (data.includes("error_down")) {
                     updateModalMsg.html(lang('update_download_fail'));
                 } else if (data.includes("error_zip")) {

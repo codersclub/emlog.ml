@@ -542,6 +542,7 @@ $lang = array(
     'applied_today' => '今日应用',//'Applied today',
     'app_development' => '应用开发 | 开发文档',//'Application Development | Development Documentation',
     'os' => '操作系统',//'Operating system',
+    'refresh_page' => '刷新页面',//'Refresh the page',
 
 //---------------------------
 //admin/views/index_user.php
