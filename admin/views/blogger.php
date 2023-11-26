@@ -1,22 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_edit'])): ?>
-    <div class="alert alert-success"><?= lang('personal_data_modified_ok') ?></div><?php endif ?>
-<?php if (isset($_GET['active_del'])): ?>
-    <div class="alert alert-success"><?= lang('avatar_deleted_ok') ?></div><?php endif ?>
-<?php if (isset($_GET['error_a'])): ?>
-    <div class="alert alert-danger"><?= lang('nickname_is_empty') ?></div><?php endif ?>
-<?php if (isset($_GET['error_email'])): ?>
-    <div class="alert alert-danger"><?= lang('email_empty') ?></div><?php endif ?>
-<?php if (isset($_GET['error_c'])): ?>
-    <div class="alert alert-danger"><?= lang('password_length_short') ?></div><?php endif ?>
-<?php if (isset($_GET['error_d'])): ?>
-    <div class="alert alert-danger"><?= lang('password_not_equal') ?></div><?php endif ?>
-<?php if (isset($_GET['error_e'])): ?>
-    <div class="alert alert-danger"><?= lang('username_exists') ?></div><?php endif ?>
-<?php if (isset($_GET['error_f'])): ?>
-    <div class="alert alert-danger"><?= lang('nickname_exists') ?></div><?php endif ?>
-<?php if (isset($_GET['error_g'])): ?>
-    <div class="alert alert-danger"><?= lang('email_is_used') ?></div><?php endif ?>
 <?php if (User::isAdmin()): ?>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><?= lang('settings') ?></h1>
@@ -45,7 +27,7 @@
             </div>
         </div>
 
-        <form action="blogger.php?action=update" method="post" name="blooger" id="blooger" enctype="multipart/form-data">
+        <form action="blogger.php?action=update" method="post" name="profile_setting_form" id="profile_setting_form" enctype="multipart/form-data">
             <div class="form-group">
                 <div class="form-group">
                     <label><?= lang('nickname') ?></label>
@@ -77,7 +59,7 @@
                     <?php doAction('blogger_ext') ?>
                 </div>
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input type="submit" value="<?= lang('save_data') ?>" class="btn btn-sm btn-success"/>
+                <input type="submit" value="<?= lang('save_data') ?>" name="submit_form" id="submit_form" class="btn btn-sm btn-success"/>
             </div>
         </form>
     </div>
@@ -116,6 +98,13 @@
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
+        // 提交表单
+        $("#profile_setting_form").submit(function (event) {
+            event.preventDefault();
+            submitForm("#profile_setting_form");
+        });
+
+        // 裁剪上传头像
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');
         var cropper;

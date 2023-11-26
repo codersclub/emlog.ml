@@ -1,6 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['ok'])): ?>
-    <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['ok_reset'])): ?>
     <div class="alert alert-success"><?= lang('api_key_reset_ok') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -18,7 +16,7 @@
 </div>
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
-        <form action="setting.php?action=api_save" method="post" name="input" id="input">
+        <form action="setting.php?action=api_save" method="post" name="setting_api_form" id="setting_api_form">
             <p><?= lang('api_key') ?>:</p>
             <div class="form-group form-check">
                 <input class="mui-switch mui-switch-animbg" type="checkbox" value="y" name="is_openapi" id="is_openapi" <?= $conf_is_openapi ?> />
@@ -34,16 +32,15 @@
             </div>
             <div class="form-group mt-3">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
             </div>
         </form>
         <div class="alert alert-warning">
             <b><?= lang('api_list') ?>:</b><br><br>
             <?= lang('api_1') ?><?= BLOG_URL ?>?rest-api=article_post)<br>
+            <?= lang('api_2') ?><br>
+            <?= lang('api_3') ?><br>
+            <?= lang('api_4') ?><br>
             <?= lang('api_5') ?><br>
-            <?= lang('api_6') ?><br>
-            <?= lang('api_7') ?><br>
-            <?= lang('api_8') ?><br>
             ...<br><br>
             <?= lang('api_more') ?>: <a href="https://emlog.net/docs/#/api" target="_blank" class="small"><?= lang('api_docs') ?></a>
         </div>
@@ -55,5 +52,8 @@
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
+    });
+    $('#setting_api_form').change(function () {
+        submitForm('#setting_api_form');
     });
 </script>

@@ -21,6 +21,7 @@ $options = [
         'labels'  => 'tpl-head',
         'type'    => 'radio',
         'name'    => lang('tpl_logo_mode'),
+        'new'     => 'NEW',
         'values'  => [
             '1' => lang('tpl_logo_text'),
             '0' => lang('tpl_logo_image'),

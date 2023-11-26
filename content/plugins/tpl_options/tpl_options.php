@@ -1,7 +1,7 @@
 <?php
 /*
 Template setting plug-in
-Version: 4.2.1
+Version: 4.2.3
 Plugin URL: https://www.emlog.net/docs/#/template
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
 Author: emlog
@@ -19,7 +19,7 @@ class TplOptions {
     //Plug-in ID
     const ID = 'tpl_options';
     const NAME = 'Template options';
-    const VERSION = '4.2.1';
+    const VERSION = '4.2.3';
 
     //DB table prefix
     private $_prefix = 'tpl_options_';
@@ -29,7 +29,7 @@ class TplOptions {
         'data',
     );
 
-    //Run uploaded file types
+    //File types allowed to be uploaded
     private $_imageTypes = array(
         'gif',
         'jpg',
@@ -69,6 +69,9 @@ class TplOptions {
 
     //Pages
     private $_pages;
+
+    //文章
+    private $_posts;
 
     /**
      * Singleton entry
@@ -151,12 +154,20 @@ class TplOptions {
             'tag'      => array(
                 /*vot*/
                 'name'       => lang('ftype_tag'),
+            'select'   => array(
+                'name'       => '选择',
+                'allowMulti' => true,
+            ),
+            'block'    => array(
+                'name'       => '组合块',
                 'allowMulti' => true,
             ),
         );
         $this->_arrayTypes = array(
             'checkbox',
             'tag',
+            'select',
+            'block',
         );
 
         //Set template directory
@@ -197,8 +208,8 @@ class TplOptions {
      * @return void
      */
     public function hookAdminHead() {
-        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(Option::EMLOG_VERSION_TIMESTAMP));
-        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(Option::EMLOG_VERSION_TIMESTAMP));
+        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.min.css?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
+        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.min.js?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
         /*vot*/
         echo sprintf('<script src="%s"></script>', $this->_lang . '/lang_js.js?ver=' . urlencode(self::VERSION));
     }
@@ -315,7 +326,7 @@ class TplOptions {
      * @param boolean $unsorted Whether to get uncategorized
      * @return array
      */
-    private function getSorts($unsorted = false) {
+    private function getSorts($unsorted = false, $is_cate = false) {
         $sorts = Cache::getInstance()->readCache('sort');
         if ($unsorted) {
             array_unshift($sorts, array(
@@ -324,6 +335,11 @@ class TplOptions {
                 'lognum'           => 0,
                 'children'         => array(),
             ));
+        }
+        if ($is_cate) {
+            foreach ($sorts as $sort) {
+                $sorts[$sort['sid']] = $this->encode($sort['sortname']);
+            }
         }
         return $sorts;
     }
@@ -345,6 +361,36 @@ class TplOptions {
             $pages[$page['gid']] = $this->encode($page['title']);
         }
         return $this->_pages = $pages;
+    }
+
+    /**
+     * Get all articles
+     * @return array
+     */
+    private function getPosts() {
+        if ($this->_posts !== null) {
+            return $this->_posts;
+        }
+        $data = $this->queryAll('blog', array(
+            'type' => 'blog',
+            'hide' => 'n',
+        ), 'gid, title');
+        $posts = array();
+        foreach ($data as $post) {
+            $posts[$post['gid']] = $this->encode($post['title']);
+        }
+        return $this->_posts = $posts;
+    }
+
+    /**
+     * Get multi-content block data
+     * @return array
+     */
+    private function getBlockData($name) {
+        $data = $this->queryAll('tpl_options_data', array(
+            'name' => $name,
+        ), 'data');
+        return unserialize($data[0]['data']);
     }
 
     /**
@@ -471,6 +517,7 @@ class TplOptions {
         $template = $this->arrayGet($_GET, 'template');
         $code = $this->arrayGet($_GET, 'code');
         $msg = $this->arrayGet($_GET, 'msg');
+        $allTemplate = $this->getTemplates();
         if ($do != '') {
             if ($do == 'upload' && isset($_FILES['image'])) {
                 $file = $_FILES['image'];
@@ -636,10 +683,18 @@ class TplOptions {
             return $result;
         }
         $uploadPath = Option::UPLOADFILE_PATH . self::ID . "/$template/";
-        $fileName = rtrim(str_replace(array(
-                '[',
-                ']'
-            ), '.', $target), '.') . '.' . $extension;
+
+        $file_baseName = rtrim(str_replace(array(
+            '[',
+            ']'
+        ), '.', $target), '.');
+
+        $fileName = $file_baseName . '_' . uniqid() . '.' . $extension;
+        $exists_files = glob($uploadPath . $file_baseName . '*');
+        if (count($exists_files)) {
+            unlink($exists_files[0]);
+        }
+
         $attachpath = $uploadPath . $fileName;
         $result['path'] = $attachpath;
         if (!is_dir($uploadPath)) {
@@ -787,16 +842,18 @@ class TplOptions {
      */
     private function renderByTpl($option, $tpl, $loopValues = true, $placeholder = true) {
         $desc = '';
+        $tip = '';
         if (!empty($option['description'])) {
             $desc = '<div class="option-description">' . $option['description'] . '</div>';
         }
+        if (isset($option['new']) && trim($option['new'])) {
+            $tip = '<small class="new-tip">' . trim($option['new']) . '</small>';
+        }
         echo '<div class="option ' . @$option['labels'] . '" id="' . $option['id'] . '">';
         echo '<div class="option-ico upico"></div>';
-        /*vot*/
-        echo '<div class="option-name" title="' . lang('shrink_expand') . '" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']), $desc, '</div>';
+/*vot*/ echo '<div class="option-name" title="' . lang('shrink_expand') . '" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']) . $tip, $desc, '</div>';
         $depend = isset($option['depend']) ? $option['depend'] : 'none';
         echo sprintf('<div class="option-body depend-%s">', $depend);
-
         switch ($depend) {
             case 'sort':
                 $unsorted = isset($option['unsorted']) ? $option['unsorted'] : true;
@@ -851,10 +908,83 @@ class TplOptions {
                     echo '</div>';
                 }
                 echo '</div>';
-                echo '<div class="clearfix"></div>';
                 echo '</div>';
                 break;
+            case 'select':
+                $type = '';
+                if ($option['pattern'] == 'post') {
+                    $type = '文章';
+                    $data = $this->getPosts();
+                }
+                if ($option['pattern'] == 'cate') {
+                    $type = '分类';
+                    $data = $this->getSorts(false, true);
+                }
+                if ($option['pattern'] == 'page') {
+                    $type = '页面';
+                    $data = $this->getPages();
+                }
 
+                echo sprintf('<div class="chosen-container chosen-container-multi %s">', $option['pattern']);
+                echo '<ul class="chosen-choices">';
+                echo sprintf('<input type="hidden" name="%s" value="">', $option['id']);
+                foreach ($option['value'] as $id) {
+                    echo strtr($tpl, array(
+                        '{title}' => $data[$id],
+                        '{name}'  => $option['id'],
+                        '{value}' => $this->encode($id),
+                    ));
+                }
+                echo '<li class="search-field ">';
+                echo sprintf('<input class="chosen-search-input" data-opt="%s" data-s-name="%s" data-url="%s" type="text" autocomplete="off" placeholder="输入%s标题关键词以搜索%s">', $option['pattern'], $option['id'], BLOG_URL, $type, $type);
+                echo '</li>';
+                echo '</ul>';
+                echo '<div class="chosen-drop">';
+                echo sprintf('<ul class="chosen-results"><li class="no-results">请输入%s标题</li></ul>', $type);
+                echo '</div>';
+                echo '</div>';
+                break;
+            case 'block':
+                $this_data_type = isset($option['pattern']) && $option['pattern'] === 'image' ? 'image' : 'text';
+                echo sprintf('<input type="hidden" name="%s" value="">', $option['id']);
+                echo '<div class="tpl-sortable-block">';
+
+                $html = '<div class="tpl-block-item">';
+                $html .= '<div class="tpl-block-head">
+                            <i class="tpl-block-clone icofont-ui-copy"></i>
+                            <i class="tpl-block-remove icofont-close icofont-md"></i>
+                          </div>';
+
+                $data = $this->getBlockData($option['id']);
+                $tmp_len = count($data);
+                if ($tmp_len !== 0 && is_array($data)) {
+                    $data_len = count($data['title']);
+                    for ($i = 0; $i < $data_len; $i++) {
+                        $block_title = $this->encode($data['title'][$i]);
+                        echo $html;
+                        echo sprintf('<h4 class="tpl-block-title"><span class="tpl-block-title-icon icofont-rounded-right"></span><item class="block-title-text">%s</item></h4>', $block_title);
+                        echo '<div class="tpl-block-content d-none">';
+                        echo strtr($tpl, array(
+                            '{title}'  => $option['id'] . '[title][]',
+                            '{tvalue}' => $block_title,
+                            '{name}'   => $option['id'] . '[content][]',
+                            '{value}'  => $this->encode($data['content'][$i]),
+                        ));
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                }
+
+                echo sprintf('<a class="badge badge-success tpl-add-block" data-b-name="%s" data-type="%s" data-url="%s"><i class="ri-add-line"></i> 添加</a>', $option['id'], $this_data_type, BLOG_URL);
+                echo '</div>';
+                echo '<script>
+                          $(".tpl-sortable-block").sortable({
+                              stop: function () {
+                                  block_drag_end()
+                            }
+                          }).disableSelection()
+                      </script>';
+                break;
             default:
                 if ($loopValues) {
                     if ($placeholder) {
@@ -930,7 +1060,7 @@ class TplOptions {
      * @return void
      */
     private function renderCheckbox($option) {
-        $tpl = '<label><input type="checkbox" name="{name}[]" value="{value}"{checked}> {label}</label>';
+        $tpl = '<label class="vtpl-check"><input type="checkbox" name="{name}[]" value="{value}"{checked}> {label}</label>';
         $this->renderByTpl($option, $tpl);
     }
 
@@ -940,9 +1070,34 @@ class TplOptions {
      */
     private function renderText($option) {
         if ($this->isMulti($option)) {
-            $tpl = '<textarea name="{name}" rows="8" class="option-textarea{rich}">{value}</textarea>';
+            $tpl = '<textarea name="{name}" rows="5" class="option-textarea{rich}">{value}</textarea>';
         } else {
-            $tpl = '<input type="text" name="{name}" value="{value}"><br>';
+            $tpl = '<input type="text" name="{name}" value="{value}">';
+        }
+        if (isset($option['pattern']) && trim($option['pattern']) === 'num') {
+            $max = '';
+            $min = '';
+            $limit_html = '';
+            $unit_html = isset($option['unit']) && trim($option['unit']) !== '' ? '<span class="tpl-number-input-unit">' . trim($option['unit']) . '</span>' : '';
+            if (isset($option['max']) && trim($option['max']) !== '') {
+                $max = trim($option['max']);
+            }
+            if (isset($option['min']) && trim($option['min']) !== '') {
+                $min = trim($option['min']);
+            }
+            if ($max !== '' && $min !== '' && is_numeric($max) && is_numeric($min)) {
+                $limit_html = 'oninput="if(value>' . $max . ')value=' . $max . ';if(value<' . $min . ')value=' . $min . '"';
+            }
+            if ($max !== '' && $min === '' && is_numeric($max)) {
+                $limit_html = 'oninput="if(value>' . $max . ')value=' . $max . '"';
+            }
+            if ($max === '' && $min !== '' && is_numeric($min)) {
+                $limit_html = 'oninput="if(value<' . $min . ')value=' . $min . '"';
+            }
+            $tpl = '<div class="tpl-number-input-item">
+                        <input type="number" class="tpl-number-input" placeholder="填入数字" name="{name}" value="{value}" ' . $limit_html . '>
+                        ' . $unit_html . '
+                    </div>';
         }
         $this->renderByTpl($option, $tpl, false);
     }
@@ -951,8 +1106,17 @@ class TplOptions {
      * @param array $option
      * @return void
      */
+    private function renderSearchSelect($option) {
+        $tpl = '<li class="search-choice"><span>{title}</span><a class="search-choice-close"><i class="icofont-close"></i></a><input class="d-none" name="{name}[]" type="text" value="{value}"></li>';
+        $this->renderByTpl($option, $tpl, false);
+    }
+
+    /**
+     * @param array $option
+     * @return void
+     */
     private function renderColor($option) {
-        $tpl = '<input type="color" name="{name}" value="{value}"><br>';
+        $tpl = '<input type="color" name="{name}" value="{value}">';
         $this->renderByTpl($option, $tpl, false);
     }
 
@@ -962,8 +1126,51 @@ class TplOptions {
      * @return void
      */
     private function renderImage($option) {
-        /*vot*/
-        $tpl = '<span class="image-tip">' . lang('tpl_upload_tips') . '</span><a href="{value}" target="_blank" data-name="{name}"><img src="{value}"></a><br><input type="file" accept="image/*" data-target="{name}"><input type="hidden" name="{name}" value="{path}">';
+        $tpl = '<div class="tpl-block-upload">
+                    <span class="image-tip">' . lang('tpl_upload_tips') . '</span>
+                    <div class="tpl-image-preview">
+                        <img src="{value}">
+                    </div>
+                    <div class="tpl-block-upload-input">
+                        <input type="text" name="{name}" value="{value}">
+                        <label>
+                            <a class="btn btn-primary"><i class="icofont-plus"></i>' . lang('upload') . '</a>
+                            <input class="d-none tpl-image" type="file" name="image" data-url="' . BLOG_URL . '" accept="image/gif,image/jpeg,image/jpg,image/png">
+                        </label>
+                    </div>
+                </div>';
+        $this->renderByTpl($option, $tpl, false);
+    }
+
+    /**
+     * @param array $option
+     * @return void
+     */
+    private function renderBlock($option) {
+        $tpl = '';
+        if (isset($option['pattern']) && trim($option['pattern']) === 'image') {
+            $tpl .= '<div class="tpl-block-upload">
+                        <span class="image-tip">友情提示：选择文件后将会立刻上传覆盖原图</span>
+                        <span>填写块标题：</span>
+                        <input class="block-title-input" type="text" name="{title}" value="{tvalue}">
+                         <div class="tpl-image-preview">
+                            <img src="{value}">
+                         </div>
+                         <div class="tpl-block-upload-input">
+                             <input type="text" name="{name}" value="{value}">
+                             <label>
+                                <a class="btn btn-primary"><i class="icofont-plus"></i>上传</a>
+                                <input class="d-none tpl-image" type="file" name="image" data-url="' . BLOG_URL . '" accept="image/gif,image/jpeg,image/jpg,image/png">
+                             </label>
+                         </div>
+                     </div>';
+        } else {
+            $tpl = '<span>填写块标题：</span>';
+            $tpl .= '<input class="block-title-input" type="text" name="{title}" value="{tvalue}">';
+            $tpl .= '<span>填写块内容：</span>';
+            $tpl .= '<textarea rows="8" name="{name}">{value}</textarea>';
+        }
+        $option['depend'] = 'block';
         $this->renderByTpl($option, $tpl, false);
     }
 
@@ -999,6 +1206,17 @@ class TplOptions {
             $this->renderCheckbox($option);
         } else {
             $this->renderRadio($option);
+        }
+    }
+
+    /**
+     * @param array $option
+     * @return void
+     */
+    private function renderSelect($option) {
+        if (isset($option['pattern']) && (trim($option['pattern']) === 'post' || trim($option['pattern']) === 'cate' || trim($option['pattern']) === 'page')) {
+            $option['depend'] = 'select';
+            $this->renderSearchSelect($option);
         }
     }
 
@@ -1173,6 +1391,42 @@ function _g($name = null) {
     } else {
         return TplOptions::getInstance()->$name;
     }
+}
+
+function _em($name = null) {
+    if ($name === null) {
+        return TplOptions::getInstance()->getTemplateOptions();
+    } else {
+        return TplOptions::getInstance()->$name;
+    }
+}
+
+function _getBlock($name = null, $type = 'content') {
+    $offset = '';
+    $target = TplOptions::getInstance()->$name;
+    if (!is_array($target) || trim($type) === '') {
+        return [];
+    }
+    if (trim($type) === 'title') {
+        $offset = 'title';
+    }
+    if (trim($type) === 'content') {
+        $offset = 'content';
+    }
+    if (trim($offset) === '') {
+        return [];
+    }
+    $result = array_filter($target, 'is_array');
+    $data_length = count($target);
+    $child_length = count($target['content']);
+    if (count($result) == $data_length) {
+        $type_arr = [];
+        for ($i = 0; $i < $child_length; $i++) {
+            $type_arr[] = $target[$offset][$i];
+        }
+        return $type_arr;
+    }
+    return [];
 }
 
 TplOptions::getInstance()->init();

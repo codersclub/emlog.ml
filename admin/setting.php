@@ -49,38 +49,35 @@ if (empty($action)) {
 if ($action == 'save') {
     LoginAuth::checkToken();
     $getData = [
-        'blogname'            => isset($_POST['blogname']) ? addslashes($_POST['blogname']) : '',
-        'blogurl'             => isset($_POST['blogurl']) ? addslashes($_POST['blogurl']) : '',
-        'bloginfo'            => isset($_POST['bloginfo']) ? addslashes($_POST['bloginfo']) : '',
-        'icp'                 => isset($_POST['icp']) ? addslashes($_POST['icp']) : '',
-        'footer_info'         => isset($_POST['footer_info']) ? addslashes($_POST['footer_info']) : '',
-        'index_lognum'        => isset($_POST['index_lognum']) ? (int)$_POST['index_lognum'] : '',
-        'timezone'            => isset($_POST['timezone']) ? addslashes($_POST['timezone']) : '',
-        'comment_code'        => isset($_POST['comment_code']) ? addslashes($_POST['comment_code']) : 'n',
-        'comment_needchinese' => isset($_POST['comment_needchinese']) ? addslashes($_POST['comment_needchinese']) : 'n',
-        'comment_interval'    => isset($_POST['comment_interval']) ? (int)$_POST['comment_interval'] : 15,
-        'iscomment'           => isset($_POST['iscomment']) ? addslashes($_POST['iscomment']) : 'n',
+        'blogname'            => Input::postStrVar('blogname'),
+        'blogurl'             => Input::postStrVar('blogurl'),
+        'bloginfo'            => Input::postStrVar('bloginfo'),
+        'icp'                 => Input::postStrVar('icp'),
+        'footer_info'         => Input::postStrVar('footer_info'),
+        'index_lognum'        => Input::postIntVar('index_lognum'),
+        'timezone'            => Input::postStrVar('timezone'),
+        'comment_code'        => Input::postStrVar('comment_code', 'n'),
+        'comment_needchinese' => Input::postStrVar('comment_needchinese', 'n'),
+        'comment_interval'    => Input::postIntVar('comment_interval', 15),
+        'iscomment'           => Input::postStrVar('iscomment', 'n'),
         'login_comment'       => Input::postStrVar('login_comment', 'n'),
-        'ischkcomment'        => isset($_POST['ischkcomment']) ? addslashes($_POST['ischkcomment']) : 'n',
-        'isthumbnail'         => isset($_POST['isthumbnail']) ? addslashes($_POST['isthumbnail']) : 'n',
-        'rss_output_num'      => isset($_POST['rss_output_num']) ? (int)$_POST['rss_output_num'] : 10,
-        'rss_output_fulltext' => isset($_POST['rss_output_fulltext']) ? addslashes($_POST['rss_output_fulltext']) : 'y',
-        'isgravatar'          => isset($_POST['isgravatar']) ? addslashes($_POST['isgravatar']) : 'n',
-        'comment_paging'      => isset($_POST['comment_paging']) ? addslashes($_POST['comment_paging']) : 'n',
-        'comment_pnum'        => isset($_POST['comment_pnum']) ? (int)$_POST['comment_pnum'] : '',
-        'comment_order'       => isset($_POST['comment_order']) ? addslashes($_POST['comment_order']) : 'newer',
-        'att_maxsize'         => isset($_POST['att_maxsize']) ? (int)$_POST['att_maxsize'] : 20480,
-        'att_type'            => isset($_POST['att_type']) ? str_replace('php', 'x', strtolower(addslashes($_POST['att_type']))) : '',
-        'att_imgmaxw'         => isset($_POST['att_imgmaxw']) ? (int)$_POST['att_imgmaxw'] : 420,
-        'att_imgmaxh'         => isset($_POST['att_imgmaxh']) ? (int)$_POST['att_imgmaxh'] : 460,
-        'detect_url'          => isset($_POST['detect_url']) ? addslashes($_POST['detect_url']) : 'n', // Automatically detect site URL
+        'ischkcomment'        => Input::postStrVar('ischkcomment', 'n'),
+        'isthumbnail'         => Input::postStrVar('isthumbnail', 'n'),
+        'rss_output_num'      => Input::postIntVar('rss_output_num', 10),
+        'rss_output_fulltext' => Input::postStrVar('rss_output_fulltext', 'y'),
+        'isgravatar'          => Input::postStrVar('isgravatar', 'n'),
+        'comment_paging'      => Input::postStrVar('comment_paging', 'n'),
+        'comment_pnum'        => Input::postIntVar('comment_pnum'),
+        'comment_order'       => Input::postStrVar('comment_order', 'newer'),
+        'att_maxsize'         => Input::postIntVar('att_maxsize', 20480),
+        'att_type'            => str_replace('php', 'x', strtolower(Input::postStrVar('att_type', ''))),
+        'att_imgmaxw'         => Input::postIntVar('att_imgmaxw', 420),
+        'att_imgmaxh'         => Input::postIntVar('att_imgmaxh', 460),
+        'detect_url'          => Input::postStrVar('detect_url', 'n'),
         'admin_perpage_num'   => Input::postIntVar('admin_perpage_num'),
-        'accept_app_recs'     => isset($_POST['accept_app_recs']) ? addslashes($_POST['accept_app_recs']) : 'n',
+        'accept_app_recs'     => Input::postStrVar('accept_app_recs', 'n'),
     ];
 
-    if ($getData['login_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-        emMsg(lang('verification_code_not_supported'), "setting.php");
-    }
     if ($getData['comment_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
         emMsg(lang('verification_code_comment_not_supported'), "setting.php");
     }
@@ -95,7 +92,7 @@ if ($action == 'save') {
         Option::updateOption($key, $val);
     }
     $CACHE->updateCache(array('tags', 'options', 'comment', 'record'));
-    emDirect("./setting.php?activated=1");
+    Output::ok();
 }
 
 if ($action == 'seo') {
@@ -121,19 +118,20 @@ if ($action == 'seo') {
 
 if ($action == 'seo_save') {
     LoginAuth::checkToken();
-    $permalink = isset($_POST['permalink']) ? addslashes($_POST['permalink']) : '0';
-    $isalias = isset($_POST['isalias']) ? addslashes($_POST['isalias']) : 'n';
-    $isalias_html = isset($_POST['isalias_html']) ? addslashes($_POST['isalias_html']) : 'n';
 
-    $getData = array(
-        'site_title'       => isset($_POST['site_title']) ? addslashes($_POST['site_title']) : '',
-        'site_description' => isset($_POST['site_description']) ? addslashes($_POST['site_description']) : '',
-        'site_key'         => isset($_POST['site_key']) ? addslashes($_POST['site_key']) : '',
-        'isurlrewrite'     => isset($_POST['permalink']) ? addslashes($_POST['permalink']) : '0',
-        'isalias'          => isset($_POST['isalias']) ? addslashes($_POST['isalias']) : 'n',
-        'isalias_html'     => isset($_POST['isalias_html']) ? addslashes($_POST['isalias_html']) : 'n',
-        'log_title_style'  => isset($_POST['log_title_style']) ? addslashes($_POST['log_title_style']) : '0',
-    );
+    $permalink = Input::postStrVar('permalink', '0');
+    $isalias = Input::postStrVar('isalias', 'n');
+    $isalias_html = Input::postStrVar('isalias_html', 'n');
+
+    $getData = [
+        'site_title'       => Input::postStrVar('site_title', ''),
+        'site_description' => Input::postStrVar('site_description', ''),
+        'site_key'         => Input::postStrVar('site_key', ''),
+        'isurlrewrite'     => Input::postStrVar('permalink', '0'),
+        'isalias'          => Input::postStrVar('isalias', 'n'),
+        'isalias_html'     => Input::postStrVar('isalias_html', 'n'),
+        'log_title_style'  => Input::postStrVar('log_title_style', '0'),
+    ];
 
     if ($permalink != '0' || $isalias == 'y') {
         $t = parse_url(BLOG_URL);
@@ -145,8 +143,7 @@ if ($action == 'seo_save') {
                        RewriteRule . ' . $t['path'] . 'index.php [L]
                     </IfModule>';
         if (!file_put_contents(EMLOG_ROOT . '/.htaccess', $rw_rule)) {
-            header('Location: ./setting.php?action=seo&error=1');
-            exit;
+            Output::error('保存失败：根目录下的.htaccess不可写');
         }
     }
 
@@ -154,7 +151,7 @@ if ($action == 'seo_save') {
         Option::updateOption($key, $val);
     }
     $CACHE->updateCache(array('options', 'navi'));
-    header('Location: ./setting.php?action=seo&activated=1');
+    Output::ok();
 }
 
 if ($action == 'mail') {
@@ -196,7 +193,7 @@ if ($action == 'mail_save') {
     }
 
     $CACHE->updateCache(array('options'));
-    header('Location: ./setting.php?action=mail&activated=1');
+    Output::ok();
 }
 
 if ($action == 'mail_test') {
@@ -275,7 +272,7 @@ if ($action == 'user_save') {
         Option::updateOption($key, $val);
     }
     $CACHE->updateCache('options');
-    header('Location: ./setting.php?action=user&activated=1');
+    Output::ok();
 }
 
 if ($action == 'api') {
@@ -287,16 +284,15 @@ if ($action == 'api') {
     require_once(View::getAdmView('setting_api'));
     include View::getAdmView('footer');
     View::output();
-
 }
 
 if ($action == 'api_save') {
     LoginAuth::checkToken();
 
-    $is_openapi = isset($_POST['is_openapi']) ? addslashes($_POST['is_openapi']) : 'n';
-    Option::updateOption('is_openapi', $is_openapi);
+    $isOpenapiEnabled = Input::postStrVar('is_openapi', 'n');
+    Option::updateOption('is_openapi', $isOpenapiEnabled);
     $CACHE->updateCache('options');
-    header('Location: ./setting.php?action=api&ok=1');
+    Output::ok();
 }
 
 if ($action == 'api_reset') {

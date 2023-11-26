@@ -1,8 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['activated'])): ?>
-    <div class="alert alert-success"><?= lang('settings_saved_ok') ?></div><?php endif ?>
-<?php if (isset($_GET['error'])): ?>
-    <div class="alert alert-danger"><?= lang('htaccess_not_writable') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('settings') ?></h1>
 </div>
@@ -18,7 +14,7 @@
 </div>
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
-        <form action="setting.php?action=seo_save" method="post">
+        <form action="setting.php?action=seo_save" method="post" name="seo_setting_form" id="seo_setting_form">
             <h4><?= lang('post_url') ?></h4>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="permalink" value="0" <?= $ex0 ?>>
@@ -97,5 +93,11 @@
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
+
+        // 提交表单
+        $("#seo_setting_form").submit(function (event) {
+            event.preventDefault();
+            submitForm("#seo_setting_form");
+        });
     });
 </script>

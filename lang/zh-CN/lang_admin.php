@@ -66,7 +66,7 @@ $lang = array(
 //admin/setting.php
     'site_address' => '站点地址：',//'Site address',
     'verification_code_not_supported' => '开启登录验证码失败!服务器空间不支持GD图形库',//'Failed to open the login verification code! The server space does not support the GD graphics library',
-    'verification_code_comment_not_supported' => '开启评论验证码失败!服务器空间不支持GD图形库',//'Failed to open comment verification code! Server space does not support GD graphics library',
+    'verification_code_comment_not_supported' => '开启评论验证码失败，服务器空间不支持GD图形库',//'Failed to open comment verification code! Server space does not support GD graphics library',
     'detect_url' => '自动检测站点地址 (如开启后首页样式丢失，请关闭并手动填写站点地址)',//'Automatically detect the site address (if the home page style is lost after opening, please close and fill in the site address manually)',
     'email_enter_please' => '请正确填写邮箱',//'Please enter correct email',
     'test_mail_subj' => '测试邮件',//'Test mail',
@@ -121,6 +121,7 @@ $lang = array(
     'tpl_category_7' => '资源下载',//'Resource download',
     'tpl_category_9' => '社区论坛',//'Community Forum',
     'tpl_category_10' => '其他',//'Other',
+    'tpl_category_17' => '网址导航',//'Site navigation',
     'plu_category_1' => '资源下载',//'Resource download',
     'plu_category_2' => 'SEO优化',//'SEO optimization',
     'plu_category_3' => '多媒体',//'Multimedia',
@@ -130,7 +131,7 @@ $lang = array(
     'plu_category_12' => '内容运营',//'Content Operation',
     'plu_category_13' => '移动端',//'Mobile terminal',
     'plu_category_14' => '编程开发',//'Program development',
-    'plu_category_15' => '内容创作',//'Content Creation',
+    'plu_category_15' => '内容创作（编辑器）',//'Content Creation (Editor)',
     'plu_category_6' => '其他',//'Other'
     'free_zone' => '仅看免费',//'Free only',
     'paid_zone' => '仅看付费',//'Paid only',
@@ -812,6 +813,7 @@ $lang = array(
     'unit_kb' => '（单位：KB，1MB=1024KB）',//'(unit: KB, 1MB=1024KB)',
     'login_before_comment_on' => '登录后评论，开启后仅登录用户可评论',//'Comment after login. Only logged-in users can comment after this is turned on',
     'app_recommended' => '应用推荐',//'Recommended applications',
+    'menu' => '菜单',//'Menu',
 
 //---------------------------
 //admin/views/setting_api.php
@@ -820,14 +822,11 @@ $lang = array(
     'api_key' => 'API秘钥',//'API key',
     'api_key_reset' => '重置API秘钥',//'Reset API key',
     'api_list' => 'API接口列表',//'List of API interfaces',
-    'api_1' => '文章发布 (可用于对接内容发布软件，文章发布接口URL：',//'Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',
-    'api_2' => '2. 文章列表',//'2. Edit article',
-    'api_3' => '3. 文章详情',//'3. Article list',
-    'api_4' => '4. 分类列表',//'4. Article details',
-    'api_5' => '笔记发布',//'Category list',
-    'api_6' => '笔记发布',//'Publish note',
-    'api_7' => '笔记列表',//'Note list',
-    'api_8' => '资源文件上传',//'Resource file upload',
+    'api_1' => '1. 文章发布 (可用于对接内容发布软件，文章发布接口URL：',//'1. Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',
+    'api_2' => '2. 分类列表',//'2. Article details',
+    'api_3' => '3. 笔记发布',//'3. Category list',
+    'api_4' => '4. 笔记列表',//'4. Note list',
+    'api_5' => '5. 资源文件上传',//'5. Resource file upload',
     'api_more' => '更多接口',//'More info',
     'api_docs' => '详见接口文档→',//'See the API documentation for details→',
 

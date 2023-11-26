@@ -53,8 +53,9 @@ $(function () {
                 }, 1000);
             }
         });
-    }).on('click', '.tpl-options-menu ul li', function () {
+    }).on('click', '.tpl-options-menu ul li,.tpl-nav-options ul li', function () {
         $('.tpl-options-menu ul li').removeClass('active');
+        $('.tpl-nav-options ul li').removeClass('active');
         $(this).addClass('active');
     }).on('click', '.tpl-options-close', function () {
         $('.container-fluid .row').fadeToggle();
@@ -72,6 +73,8 @@ $(function () {
 
     }).on('click', '.tpl-options-menu li', function () {
         //$('html,body').animate({scrollTop:$('#'+$(this).attr('data-id')).offset().top-80}, 500);
+    }).on('click', '.vtpl-menu,.vtpl-nav.show ul li,.fixed-body', function () {
+        $('.vtpl-nav').toggleClass('show')
     }).on('click', '.tpl-options-menubtn', function () {
         $('.tpl-options-menu').fadeToggle();
     }).on('click', '.tpl-options-btns', function () {
@@ -99,6 +102,150 @@ $(function () {
         var that = $(this);
         var right = that.parent().siblings('.option-sort-right');
         right.find('.option-sort-option').removeClass('selected').eq(that.find('option:selected').index()).addClass('selected');
+    }).on('input propertychange paste change focus', '.chosen-search-input', function () {
+        _this_val = $(this).val().replace(/(^\s*)|(\s*$)/g, "");
+        let _this_data_opt = $(this).attr('data-opt')
+        let _drop_item = $(this).parent().parent().next()
+        let _drop_item_child = $(this).parent().parent().next().find('.chosen-results')
+        if (_this_val === '') {
+            _drop_item.css('clip', 'rect(0, 0, 0, 0)')
+            _drop_item.css('clip-path', 'inset(100% 100%)')
+            _drop_item.css('position', 'absolute')
+            return
+        }
+        _drop_item.css('clip', 'auto')
+        _drop_item.css('clip-path', 'none')
+        _drop_item.css('position', 'relative')
+        var formData = new FormData()
+        formData.append("action", 'tpl_select_search')
+        formData.append("kywd", $(this).val())
+        formData.append("name", $(this).attr('data-s-name'))
+        formData.append("type", _this_data_opt)
+        $.ajax({
+            url: $(this).attr('data-url') + 'content/plugins/tpl_options/actions/search.php',
+            type: 'post',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                _drop_item_child.html(data)
+            },
+            error: function (data) {
+                _drop_item_child.html(data)
+            }
+        });
+    }).on('click', '.chosen-results .active-result', function () {
+        let title = $(this).html()
+        let name = $(this).attr('data-s-name')
+        let gid = $(this).attr('data-id')
+        let _search_filed = $(this).parent().parent().prev().find('.search-field')
+        let _input_item = $(this).parent().parent().prev().find('.search-field').find('.chosen-search-input')
+        let _drop_item = $(this).parent().parent()
+        _search_filed.before('<li class="search-choice"><span>' + title + '</span><a class="search-choice-close"><i class="icofont-close"></i></a><input class="d-none" name="' + name + '[]" type="text" value="' + gid + '"></li>');
+        _drop_item.css('clip', '')
+        _drop_item.css('clip-path', '')
+        _input_item.val('')
+        _input_item.focus()
+        $('form.tpl-options-form').trigger('submit');
+    }).on('click', '.search-choice-close i', function () {
+        $(this).parent().parent().remove()
+        $('form.tpl-options-form').trigger('submit');
+    }).on('click', '.tpl-block-title', function () {
+        $(this).next().toggleClass('d-none')
+        $(this).find('span').toggleClass('icofont-rounded-right')
+        $(this).find('span').toggleClass('icofont-rounded-down')
+    }).on('click', '.tpl-add-block', function () {
+        let _name = $(this).attr('data-b-name')
+        let _type = $(this).attr('data-type')
+        let _url = $(this).attr('data-url')
+        let type_html = ''
+        if (_type === 'image') {
+            type_html = '<div class="tpl-block-upload"><span>填写块标题：</span>' +
+                '<span class="image-tip">友情提示：选择文件后将会立刻上传覆盖原图</span>' +
+                '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">' +
+                '<div class="tpl-image-preview"><img src=""></div><div class="tpl-block-upload-input">' +
+                '<input type="text" name="' + _name + '[content][]" value=""><label>\n' +
+                '<a class="btn btn-primary"><i class="icofont-plus"></i>上传</a>\n' +
+                '<input class="d-none tpl-image" type="file" name="image" data-url="' + _url + '" accept="image/gif,image/jpeg,image/jpg,image/png">\n' +
+                '</label>'
+            type_html += '</div></div>';
+        } else {
+            type_html += '<span>填写块标题：</span>'
+            type_html += '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">';
+            type_html += '<span>填写块内容：</span>'
+            type_html += '<textarea rows="8" name="' + _name + '[content][]"></textarea>';
+        }
+        $(this).before('<div class="tpl-block-item">\n' +
+            '    <div class="tpl-block-head">\n' +
+            '    <i class="tpl-block-clone icofont-ui-copy"></i>\n' +
+            '    <i class="tpl-block-remove icofont-close icofont-md"></i>\n' +
+            '    </div>\n' +
+            '    <h4 class="tpl-block-title">\n' +
+            '    <span class="tpl-block-title-icon icofont-rounded-right"></span>\n' +
+            '    <item class="block-title-text"></item>' +
+            '    </h4>\n' +
+            '    <div class="tpl-block-content d-none">\n' +
+            type_html +
+            '    </div>\n' +
+            '</div>')
+        $('form.tpl-options-form').trigger('submit');
+    }).on('change', '.tpl-image', function () {
+        let obj = this;
+        let file = $(this).prop('files')[0];
+        let _url = $(this).attr('data-url')
+        let _target_input = $(this).parent().parent().find('input[type="text"]')
+        let _target_img = $(this).parent().parent().prev().find('img')
+        let formData = new FormData();
+        if (file === undefined || file === null) return
+        formData.append("action", 'tpl_upload')
+        formData.append("image", file)
+        formData.append("origin_image", _target_input.val())
+        $.ajax({
+            url: _url + 'content/plugins/tpl_options/actions/tpl.php',
+            type: 'post',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                let j_data = JSON.parse(data)
+                if (j_data.code === 'success') {
+                    _target_input.val(j_data.data)
+                    _target_img.attr('src', j_data.data + '?' + new Date().getTime())
+                    obj.value = ''
+                    $('form.tpl-options-form').trigger('submit');
+                } else {
+                    cocoMessage.error(j_data.data, 2500);
+                }
+            },
+            error: function (data) {
+                cocoMessage.error('网络异常', 2500);
+            }
+
+        });
+
+    }).on('click', '.tpl-block-remove', function () {
+        if (confirm('真的要删除吗？')) {
+            $(this).parent().parent().remove()
+            $('form.tpl-options-form').trigger('submit');
+        }
+    }).on('click', '.tpl-block-clone', function () {
+        let _this_clone = $(this).parent().parent().clone()
+        $(this).parent().parent().after(_this_clone)
+        $('form.tpl-options-form').trigger('submit');
+    }).on('input change focus', '.block-title-input', function () {
+        let _tar = $(this).parent().prev().find('item')
+        if ($(this).parent().hasClass('tpl-block-upload')) {
+            _tar = $(this).parent().parent().prev().find('item')
+        }
+        _tar.html($(this).val())
+    }).on('click', '.vtpl-switch-item input[type="checkbox"]', function () {
+        if ($(this).is(":checked")) {
+            $(this).parent().parent().addClass('vtpl-checked')
+        } else {
+            $(this).parent().parent().removeClass('vtpl-checked')
+        }
     }).on('mouseenter', '.tpl-options-form input[type="file"]', function () {
         input = $(this);
         trueInput.css(input.offset());
@@ -109,15 +256,19 @@ $(function () {
         $.ajax({
             url: that.attr('action'), type: 'post', data: that.serialize(), cache: false, dataType: 'json', // beforeSend: loading,
             success: function (data) {
-                showMsg(data.code, data.msg);
+                if(data.code === 1){
+                    cocoMessage.error(data.msg, 2500);
+                    return false;
+                }
+                cocoMessage.success(data.msg, 2500);
             }, error: function () {
-/*vot*/                showMsg(1, lang('network_error'));
+/*vot*/                showMsg(1, lang('network_error'), 2500);
             }, complete: function () {
                 // loading(false);
             }
         });
         return false;
-    }).on('change', '.tpl-options-form input, .tpl-options-form textarea', function () {
+    }).on('change', '.tpl-options-form input:not(.chosen-search-input,.tpl-image), .tpl-options-form textarea', function () {
         $('form.tpl-options-form').trigger('submit');
     });
     //Define method
@@ -228,4 +379,8 @@ $(window).scroll(function () {
 function TplShow(a) {
     $('.option').hide();
     $('.' + a).fadeIn();
+}
+
+function block_drag_end() {
+    $('form.tpl-options-form').trigger('submit');
 }

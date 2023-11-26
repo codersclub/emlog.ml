@@ -30,7 +30,8 @@ class Record_Controller {
             $record_stime = strtotime($record);
             $record_etime = $record_stime + 3600 * 24;
         }
-/*vot*/        $sqlSegment = "AND date>=$record_stime AND date<$record_etime ORDER BY date DESC";
+/*vot*/        $sqlSegment = "AND date>=$record_stime AND date < $record_etime";
+        $orderBy = ' order by date desc';
         $lognum = $Log_Model->getLogNum('n', $sqlSegment);
 
         $total_pages = ceil($lognum / $index_lognum);
@@ -41,7 +42,7 @@ class Record_Controller {
 
         $pageurl .= Url::record($record, 'page');
 
-        $logs = $Log_Model->getLogsForHome($sqlSegment, $page, $index_lognum);
+        $logs = $Log_Model->getLogsForHome($sqlSegment . $orderBy, $page, $index_lognum);
         $page_url = pagination($lognum, $index_lognum, $page, $pageurl);
 
         include View::getView('header');

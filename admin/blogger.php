@@ -35,43 +35,21 @@ if ($action == 'update') {
     $login = Input::postStrVar('username');
     $newpass = Input::postStrVar('newpass');
     $repeatpass = Input::postStrVar('repeatpass');
-    $resp = Input::postStrVar('resp'); // eg: json (only support json now)
 
     if (empty($nickname)) {
-        if ($resp === 'json') {
-            Output::error(lang('nickname_is_empty'));
-        }
-        emDirect("./blogger.php?error_a=1");
+        Output::error(lang('nickname_is_empty'));
     } elseif (!checkMail($email)) {
-        if ($resp === 'json') {
-            Output::error(lang('email_enter_please'));
-        }
-        emDirect("./blogger.php?error_email=1");
+        Output::error(lang('email_enter_please'));
     } elseif (strlen($newpass) > 0 && strlen($newpass) < 6) {
-        if ($resp === 'json') {
-            Output::error(lang('password_length_short'));
-        }
-        emDirect("./blogger.php?error_c=1");
+        Output::error(lang('password_length_short'));
     } elseif (!empty($newpass) && $newpass != $repeatpass) {
-        if ($resp === 'json') {
-            Output::error(lang('password_not_equal'));
-        }
-        emDirect("./blogger.php?error_d=1");
+        Output::error(lang('password_not_equal'));
     } elseif ($User_Model->isUserExist($login, UID)) {
-        if ($resp === 'json') {
-            Output::error(lang('username_exists'));
-        }
-        emDirect("./blogger.php?error_e=1");
+        Output::error(lang('username_exists'));
     } elseif ($User_Model->isNicknameExist($nickname, UID)) {
-        if ($resp === 'json') {
-            Output::error(lang('nickname_exists'));
-        }
-        emDirect("./blogger.php?error_f=1");
+        Output::error(lang('nickname_exists'));
     } elseif ($User_Model->isMailExist($email, UID)) {
-        if ($resp === 'json') {
-            Output::error(lang('email_is_used'));
-        }
-        emDirect("./blogger.php?error_g=1");
+        Output::error(lang('email_is_used'));
     }
 
     $d = [
@@ -89,10 +67,7 @@ if ($action == 'update') {
 
     $User_Model->updateUser($d, UID);
     $CACHE->updateCache('user');
-    if ($resp === 'json') {
-        Output::ok();
-    }
-    emDirect("./blogger.php?active_edit=1");
+    Output::ok();
 }
 
 if ($action == 'update_avatar') {

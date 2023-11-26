@@ -26,6 +26,7 @@ if (empty($action)) {
         8  => lang('tpl_category_8'),
         7  => lang('tpl_category_7'),
         9  => lang('tpl_category_9'),
+        17 => lang('tpl_category_17'),
         10 => lang('tpl_category_10'),
     ];
 
