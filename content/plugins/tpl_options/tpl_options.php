@@ -1,10 +1,11 @@
 <?php
 /*
 Template options plug-in
-Version: 4.2.3
-Plugin URL: https://www.emlog.net/docs/#/template
+Version: 4.2.4
+Plugin URL: https://www.emlog.net/plugin/detail/377
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
 Author: emlog
+Author URL: https://www.emlog.net/author/index/577
 */
 
 defined('EMLOG_ROOT') || exit('access denied!');
@@ -19,7 +20,7 @@ class TplOptions {
     //Plug-in ID
     const ID = 'tpl_options';
     const NAME = 'Template options';
-    const VERSION = '4.2.3';
+    const VERSION = '4.2.4';
 
     //DB table prefix
     private $_prefix = 'tpl_options_';
@@ -1396,13 +1397,13 @@ function _em($name = null) {
 
 function _getBlock($name = null, $type = 'content') {
     $target = TplOptions::getInstance()->$name;
-    if (!is_array($target) || empty($target[trim($type)]) || (trim($type) != 'title' && trim($type) != 'content' )) {
+    if (!is_array($target) || empty($target[trim($type)]) || (trim($type) != 'title' && trim($type) != 'content')) {
         return [];
     }
     $arr = [];
     $result = array_filter($target, 'is_array');
-    if (count($result) == count($target)){
-        foreach($target[$type] as $val){
+    if (count($result) == count($target)) {
+        foreach ($target[$type] as $val) {
             $arr[] = $val;
         }
     }
