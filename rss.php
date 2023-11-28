@@ -2,12 +2,12 @@
 /**
  * RSS
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 require_once './init.php';
 
-load_language('rss');
+/*vot*/ load_language('rss');
 
 header('Content-type: application/xml');
 $Log_Model = new Log_Model();
@@ -24,7 +24,7 @@ xmlns:atom="http://www.w3.org/2005/Atom"
 <description><![CDATA[' . Option::get('bloginfo') . ']]></description>
 <link>' . BLOG_URL . '</link>
 <language>' . LANG . '</language>
-<generator>emlog.io</generator>';
+<generator>www.emlog.net</generator>';
 if (!empty($articles)) {
     foreach ($articles as $value) {
         $link = Url::log($value['id']);

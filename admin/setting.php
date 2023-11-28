@@ -2,7 +2,7 @@
 /**
  * setting
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 /**
@@ -79,7 +79,7 @@ if ($action == 'save') {
     ];
 
     if ($getData['comment_code'] == 'y' && !function_exists("imagecreate") && !function_exists('imagepng')) {
-        emMsg(lang('verification_code_comment_not_supported'), "setting.php");
+        Output::error(lang('verification_code_comment_not_supported'));
     }
     if ($getData['blogurl'] && substr($getData['blogurl'], -1) != '/') {
         $getData['blogurl'] .= '/';

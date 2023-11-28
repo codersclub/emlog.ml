@@ -2,17 +2,17 @@
 /**
  * install
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
-define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
-const LANG = 'en';            //zh-CN, en, ru, etc.
-const LANG_DIR = 'ltr';       //ltr, rtl
+/*vot*/ define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
+/*vot*/ const LANG = 'en';            //zh-CN, en, ru, etc.
+/*vot*/ const LANG_DIR = 'ltr';       //ltr, rtl
 
 require_once EMLOG_ROOT . '/include/lib/common.php';
 
-load_language('install');
-load_language('core');
+/*vot*/ load_language('install');
+/*vot*/ load_language('core');
 
 header('Content-Type: text/html; charset=UTF-8');
 spl_autoload_register("emAutoload");
@@ -298,7 +298,7 @@ if ($act == 'install' || $act == 'reinstall') {
         emMsg(lang('db_prefix_empty'));
     } elseif (!$username || !$password) {
         emMsg(lang('username_password_empty'));
-    } elseif (strlen($password) < 5) {
+/*vot*/    } elseif (strlen($password) < 5) {
         emMsg(lang('password_short'));
     } elseif ($password != $repassword) {
         emMsg(lang('password_not_equal'));
@@ -315,9 +315,9 @@ if ($act == 'install' || $act == 'reinstall') {
     $CACHE = Cache::getInstance();
 
     if ($act != 'reinstall' && $DB->num_rows($DB->query("SHOW TABLES LIKE '{$db_prefix}blog'")) == 1) {
-        $installed = lang('already_installed');
-        $continue = lang('continue');
-        $return_back = lang('return');
+/*vot*/ $installed = lang('already_installed');
+/*vot*/ $continue = lang('continue');
+/*vot*/ $return_back = lang('return');
         echo <<<EOT
 <!DOCTYPE html>
 <html>
@@ -374,7 +374,7 @@ EOT;
         . "\n//Auth key\n"
         . "const AUTH_KEY = '" . getRandStr(32) . md5(getUA()) . "';"
         . "\n//Cookie name\n"
-        . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
+/*vot*/ . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
         . "\n// Default blog language\n"
         . "const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc."
         . "\n// Enabled language list\n"
@@ -470,7 +470,7 @@ CREATE TABLE {$db_prefix}attachment (
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}media_sort;
 CREATE TABLE {$db_prefix}media_sort (
-  id int(10) unsigned NOT NULL auto_increment COMMENT 'Media Category ID',
+  id int(11) unsigned NOT NULL auto_increment COMMENT 'Media Category ID',
   sortname varchar(255) NOT NULL default '' COMMENT 'Media Category Name',
   PRIMARY KEY  (id)
 )" . $table_charset_sql . "
@@ -671,8 +671,8 @@ CREATE TABLE {$db_prefix}tpl_options_data (
         }
     }
     $CACHE->updateCache();
-
-    $result = "
+    $result = '';
+    $result .= "
         <p style=\"font-size:24px; border-bottom:1px solid #E6E6E6; padding:10px 0px;\">" . lang('emlog_installed') . "</p>
         <p>" . lang('emlog_installed_info') . "</p>
         <p><b>" . lang('user_name') . "</b>: {$username}</p>

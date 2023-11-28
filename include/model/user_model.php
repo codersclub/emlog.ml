@@ -2,7 +2,7 @@
 /**
  * user model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class User_Model {

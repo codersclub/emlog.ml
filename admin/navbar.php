@@ -2,7 +2,7 @@
 /**
  * navbar menu items
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 /**
@@ -121,8 +121,8 @@ if ($action == 'update') {
 
     $navi_data = array(
         'naviname' => $naviname,
-        'newtab' => $newtab,
-        'pid' => $pid,
+        'newtab'   => $newtab,
+        'pid'      => $pid,
     );
 
     if (empty($naviname)) {

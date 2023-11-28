@@ -4,7 +4,7 @@
  * Service: Notice
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Notice {
@@ -21,7 +21,7 @@ class Notice {
         $_SESSION['mail_code'] = $randCode;
         $_SESSION['mail'] = $mail;
 
-/*vot*/        $title = lang('email_verif_code_title');
+/*vot*/ $title = lang('email_verif_code_title');
         $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<span>%s</span></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }

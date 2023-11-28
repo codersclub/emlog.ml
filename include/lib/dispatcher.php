@@ -2,7 +2,7 @@
 /**
  * router
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Dispatcher {
@@ -94,13 +94,13 @@ class Dispatcher {
 
         //for iis6 path is GBK
 /*vot*/ if(LANG == 'zh-CN') { // Only for Simplified Chinese!
-            if (isset($_SERVER['SERVER_SOFTWARE']) && stripos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
-                if (function_exists('mb_convert_encoding')) {
-                    $path = mb_convert_encoding($path, 'UTF-8', 'GBK');
-                } else {
-                    $path = @iconv('GBK', 'UTF-8', @iconv('UTF-8', 'GBK', $path)) == $path ? $path : @iconv('GBK', 'UTF-8', $path);
-                }
+        if (isset($_SERVER['SERVER_SOFTWARE']) && stripos($_SERVER['SERVER_SOFTWARE'], 'IIS') !== false) {
+            if (function_exists('mb_convert_encoding')) {
+                $path = mb_convert_encoding($path, 'UTF-8', 'GBK');
+            } else {
+                $path = @iconv('GBK', 'UTF-8', @iconv('UTF-8', 'GBK', $path)) == $path ? $path : @iconv('GBK', 'UTF-8', $path);
             }
+        }
 /*vot*/ }
         //for ie6 header location
         $r = explode('#', $path, 2);

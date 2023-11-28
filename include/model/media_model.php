@@ -2,7 +2,7 @@
 /**
  * media model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Media_Model {

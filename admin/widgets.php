@@ -2,7 +2,7 @@
 /**
  * Widgets
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 /**
@@ -39,9 +39,9 @@ if ($action === '') {
 }
 
 if ($action === 'setwg') {
-    $widgetTitle = Option::get('widget_title');                                             //All widget titles
-    $widget = isset($_GET['wg']) ? $_GET['wg'] : '';                                        //Widget to modify
-    $wgTitle = isset($_POST['title']) ? $_POST['title'] : '';                               //New widget title
+    $widgetTitle = Option::get('widget_title');               //All widget titles
+    $widget = isset($_GET['wg']) ? $_GET['wg'] : '';          //Widget to modify
+    $wgTitle = isset($_POST['title']) ? $_POST['title'] : ''; //New widget title
 
     preg_match("/^(.*)\s\(.*/", $widgetTitle[$widget], $matchs);
     $realWgTitle = isset($matchs[1]) ? $matchs[1] : $widgetTitle[$widget];

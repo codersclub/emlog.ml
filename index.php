@@ -1,7 +1,7 @@
 <?php
 /**
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 require_once 'init.php';

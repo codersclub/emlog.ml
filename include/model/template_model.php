@@ -2,7 +2,7 @@
 /**
  * Template model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Template_Model {

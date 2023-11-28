@@ -3,7 +3,7 @@
  * Database operation routing (only compatible with old version, not recommended)
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class MySql {

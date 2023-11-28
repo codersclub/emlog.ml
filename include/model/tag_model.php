@@ -2,7 +2,7 @@
 /**
  * tags model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Tag_Model {
@@ -215,7 +215,7 @@ class Tag_Model {
      */
     function getNamesFromIds($tagIds = NULL) {
         $names = [];
-        foreach ($tagIds AS $i => $tag) {
+/*vot*/ foreach ($tagIds AS $i => $tag) {
             if(empty($tag)) {
                 unset($tagIds[$i]);
             }

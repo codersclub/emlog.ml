@@ -2,7 +2,7 @@
 /**
  * Calendar
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Calendar {
@@ -66,7 +66,7 @@ class Calendar {
         <td><a href=\"javascript:void(0);\" onclick=\"sendinfo('$url3','calendar');\"> &laquo; </a>$n_month<a href=\"javascript:void(0);\" onclick=\"sendinfo('$url4','calendar');\"> &raquo; </a></td>
         </tr></table>
         <table class=\"calendar\" cellspacing=\"0\">
-              <tr><td class=\"week\">".lang('weekday1')."</td><td class=\"week\">".lang('weekday2')."</td><td class=\"week\">".lang('weekday3')."</td><td class=\"week\">".lang('weekday4')."</td><td class=\"week\">".lang('weekday5')."</td><td class=\"week\">".lang('weekday6')."</td><td class=\"sun\">".lang('weekday7')."</td></tr>";
+        <tr><td class=\"week\">".lang('weekday1')."</td><td class=\"week\">".lang('weekday2')."</td><td class=\"week\">".lang('weekday3')."</td><td class=\"week\">".lang('weekday4')."</td><td class=\"week\">".lang('weekday5')."</td><td class=\"week\">".lang('weekday6')."</td><td class=\"sun\">".lang('weekday7')."</td></tr>";
 
         //Get a given date is the first day of the week
         $week = @gmdate("w", gmmktime(0, 0, 0, $n_month, 1, $n_year));

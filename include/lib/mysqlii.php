@@ -3,7 +3,7 @@
  * MySQLi Database Class
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class MySqlii {
@@ -79,10 +79,10 @@ class MySqlii {
             emMsg(lang('db_error_name'));
         }
         if (!$ignore_err && 1115 == $this->getErrNo()) {
-/*vot*/            emMsg(lang('utf8mb4_not_support'));
+            emMsg(lang('utf8mb4_not_support'));
         }
         if (!$ignore_err && !$this->result) {
-/*vot*/            emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());
+            emMsg(lang('db_sql_error') . ": $sql<br /><br />error: " . $this->getErrNo() . ' , ' . $this->getError());
         } else {
             return $this->result;
         }

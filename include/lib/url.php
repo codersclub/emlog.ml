@@ -2,7 +2,7 @@
 /**
  * URL
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Url {
@@ -66,7 +66,7 @@ class Url {
     }
 
     /**
-     * Get the archive link
+     * Get record URL
      */
     static function record($record, $page = null) {
         switch (Option::get('isurlrewrite')) {
@@ -87,7 +87,7 @@ class Url {
     }
 
     /**
-     * Get Category Link
+     * Get Category URL
      */
     static function sort($sortId, $page = null) {
         $CACHE = Cache::getInstance();
@@ -111,7 +111,7 @@ class Url {
     }
 
     /**
-     * Get author link
+     * Get Author URL
      */
     static function author($authorId, $page = null) {
         switch (Option::get('isurlrewrite')) {
@@ -132,7 +132,7 @@ class Url {
     }
 
     /**
-     * Get tag link
+     * Get Tag URL
      */
     static function tag($tag, $page = null) {
         switch (Option::get('isurlrewrite')) {
@@ -169,7 +169,7 @@ class Url {
     }
 
     /**
-     * Get Comment Link
+     * Get Comment URL
      */
     static function comment($blogId, $pageId, $cid) {
         $commentUrl = Url::log($blogId);
@@ -186,7 +186,7 @@ class Url {
     }
 
     /**
-     * Get navigation link
+     * Get navigation URL
      */
     static function navi($type, $typeId, $url) {
         switch ($type) {

@@ -3,7 +3,7 @@
  * search
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Search_Controller {
@@ -18,8 +18,8 @@ class Search_Controller {
         $keyword = str_replace(array('%', '_'), array('\%', '\_'), $keyword);
 
         $pageurl = '';
-        
-/*vot*/        $sqlSegment = "AND title LIKE '%{$keyword}%'";
+
+/*vot*/        $sqlSegment = "AND title LIKE '%$keyword%'";
         $orderBy = ' order by date desc';
         $lognum = $Log_Model->getLogNum('n', $sqlSegment);
         $total_pages = ceil($lognum / $index_lognum);

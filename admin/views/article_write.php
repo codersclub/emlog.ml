@@ -125,7 +125,7 @@
                             <div class="form-group">
                                 <label><?= lang('article_template') ?>:</label>
                                 <?php
-                                $sortListHtml = '<option value=""><?= lang('default') ?></option>';
+                                $sortListHtml = '<option value="">' . lang('default') . '</option>';
                                 foreach ($customTemplates as $v) {
                                     $select = $v['filename'] == $template ? 'selected="selected"' : '';
                                     $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '" ' . $select . '>' . ($v['comment']) . '</option>';
@@ -209,6 +209,7 @@
         </div>
     </div>
 </div>
+<!-- vot: Load Editor.MD -->
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <!-- vot: Load Editor.MD current language file -->
 <?php if (strtolower(LANG) !== 'zh-cn') { ?>

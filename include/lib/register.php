@@ -2,7 +2,7 @@
 /**
  * register check
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Register {
@@ -15,11 +15,7 @@ class Register {
         $emkey = isset($options_cache['emkey']) ? $options_cache['emkey'] : '';
 
         if (strlen($emkey) !== self::EMKEY_LEN) {
-/*vot*/            if (defined('DEV_MODE')) {
-                return true;
-            } else {
-                return false;
-            }
+/*vot*/     return (defined('DEV_MODE')) ? true : false;
         }
         return true;
     }
@@ -44,7 +40,7 @@ class Register {
 
         $emcurl = new EmCurl();
         $emcurl->setPost(['emkey' => $emkey]);
-        $emcurl->request('https://emlog.io/proauth/register');
+        $emcurl->request('https://www.emlog.net/proauth/register');
         if ($emcurl->getHttpStatus() !== 200) {
             return false;
         }

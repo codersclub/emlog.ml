@@ -10,7 +10,7 @@ services:
     volumes:
       - ./db_data/mysql:/var/lib/mysql
     ports:
-      - "5505:3306" #local:docker
+      - "5506:3306"
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
@@ -50,7 +50,7 @@ services:
     networks:
       - emlog_ml_network
     ports:
-      - "9001:9000"
+      - "9000:9000"
     environment:
       EMLOG_ENV: develop
       EMLOG_DB_HOST: db
@@ -64,7 +64,7 @@ services:
       - ./:/app/emlog
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "8081:8080"
+      - "8080:8080"
     networks:
       - emlog_ml_network
     depends_on:

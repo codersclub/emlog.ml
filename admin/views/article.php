@@ -121,12 +121,12 @@ $isdraft = $draft ? '&draft=1' : '';
                                 <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a><br>
                                 <?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
                                 <?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
-                                <?php if ($draft && $value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
-                                <!--vot:Lock Char--> <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
-                                <!--vot:Link Char--> <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
+                                <?php if (!$draft && $value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
+<!--vot:Lock Char-->            <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
+<!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                                 <?php if (!$draft && $value['checked'] == 'n'): ?>
-                                    <!--vot-->                          <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
-                                    <!--vot-->                          <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
+<!--vot-->                          <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
+<!--vot-->                          <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
                                 <?php endif ?>
                             </td>
                             <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info mx-2 px-2"><?= $value['comnum'] ?></a></td>
@@ -140,7 +140,8 @@ $isdraft = $draft ? '&draft=1' : '';
                                        href="article.php?action=operate_log&operate=check&gid=<?= $value['gid'] ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('check') ?></a>
                                 <?php endif ?>
                                 <?php if (!$draft && User::haveEditPermission() && $author_role == User::ROLE_WRITER): ?>
-                                    <!--vot-->  <a class="badge badge-warning" href="#" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#uncheckModel"><?= lang('uncheck') ?></a>
+                                    <a class="badge badge-warning"
+                                       href="#" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#uncheckModel"><?= lang('uncheck') ?></a>
                                 <?php endif ?>
                                 <?php if ($draft): ?>
                                     <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>

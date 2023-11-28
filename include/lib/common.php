@@ -2,13 +2,13 @@
 /**
  * Common function library
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 function emAutoload($class) {
     $class = strtolower($class);
 
-    load_language($class);
+/*vot*/ load_language($class);
 
     if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
         require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
@@ -75,8 +75,7 @@ function realUrl() {
         return $real_url;
     }
 
-    /*vot*/
-    $emlog_path = EMLOG_ROOT . '/';
+/*vot*/ $emlog_path = EMLOG_ROOT . '/';
     $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
     $script_path = str_replace('\\', '/', $script_path);
     $path_element = explode('/', $script_path);
@@ -86,8 +85,7 @@ function realUrl() {
     $current_deep = 0;
     $max_deep = count($path_element);
     while ($current_deep < $max_deep) {
-        /*vot*/
-        $this_match = $this_match . $path_element[$current_deep] . '/';
+/*vot*/ $this_match = $this_match . $path_element[$current_deep] . '/';
         if (substr($emlog_path, strlen($this_match) * (-1)) === $this_match) {
             $best_match = $this_match;
         }
@@ -668,9 +666,7 @@ function chImageSize($img, $max_w, $max_h) {
 if (!function_exists('getGravatar')) {
     function getGravatar($email, $s = 40) {
         $hash = md5($email);
-        //vot        $gravatar_url = "//cravatar.cn/avatar/$hash?s=$s";
-        /*vot*/
-        $gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
+/*vot*/ $gravatar_url = "//www.gravatar.com/avatar/$hash?s=$s";
         doOnceAction('get_Gravatar', $email, $gravatar_url);
 
         return $gravatar_url;
@@ -765,6 +761,11 @@ function emFetchFile($source) {
     $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
     $wh = fopen($temp_file, 'w+b');
 
+    $r = parse_url($source);
+    if (isset($r['host']) && sha1($r['host']) !== '1ca2f71c0b27a1c6dbbf1583dc4d4e422b0683ac') {
+        return FALSE;
+    }
+
     $ctx_opt = set_ctx_option();
     $ctx = stream_context_create($ctx_opt);
     $rh = @fopen($source, 'rb', false, $ctx);
@@ -798,13 +799,11 @@ function emDownFile($source) {
 
     $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
     if ($temp_file === false) {
-        /*vot*/
-        emMsg('emDownFile: Failed to create temporary file.');
+/*vot*/ emMsg('emDownFile: Failed to create temporary file.');
     }
     $ret = file_put_contents($temp_file, $content);
     if ($ret === false) {
-        /*vot*/
-        emMsg('emDownFile: Failed to write temporary file.');
+/*vot*/ emMsg('emDownFile: Failed to write temporary file.');
     }
 
     return $temp_file;

@@ -3,7 +3,7 @@
  * Rest API controller
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Api_Controller {

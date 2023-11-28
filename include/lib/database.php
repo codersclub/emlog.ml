@@ -3,7 +3,7 @@
  * Database operation routing
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Database {

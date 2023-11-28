@@ -2,7 +2,7 @@
 /**
  * commment model
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Comment_Model {
@@ -216,7 +216,7 @@ class Comment_Model {
             $useragent = addslashes(getUA());
             if ($pid != 0) {
                 $comment = $this->getOneComment($pid);
-                $content = '@' . addslashes($comment['poster']) . ': ' . $content;
+/*vot*/         $content = '@' . addslashes($comment['poster']) . ': ' . $content;
             }
             $this->db->query("INSERT INTO " . DB_PREFIX . "comment (date,poster,gid,comment,mail,url,hide,ip,agent,pid)
                     VALUES ('$utctimestamp','$name','$blogId','$content','$mail','$url','$hide','$ipaddr','$useragent','$pid')");
@@ -275,7 +275,7 @@ class Comment_Model {
 
         if ($pid > 0) {
             $comment = $this->getOneComment($pid);
-            $content = '@' . addslashes($comment['poster']) . ': ' . $content;
+/*vot*/     $content = '@' . addslashes($comment['poster']) . ': ' . $content;
         }
 
         $hide = Option::get('ischkcomment') == 'y' && !User::haveEditPermission() ? 'y' : 'n';

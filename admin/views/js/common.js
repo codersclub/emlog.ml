@@ -487,11 +487,11 @@ function imgPasteExpand(thisEditor) {
                 $.get(emMediaPhpUrl, function (resp) {
                     var image = resp.data.images[0];
                     if (image) {
-/*vot*/                 console.log(lang('result_ok'))
+/*vot*/                 console.log(lang('result_ok'));
 /*vot*/                 replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
-/*vot*/                 console.log(lang('get_result_fail'))
-/*vot*/                 alert(lang('get_result_fail');
+/*vot*/                 console.log(lang('get_result_fail'));
+/*vot*/                 alert(lang('get_result_fail'));
                     }
                 })
             }, error: function (result) {

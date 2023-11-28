@@ -3,7 +3,7 @@
  * homepage & article detail
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Log_Controller {
