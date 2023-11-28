@@ -879,9 +879,9 @@ function emMsg($msg, $url = 'javascript:history.back(-1);', $isAutoGo = false) {
         header("HTTP/1.1 404 Not Found");
         $msg = lang('404_description');
     }
-    $lang = LANG;
-    $dir = LANG_DIR;
-    $title = lang('prompt');
+/*vot*/ $lang = LANG;
+/*vot*/ $dir = LANG_DIR;
+/*vot*/ $title = lang('prompt');
     echo <<<EOT
 <!doctype html>
 <html lang="$lang" dir="$dir">

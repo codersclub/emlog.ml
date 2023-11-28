@@ -3,7 +3,7 @@
  * article and page model
  *
  * @package EMLOG
- * @link https://emlog.io
+ * @link https://www.emlog.net
  */
 
 class Log_Model {
@@ -392,12 +392,14 @@ class Log_Model {
             if (view::isTplExist('pw')) {
                 include view::getView('pw');
             } else {
-/*vot*/                $page_pass = lang('page_password_enter');
-/*vot*/                $submit_pass = lang('submit_password');
-/*vot*/                $back = lang('back_home');
+/*vot*/         $page_pass = lang('page_password_enter');
+/*vot*/         $submit_pass = lang('submit_password');
+/*vot*/         $back = lang('back_home');
+/*vot*/         $lang = LANG;
+/*vot*/         $lang_dir = LANG_DIR;
                 echo <<<EOT
 <!doctype html>
-<html>
+<html lang="{$lang}" dir="{$lang_dir}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
