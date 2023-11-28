@@ -75,7 +75,7 @@ var LNG = {
     'too_quick': '请勿频繁操作！',//'Do not operate frequently!',
     'saving_in': '[保存中] ',//'[Saving] ',
     'saved_ok': '[保存成功] ',//'[Saved successfully]: ',
-    'save_success': '保存成功';//'Saved successfully';
+    'save_success': '保存成功',//'Saved successfully',
 
     'save_failed': '[保存失败] ',//'[Save failed]: ',
     'save_failed!': '保存失败！',//'Save failed!',
