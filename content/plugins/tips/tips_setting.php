@@ -37,7 +37,7 @@ function plugin_setting_view() {
         $("#menu_ext").addClass('show');
         $("#menu_plug").addClass('active');
 
-        // Ajax异步提交表单
+        // Ajax asynchronous form submission
         $("#tips_form").submit(function (event) {
             event.preventDefault();
             submitForm("#tips_form");

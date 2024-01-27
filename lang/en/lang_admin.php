@@ -888,6 +888,7 @@ $lang = array(
     'category_id' => 'Category ID',//'分类ID',
     'keywords' => 'Keywords',//'关键词',
     'keywords_info' => ' (English characters comma separated. Keywords used for a page classification)',//'（英文逗号分割，用于分类页的 keywords）',
+    'self_parent' => 'Cannot set itself as a parent category',//'不能设置自身为父分类',
 
 //---------------------------
 //admin/views/sort_edit.php

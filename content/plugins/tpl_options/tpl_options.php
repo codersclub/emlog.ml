@@ -339,7 +339,7 @@ class TplOptions {
     }
 
     /**
-     * 获取所有标签
+     * Get all tags
      * @return array
      */
     private function getTags() {

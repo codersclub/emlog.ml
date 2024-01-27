@@ -36,7 +36,8 @@ $link = Input::postStrVar('link');
 $author = isset($_POST['author']) && User::haveEditPermission() ? (int)trim($_POST['author']) : UID;
 $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
-$pubPost = Input::postStrVar('pubPost'); // 是否直接发布文章，而非保存草稿
+
+$pubPost = Input::postStrVar('pubPost'); // Whether to publish the article directly instead of saving a draft
 
 if ($pubPost) {
     $ishide = 'n';

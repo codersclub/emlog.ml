@@ -9,7 +9,7 @@ function callback_init() {
 // Execute this function when the plugin is removed
 function callback_rm() {
     $plugin_storage = Storage::getInstance('tips');
-    $plugin_storage->deleteAllName('YES'); // 删除时清理插件的设置信息
+    $plugin_storage->deleteAllName('YES'); // Clean up plug-in setting information when deleting
 }
 
 // Execute this function when the plugin is updated
