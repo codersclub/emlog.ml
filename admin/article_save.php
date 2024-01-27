@@ -36,8 +36,9 @@ $link = Input::postStrVar('link');
 $author = isset($_POST['author']) && User::haveEditPermission() ? (int)trim($_POST['author']) : UID;
 $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
+$pubPost = Input::postStrVar('pubPost'); // 是否直接发布文章，而非保存草稿
 
-if (isset($_POST['pubPost'])) {
+if ($pubPost) {
     $ishide = 'n';
 }
 
@@ -86,7 +87,7 @@ if ($blogid > 0) {
 
 $CACHE->updateArticleCache();
 
-doAction('save_log', $blogid);
+doAction('save_log', $blogid, $pubPost, $postDate);
 
 // Save asynchronously
 if ($action === 'autosave') {
@@ -99,9 +100,9 @@ if ($ishide === 'y') {
 }
 
 // Article (draft) saved as public
-if (isset($_POST['pubPost'])) {
+if ($pubPost) {
     if (!User::haveEditPermission()) {
-        notice::sendNewPostMail($title);
+        notice::sendNewPostMail($title, $blogid);
     }
     emDirect("./article.php?active_post=1");
 }

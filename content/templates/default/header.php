@@ -1,10 +1,11 @@
 <?php
 /*
 Template Name: Default template
+Version:1.0
 Template Url: https://emlog.io/template/
 Description: Emlog Pro Default template
-Author: emlog official
-Author Url:https://emlog.io
+Author: emlog
+Author Url:https://www.emlog.net
 */
 defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
@@ -34,7 +35,6 @@ if (!function_exists('_g')) {
         }</script>
     <?php doAction('index_head') ?>
 </head>
-
 <body>
 <nav class="blog-header">
     <div class="blog-header-c container">
@@ -51,9 +51,7 @@ if (!function_exists('_g')) {
                 <rect x="1" y="15" fill="#5F5F5F" width="26" height="1.6"/>
             </svg>
         </div>
-
         <?php blog_navi() ?>
         <?php doAction('index_navi_ext') ?>
-
     </div>
 </nav>

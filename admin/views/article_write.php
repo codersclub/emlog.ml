@@ -10,6 +10,7 @@
                 </div>
                 <div class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
+                    <?php doAction('adm_writelog_bar') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <label><?= lang('post_description') ?><?= lang('optional') ?>:</label>

@@ -1,7 +1,7 @@
 <?php
 /*
 Template options plug-in
-Version: 4.2.4
+Version: 4.2.5
 Plugin URL: https://www.emlog.net/plugin/detail/377
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
 Author: emlog
@@ -202,8 +202,8 @@ class TplOptions {
      * @return void
      */
     public function hookAdminHead() {
-        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.min.css?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
-        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.min.js?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
+        echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
+        echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
         /*vot*/
         echo sprintf('<script src="%s"></script>', $this->_lang . '/lang_js.js?ver=' . urlencode(self::VERSION));
     }
@@ -336,6 +336,15 @@ class TplOptions {
             }
         }
         return $sorts;
+    }
+
+    /**
+     * 获取所有标签
+     * @return array
+     */
+    private function getTags() {
+        $data = $this->queryAll('tag', array(), 'tid,tagname');
+        return $data;
     }
 
     /**
@@ -634,6 +643,15 @@ class TplOptions {
     }
 
     /**
+     * Check whether it is a date formatted text
+     * @param array $option
+     * @return boolean
+     */
+    private function isDate($option) {
+        return isset($option['date']) && $option['date'];
+    }
+
+    /**
      * Upload file
      * @param string $template Template
      * @param array $file Uploaded file
@@ -837,6 +855,11 @@ class TplOptions {
     private function renderByTpl($option, $tpl, $loopValues = true, $placeholder = true) {
         $desc = '';
         $tip = '';
+        $is_multi = '';
+        if($this->isMulti($option))
+        {
+            $is_multi = 'is-multi';
+        }
         if (!empty($option['description'])) {
             $desc = '<div class="option-description">' . $option['description'] . '</div>';
         }
@@ -847,7 +870,7 @@ class TplOptions {
         echo '<div class="option-ico upico"></div>';
 /*vot*/ echo '<div class="option-name" title="' . lang('shrink_expand') . '" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']) . $tip, $desc, '</div>';
         $depend = isset($option['depend']) ? $option['depend'] : 'none';
-        echo sprintf('<div class="option-body depend-%s">', $depend);
+        echo sprintf('<div class="option-body depend-%s %s">', $depend, $is_multi);
         switch ($depend) {
             case 'sort':
                 $unsorted = isset($option['unsorted']) ? $option['unsorted'] : true;
@@ -855,26 +878,26 @@ class TplOptions {
                 if (!is_array($option['value'])) {
                     $option['value'] = array();
                 }
-                echo '<div class="option-sort" data-option-name="', $option['name'], '">';
-                echo '<div class="option-sort-left">';
+                echo '<div class="option-sort-tag" data-option-name="', $option['name'], '">';
+                echo '<div class="option-sort-tag-left">';
                 if (count($sorts) < 1) {
                     foreach ($sorts as $sort) {
-                        echo '<div class="option-sort-name">';
+                        echo '<div class="option-sort-tag-name">';
                         echo $sort['sortname'];
                         echo '</div>';
                     }
                 } else {
-                    echo '<select class="option-sort-select">';
+                    echo '<select class="option-sort-tag-select">';
                     foreach ($sorts as $sort) {
                         echo sprintf('<option value="%s">%s</option>', $sort['sortname'], $sort['sortname']);
                     }
                     echo '</select>';
                 }
                 echo '</div>';
-                echo '<div class="option-sort-right">';
+                echo '<div class="option-sort-tag-right">';
                 foreach ($sorts as $sort) {
                     $sid = $sort['sid'];
-                    echo '<div class="option-sort-option">';
+                    echo '<div class="option-sort-tag-option">';
                     if (!isset($option['value'][$sid])) {
                         $option['value'][$sid] = $this->getOptionDefaultValue($option, $this->_currentTemplate);
                     }
@@ -896,6 +919,60 @@ class TplOptions {
                             '{value}' => $this->encode($option['value'][$sid]),
                             '{label}' => '',
                             '{path}'  => $this->getImagePath($option['value'][$sid]),
+                            '{rich}'  => $this->getRichString($option),
+                        ));
+                    }
+                    echo '</div>';
+                }
+                echo '</div>';
+                echo '</div>';
+                break;
+            case 'tag':
+                $tags = $this->getTags();
+                if (!is_array($option['value'])) {
+                    $option['value'] = array();
+                }
+                echo '<div class="option-sort-tag" data-option-name="', $option['name'], '">';
+                echo '<div class="option-sort-tag-left">';
+                if (count($tags) < 1) {
+                    foreach ($tags as $tag) {
+                        echo '<div class="option-sort-tag-name">';
+                        echo $tag['tagname'];
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<select class="option-sort-tag-select">';
+                    foreach ($tags as $tag) {
+                        echo sprintf('<option value="%s">%s</option>', $tag['tagname'], $tag['tagname']);
+                    }
+                    echo '</select>';
+                }
+                echo '</div>';
+                echo '<div class="option-sort-tag-right">';
+                foreach ($tags as $tag) {
+                    $tid = $tag['tid'];
+                    echo '<div class="option-sort-tag-option">';
+                    if (!isset($option['value'][$tid])) {
+                        $option['value'][$tid] = $this->getOptionDefaultValue($option, $this->_currentTemplate);
+                    }
+                    if ($loopValues) {
+                        if ($placeholder) {
+                            echo sprintf('<input type="hidden" name="%s" value="">', $option['id'] . "[{$tid}]");
+                        }
+                        foreach ($option['values'] as $value => $label) {
+                            echo strtr($tpl, array(
+                                '{name}'    => $option['id'] . "[{$tid}]",
+                                '{value}'   => $this->encode($value),
+                                '{label}'   => $label,
+                                '{checked}' => $this->getCheckedString($value, $option['value'][$tid]),
+                            ));
+                        }
+                    } else {
+                        echo strtr($tpl, array(
+                            '{name}'  => $option['id'] . "[{$tid}]",
+                            '{value}' => $this->encode($option['value'][$tid]),
+                            '{label}' => '',
+                            '{path}'  => $this->getImagePath($option['value'][$tid]),
                             '{rich}'  => $this->getRichString($option),
                         ));
                     }
@@ -1063,7 +1140,9 @@ class TplOptions {
      * @return void
      */
     private function renderText($option) {
-        if ($this->isMulti($option)) {
+        if($this->isDate($option)){
+            $tpl = '<input type="date" name="{name}" value="{value}">';
+        }else if ($this->isMulti($option)) {
             $tpl = '<textarea name="{name}" rows="5" class="option-textarea{rich}">{value}</textarea>';
         } else {
             $tpl = '<input type="text" name="{name}" value="{value}">';
@@ -1159,10 +1238,14 @@ class TplOptions {
                          </div>
                      </div>';
         } else {
-/*vot*/     $tpl = '<span>' . lang('enter_block_title') . ':</span>';
+/*vot*/     $tpl = '<div>' . lang('enter_block_title') . ':</div>';
             $tpl .= '<input class="block-title-input" type="text" name="{title}" value="{tvalue}">';
-/*vot*/     $tpl .= '<span>' . lang('enter_block_content') . ':</span>';
-            $tpl .= '<textarea rows="8" name="{name}">{value}</textarea>';
+/*vot*/     $tpl .= '<div>' . lang('enter_block_content') . ':</div>';
+            if($this->isMulti($option)){
+                $tpl .= '<textarea rows="5" name="{name}">{value}</textarea>';
+            }else{
+                $tpl .= '<input type="text" name="{name}" value="{value}">';
+            }
         }
         $option['depend'] = 'block';
         $this->renderByTpl($option, $tpl, false);

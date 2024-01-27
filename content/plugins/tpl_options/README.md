@@ -133,6 +133,14 @@ $options = [
         'min'          => '1',
         'description'  => ''
     ],
+    'index-date_text'   => [
+        'labels'       => 'tpl-head',
+        'type'         => 'text',
+        'name'         => 'Date text box',
+        'new'          =>  'NEW',
+        'date'         => 'true',
+        'description'  => ''
+    ],
 ];
 ```
 
@@ -153,17 +161,19 @@ As shown above, in the *$options* array, the key is the id of the setting item, 
 
 1. For all types, the default attribute is used to specify the default value. When default is not specified, the first value in values is used. If neither is specified, a strange default value will be used.
 2. For radio and chexkbox types, the values attribute is used to set the value and display name of each button.
-3. Except for sort, you can specify depend as sort, which means that this option can set different values according to different categories. When specifying depend as sort, the unsorted attribute can be optional. When it is true, it means that unclassified is included, and when it is false, it is not. Include, defaults to true.
-4. Sort and page can set the multi attribute to true to indicate multiple selections.
-5. (Optional) The description attribute is used to describe the option.
-6. If type is text, you can set the multi attribute to true to indicate multi-line text, which is the difference between input and textarea. The optional attribute rich is used to support rich text. If this value is set, the editor will be loaded.
-7. If you want to use a numeric text box and the type is still text, you can set the pattern attribute to num. Max, min, and unit can be specified, that is, the maximum limit value, the minimum limit value, and the quantity unit. The minimum or maximum value can be set independently. For example, only the minimum value is set, the maximum value does not limit the input. The unit of measurement is displayed on the far right side of the text box.
-8. If type is sort, page or tag, and multiple selection is set, the default value will be empty, otherwise it will be the first value of this type.
-9. For type **select**, the pattern attribute is **required** and can be filled in: (1). post (2).cate (3)
-   .page. Correspond to articles, categories, and pages respectively. This function module may query slowly when the data is very large. The content of the array obtained using the built-in function is the ID of the set type, for example, a set of article gids is obtained.
-10. (Optional) The above **all types** support the *new* attribute, that is, a reminder logo will be displayed after the setting item name, and the effect can be seen in the default template. Fill in the attribute value freely, such as: NEW, new, etc. If it is empty or not filled in, it will not be displayed.
-11. For type **block**, you can optionally set the pattern attribute. If the pattern attribute is not set, the default content will be text. Set the pattern attribute to image to use multiple image content blocks.
-12. For how to write setting items, please refer to the code example at the beginning of the document.
+3. Except for sort, you can specify depend as sort, which means that this option can set different values according to different categories. When specifying depend as sort, the unsorted attribute can be optional. When it is true, it means that uncategorized is included, and when it is false, it does not. Include, defaults to true.
+4. Except for tag, you can specify depend as tag, which means that this option can set different values according to different tags, such as adding an icon to the tag.
+5. Sort and page can set the multi attribute to true to indicate multiple selections.
+6. (Optional) The description attribute is used to describe this option.
+7. If type is text, you can set the multi attribute to true to indicate multi-line text, which is the difference between input and textarea. The optional attribute rich is used to support rich text. If this value is set, the editor will be loaded.
+8. If you want to use a numeric text box and the type is still text, you can set the pattern attribute to num. Max, min, and unit can be specified, that is, the maximum limit value, the minimum limit value, and the quantity unit. The minimum or maximum value can be set independently. For example, only the minimum value is set, the maximum value does not limit the input. The unit of measurement is displayed on the far right side of the text box.
+9. If you use a date text box and the type is still text, you can set the date attribute to true.
+10. If type is sort, page or tag, and multiple selection is set, the default value will be empty, otherwise it will be the first value of this type.
+11. For type **select**, the pattern attribute is **required** and can be filled in: (1). post (2).cate (3)
+        .page. Correspond to articles, categories, and pages respectively. This function module may query slowly when the data is very large. The content of the array obtained using the built-in function is the ID of the set type, for example, a set of article gids is obtained.
+12. (Optional) The above **all types** support the *new* attribute, that is, a reminder logo will be displayed after the setting item name, and the effect can be seen in the default template. Fill in the attribute value freely, such as: NEW, new, etc. If it is empty or not filled in, it will not be displayed.
+13. For type **block**, you can optionally set the pattern attribute. If the pattern attribute is not set, the default content is text. You can set the multi attribute to true to indicate multiple lines of text. Set the pattern attribute to image to use multiple image content blocks.
+14. For how to write setting items, please refer to the code example at the beginning of the document.
 
 
 ### Add icon to settings menu

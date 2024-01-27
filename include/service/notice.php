@@ -42,7 +42,7 @@ class Notice {
         return self::sendMail($mail, $title, $content);
     }
 
-    public static function sendNewPostMail($postTitle) {
+    public static function sendNewPostMail($postTitle, $gid) {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -54,7 +54,8 @@ class Notice {
             return false;
         }
         $title = lang('new_article_review');
-/*vot*/        $content = sprintf(lang('new_article_title').'%s', $postTitle);
+        $url = Url::log($gid);
+        $content = sprintf(lang('new_article_title').'<a href="%s">%s</a>', $url, $postTitle);
         return self::sendMail($mail, $title, $content);
     }
 

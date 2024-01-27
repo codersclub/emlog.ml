@@ -35,6 +35,7 @@ $(function () {
     }
     //Bind event handler
     body.on('click', '.' + attr('setting'), function () {
+        document.getElementsByClassName("container-fluid")[0].children[0].style.cssText='display:none !important';
         $('.container-fluid .row').fadeToggle();
         $.ajax({
             url: tplOptions.baseUrl, data: {
@@ -58,6 +59,7 @@ $(function () {
         $('.tpl-nav-options ul li').removeClass('active');
         $(this).addClass('active');
     }).on('click', '.tpl-options-close', function () {
+        document.getElementsByClassName("container-fluid")[0].children[0].style.cssText='display:flex !important';
         $('.container-fluid .row').fadeToggle();
         optionArea.slideUp(500), tplBox.show();
     }).on('click', '#goTopbtn', function () {
@@ -89,19 +91,19 @@ $(function () {
             $('.option-description').fadeIn();
             $('.option-ico').removeClass('downico').addClass('upico');
         }
-    }).on('click', '.option-sort-name', function () {
+    }).on('click', '.option-sort-tag-name', function () {
         var that = $(this);
         if (that.is('.selected')) {
             return;
         }
-        var left = that.parent(), right = left.siblings('.option-sort-right');
+        var left = that.parent(), right = left.siblings('.option-sort-tag-right');
         left.find('.selected').removeClass('selected');
         that.addClass('selected');
-        right.find('.option-sort-option').removeClass('selected').eq(that.index()).addClass('selected');
-    }).on('change', '.option-sort-select', function () {
+        right.find('.option-sort-tag-option').removeClass('selected').eq(that.index()).addClass('selected');
+    }).on('change', '.option-sort-tag-select', function () {
         var that = $(this);
-        var right = that.parent().siblings('.option-sort-right');
-        right.find('.option-sort-option').removeClass('selected').eq(that.find('option:selected').index()).addClass('selected');
+        var right = that.parent().siblings('.option-sort-tag-right');
+        right.find('.option-sort-tag-option').removeClass('selected').eq(that.find('option:selected').index()).addClass('selected');
     }).on('input propertychange paste change focus', '.chosen-search-input', function () {
         _this_val = $(this).val().replace(/(^\s*)|(\s*$)/g, "");
         let _this_data_opt = $(this).attr('data-opt')
@@ -171,10 +173,14 @@ $(function () {
                 '</label>'
             type_html += '</div></div>';
         } else {
-/*vot*/     type_html += '<span>' + lang('enter_block_title') + ':</span>'
-            type_html += '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">';
-/*vot*/     type_html += '<span>' + lang('enter_block_content') + ':</span>'
-            type_html += '<textarea rows="8" name="' + _name + '[content][]"></textarea>';
+/*vot*/     type_html += '<div>' + lang('enter_block_title') + ':</div>'
+            type_html += '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">'
+/*vot*/     type_html += '<div>' + lang('enter_block_content') + ':</div>'
+            if($(this).parent().parent().hasClass('is-multi')){
+                type_html += '<textarea rows="5" name="' + _name + '[content][]"></textarea>'
+            }else{
+                type_html += '<input type="text" name="' + _name + '[content][]" value="">'
+            }
         }
         $(this).before('<div class="tpl-block-item">\n' +
             '    <div class="tpl-block-head">\n' +
@@ -302,11 +308,11 @@ $(function () {
     };
 
     function initOptionSort() {
-        $('.option-sort-left').each(function () {
-            $(this).find('.option-sort-name:first').addClass('selected');
+        $('.option-sort-tag-left').each(function () {
+            $(this).find('.option-sort-tag-name:first').addClass('selected');
         });
-        $('.option-sort-right').each(function () {
-            $(this).find('.option-sort-option:first').addClass('selected');
+        $('.option-sort-tag-right').each(function () {
+            $(this).find('.option-sort-tag-option:first').addClass('selected');
         });
     }
 

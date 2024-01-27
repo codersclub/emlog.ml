@@ -419,7 +419,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/header.php
-    'admin_center' => '管理中心',//'AdminCP',
+    'admin_center' => '控制台',//'AdminCP',
     'return_to_admin_center' => '返回管理首页',//'Return to AdminCP',
     'to_site_new_window' => '在新窗口浏站点',//'Visit the site in a new window',
     'to_site' => '查看我的站点',//'View My site',
@@ -573,7 +573,7 @@ $lang = array(
 //---------------------------
 //admin/views/login.php
     'login' => '登录',//'Login',
-    'user_name' => '用户名',//'User name',
+    'user_name' => '用户昵称',//'User name',
     'password' => '密码',//'Password',
     'remember_me' => '记住我',//'Remember me',
     'log_in' => ' 登 录 ',//' Log in ',
@@ -1035,8 +1035,8 @@ $lang = array(
 //admin/views/twitter.php
     'twitter_del_ok' => '笔记删除成功',//'Note deleted successfully',
     'twitter_empty' => '笔记内容不能为空',//'Note content cannot be empty',
-    'twitter_add' => '卡片笔记',//'Add a note',
-    'twitter_prompt' => '快速记录想法，帮你方便的捕捉灵感，积累知识的复利',//'Quickly record ideas, help you easily capture inspiration and accumulate knowledge compound interest',
+    'twitter_add' => '微语笔记',//'Add a note',
+    'twitter_prompt' => '捕捉稍纵即逝的想法，记录生活中的点点滴滴',//'Capture fleeting thoughts and record every moment in life',
     'twitter_save' => '保存笔记',//'Save the note',
     'twitters' => '笔记',//'Notes',
     '_twitters' => '条笔记',//' note(s)',

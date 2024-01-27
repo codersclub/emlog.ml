@@ -280,10 +280,10 @@ function autosave(act) {
         alert(lang('too_quick'));
         return;
     }
-    const btname = $("#savedf").val();
-    $("#savedf").val(lang('saving'));
+    const $savedf = $("#savedf");
+    const btname = $savedf.val();
+    $savedf.val(lang('saving')).attr("disabled", "disabled");
     $('title').text(lang('saving_in') + titleText);
-    $("#savedf").attr("disabled", "disabled");
     $.post(url, $("#addlog").serialize(), function (data) {
         data = $.trim(data);
         var isresponse = /.*autosave\_gid\:\d+\_.*/;
@@ -293,7 +293,6 @@ function autosave(act) {
             const d = new Date();
             const h = d.getHours();
             const m = d.getMinutes();
-            const s = d.getSeconds();
             const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
             $("#save_info").html(lang('saved_ok_time') + tm + ' <a href="../?post=' + logid + '" target="_blank">' + lang('article_preview') + '</a>');
             $('title').text(lang('saved_ok') + titleText);
