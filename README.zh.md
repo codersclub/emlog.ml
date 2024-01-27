@@ -6,8 +6,9 @@
   中文 | <a href="./README.md">English</a>
 </p>
 
-<p align="center"><b>emlog</b></p>
-<p align="center">快速稳定的轻量级博客及CMS建站系统，打造好用的云端内容管理系统。</p>
+# emlog
+
+快速稳定的轻量级博客及CMS建站系统，打造好用的云端内容管理系统。
 
 <p align="center">
 <a href="https://github.com/emlog/emlog/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/emlog/emlog.svg?style=flat-square&include_prereleases" /></a>

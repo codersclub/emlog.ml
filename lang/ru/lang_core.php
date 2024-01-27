@@ -46,6 +46,10 @@ $lang = array(
 'file_upload_failed'	=> 'Ошибка загрузки файла',//'文件上传失败',
 
 //---------------------------
+//include/lib/emcurl.php
+'curl_install'		=> 'Запрос не выполнен. Сначала установите расширение PHP Curl.',//'请求失败，请先安装 PHP 的 Curl 扩展。',
+
+//---------------------------
 //include/lib/function.base.php
 '_load_failed'			=> ' сбой загрузки.',//'加载失败。',
 '_bytes'			=> ' байт',//'字节',

@@ -136,6 +136,8 @@ $lang = array(
     'free_zone' => '仅看免费',//'Free only',
     'paid_zone' => '仅看付费',//'Paid only',
     'search_by_category' => '按分类查找',//'Search by category',
+    'rank_free'	=> '免费排行',//'Free ranking',
+    'rank_paid'	=> '付费排行',//'Paid ranking',
 
 //---------------------------
 //admin/style.php
@@ -955,6 +957,7 @@ $lang = array(
 //admin/views/store_svip.php
     'not_svip' => '您还不是铁杆svip付费支持用户，无法安装专属免费应用',//'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',
     'paid_support' => '付费支持 &rarr;',//'Paid support &rarr;',
+    'can_use_free' => '用户可以免费下载安装下面的插件👇',//'Users can download and install the following plug-ins for free👇',
 
 //---------------------------
 //admin/views/store_tpl.php

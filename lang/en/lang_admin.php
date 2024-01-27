@@ -121,6 +121,7 @@ $lang = array(
     'tpl_category_7' => 'Resource download',//'资源下载',
     'tpl_category_9' => 'Community Forum',//'社区论坛',
     'tpl_category_10' => 'Other',//'其他',
+    'tpl_category_17' => 'Site navigation',//'网址导航',
     'plu_category_1' => 'Resource download',//'资源下载',
     'plu_category_2' => 'SEO optimization',//'SEO优化',
     'plu_category_3' => 'Multimedia',//'多媒体',
@@ -135,6 +136,8 @@ $lang = array(
     'free_zone' => 'Free only',//'仅看免费',
     'paid_zone' => 'Paid only',//'仅看付费',
     'search_by_category' => 'Search by category',//'按分类查找',
+    'rank_free'	=> 'Free ranking',//'免费排行',
+    'rank_paid'	=> 'Paid ranking',//'付费排行',
 
 //---------------------------
 //admin/style.php
@@ -166,6 +169,7 @@ $lang = array(
     'allow_comments' => 'Allow Comments',//'允许评论',
     'post_publish' => 'Publish Article',//'发布文章',
     'save_draft' => 'Save Draft',//'保存草稿',
+    'optional' => ' (optional)',//'（可不填）',
 
 //---------------------------
 //admin/views/add_page.php
@@ -896,7 +900,7 @@ $lang = array(
 //admin/views/store.php
     'install_ok' => 'Successful installation',//'安装成功',
     'install_failed' => 'Installation failed',//'安装失败',
-    'install_failed_download' => 'Installation failed, unable to download the installation package',//'安装失败，无法下载安装包',
+    'install_failed_download' => 'Installation failed, maybe download timed out or no permissions',//'安装失败，可能是下载超时或没有权限',
     'install_failed_write' => 'Installation failed, unable to write files, please check whether the content/ directory is writable',//'安装失败，无法写文件，请检查content/下目录是否可写',
     'install_failed_zip' => 'Installation failed, unable to decompress, please install php Zip extension',//'安装失败，无法解压，请安装php的Zip扩展',
     'install_invalid_ext' => 'Installation failed, not a valid installation package',//'安装失败，不是有效的安装包',
@@ -953,6 +957,7 @@ $lang = array(
 //admin/views/store_svip.php
     'not_svip' => 'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',//'您还不是铁杆svip付费支持用户，无法安装专属免费应用',
     'paid_support' => 'Paid support &rarr;',//'付费支持 &rarr;',
+    'can_use_free' => 'Users can download and install the following plug-ins for free👇',//'用户可以免费下载安装下面的插件👇',
 
 //---------------------------
 //admin/views/store_tpl.php

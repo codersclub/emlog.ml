@@ -42,7 +42,7 @@ class EmCurl {
         }
 
         if (!extension_loaded('curl')) {
-            emMsg("请求失败，请先安装 PHP 的 Curl 扩展。");
+            emMsg(lang('curl_install'));
         }
 
         $s = curl_init();
