@@ -12,7 +12,7 @@
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
-                <label><?= lang('post_description') ?>:</label>
+                <label><?= lang('post_description') ?><?= lang('optional') ?>:</label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
                 <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
                 <div id="post_bar">

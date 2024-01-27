@@ -40,6 +40,12 @@ if (empty($action)) {
 /*vot*/        $sub_title = lang('free_template');
     } elseif ($tag === 'paid') {
 /*vot*/        $sub_title = lang('paid_template');
+    } elseif ($tag === 'promo') {
+        $sub_title = '限时优惠';
+    } elseif ($tag === 'free_top') {
+        $sub_title = '免费排行';
+    } elseif ($tag === 'paid_top') {
+        $sub_title = '付费排行';
     }
 
     $subPage = '';
@@ -87,6 +93,12 @@ if ($action === 'plu') {
 /*vot*/        $sub_title = lang('free_plugin');
     } elseif ($tag === 'paid') {
 /*vot*/        $sub_title = lang('paid_plugin');
+    } elseif ($tag === 'promo') {
+        $sub_title = '限时优惠';
+    } elseif ($tag === 'free_top') {
+        $sub_title = '免费排行';
+    } elseif ($tag === 'paid_top') {
+        $sub_title = '付费排行';
     }
 
     $subPage = '';

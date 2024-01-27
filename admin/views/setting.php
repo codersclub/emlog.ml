@@ -134,7 +134,7 @@
 <!--vot-->        <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
 <!--vot-->                <label><?=lang('admin_per_page')?></label>
-<!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number" min="0"/> <?=lang('admin_per_page_tips')?>
+<!--vot-->                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number" min="10" max="1000"/> <?=lang('admin_per_page_tips')?>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="accept_app_recs" id="accept_app_recs" <?= $conf_accept_app_recs ?> />

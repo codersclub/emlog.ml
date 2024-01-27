@@ -18,7 +18,7 @@ $is_has_menu = array_key_exists('TplOptionsNavi', $tplget);
                         <?php if ($is_has_menu): ?>
                             <input type="submit" class="button vtpl-menu none" value="<?= lang('menu') ?>">
                         <?php endif; ?>
-                        <input type="submit" class="button vtpl-collapse-section tpl-options-btns" value="<?= lang('shrink_all') ?>">
+                        <span class="button vtpl-collapse-section tpl-options-btns" data-type="1"><?= lang('shrink_all') ?></span>
                     </div>
                 </div>
                 <div class="clear"></div>

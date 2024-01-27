@@ -14,37 +14,34 @@
     </ul>
 </div>
 <div class="mb-3">
-    <?php if (!empty($addons)): ?>
-        <div class="d-flex flex-wrap app-list">
-            <?php foreach ($addons as $k => $v):
-                $icon = $v['icon'] ?: "./views/images/theme.png";
-                ?>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card mb-4 shadow-sm">
-                        <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
-                            <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
-                            <p class="card-text text-muted small">
+    <div class="col-md-12">
+        <p class="alert alert-warning my-3"><a href="https://www.emlog.net/register">铁杆SVIP</a> 用户可以免费下载安装下面的插件👇</p>
+    </div>
+    <div class="d-flex flex-wrap app-list">
+        <?php foreach ($addons as $k => $v):
+            $icon = $v['icon'] ?: "./views/images/theme.png";
+            ?>
+            <div class="col-md-6 col-lg-3">
+                <div class="card mb-4 shadow-sm">
+                    <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
+                        <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
+                        <p class="card-text text-muted small">
 <!--vot-->                      <?=lang('developer')?>: <?= $v['author'] ?><br>
 <!--vot-->                      <?=lang('version_number')?>: <?= $v['ver'] ?><br>
 <!--vot-->                      <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
-                            </p>
-                            <div class="card-text d-flex justify-content-between">
+                        </p>
+                        <div class="card-text d-flex justify-content-between">
                             <div class="installMsg"></div>
-<!--vot-->                            <a href="#" class="btn btn-success btn-sm installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?=lang('install_free')?></a>
-                            </div>
+<!--vot-->                            <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?=lang('install_free')?></a>
                         </div>
                     </div>
                 </div>
-            <?php endforeach ?>
-        </div>
-    <?php else: ?>
-        <div class="col-md-12">
-<!--vot-->            <p class="alert alert-warning m-3"><?=lang('not_svip')?>, <a href="https://emlog.io/register"><?=lang('paid_support')?></a></p>
-        </div>
-    <?php endif ?>
+            </div>
+        <?php endforeach ?>
+    </div>
 </div>
 <script>
     $(function () {

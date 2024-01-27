@@ -167,6 +167,7 @@ $lang = array(
     'allow_comments' => '允许评论',//'Allow Comments',
     'post_publish' => '立即发布',//'Publish Post',
     'save_draft' => '保存草稿',//'Save Draft',
+    'optional' => '（可不填）',//' (optional)',
 
 //---------------------------
 //admin/views/add_page.php
@@ -897,7 +898,7 @@ $lang = array(
 //admin/views/store.php
     'install_ok' => '安装成功',//'Successful installation',
     'install_failed' => '安装失败',//'Installation failed',
-    'install_failed_download' => '安装失败，无法下载安装包',//'Installation failed, unable to download the installation package',
+    'install_failed_download' => '安装失败，可能是下载超时或没有权限',//'Installation failed, maybe download timed out or no permissions',
     'install_failed_write' => '安装失败，无法写文件，请检查content/下目录是否可写',//'Installation failed, unable to write files, please check whether the content/ directory is writable',
     'install_failed_zip' => '安装失败，无法解压，请安装php的Zip扩展',//'Installation failed, unable to decompress, please install php Zip extension',
     'install_invalid_ext' => '安装失败，不是有效的安装包',//'Installation failed, not a valid installation package',
