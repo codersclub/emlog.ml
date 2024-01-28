@@ -31,7 +31,6 @@ defined('EMLOG_ROOT') || exit('access denied!');
                                 <div class="log-info">
                                     <?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
                                     <?= date('Y-m-d H:i', $value['date']) ?>&nbsp;
-                                    <span class="mh"><?php editflg($value['logid'], $value['author']) ?></span>
                                 </div>
                                 <div class="log-count">
                                 <a href="<?= $value['log_url'] ?>#comment"><?=lang('comments')?> (<?= $value['comnum'] ?>)&nbsp;</a>

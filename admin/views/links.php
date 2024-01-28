@@ -1,19 +1,15 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_taxis'])): ?>
-    <div class="alert alert-success"><?= lang('order_update_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_del'])): ?>
     <div class="alert alert-success"><?= lang('deleted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_save'])): ?>
     <div class="alert alert-success"><?= lang('edit_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('site_and_url_empty') ?></div><?php endif ?>
-<?php if (isset($_GET['error_b'])): ?>
-    <div class="alert alert-danger"><?= lang('no_link_order') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><?= lang('link_management') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#linkModel"><i class="icofont-plus"></i> <?= lang('link_add') ?></a>
 </div>
-<form action="link.php?action=link_taxis" method="post">
+<form action="link.php?action=link_taxis" id="link_form" method="post">
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -125,7 +121,13 @@
             modal.find('.modal-footer #linkid').val(linkid)
         })
 
-    // Initialize drag sorting
+        // Submit Form
+        $("#link_form").submit(function (event) {
+            event.preventDefault();
+            submitForm("#link_form");
+        });
+
+        // Initialize drag sorting
         $('#dataTable tbody').sortable().disableSelection();
     });
 </script>

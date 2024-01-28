@@ -1,6 +1,6 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <div id="msg" class="fixed-top alert" style="display: none"></div>
-<h1 class="h3 mb-4 text-gray-800"><?= $containerTitle ?> <span id="save_info"></span></h1>
+<h4 class="mb-4 text-gray-800"><?= $containerTitle ?> <span id="save_info"></span></h4>
 <form action="article_save.php" method="post" enctype="multipart/form-data" id="addlog" name="addlog">
     <div class="row">
         <div class="col-xl-9">
@@ -13,7 +13,10 @@
                     <?php doAction('adm_writelog_bar') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
-                <label><?= lang('post_description') ?><?= lang('optional') ?>:</label>
+                <label><?= lang('post_description') ?><?= lang('optional') ?>:
+                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
+                    <label for="sortop" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
+                </label>
                 <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
                 <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
                 <div id="post_bar">
@@ -40,7 +43,6 @@
             </div>
             <div class="shadow-sm p-3 bg-white rounded" id="post_side">
                 <div class="form-group">
-                    <label><?= lang('article_cover') ?>:</label>
                     <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_placeholder') ?>" value="<?= $cover ?>"/>
                     <div class="row mt-3">
                         <div class="col-md-4">
@@ -78,10 +80,9 @@
                 </div>
                 <div class="form-group">
 <!--vot-->          <label><?= lang('tags') ?>: <small class="text-muted"><?= lang('tags_tips') ?></small></label>
-                    <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>"/>
                     <?php if ($tags): ?>
-                        <span class="small"><a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
-                        <div id="tags" style="display: none">
+                        <span class="small"> <a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
+                        <div id="tags" class="mb-2" style="display: none">
                             <?php
                             foreach ($tags as $val) {
                                 echo " <a class=\"badge badge-primary\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
@@ -89,6 +90,7 @@
                             ?>
                         </div>
                     <?php endif; ?>
+                    <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>"/>
                 </div>
                 <?php if (User::haveEditPermission()): ?>
                     <div class="form-group">
@@ -103,7 +105,6 @@
                         <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
                         <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
                     </div>
-                    <hr>
                     <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
                 <?php else: ?>
                     <input type="hidden" value="y" name="allow_remark" id="allow_remark"/>
@@ -186,9 +187,9 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><?= lang('crop_upload') ?></h5>
+                <h5 class="modal-title"><?= lang('cover_upload') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+/*vot*/             <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -261,9 +262,9 @@
         });
         Editor_summary = editormd("logexcerpt", {
             width: "100%",
-            height: 300,
+            height: 180,
             toolbarIcons: function () {
-                return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|", "link", "image", "preview"]
+                return ["bold", "h1", "h2", "h3", "|", "list-ul", "list-ol", "|", "link", "image", "preview"]
             },
             path: "editor.md/lib/",
             tex: false,

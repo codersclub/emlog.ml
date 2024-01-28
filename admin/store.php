@@ -72,15 +72,15 @@ if ($action === 'plu') {
         0  => lang('search_by_category'),
         1  => lang('plu_category_1'),
         2  => lang('plu_category_2'),
-        3  => lang('plu_category_3'),
+        18 => lang('plu_category_18'),
         4  => lang('plu_category_4'),
         5  => lang('plu_category_5'),
         11 => lang('plu_category_11'),
         12 => lang('plu_category_12'),
-        13 => lang('plu_category_13'),
         14 => lang('plu_category_14'),
+        13 => lang('plu_category_13'),
         15 => lang('plu_category_15'),
-        6  => lang('plu_category_6'),
+        6  => lang('plu_category_6')
     ];
 
     $r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id, $sid);
@@ -149,12 +149,8 @@ if ($action === 'error') {
 }
 
 if ($action === 'install') {
-    $source = isset($_GET['source']) ? trim($_GET['source']) : '';
+    $source = isset($_GET['source']) ? trim($_GET['source']) : ''; // plugin/down/11
     $source_type = isset($_GET['type']) ? trim($_GET['type']) : '';
-
-    if (!Register::isRegLocal()) {
-/*vot*/        exit(lang('emlog_unregistered') . ', <a href="auth.php">' . lang('go_to_register') . '</a>');
-    }
 
     if (empty($source)) {
 /*vot*/        exit(lang('install_failed'));
@@ -162,7 +158,10 @@ if ($action === 'install') {
 
     $temp_file = emFetchFile('https://www.emlog.net/' . $source);
     if (!$temp_file) {
-/*vot*/        exit(lang('install_failed_download'));
+        if (false === Register::verifyDownload($source)) {
+            exit(lang('emlog_unregistered') . ', <a href="auth.php">' . lang('go_to_register') . '</a>');
+        }
+        exit(lang('install_failed_download'));
     }
 
     if ($source_type == 'tpl') {

@@ -9,7 +9,7 @@
     <ul class="nav nav-pills">
 <!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('ext_store_templates')?></a></li>
 <!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?=lang('svip')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link text-danger" href="./store.php?action=svip"><?=lang('svip')?></a></li>
 <!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
@@ -46,11 +46,11 @@
         </div>
     <?php elseif (!Register::isRegLocal()): ?>
         <div class="col-md-12">
-            <p class="alert alert-warning m-3"><?= lang('not_paid_user' ?> <a href="https://www.emlog.net/register"><?= lang('paid_support') ?>&rarr;</a></p>
+            <p class="alert alert-warning my-3"><?= lang('not_paid_user' ?> <a href="https://www.emlog.net/register"><?= lang('paid_support') ?>&rarr;</a></p>
         </div>
     <?php else: ?>
         <div class="col-md-12">
-<!--vot-->            <p class="alert alert-warning m-3"><?=lang('no_my_apps')?></p>
+           <p class="alert alert-warning my-3"><?=lang('no_my_apps')?></p>
         </div>
     <?php endif; ?>
 </div>

@@ -1,6 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_taxis'])): ?>
-    <div class="alert alert-success"><?= lang('nav_cat_update_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_del'])): ?>
     <div class="alert alert-success"><?= lang('nav_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_edit'])): ?>
@@ -9,8 +7,6 @@
     <div class="alert alert-success"><?= lang('nav_add_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('nav_name_url_empty') ?></div><?php endif ?>
-<?php if (isset($_GET['error_b'])): ?>
-    <div class="alert alert-danger"><?= lang('nav_no_order') ?></div><?php endif ?>
 <?php if (isset($_GET['error_c'])): ?>
     <div class="alert alert-danger"><?= lang('nav_default_nodelete') ?></div><?php endif ?>
 <?php if (isset($_GET['error_d'])): ?>
@@ -22,7 +18,7 @@
 </div>
 <div class="card shadow mb-4">
     <div class="card-body">
-        <form action="navbar.php?action=taxis" method="post">
+        <form action="navbar.php?action=taxis" id="navi_form" method="post">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTable">
                     <thead>
@@ -143,8 +139,11 @@
                     <input class="form-control" name="naviname" placeholder="<?= lang('nav_name') ?>" required/>
                 </div>
                 <div class="form-group">
-                    <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url"
-                              id="url" required/></textarea>
+                    <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url" id="url" required></textarea>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" value="y" name="newtab">
+                    <label class="form-check-label" for="exampleCheck1">在新窗口打开</label>
                 </div>
                 <div class="form-group">
                     <label><?= lang('nav_parent') ?></label>
@@ -159,10 +158,6 @@
                             <option value="<?= $value['id'] ?>"><?= $value['naviname'] ?></option>
                         <?php endforeach ?>
                     </select>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" value="y" name="newtab">
-                    <label class="form-check-label" for="exampleCheck1"><?= lang('open_new_win') ?></label>
                 </div>
                 <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 <span id="alias_msg_hook"></span>
@@ -202,9 +197,8 @@
                             endforeach;
                         endforeach;
                         ?>
-                        <div class="form-group">
-                            <input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>">
-                        </div>
+                        <div class="form-group"><input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>"/></div>
+                        <div class="form-group"><a class="small" href="sort.php">+新建分类</a></div>
                     <?php else: ?>
                         <?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
                     <?php endif ?>
@@ -228,11 +222,10 @@
                             <?= $value['title'] ?>
                         </div>
                     <?php endforeach ?>
-                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name=""
-                                                   value="<?= lang('save') ?>"></div>
+                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>"/></div>
+                    <div class="form-group"><a class="small" href="page.php?action=new">+新建页面</a></div>
                 <?php else: ?>
-                    <div class="form-group"><?= lang('pages_no') ?>, <a
-                                href="page.php?action=new"><?= lang('add_page') ?></a></div>
+                    <div class="form-group"><?= lang('pages_no') ?>, <a href="page.php?action=new"><?= lang('add_page') ?></a></div>
                 <?php endif ?>
             </form>
         </div>
@@ -245,6 +238,12 @@
         $("#menu_category_view").addClass('active');
         $("#menu_view").addClass('show');
         $("#menu_navi").addClass('active');
+
+        // 提交表单
+        $("#navi_form").submit(function (event) {
+            event.preventDefault();
+            submitForm("#navi_form");
+        });
 
         // Initialize drag sorting
         $('#dataTable tbody').sortable().disableSelection();

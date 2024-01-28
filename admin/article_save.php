@@ -36,8 +36,16 @@ $link = Input::postStrVar('link');
 $author = isset($_POST['author']) && User::haveEditPermission() ? (int)trim($_POST['author']) : UID;
 $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
-
 $pubPost = Input::postStrVar('pubPost'); // Whether to publish the article directly instead of saving a draft
+$auto_excerpt = Input::postStrVar('auto_excerpt');
+
+if ($auto_excerpt === 'y') {
+    $origContent = trim($_POST['logcontent']);
+    $parseDown = new Parsedown();
+    $excerpt = $parseDown->text($origContent);
+    $excerpt = extractHtmlData($excerpt, 180);
+    $excerpt = str_replace(["\r", "\n", "'", '"'], ' ', $excerpt);
+}
 
 if ($pubPost) {
     $ishide = 'n';

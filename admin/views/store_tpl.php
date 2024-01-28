@@ -9,7 +9,7 @@
     <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link active" href="./store.php"><i class="icofont-paint"></i> <?= lang('ext_store_templates') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?= lang('ext_store_plugins') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?= lang('my_apps') ?></a></li>
     </ul>
 </div>
@@ -93,7 +93,7 @@
                 </div>
             <?php endforeach ?>
         </div>
-        <div class="col-md-12 page my-5"><?= $pageurl ?> (<?= lang('have') ?> <?= $count ?><?= lang('_templates') ?>)</div>
+        <div class="col-md-12 page my-5"><?= $pageurl ?></div>
     <?php else: ?>
         <div class="col-md-12">
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>

@@ -119,11 +119,11 @@
                             <?php if (!Register::isRegLocal()) : ?>
                                 <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
                             <?php elseif (Register::getRegType() == 2): ?>
-                                <span class="badge badge-warning">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('svip_hard') ?></span>
+                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-warning"><?= lang('svip_hard') ?></a>
                             <?php elseif (Register::getRegType() == 1): ?>
-                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('vip_friend') ?></span>
+                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('vip_friend') ?></a>
                             <?php else: ?>
-                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?> <?= lang('registered') ?></span>
+                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('registered') ?></a>
                             <?php endif ?>
                                 </span>
                             <span>
@@ -148,7 +148,6 @@
                         <div><?= lang('advantage3') ?></div>
                         <div><?= lang('advantage4') ?></div>
                         <div><?= lang('advantage5') ?></div>
-                        <div><?= lang('advantage6') ?></div>
                     </div>
                     <div class="card-footer text-center">
                         <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>

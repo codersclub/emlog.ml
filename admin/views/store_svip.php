@@ -9,7 +9,7 @@
     <ul class="nav nav-pills">
 <!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('ext_store_templates')?></a></li>
 <!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=svip"><?=lang('svip')?></a></li>
+<!--vot-->        <li class="nav-item"><a class="nav-link active text-danger" href="./store.php?action=svip"><?=lang('svip')?></a></li>
 <!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
