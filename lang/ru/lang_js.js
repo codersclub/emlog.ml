@@ -29,7 +29,7 @@ var LNG = {
 //admin/views/plugin.php
     'update'				: 'Обновить',//'更新',
     'plugin_update_check_fail'		: 'Сбой при проверке обновления, код ошибкт: ',//'插件更新检查无法正常进行,错误码:',
-    'plugin_update_check_exception'	: 'Исключение проверки обновления: ',//'插件更新检查异常： ',
+    'plugin_update_check_exception'	: '<b>Исключение проверки обновления:</b><br>',//'插件更新检查异常： ',
 
 //---------------------------
 //admin/views/signup.php
