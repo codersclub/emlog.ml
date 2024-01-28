@@ -6,13 +6,12 @@
  */
 
 /*vot*/ session_start();
-/*vot*/ error_reporting(E_ALL);
 
 const ENVIRONMENT = 'production'; // Operating environment: production - production environment, develop - development environment
 if (getenv('EMLOG_ENV') === 'develop' || ENVIRONMENT === 'develop') {
     error_reporting(E_ALL);
 } else {
-//vot    error_reporting(1);
+    error_reporting(1);
 }
 
 ob_start();
@@ -25,6 +24,9 @@ if (extension_loaded('mbstring')) {
 }
 
 require_once EMLOG_ROOT . '/config.php';
+/*vot*/ if (DEV_MODE) {
+/*vot*/     error_reporting(E_ALL);
+/*vot*/ }
 require_once EMLOG_ROOT . '/include/lib/common.php';
 
 spl_autoload_register("emAutoload");

@@ -47,7 +47,7 @@
                                         <span class="badge small badge-danger"><?= lang('home') ?></span> <?= lang('as_home') ?><a href="<?= BLOG_URL ?>posts" target="_blank"><?= BLOG_URL ?>posts</a>
                                     </span>
                                 <?php endif; ?>
-                                <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
+<!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                             </td>
                             <td>
                                 <a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-info"><?= $value['comnum'] ?></a>
