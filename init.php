@@ -5,11 +5,14 @@
  * @link https://www.emlog.net
  */
 
-const ENVIRONMENT = 'production'; // Operating environment: production production environment, develop development environment
+/*vot*/ session_start();
+/*vot*/ error_reporting(E_ALL);
+
+const ENVIRONMENT = 'production'; // Operating environment: production - production environment, develop - development environment
 if (getenv('EMLOG_ENV') === 'develop' || ENVIRONMENT === 'develop') {
     error_reporting(E_ALL);
 } else {
-    error_reporting(1);
+//vot    error_reporting(1);
 }
 
 ob_start();
@@ -41,7 +44,7 @@ if (empty($_SESSION['LANG'])) {
 define('LANG', $_SESSION['LANG']);
 
 // blog language direction
-const LANG_DIR = LANG_LIST[LANG]['dir'];
+const LANG_DIR = LANG_LIST[LANG]['dir']; //'ltr', 'rtl'
 
 // Load the core Lang File
 load_language('core');
@@ -58,11 +61,11 @@ const ROLE_ADMIN = 'admin';
 const ROLE_EDITOR = 'editor';
 const ROLE_WRITER = 'writer';
 const ROLE_VISITOR = 'visitor';
-const ROLE_FOUNDER = 'founder';
+/*vot*/ const ROLE_FOUNDER = 'founder';
 
 define('ROLE', ISLOGIN === true ? $userData['role'] : User::ROLE_VISITOR);
 define('UID', ISLOGIN === true ? $userData['uid'] : '');
-//Site fixed address
+//Site fixed URL
 define('BLOG_URL', Option::get('blogurl'));
 //Template Library URL
 const TPLS_URL = BLOG_URL . 'content/templates/';
@@ -84,8 +87,8 @@ const MSGCODE_NO_UPUPDATE = 1002;
 const MSGCODE_SUCCESS = 200;
 
 //Access Scheme
-define('SCHEME', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://');
-define('ROOT_URL', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
+/*vot*/ define('SCHEME', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://');
+/*vot*/ define('ROOT_URL', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
 
 $active_plugins = Option::get('active_plugins');
 $emHooks = [];

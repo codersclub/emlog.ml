@@ -232,7 +232,7 @@
 
             $.get("./upgrade.php?action=check_update", function (result) {
                 if (result.code === 1001) {
-                    rep_msg = lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register) + "</a>";
+                    rep_msg = lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register') + "</a>";
                 } else if (result.code === 1002) {
                     rep_msg = lang('is_latest_version');
                 } else if (result.code === 200) {

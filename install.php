@@ -8,6 +8,7 @@
 /*vot*/ define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
 /*vot*/ const LANG = 'en';            //zh-CN, en, ru, etc.
 /*vot*/ const LANG_DIR = 'ltr';       //ltr, rtl
+//ToDo: Select language on install!
 
 require_once EMLOG_ROOT . '/include/lib/common.php';
 

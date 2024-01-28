@@ -1223,12 +1223,13 @@ function load_language($model = '') {
 
         if (is_file($file)) {
             $lang = array();
-            @require $file;
+            $err = @require $file;
 
             // Language file must contain $lang = array(...);
             $LANGUAGE = array_merge($LANGUAGE, $lang);
             unset($lang);
             $LANGLIST[$model] = 1;
+        } else {
         }
     }
 }

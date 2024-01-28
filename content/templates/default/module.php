@@ -299,9 +299,7 @@ function blog_navi() {
                 foreach(LANG_LIST as $l=>$lng) {
                 $selected = ($_SESSION['LANG'] == $l) ? 'selected="selected"' : '';
                 ?>
-<!--                <a href="?language=<?= $l ?>&time=<?= microtime(true) ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= ROOT_URL ?>/lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
--->
-                <a href="language.php?language=<?= $l ?>&time=<?= microtime(true) ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= ROOT_URL ?>/lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
+                <a href="?language=<?= $l ?>" title="<?= LANG_LIST[$l]['title'] ?>"><img src="<?= ROOT_URL ?>/lang/<?= $l ?>/flag.gif"> <?= LANG_LIST[$l]['name'] ?></a>
                 <?php } ?>
                 </div>
 <!--vot-->  </li>
