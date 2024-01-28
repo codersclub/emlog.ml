@@ -48,7 +48,7 @@ class Store_Model {
             emDirect("./store.php?action=error&error=1");
         }
         $response = $emcurl->getRespone();
-        $ret = json_decode($response, 1);
+        $ret = json_decode($response, JSON_UNESCAPED_UNICODE);
         if (empty($ret)) {
             emDirect("./store.php?action=error&error=1");
         }

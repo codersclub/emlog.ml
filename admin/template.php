@@ -108,7 +108,7 @@ if ($action === 'check_update') {
 /*vot*/        Output::error(lang('update_failed_network'));
     }
     $response = $emcurl->getRespone();
-    $ret = json_decode($response, 1);
+    $ret = json_decode($response, JSON_UNESCAPED_UNICODE);
     if (empty($ret)) {
 /*vot*/        Output::error(lang('update_failed_network'));
     }

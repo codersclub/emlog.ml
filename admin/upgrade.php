@@ -27,7 +27,7 @@ if ($action === 'check_update') {
     if ($retStatus !== 200) {
         exit('{"result":"fail"}');
     }
-    $r = json_decode($response);
+    $r = json_decode($response, JSON_UNESCAPED_UNICODE);
     if ($r->code === 1001) {
         Register::clean();
     }
