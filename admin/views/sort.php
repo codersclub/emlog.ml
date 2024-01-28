@@ -211,7 +211,7 @@
         }
     }
 
-    // 提交表单
+    // Submit Form
     $("#sort_form").submit(function (event) {
         event.preventDefault();
         submitForm("#sort_form");

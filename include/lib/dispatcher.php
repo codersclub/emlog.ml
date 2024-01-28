@@ -53,7 +53,7 @@ class Dispatcher {
                 $this->_method = $route['method'];
                 $this->_params = $matches;
 
-                // 优先考虑分类别名
+                // Give priority to category names
                 $alias = '';
                 $param = $this->_params;
                 if ($this->_model == 'Log_Controller' && $this->_method == 'displayContent') {

@@ -239,7 +239,7 @@
         $("#menu_view").addClass('show');
         $("#menu_navi").addClass('active');
 
-        // 提交表单
+        // Submit Form
         $("#navi_form").submit(function (event) {
             event.preventDefault();
             submitForm("#navi_form");

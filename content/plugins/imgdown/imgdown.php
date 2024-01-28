@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: 图片本地化
+Plugin Name: Image localization
 Version: v1.2
 Plugin URL:
 Author:
-Description: 保存日志时将日志中的远程图片本地化
+Description: Localize remote images in the blog when saving the blog
 Author URL:
 
 */

@@ -1388,17 +1388,17 @@ function build_url($parsed_url) {
     return "$scheme$user$pass$host$port$path$query$fragment";
 }
 
-// 获取内容中的第一张图片
+// Get the first image in the content
 if (!function_exists('getFirstImage')) {
     function getFirstImage($content) {
-        // 匹配 Markdown 中的图片
+        // Match images in Markdown
         preg_match('/!\[.*?\]\((.*?)\)/', $content, $matches);
 
         if (!empty($matches[1])) {
             return $matches[1];
         }
 
-        // 匹配 HTML 中的图片
+        // Match images in HTML
         $dom = new DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTML($content);

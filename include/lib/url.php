@@ -95,8 +95,8 @@ class Url {
         $sortInfo = isset($sort_cache[$sortId]) ? $sort_cache[$sortId] : [];
         $sort_index = !empty($sortInfo['alias']) ? $sortInfo['alias'] : $sortId;
 
-        $pid = $sortInfo && !empty($sortInfo['pid']) ? $sortInfo['pid'] : 0; //   父分类ID
-        $pAlias = $pid && !empty($sort_cache[$pid]['alias']) ? $sort_cache[$pid]['alias'] : ''; // 父分类别名
+        $pid = $sortInfo && !empty($sortInfo['pid']) ? $sortInfo['pid'] : 0; // Parent category ID
+        $pAlias = $pid && !empty($sort_cache[$pid]['alias']) ? $sort_cache[$pid]['alias'] : ''; // Parent category name
 
         switch (Option::get('isurlrewrite')) {
             case '0':
