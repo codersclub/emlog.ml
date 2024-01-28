@@ -30,7 +30,7 @@ if ($action == 'taxis') {
     $sort = isset($_POST['sort']) ? $_POST['sort'] : '';
 
     if (empty($sort)) {
-        Output::error('没有可排序的分类');
+        Output::error(lang('category_no_order'));
     }
 
     foreach ($sort as $key => $value) {

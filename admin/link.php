@@ -26,7 +26,7 @@ if ($action == 'link_taxis') {
     $link = isset($_POST['link']) ? $_POST['link'] : '';
 
     if (empty($link)) {
-        Output::error('没有可排序的链接');
+        Output::error(lang('no_link_order'));
     }
 
     foreach ($link as $key => $value) {

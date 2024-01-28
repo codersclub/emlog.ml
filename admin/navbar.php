@@ -31,7 +31,7 @@ if ($action == 'taxis') {
     $navi = isset($_POST['navi']) ? $_POST['navi'] : '';
 
     if (empty($navi)) {
-        Output::error('没有可排序的导航');
+        Output::error('nav_no_order');
     }
 
     foreach ($navi as $key => $value) {

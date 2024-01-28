@@ -143,7 +143,7 @@
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" value="y" name="newtab">
-                    <label class="form-check-label" for="exampleCheck1">在新窗口打开</label>
+                    <label class="form-check-label" for="exampleCheck1"><?= lang('open_new_win') ?></label>
                 </div>
                 <div class="form-group">
                     <label><?= lang('nav_parent') ?></label>
@@ -198,7 +198,7 @@
                         endforeach;
                         ?>
                         <div class="form-group"><input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>"/></div>
-                        <div class="form-group"><a class="small" href="sort.php">+新建分类</a></div>
+                        <div class="form-group"><a class="small" href="sort.php"><?= lang('new_category') ?></a></div>
                     <?php else: ?>
                         <?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
                     <?php endif ?>
@@ -223,7 +223,7 @@
                         </div>
                     <?php endforeach ?>
                     <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>"/></div>
-                    <div class="form-group"><a class="small" href="page.php?action=new">+新建页面</a></div>
+                    <div class="form-group"><a class="small" href="page.php?action=new"><?= lang('add_page') ?></a></div>
                 <?php else: ?>
                     <div class="form-group"><?= lang('pages_no') ?>, <a href="page.php?action=new"><?= lang('add_page') ?></a></div>
                 <?php endif ?>

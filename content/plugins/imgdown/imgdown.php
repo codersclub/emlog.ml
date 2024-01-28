@@ -76,14 +76,14 @@ function image2local($matches) {
                 umask(0);
                 $ret = @mkdir($uppath, 0777);
                 if ($ret === false) {
-                    emMsg('创建文件上传目录失败', "javascript:history.go(-1);");
+                    emMsg(lang('upload_folder_create_error'), "javascript:history.go(-1);");
                 }
             }
             if (!is_dir($uppath)) {
                 umask(0);
                 $ret = @mkdir($uppath, 0777);
                 if ($ret === false) {
-                    emMsg('上传失败。文件上传目录(content/uploadfile)不可写', "javascript:history.go(-1);");
+                    emMsg(lang('upload_folder_unwritable'), "javascript:history.go(-1);");
                 }
             }
 

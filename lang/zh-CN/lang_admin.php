@@ -653,6 +653,7 @@ $lang = array(
     'view' => '查看',//'View',
     'address' => '地址',//'Address',
     'add' => '添加',//'Add',
+    'new_category' => '+新建分类',//'+New category',
 
 //---------------------------
 //admin/views/page.php
