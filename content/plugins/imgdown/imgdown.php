@@ -8,6 +8,9 @@ Description: Localize remote images in the blog when saving the blog
 Author URL:
 
 */
+// Load Plugin Language from content/plugins/PLUGIN_NAME/lang/XX/lang.php
+/*vot*/ load_language('plugins/imgdown');
+
 header('content-Type: text/html; charset=utf-8');
 addAction('save_log', 'img2local');
 define('BASE_PATH', str_replace('\\', '/', realpath(EMLOG_ROOT . '/')) . "/");
@@ -108,7 +111,7 @@ function image2local($matches) {
 
 function img2local_option() {
     ?>
-    <input type="checkbox" value="1" name="img2local" checked="checked"/> 图片本地化
+    <input type="checkbox" value="1" name="img2local" checked="checked"/> <?= lang('image_local') ?>
     <?php
 }
 
