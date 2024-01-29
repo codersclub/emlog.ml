@@ -69,7 +69,7 @@
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
                             <?= lang('founder') ?>: <?= $author ?>,
                             <?php if (User::haveEditPermission()): ?>
-                                <a href="./media.php?uid=<?= $value['author'] ?>"><?= lang 'this_user_files' ?></a><br>
+                                <a href="./media.php?uid=<?= $value['author'] ?>"><?= lang('this_user_files') ?></a><br>
                             <?php endif ?>
                             <?= lang('file_size') ?>: <?= $value['attsize'] ?>
                             <?php if ($value['width'] && $value['height']): ?>
@@ -185,7 +185,7 @@
 <script src="./views/components/highslide/highslide.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <link rel="stylesheet" type="text/css" href="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
 <script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.zh-CN.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<script src="./views/components/bootstrap-datepicker/bootstrap-datepicker.<?= LANG ?>.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>
     Dropzone.options.upForm = {
         paramName: "file",
