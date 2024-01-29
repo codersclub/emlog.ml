@@ -55,7 +55,7 @@
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
                     <label for="allow_remark"><?= lang('allow_comments') ?></label><br>
                     <input type="checkbox" value="y" name="home_page" id="home_page" <?= $is_home_page ?> />
-                    <label for="allow_remark"><?= lang('set_as_home') ?><small class="text-muted"><?= lang('original_home') ?><?= BLOG_URL ?>posts</small></label>
+<!--vot-->          <label for="allow_remark"><?= lang('set_as_home') ?></label><br><small class="text-muted"><?= lang('original_home') ?><?= BLOG_URL ?>posts</small>
                 </div>
             </div>
         </div>
