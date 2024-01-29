@@ -56,13 +56,13 @@
                         <div class="card-body">
                             <p class="card-text font-weight-bold">
                                 <?php if ($v['top'] === 1): ?>
-                                    <!--vot-->                                <span class="badge badge-success p-1"><?= lang('recommend_today') ?></span>
+                                    <span class="badge badge-success p-1"><?= lang('recommend_today') ?></span>
                                 <?php endif; ?>
                                 <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= subString($v['name'], 0, 22) ?></a>
                             </p>
                             <p class="card-text text-muted">
                                 <small><?= subString($v['info'], 0, 56) ?></small><br><br>
-                                <!--vot--> <?= lang('price') ?>:<?= $v['price'] > 0 ? '<span class="text-danger">' . $v['price'] . ' ' . lang('price_unit') . '</span>' : '<span class="text-success">' . lang('free') . '</span>' ?><br>
+                                <?= lang('price') ?>:
                                 <?php if ($v['price'] > 0): ?>
                                     <?php if ($v['promo_price'] > 0): ?>
                                         <span style="text-decoration:line-through"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
@@ -75,17 +75,17 @@
                                 <?php endif; ?>
                                 <br>
                                 <small>
-                                    <!--vot--> <?= lang('developer') ?>:<?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= lang('this_author_only') ?></a><br>
-                                    <!--vot--> <?= lang('version_number') ?>:<?= $v['ver'] ?><br>
-                                    <!--vot--> <?= lang('update_time') ?>:<?= $v['update_time'] ?><br>
+                                    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= lang('this_author_only') ?></a><br>
+                                    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
+                                    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                                 </small>
                             </p>
                             <div class="card-text d-flex justify-content-between">
                                 <div class="installMsg"></div>
                                 <?php if ($v['price'] > 0): ?>
-                                    <!--vot-->                          <a href="https://emlog.io/order/submit/tpl/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+                                    <a href="https://www.emlog.net/order/submit/tpl/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
                                 <?php else: ?>
-                                    <!--vot-->                                <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="tpl"><?= lang('install_free') ?></a>
+                                    <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="tpl"><?= lang('install_free') ?></a>
                                 <?php endif ?>
                             </div>
                         </div>

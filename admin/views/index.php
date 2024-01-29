@@ -151,7 +151,7 @@
                     </div>
                     <div class="card-footer text-center">
                         <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>
-                        <a href="https://emlog.io/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?= lang('get_emkey') ?></a>
+                        <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?= lang('get_emkey') ?></a>
                     </div>
                 </div>
             </div>
@@ -161,11 +161,12 @@
                 <h6 class="card-header"><?= lang('official_news') ?></h6>
                 <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
-                        <li class="msg_type_0"><a href="https://emlog.io/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
-                        <li class="msg_type_0"><a href="https://emlog.io/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
-                        <li class="msg_type_0"><a href="https://github.com/emlog/emlog-ml/discussions" target="_blank"><?= lang('feedback') ?></a></li>
-                        <li class="msg_type_0"><a href="https://emlog.io/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
-
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
+                        <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank"><?= lang('feedback') ?></a></li>
+                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
+<!--vot-->              <li class="msg_type_0"><a href="https://github.com/codersclub/emlog.ml target="_blank">Emlog.ML at github</a></li>
+<!--vot-->              <li class="msg_type_0"><a href="https://github.com/emlog/emlog-ml/discussions" target="_blank"><?= lang('feedback') ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -235,9 +236,9 @@
                 } else if (result.code === 1002) {
                     rep_msg = lang('is_latest_version');
                 } else if (result.code === 200) {
-/*vot*/             rep_msg = lang('new_ver_available') + ': <span class="text-danger">' + result.data.version + '</span> <br><br>';
+/*vot*/             rep_msg = `${lang('new_ver_available')}: <span class="text-danger">${result.data.version}</span> <br><br>`;
                     rep_changes = "<b>" + lang('view_changelog') + "</b>:<br>" + result.data.changes;
-/*vot*/             rep_btn = '<hr><a href="javascript:doUp(\'' + result.data.file + '\',\'' + result.data.sql + '\');" id="upbtn" class="btn btn-success btn-sm">' + lang('update_now') + '</a>';
+/*vot*/             rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" id="upbtn" class="btn btn-success btn-sm">${lang('update_now')}</a>`;
                 } else {
                     rep_msg = lang('check_failed');
                 }
@@ -263,9 +264,9 @@
             $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
                 upmsg.removeClass();
                 if (data.includes("succ")) {
-/*vot*/             upbtn.text(lang('refresh_page'));
+                    upbtn.text(lang('refresh_page'));
                     upbtn.attr('href', './');
-/*vot*/             updateModalMsg.html(lang('updated_ok'));
+                    updateModalMsg.html(lang('updated_ok'));
                 } else if (data.includes("error_down")) {
                     updateModalMsg.html(lang('update_download_fail'));
                 } else if (data.includes("error_zip")) {

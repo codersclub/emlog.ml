@@ -2,7 +2,7 @@
 /*
 Template Name: Default template
 Version:1.0
-Template Url: https://emlog.io/template/
+Template Url:https://www.emlog.net/template/
 Description: Emlog Pro Default template
 Author: emlog
 Author Url:https://www.emlog.net
