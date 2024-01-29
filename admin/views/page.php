@@ -32,7 +32,7 @@
                     <?php foreach ($pages as $key => $value):
                         $isHide = '';
                         if ($value['hide'] == 'y') {
-                            $isHide = '<span class="text-danger ml-2"> - <?= lang('draft') ?></span>';
+                            $isHide = '<span class="text-danger ml-2"> - ' . lang('draft') . '</span>';
                         }
                         ?>
                         <tr>

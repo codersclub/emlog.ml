@@ -151,7 +151,7 @@
                     <div class="form-group">
                         <label for="template"><?=lang('category_template')?></label>
                         <?php if ($customTemplates):
-                            $sortListHtml = '<option value=""><?=lang('default')?></option>';
+                            $sortListHtml = '<option value="">' . lang('default') . '</option>';
                             foreach ($customTemplates as $v) {
                                 $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '">' . ($v['comment']) . '</option>';
                             }
