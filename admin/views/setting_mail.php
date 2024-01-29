@@ -65,7 +65,14 @@
             </div>
             <h4><?= lang('email_template') ?></h4>
             <div class="my-3">
-                <div class="mb-3" id="mail_template_box"><?= lang('select_email_template') ?>: <a href="javascript:useDefaultTemplate();"><?= lang('simple') ?></a> <span id="mail_template_box_ext"></span></div>
+                <div class="row" id="mail_template_box">
+                    <div class="col-md-6">
+                        <?= lang('select_email_template') ?>: <a href="javascript:useDefaultTemplate();"><?= lang('simple') ?></a> <span id="mail_template_box_ext"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <?= lang('preview') ?>:
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <textarea id="mail_template" name="mail_template" rows="10" class="form-control" placeholder="<?= lang('email_template_placeholer') ?>"><?= $mail_template ?></textarea>
