@@ -100,11 +100,11 @@ var myBlog = {
 			let url = $('#info_u').val()
 
 			if (isCn == 'y' && !cnReg.test(comContent)) {
-        this.comTip = lang('chinese_must_have')
+				this.comTip = lang('chinese_must_have')
 			} else if (typeof mail !== "undefined" && mail != '' && !mailReg.test(mail)) {
-        this.comTip = lang('email_invalid')
+				this.comTip = lang('email_invalid')
 			} else if (typeof url !== "undefined" && url != '' && !urlReg.test(url)) {
-        this.comTip = lang('url_invalid')
+				this.comTip = lang('url_invalid')
 			} else {
 				this.comTip = ''
 			}

@@ -29,6 +29,8 @@ if (!function_exists('_g')) {
     <link href="<?= TEMPLATE_URL ?>css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
     <link href="<?= TEMPLATE_URL ?>css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
     <script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script>    var em_lang = '<?= LANG ?>';</script>
+    <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
     <script>function sendinfo(url) {  // Calendar generation and page turning
             $("#calendar").load(url)
         }</script>
