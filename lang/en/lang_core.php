@@ -214,6 +214,7 @@ $lang = array(
 'homepage'                   => 'Homepage',//'个人主页',
 'homepage_optional'          => 'Homepage (optional)',//'个人主页 (选填)',
 'comment_leave'              => 'Post a comment',//'发布评论',
+'enter_captcha'			=> 'Enter confirmation code',//'输入验证码',
 
 //---------------------------
 //content/templates/default/options.php

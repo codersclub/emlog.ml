@@ -9,7 +9,7 @@ defined('EMLOG_ROOT') || exit('access denied!');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!--vot-->    <title><?= lang('page_password_enter') ?></title>
+    <title><?= lang('page_password_enter') ?></title>
     <style>
         body {
             font-family: helvetica neue, Helvetica, Arial, sans-serif
@@ -71,12 +71,12 @@ defined('EMLOG_ROOT') || exit('access denied!');
 </head>
 <body>
 <form action="" method="post">
-<!--vot-->    <h1><?= lang('page_password_enter') ?></h1>
+    <h1><?= lang('page_password_enter') ?></h1>
     <div style="display: flex;">
         <input type="password" id="logpwd" name="logpwd" required autofocus>
-<!--vot-->        <button type="submit"><?= lang('submit') ?></button>
+        <button type="submit"><?= lang('submit') ?></button>
     </div>
-<!--vot-->    <a href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
+    <a href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
 </form>
 </body>
 </html>

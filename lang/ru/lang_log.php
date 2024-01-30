@@ -9,4 +9,21 @@ $lang = array(
 'submit_password'			=> 'Введите..',//'进入..',
 'back_home'				=> '&laquo; Вернуться на Главную',//'&laquo;返回首页',
 'article_encrypted'			=> 'Текст данной статьи зашифрован',//'该文章已设置加密',
+
+    //---------------------------
+    //content/templates/default/echo_log.php
+    'time'				=> 'Время',//'时间',
+    'author'				=> 'Автор',//'作者',
+
+//---------------------------
+//content/templates/default/log_list.php
+'views'					=> 'Просмотры',//'浏览',
+'comments'				=> 'Комментарии',//'评论',
+'sorry_no_results'			=> 'Увы, пока ещё нет публикаций.',//'抱歉，暂时还没有内容。',
+
+    //---------------------------
+    //content/templates/default/module.php
+    'no'				=> 'Нет',//'无',
+    'prev'				=> 'Предыдущая',//'上一篇',
+    'next'				=> 'Следующая',//'下一篇',
 );

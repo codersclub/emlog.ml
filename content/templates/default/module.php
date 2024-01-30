@@ -201,7 +201,7 @@ function widget_search($title) { ?>
         </div>
         <div class="unstyle-li" style="text-align: center;">
             <form name="keyform" method="get" action="<?= BLOG_URL ?>index.php">
-                <!--vot--> <input name="keyword" class="search form-control" autocomplete="off" aria-label="<?= lang('search') ?>" type="text"/>
+                <input name="keyword" class="search form-control" autocomplete="off" aria-label="<?= lang('search') ?>" type="text"/>
                 <input type="submit" value="<?= lang('search') ?>">
             </form>
         </div>
@@ -428,7 +428,6 @@ function blog_comments($comments) {
                     <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                     <div class="comment-content"><?= $comment['content'] ?></div>
                     <div class="comment-reply">
-                        <!--vot-->
                         <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
                     </div>
                 </div>
@@ -437,7 +436,6 @@ function blog_comments($comments) {
                     <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                     <div class="comment-content"><?= $comment['content'] ?></div>
                     <div class="comment-reply">
-                        <!--vot-->
                         <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
                     </div>
                 </div>

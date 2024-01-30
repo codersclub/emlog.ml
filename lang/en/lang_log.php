@@ -9,4 +9,21 @@ $lang = array(
     'submit_password'                        => 'Enter..',//'进入..',
     'back_home'                              => '&laquo; Back to home',//'&laquo;返回首页',
     'article_encrypted'                      => 'This article has been encrypted',//'该文章已设置加密',
+
+    //---------------------------
+    //content/templates/default/echo_log.php
+    'time'				=> 'Time',//'时间',
+    'author'				=> 'Author',//'作者',
+
+    //---------------------------
+    //content/templates/default/log_list.php
+    'views'				=> 'Views',//'浏览',
+    'comments'				=> 'Comments',//'评论',
+    'sorry_no_results'			=> 'Sorry, there is no content yet.',//'抱歉，暂时还没有内容。',
+
+    //---------------------------
+    //content/templates/default/module.php
+    'no'				=> 'No',//'无',
+    'prev'				=> 'Previous',//'上一篇',
+    'next'				=> 'Next',//'下一篇',
 );

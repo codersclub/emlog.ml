@@ -9,7 +9,6 @@ Author Url:https://www.emlog.net
 */
 defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
-/*vot*/ load_language('templates/default');
 
 if (!function_exists('_g')) {
     emMsg(lang('enable_tpl_settings'));

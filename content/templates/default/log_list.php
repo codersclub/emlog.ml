@@ -34,7 +34,7 @@ defined('EMLOG_ROOT') || exit('access denied!');
                                 </div>
                                 <div class="log-count">
                                 <a href="<?= $value['log_url'] ?>#comment"><?=lang('comments')?> (<?= $value['comnum'] ?>)&nbsp;</a>
-                                <a href="<?= $value['log_url'] ?>"><?=lang('_views')?>: (<?= $value['views'] ?>)</a>
+                                <a href="<?= $value['log_url'] ?>"><?=lang('views')?>: (<?= $value['views'] ?>)</a>
                                 </div>
                             </div>
                         </div>
