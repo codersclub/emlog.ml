@@ -35,11 +35,11 @@ if (empty($action)) {
     $count = $r['count'];
     $page_count = $r['page_count'];
 
-/*vot*/    $sub_title = lang('template');
+/*vot*/ $sub_title = lang('templates');
     if ($tag === 'free') {
-/*vot*/        $sub_title = lang('free_template');
+/*vot*/ $sub_title = lang('free_template');
     } elseif ($tag === 'paid') {
-/*vot*/        $sub_title = lang('paid_template');
+/*vot*/ $sub_title = lang('paid_template');
     } elseif ($tag === 'promo') {
         $sub_title = lang('limited_offer');
     } elseif ($tag === 'free_top') {
@@ -88,11 +88,11 @@ if ($action === 'plu') {
     $count = $r['count'];
     $page_count = $r['page_count'];
 
-/*vot*/    $sub_title = lang('plugin');
+/*vot*/ $sub_title = lang('plugins');
     if ($tag === 'free') {
-/*vot*/        $sub_title = lang('free_plugin');
+/*vot*/ $sub_title = lang('free_plugin');
     } elseif ($tag === 'paid') {
-/*vot*/        $sub_title = lang('paid_plugin');
+/*vot*/ $sub_title = lang('paid_plugin');
     } elseif ($tag === 'promo') {
         $sub_title = lang('limited_offer');
     } elseif ($tag === 'free_top') {
@@ -115,7 +115,7 @@ if ($action === 'plu') {
 
 if ($action === 'mine') {
     $addons = $Store_Model->getMyAddon();
-/*vot*/    $sub_title = lang('my_apps');
+/*vot*/ $sub_title = lang('my_apps');
 
     include View::getAdmView('header');
     require_once(View::getAdmView('store_mine'));
@@ -125,7 +125,7 @@ if ($action === 'mine') {
 
 if ($action === 'svip') {
     $addons = $Store_Model->getSvipAddon();
-/*vot*/    $sub_title = lang('svip');
+/*vot*/ $sub_title = lang('svip');
 
     include View::getAdmView('header');
     require_once(View::getAdmView('store_svip'));
@@ -153,7 +153,7 @@ if ($action === 'install') {
     $source_type = isset($_GET['type']) ? trim($_GET['type']) : '';
 
     if (empty($source)) {
-/*vot*/        exit(lang('install_failed'));
+/*vot*/ exit(lang('install_failed'));
     }
 
     $temp_file = emFetchFile('https://www.emlog.net/' . $source);
