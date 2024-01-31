@@ -46,7 +46,7 @@
         </div>
     <?php elseif (!Register::isRegLocal()): ?>
         <div class="col-md-12">
-            <p class="alert alert-warning my-3"><?= lang('not_paid_user' ?> <a href="https://www.emlog.net/register"><?= lang('paid_support') ?>&rarr;</a></p>
+            <p class="alert alert-warning my-3"><?= lang('not_paid_user') ?> <a href="https://www.emlog.net/register"><?= lang('paid_support') ?>&rarr;</a></p>
         </div>
     <?php else: ?>
         <div class="col-md-12">
