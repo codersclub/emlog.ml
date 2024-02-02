@@ -81,11 +81,16 @@
                             </p>
                             <div class="card-text d-flex justify-content-between">
                                 <div class="installMsg"></div>
-                                <?php if ($v['price'] > 0): ?>
-                                    <a href="https://www.emlog.net/order/submit/plugin/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
-                                <?php else: ?>
-                                    <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?= lang('install_free') ?></a>
-                                <?php endif ?>
+                                <div>
+                                    <?php if ($v['svip']): ?>
+                                        <a href="https://www.emlog.net/register" class="btn btn-warning" target="_blank">铁杆专属</a>
+                                    <?php endif; ?>
+                                    <?php if ($v['price'] > 0): ?>
+                                        <a href="https://www.emlog.net/order/submit/plugin/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+                                    <?php else: ?>
+                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="plu"><?= lang('install_free') ?></a>
+                                    <?php endif ?>
+                                </div>
                             </div>
                         </div>
                     </div>

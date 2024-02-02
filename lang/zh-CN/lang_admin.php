@@ -156,7 +156,7 @@ $lang = array(
 //admin/views/add_log.php
     'post_write' => '写文章',//'Add post',
     'enter_post_title' => '输入文章标题',//'Enter the post title',
-    'upload_insert' => '上传插入图片',//'Upload & Insert image',
+    'upload_insert' => '资源媒体库',//'Media resources',
     'category_select' => '选择分类...',//'Select Category...',
     'post_time' => '发布于',//'Posted on',
     'more_options' => '更多选项',//'More Options',
