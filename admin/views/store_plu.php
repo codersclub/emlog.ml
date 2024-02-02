@@ -83,7 +83,7 @@
                                 <div class="installMsg"></div>
                                 <div>
                                     <?php if ($v['svip']): ?>
-                                        <a href="https://www.emlog.net/register" class="btn btn-warning" target="_blank">铁杆专属</a>
+                                        <a href="https://www.emlog.net/register" class="btn btn-warning" target="_blank"><?= lang('hard') ?></a>
                                     <?php endif; ?>
                                     <?php if ($v['price'] > 0): ?>
                                         <a href="https://www.emlog.net/order/submit/plugin/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>

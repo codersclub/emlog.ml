@@ -113,7 +113,7 @@ $isdraft = $draft ? '&draft=1' : '';
                     $multiCheckBtn = false; // Whether to display the batch review reject button
                     foreach ($logs as $key => $value):
                         $sortName = isset($sorts[$value['sortid']]['sortname']) ? $sorts[$value['sortid']]['sortname'] : lang('uncategorized');
-                        $sortName = $value['sortid'] == -1 ? '未分类' : $sortName;
+                        $sortName = $value['sortid'] == -1 ? lang('uncategorized') : $sortName;
                         $author = isset($user_cache[$value['author']]['name']) ? $user_cache[$value['author']]['name'] : lang('unknown_author');
                         $author_role = isset($user_cache[$value['author']]['role']) ? $user_cache[$value['author']]['role'] : lang('unknown_role');
                         ?>
@@ -127,8 +127,8 @@ $isdraft = $draft ? '&draft=1' : '';
 <!--vot:Lock Char-->            <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
 <!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                                 <?php if (!$draft && $value['checked'] == 'n'): ?>
-<!--vot-->                          <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
-<!--vot-->                          <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
+                                    <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
+                                    <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
                                 <?php endif ?>
                             </td>
                             <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-primary mx-2 px-3"><?= $value['comnum'] ?></a></td>
@@ -214,8 +214,8 @@ $isdraft = $draft ? '&draft=1' : '';
                 </div>
                 <?php if ($multiCheckBtn): ?>
                     <div class="btn-group btn-group-sm ml-1" role="group">
-                        <a href="javascript:logact('check');" class="btn btn-sm btn-success">审核</a>
-                        <a href="javascript:logact('uncheck');" class="btn btn-sm btn-warning">驳回</a>
+                        <a href="javascript:logact('check');" class="btn btn-sm btn-success"><?= lang('check') ?></a>
+                        <a href="javascript:logact('uncheck');" class="btn btn-sm btn-warning"><?= lang('uncheck') ?></a>
                     </div>
                 <?php endif ?>
             </div>

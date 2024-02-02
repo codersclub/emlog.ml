@@ -117,6 +117,7 @@ $lang = array(
     'install_failed_permission' => 'Installation failed, please check whether the directory under content is writable',//'安装失败，请检查content下目录是否可写',
     'install_failed_zip' => 'Installation failed, please install the Zip extension for php',//'安装失败，请安装php的Zip扩展',
     'svip' => 'Hardcore svip exclusive',//'铁杆svip专属',
+    'hard' => 'Hardcore exclusive',//'铁杆专属',
     'plu_category_1' => 'Resource download',//'资源下载',
     'plu_category_2' => 'SEO optimization',//'SEO优化',
     'plu_category_3' => 'Multimedia',//'多媒体',
@@ -156,7 +157,7 @@ $lang = array(
 //admin/views/add_log.php
     'post_write' => 'Add article',//'写文章',
     'enter_post_title' => 'Enter the article title',//'输入文章标题',
-    'upload_insert' => 'Upload & Insert image',//'上传插入图片',
+    'upload_insert' => 'Media resources',//'资源媒体库',
     'category_select' => 'Select Category...',//'选择分类...',
     'post_time' => 'Posted on',//'发布于',
     'more_options' => 'More options',//'更多选项',

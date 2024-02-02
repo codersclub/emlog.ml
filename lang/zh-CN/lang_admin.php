@@ -117,6 +117,7 @@ $lang = array(
     'install_failed_permission' => '安装失败，请检查content下目录是否可写',//'Installation failed, please check whether the directory under content is writable',
     'install_failed_zip' => '安装失败，请安装php的Zip扩展',//'Installation failed, please install the Zip extension for php',
     'svip' => '铁杆svip专属',//'Hardcore svip exclusive',
+    'hard' => '铁杆专属',//'Hardcore exclusive',
     'plu_category_1' => '资源下载',//'Resource download',
     'plu_category_2' => 'SEO优化',//'SEO optimization',
     'plu_category_3' => '多媒体',//'Multimedia',
