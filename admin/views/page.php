@@ -22,7 +22,7 @@
                         <th><input type="checkbox" id="checkAll"/></th>
                         <th><?= lang('title') ?></th>
                         <th><?= lang('comments') ?></th>
-                        <th><?= lang('view') ?></th>
+                        <th><?= lang('views') ?></th>
                         <th><?= lang('alias') ?></th>
                         <th><?= lang('template') ?></th>
                         <th><?= lang('time') ?></th>

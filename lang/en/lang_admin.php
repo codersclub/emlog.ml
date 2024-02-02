@@ -288,7 +288,7 @@ $lang = array(
 //---------------------------
 //admin/views/admin_page.php
     'page' => 'Page',//'页面',
-    'page_management' => 'Page',//'页面',
+    'page_management' => 'Pages',//'页面',
     'page_deleted_ok' => 'Page has been removed successfully',//'删除页面成功',
     'page_published_ok' => 'Page has been published successfully',//'发布页面成功',
     'page_drafted_ok' => 'Draft has been saved successfully',//'转为草稿成功',
