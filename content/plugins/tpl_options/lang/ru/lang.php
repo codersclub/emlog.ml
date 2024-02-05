@@ -33,7 +33,6 @@ $lang = array(
 'file_size_large_system'	=> 'Размер файла превышает системный лимит',//'文件大小超过系统限制',
 'file_upload_failed'		=> 'Ошибка загрузки файла',//'上传文件失败',
 'file_wrong_type'		=> 'Неверный тип файла',//'错误的文件类型',
-'file_size_large_emlog'		=> 'Размер файла превышает лимит Emlog',//'文件大小超出emlog的限制',
 'create_upload_dir_error'	=> 'Ошибка при создании папки загрузки',//'创建文件上传目录失败',
 'upload_no_rights'		=> 'Ошибка загрузки. Папка загрузки (content/uploadfile) недоступна для записи',//'上传失败。文件上传目录(content/uploadfile)不可写',
 'no'				=> 'Нет',//'否',

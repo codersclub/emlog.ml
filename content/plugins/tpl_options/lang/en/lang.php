@@ -33,7 +33,6 @@ $lang = array(
 'file_size_large_system'	=> 'The file size exceeds the system limit',//'文件大小超过系统限制',
 'file_upload_failed'		=> 'Failed to upload file',//'上传文件失败',
 'file_wrong_type'		=> 'Wrong file type',//'错误的文件类型',
-'file_size_large_emlog'		=> 'The file size exceeds the limit of emlog',//'文件大小超出emlog的限制',
 'create_upload_dir_error'	=> 'Failed to create file upload directory',//'创建文件上传目录失败',
 'upload_no_rights'		=> 'Upload failed. The file upload directory (content/uploadfile) is not writable',//'上传失败。文件上传目录(content/uploadfile)不可写',
 'no'				=> 'No',//'否',

@@ -7,7 +7,7 @@ $lang = array(
 'language'           => 'Language',//'语言',
 
 //---------------------------
-//include\controller\api_controller.php
+//include/controller/api_controller.php
 'article_private'	=> 'This article is private',
 
 //---------------------------
@@ -44,6 +44,7 @@ $lang = array(
 //include/lib/common.php
 'not_editable'				=> 'Approved articles cannot be edited or deleted by users',//'审核通过的文章用户不可编辑、删除',
 'file_upload_failed'         => 'File upload failed',//'文件上传失败',
+'file_size_large'		=> 'File size exceeds the system limit',//'文件大小超出系统限制',
 
 //---------------------------
 //include/lib/emcurl.php
