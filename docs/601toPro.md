@@ -1,4 +1,4 @@
-# &#x1f366; emlog6.0.1 unofficial version upgrade pro version operation guide
+# &#x1f366; Upgrade emlog 6.0.1 to pro (unofficial version)
 
 ## Upgrade steps (please execute in order)
 

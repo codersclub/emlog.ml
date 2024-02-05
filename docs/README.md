@@ -1,10 +1,6 @@
 <p align="center">
   <img src="./logo.png" width=100 />
 </p>
-<p align="center">
-	<a href="https://github.com/emlog/emlog/releases/latest"><img src="https://img.shields.io/github/v/release/emlog/emlog?logo=github" alt="GitHub release" /></a>
-	<a href="https://www.emlog.net/docs/#/"><img src="https://img.shields.io/badge/docsify-%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-brightgreen" alt="Document" /></a>
-</p>
 
 # &#x1f680; Emlog
 
@@ -12,40 +8,45 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 
 ## Overview
 
-- Markdown editor, auto save, more comfortable and worry-free creation
-- User registration, login, contribution, management
-- Multimedia resource manager, supports upload management of pictures, audio, video, files, etc.
-- Draft box function convenient to save your unfinished articles
-- Template themes to create a personalized site
-- Rich plugin extensions to provide more functions
-- Supports article URL customization for better SEO effect
-- Flexible sidebar component (widgets) management, easy to combine and customize your favorite components
-- Custom pages to easily create message boards, navigation bars, personal profiles, etc.
-- Multi-person co-writing, easy management of multiple writers in the background
-- Tags, secondary classification
-- Data caching technology, faster site access
-- Site data backup/restore function
+- Markdown editor: Built-in Markdown editor and automatic saving, making the creative process more comfortable and efficient.
+- Multi-user roles: supports multiple user roles and provides user registration and login functions to facilitate the interaction between readers and authors.
+- Multimedia Resource Manager: The built-in multimedia resource manager makes it easy to upload and manage various media resources such as pictures, audios, videos, and files.
+- Template themes: The app store provides a variety of template themes to easily create a unique site.
+- Plug-in ecology: It has a powerful plug-in extension system to quickly expand site functions to meet specific needs.
+- Powerful SEO function: supports article URL customization, site and category page TDK customization, which helps improve the site's visibility in search engines.
+- Customized sidebar management: Provides flexible sidebar component management.
+- Custom pages: Supports the creation of custom pages, including message boards, personal introductions, etc., to help you create a more personalized and functional site.
+- Tags and categories: Articles can be easily categorized and tagged, providing better information organization and retrieval capabilities.
 
 ## Install
 
 [Installation documentation](install.md)
 
-## Github source hosting
+## Emlog official domains
 
-https://github.com/emlog/emlog
+- Emlog.ML official site: <https://emlog.ru>
+- Chinese emlog official site: <https://www.emlog.net>
+- Chinese official user community: <https://emlog.cn>
+- English emlog site: <https://emlog.in>
 
-## Emlog official domain name list
+!> Except for the listed above domain names, all others sites are not official domain names, and some are even fake sites. For security reasons, please do not download installation packages and scripts from these unofficial domain names.
 
-- Emlog.ML official site: https://emlog.ru
-- Official emlog website homepage: https://www.emlog.net
-- Officially maintained user community: https://emlog.cn
-- International English site: https://emlog.io
+## Github
 
-!> Except for the domain names listed above, all others are unofficial domain names. For security reasons, please do not download installation packages and scripts from unofficial domain names.
+- MultiLingual version: <https://github.com/codersclub/emlog.ml>
+- Chinese version: <https://github.com/emlog/emlog>
+- English version: <https://github.com/emlog/emlog-ml>
 
 ## License Agreement
 
 The license under which the Emlog software is released is the Free Software Foundation's GP Lv3 (or later): [LICENSE](/license.txt)
+
+## Software Copyright Statement
+
+- emlog is developed and maintained by Naduo Memory (network name), and the copyright belongs to Tianjin DiDi Memory Information Technology Co., Ltd.
+  emlog's intellectual property rights and all related information content, including but not limited to: text, graphics, interface design, layout framework, and related data, are protected by the relevant intellectual property laws and regulations of the People's Republic of China.
+- Software copyright registration number: 2023SR0497514
+- emlog trademark registration number: 68888345, 68812471
 
 ---
 

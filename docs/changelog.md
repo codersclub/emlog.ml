@@ -1,19 +1,311 @@
 # &#x1f335; Emlog version update records
 
-## pro2.1.0
+## Pro 2.2.8
 
-Release time: 2023-04-10
+Release date: 2024-1-26
 
-- [feature] Support automatic checking for updates of templates and plugins, and supports one-click online updates.
-- [feature] Support filling in rejection reasons on the article review.
-- [feature] Background home page automatically checks and prompts the core program updates.
-- [feature] Support loading more and filtering by category when inserting resource images on the finished article page.
-- [fix] Adjust the store display style for different screen sizes.
-- [fix] Fix the problem that the sender name of the mail notification service is invalid.
+- [Function] Support automatic interception of abstracts when editing articles
+- [Function] Optimize the category page URL, remove the word "sort", and directly display the first-level and second-level category directories
+- [Function] Optimize some settings to save interactions and page details
+- [Function] Add comment list API
+- [Fix] The mobile version supports drag-and-drop sorting of links, categories, etc.
+- [Fix] Fixed the registration status display problem caused by invalid registration code
+
+Installation package: [emlog_pro_2.2.8.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.8.zip)
+
+## Pro 2.2.7
+
+Release date: 2023-12-28
+
+- [Function] Display hyperlink in submission notification
+- [Function] Adjust UI details such as nickname and avatar display on the backend homepage
+- [Function] Template setting plug-in - Add multiple lines of text to multiple content blocks
+- [Function] Template setting plug-in - Added date format text box
+- [Function] Application development: Add button mount point under the title
+- [Function] Application development: Improve the article publishing mount point, and add parameters for whether to publish articles directly and article detailed data
+- [Fix] Prevent calendar interface from being directly accessed by search engines etc.
+
+Installation package: [emlog_pro_2.2.7.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.7.zip)
+
+## Pro 2.2.6
+
+Release date: 2023-12-7
+
+- [Function] Top 12 rankings of application store display templates and plug-ins
+- [Function] API: Note list interface returns note ID
+- [Function] Add plug-in mounting point for note publishing
+- [Function] Add error message for missing curl extension
+- [Fix] Adjust the mount point of the personal center homepage
+- [Fix] Solve the compatibility issue of template setting plug-in
+- [Fixed] Pagination issue in the foreground when articles are pending review
+
+Installation package: [emlog_pro_2.2.6.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.6.zip)
+
+## Pro 2.2.5
+
+Release date: 2023-11-26
+
+- [Function] Reconstruct the template setting interface and experience
+- [Optimization] Optimize system settings saving
+- [Optimization] Optimize support for mariadb
+- [Fix] Fixed API file upload permission issue
+
+Installation package: [emlog_pro_2.2.5.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.5.zip)
+
+## Pro 2.2.4
+
+Release date: 2023-11-15
+
+- [Function] The window for uploading and inserting pictures on the article writing page supports deleting resources.
+- [Function] The plug-in front page supports staticization, please refer to the plug-in development documentation for details.
+- [Function] Add a header mount point to the login registration page
+- [Function] Note API outputs original markdown content
+- [Optimization] Other interface details and other optimizations
+- [Fix] Fixed API file upload permission issue
+
+Installation package: [emlog_pro_2.2.4.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.4.zip)
+
+## Pro 2.2.3
+
+Release date: 2023-10-26
+
+- [Fix] Solve the problem caused by not opening the template setting plug-in
+
+Installation package: [emlog_pro_2.2.3.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.3.zip)
+
+## Pro 2.2.2
+
+Release date: 2023-10-25
+
+- [Function] Add keyword settings on the category page for article classification
+- [Function] The default theme supports setting picture LOGO
+- [Function] Officially introduce the system call mechanism of templates, please see the template development document for details
+- [Function] Optimize the template setting interface, the plugin list no longer displays the template setting plugin
+- [Function] Optimize and upgrade the operation experience and other interface operation details
+- [Fix] The problem that ordinary users cannot comment on posts
+
+Installation package: [emlog_pro_2.2.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.2.zip)
+
+## Pro 2.2.1
+
+Release date: 2023-10-15
+
+- [Function] The plug-in supports filtering by status and is sorted by installation time by default.
+- [Function] Articles support custom templates
+- [Function] API: Add an interface for modifying basic user information
+- [Fix] Fixed the problem that the database cannot be backed up when its name is a number.
+- [Fix] Fixed the issue where the setting [Do not allow comments] fails
+- [Fix] Fixed the problem of failure to delete a single draft
+
+Installation package: [emlog_pro_2.2.1.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.1.zip)
+
+## Pro 2.2.0
+
+Release date: 2023-9-29
+
+- [Function] Support configuring email notification templates
+- [Function] Optimize article deletion prompts, support transfer to draft and complete deletion
+- [Function] Adjust plug-in opening switch style
+- [Function] Add cover and other fields to the latest article structure in the sidebar
+- [Fix] After the page is set as homepage, it no longer affects the site TDK settings.
+- [Fix] Fixed the security issue of lax filtering of article aliases
+- [Fix] Fix the problem of content editing role permission control
+
+Installation package: [emlog_pro_2.2.0.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.0.zip)
+
+## Pro 2.1.15
+
+Release date: 2023-9-12
+
+- [Function] Reconstruct the user center (interface after logging in for ordinary registered users)
+- [Function] Add the function of filtering administrators to the user management page
+- [Function] Update password hash library
+- [Fix] Fixed missing UA for replying comments and filtering spam comments
+
+Installation package: [emlog_pro_2.1.15.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.15.zip)
+
+## Pro 2.1.14
+
+Release date: 2023-8-27
+
+- [Function] Backstage comment management supports viewing all comments of a registered user (click the commenter's name)
+- [Function] Update PHPMailer dependency to 6.8.0, and add a hyperlink to the article title in the email notification
+- [Function] Backend tag management: click on the article number to view all articles of that tag
+- [Fix] Fixed the issue where resource classification cannot be obtained when inserting graphics and text on the editing article page.
+- [Fix] Fixed the issue that the theme settings plug-in template did not restrict direct access
+- [Fix] Fixed the security issue where the verification code was not invalidated in time
+
+Installation package: [emlog_pro_2.1.14.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.14.zip)
+
+## Pro 2.1.13
+
+Release date: 2023-8-12
+
+- [Function] Adjust the layout of the article writing page to three columns.
+- [Function] Turn on submission notification, and a notification email will be sent regardless of whether the article needs review or not.
+- [Function] Add an enable template button to the template management page
+- [Function] API is not enabled after installation by default
+- [Function] Optimize the installation interface and adapt it to the mobile phone
+- [Function] Optimize the post comment check to distinguish between articles that do not exist and comments that are not enabled.
+- [Fix] Fixed the problem of 256M limit for uploaded resource files
+- [Fix] Fixed the problem that drafts cannot be searched in the background
+
+Installation package: [emlog_pro_2.1.13.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.13.zip)
+
+## Pro 2.1.12
+
+Release date: 2023-7-26
+
+- [Function] API: Add resource file upload interface
+- [Function] Add comment setting after login. After turning it on, only logged-in users can post comments.
+- [Feature] Draft supports foreground preview (authors and administrators only)
+
+Installation package: [emlog_pro_2.1.12.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.12.zip)
+
+## Pro 2.1.11
+
+Release date: 2023-7-13
+
+- [Function] API: The article list supports querying based on the number of views and comments
+- [Function] Optimize the plug-in mechanism to support ordinary users accessing the plug-in page.
+- [Function] Optimize cropping upload exception error reporting
+- [Fix] Compatible with category format URL after the page is set as homepage
+- [Fix] Draft no longer displays scheduled publishing status
+- [Fix] Added mount point for deleting articles
+
+Installation package: [emlog_pro_2.1.11.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.11.zip)
+
+## Pro 2.1.10
+
+Release date: 2023-7-4
+
+- [Function] Support setting the page as the homepage
+- [Function] Resource management supports viewing only the files uploaded by a certain user
+- [Function] Return to the previous page number after editing the article and saving it.
+- [Function] Optimization of page details such as link management
+
+Installation package: [emlog_pro_2.1.10.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.10.zip)
+
+## Pro 2.1.9
+
+Release date: 2023-6-17
+
+- [Feature] Custom navigation supports setting relative path URL
+- [Function] Article cover cropping supports free cropping without limiting the proportion.
+- [Fix] Solve the compatibility issue of note content containing html
+- [Fix] Solve the problem that resource management cannot operate in batches
+- [Fix] Solve the problem of API reading article permissions
+
+Installation package: [emlog_pro_2.1.9.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.9.zip)
+
+## Pro 2.1.8
+
+Release date: 2023-6-4
+
+- [Function] Optimize data backup to improve compatibility, add version number information to exported files
+- [Function] Category sorting adjustment, synchronous update of navigation sorting
+- [Fix] Solve the problem of SQL error during installation under Windows system
+
+Installation package: [emlog_pro_2.1.8.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.8.zip)
+
+## Pro 2.1.7
+
+Release date: 2023-5-29
+
+- [Function] Background resource management adds searching for resources by time
+- [Function] API: Add an interface to obtain the note list
+- [Function] Backend category management: subcategories support drag sorting
+- [Function] Optimize article classification cache performance to make the system run faster.
+
+Installation package: [emlog_pro_2.1.7.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.7.zip)
+
+## Pro 2.1.6
+
+Release date: 2023-5-22
+
+- [Function] Backend classification, friend links, and navigation support drag sorting
+- [Function] The App Store supports finding apps by category
+- [Function] Notes support markdown syntax and adding pictures
+- [Function] Added option that users cannot delete or edit articles after review
+- [Function] The daily post limit is 0 hours, and it is also prohibited to post notes and upload graphic resources.
+- [Function] Get site address considering reverse proxy
+- [Fix] Strengthen verification when deleting templates and plug-ins
+
+Installation package: [emlog_pro_2.1.6.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.6.zip)
+
+## Pro 2.1.5
+
+Release date: 2023-5-5
+
+- [Function] The resource management page supports clicking to copy links.
+- [Fix] Remove article publishing time selection control, some browsers are not compatible.
+- [Fix] Removed the function of remembering the categories of recently published articles. Misoperations may easily lead to publishing in unexpected categories.
+
+Installation package: [emlog_pro_2.1.5.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.5.zip)
+
+## Pro 2.1.4
+
+Release date: 2023-5-4
+
+- [Fixed] The problem of invalid home page judgment for some compatible templates
+
+Installation package: [emlog_pro_2.1.4.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.4.zip)
+
+## ......
+
+## Pro 2.1.3
+
+Release date: 2023-5-3
+
+- [Function] The plug-in management page is sorted according to activation status, highlighting one neatly.
+- [Function] Templates and pages support drop-down selection of custom templates. Please refer to the template development document for details, please template developers.
+- [Fix] Fix the problem that the article asynchronous save plug-in settings cannot be saved.
+- [Fix] Optimize writing articles to remember the last selected category
+- [Fixed] The problem of normal tag access prompt 404 for unbound articles
+- [Fix] Fixed the problem of ordinary users reporting an error when clicking on the number of notes on the backend home page.
+
+Installation package: [emlog_pro_2.1.3.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.3.zip)
+
+## Pro 2.1.2
+
+Release date: 2023-4-19
+
+- [Function] System settings add the ability to turn on and off the [Today’s App] recommendation switch on the background homepage
+- [FIX] Fix wrong documentation link
+
+Installation package: [emlog_pro_2.1.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.2.zip)
+
+## Pro 2.1.1
+
+Release date: 2023-4-18
+
+- [Function] Add the function of replying to comment emails to notify commenters
+- [Function] The resource adds support for mp3 audio files, and mp3 can be inserted into articles for playback.
+- [Function] Add display of today’s application on the background homepage
+- [Function] Remember the category used in the last post
+- [Fix] Solve the problem of editor paste upload failure
+- [Fix] Solve the problem that the resource list cannot be loaded when inserting pictures into new pages.
+- [Fix] Solve the problem of abnormal display in the App Store.
+
+Installation package: [emlog_pro_2.1.1.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.1.zip)
+
+## Pro 2.1.0
+
+Release date: 2023-04-10
+
+- [Function] Templates and plug-ins support automatic checking for updates and one-click online updates.
+- [Function] Article review supports filling in the reasons for rejection.
+- [Function] The background homepage automatically checks and prompts for core program updates
+- [Function] Support loading more and filtering by category when inserting resource pictures on the article page.
+- [Fix] Adjust the display style of the store for different screen sizes.
+- [Fix] Fixed the issue where the sender name of the email notification service is invalid.
+- [Fix] Solve the problem of losing the homepage style when https is turned on.
+
+Installation package: [emlog_pro_2.1.0.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.0.zip)
 
 ## Pro 2.0.3
 
-Release time: 2023-3-19
+Release date: 2023-3-19
 
 - [feature] Optimize app store display and purchase logic
 - [feature] API: Add password retrieval related interface, see interface documentation for details
@@ -21,11 +313,11 @@ Release time: 2023-3-19
 - [feature] Display keyword tab on the article page
 - [feature] Add information module mount point on the background homepage of registered users.
 
-Installation package: [emlog_pro_2.0.3.zip](https://oss.emlog.net/download/emlog_pro_2.0.3.zip)
+Installation package: [emlog_pro_2.0.3.zip](https://oss.emlog.net/download/release/emlog_pro_2.0.3.zip)
 
 ## Pro 2.0.2
 
-Release time: 2023-3-8
+Release date: 2023-3-8
 
 - [feature] API: add cookie verification mode
 - [feature] API: add an interface for obtaining current user information, and add an interface for user login and registration
@@ -34,11 +326,11 @@ Release time: 2023-3-8
 - [fix] Fix the problem that the default template shows incomplete long images.
 - [fix] The app store plugin page is missing.
 
-Installation package: [emlog_pro_2.0.2.zip](https://oss.emlog.net/download/emlog_pro_2.0.2.zip)
+Installation package: [emlog_pro_2.0.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.0.2.zip)
 
 ## Pro 2.0.1
 
-Release time: 2023-3-1
+Release date: 2023-3-1
 
 - [feature] Optimize the experience of the mobile version of the login and registration page
 - [feature] Optimize the background tag management page, add the tag search function, and display the number of tag articles
@@ -51,7 +343,7 @@ Installation package: [emlog_pro_2.0.1.zip](https://oss.emlog.net/download/emlog
 
 ## Pro 2.0.0
 
-Release time: 2023-2-19
+Release date: 2023-2-19
 
 - [feature] Add email verification code function for user registration.
 - [feature] Comments, user registration, and login supports return json data, which is convenient for theme development, pop-up login and other effects. Refer to the template development document.
@@ -61,22 +353,22 @@ Release time: 2023-2-19
 - [fix] Solve the problem that the article settings link does not record the number of views.
 - [fix] Solve some 8.1 compatibility issues.
 
-Installation package: [emlog_pro_2.0.0.zip](https://oss.emlog.net/download/emlog_pro_2.0.0.zip)
+Installation package: [emlog_pro_2.0.0.zip](https://oss.emlog.net/download/release/emlog_pro_2.0.0.zip)
 
 ## Pro 1.9.3
 
-Release time: 2023-2-6
+Release date: 2023-2-6
 
 - [feature] Notify by email the article author about receiving a comment
 - [feature] Optimize the app store -  better experience of installing template plugins
 - [feature] API: The article publishing interface supports publishing as a draft
 - [feature] Add the setting of the number of entries per page of the list in the background settings, which is convenient for managing articles, comments, and users
 
-Installation package: [emlog_pro_1.9.3.zip](https://oss.emlog.net/download/emlog_pro_1.9.3.zip)
+Installation package: [emlog_pro_1.9.3.zip](https://oss.emlog.net/download/release/emlog_pro_1.9.3.zip)
 
 ## Pro 1.9.2
 
-Release time: 2023-1-20
+Release date: 2023-1-20
 
 - [feature] User management supports searching by a user nickname
 - [feature] Article publishing supports filling in the redirect link, and the content is not displayed after filling in the jump link directly
@@ -87,11 +379,11 @@ Release time: 2023-1-20
 - [feature] Add full screen mode to default editor
 - [fix] Optimize the experience of some mobile phones at the front and back ends
 
-Installation package: [emlog_pro_1.9.2.zip](https://oss.emlog.net/download/emlog_pro_1.9.2.zip)
+Installation package: [emlog_pro_1.9.2.zip](https://oss.emlog.net/download/release/emlog_pro_1.9.2.zip)
 
 ## Pro 1.9.1
 
-Release time: 2022-12-29
+Release date: 2022-12-29
 
 - [feature] Optimize the function of obtaining the commenter real IP, and support CDN scenarios
 - [feature] Optimize the background operation pop-up prompt style
@@ -101,11 +393,11 @@ Release time: 2022-12-29
 - [fix] All notes can be displayed after clicking on the number of notes on the homepage of the background
 - [fix] Adjust auto save time interval to 1 minute
 
-Installation package: [emlog_pro_1.9.1.zip](https://oss.emlog.net/download/archived/emlog_pro_1.9.1.zip)
+Installation package: [emlog_pro_1.9.1.zip](https://oss.emlog.net/download/release/emlog_pro_1.9.1.zip)
 
 ## Pro 1.9.0
 
-Release time: 2022-12-5
+Release date: 2022-12-5
 
 - [feature] API: add the edit article API
 - [feature] API: add the article list related to the tag
@@ -117,11 +409,11 @@ Release time: 2022-12-5
 - [fix] Fixed the failure of some links in the top menu bar of the default template, and the failure of links such as "Latest Comments" in the sidebar component
 - [fix] Delete the redundant code of the default template, and adjust the code indentation to Tab with a size of 4
 
-Installation package: [emlog_pro_1.9.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.9.0.zip)
+Installation package: [emlog_pro_1.9.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.9.0.zip)
 
 ## Pro 1.8.0
 
-Release time: 2022-11-2
+Release date: 2022-11-2
 
 - [feature] Editor supports inserting video (MP4 video URL)
 - [feature] Email notification: receive email notification of new comments
@@ -132,11 +424,11 @@ Release time: 2022-11-2
 - [fix] Remove the redundant a tag at the foot of the default template without setting up ICP record
 - [fix] Fix the problem that the toc directory is wrongly located in articles with many pictures
 
-Installation package: [emlog_pro_1.8.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.8.0.zip)
+Installation package: [emlog_pro_1.8.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.8.0.zip)
 
 ## Pro 1.7.1
 
-Release time: 2022-10-7
+Release date: 2022-10-7
 
 - [feature] The default template mobile terminal supports article directory viewing
 - [fix] Solve the problem of pagination errors under resource classification
@@ -144,11 +436,11 @@ Release time: 2022-10-7
 - [fix] Solve the problem of missing data tables in background backup
 - [fix] Replace commenter avatar cdn
 
-Installation package: [emlog_pro_1.7.1.zip](https://oss.emlog.net/download/archived/emlog_pro_1.7.1.zip)
+Installation package: [emlog_pro_1.7.1.zip](https://oss.emlog.net/download/release/emlog_pro_1.7.1.zip)
 
 ## Pro 1.7.0
 
-Release time: 2022-10-3
+Release date: 2022-10-3
 
 - [feature] Resource management page adds resource classification function
 - [feature] Articles supports release time, just set the "Future release time" point when writing an article
@@ -156,29 +448,29 @@ Release time: 2022-10-3
 - [fix] Solve the problem of multiple clicks on the editor table
 - [fix] Solve the problem that the default template image cannot jump to the external link
 
-Installation package: [emlog_pro_1.7.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.7.0.zip)
+Installation package: [emlog_pro_1.7.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.7.0.zip)
 
 ## Pro 1.6.0
 
-Release time: 2022-8-14
+Release date: 2022-8-14
 
 - [feature] Support php5.6, better compatibility with old templates and plugins.
 - [feature] Add note publishing API, which can be used for chrome browser plug-in development.
 - [feature] Tweaked store display to differentiate between free and paywall.
 
-Installation package: [emlog_pro_1.6.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.6.0.zip)
+Installation package: [emlog_pro_1.6.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.6.0.zip)
 
 ## Pro 1.5.1
 
-Release time: 2022-7-11
+Release date: 2022-7-11
 
 - [feature] Improve the one-click deployment process of the pagoda panel, making deployment more convenient.
 
-Installation package: [emlog_pro_1.5.1.zip](https://oss.emlog.net/download/archived/emlog_pro_1.5.1.zip)
+Installation package: [emlog_pro_1.5.1.zip](https://oss.emlog.net/download/release/emlog_pro_1.5.1.zip)
 
 ## Pro 1.5.0
 
-Release time: 2022-7-3
+Release date: 2022-7-3
 
 - [feature] API: add an interface for obtaining categories
 - [feature] Add the content editor role, responsible for the review and management of articles and comments
@@ -188,11 +480,11 @@ Release time: 2022-7-3
 - [fix] Fixed the W3C validation issue of the foreground template
 - [fix] Compatible with the old template, the split function cannot be found under php7, so that most 5.3.1 templates can be used in the pro version
 
-Installation package: [emlog_pro_1.5.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.5.0.zip)
+Installation package: [emlog_pro_1.5.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.5.0.zip)
 
 ## Pro 1.4.0
 
-Release time: 2022-6-12
+Release date: 2022-6-12
 
 - [feature] API: article publishing interface supports tags
 - [feature] API: add article list and article details interface
@@ -204,21 +496,21 @@ Release time: 2022-6-12
 - [fix] Fix the 404 problem of pagination in background management page
 - [fix] Fix the problem that the category page in the background is displayed incorrectly
 
-Installation package: [emlog_pro_1.4.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.4.0.zip)
+Installation package: [emlog_pro_1.4.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.4.0.zip)
 
 ## Pro 1.3.1
 
-Release time: 2022-5-22
+Release date: 2022-5-22
 
 - [feature] Optimize the cache update efficiency when there are a large number of articles, and improve the response time of article publishing.
 - [fix] Fix the problem that the site reports 404 when there are no articles
 - [fix] Fix the problem that extensions cannot be downloaded in some server environment
 
-Installation package: [emlog_pro_1.3.1.zip](https://oss.emlog.net/download/archived/emlog_pro_1.3.1.zip)
+Installation package: [emlog_pro_1.3.1.zip](https://oss.emlog.net/download/release/emlog_pro_1.3.1.zip)
 
 ## Pro 1.3.0
 
-Release time: 2022-5-4
+Release date: 2022-5-4
 
 - [feature] The article cover image supports entering the URL of the network image
 - [feature] Added a user ban function, unable to log in after ban
@@ -226,11 +518,11 @@ Release time: 2022-5-4
 - [fix] Fix the problem that the non-existing article page does not display 404
 - [fix] Fix the problem of rss output unreviewed articles
 
-Installation package: [emlog_pro_1.3.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.3.0.zip)
+Installation package: [emlog_pro_1.3.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.3.0.zip)
 
 ## Pro 1.2.2
 
-Release time: 2022-3-20
+Release date: 2022-3-20
 
 - [feature] Added user management to search users by registered email address
 - [feature] Input article password page supports adding custom template (pw.php)
@@ -240,11 +532,11 @@ Release time: 2022-3-20
 - [fix] Fix the problem that RSS does not parse Markdown syntax
 - [fix] Fix the security issue of resource deletion
 
-Installation package: [emlog_pro_1.2.2.zip](https://oss.emlog.net/download/archived/emlog_pro_1.2.2.zip)
+Installation package: [emlog_pro_1.2.2.zip](https://oss.emlog.net/download/release/emlog_pro_1.2.2.zip)
 
 ## Pro 1.2.1
 
-Release time: 2022-2-19
+Release date: 2022-2-19
 
 - [fix] Fix the problem that the icon of the sidebar management button is missing
 - [fix] Fix the problem that the security entrance configuration is invalid
@@ -252,11 +544,11 @@ Release time: 2022-2-19
 - [fix] Fix the problem that the background button fails under the Safari browser
 - [fix] Added a switch for whether the registered user\'s article needs to be reviewed, and solved the problem that the registered user\'s post must be reviewed.
 
-Installation package: [emlog_pro_1.2.1.zip](https://oss.emlog.net/download/archived/emlog_pro_1.2.1.zip)
+Installation package: [emlog_pro_1.2.1.zip](https://oss.emlog.net/download/release/emlog_pro_1.2.1.zip)
 
 ## Pro 1.2.0
 
-Release time: 2022-2-12
+Release date: 2022-2-12
 
 - [feature] Support user registration function, you can post after registration, but it needs to be reviewed by the administrator
 - [feature] Support email notification configuration, and support password retrieval through registered email
@@ -273,11 +565,11 @@ Release time: 2022-2-12
 - [fix] The left side menu bar of the background supports the up and down scroll wheel, which solves the problem that the lower part of the menu bar is hidden when the screen resolution is low
 - [fix] Solved the problem that the background editor dialog box was blocked by other elements on the page
 
-Installation package: [emlog_pro_1.2.0.zip](https://oss.emlog.net/download/archived/emlog_pro_1.2.0.zip)
+Installation package: [emlog_pro_1.2.0.zip](https://oss.emlog.net/download/release/emlog_pro_1.2.0.zip)
 
 ## Pro 1.1.1
 
-Release time: 2021-12-25
+Release date: 2021-12-25
 
 - [feature] The default editor adds a button to insert a code block, and cooperates with the plug-in to achieve code highlighting
 - [feature] resource management to add image pop-up preview
@@ -288,7 +580,7 @@ Release time: 2021-12-25
 
 ## Pro 1.1.0
 
-Release time: 2021-11-22
+Release date: 2021-11-22
 
 - [feature] Added resource division by user, users can use resource management without interfering with each other
 - [feature] Added comment sticky function
@@ -300,7 +592,7 @@ Release time: 2021-11-22
 
 ## Pro 1.0.8
 
-Release time: 2021-10-24
+Release date: 2021-10-24
 
 - [feature] Optimize the insertion of graphic resources when writing articles, and support direct upload
 - [feature] Solve the problem of server lag caused by uploading the cover of the article
@@ -312,7 +604,7 @@ Release time: 2021-10-24
 
 ## Pro 1.0.7
 
-Release time: 2021-10-08
+Release date: 2021-10-08
 
 - [feature] Add the function of card notes, organize notes, accumulate knowledge, replace the original twitter, and prepare for the 531 upgrade.
 - [feature] Resource management: add a batch delete function
@@ -323,7 +615,7 @@ Release time: 2021-10-08
 
 ## Pro 1.0.6
 
-Release time: 2021-09-20
+Release date: 2021-09-20
 
 - [feature] Resource management: add support for uploading mp4 video files and inserting videos into articles
 - [feature] Add user login IP and time display
@@ -335,7 +627,7 @@ Release time: 2021-09-20
 
 ## Pro 1.0.5
 
-Release time: 2021-09-05
+Release date: 2021-09-05
 
 - [feature] Support an avatar and article cover image cropping in mobile phones, and optimize the cropping experience
 - [fix] Common authors no longer support action resource management
@@ -345,7 +637,7 @@ Release time: 2021-09-05
 
 ## Pro 1.0.4
 
-Release time: 2021-08-29
+Release date: 2021-08-29
 
 - [feature] Added article cover image function
 - [feature] Optimized avatar upload, support cropping
@@ -354,7 +646,7 @@ Release time: 2021-08-29
 
 ## Pro 1.0.3
 
-Release time: 2021-08-14
+Release date: 2021-08-14
 
 - [feature] Added the background management security entry, which needs to be manually configured in config.php
 - [feature] Optimized the default template details
@@ -363,7 +655,7 @@ Release time: 2021-08-14
 
 ## Pro 1.0.2
 
-Release time: 2021-08-01
+Release date: 2021-08-01
 
 - [fix] Try to fix the problem of token error in normal operation
 - [fix] Adjust the timeout settings for accessing official services
@@ -372,7 +664,7 @@ Release time: 2021-08-01
 
 ## Pro 1.0.1
 
-Release time: 2021-07-17
+Release date: 2021-07-17
 
 - [fix] Fixed the problem that the logo on the installation interface was missing
 - [fix] Solved the problem that the failure to install the extension does not display detailed error report
@@ -381,13 +673,13 @@ Release time: 2021-07-17
 
 ## Pro 1.0.0
 
-Release time: 2021-07-10
+Release date: 2021-07-10
 
 - [feature] hi emlog pro, a new world
 
 ##6.0.0
 
-Release time: 2018-10-02
+Release date: 2018-10-02
 
 - New background and default templates
 - Optimize the index, improve the label storage method, and perform better when the amount of data is large
@@ -396,11 +688,11 @@ Release time: 2018-10-02
 
 !> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
 
-Installation package: [emlog_6.0.0.zip](https://oss.emlog.net/download/archived/emlog_6.0.0.zip)
+Installation package: [emlog_6.0.0.zip](https://oss.emlog.net/download/release/emlog_6.0.0.zip)
 
 ## 5.3.1
 
-Release time: 2014-07-21
+Release date: 2014-07-21
 
 - Improved installation script to be compatible with certain cloud engines
 - The background s and js files increase the version number to prevent the cache from not being updated after the upgrade
@@ -414,7 +706,7 @@ Release time: 2014-07-21
 
 !> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
 
-Installation package: [emlog_5.3.1.zip](https://oss.emlog.net/download/archived/emlog_5.3.1.zip)
+Installation package: [emlog_5.3.1.zip](https://oss.emlog.net/download/release/emlog_5.3.1.zip)
 
 
 ---

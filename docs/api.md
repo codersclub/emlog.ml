@@ -1,13 +1,9 @@
 # &#x1f34e; API documentation
 
-Emlog Pro version supports the interface (API) call function, and developers can interact with the emlog system by calling the API.
-For example:
-docking with article publishing software to realize automatic publishing of articles;
-docking with WeChat applets to realize diversified article display;
-docking with browser plug-ins to realize more convenient note publishing functions, etc.
-For detailed interface description, please refer to the following content.
+Emlog
+pro version supports the interface (API) calling function, and developers can interact with the emlog system by calling the API. For example: docking with article publishing software to realize automatic publication of articles; docking with WeChat applet to realize diversified article display; docking with browser plug-ins to realize more convenient note publishing function, etc. For detailed interface description, please refer to the following content.
 
-!> This document is written based on the latest version of Emlog pro, the lower version may not be compatible, please upgrade to the latest version first.
+!> This document is written based on the latest version of emlog pro. Lower versions may not be compatible. Please upgrade to the latest version first.
 
 ## Interface authentication
 
@@ -16,29 +12,26 @@ For detailed interface description, please refer to the following content.
 * Request method: POST/GET is the same as the specific interface request method
 * Parameters required for authentication:
 
-| Parameter | Required | Description |
+| Parameters | Is it required | Description |
 |----------|------|---------------------------------------|
-| req_sign | Mandatory | Interface signature, see calculation signature rules below |
-| req_time | Mandatory | Unix timestamp, php can use the time() function to obtain, such as: 1651591816 |
+| req_sign | Required | Interface signature, see the signature calculation rules below |
+| req_time | Required | Unix timestamp, PHP can use the time() function to obtain it, such as: 1651591816 |
 
-#### Calculate the signature rule
+#### Compute signature rules
 
-The unix timestamp and the API key are concatenated and then md5 encrypted.
-The API key can be found in the background System-&gt;Settings-&gt;API interface settings
+Concatenate the unix timestamp and API key and perform md5 encryption. The API key can be found in the background System-Settings-API Interface Settings.
 
 PHP code example:
 
 ```php
-$apikey = '******'; // API key, which can be found in background System-&gt;Settings-&gt;API interface settings
-$req_time = time(); // Unix timestamp, in seconds
+$apikey = '******'; // API key, which can be found in the background system-settings-API interface settings
+$req_time = time(); // Unix timestamp, unit: seconds
 $req_sign = md5($req_time . $apikey); // MD5 signature
 ```
 
 ### (2) Cookie authentication
 
-The request needs to be accompanied by the login status cookie
-after the user logs in to the Emlog system,
-which is used to identify the current login status and the login user.
+The request needs to be accompanied by a login status cookie after the user logs in to the emlog system, which is used to identify the current login status and logged in user.
 
 ```
 // Emlog login status cookie looks like:
@@ -47,52 +40,26 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 ## API list
 
-### Post a comment
-
-* Interface URL: https://yourdomain/index.php?action=addcom
-* Request method: POST
-* Interface authentication method: no authentication required
-* Return format: JSON
-* Request parameters:
-
-| Parameter | Required | Description |
-|------------|--|-----|
-| gid | required | Article id |
-| comname | required | Name of commenter |
-| comment | Mandatory | Comment content |
-| commail | No | Commenter Email |
-| comurl | No | Commenter home page address |
-| imgcode | No | Image Verification Code |
-| pid | No | Replied comment ID |
-| resp | required | Pass string "json" |
-
-#### Return result
-
-```json
-{
-  "code": 1,
-  "msg": "Comment content must contain Chinese",
-  "data": ""
-}
-```
-
 ### User login
 
+* User login interface
 * Interface URL: https://yourdomain/admin/account.php?action=dosignin
 * Request method: POST
 * Interface authentication method: no authentication required
-* Return format: JSON
+*Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
-|------------|--|--------|
-| user | required | username, email |
-| pw | Required | Password |
-| persist | No | Remember me, stay logged in |
-| login_code | No | Image Verification Code |
-| resp | required | Pass string "json" |
+| Parameters | Is it required | Description |
+|------------|------|-------------------|
+| user       | required | username, email |
+| pw         | required | password |
+| persist    | No       | Remember me, keep logged in status (passed value: 1) |
+| login_code | No       | Image verification code |
+| resp       | required | Pass the string "json" |
 
-#### Return result (with login success cookie)
+####
+
+Return results (with login success cookie attached)
 
 ```json
 {
@@ -102,22 +69,23 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### User Registration
+### User registration
 
+* User registration interface
 * Interface URL: https://yourdomain/admin/account.php?action=dosignup
 * Request method: POST
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
-|------------|--|-----|
-| mail | Required | Email |
-| passwd | required | Password |
-| repasswd | required | Repeat password |
-| login_code | No | Image Verification Code |
-| mail_code | No | Email Verification Code |
-| resp | required | Pass string "json" |
+| Parameters | Is it required | Description |
+|------------|------|--------------|
+| mail       | required | email |
+| passwd     | required | password |
+| repasswd   | required | repeat password |
+| login_code | No       | Image verification code |
+| mail_code  | No       | Email verification code |
+| resp       | required | Pass the string "json" |
 
 #### Return result
 
@@ -129,19 +97,20 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Retrieve password: Verify registered email address
+### Retrieve password: Verify registration email
 
+* Retrieve password: Verify registration email interface
 * Interface URL: https://yourdomain/admin/account.php?action=doreset
 * Request method: POST
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
-|------------|--|-----|
-| mail | Required | Email |
-| login_code | No | Image Verification Code |
-| resp | required | Pass string "json" |
+| Parameters | Is it required | Description |
+|------------|------|--------------|
+| mail       | required | email |
+| login_code | No       | Image verification code |
+| resp       | required | Pass the string "json" |
 
 #### Return result
 
@@ -153,20 +122,21 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Retrieve password: reset password
+### Retrieve password: Reset password
 
+* Retrieve password: Reset password interface
 * Interface URL: https://yourdomain/admin/account.php?action=doreset2
 * Request method: POST
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
-|------------|--|-----|
-| mail_code | yes | Email verification code |
-| passwd | required | Password |
-| repasswd | required | Repeat password |
-| resp | required | Pass string "json" |
+| Parameters | Is it required | Description |
+|-----------|------|--------------|
+| mail_code | Yes | Email verification code |
+| passwd | required | password |
+| repasswd | required | repeat password |
+| resp | required | Pass the string "json" |
 
 #### Return result
 
@@ -178,9 +148,9 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### User information interface
+### Get user information
 
-* Get the current login user information
+* Get current logged in user information interface
 * Interface URL: https://yourdomain/?rest-api=userinfo
 * Request method: GET
 * Interface authentication method: [cookie authentication]
@@ -208,26 +178,154 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Article publishing interface
+### Modify user information
 
-* Article publishing interface, which can be used to connect with article publishing software
+* The currently logged in user can modify user information and change password interface
+* Interface URL: https://yourdomain/admin/blogger.php?action=update
+* Request method: POST
+* Interface authentication method: [cookie authentication]
+* Return format: JSON
+* Request parameters:
+
+| Parameters  | Is it required | Description |
+|-------------|------|-----------------|
+| name        | Yes | Nickname |
+| email       | Yes | Login email |
+| description | No  | Personal description |
+| username    | No  | Login username |
+| newpass     | No  | New password, passed when changing the password |
+| repeatpass  | No  | Re-enter the new password and pass it when changing the password |
+
+#### Return results
+
+```json
+{
+  "code": 0,
+  "msg": "ok",
+  "data": ""
+}
+```
+
+### Upload avatar
+
+* User upload avatar interface
+* Interface URL: https://yourdomain/admin/blogger.php?action=update_avatar
+* Request method: POST
+* Interface authentication method: [cookie authentication]
+* Return format: JSON
+* Request parameters:
+
+| Parameters | Is it required | Description |
+|-------|------|----------------------------------|
+| image | Yes | Image submitted by the form, PHP gets: $_FILES["image"] |
+
+#### Return results
+
+```json
+{
+    "code": 0,
+    "msg": "ok",
+    "data": "..\/content\/uploadfile\/202310\/ad7b1696580183.jpg"
+}
+```
+
+### Post a comment
+
+* Post comment interface
+* Interface URL: https://yourdomain/index.php?action=addcom
+* Request method: POST
+* Interface authentication method: no authentication required
+* Return format: JSON
+* Request parameters:
+
+| Parameters | Is it required | Description |
+|---------|------|--------------|
+| gid     | required | article id |
+| comname | required | reviewer name |
+| comment | required | comment content |
+| mail    | No       | Commenter's email address |
+| comurl  | No       | Reviewer's homepage address |
+| imgcode | No       | Image verification code |
+| pid     | No       | Replied comment ID |
+| resp    | required | Pass the string "json" |
+
+#### Return results
+
+```json
+{
+  "code": 1,
+  "msg": "Comments must contain Chinese",
+  "data": ""
+}
+```
+
+### comment list
+
+* Get the comment list interface
+* Interface URL: https://yourdomain/?rest-api=comment_list
+* Request method: GET
+* Interface authentication method: no authentication required
+* Return format: JSON
+* Request parameters:
+
+| Parameters | Is it required | Description |
+|------|------|--------------------|
+| id   | No   | Article id, leave it blank to return all comments |
+| page | No   | Comment paging, you need to enable the comment paging function in the background setting |
+
+#### Return results
+
+```json
+{
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "comments": {
+            "1": {
+                "cid": "1",
+                "gid": "1",
+                "pid": "0",
+                "top": "n",
+                "poster": "snow",
+                "uid": "0",
+                "comment": "stay hungry stay foolish",
+                "mail": "",
+                "url": "",
+                "ip": "",
+                "agent": "",
+                "hide": "n",
+                "date": "57 minutes ago",
+                "content": "stay hungry stay foolish",
+                "children": [],
+                "level": 0
+            }
+        },
+        "commentStacks": [],
+        "commentPageUrl": ""
+    }
+}
+```
+
+### Article release
+
+* Article publishing interface, which can be used to interface with article publishing software
 * Interface URL: https://yourdomain/?rest-api=article_post
 * Request method: POST
 * Interface authentication method: [API key authentication] or [cookie authentication]
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
+| Parameters | Is it required | Description |
 |------------|------|------------------------------|
-| title | required | Article title |
-| content | required | Article content |
-| excerpt | No | Article Summary |
-| cover | No | Article cover image |
+| title      | required | article title |
+| content    | required | article content |
+| excerpt    | No | Article summary |
+| cover      | No | Article cover |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
-| sort_id | No | Article category ID, which can be viewed on the background category management page |
-| tags | No | Article tags, separated by commas, such as: PHP,MySQL |
-| draft | No | Whether to publish as a draft. Yes "y", No "n" (default is "n") |
-| post_date | No | Release time, such as: `2022-05-03 23:30:16` |
+| sort_id    | No | Article classification ID, which can be viewed on the background classification management page |
+| tags       | No | Article tags, multiple half-width commas separated, such as: PHP, MySQL |
+| draft      | No | Whether to publish as a draft, yes y, no n (default is n) |
+| post_date  | No | Posting time, such as: `2022-05-03 23:30:16` |
 
 #### Return result
 
@@ -241,27 +339,27 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Article editing interface
+### Article editing
 
-* Article editing
+* Article editing interface
 * Interface URL: https://yourdomain/?rest-api=article_update
 * Request method: POST
 * Interface authentication method: [API key authentication] or [cookie authentication]
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
+| Parameters | Is it required | Description |
 |------------|------|------------------------------|
-| id | Required | Article ID |
-| title | required | Article title |
-| content | No | Article content |
-| excerpt | No | Article Summary |
-| cover | No | Article cover |
+| id         | required | article ID |
+| title      | required | article title |
+| content    | No | Article content |
+| excerpt    | No | Article summary |
+| cover      | No | Article cover |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
-| sort_id | No | Article category ID, which can be viewed on the background category management page |
-| tags | No | Article tags, separated by commas, such as: PHP,MySQL |
-| draft | No | Whether to publish as a draft. Yes "y", No "n" (default is "n") |
-| post_date | No | Release time, such as: `2022-05-03 23:30:16` |
+| sort_id    | No | Article classification ID, which can be viewed on the background classification management page |
+| tags       | No | Article tags, multiple half-width commas separated, such as: PHP, MySQL |
+| draft      | No | Whether to publish as a draft, yes y, no n (default is n) |
+| post_date  | No | Posting time, such as: `2022-05-03 23:30:16` |
 
 #### Return result
 
@@ -273,22 +371,23 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Article list interface
+### Article list
 
-* Get the article list
+* Get the list interface of articles
 * Interface URL: https://yourdomain/?rest-api=article_list
 * Request method: GET
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| Parameter |Required | Description |
-|---------|------|---------------------|
-| page | No | The page number, starting from 1 by default |
-| count | No | The number of articles per page, follow the background settings by default |
-| sort_id | No | Article category ID, which can be viewed on the background category management page |
+| Parameters | Is it required | Description |
+|---------|------|--------------------------------------------------|
+| page    | No | Page number, starting from 1 by default |
+| count   | No | Number of articles per page, default follows background settings |
+| sort_id | No | Article classification ID, which can be viewed on the background classification management page |
 | keyword | No | Search keywords, only match article titles |
-| tag | No | Article tags (pro 1.9.0+) |
+| tag     | No | Article tag (pro 1.9.0+) |
+| order   | No | Article sorting, the default is to sort in reverse order of time, views: sort in reverse order of views, comnum: sort in reverse order of number of comments |
 
 #### Return result
 
@@ -308,11 +407,11 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
         "author_id": 3,
         "author_name": "Zhang San",
         "sort_id": 53,
-        "sort_name": "Sort Name",
+        "sort_name": "Category Name",
         "views": 1,
         "comnum": 0,
         "top": "y",
-        "sort": "n",
+        "sortop": "n",
         "tags": [
           {
             "name": "emlog",
@@ -327,34 +426,34 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 
 | Parameter | Description |
 |-------------|----------------|
-| id | Article ID |
-| title | article title |
-| cover | Article cover image |
-| url | Article URL |
+| id          | Article ID |
+| title       | article title |
+| cover       | Article cover image |
+| url         | Article URL |
 | description | Article summary |
-| date | Release date |
-| author_id | Author ID |
+| date        | Release date |
+| author_id   | Author ID |
 | author_name | Author nickname |
-| sort_id | Category ID |
-| sort_name | Category name |
-| views | Number of readings |
-| comnum | Number of comments |
-| top | Top page: y=yes, n=no |
-| sortop | Category top: y=yes n=no |
-| tags | tags (pro 1.9.0+) |
+| sort_id     | Category ID |
+| sort_name   | Category name |
+| views       | Number of readings |
+| comnum      | Number of comments |
+| top         | Top page: y=yes, n=no |
+| sortop      | Category top: y=yes n=no |
+| tags        | Tags (pro 1.9.0+) |
 
-### Article details interface
+### Article details
 
-* Get the article details
+* Get article details interface
 * Interface URL: https://yourdomain/?rest-api=article_detail
 * Request method: GET
 * Interface authentication method: no authentication required
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
-|-----|------|------|
-| id | yes | Article ID |
+| Parameters | Is it required | Description |
+|----|------|------|
+| id | Yes | Article ID |
 
 #### Return result
 
@@ -372,25 +471,26 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
       "type": "blog",
       "author_id": "1",
       "author_name": "snowsun",
-      "content": "Content of the article",
-      "cover": "Article Cover",
+      "content": "<p>The content of the article</p>",
+      "excerpt": "<p>Here is the abstract of the article</p>",
+      "cover": "Article cover",
       "views": 2,
       "comnum": 0,
       "top": "n",
-      "sort": "n",
+      "sortop": "n",
       "tags": []
     }
   }
 }
 ```
 
-### Category list interface
+### Category List
 
-* Get all category list (including subcategories)
+* Get the interface of all categories list (including sub-category columns)
 * Interface URL: https://yourdomain/?rest-api=sort_list
 * Request method: GET
 * Interface authentication method: no authentication required
-* Return format: JSON
+*Return format: JSON
 * Request parameters: none
 
 #### Return result
@@ -428,18 +528,18 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-### Note publishing interface
+### Note release
 
-* Note publishing
+* Note publishing interface
 * Interface URL: https://yourdomain/?rest-api=note_post
 * Request method: POST
 * Interface authentication method: [API key authentication] or [cookie authentication]
 * Return format: JSON
 * Request parameters:
 
-| Parameter | Required | Description |
+| Parameters | Is it required | Description |
 |------------|------|----------------------|
-| t | required | Note content |
+| t          | Required | Note content |
 | author_uid | No | The user ID of the author, which can be viewed on the background user management page |
 
 #### Return result
@@ -454,14 +554,90 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 }
 ```
 
-# Common error messages
+### Note list
 
-| Error message | Description |
-|---------------------------|-----------------|
-| sign error | Signature error |
-| api is closed | The API is not enabled, please enable it in the background setting |
-| API function is not exist | API method does not exist |
-| parameter error | Required parameter is missing |
+* Get the list interface of notes
+* Interface URL: https://yourdomain/?rest-api=note_list
+* Request method: GET
+* Interface authentication method: [API key authentication] or [cookie authentication]
+* Return format: JSON
+* Request parameters:
+
+| Parameters | Is it required | Description |
+|------------|------|----------------------|
+| page       | No | Page number, starting from 1 by default |
+| count      | No | Number of articles per page, default follows background settings |
+| author_uid | No | The user ID of the author, which can be viewed on the background user management page |
+
+#### Return results
+
+```json
+{
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "notes": [
+            {
+                "t": "<h1>test note</h1>",
+                "t_raw": "# test note",
+                "date": "47 seconds ago",
+                "author_id": 1,
+                "author_name": "emer"
+            },
+            ...
+            ,
+        ]
+    }
+}
+```
+
+### Resource file upload
+
+* Upload pictures, zip packages and other resource files
+* Interface URL: https://yourdomain/?rest-api=upload
+* Request method: POST
+* Interface authentication method: [API key authentication]
+* Return format: JSON
+* Request parameters:
+
+| Parameters | Is it required | Description |
+|------------|------|----------------------|
+| file       | required | file, the media file to be uploaded (binary file) |
+| author_uid | No | The user ID of the author, which can be viewed on the background user management page |
+| sid        | No | Resource classification ID |
+
+#### Return results
+
+```json
+{
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "media_id": 80,
+        "url": "http://yourdomain/content/uploadfile/202307/7e6f1690266418.png",
+        "file_info": {
+            "file_name": "icon-1024.png",
+            "mime_type": "image/png",
+            "size": 258642,
+            "width": 1024,
+            "height": 1024,
+            "file_path": "../content/uploadfile/202307/7e6f1690266418.png",
+            "thum_file": "../content/uploadfile/202307/thum-7e6f1690266418.png"
+        }
+    }
+}
+```
+
+## Common error messages
+
+- Error return format: json
+
+| Error message | Description | http status code |
+|---------------------------|-----------------|---------|
+| sign error    | Signature error | 401 |
+| api is closed | The API is not enabled, please enable it in the background setting | 400 |
+| API function is not exist | API method that does not exist | 400 |
+| parameter error | The required parameter is missing | 400 |
 
 ### Error return example
 
@@ -474,5 +650,163 @@ EM_AUTHCOOKIE_XXXXX=admin%7C0%7C2a12e9a651b7e44be3d2d3536f51eaaa; Path=/; HttpOn
 ```
 
 ---
+
+## Call example
+
+### PHP call example
+
+PHP call example (release notes)
+
+```php
+<?php
+
+// API key can be found in the background system-settings-API interface settings
+$apikey = 'your_api_key';
+// unix timestamp in seconds
+$req_time = time();
+// MD5 signature calculation
+$req_sign = md5($req_time . $apikey);
+
+//Request parameters
+$data = array(
+    't' => 'This is a test note',
+    'author_uid' => '1',
+    'req_time' => $req_time,
+    'req_sign' => $req_sign
+);
+
+//Request URL
+$url = 'https://yourdomain/?rest-api=note_post';
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));// Set request parameters
+curl_setopt($ch, CURLOPT_URL, $url);// Set the request URL
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);// Set the return result not to be output directly
+$response = curl_exec($ch);// Execute the request and obtain the response data
+curl_close($ch);// Close curl
+
+echo $response; // Output the response result
+```
+
+### python call example
+
+python calling example (release notes)
+
+```python
+import time
+import hashlib
+import requests
+
+# API key, which can be found in the background system-settings-API interface settings
+apikey = 'your_api_key'
+# unix timestamp in seconds
+req_time = str(int(time.time()))
+# MD5 signature calculation
+req_sign = hashlib.md5((req_time + apikey).encode('utf-8')).hexdigest()
+
+# Request parameters
+data = {
+    't': 'This is a test note',
+    'author_uid': '1',
+    'req_time': req_time,
+    'req_sign': req_sign
+}
+
+# Request URL
+url = 'https://yourdomain/?rest-api=note_post'
+response = requests.post(url, data=data)
+print(response.text) # Output the response result
+```
+
+### js call example
+
+js call example (post a comment)
+
+```js
+// Used jquery
+// Get form data
+const gid = $('#gid').val();
+const comname = $('#comname').val();
+const comment = $('#comment').val();
+const commail = $('#commail').val();
+const comurl = $('#comurl').val();
+const imgcode = $('#imgcode').val();
+const pid = $('#pid').val();
+const resp = $('#resp').val();
+
+// Send POST request
+$.post('https://yourdomain/index.php?action=addcom', {
+    gid: gid,
+    comname: comname,
+    comment: comment,
+    commail: commail,
+    comurl: comurl,
+    imgcode: imgcode,
+    pid: pid,
+    resp: resp
+}).done(function (response) {
+    if (response.code === 0) {
+        alert('Comment successful!');
+        // Refresh the page or other operations
+    } else {
+        alert(response.msg);
+    }
+}).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log('Request failed: ' + textStatus);
+});
+```
+
+### File upload example
+
+PHP implementation example of uploading images
+
+```php
+<?php
+
+// API key can be found in the background system-settings-API interface settings
+$apikey = 'your_api_key';
+// unix timestamp in seconds
+$req_time = time();
+// MD5 signature calculation
+$req_sign = md5($req_time . $apikey);
+
+// Request URL
+$url = 'https://yourdomain/?rest-api=upload';
+
+// The file path to upload
+$file_path = '/path/to/your/file.png';
+
+// Construct POST data
+$post_data = array(
+    'file' => new CURLFile($file_path),
+    'sid' => 1, // Resource classification ID, you can omit it if not needed
+    'req_time' => $req_time,
+    'req_sign' => $req_sign
+);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);// Set the request URL
+curl_setopt($ch, CURLOPT_POST, 1);// Set to POST request
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);// Set POST data
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);// Set the return result not to be output directly
+$response = curl_exec($ch);// Execute the request and obtain the response data
+
+// Check if an error occurred
+if (curl_errno($ch)) {
+    echo 'Error: ' . curl_error($ch);
+} else {
+    // Parse response data in JSON format
+    $json_response = json_decode($response, true);
+    if ($json_response['code'] === 0) {
+        echo 'Upload successful! Media ID: ' . $json_response['data']['media_id'];
+        echo 'File URL: ' . $json_response['data']['url'];
+    } else {
+        echo 'Upload failed: ' . $json_response['msg'];
+    }
+}
+
+curl_close($ch);// Close curl
+
+```
 
 --end--

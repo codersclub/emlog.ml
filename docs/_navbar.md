@@ -1,4 +1,4 @@
 <!-- _navbar.md -->
 
-* [Home](http://www.emlog.io)
+* [Home](https://emlog.ru)
 * [Documentation](./)

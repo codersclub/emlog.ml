@@ -1,4 +1,4 @@
-# &#x1f36d; emlog6.0.0 upgrade pro version operation guide
+# &#x1f36d; Upgrade emlog6.0.0 to pro
 
 ## Upgrade steps (please execute in order)
 
@@ -16,8 +16,8 @@
 
 ## Other version upgrades
 
-- [5.3.1 Upgrade pro guide](531toPro.md)
-- [6.0.1 unofficial version upgrade pro guide](601toPro.md)
+- [Upgrade 5.3.1 to pro](531toPro.md)
+- [Upgrade 6.0.1 to pro (unofficial version)](601toPro.md)
 
 ---
 
