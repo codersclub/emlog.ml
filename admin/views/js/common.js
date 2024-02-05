@@ -110,7 +110,7 @@ function swalDel(msg, text, url, token) {
         text: text,
         showCancelButton: true,
         cancelButtonText: lang('cancel'),
-        confirmButtonText: lang('delete'),
+        confirmButtonText: lang('ok'),
     }).then((result) => {
         if (result.isConfirmed) {
             window.location = url + '&token=' + token;

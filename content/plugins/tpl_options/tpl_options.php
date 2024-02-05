@@ -686,8 +686,7 @@ class TplOptions {
 
         if ($file['size'] > $maxSize) {
             $result['code'] = 103;
-            /*vot*/
-            $result['msg'] = lang('file_size_large_emlog');
+            $result['msg'] = lang('file_size_large');
             return $result;
         }
         $uploadPath = Option::UPLOADFILE_PATH . self::ID . "/$template/";
@@ -852,8 +851,7 @@ class TplOptions {
         $desc = '';
         $tip = '';
         $is_multi = '';
-        if($this->isMulti($option))
-        {
+        if ($this->isMulti($option)) {
             $is_multi = 'is-multi';
         }
         if (!empty($option['description'])) {
@@ -1136,9 +1134,9 @@ class TplOptions {
      * @return void
      */
     private function renderText($option) {
-        if($this->isDate($option)){
+        if ($this->isDate($option)) {
             $tpl = '<input type="date" name="{name}" value="{value}">';
-        }else if ($this->isMulti($option)) {
+        } else if ($this->isMulti($option)) {
             $tpl = '<textarea name="{name}" rows="5" class="option-textarea{rich}">{value}</textarea>';
         } else {
             $tpl = '<input type="text" name="{name}" value="{value}">';
@@ -1237,9 +1235,9 @@ class TplOptions {
 /*vot*/     $tpl = '<div>' . lang('enter_block_title') . ':</div>';
             $tpl .= '<input class="block-title-input" type="text" name="{title}" value="{tvalue}">';
 /*vot*/     $tpl .= '<div>' . lang('enter_block_content') . ':</div>';
-            if($this->isMulti($option)){
+            if ($this->isMulti($option)) {
                 $tpl .= '<textarea rows="5" name="{name}">{value}</textarea>';
-            }else{
+            } else {
                 $tpl .= '<input type="text" name="{name}" value="{value}">';
             }
         }

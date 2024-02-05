@@ -7,7 +7,7 @@ $lang = array(
 'language'           => '语言',//'Language',
 
 //---------------------------
-//include\controller\api_controller.php
+//include/controller/api_controller.php
 'article_private'	=> 'This article is private',
 
 //---------------------------
@@ -44,6 +44,7 @@ $lang = array(
 //include/lib/common.php
 'not_editable'               => '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
 'file_upload_failed'         => '文件上传失败',//'File upload failed',
+'file_size_large'		=> '文件大小超出系统限制',//'The file size exceeds the system limit',
 
 //---------------------------
 //include/lib/emcurl.php
@@ -68,7 +69,7 @@ $lang = array(
 'file_size_exceeds_'         => '文件大小超出',//'File size exceeds the limit ',
 '_of_limit'                  => '的限制',//'',//' limit',
 'upload_folder_create_error' => '创建文件上传目录失败',//'Failed to create file upload directory.',
-'upload_folder_unwritable'   => '上传失败。文件上传目录(content/uploadfile)不可写',//'Upload failed. Directory (content/uploadfile) cannot be written.',
+'upload_folder_unwritable'   => '上传失败。文件上传目录不可写 (content/uploadfile)',//'Upload failed. The file upload directory is not writable (content/uploadfile)',
 '404_description'            => '抱歉，你所请求的页面不存在！',//'Sorry, the page that you requested does not exist.',
 'prompt'                     => '提示信息',//'Prompt Message',
 'click_return'               => '点击返回',//'Return back',

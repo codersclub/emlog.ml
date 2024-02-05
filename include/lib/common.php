@@ -169,11 +169,11 @@ function extractHtmlData($data, $len) {
  */
 function changeFileSize($fileSize) {
     if ($fileSize >= 1073741824) {
-        $fileSize = round($fileSize / 1073741824, 2) . ' GB';
+        $fileSize = round($fileSize / 1073741824, 2) . 'GB';
     } elseif ($fileSize >= 1048576) {
-        $fileSize = round($fileSize / 1048576, 2) . ' MB';
+        $fileSize = round($fileSize / 1048576, 2) . 'MB';
     } elseif ($fileSize >= 1024) {
-        $fileSize = round($fileSize / 1024, 2) . ' KB';
+        $fileSize = round($fileSize / 1024, 2) . 'KB';
     } else {
         $fileSize .= lang('_bytes');
     }
@@ -429,7 +429,7 @@ function upload2local($attach, &$result) {
             break;
         case '103':
             $r = changeFileSize(Option::getAttMaxSize());
-            $message = lang('file_size_exceeds_') . $r . lang('_of_limit');
+            $message = lang('file_size_large') . ': ' . $r;
             break;
         case '105':
             $message = lang('upload_folder_unwritable');
@@ -481,7 +481,7 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
         return '102'; //Incorrect file type
     }
     if ($fileSize > Option::getAttMaxSize()) {
-        return '103'; //File size exceeds the emlog limit
+        return '103'; //File size exceeds the system limit
     }
     $file_info = [];
     $file_info['file_name'] = $fileName;

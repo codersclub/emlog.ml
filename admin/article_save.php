@@ -86,6 +86,8 @@ if (User::isWiter()) {
     }
 }
 
+doMultiAction('pre_save_log', $logData, $logData);
+
 if ($blogid > 0) {
     $Log_Model->updateLog($logData, $blogid);
     $Tag_Model->updateTag($tagstring, $blogid);
