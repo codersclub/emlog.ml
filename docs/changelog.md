@@ -677,37 +677,11 @@ Release date: 2021-07-10
 
 - [feature] hi emlog pro, a new world
 
-##6.0.0
+---
 
-Release date: 2018-10-02
+## Previous Emlog versions
 
-- New background and default templates
-- Optimize the index, improve the label storage method, and perform better when the amount of data is large
-- Deleted Weiyu\Delete mobile version
-- Compatible with php7.2
-
-!> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
-
-Installation package: [emlog_6.0.0.zip](https://oss.emlog.net/download/release/emlog_6.0.0.zip)
-
-## 5.3.1
-
-Release date: 2014-07-21
-
-- Improved installation script to be compatible with certain cloud engines
-- The background s and js files increase the version number to prevent the cache from not being updated after the upgrade
-- The rss function is turned off by default
-- Fixed the problem of extra line breaks when editing articles in the mobile version
-- Fixed the problem that the edit page modification template could not be saved
-- Fix the problem of missing articles in archive viewing (by: vibbow)
-- Fixed the problem that the mobile version sent a message bypassing the review
-- Repair possible security risks in database backup
-- Fix the problem of line break in editorial comments
-
-!> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
-
-Installation package: [emlog_5.3.1.zip](https://oss.emlog.net/download/release/emlog_5.3.1.zip)
-
+[Previous Emlog version changelog (Obsolete)](changelog_old/)
 
 ---
 
