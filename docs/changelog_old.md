@@ -1,5 +1,9 @@
 # &#x1f335; Previous Emlog version Changelog (obsolete)
 
+## 6.1.0
+
+Release date: 2021-01-16
+
 ## 6.0.0
 
 Release date: 2018-10-02
