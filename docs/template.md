@@ -17,7 +17,7 @@ Emlog can easily replace templates. The template files are located in the conten
 * module.php: Function module: latest articles, comments, categories, tags, etc.
 * 404.php customizes the error page when the 404 page is not found
 * pw.php customizes the password input page for encrypted articles. If there is no such file, use the system default style [not required]
-* plugins.php is the system call file of the template. After the template is enabled, this file will be automatically loaded by the system. Can be used to implement plug-in-like functionality. 【not necessary】
+* plugins.php is the system call file of the template. After the template is enabled, this file will be automatically loaded by the system. Can be used to implement plug-in-like functionality. [not necessary]
 * options.php template settings configuration file can build richer settings. [not necessary]
 
 ## Template engine
@@ -187,9 +187,9 @@ Template public code, including side widgets, comments, quotes, editing, etc.
 
 This file consists of several functions, which are called by the template file and can be customized with functions to achieve more functions.
 
-For example, when calling emlog cache in a custom function, assuming that user cache information is read, the form is: global $CACHE; $user_cache = $CACHE→readCache('user');
+For example, when calling emlog cache in a custom function, assuming that user cache information is read, the form is: `global $CACHE; $user_cache = $CACHE->readCache('user');`
 
-If you need to operate the database, the format is as follows: $DB = MySql::getInstance(); $res = $DB→query($sql);
+If you need to operate the database, the format is as follows: `$DB = MySql::getInstance(); $res = $DB->query($sql);`
 
 ### 404.php
 

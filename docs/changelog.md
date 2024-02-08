@@ -270,7 +270,7 @@ Installation package: [emlog_pro_2.1.3.zip](https://oss.emlog.net/download/relea
 
 Release date: 2023-4-19
 
-- [Function] System settings add the ability to turn on and off the [Today’s App] recommendation switch on the background homepage
+- [Function] System settings add the ability to turn on and off the [Today's App] recommendation switch on the background homepage
 - [FIX] Fix wrong documentation link
 
 Installation package: [emlog_pro_2.1.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.1.2.zip)
@@ -281,7 +281,7 @@ Release date: 2023-4-18
 
 - [Function] Add the function of replying to comment emails to notify commenters
 - [Function] The resource adds support for mp3 audio files, and mp3 can be inserted into articles for playback.
-- [Function] Add display of today’s application on the background homepage
+- [Function] Add display of today's application on the background homepage
 - [Function] Remember the category used in the last post
 - [Fix] Solve the problem of editor paste upload failure
 - [Fix] Solve the problem that the resource list cannot be loaded when inserting pictures into new pages.

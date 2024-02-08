@@ -156,7 +156,7 @@ Release date: 2011/9/17
 
 Release date: 2011/5/7
 
-* Optimize the latest comment cache and add commenter’s email address
+* Optimize the latest comment cache and add commenter's email address
 * Fixed routing parsing issues caused by capital letters in the default files of some iis6 servers
 * Fixed the issue where the blogger's nickname contained quotation marks, resulting in the inability to reply to comments
 * Fix, default link style classification, tag and other paging issues
@@ -165,7 +165,7 @@ Release date: 2011/5/7
 * Fix the tab switching problem in the comment box
 * Optimize the RSS output summary part
 * Fixed an issue where some hosts reported an error when processing index.php in the template directory
-* Fixed the problem that the mobile version administrator’s comments need to be reviewed
+* Fixed the problem that the mobile version administrator's comments need to be reviewed
 * Add the comment\_post mount point missing in 4.0, and add the cid parameter to the comment\_saved mount point
 
 ## emlog 4.0.0
@@ -417,7 +417,7 @@ Release date: 2007/11/24
 Update log:
 * Optimized the management of log attachments.
 * Picture attachments can be intuitively embedded into the log content. Now you can start writing a log with pictures and texts.
-* Add user-defined html function, add some APIs from other sites or other content, so you don’t have to modify the template all the time
+* Add user-defined html function, add some APIs from other sites or other content, so you don't have to modify the template all the time
 * The log archive also displays the number of logs in the current month
 * Optimize some details (this time there are more minor modifications and optimizations in the program and interface)
 

@@ -91,7 +91,7 @@ Instructions:
 
 1. Unzip the downloaded zip package.
 2. Upload the decompressed passwd.php file to the root directory of emlog.
-3. Visit in the browser: your website’s domain name/passwd.php and follow the prompts to reset your password. Be sure to delete this file after the reset.
+3. Visit in the browser: your website's domain name/passwd.php and follow the prompts to reset your password. Be sure to delete this file after the reset.
 
 ## How to upload very large files?
 
@@ -155,7 +155,7 @@ location / {
 }
 ```
 
-### Apache server
+### Apache web server
 
 Just enable .htaccess support and check the http.conf configuration file:
 
@@ -218,7 +218,7 @@ There is a favicon.ico file in the root directory. Just replace it with a file o
 
 ## How to add the public security registration number at the bottom of the homepage?
 
-Enter the left menu of the background: System - Settings, find [Home Page Bottom Information] in the basic settings, fill in the following code (if there are already other codes, just append them directly at the end), and replace xxxxxxx and "京" with your own Local police registration information and number.
+Enter the left menu of the background: System - Settings, find [Home Page Bottom Information] in the basic settings, fill in the following code (if there are already other codes, just append them directly at the end), and replace "xxxxxxx" and "Beijing" with your own Local police registration information and number.
 
 ```html
 <a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=xxxxxxx">

@@ -1,117 +1,117 @@
-# 🥝 应用开发 - 通用方法和函数
+# &#x1F95D; Application Development - Common Methods and Functions
 
-能够提高开发效率，可以直接用于模板和插件开发的通用方法和函数。
+It can improve development efficiency and can be used directly for common methods and functions in template and plug-in development.
 
-## 常用方法
+## Common methods
 
-### 获取 GET 和 POST 变量
+### Get GET and POST variables
 
-推荐使用核心的 Input 类来获取 GET 和 POST 提交的变量，不要直接使用 $a = $_POST['xxxx'] 的方式来获取，可能造成 SQL 注入等安全问题。
+It is recommended to use the core Input class to obtain variables submitted by GET and POST. Do not directly use $a = $_POST['xxxx'] to obtain variables, which may cause security issues such as SQL injection.
 
 ```php
-// 读取通过 POST 提交的字符串，默认值设置为空
+// Read the string submitted via POST, the default value is set to empty
 $var_name = Input::postStrVar('var_name', '');
-// 读取通过 POST 提交的数字类型，默认值设置为 0
+// Read the number type submitted via POST, the default value is set to 0
 $var_name = Input::postIntVar('var_name', 0);
 
-// 读取通过 GET 提交的字符串，默认值设置为空
+// Read the string submitted through GET, the default value is set to empty
 $var_name = Input::getStrVar('var_name', '');
-// 读取通过 GET 提交的数字类型，默认值设置为 0
+// Read the number type submitted through GET, the default value is set to 0
 $var_name = Input::getIntVar('var_name', 0);
 
-// 读取 POST 提交的数字类型的数组，如: name="ids[]"，默认值为：[]
+// Read the array of numeric types submitted by POST, such as: name="ids[]", the default value is: []
 $logs = Input::postIntArray('blog');
-// 读取 POST 提交的字符串类型的数组，如: name="someting[]"，默认值为：[]
+// Read the array of string type submitted by POST, such as: name="someting[]", the default value is: []
 $logs = Input::postStrArray('blog');
 
-// 读取通过 GET, POST, and COOKIE 提交的字符串，默认值设置为空
+// Read the string submitted through GET, POST, and COOKIE, the default value is set to empty
 $var_name = Input::requestStrVar('var_name', '');
-// 读取通过 GET, POST, and COOKIE 提交的数字类型，默认值设置为 0
+// Read the numeric type submitted through GET, POST, and COOKIE, the default value is set to 0
 $var_name = Input::requestNumVar('var_name', 0);
 ```
 
-### 获取系统设置
+### Get system settings
 
-使用 Option 类的静态方法 get 可以获取系统的一些设置选项，如下：
+You can use the static method get of the Option class to obtain some system setting options, as follows:
 
 ```php
-Option::get('att_maxsize') // 文件上传最大限制
-Option::get('att_type') // 允许上传的文件类型
-Option::get('att_imgmaxw') // 上传图片生成缩略图，最大尺寸:宽
-Option::get('att_imgmaxh') // 上传图片生成缩略图，最大尺寸:高
+Option::get('att_maxsize') // Maximum limit of file upload
+Option::get('att_type') // File types allowed to be uploaded
+Option::get('att_imgmaxw') // Upload images to generate thumbnails, maximum size: width
+Option::get('att_imgmaxh') //Upload images to generate thumbnails, maximum size: high
 ```
 
-## 常用函数
+## Commonly used functions
 
-### 发送邮件通知
+### Send email notification
 
 ```php
 $mail = 'xxx@qq.com';
-$title = '邮件标题';
-$content = '邮件内容';
+$title = 'Email title';
+$content = 'Email content';
 Notice::sendMail($mail, $title, $content);
 ```
 
-### 截取指定长度的内容
+### Intercept content of specified length
 
 ```php
-//截取指定长度的内容函数
-//第一个参数：要截取的内容
-//第二个参数：截取长度
-//第三个参数：是否过滤内容中的html标签 1过滤 0不过滤
-//如下：截取日志内容的前180个字符，并过滤html标签
+//Intercept content function of specified length
+//The first parameter: the content to be intercepted
+//Second parameter: interception length
+//The third parameter: whether to filter the html tags in the content 1 to filter 0 not to filter
+//As follows: intercept the first 180 characters of the log content and filter the html tags
 
 echo subContent($value['log_description'], 180, 1);
 
 ```
 
-### 获取文章URL
+### Get article URL
 
 ```php
-// 获取文章URL
-// 参数1：$article_id 文章ID
+// Get article URL
+// Parameter 1: $article_id article ID
 <?= Url::log($article_id)?>
 ```
 
-### 获取文章分类页URL
+### Get article category page URL
 
 ```php
-// 获取文章URL
-// 参数1：$sort_id 分类ID
+// Get article URL
+// Parameter 1: $sort_id classification ID
 <?= Url::sort($sort_id)?>
 ```
 
-### 获取用户IP
+### Get user IP
 
 ```php
-// 获取用户IP
+// Get user IP
 echo getIp();
 ```
 
-### 获取内容中的第一张图片
+### Get the first image in the content
 
 ```php
-// 获取内容中的第一张图片
-// 参数$content：文章内容，可以是 markdown 或者 html 格式内容
-// 返回：图片的 URL
+// Get the first image in the content
+// Parameter $content: article content, which can be markdown or html format content
+// Return: URL of the image
 $imageUrl = getFirstImage($content);
 ```
 
-### 获取用户的Gravatar头像
+### Get the user's Gravatar avatar
 
 ```php
-// 获取用户IP
-// 参数：email
-// 返回：头像 URL
+// Get user IP
+// Parameters: email
+// Return: avatar URL
 $avatar = getGravatar($email);
 ```
 
-### 友好的时间描述
+### Friendly time description
 
 ```php
-// 获取用户IP
-// 参数：$timestamp unix 时间戳
-// 返回：友好的时间描述，如：1分钟前
+// Get user IP
+// Parameter: $timestamp unix timestamp
+// Return: friendly time description, such as: 1 minute ago
 echo smartDate($timestamp);
 ```
 

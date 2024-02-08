@@ -503,7 +503,7 @@ function test_foo($blogid) {
 | Mount point                      | File Location | Description |
 |----------------------------------|-------------------------------------------|--------------------------------------|
 | doAction('comment_post')         | include/controller/comment_controller.php | Post comment extension point (before writing a comment). Can be used to prevent spam comments |
-| doAction('comment_saved’)        | include/model/comment_model.php | Post comment extension point (after writing a comment). Used for follow-up actions after successfully publishing a comment, such as sending a notification email |
+| doAction('comment_saved')        | include/model/comment_model.php | Post comment extension point (after writing a comment). Used for follow-up actions after successfully publishing a comment, such as sending a notification email |
 | doAction('log_related',$logData) | content/templates/default/echo_log.php | Front-end template: article details page extension point, used to add article-related content |
 | doAction('index_head')           | Content/templates/default/header.php | Front-end template: Head extension: can be used to add front-end css styles, load js, etc. |
 | doAction('index_footer')         | content/templates/default/footer.php | Front-end template: bottom expansion point |

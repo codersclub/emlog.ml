@@ -9,7 +9,7 @@ Emlog article and note publishing tool - chrome browser extension, this extensio
 
 ## Feature Preview
 
-### 下图：支持快速发布笔记和文章
+### Below: Supports quick publishing of notes and articles
 
 ![](https://oss.emlog.net/img/empost-1.png)
 
