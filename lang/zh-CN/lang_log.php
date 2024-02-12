@@ -17,6 +17,7 @@ $lang = array(
 
     //---------------------------
     //content/templates/default/log_list.php
+    'post_time'				=> '发布于',//'Posted on',			LANG_ADMIN
     'views'				=> '浏览',//'Views',
     'comments'				=> '评论',//'Comments',
     'sorry_no_results'			=> '抱歉，暂时还没有内容。',//'Sorry, there is no content yet.',
