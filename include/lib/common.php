@@ -67,6 +67,15 @@ function getBlogUrl() {
 }
 
 /**
+ * Check for running in Windows
+ * @return int
+ * @author Valery Votintsev
+ */
+function is_win() {
+    return isset($_SERVER['WINDIR']) ? 1 : 0;
+}
+
+/**
  * Get the currently visited base url
  */
 function realUrl() {
@@ -77,7 +86,10 @@ function realUrl() {
 
 /*vot*/ $emlog_path = EMLOG_ROOT . '/';
     $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
-    $script_path = str_replace('\\', '/', $script_path);
+/*vot*/ if(is_win()) {
+/*vot*/     $emlog_path = strtolower($emlog_path);
+/*vot*/     $script_path = str_replace('\\', '/', $script_path);
+/*vot*/ }
     $path_element = explode('/', $script_path);
 
     $this_match = '';
@@ -92,8 +104,6 @@ function realUrl() {
         $current_deep++;
     }
     $best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
-
-/*vot*/ $best_match = $script_path . '/';
 
     $protocol = 'http://';
     if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') { // Compatible with nginx reverse proxy
