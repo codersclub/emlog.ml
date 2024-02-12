@@ -495,7 +495,7 @@ $lang = array(
     'register_now' => 'Register now',//'现在去注册',
     'click_to_register' => 'click to register',//'点击去注册',
     'emlog_registered_ok' => 'Congratulations, your EMLOG has been registered.',//'恭喜，您的EMLOG已经完成注册。',
-    'em_reg_ok' => '🎉 Congratulations, you have successfully completed the registration 🎉',//'🎉 恭喜您，已经成功完成注册 🎉',
+    'em_reg_ok' => '&#x1F389; Congratulations, you have successfully completed the registration &#x1F389;',//'&#x1F389; 恭喜您，已经成功完成注册 &#x1F389;',
     'register_emlog' => 'Register EMLOG PRO',//'注册EMLOG PRO',
     'enter_emkey' => 'Please enter the registration code',//'请输入注册码',
     'reg_failed' => 'Registration failed. May be the registration code is incorrect, or the server cannot access the official website emlog.net.',//'注册失败了，可能是注册码不正确，或服务器无法访问官网 emlog.net',
@@ -965,7 +965,7 @@ $lang = array(
 //admin/views/store_svip.php
     'not_svip' => 'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',//'您还不是铁杆svip付费支持用户，无法安装专属免费应用',
     'paid_support' => 'Paid support &rarr;',//'付费支持 &rarr;',
-    'can_use_free' => 'Users can download and install the following plug-ins for free👇',//'用户可以免费下载安装下面的插件👇',
+    'can_use_free' => 'Users can download and install the following plug-ins for free &#x1F447;',//'用户可以免费下载安装下面的插件&#x1F447;',
 
 //---------------------------
 //admin/views/store_tpl.php
