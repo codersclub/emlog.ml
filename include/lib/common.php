@@ -93,6 +93,8 @@ function realUrl() {
     }
     $best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
 
+/*vot*/ $best_match = $script_path . '/';
+
     $protocol = 'http://';
     if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') { // Compatible with nginx reverse proxy
         $protocol = 'https://';

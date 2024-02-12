@@ -115,7 +115,7 @@ if (!$act) {
                 background-color: #fff;
                 border: 1px solid #dee2e6;
                 border-radius: 0.375rem 0 0 0.375rem;
-                width: 80px;
+                width: 120px;
             }
 
             .form-control {
@@ -202,7 +202,7 @@ if (!$act) {
     <form name="form1" method="post" action="install.php?action=install">
         <div class="main">
             <p class="logo"></p>
-            <p class="title mb20">emlog <?php echo Option::EMLOG_VERSION ?></p>
+<!--vot-->  <p class="title mb20">Emlog.ML <?php echo Option::EMLOG_VERSION ?></p>
             <?php if ($env_db_user): ?>
                 <div class="b">
                     <input name="hostname" type="hidden" value="<?= $env_db_host ?>">
@@ -261,7 +261,7 @@ if (!$act) {
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password') ?></span>
-                    <input name="password" type="password" class="form-control" placeholder="<?= lang 'admin_password_info' ?>">
+                    <input name="password" type="password" class="form-control" placeholder="<?= lang('admin_password_info') ?>">
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
@@ -299,7 +299,7 @@ if ($act == 'install' || $act == 'reinstall') {
         emMsg(lang('db_prefix_empty'));
     } elseif (!$username || !$password) {
         emMsg(lang('username_password_empty'));
-/*vot*/    } elseif (strlen($password) < 5) {
+/*vot*/    } elseif (mb_strlen($password) < 5) {
         emMsg(lang('password_short'));
     } elseif ($password != $repassword) {
         emMsg(lang('password_not_equal'));
@@ -375,11 +375,21 @@ EOT;
         . "\n//Auth key\n"
         . "const AUTH_KEY = '" . getRandStr(32) . md5(getUA()) . "';"
         . "\n//Cookie name\n"
-/*vot*/ . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
-        . "\n// Default blog language\n"
+        . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
+/*vot*/ . "\n\n// Production/Development Mode\n"
+        . "const ENVIRONMENT = 'production'; // Operating mode: 'production' - production mode, 'develop' - development mode"
+        . "\n\n// Default blog language\n"
         . "const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc."
-        . "\n// Enabled language list\n"
+        . "\n\n// Enabled language list\n"
         . "const LANG_LIST = [\n"
+        . "/*\n"
+        . "'ar' => [\n"
+        . "        'name'  => 'العربية',\n"
+        . "        'title' => 'Arabic',\n"
+        . "        'icon'  => '??',\n"
+        . "        'dir'   => 'rtl',\n"
+        . "    ],\n"
+        . "*/\n"
         . "    'en' => [\n"
         . "        'name'=>'English',\n"
         . "        'title'=>'English',\n"
@@ -526,7 +536,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('admin_style','default'),
 ('tpl_sidenum','1'),
 ('comment_code','n'),
-('comment_needchinese','y'),
+('comment_needchinese','n'),
 ('comment_interval',60),
 ('isgravatar','y'),
 ('isthumbnail','y'),
@@ -573,7 +583,9 @@ CREATE TABLE {$db_prefix}link (
   taxis int(11) unsigned NOT NULL default '0' COMMENT 'Sort order',
   PRIMARY KEY  (id)
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}link (id, sitename, siteurl, description, taxis) VALUES (1, 'emlog.net', 'http://www.emlog.net', '" . lang('emlog_official_site') . "', 0);
+INSERT INTO {$db_prefix}link (id, sitename, siteurl, description, taxis) VALUES
+(1, 'emlog.ru', 'https://emlog.ru', '" . lang('emlog_ml_official_site') . "', 0),
+(2, 'emlog.net', 'http://www.emlog.net', '" . lang('emlog_official_site') . "', 0);
 DROP TABLE IF EXISTS {$db_prefix}navi;
 CREATE TABLE {$db_prefix}navi (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Navigation table',
@@ -629,7 +641,7 @@ PRIMARY KEY  (uid),
 KEY username (username),
 KEY email (email)         
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}user (uid, username, email, password, nickname, role, create_time, update_time) VALUES (1,'$username','$email','$password', 'emer','admin', " . time() . ", " . time() . ");
+INSERT INTO {$db_prefix}user (uid, username, email, password, nickname, role, create_time, update_time) VALUES (1,'$username','$email','$password', '$username','admin', " . time() . ", " . time() . ");
 DROP TABLE IF EXISTS {$db_prefix}twitter;
 CREATE TABLE {$db_prefix}twitter (
 id INT NOT NULL AUTO_INCREMENT COMMENT 'Note ID',

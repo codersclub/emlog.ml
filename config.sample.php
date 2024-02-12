@@ -15,6 +15,10 @@ const DB_PREFIX = 'emlog_';
 const AUTH_KEY = 'emlog-key';
 //Cookie name
 const AUTH_COOKIE_NAME = 'emlog-cookie';
+
+// Production/Development Mode
+const ENVIRONMENT = 'production'; // Operating mode: 'production' - production mode, 'develop' - development mode
+
 //Default blog language
 const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc.
 
@@ -23,10 +27,10 @@ const DEFAULT_LANG = 'en'; //'en', 'ru', 'zh-CN', 'zh-TW', 'pt-BR', etc.
 const LANG_LIST = [
 /*
     'ar' => [
-        'name'=>'العربية',
-        'title'=>'Arabic',
-        'icon'=>'🇦🇪',
-        'dir'=>'rtl',
+        'name'  => 'العربية',
+        'title' => 'Arabic',
+        'icon'  => '??',
+        'dir'   => 'rtl',
     ],
 */
     'en'    => [

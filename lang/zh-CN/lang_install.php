@@ -39,6 +39,7 @@ $lang = array(
 'my_blog'                      => '点滴记忆',//'My blog',
 'emlog_powered'                => '使用emlog搭建的站点',//'Powered by emlog',
 'emlog_official_site'          => 'emlog官方主页',//'Official emlog website',
+'emlog_ml_official_site'       => 'emlog.ML官方主页',//'Official Emlog.ML website',
 'home'                         => '首页',//'Home',
 'twitters'                     => '笔记',//'Notes',
 'login'                        => '登录',//'Login',

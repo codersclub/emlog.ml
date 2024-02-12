@@ -7,9 +7,18 @@
 
 /*vot*/ session_start();
 
-const ENVIRONMENT = 'production'; // Operating environment: production - production environment, develop - development environment
+/*vot*/ if (!is_file('config.php')) {
+/*vot*/     @copy('config.sample.php', 'config.php');
+/*vot*/ }
+
+/*vot*/ define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
+
+require_once EMLOG_ROOT . '/config.php';
+
+//vot const ENVIRONMENT = 'production'; // Operating environment: production - production environment, develop - development environment
 if (getenv('EMLOG_ENV') === 'develop' || ENVIRONMENT === 'develop') {
     error_reporting(E_ALL);
+/*vot*/ define('DEV_MODE', true);
 } else {
     error_reporting(1);
 }
@@ -17,16 +26,13 @@ if (getenv('EMLOG_ENV') === 'develop' || ENVIRONMENT === 'develop') {
 ob_start();
 header('Content-Type: text/html; charset=UTF-8');
 
-/*vot*/ define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
+//vot define('EMLOG_ROOT', str_replace('\\', '/', __DIR__));
 
 if (extension_loaded('mbstring')) {
     mb_internal_encoding('UTF-8');
 }
 
-require_once EMLOG_ROOT . '/config.php';
-/*vot*/ if (DEV_MODE) {
-/*vot*/     error_reporting(E_ALL);
-/*vot*/ }
+//vot require_once EMLOG_ROOT . '/config.php';
 require_once EMLOG_ROOT . '/include/lib/common.php';
 
 spl_autoload_register("emAutoload");
