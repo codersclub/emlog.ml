@@ -34,7 +34,7 @@
                                     </div>
                                 <?php endif ?>
                                 <div class="form-group">
-                                    <div class="custom-control custom-checkbox small">
+<!--vot-->                          <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="persist" name="persist" value="1">
                                             <label class="custom-control-label" for="persist"><?= lang('remember_me') ?></label>
                                     </div>
@@ -46,8 +46,8 @@
                                 <div class="text-center"><?php doAction('login_ext') ?></div>
                                 <hr>
                                 <div class="text-center">
-                                    <a href="../" class="small" role="button">&larr;<?= lang('back_home') ?></a>&nbsp&nbsp&nbsp
-                                    <a class="small" href="./account.php?action=reset"><?= lang('password_forget') ?></a>
+<!--vot-->                          <a href="../" class="" role="button">&larr;<?= lang('back_home') ?></a>&nbsp&nbsp&nbsp
+<!--vot-->                          <a class="" href="./account.php?action=reset"><?= lang('password_forget') ?></a>
                                 </div>
                             </form>
                         </div>
