@@ -8,9 +8,9 @@ defined('EMLOG_ROOT') || exit('access denied!');
     <?php
     $widgets = !empty($options_cache['widgets1']) ? unserialize($options_cache['widgets1']) : array();
     doAction('diff_side');
+/*vot*/ $widget_title = Option::getWidgetTitle(); //OLD: $widget_title = @unserialize($options_cache['widget_title']);
+/*vot*/ $custom_widget = @unserialize($options_cache['custom_widget']);
     foreach ($widgets as $val) {
-        $widget_title = @unserialize($options_cache['widget_title']);
-        $custom_widget = @unserialize($options_cache['custom_widget']);
         if (strpos($val, 'custom_wg_') === 0) {
             $callback = 'widget_custom_text';
             if (function_exists($callback)) {

@@ -372,7 +372,7 @@ function blog_tag($blogid) {
     if (!empty($tag_names)) {
 /*vot*/ $tag = lang('tags') . ': ';
         foreach ($tag_names as $value) {
-/*vot*/     $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
+/*vot*/     $tag .= '    <a href="' . Url::tag(rawurlencode($value)) . '" class="tags">' . htmlspecialchars($value) . '</a>';
         }
         echo $tag;
     }

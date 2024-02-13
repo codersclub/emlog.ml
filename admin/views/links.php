@@ -17,7 +17,7 @@
                     <thead>
                     <tr>
                         <th><?= lang('name') ?></th>
-                        <th><?= lang('link') ?></th>
+                        <th><?= lang('thelink') ?></th>
                         <th><?= lang('description') ?></th>
                         <th><?= lang('operation') ?></th>
                     </tr>
@@ -68,7 +68,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><?= lang('link') ?></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('thelink') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
