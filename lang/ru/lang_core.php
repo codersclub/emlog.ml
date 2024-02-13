@@ -183,7 +183,7 @@ $lang = array(
 //---------------------------
 //content/templates/default/footer.php
 'powered_by'		=> 'Powered by',
-'powered_by_emlog'	=> 'Powered by Emlog',//'采用emlog系统',
+'powered_by_emlog'	=> 'Powered by Emlog.ML',//'采用emlog.ML系统',
 
 //---------------------------
 //content/templates/default/header.php
