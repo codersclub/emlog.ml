@@ -19,13 +19,13 @@ $lang = array(
 //---------------------------
 //include/lib/calendar.php
 
-'weekday1'	=> 'Mo',//'Monday',//'一',
-'weekday2'	=> 'Tu',//'Tuesday',//'二',
-'weekday3'	=> 'We',//'Wednesday',//'三',
-'weekday4'	=> 'Th',//'Thursday',//'四',
-'weekday5'	=> 'Fr',//'Friday',//'五',
-'weekday6'	=> 'Sa',//'Saturday',//'六',
-'weekday7'	=> 'Su',//'Sunday',//'日',
+'weekday1'		=> 'Mo',//'Monday',//'一',
+'weekday2'		=> 'Tu',//'Tuesday',//'二',
+'weekday3'		=> 'We',//'Wednesday',//'三',
+'weekday4'		=> 'Th',//'Thursday',//'四',
+'weekday5'		=> 'Fr',//'Friday',//'五',
+'weekday6'		=> 'Sa',//'Saturday',//'六',
+'weekday7'		=> 'Su',//'Sunday',//'日',
 
 'month_1'                    => 'January',
 'month_2'                    => 'February',
@@ -42,8 +42,8 @@ $lang = array(
 
 //---------------------------
 //include/lib/common.php
-'not_editable'				=> 'Approved articles cannot be edited or deleted by users',//'审核通过的文章用户不可编辑、删除',
-'file_upload_failed'         => 'File upload failed',//'文件上传失败',
+'not_editable'			=> 'Approved articles cannot be edited or deleted by users',//'审核通过的文章用户不可编辑、删除',
+'file_upload_failed'		=> 'File upload failed',//'文件上传失败',
 'file_size_large'		=> 'File size exceeds the system limit',//'文件大小超出系统限制',
 
 //---------------------------
@@ -81,25 +81,29 @@ $lang = array(
 'captcha_error_reenter'      => 'Captcha error. Please, re-enter.',//'验证错误，请重新输入',
 'user_name_wrong_reenter'    => 'Wrong username. Please, re-enter.',//'用户名错误，请重新输入',
 'password_wrong_reenter'     => 'Wrong password. Please, re-enter.',//'密码错误，请重新输入',
-// 'no_permission'		=> 'Insufficient permissions!',//'权限不足！',
 'token_error'                => 'Security Token verification failed, please try to refresh the page or change the browser and try again',//'安全Token校验失败，请尝试刷新页面或者更换浏览器重试',
 
 //---------------------------
 //include/lib/option.php
+//	WIDGET NAMES:
 'blogger'                    => 'Personal info',//'个人资料',
+'calendar'                   => 'Calendar',//'日历',
+'tag'                        => 'Tags',//'标签',
+'sort'                       => 'Categories',//'分类',
+'archive'                    => 'Archive',//'存档',
+'newcomm'                    => 'Latest comments',//'最新评论',
+'newlog'                     => 'Latest articles',//'最新文章',
+'hotlog'                     => 'Popular articles',//'热门文章',
+'link'                       => 'Links',//'链接',
+'search'                     => 'Search',//'搜索',
+'custom_text'                => 'Custom widget',//'自定义组件',
+
 'categories'                 => 'Categories',//'分类',
 'category'                   => 'Category',//'分类',
-'calendar'                   => 'Calendar',//'日历',
 'twitter_latest'             => 'Latest twits',//'最新微语',
 'tags'                       => 'Tags',//'标签',
-'archive'                    => 'Archive',//'存档',
-'new_comments'               => 'Latest comments',//'最新评论',
-'new_posts'                  => 'Latest posts',//'最新文章',
 'random_post'                => 'Random entry',//'随机文章',
-'hot_posts'                  => 'Popular entries',//'热门文章',
-'links'                      => 'Links',//'链接',
-'search'                     => 'Search',//'搜索',
-'widget_custom'              => 'Custom widget',//'自定义组件',
+'thelink'                    => 'Link',//'链接',
 'search_placeholder'         => 'Search...and Enter',//'Search...and Enter',
 'unregistered_version'       => 'Unregistered version ',//'&#x672A;&#x6CE8;&#x518C;&#x7684;&#x7248;&#x672C; ',
 
@@ -128,12 +132,9 @@ $lang = array(
 'mysqli_not_supported'       => 'Server PHP does not support mysqli function',//'服务器PHP不支持mysqli函数',
 'db_credential_error'        => 'Failed to connect to the MySQL database, the database user name or password is incorrect',//'连接MySQL数据库失败，数据库用户名或密码错误',
 'db_not_found'               => 'Failed to connect to the MySQL database, the database you filled in was not found',//'连接MySQL数据库失败，未找到你填写的数据库',
-// 'db_port_invalid'		=> 'Database connection error: The database port is invalid.',//'连接数据库失败，数据库端口错误',
 'db_unavailable'             => 'Failed to connect to the MySQL database, the database address is wrong or the database server is unavailable',//'连接MySQL数据库失败，数据库地址错误或者数据库服务器不可用',
-// 'db_server_unavailable'	=> 'Database connection error: The database server is unavailable.',//'连接数据库失败，数据库服务器不可用',
 'db_error_code'              => 'Failed to connect to the MySQL database, please check the database information. Error code: ',//'连接MySQL数据库失败，请检查数据库信息。错误编号：',
 'db_error_name'              => 'Database connection error:  Please fill out the database name',//'连接数据库失败，请填写数据库名',
-// 'db_sql_error'		=> 'SQL statement execution error',//'SQL语句执行错误',
 'utf8mb4_not_support'		=> 'MySQL does not support utf8mb4 character set, please upgrade to MySQL5.6 or later',//'MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本',
 
 //---------------------------------------
@@ -191,9 +192,6 @@ $lang = array(
 
 //---------------------------
 //content/templates/default/module.php
-// '_posts'			=> 'posts',//'篇文章',
-// 'subscribe_category'	=> 'Subscribe this category',//'订阅该分类',
-// 'subscribe_category'	=> 'Subscribe this category',//'订阅该分类',
 'view_image'                 => 'View image',//'查看图片',
 'more'                       => 'More &raquo;',//'更多&raquo;',
 'site_management'            => 'Site management',//'管理',
@@ -201,11 +199,6 @@ $lang = array(
 'top_posts'                  => 'Top entries',//'置顶文章',
 'cat_top_posts'              => 'Category Top entries',//'分类置顶文章',
 'edit'                       => 'Edit',//'编辑',
-// 'category'		=> 'Category',//'分类',
-// 'tags'		=> 'Tags',//'标签',
-// 'comments'		=> 'Comments',//'评论',
-// 'reply'		=> 'Reply',//'回复',
-// 'reply'		=> 'Reply',//'回复',
 'cancel_reply'               => 'Cancel reply',//'取消回复',
 'comment_leave'              => 'Leave a comment',//'发表评论',
 'nickname'                   => 'Nicname',//'昵称',

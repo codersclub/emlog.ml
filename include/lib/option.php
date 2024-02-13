@@ -154,12 +154,12 @@ class Option {
             'tag'         => lang('tags'),
             'sort'        => lang('categories'),
             'archive'     => lang('archive'),
-            'newcomm'     => lang('new_comments'),
-            'newlog'      => lang('new_posts'),
-            'hotlog'      => lang('hot_posts'),
-            'link'        => lang('links'),
+            'newcomm'     => lang('newcomm'),
+            'newlog'      => lang('newlog'),
+            'hotlog'      => lang('hotlog'),
+            'link'        => lang('link'),
             'search'      => lang('search'),
-            'custom_text' => lang('widget_custom')
+            'custom_text' => lang('custom_text')
         ];
     }
 

@@ -17,9 +17,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/edit_log.php
-// 'post_tags_separated'	=> '文章标签，逗号或空格分隔，过多的标签会影响系统运行效率',//'Posts tags, separated by comma or space. Too many tags will affect the system efficiency',
-// 'tags_have'			=> '已有标签+',//'Have tags+',
-// 'tag_not_set'		=> '还没有设置过标签！',//'Tags have not been set!',
 
 //---------------------------
 //admin/views/tag.php

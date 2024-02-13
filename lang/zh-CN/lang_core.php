@@ -44,7 +44,7 @@ $lang = array(
 //include/lib/common.php
 'not_editable'               => '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
 'file_upload_failed'         => '文件上传失败',//'File upload failed',
-'file_size_large'		=> '文件大小超出系统限制',//'The file size exceeds the system limit',
+'file_size_large'		=> '文件大小超出系统限制',//'File size exceeds the system limit',
 
 //---------------------------
 //include/lib/emcurl.php
@@ -81,25 +81,29 @@ $lang = array(
 'captcha_error_reenter'      => '验证错误，请重新输入',//'Captcha error. Please, re-enter.',
 'user_name_wrong_reenter'    => '用户名错误，请重新输入',//'Wrong username. Please, re-enter.',
 'password_wrong_reenter'     => '密码错误，请重新输入',//'Wrong password. Please, re-enter.',
-// 'no_permission'		=> '权限不足！',//'Insufficient permissions!',
 'token_error'                => '安全Token校验失败，请尝试刷新页面或者更换浏览器重试',//'Security Token verification failed, please try to refresh the page or change the browser and try again',
 
 //---------------------------
 //include/lib/option.php
+//	WIDGET NAMES:
 'blogger'                    => '个人资料',//'Personal info',
+'calendar'                   => '日历',//'Calendar',
+'tag'                        => '标签',//'Tags',
+'sort'                       => '分类',//'Category',
+'archive'                    => '存档',//'Archive',
+'newcomm'                    => '最新评论',//'Latest comments',
+'newlog'                     => '最新文章',//'Latest posts',
+'hotlog'                     => '热门文章',//'Popular entries',
+'link'                       => '链接',//'Links',
+'search'                     => '搜索',//'Search',
+'custom_text'                => '自定义组件',//'Custom widget',
+
 'categories'                 => '分类',//'Categories',
 'category'                   => '分类',//'Category',
-'calendar'                   => '日历',//'Calendar',
 'twitter_latest'             => '最新微语',//'Latest twits',
 'tags'                       => '标签',//'Tags',
-'archive'                    => '存档',//'Archive',
-'new_comments'               => '最新评论',//'Latest comments',
-'new_posts'                  => '最新文章',//'Latest posts',
 'random_post'                => '随机文章',//'Random entry',
-'hot_posts'                  => '热门文章',//'Popular entries',
-'links'                      => '链接',//'Links',
-'search'                     => '搜索',//'Search',
-'widget_custom'              => '自定义组件',//'Custom widget',
+
 'search_placeholder'         => 'Search...and Enter',//'Search...and Enter',
 'unregistered_version'       => '&#x672A;&#x6CE8;&#x518C;&#x7684;&#x7248;&#x672C; ',//'Unregistered version ',
 
@@ -128,12 +132,9 @@ $lang = array(
 'mysqli_not_supported'       => '服务器PHP不支持mysqli函数',//'Server PHP does not support mysqli function',
 'db_credential_error'        => '连接MySQL数据库失败，数据库用户名或密码错误',//'Failed to connect to the MySQL database, the database user name or password is incorrect',
 'db_not_found'               => '连接MySQL数据库失败，未找到你填写的数据库',//'Failed to connect to the MySQL database, the database you filled in was not found',
-// 'db_port_invalid'		=> '连接数据库失败，数据库端口错误',//'Database connection error: The database port is invalid.',
 'db_unavailable'             => '连接MySQL数据库失败，数据库地址错误或者数据库服务器不可用',//'Failed to connect to the MySQL database, the database address is wrong or the database server is unavailable',
-// 'db_server_unavailable'	=> '连接数据库失败，数据库服务器不可用',//'Database connection error: The database server is unavailable.',
 'db_error_code'              => '连接MySQL数据库失败，请检查数据库信息。错误编号：',//'Failed to connect to the MySQL database, please check the database information. Error code: ',
 'db_error_name'              => '连接数据库失败，请填写数据库名',//'Database connection error:  Please fill out the database name',
-// 'db_sql_error'		=> 'SQL语句执行错误',//'SQL statement execution error',
 'utf8mb4_not_support'		=> 'MySQL缺少utf8mb4字符集，请升级到MySQL5.6或更高版本',//'MySQL does not support utf8mb4 character set, please upgrade to MySQL5.6 or later',
 
 //---------------------------------------
@@ -191,9 +192,6 @@ $lang = array(
 
 //---------------------------
 //content/templates/default/module.php
-// '_posts'			=> '篇文章',//'posts',
-// 'subscribe_category'	=> '订阅该分类',//'Subscribe this category',
-// 'subscribe_category'	=> '订阅该分类',//'Subscribe this category',
 'view_image'                 => '查看图片',//'View image',
 'more'                       => '更多&raquo;',//'More &raquo;',
 'site_management'            => '管理',//'Management',
@@ -201,11 +199,6 @@ $lang = array(
 'top_posts'                  => '置顶文章',//'Top entries',
 'cat_top_posts'              => '分类置顶文章',//'Category Top entries',
 'edit'                       => '编辑',//'Edit',
-// 'category'		=> '分类',//'Category',
-// 'tags'		=> '标签',//'Tags',
-// 'comments'		=> '评论',//'Comments',
-// 'reply'		=> '回复',//'Reply',
-// 'reply'		=> '回复',//'Reply',
 'cancel_reply'               => '取消回复',//'Cancel reply',
 'comment_leave'              => '发表评论',//'Leave a comment',
 'nickname'                   => '昵称',//'Nicname',

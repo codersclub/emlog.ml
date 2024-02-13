@@ -430,17 +430,13 @@ $lang = array(
     'to_site' => '查看我的站点',//'View My site',
     'settings' => '设置',//'Settings',
     'logout' => '退出',//'Logout',
-// 'post_write'		=> '写文章',//'Write post',
     'draft' => '草稿',//'Draft',
-// 'posts'		=> '文章',//'Posts',
     'posts_pending' => '篇文章待审',//' Pending posts',
     'comments_pending' => '条评论待审',//' Pending comments',
     'exterior' => '外观',//'Exterior',
     'sidebar' => '边栏',//'Sidebar',
     'navigation' => '导航',//'Navigation',
     'pages' => '页面',//'Pages',
-    'link' => '链接',//'Link',
-    'links' => '链接',//'Links',
     'url' => '链接',//'URL',
     'friend_links' => '友链',//'Friend links',
     'store' => '商店',//'Store',
@@ -854,19 +850,19 @@ $lang = array(
 //---------------------------
 //admin/views/setting_user.php
     'groups_about' => '            <b>用户组</b><br>
-            注册用户：可以发文投稿、管理自己的文章、图文资源<br>
-            内容编辑：负责全站文章、资源、评论等内容的管理<br>
-            管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-             //'<b>User Group</b><br>
-             //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
-             //' Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
-             //'Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
+                      注册用户：可以发文投稿、管理自己的文章、图文资源<br>
+                      内容编辑：负责全站文章、资源、评论等内容的管理<br>
+                      管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
+                      //'<b>User Group</b><br>
+                      //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+                      //' Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+                      //'Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
     'groups_alert' => '注册用户：可以发文投稿、管理自己的文章、图文资源<br>
                        内容编辑：负责全站文章、资源、评论等内容的管理<br>
                        管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',
-                       //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
-                       // Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
-                       // Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
+                      //'Registered users: can post articles, contribute articles, and manage their own articles and graphic resources<br>
+                      // Content Editor: Responsible for the management of articles, resources, comments and other content on the entire site<br>
+                      // Administrator: Has full management rights for the site and can manage users, perform system settings, etc.<br>',
     'limit_daily_posts' => '注册用户限制24小时发文数量（包括草稿）',//'Registered users limit the number of posts (including drafts) within 24 hours',
     'enable_email_code' => '开启注册邮件验证码（开启需配置邮件通知服务）',//'Enable email verification code on registration (you need to configure the email notification service to open it)',
     'if_0_upload_disabled' => '（为0同时禁止上传图文资源）',//'(0 means prohibit uploading of graphic resources)',
@@ -875,7 +871,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/signin.php
-// 'em_reg_ok'		=> '注册成功，请登录',//'Registration is successful, please log in',
     'password_reset_ok' => '密码重置成功，请登录',//'Password reset successfully, please log in',
 
 //---------------------------
@@ -888,7 +883,6 @@ $lang = array(
     'category_name' => '分类名',//'Category name',
     'alias_prompt' => '英文字母组成，用于seo设置，可不填',//'Composed of English letters, used for SEO settings, optional',
     'category_parent' => '父分类',//'Parent category',
-//'submit'                                  => '提交',//'Submit',
     'category_add' => '添加分类',//'添加分类+',//'Add Category',
     'tag_add' => '新建标签',//'Add Tag',
     'template_name' => '模板名',//'Template name',
@@ -913,10 +907,8 @@ $lang = array(
     'install_failed_zip' => '安装失败，无法解压，请安装php的Zip扩展',//'Installation failed, unable to decompress, please install php Zip extension',
     'install_invalid_ext' => '安装失败，不是有效的安装包',//'Installation failed, not a valid installation package',
     'store_unavailable' => '商店暂不可用，可能是网络问题',//'The store is temporarily unavailable, it may be a network problem',
-// 'back_home'		=> '返回首页',//'Back to home',
     'ext_store' => '扩展商店',//'Extension Store',
     'ext_store_templates' => '模板主题',//'Template themes',
-// 'template'		=> '模板',//'Template',
     'extensions' => '扩展',//'Extensions',
     'ext_store_plugins' => '扩展插件',//'Extensions',
 

@@ -430,17 +430,13 @@ $lang = array(
     'to_site' => 'View My site',//'查看我的站点',
     'settings' => 'Settings',//'设置',
     'logout' => 'Logout',//'退出',
-// 'post_write'		=> 'Add article',//'写文章',
     'draft' => 'Draft',//'草稿',
-// 'posts'		=> 'Posts',//'文章',
     'posts_pending' => ' Pending posts',//'篇文章待审',
     'comments_pending' => ' Pending comments',//'条评论待审',
     'exterior' => 'Exterior',//'外观',
     'sidebar' => 'Sidebar',//'边栏',
     'navigation' => 'Navigation',//'导航',
     'pages' => 'Pages',//'页面',
-    'link' => 'Link',//'链接',
-    'links' => 'Links',//'链接',
     'url' => 'URL',//'链接',
     'friend_links' => 'Friend links',//'友链',
     'store' => 'Store',//'商店',
@@ -875,7 +871,6 @@ $lang = array(
 
 //---------------------------
 //admin/views/signin.php
-// 'em_reg_ok'		=> 'Registration is successful, please log in',//'注册成功，请登录',
     'password_reset_ok' => 'Password reset successfully, please log in',//'密码重置成功，请登录',
 
 //---------------------------
@@ -888,7 +883,6 @@ $lang = array(
     'category_name' => 'Category name',//'分类名',
     'alias_prompt' => 'Composed of English letters, used for SEO settings, optional',//'英文字母组成，用于seo设置，可不填',
     'category_parent' => 'Parent category',//'父分类',
-//'submit'                                  => 'Submit',//'提交',
     'category_add' => 'Add Category',//'添加分类',
     'tag_add' => 'Add Tag',//'新建标签',
     'template_name' => 'Template name',//'模板名',
@@ -913,10 +907,8 @@ $lang = array(
     'install_failed_zip' => 'Installation failed, unable to decompress, please install php Zip extension',//'安装失败，无法解压，请安装php的Zip扩展',
     'install_invalid_ext' => 'Installation failed, not a valid installation package',//'安装失败，不是有效的安装包',
     'store_unavailable' => 'The store is temporarily unavailable, it may be a network problem',//'商店暂不可用，可能是网络问题',
-// 'back_home'		=> 'Back to home',//'返回首页',
     'ext_store' => 'Extension Store',//'扩展商店',
     'ext_store_templates' => 'Template themes',//'模板主题',
-// 'template'		=> 'Template',//'模板',
     'extensions' => 'Extensions',//'扩展插件',
     'ext_store_plugins' => 'Extensions',//'扩展插件',
 
