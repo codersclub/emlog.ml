@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label><?= lang('your_timezone') ?></label>
-                <select name="timezone" style="width:320px;" class="form-control">
+                <select name="timezone" class="form-control">
                     <?php foreach ($tzlist as $key => $value):
                         $ex = $key == $timezone ? "selected=\"selected\"" : '' ?>
                         <option value="<?= $key ?>" <?= $ex ?>><?= $value ?></option>

@@ -67,7 +67,7 @@
                                         <span style="text-decoration:line-through"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
                                         <span class="text-danger"><?= $v['promo_price'] ?><small><?= lang('price_unit') ?></small></span>
                                     <?php else: ?>
-                                        <span class="text-danger"><?= $v['price'] ?><small><?= lang('price') ?></small></span>
+                                        <span class="text-danger"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
                                     <?php endif; ?>
                                 <?php else: ?>
                                     <span class="text-success"><?= lang('free') ?></span>

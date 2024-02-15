@@ -37,7 +37,7 @@
                 <input class="form-control" value="<?= $smtp_port ?>" name="smtp_port">
             </div>
             <div class="form-group">
-                <input type="button" value="<?= lang('send_test') ?>" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#testMail"/>
+<!--vot-->      <input type="button" value="<?= lang('send_test') ?>" class="btn btn-primary" data-toggle="modal" data-target="#testMail"/>
             </div>
             <div class="alert alert-warning">
                 <?= lang('send_test_prompt') ?>
@@ -94,7 +94,7 @@
             <div class="form-group">
                 <hr>
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
+<!--vot-->          <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-success"/>
             </div>
         </form>
     </div>
