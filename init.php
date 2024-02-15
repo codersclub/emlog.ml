@@ -96,7 +96,8 @@ const MSGCODE_SUCCESS = 200;
 
 //Access Scheme
 /*vot*/ define('SCHEME', isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://');
-/*vot*/ define('ROOT_URL', str_replace('\\', '/', dirname($_SERVER['PHP_SELF'])));
+/*vot*/ $root = str_replace('\\', '/', dirname($_SERVER['PHP_SELF']));
+/*vot*/ define('ROOT_URL', rtrim($root, '/') . '/');
 
 $active_plugins = Option::get('active_plugins');
 $emHooks = [];
