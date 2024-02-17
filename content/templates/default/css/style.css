@@ -1098,7 +1098,7 @@ body {
 
 .loglist-cover img {
     position: absolute;
-    opacity: 0.8;
+/*vot    opacity: 0.8;*/
     border-radius: var(--marRadius) 10px 0 0;
     transition: all 0.4s;
     clip: rect(50px, 730px, 250px, 0px);
@@ -1106,7 +1106,7 @@ body {
 }
 
 .loglist-cover img:hover {
-    opacity: 0.7;
+/*vot    opacity: 0.7;*/
     transform: scale(1.01);
     clip: rect(50px, 730px, 250px, 0px)
 }
