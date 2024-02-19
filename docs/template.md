@@ -576,6 +576,3 @@ The produced theme can be packaged and published to the official app store after
    template_English_alias.zip, such as default.zip
 2. Publish: Log in to the official website emlog.net - My - Application Development - Publish Template, fill in the necessary information according to the prompts, and then publish it, waiting for review.
 
----
-
---end--

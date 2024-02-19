@@ -606,6 +606,3 @@ The produced plug-in can be packaged and released to the official app store afte
    and fill in all the necessary information according to the prompts,
    and then publish it, waiting for review.
 
----
-
---end--

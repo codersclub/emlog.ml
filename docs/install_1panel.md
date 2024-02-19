@@ -52,10 +52,9 @@ Access the domain name bound above and enter the emlog administrator account and
 - Find the [HTTPS] setting on the left side of the basic settings and enable HTTPS
 - Then follow the prompts to fill in the certificate-related configuration information.
 
---------
+---
 
 ## Other installation methods
 
 - [Manual emlog deployment](install_1panel2.md)
 
---end--

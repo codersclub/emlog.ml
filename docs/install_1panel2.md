@@ -74,5 +74,3 @@ Then visit the domain name you just created and fill in. If everything is normal
 ### Manual deployment of emlog completed
 
 At this point, the manual deployment of emlog is complete. You can explore more function settings by yourself.
-
---end--

@@ -89,4 +89,3 @@ It is only suitable for quick trial functions and is not recommended for use in 
 | MAX_EXECUTION_TIME | Corresponds to PHP max_execution_time setting |
 | EMLOG_DOMAIN_NAME | Site domain name eg: www.emlog.net |
 
---end--

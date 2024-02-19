@@ -18,7 +18,3 @@
 
 - [Upgrade 5.3.1 to pro](531toPro.md)
 - [Upgrade 6.0.1 to pro (unofficial version)](601toPro.md)
-
----
-
---end--

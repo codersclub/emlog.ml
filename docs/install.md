@@ -21,6 +21,3 @@
 - [1Panel Deployment](install_1panel.md)
 - [docker deployment](install_docker.md)
 
----
-
---end--

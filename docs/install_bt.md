@@ -41,7 +41,3 @@ Pagoda Panel is a server management software that supports more than 100 server 
 
 - Follow the prompts to fill in the account and password of the site backend administrator.
 - Click Next to complete the installation.
-
----
-
---end--

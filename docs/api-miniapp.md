@@ -25,9 +25,3 @@ https://www.hkiii.cn/?post=200
 # Author
 
 [Da Peng Sir](https://www.hkiii.cn/)
-
----
-
---end--
-
-

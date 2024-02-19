@@ -43,5 +43,3 @@ For other post parameters, please see: [Article Publishing Interface Document](h
 
 - Connecting to `Simple Number Collector`: [See the document for details](http://www.keydatas.com/preview_article/fYnENjiUjMZz)
 - Docking [Blue Sky Collector](https://www.skycaiji.com/): [See plug-in for details](https://www.emlog.net/plugin/detail/385)
-
---end--

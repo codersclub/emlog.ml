@@ -39,7 +39,8 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 
 ## License Agreement
 
-The license under which the Emlog software is released is the Free Software Foundation's GP Lv3 (or later): [LICENSE](/license.txt)
+Emlog software is released under the Free Software Foundation\'s license GP Lv3 (or later):
+[LICENSE](/license.txt)
 
 ## Software Copyright Statement
 
@@ -48,6 +49,3 @@ The license under which the Emlog software is released is the Free Software Foun
 - Software copyright registration number: 2023SR0497514
 - emlog trademark registration number: 68888345, 68812471
 
----
-
---end--

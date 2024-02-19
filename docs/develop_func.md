@@ -115,4 +115,3 @@ $avatar = getGravatar($email);
 echo smartDate($timestamp);
 ```
 
---end--

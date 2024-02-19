@@ -457,7 +457,3 @@ Release date: 2005/12/29
 
 Release date: 2005/10/27
 
-
----
-
---end--

@@ -44,6 +44,3 @@ const ENVIRONMENT = 'develop'; // Running environment: production production env
 
 - [Publish to App Store](https://www.emlog.net/my)
 
----
-
---end--

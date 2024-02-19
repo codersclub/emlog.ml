@@ -683,6 +683,3 @@ Release date: 2021-07-10
 
 [Previous Emlog version changelog (Obsolete)](changelog_old/)
 
----
-
---end--

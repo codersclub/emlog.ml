@@ -31,9 +31,3 @@ Emlog article and note publishing tool - chrome browser extension, this extensio
 ## Source code
 
 - [github](https://github.com/emlog/empost)
-
----
-
---end--
-
-

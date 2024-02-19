@@ -18,7 +18,3 @@
 
 - [Upgrade emlog 6.0.0 to pro](600toPro.md)
 - [Upgrade emlog 6.0.1 to pro (unofficial version)](601toPro.md)
-
----
-
---end--

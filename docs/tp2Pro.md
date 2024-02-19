@@ -47,5 +47,3 @@ This is a typecho plug-in for migrating Typecho article data to emlog pro
 ## This plug-in is developed and maintained by [Tingfeng Blog](https://owoii.com/code/100.html)
 
 Original article: https://owoii.com/code/100.html
-
---end--
