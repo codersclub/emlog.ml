@@ -22,7 +22,7 @@
 <?php if (isset($_GET['error_del_b'])): ?>
     <div class="alert alert-danger"><?= lang('founder_not_edit') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('user_management') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('user_management') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#exampleModal"><i class="icofont-plus"></i> <?= lang('user_add') ?></a>
 </div>
 <div class="panel-heading justify-content-between d-flex">

@@ -9,7 +9,7 @@
     <div class="alert alert-danger"><?= lang('twitter_empty') ?></div><?php endif ?>
 <?php if (isset($_GET['error_forbid'])): ?>
     <div class="alert alert-danger"><?= lang('twitter_post_disabled') ?></div><?php endif ?>
-<h1 class="h3 mb-2 text-gray-800"><?= lang('twitter_add') ?></h1>
+<h1 class="h4 mb-2 text-gray-800"><?= lang('twitter_add') ?></h1>
 <p class="mb-4"><?= lang('twitter_prompt') ?></p>
 <form method="post" action="twitter.php?action=post">
     <div class="form-group">

@@ -29,7 +29,7 @@
     <div class="alert alert-danger"><?= lang('sys_plugin') ?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
 </div>
 <div class="panel-heading">

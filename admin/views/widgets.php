@@ -1,7 +1,7 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['activated'])): ?>
     <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>
-<h1 class="h3 mb-4 text-gray-800"><?= lang('widget_manage') ?></h1>
+<h1 class="h4 mb-4 text-gray-800"><?= lang('widget_manage') ?></h1>
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
         <div class="row">
@@ -299,7 +299,7 @@
             </div>
 
             <div class="col-lg-6">
-                <h1 class="h3 mb-4 text-gray-800"><?= lang('widget_manage') ?></h1>
+                <h1 class="h4 mb-4 text-gray-800"><?= lang('widget_manage') ?></h1>
                 <form action="widgets.php?action=compages" method="post">
                     <div id="sortable" class="adm_widget_box">
                         <?php

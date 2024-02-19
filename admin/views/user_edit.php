@@ -11,7 +11,7 @@
     <div class="alert alert-danger"><?= lang('password_length_short') ?></div><?php endif ?>
 <?php if (isset($_GET['error_pwd2'])): ?>
     <div class="alert alert-danger"><?= lang('passwords_not_equal') ?></div><?php endif ?>
-<h1 class="h3 mb-4 text-gray-800"><?= lang('user_manage') ?></h1>
+<h1 class="h4 mb-4 text-gray-800"><?= lang('user_manage') ?></h1>
 <div class="card shadow mb-4 mt-4">
     <div class="card-body">
         <form action="user.php?action=update" method="post">

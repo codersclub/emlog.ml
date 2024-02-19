@@ -2,7 +2,7 @@
 <?php if (isset($_GET['ok_reset'])): ?>
     <div class="alert alert-success"><?= lang('api_key_reset_ok') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('settings') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('settings') ?></h1>
 </div>
 <div class="panel-heading">
     <ul class="nav nav-pills">

@@ -100,9 +100,9 @@
                     <div class="form-group">
                         <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
                         <label for="allow_remark" style="margin-right: 8px;"><?= lang('allow_comments') ?></label>
-                        <input type="checkbox" value="y" name="top" id="top" <?php echo $is_top; ?> />
+                        <input type="checkbox" value="y" name="top" id="top" <?= $is_top; ?> />
                         <label for="top" style="margin-right: 8px;"><?= lang('home_top') ?></label>
-                        <input type="checkbox" value="y" name="sortop" id="sortop" <?php echo $is_sortop; ?> />
+                        <input type="checkbox" value="y" name="sortop" id="sortop" <?= $is_sortop; ?> />
                         <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
                     </div>
                     <div><a class="show_advset" id="displayToggle" onclick="displayToggle('advset');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>

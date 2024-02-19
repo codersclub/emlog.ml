@@ -2,8 +2,8 @@
 defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <div class="containertitle2">
-<!--vot-->    <a class="navi3" href="<?php echo $this->url(); ?>"><?=lang('tpl_list')?></a>
-<!--vot-->    <?php if ($toSetTemplate != ''): ?><a class="navi4" href="<?php echo $this->url(array('template' => $toSetTemplate)); ?>"><?=lang('tpl_options')?></a><?php endif; ?>
+    <a class="navi3" href="<?= $this->url(); ?>"><?=lang('tpl_list')?></a>
+    <?php if ($toSetTemplate != ''): ?><a class="navi4" href="<?= $this->url(array('template' => $toSetTemplate)); ?>"><?=lang('tpl_options')?></a><?php endif; ?>
     <?php include $this->view('message'); ?>
 </div>
 <table class="adm__list">
@@ -19,15 +19,15 @@ defined('EMLOG_ROOT') || exit('access denied!');
         ?>
         <td>
             <?php if ($template['support'] !== false): ?>
-                <a href="<?php echo $this->url(array('template' => $name)); ?>">
-<!--vot-->                    <img alt="<?=lang('tpl_set')?>" title="<?=lang('tpl_set')?>" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
+                <a href="<?= $this->url(array('template' => $name)); ?>">
+                    <img alt="<?=lang('tpl_set')?>" title="<?=lang('tpl_set')?>" src="<?= $template['preview']; ?>" width="180" height="150" border="0"/>
                     <br/>
-                    <?php echo $template['name']; ?>
+                    <?= $template['name']; ?>
                 </a>
             <?php else: ?>
-<!--vot-->                <img title="<?=lang('tpl_option_not_support')?>" src="<?php echo $template['preview']; ?>" width="180" height="150" border="0"/>
+                <img title="<?=lang('tpl_option_not_support')?>" src="<?= $template['preview']; ?>" width="180" height="150" border="0"/>
                 <br/>
-                <?php echo $template['name']; ?>
+                <?= $template['name']; ?>
             <?php endif; ?>
         </td>
     <?php

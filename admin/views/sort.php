@@ -14,7 +14,7 @@
 <?php if (isset($_GET['error_f'])): ?>
     <div class="alert alert-danger"><?= lang('self_parent') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('category_management') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('category_management') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#sortModal"><i class="icofont-plus"></i> <?= lang('category_add') ?></a>
 </div>
 <form method="post" id="sort_form" action="sort.php?action=taxis">

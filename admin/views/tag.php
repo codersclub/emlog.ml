@@ -6,7 +6,7 @@
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('tag_select') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('tag_management') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('tag_management') ?></h1>
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">

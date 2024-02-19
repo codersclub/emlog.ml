@@ -20,7 +20,7 @@
 <?php if (isset($_GET['active_mc'])): ?>
     <div class="alert alert-success"><?= lang('cache_update_ok') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('data_backup') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('data_backup') ?></h1>
 </div>
 <div class="card-deck">
     <div class="card">

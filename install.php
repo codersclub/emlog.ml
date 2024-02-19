@@ -202,7 +202,7 @@ if (!$act) {
     <form name="form1" method="post" action="install.php?action=install">
         <div class="main">
             <p class="logo"></p>
-<!--vot-->  <p class="title mb20">Emlog.ML <?php echo Option::EMLOG_VERSION ?></p>
+<!--vot-->  <p class="title mb20">Emlog.ML <?= Option::EMLOG_VERSION ?></p>
             <?php if ($env_db_user): ?>
                 <div class="b">
                     <input name="hostname" type="hidden" value="<?= $env_db_host ?>">

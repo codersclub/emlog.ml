@@ -75,6 +75,9 @@ if ($action == 'mod') {
 /*vot*/    $MediaSort_Model = new MediaSort_Model();
 /*vot*/    $mediaSorts = $MediaSort_Model->getSorts();
 
+    $MediaSort_Model = new MediaSort_Model();
+    $mediaSorts = $MediaSort_Model->getSorts();
+
     $is_allow_remark = $allow_remark == 'y' ? 'checked="checked"' : '';
     $is_home_page = Option::get('home_page_id') == $pageId ? 'checked="checked"' : '';
 

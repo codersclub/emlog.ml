@@ -2,7 +2,7 @@
 <?php if (isset($_GET['error_b'])): ?>
     <div class="alert alert-danger"><?= lang('reg_failed') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= lang('emlog_registration') ?></h1>
+    <h1 class="h4 mb-0 text-gray-800"><?= lang('emlog_registration') ?></h1>
 </div>
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
