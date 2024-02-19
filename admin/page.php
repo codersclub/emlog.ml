@@ -72,9 +72,6 @@ if ($action == 'mod') {
     $Media_Model = new Media_Model();
     $medias = $Media_Model->getMedias();
 
-/*vot*/    $MediaSort_Model = new MediaSort_Model();
-/*vot*/    $mediaSorts = $MediaSort_Model->getSorts();
-
     $MediaSort_Model = new MediaSort_Model();
     $mediaSorts = $MediaSort_Model->getSorts();
 
