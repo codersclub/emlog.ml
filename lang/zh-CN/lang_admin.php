@@ -51,6 +51,7 @@ $lang = array(
     'not_supported' => '不支持',//'NOT supported',
     'phpinfo_disabled' => 'phpinfo函数被禁用!',//'phpinfo function is disabled!',
     'released' => ' released',
+    'discussion' => '讨论',//'Discussion',
 
 //---------------------------
 //admin/media.php

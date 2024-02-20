@@ -129,6 +129,7 @@ var LNG = {
  'free'			: 'Бесплатно',//'免费',
  'price'		: 'Цена: ',//'应用售价',
  'article_preview'	: 'Предпросмотр',//'预览文章',
+ 'price_unit'		: ' &yen;',//'元',
 
 //---------------------------
 //include/lib/js/common_tpl.js
