@@ -214,9 +214,7 @@
 <!-- vot: Load Editor.MD -->
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <!-- vot: Load Editor.MD current language file -->
-<?php if (strtolower(LANG) !== 'zh-cn') { ?>
 <script src="./editor.md/languages/<?=strtolower(LANG)?>.js"></script>
-<?php } ?>
 <script>
     $("#alias").keyup(function () {
         checkalias();
