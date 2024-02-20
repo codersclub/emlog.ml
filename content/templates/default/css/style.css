@@ -260,8 +260,10 @@ body {
 ---------------------------------------------------*/
 .blog-header {
     margin-bottom: 2.3rem;
-    background-color: var(--conBgcolor);
-	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02)
+    color: #fff;
+    background-color: #4e73df;
+    background: linear-gradient(to right, #4e73df, #224abe);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02);
 }
 
 .blog-header-c {
@@ -282,6 +284,12 @@ body {
     padding-top: 48px;
     z-index: 0
 }
+/*vot*/ .blog-header a {
+    color: rgba(255, 255, 255, 0.8);
+}
+/*vot*/ .blog-header a:focus, .blog-header a:hover {
+  color: #fff;
+}
 
 /* The padding-block of the navigation link should be large, so that the sub-navigation label can still be evoked after the cursor leaves the character for a certain distance
  * In addition, the list item of the li tag is marked as empty (list-style: none) */
@@ -301,7 +309,6 @@ body {
 
 .drop .toggle {
     cursor: pointer;
-    color: #333333;
 }
 
 .down {
