@@ -1,16 +1,16 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['error'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?=lang('store_unavailable')?></div><?php endif ?>
+    <div class="alert alert-danger"><?=lang('store_unavailable')?></div><?php endif ?>
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?=lang('app_store')?> - <?= $sub_title ?></h1>
 </div>
 <div class="row mb-4 ml-1">
     <ul class="nav nav-pills">
-<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('ext_store_templates')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link text-danger" href="./store.php?action=svip"><?=lang('svip')?></a></li>
-<!--vot-->        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('ext_store_templates')?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="./store.php?action=svip"><?=lang('svip')?></a></li>
+        <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
 <div class="mb-3">
@@ -27,17 +27,19 @@
                         <div class="card-body">
                             <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
                             <p class="card-text text-muted small">
-<!--vot-->                      <?=lang('developer')?>: <?= $v['author'] ?><br>
-<!--vot-->                      <?=lang('version_number')?>: <?= $v['ver'] ?><br>
-<!--vot-->                      <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
+                                <?=lang('developer')?>: <?= $v['author'] ?><br>
+                                <?=lang('version_number')?>: <?= $v['ver'] ?><br>
+                                <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
                             </p>
                             <div class="card-text d-flex justify-content-between">
                                 <div class="installMsg"></div>
-                                <?php if (empty($v['download_url'])): ?>
-<!--vot-->                                <a href="<?= $v['buy_url'] ?>" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
-                                <?php else: ?>
-<!--vot-->                                <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $v['type'] ?>"><?= lang('install_app') ?></a>
-                                <?php endif ?>
+                                <div>
+                                    <?php if (empty($v['download_url'])): ?>
+                                        <a href="<?= $v['buy_url'] ?>" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
+                                    <?php else: ?>
+                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $v['type'] ?>"><?= lang('install_app') ?></a>
+                                    <?php endif ?>
+                                </div>
                             </div>
                         </div>
                     </div>
