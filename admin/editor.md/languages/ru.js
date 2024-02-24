@@ -2,62 +2,62 @@
     var factory = function (exports) {
         var lang = {
             name : "ru",
-            description : "Open source online Markdown editor.",
-            tocTitle    : "Table of Contents",
-            placeholder : "Enjoy Markdown! coding now...",
-            weekDays    : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            description : "Онлайн Markdown редактор с открытым кодом.",
+            tocTitle    : "Содержание",
+            placeholder : "Наслаждайтесь кодом Markdown!...",
+            weekDays    : ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"],
             wdPrefix    : "",//Only for Chinese! Set EMPTY for others
             toolbar     : {
-                undo             : "Undo(Ctrl+Z)",
-                redo             : "Redo(Ctrl+Y)",
-                bold             : "Bold",
-                del              : "Strikethrough",
-                italic           : "Italic",
-                quote            : "Block quote",
+                undo             : "Отмена(Ctrl+Z)",
+                redo             : "Повтор(Ctrl+Y)",
+                bold             : "Жирный",
+                del              : "Зачёркнутый",
+                italic           : "Наклонный",
+                quote            : "Цитата",
                 ucwords          : "Words first letter convert to uppercase",
                 uppercase        : "Selection text convert to uppercase",
                 lowercase        : "Selection text convert to lowercase",
-                h1               : "Heading 1",
-                h2               : "Heading 2",
-                h3               : "Heading 3",
-                h4               : "Heading 4",
-                h5               : "Heading 5",
-                h6               : "Heading 6",
-                "list-ul"        : "Unordered list",
-                "list-ol"        : "Ordered list",
-                hr               : "Horizontal rule",
-                link             : "Link",
+                h1               : "Заголовок 1",
+                h2               : "Заголовок 2",
+                h3               : "Заголовок 3",
+                h4               : "Заголовок 4",
+                h5               : "Заголовок 5",
+                h6               : "Заголовок 6",
+                "list-ul"        : "Простой список",
+                "list-ol"        : "Нумерованный список",
+                hr               : "Разделительная линия",
+                link             : "Ссылка",
                 "reference-link" : "Reference link",
-                image            : "Image",
+                image            : "Изображение",
                 code             : "Code inline",
-                "preformatted-text" : "Preformatted text / Code block (Tab indent)",
-                "code-block"     : "Code block (Multi-languages)",
-                table            : "Tables",
-                datetime         : "Datetime",
+                "preformatted-text" : "Форматированный текст / Блок кода (с Tab отступом)",
+                "code-block"     : "Блок кода с указанием языка",
+                table            : "Таблица",
+                datetime         : "Дата/Время",
                 emoji            : "Emoji",
                 "html-entities"  : "HTML Entities",
-                pagebreak        : "Page break",
-                "goto-line"      : "Go to line",
+                pagebreak        : "Разрыв страницы",
+                "goto-line"      : "Перейти к строке",
                 watch            : "Unwatch",
                 unwatch          : "Watch",
-                preview          : "HTML Preview (Press Shift + ESC exit)",
-                fullscreen       : "Fullscreen (Press ESC exit)",
-                clear            : "Clear",
-                search           : "Search",
-                help             : "Help",
-                info             : "About " + exports.title
+                preview          : "Предпросмотр (Выход - Shift + ESC)",
+                fullscreen       : "На весь экран (Выход - ESC)",
+                clear            : "Очистить",
+                search           : "Поиск",
+                help             : "Помощь",
+                info             : "О проекте: " + exports.title
             },
             buttons : {
                 enter  : "Enter",
-                cancel : "Cancel",
-                close  : "Close"
+                cancel : "Отмена",
+                close  : "Закрыть"
             },
             dialog : {
                 link : {
-                    title    : "Link",
-                    url      : "Address",
-                    urlTitle : "Title",
-                    urlEmpty : "Error: Please fill in the link address."
+                    title    : "Ссылка",
+                    url      : "URL",
+                    urlTitle : "Заголовок",
+                    urlEmpty : "Ошибка: Необходимо указать URL."
                 },
                 referenceLink : {
                     title    : "Reference link",
@@ -97,94 +97,94 @@
                     title : "HTML Entities"
                 },
                 help : {
-                    title : "Help",
+                    title : "Помощь",
                     body  : `<div class=\"markdown-body\" style=\"font-family:Microsoft Yahei, Helvetica, Tahoma, STXihei,Arial;height:390px;overflow:auto;font-size:14px;border-bottom:1px solid #ddd;padding:0 20px 20px 0;\">
-				<h5>Markdown syntax tutorial</h5><ul>
-				<li><p><a href="target="_blank" https://daringfireball.net/projects/markdown/syntax" title="Markdown Syntax">John Gruber Markdown Syntax</a></p>
-				</li><li><p><a target="_blank" href="https://guides.github.com/features/mastering-markdown/" title="Mastering Markdown">Mastering Markdown - Github guide</a></p>
-				</li><li><p><a target="_blank" href="https://help.github.com/articles/markdown-basics/" title="Markdown Basics">Markdown Basics from Github</a></p>
-				</li><li><p><a target="_blank" href="https://help.github.com/articles/github-flavored-markdown/" title="GitHub Flavored Markdown">GitHub Flavored Markdown</a></p>
-				</li><li><p><a target="_blank" href="http://www.markdown.cn/" title="Markdown syntax description (Simplified Chinese)">Markdown syntax description (Simplified Chinese)</a></p>
-				</li><li><p><a target="_blank" href="http://markdown.tw/" title="Markdown syntax description (Traditional Chinese)">Markdown syntax description (Traditional Chinese)</a></p>
+				<h5>Руководство по синтаксису Markdown</h5><ul>
+				<li><p><a href="target="_blank" https://daringfireball.net/projects/markdown/syntax" title="Markdown Syntax">Оригинальный синтаксис от Джона Грубера</a></p>
+				</li><li><p><a target="_blank" href="https://guides.github.com/features/mastering-markdown/" title="Mastering Markdown">Осваиваем Markdown - руководство от Github</a></p>
+				</li><li><p><a target="_blank" href="https://help.github.com/articles/markdown-basics/" title="Markdown Basics">Основы Markdown от Github</a></p>
+				</li><li><p><a target="_blank" href="https://help.github.com/articles/github-flavored-markdown/" title="GitHub Flavored Markdown">Markdown со вкусом GitHub</a></p>
+				</li><li><p><a target="_blank" href="http://www.markdown.cn/" title="Markdown syntax description (Simplified Chinese)">Синтаксис Markdown на упрощённом китайском</a></p>
+				</li><li><p><a target="_blank" href="http://markdown.tw/" title="Markdown syntax description (Traditional Chinese)">Синтаксис Markdown на традиционном китайском</a></p>
 				</li></ul>
-				<h5 id="h5--keyboard-shortcuts-">Keyboard shortcuts</h5><blockquote>
-				<p>Ctrl and Alt in the shortcut key table can be replaced by Cmd and Opt respectively on Mac systems.</p>
+				<h5 id="h5--keyboard-shortcuts-">Горячие клавиши</h5><blockquote>
+				<p>Если вы работаете на Mac, то указанные в таблице клавиши Ctrl и Alt следует заменить на Cmd и Opt соответственно.</p>
 				</blockquote>
 				<table>
 					<thead>
 					<tr>
-					<th style="text-align: center;"><strong><strong>Ctrl + S</strong></strong></th>
-					<th style="text-align: center;">Save</th>
-					<th style="text-align: center;"><strong><strong>F9</strong></strong></th>
-					<th style="text-align: center;">Toggle live preview</th>
-					<th style="text-align: center;"><strong><strong>Ctrl + Shift + R</strong></strong></th>
-					<th style="text-align: center;">Replace all</th>
+					<th style="text-align: center;"><strong>Ctrl + S</strong></th>
+					<th style="text-align: center;">Сохранить</th>
+					<th style="text-align: center;"><strong>F9</strong></th>
+					<th style="text-align: center;">Переключение: предпросмотр</th>
+					<th style="text-align: center;"><strong>Ctrl + Shift + R</strong></th>
+					<th style="text-align: center;">Заменить всё</th>
 					</tr>
 					</thead>
 					<tbody>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl+1~6</strong></strong></td>
-					<td style="text-align: center;">corresponds to H1 to H6 respectively</td>
-					<td style="text-align: center;"><strong><strong>F10</strong></strong></td>
-					<td style="text-align: center;">Editor full screen preview</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + D</strong></strong></td>
-					<td style="text-align: center;">Current time</td>
+					<td style="text-align: center;"><strong>Ctrl + 1~6</strong></td>
+					<td style="text-align: center;">соответствует заголовку H1 ~ H6 соответственно</td>
+					<td style="text-align: center;"><strong>F10</strong></td>
+					<td style="text-align: center;">Полноэкранный режим</td>
+					<td style="text-align: center;"><strong>Ctrl + D</strong></td>
+					<td style="text-align: center;">Текущее время</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl + U</strong></strong></td>
-					<td style="text-align: center;">Unordered list</td>
-					<td style="text-align: center;"><strong><strong>While holding down the Ctrl key, select different places in the editing area</strong></strong></td>
-					<td style="text-align: center;">Multiple cursor selection</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + H</strong></strong></td>
-					<td style="text-align: center;">Horizontal line</td>
+					<td style="text-align: center;"><strong>Ctrl + U</strong></td>
+					<td style="text-align: center;">Ненумерованный список</td>
+					<td style="text-align: center;"><strong>Клик по элементу списка при нажатом Ctrl</strong></td>
+					<td style="text-align: center;">Выделение нескольких элементов списка</td>
+					<td style="text-align: center;"><strong>Ctrl + H</strong></td>
+					<td style="text-align: center;">Горизонтальная линия</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl + B</strong></strong></td>
-					<td style="text-align: center;">Bold</td>
-					<td style="text-align: center;"><strong><strong>Ctrl+ A</strong></strong></td>
-					<td style="text-align: center;">Select all</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + L</strong></strong></td>
-					<td style="text-align: center;">Link</td>
+					<td style="text-align: center;"><strong>Ctrl + B</strong></td>
+					<td style="text-align: center;">Жирный</td>
+					<td style="text-align: center;"><strong>Ctrl+ A</strong></td>
+					<td style="text-align: center;">Выделить всё</td>
+					<td style="text-align: center;"><strong>Ctrl + L</strong></td>
+					<td style="text-align: center;">Ссылка</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl + I</strong></strong></td>
-					<td style="text-align: center;">italic</td>
-					<td style="text-align: center;"><strong><strong>Ctrl+ Z</strong></strong></td>
-					<td style="text-align: center;">Undo</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + A</strong></strong></td>
-					<td style="text-align: center;">Github link</td>
+					<td style="text-align: center;"><strong>Ctrl + I</strong></td>
+					<td style="text-align: center;">Наклонный</td>
+					<td style="text-align: center;"><strong>Ctrl+ Z</strong></td>
+					<td style="text-align: center;">Откат</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + A</strong></td>
+					<td style="text-align: center;">Ссылка на Github</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl + K</strong></strong></td>
-					<td style="text-align: center;">Inline code</td>
-					<td style="text-align: center;"><strong><strong>Ctrl+ Y</strong></strong></td>
-					<td style="text-align: center;">Redo</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + I</strong></strong></td>
-					<td style="text-align: center;">Image</td>
+					<td style="text-align: center;"><strong>Ctrl + K</strong></td>
+					<td style="text-align: center;">Код внутри строки</td>
+					<td style="text-align: center;"><strong>Ctrl+ Y</strong></td>
+					<td style="text-align: center;">Повтор</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + I</strong></td>
+					<td style="text-align: center;">Изображение</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Shift + Alt + L</strong></strong></td>
-					<td style="text-align: center;">Convert selected text to lowercase</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + F</strong></strong></td>
-					<td style="text-align: center;">Find search</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + C</strong></strong></td>
-					<td style="text-align: center;">Code block</td>
+					<td style="text-align: center;"><strong>Shift + Alt + L</strong></td>
+					<td style="text-align: center;">Перевести в нижний регистр</td>
+					<td style="text-align: center;"><strong>Ctrl + F</strong></td>
+					<td style="text-align: center;">Поиск</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + C</strong></td>
+					<td style="text-align: center;">Блок кода</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Shift + Alt+ U</strong></strong></td>
-					<td style="text-align: center;">Convert first letter to uppercase</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + G</strong></strong></td>
-					<td style="text-align: center;">Previous result</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + P</strong></strong></td>
-					<td style="text-align: center;">Preformatted code block</td>
+					<td style="text-align: center;"><strong>Shift + Alt+ U</strong></td>
+					<td style="text-align: center;">Перевести в верхний регистр первые буквы слов</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + G</strong></td>
+					<td style="text-align: center;">Предыдущий результат</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + P</strong></td>
+					<td style="text-align: center;">Предформатированный текст</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong><strong>Ctrl + Alt + G</strong></strong></td>
-					<td style="text-align: center;">Jump to line</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + G</strong></strong></td>
-					<td style="text-align: center;">Next result</td>
-					<td style="text-align: center;"><strong><strong>Ctrl + Shift + H</strong></strong></td>
-					<td style="text-align: center;">Html real font characters</td>
+					<td style="text-align: center;"><strong>Ctrl + Alt + G</strong></td>
+					<td style="text-align: center;">Перейти к строке</td>
+					<td style="text-align: center;"><strong>Ctrl + G</strong></td>
+					<td style="text-align: center;">Следующий результат</td>
+					<td style="text-align: center;"><strong>Ctrl + Shift + H</strong></td>
+					<td style="text-align: center;">HTML символы</td>
 					</tr>
 					</tbody>
 					</table>
