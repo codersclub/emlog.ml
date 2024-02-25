@@ -41,8 +41,8 @@ $ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
 
 ## Installation and deployment
 
-- [Pagoda one-click deployment](https://www.emlog.net/docs/#/install_bt)
-- [1Panel deployment](https://www.emlog.net/docs/#/install_1panel)
+- [Pagoda one-click deployment](/docs/install_bt/)
+- [1Panel deployment](/docs/install_1panel/)
 
 ## Start via `docker-compose`
 

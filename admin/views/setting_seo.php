@@ -57,7 +57,7 @@
                     }
                 </p>
                 <hr>
-                <p><?= lang('other_config') ?><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('common_problems') ?></a></p>
+                <p><?= lang('other_config') ?><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('common_problems') ?></a></p>
             </div>
 
             <h4 class="mt-4"><?= lang('meta_settings') ?>:</h4>

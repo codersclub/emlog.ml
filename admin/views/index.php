@@ -161,15 +161,15 @@
                 <h6 class="card-header">Emlog.ML <?= lang('official_news') ?></h6>
                 <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
-                        <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('help_faq') ?></a></li>
-                        <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/contact/" target="_blank"><?= lang('contacts') ?></a></li>
-                        <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/develop/" target="_blank"><?= lang('app_development') ?></a></li>
+<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('help_faq') ?></a></li>
+<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/contact/" target="_blank"><?= lang('contacts') ?></a></li>
+<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/develop/" target="_blank"><?= lang('app_development') ?></a></li>
 <!--vot-->              <li class="msg_type_0"><a href="https://github.com/codersclub/emlog.ml" target="_blank">Emlog.ML at github</a></li>
 <!--vot-->              <li class="msg_type_0"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
 <!--vot-->              <li class="msg_type_0"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
                     </ul>
                 </div>
-                <h6 class="card-header">Chinese emlog <?= lang('official_news') ?></h6>
+<!--vot-->      <h6 class="card-header">Chinese emlog <?= lang('official_news') ?></h6>
                 <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
                         <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
