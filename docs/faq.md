@@ -4,8 +4,8 @@
 
 Yes, please refer to the following upgrade guide:
 
-* 6.0.0 upgrade guide: [upgrade 6.0.0 to pro](600toPro.md)
-* 5.3.1 upgrade guide: [upgrade 5.3.1 to pro](531toPro.md)
+* 6.0.0 upgrade guide: [upgrade 6.0.0 to pro](600toPro/)
+* 5.3.1 upgrade guide: [upgrade 5.3.1 to pro](531toPro/)
 
 The old version of templates and plug-ins can be used in the emlog pro version without special adaptation. In addition, the old template plug-ins are mostly developed based on php5.6, and the PHP version can be switched to php5.6.
 

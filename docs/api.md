@@ -306,7 +306,8 @@ Return results (with login success cookie attached)
 }
 ```
 
-### Article release
+<a name="post_article"></a>
+### Article publishing
 
 * Article publishing interface, which can be used to interface with article publishing software
 * Interface URL: https://yourdomain/?rest-api=article_post

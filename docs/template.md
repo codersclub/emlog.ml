@@ -537,7 +537,7 @@ Usage example:
 
 ## Common methods & functions
 
-Methods and functions that can be used directly: [General methods and functions] (develop_func.md)
+Methods and functions that can be used directly: [General methods and functions] (develop_func/)
 
 ## Asynchronous request
 
@@ -545,19 +545,19 @@ The pro version supports asynchronous ajax requests and returns information in j
 
 ### Post a comment
 
-- [See API documentation for details: Post comments](api.md)
+- [See API documentation for details: Post comments](api/)
 
 ### User login
 
-- [See API documentation for details: User login](api.md)
+- [See API documentation for details: User login](api/)
 
 ### User registration
 
-- [See API documentation for details: User Registration](api.md)
+- [See API documentation for details: User Registration](api/)
 
 ### Retrieve password
 
-- [See API documentation for details: Retrieve password](api.md)
+- [See API documentation for details: Retrieve password](api/)
 
 ## Reference demo
 

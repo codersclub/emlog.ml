@@ -17,7 +17,7 @@
 
 ## Other installations
 
-- [Pagoda panel Deployment](install_bt.md)
-- [1Panel Deployment](install_1panel.md)
-- [docker deployment](install_docker.md)
+- [Pagoda panel Deployment](install_bt/)
+- [1Panel Deployment](install_1panel/)
+- [docker deployment](install_docker/)
 

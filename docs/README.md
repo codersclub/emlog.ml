@@ -20,7 +20,7 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 
 ## Install
 
-[Installation documentation](install.md)
+[Installation documentation](install/)
 
 ## Emlog official domains
 

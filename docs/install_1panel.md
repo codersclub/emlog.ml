@@ -56,5 +56,5 @@ Access the domain name bound above and enter the emlog administrator account and
 
 ## Other installation methods
 
-- [Manual emlog deployment](install_1panel2.md)
+- [Manual emlog deployment](install_1panel2/)
 

@@ -35,10 +35,10 @@ const ENVIRONMENT = 'develop'; // Running environment: production production env
 
 ## Development documentation
 
-- [Template Development Guide](template.md)
-- [Plug-in Development Guide](plugin.md)
-- [API Development Documentation](api.md)
-- [App Store API](api_store.md)
+- [Template Development Guide](template/)
+- [Plug-in Development Guide](plugin/)
+- [API Development Documentation](api/)
+- [App Store API](api_store/)
 
 ## Application release
 

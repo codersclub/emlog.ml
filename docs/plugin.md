@@ -6,17 +6,24 @@ Emlog supports the plug-in mechanism, so that developers can easily add the func
 
 During the whole operation of Emlog, we set some action events. When encountering these events, Emlog will automatically call all the plug-in functions bound to the event by the plug-in, so as to realize the function of the plug-in.
 
-## Mount point function: doAction
+## Function: doAction - Mount point
 
 ```php
-//This is Emlog adding article event, which will be triggered after adding an article, and the parameter is the $id number of the new article. Then the system will automatically pass $id into each hook function bound to this event.
+//This is Emlog adding article event, which will be triggered after adding an article.
+//Parameter $id is the new article identificator.
+//Then the system will automatically pass $id into each hook function bound to this event.
 doAction('save_log', $id);
 ```
 
-This function is built into the emlog core code and is the legendary plug-in mounting point. This function has a fixed parameter: $hook, $hook is the name of the action to be performed,
+This function is built into the emlog core code and is the legendary plug-in mounting point.
+This function has a fixed parameter: $hook, which is the name of the action to be performed,
 other parameters can be passed in sequentially when calling this function, and the function will automatically send it to the hook function.
 
-## Add event call method Function: addAction
+```php
+function doAction($hook) {
+```
+
+## Function: addAction - Add event call method
 
 This function is a function used by the plug-in to mount the method to the mount point, and is written in the plug-in file. The function has two parameters: $hook, $actionFunc.
 
@@ -36,9 +43,11 @@ In the above example, the plugin_addlog function is bound to the save_log event 
 - Plugin directory: /content/plugins/
 - Only plugins with "plugin-dir/plugin-name/plugin-name.php" directory structure are recognized.
 
-For example: the default tips plug-in, its folder name is `tips`, and the program file name is `tips.php`
+For example: for the default plug-in `tips`, its folder name is `tips`, and the program file name is `tips.php`.
 
-The comment content at the beginning of the tips.php file is the necessary information for the plug-in. This information will be displayed in the background plug-in management interface, so be sure to fill it out completely.
+The comment content at the beginning of the tips.php file is the necessary information for the plug-in.
+This information will be displayed in the background plug-in management interface,
+so be sure to fill it out completely.
 
 ```php
 <?php
@@ -63,9 +72,8 @@ Developers can add a file to the plug-in: `pluginname_callback.php` to define ca
 | Delete plugin | callback_rm()     |
 | Update plugin | callback_up()     |
 
-For example:
 
-tips_callback.php
+For example, let\'s look at the `tips_callback.php`:
 
 ```php
 <?php
@@ -97,7 +105,7 @@ function callback_up() {
 }
 ```
 
-#### &#x2618; Green plug-in
+#### &#x2618;&#xFE0F; Green plug-in
 
 Use the event callback mechanism to create green plug-ins. The so-called green plug-ins must do the following:
 
@@ -584,7 +592,7 @@ addAction('article_content_echo', 'content_replace');
 
 ## Common methods & functions
 
-Methods and functions that can be used directly: [General methods and functions](develop_func.md)
+Methods and functions that can be used directly: [General methods and functions](develop_func/)
 
 ## Reference demo
 

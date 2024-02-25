@@ -22,4 +22,4 @@ You can use the RSS import function of [Toolbox Plug-in] to import Typecho artic
 
 ## Migrate from Typecho to emlog - Method 2
 
-[Migrate from Typecho to emlog](tp2Pro.md)
+[Migrate from Typecho to emlog](tp2Pro/)
