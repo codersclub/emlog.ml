@@ -132,13 +132,6 @@
                         </a>
                     </li>
                     <div class="topbar-divider d-none d-sm-block"></div>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link" href="blogger.php" role="button">
-                            <img class="img-profile rounded-circle"
-                                 src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
-                        </a>
-                    </li>
-                    <div class="topbar-divider d-none d-sm-block"></div>
 <!-- Change Language -->
                     <li class="nav-item mx-1 dropdown">
                         <span class="nav-link dropdown-toggle" data-toggle="dropdown"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>lang/<?= LANG ?>/flag.gif"></span>
@@ -151,8 +144,15 @@
                             <?php } ?>
                         </div>
                     </li>
-                    <div class="topbar-divider d-none d-sm-block"></div>
 <!-- /Change Language -->
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="blogger.php" role="button">
+                            <img class="img-profile rounded-circle"
+                                 src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
+                        </a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
                     <li class="nav-item mx-1">
                         <a class="nav-link" href="account.php?action=logout" title="<?= lang('logout') ?>" role="button">
                             <i class="icofont-logout icofont-1x"></i>
