@@ -16,7 +16,7 @@ The management backend provides a registration management interface, as shown be
 - You can easily re-obtain the registration code
 - Authorized domain names can be deleted and replaced at any time
 
-![](https://oss.emlog.net/img/faq-pro-1.png)
+![](faq-pro-1.png)
 
 ### About refund
 

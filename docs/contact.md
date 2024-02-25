@@ -4,17 +4,17 @@
 
 &#x1F447; Official service account (release version updates and other information)
 
-[![](https://oss.emlog.net/img/qrcode_emlog_pro.jpg)](https://oss.emlog.net/img/qrcode_emlog_pro.jpg)
+![](qrcode_emlog_pro.jpg)
 
 &#x1F447; The personal public account of the emlog author (may share topics unrelated to emlog)
 
-[![](https://oss.emlog.net/img/iemlog.jpg)](https://oss.emlog.net/img/iemlog.jpg)
+![](iemlog.jpg)
 
 ## Join QQ group
 
 Scan the QQ code to join the emlog user community (group number: 460197406)
 
-[![](https://oss.emlog.net/img/qqgroup.jpeg)](https://oss.emlog.net/img/qqgroup.jpeg)
+![](qqgroup.jpeg)
 
 ## Feedback
 

@@ -11,14 +11,14 @@ Emlog article and note publishing tool - chrome browser extension, this extensio
 
 ### Below: Supports quick publishing of notes and articles
 
-![](https://oss.emlog.net/img/empost-1.png)
+![](empost-1.png)
 
 # Chrome browser installation
 
 - Chrome App Store: [empost](https://chrome.google.com/webstore/detail/empost/mnahegkpoaiknhdcibopjocnlbggpdcn?utm_source=ext_sidebar&hl=zh-CN)
 - Click to add to Chrome.
 
-![](https://oss.emlog.net/img/empst-chrome.png)
+![](empst-chrome.png)
 
 ## Edge browser installation
 

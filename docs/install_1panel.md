@@ -10,17 +10,17 @@
 
 Before installing emlog, you need to install the required software in the 1Panel app store, including OpenResty and MySQL.
 
-[![](https://oss.emlog.net/img/1panel-110701.png)](https://oss.emlog.net/img/1panel-110701.png)
+![](1panel-110701.png)
 
 ## Install emlog application
 
 Search and install emlog in the app store: Open the [App Store] on the left menu, enter: emlog in the upper right corner, and click Search
 
-[![](https://oss.emlog.net/img/1panel-008.jpg)](https://oss.emlog.net/img/1panel-008.jpg)
+![](1panel-008.jpg)
 
 Click Install to enter the installation interface and fill in the information as shown below.
 
-[![](https://oss.emlog.net/img/1panel-110702.png)](https://oss.emlog.net/img/1panel-110702.png)
+![](1panel-110702.png)
 
 - Fill in the port 8080
 - Just fill in localhost for the domain name
@@ -30,7 +30,7 @@ Click Install to enter the installation interface and fill in the information as
 
 After clicking to confirm the installation, the installation process will begin. Wait for a while and the emlog application status will change to the started status, as shown below.
 
-[![](https://oss.emlog.net/img/1panel-010.jpg)](https://oss.emlog.net/img/1panel-010.jpg)
+![](1panel-010.jpg)
 
 ## Create website
 
@@ -38,7 +38,7 @@ After completing the installation of the emlog application, a website will not b
 
 Click Website in the 1Panel menu to enter the website list page and click the Create Website button.
 
-[![](https://oss.emlog.net/img/1panel-110703.png)](https://oss.emlog.net/img/1panel-110703.png)
+![](1panel-110703.png)
 
 - Add the domain name to be bound, such as: demo.emlog.in
 

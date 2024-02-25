@@ -54,7 +54,7 @@ Insert the following html code in the editor and replace the mp3 address with th
 
 ## The background editor and other icons cannot be displayed normally. They are all small squares. How to solve this problem?
 
-![](https://oss.emlog.net/img/iis-error.png)
+![](iis-error.png)
 
 If you deploy emlog on a Windows operating system IIS server, you may encounter an error caused by the browser not being able to find the font file (woff/woff2). This will cause the browser to be unable to load the font icon.
 This is because the server IIS does not recognize the woff/woff2 file type. The following is the solution (you can also search for: "IIS fonts are not displayed". There are many articles on the Internet that solve this problem):
@@ -107,7 +107,7 @@ This problem is usually caused by an incorrect site address setting, or after en
 
 ## Why does the App Store and Check for Updates both prompt network errors?
 
-![](https://oss.emlog.net/img/WX20230311-143937.png)
+![](WX20230311-143937.png)
 
 This problem occurs because the system cannot access the emlog official website server. The solution is as follows:
 
@@ -123,7 +123,7 @@ If you can see the product list in the app store, but cannot download and instal
 
 ## What is the reason for SQL statement error?
 
-![](https://oss.emlog.net/img/WX20230311-145914.png)
+![](WX20230311-145914.png)
 
 - You can change the default template to check whether it is caused by the template. If so, please contact the template author to solve the problem.
 - You can check whether the plug-in is caused by disabling plug-ins one by one. If a plug-in problem is located, you can delete the plug-in or contact the plug-in author to solve it.

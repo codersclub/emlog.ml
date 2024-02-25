@@ -1,6 +1,7 @@
 # &#x1F352; API application: docking collector
 
-The docking collector publishes the collected articles to the site built by emlog. This document takes [Train Collector](http://www.locoy.com/) as an example.
+The docking collector publishes the collected articles to the site built by emlog.
+This document takes [Train Collector](http://www.locoy.com/) as an example.
 
 ## Preparation
 
@@ -8,7 +9,7 @@ The docking collector publishes the collected articles to the site built by emlo
 
 ## Content publishing rules
 
-![](https://oss.emlog.net/img/huochecaiji-2.png)
+![](huochecaiji-2.png)
 
 Web publishing configuration is as shown above:
 
@@ -19,11 +20,11 @@ Web publishing configuration is as shown above:
 
 ## Add publishing module
 
-![](https://oss.emlog.net/img/huochecaiji-1.png)
+![](huochecaiji-1.png)
 
 Add publish module configuration, see the picture above
 
-Posting address suffix: ?rest-api=article_post
+Posting address suffix: `?rest-api=article_post`
 
 Publish post data:
 - title: article title
@@ -31,9 +32,9 @@ Publish post data:
 - req_time: timestamp, such as: 1701535132, you can get the timestamp from here: [Get timestamp](https://tool.lu/timestamp/)
 - req_sign: Put req_time and API key together for MD5 encryption, which can be found here: [MD5 Encryption](https://tool.chinaz.com/tools/md5.aspx), as shown below
 
-![](https://oss.emlog.net/img/huochecaiji-3.jpg)
+![](huochecaiji-3.jpg)
 
-For other post parameters, please see: [Article Publishing Interface Document](https://www.emlog.net/docs/#/api?id=%e6%96%87%e7%ab%a0%e5%8f%91%e5%b8%83)
+For other post parameters, please see: [Article Publishing API Documentation](/docs/api/#post_article)
 
 ## Related information
 
@@ -42,4 +43,4 @@ For other post parameters, please see: [Article Publishing Interface Document](h
 ## Connecting with other collectors
 
 - Connecting to `Simple Number Collector`: [See the document for details](http://www.keydatas.com/preview_article/fYnENjiUjMZz)
-- Docking [Blue Sky Collector](https://www.skycaiji.com/): [See plug-in for details](https://www.emlog.net/plugin/detail/385)
+- Docking [Blue Sky Collector](https://www.skycaiji.com/): [See the plug-in for details](https://www.emlog.net/plugin/detail/385)
