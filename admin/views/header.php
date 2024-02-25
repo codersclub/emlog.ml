@@ -53,6 +53,7 @@
                     <?php if (User::isAdmin()): ?>
                         <a class="collapse-item" id="menu_sort" href="sort.php"><?= lang('categories') ?></a>
                         <a class="collapse-item" id="menu_tag" href="tag.php"><?= lang('tags') ?></a>
+                        <a class="collapse-item" id="menu_page" href="page.php"><?= lang('page_management') ?></a>
                     <?php endif ?>
                 </div>
             </div>
@@ -79,7 +80,6 @@
                         <a class="collapse-item" id="menu_tpl" href="template.php"><?= lang('templates') ?></a>
                         <a class="collapse-item" id="menu_navi" href="navbar.php"><?= lang('navigation') ?></a>
                         <a class="collapse-item" id="menu_widget" href="widgets.php"><?= lang('sidebar') ?></a>
-                        <a class="collapse-item" id="menu_page" href="page.php"><?= lang('page_management') ?></a>
                         <a class="collapse-item" id="menu_link" href="link.php"><?= lang('friend_links') ?></a>
                     </div>
                 </div>
