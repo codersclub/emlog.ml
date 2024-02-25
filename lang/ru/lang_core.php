@@ -194,7 +194,7 @@ $lang = array(
 //content/templates/default/module.php
 'view_image'		=> 'Показать изображение',//'查看图片',
 'more'			=> 'Подробнее &raquo;',//'更多&raquo;',
-'site_management'	=> 'Управление сайтом',//'管理',
+'site_management'	=> 'Админ Панель',//'管理',
 'logout'		=> 'Выход',//'退出',
 'top_posts'		=> 'Популярные статьи',//'置顶文章',
 'cat_top_posts'		=> 'Популярные статьи в категории',//'分类置顶文章',

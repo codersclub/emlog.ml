@@ -194,7 +194,7 @@ $lang = array(
 //content/templates/default/module.php
 'view_image'                 => 'View image',//'查看图片',
 'more'                       => 'More &raquo;',//'更多&raquo;',
-'site_management'            => 'Site management',//'管理',
+'site_management'            => 'Admin CP',//'管理',
 'logout'                     => 'Logout',//'退出',
 'top_posts'                  => 'Top entries',//'置顶文章',
 'cat_top_posts'              => 'Category Top entries',//'分类置顶文章',
