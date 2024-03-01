@@ -26,4 +26,3 @@ According to Article 25 of the Consumer Rights Protection Law, digital products 
 
 You can contact service QQ 15344528 for consultation
 
---the end--

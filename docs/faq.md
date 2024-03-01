@@ -227,5 +227,3 @@ Enter the left menu of the background: System - Settings, find [Home Page Bottom
 </a>
 ```
 
---the end--
-
