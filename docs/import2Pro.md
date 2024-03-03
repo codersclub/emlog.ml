@@ -1,8 +1,8 @@
 # &#x1F366; Migrate from other systems
 
-## Migrate from WordPress to emlog
+## Migrate from WordPress to Emlog
 
-You can use the RSS import function of [Toolbox Plug-in] to import WordPress articles and category data into emlog
+You can use the RSS import function of [Toolbox Plug-in] to import WordPress articles and category data into Emlog
 
 [Toolbox plug-in](https://www.emlog.net/plugin/detail/622)
 
@@ -10,9 +10,9 @@ You can use the RSS import function of [Toolbox Plug-in] to import WordPress art
 - Install and enable the plugin
 - Enter the plugin page, fill in the RSS address of WordPress, click Import and wait patiently.
 
-## Migrating from Typecho to emlog - Method 1
+## Migrating from Typecho to Emlog - Method 1
 
-You can use the RSS import function of [Toolbox Plug-in] to import Typecho articles and classification data into emlog
+You can use the RSS import function of [Toolbox Plug-in] to import Typecho articles and classification data into Emlog
 
 [Toolbox plug-in](https://www.emlog.net/plugin/detail/622)
 
@@ -20,6 +20,6 @@ You can use the RSS import function of [Toolbox Plug-in] to import Typecho artic
 - Install and enable the plugin
 - Enter the plug-in page, fill in the RSS address of Typecho, click Import and wait patiently.
 
-## Migrate from Typecho to emlog - Method 2
+## Migrate from Typecho to Emlog - Method 2
 
-[Migrate from Typecho to emlog](tp2Pro/)
+[Migrate from Typecho to Emlog](tp2Pro/)

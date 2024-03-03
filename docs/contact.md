@@ -6,19 +6,19 @@
 
 ![](qrcode_emlog_pro.jpg)
 
-&#x1F447; The personal public account of the emlog author (may share topics unrelated to emlog)
+&#x1F447; The personal public account of the Emlog author (may share topics unrelated to Emlog)
 
 ![](iemlog.jpg)
 
 ## Join QQ group
 
-Scan the QQ code to join the emlog user community (group number: 460197406)
+Scan the QQ code to join the Emlog user community (group number: 460197406)
 
 ![](qqgroup.jpeg)
 
 ## Feedback
 
-- Post in emlog community: https://emlog.cn
+- Post in Emlog community: https://emlog.cn
 
 ## Contact us
 

@@ -1,11 +1,11 @@
 # &#x1F352; API application: docking collector
 
-The docking collector publishes the collected articles to the site built by emlog.
+The docking collector publishes the collected articles to the site built by Emlog.
 This document takes [Train Collector](http://www.locoy.com/) as an example.
 
 ## Preparation
 
-- Enable API in emlog background: System settings -&gt; API, and copy the API key for backup
+- Enable API in Emlog background: System settings -&gt; API, and copy the API key for backup
 
 ## Content publishing rules
 
@@ -15,7 +15,7 @@ Web publishing configuration is as shown above:
 
 - Add a publishing module, see below
 - Set the Web page encoding to UTF-8
-- Website URL: fill in the URL of the website built by your emlog, such as: https://emlog.cn/
+- Website URL: fill in the URL of the website built by your Emlog, such as: https://emlog.cn/
 - Login method: Choose to not log in
 
 ## Add publishing module

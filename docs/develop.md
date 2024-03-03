@@ -1,6 +1,6 @@
 # &#x1F95D; Application Development - Preparation
 
-Emlog supports template themes and plug-ins extension. Developers can develop personalized template themes and functional plug-ins to enrich the functions and styles of the emlog site.
+Emlog supports template themes and plug-ins extension. Developers can develop personalized template themes and functional plug-ins to enrich the functions and styles of the Emlog site.
 
 ## Environmental requirements
 
@@ -18,7 +18,7 @@ Emlog supports template themes and plug-ins extension. Developers can develop pe
 
 ## Set up development environment
 
-Modify init.php in the emlog root directory and set it to development mode. The example is as follows. Eliminate all warning and notice errors (mostly caused by uninitialized variables or abnormal conditions of undetermined variables).
+Modify init.php in the Emlog root directory and set it to development mode. The example is as follows. Eliminate all warning and notice errors (mostly caused by uninitialized variables or abnormal conditions of undetermined variables).
 
 ```php
 <?php

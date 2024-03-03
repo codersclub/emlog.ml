@@ -1,4 +1,4 @@
-&#x1f36d; Upgrade emlog6.0.0 to pro
+&#x1f36d; Upgrade Emlog 6.0.0 to Emlog Pro
 ===================================
 
 ## Upgrade steps (please execute in order)
@@ -18,5 +18,5 @@
 
 ## Other version upgrades
 
-- [Upgrade 5.3.1 to pro](531toPro/)
-- [Upgrade 6.0.1 to pro (unofficial version)](601toPro/)
+- [Upgrade Emlog 5.3.1 to Emlog Pro](531toPro/)
+- [Upgrade Emlog 6.0.1 to Emlog Pro (unofficial version)](601toPro/)

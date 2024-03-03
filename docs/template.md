@@ -22,7 +22,7 @@ Emlog can easily replace templates. The template files are located in the conten
 
 ## Template engine
 
-emlog does not use any other third-party template engine and directly uses PHP's native syntax tags to embed HTML to generate dynamic pages. This not only reduces the learning burden of developers, but also greatly improves page loading and rendering efficiency.
+Emlog does not use any other third-party template engine and directly uses PHP's native syntax tags to embed HTML to generate dynamic pages. This not only reduces the learning burden of developers, but also greatly improves page loading and rendering efficiency.
 
 ```php
 // embedded variables
@@ -116,7 +116,7 @@ The information at the bottom of the site displays copyright, filing and other i
 |-----------------------|----|-------------|
 | $icp                  | Variable | ICP registration number set in the background |
 | $footer_info          | Variable | Page bottom information set in the background |
-| Option::EMLOG_VERSION | Constant | Current emlog version number |
+| Option::EMLOG_VERSION | Constant | Current Emlog version number |
 
 ### log_list.php
 
@@ -187,7 +187,7 @@ Template public code, including side widgets, comments, quotes, editing, etc.
 
 This file consists of several functions, which are called by the template file and can be customized with functions to achieve more functions.
 
-For example, when calling emlog cache in a custom function, assuming that user cache information is read, the form is: `global $CACHE; $user_cache = $CACHE->readCache('user');`
+For example, when calling Emlog cache in a custom function, assuming that user cache information is read, the form is: `global $CACHE; $user_cache = $CACHE->readCache('user');`
 
 If you need to operate the database, the format is as follows: `$DB = MySql::getInstance(); $res = $DB->query($sql);`
 
@@ -497,7 +497,7 @@ _getBlock('image-block', 'content')
 
 | Variables, constants  | Type | Description |
 |-----------------------|----|---------------------------------------------------------------|
-| Option::EMLOG_VERSION | Constant | Get the current emlog version number |
+| Option::EMLOG_VERSION | Constant | Get the current Emlog version number |
 | ROLE | Constant | Current user role (user group): admin administrator, writer registered user, visitor guest |
 | ROLE_ADMIN | Constant | admin Administrator |
 | ROLE_WRITER | Constant | writer registered user |
@@ -561,7 +561,7 @@ The pro version supports asynchronous ajax requests and returns information in j
 
 ## Reference demo
 
-The default theme that comes with the emlog system is the best demo. You can modify it to develop your own theme, or refer to some elements and files of the theme.
+The default theme that comes with the Emlog system is the best demo. You can modify it to develop your own theme, or refer to some elements and files of the theme.
 The directory where the default template is located: content/templates/default
 
 ## Open source release

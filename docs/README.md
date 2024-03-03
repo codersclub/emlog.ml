@@ -25,9 +25,9 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 ## Emlog official domains
 
 - Emlog.ML official site: <https://emlog.ru>
-- Chinese emlog official site: <https://www.emlog.net>
+- Chinese Emlog official site: <https://www.emlog.net>
 - Chinese official user community: <https://emlog.cn>
-- English emlog site: <https://emlog.in>
+- English Emlog site: <https://emlog.in>
 
 !> Except for the listed above domain names, all others sites are not official domain names, and some are even fake sites. For security reasons, please do not download installation packages and scripts from these unofficial domain names.
 
@@ -44,8 +44,8 @@ Emlog software is released under the Free Software Foundation\'s license GP Lv3 
 
 ## Software Copyright Statement
 
-- emlog is developed and maintained by Naduo Memory (network name), and the copyright belongs to Tianjin DiDi Memory Information Technology Co., Ltd.
-  emlog's intellectual property rights and all related information content, including but not limited to: text, graphics, interface design, layout framework, and related data, are protected by the relevant intellectual property laws and regulations of the People's Republic of China.
+- Emlog is developed and maintained by Naduo Memory (network name), and the copyright belongs to Tianjin DiDi Memory Information Technology Co., Ltd.
+  Emlog's intellectual property rights and all related information content, including but not limited to: text, graphics, interface design, layout framework, and related data, are protected by the relevant intellectual property laws and regulations of the People's Republic of China.
 - Software copyright registration number: 2023SR0497514
-- emlog trademark registration number: 68888345, 68812471
+- Emlog trademark registration number: 68888345, 68812471
 

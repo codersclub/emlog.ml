@@ -1,9 +1,9 @@
 # &#x1f34e; API documentation
 
 Emlog
-pro version supports the interface (API) calling function, and developers can interact with the emlog system by calling the API. For example: docking with article publishing software to realize automatic publication of articles; docking with WeChat applet to realize diversified article display; docking with browser plug-ins to realize more convenient note publishing function, etc. For detailed interface description, please refer to the following content.
+pro version supports the interface (API) calling function, and developers can interact with the Emlog system by calling the API. For example: docking with article publishing software to realize automatic publication of articles; docking with WeChat applet to realize diversified article display; docking with browser plug-ins to realize more convenient note publishing function, etc. For detailed interface description, please refer to the following content.
 
-!> This document is written based on the latest version of emlog pro. Lower versions may not be compatible. Please upgrade to the latest version first.
+!> This document is written based on the latest version of Emlog Pro. Lower versions may not be compatible. Please upgrade to the latest version first.
 
 ## Interface authentication
 
@@ -31,7 +31,7 @@ $req_sign = md5($req_time . $apikey); // MD5 signature
 
 ### (2) Cookie authentication
 
-The request needs to be accompanied by a login status cookie after the user logs in to the emlog system, which is used to identify the current login status and logged in user.
+The request needs to be accompanied by a login status cookie after the user logs in to the Emlog system, which is used to identify the current login status and logged in user.
 
 ```
 // Emlog login status cookie looks like:

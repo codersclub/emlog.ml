@@ -1,6 +1,6 @@
-# &#x1F354; 1Panel - manual emlog deployment
+# &#x1F354; 1Panel - manual Emlog deployment
 
-## Manually deploy emlog
+## Manually deploy Emlog
 
 ### Create PHP running environment
 
@@ -21,7 +21,7 @@ Click the [Website] menu on the left side of 1Panel to enter the [Runtime Enviro
 - Set root password, it is recommended to keep the default port 3306
 - Keep the port external access unchecked by default, and keep other default settings. Click OK to start the installation.
 
-2. Create a database: After the MySQL service is installed, continue to click Database-Create Database to create a database for installing emlog, as shown in the figure below
+2. Create a database: After the MySQL service is installed, continue to click Database-Create Database to create a database for installing Emlog, as shown in the figure below
 
 ![](1panel-006.png)
 
@@ -43,16 +43,16 @@ After installing OpenResty, click [Create Website] under the website menu, selec
 
 - Just fill in your own domain name and keep the others as default.
 
-### Upload files to install emlog
+### Upload files to install Emlog
 
 Then click [Configuration] of the newly created website to enter [Website Directory], and click the red circle in the picture below to enter the index folder of the website's main directory.
 
 ![](1panel-005.png)
 
-- Upload the latest version of emlog code to the index directory.
+- Upload the latest version of Emlog code to the index directory.
 - Pay attention to the file permissions. You need to modify the permissions of the entire index including subdirectories to: 775. The user group has read, write, and execute permissions.
 
-Then visit the domain name you just created and fill in. If everything is normal, you can see the emlog installation interface. Follow the prompts to complete the installation.
+Then visit the domain name you just created and fill in. If everything is normal, you can see the Emlog installation interface. Follow the prompts to complete the installation.
 
 ![](1panel-007.png)
 
@@ -62,8 +62,8 @@ Then visit the domain name you just created and fill in. If everything is normal
 ### Other configurations - enable pseudo-static URL
 
 - Click the [Website] menu on the left to enter the website management interface, click the domain name to enter the website settings
-- Find the [pseudo-static] setting on the left side of the basic settings, select: emlog in the plan, and save it
-- After setting up, you can turn on the relevant settings in the background SEO settings of emlog.
+- Find the [pseudo-static] setting on the left side of the basic settings, select: Emlog in the plan, and save it
+- After setting up, you can turn on the relevant settings in the background SEO settings of Emlog.
 
 ### Other configurations - enable HTTPS
 
@@ -71,6 +71,7 @@ Then visit the domain name you just created and fill in. If everything is normal
 - Find the [HTTPS] setting on the left side of the basic settings and enable HTTPS
 - Then follow the prompts to fill in the certificate-related configuration information.
 
-### Manual deployment of emlog completed
+### Manual deployment of Emlog completed
 
-At this point, the manual deployment of emlog is complete. You can explore more function settings by yourself.
+At this point, the manual deployment of Emlog is completed.
+You can explore more function settings by yourself.

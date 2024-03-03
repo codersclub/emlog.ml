@@ -79,7 +79,7 @@ It is only suitable for quick trial functions and is not recommended for use in 
    docker-compose up -d
    ```
 
-5. Visit the deployed emlog site: http://localhost
+5. Visit the deployed Emlog site: http://localhost
 
 ### Expand environment variables
 

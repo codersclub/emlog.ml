@@ -1,13 +1,13 @@
 # &#x1f36c; Emlog Pro FAQ
 
-## Can old versions of emlog5.3.1 and 6.0.0 be upgraded to pro?
+## Can old versions of Emlog 5.3.1 and 6.0.0 be upgraded to pro?
 
 Yes, please refer to the following upgrade guide:
 
 * 6.0.0 upgrade guide: [upgrade 6.0.0 to pro](600toPro/)
 * 5.3.1 upgrade guide: [upgrade 5.3.1 to pro](531toPro/)
 
-The old version of templates and plug-ins can be used in the emlog pro version without special adaptation. In addition, the old template plug-ins are mostly developed based on php5.6, and the PHP version can be switched to php5.6.
+The old version of templates and plug-ins can be used in the Emlog Pro version without special adaptation. In addition, the old template plug-ins are mostly developed based on php5.6, and the PHP version can be switched to php5.6.
 
 ## What editor does the Pro version use by default?
 
@@ -56,7 +56,7 @@ Insert the following html code in the editor and replace the mp3 address with th
 
 ![](iis-error.png)
 
-If you deploy emlog on a Windows operating system IIS server, you may encounter an error caused by the browser not being able to find the font file (woff/woff2). This will cause the browser to be unable to load the font icon.
+If you deploy Emlog on a Windows operating system IIS server, you may encounter an error caused by the browser not being able to find the font file (woff/woff2). This will cause the browser to be unable to load the font icon.
 This is because the server IIS does not recognize the woff/woff2 file type. The following is the solution (you can also search for: "IIS fonts are not displayed". There are many articles on the Internet that solve this problem):
 
 1. Open IIS and click MIME type in the main interface:
@@ -65,7 +65,8 @@ This is because the server IIS does not recognize the woff/woff2 file type. The 
     * .woff2 application/x-font-woff
 3. After adding it, just refresh the page.
 
-If the above method fails to solve the problem, check whether static CDN is enabled. emlog is a dynamic system and does not support static CDN. Enabling it may cause cross-domain problems in font loading, failure to load, and icons that cannot be displayed. Please turn off CDN.
+If the above method fails to solve the problem, check whether static CDN is enabled.
+Emlog is a dynamic system and does not support static CDN. Enabling it may cause cross-domain problems in font loading, failure to load, and icons that cannot be displayed. Please turn off CDN.
 
 ## How to hide the management background login page?
 
@@ -83,14 +84,14 @@ const ADMIN_PATH_CODE = 'xxx';
 
 If pro version users fill in their email address and configure the email notification function, they can use the password retrieval function directly on the background login page.
 
-You can also use the emlog password reset tool to reset your password:
+You can also use the Emlog password reset tool to reset your password:
 
 * [Tool download](https://oss.emlog.net/download/passwd.zip)
 
 Instructions:
 
 1. Unzip the downloaded zip package.
-2. Upload the decompressed passwd.php file to the root directory of emlog.
+2. Upload the decompressed passwd.php file to the root directory of Emlog.
 3. Visit in the browser: your website's domain name/passwd.php and follow the prompts to reset your password. Be sure to delete this file after the reset.
 
 ## How to upload very large files?
@@ -109,7 +110,8 @@ This problem is usually caused by an incorrect site address setting, or after en
 
 ![](WX20230311-143937.png)
 
-This problem occurs because the system cannot access the emlog official website server. The solution is as follows:
+This problem occurs because the system cannot access the Emlog official website server.
+The solution is as follows:
 
 1. Confirm whether the server PHP supports the curl extension, and check whether there is the word curl in the software information section of the homepage. If not, please install it.
 2. You can try to solve the problem by switching the PHP version.
@@ -136,9 +138,9 @@ After installing and enabling the plug-in, you can use the domain name change fu
 
 ## How to migrate the site when changing servers?
 
-1. Package and download all the files of the old server site, and export the database backup in emlog background-system-data.
-2. Install an emlog with the same version number on the new server.
-3. In the new emlog background-system-data, import the database backed up in step 1.
+1. Package and download all the files of the old server site, and export the database backup in Emlog background-system-data.
+2. Install an Emlog with the same version number on the new server.
+3. In the new Emlog background-system-data, import the database backed up in step 1.
 4. Upload and overwrite the content directory of the old server to the new server.
 5. If everything goes well, the migration is complete after completing the above steps.
 

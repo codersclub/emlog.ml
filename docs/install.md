@@ -6,7 +6,7 @@
 * MySQL 5.6 and above, recommended MySQL5.6 or MariaDB 10.3 and above
 * Recommended server environment: Linux + nginx
 * Server recommendation: cloud server, such as: [Alibaba Cloud ECS](https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=n4ts9qpa)
-* Server management panel software recommendation: [Pagoda Panel](https://www.bt.cn/) (Pagoda supports one-click deployment of emlog, which is very convenient)
+* Server management panel software recommendation: [Pagoda Panel](https://www.bt.cn/) (Pagoda supports one-click deployment of Emlog, which is very convenient)
 * Recommended browsers: Chrome, Edge
 
 ## Universal installation

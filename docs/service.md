@@ -2,7 +2,7 @@
 
 ## install service
 
-- Provide new installation and configuration emlog website services (including new server installation control panel, configuration of SSL certificate, etc.)
+- Provide new installation and configuration Emlog website services (including new server installation control panel, configuration of SSL certificate, etc.)
 - You need to prepare domain name and cloud server in advance
 
 Price: `360 yuan` (free hardcore VIP registration code), please contact the service `QQ 15344528` for consultation

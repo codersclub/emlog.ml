@@ -15,7 +15,7 @@ During the whole operation of Emlog, we set some action events. When encounterin
 doAction('save_log', $id);
 ```
 
-This function is built into the emlog core code and is the legendary plug-in mounting point.
+This function is built into the Emlog core code and is the legendary plug-in mounting point.
 This function has a fixed parameter: $hook, which is the name of the action to be performed,
 other parameters can be passed in sequentially when calling this function, and the function will automatically send it to the hook function.
 
@@ -442,7 +442,7 @@ It is not supported yet. Currently, you can use the above two methods instead, a
 
 #### &#x1F534;Important hint
 
-!> Plug-ins must not modify emlog core database tables and fields, including adding fields to core tables. Especially adding fields that don't have default values.
+!> Plug-ins must not modify Emlog core database tables and fields, including adding fields to core tables. Especially adding fields that don't have default values.
 
 ## Mount point type
 

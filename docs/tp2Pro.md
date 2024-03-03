@@ -1,12 +1,12 @@
-# &#x1F366; Migrate to emlog from typecho
+# &#x1F366; Migrate to Emlog from Typecho
 
 ## Preface
 
-This is a typecho plug-in for migrating Typecho article data to emlog pro
+This is a typecho plug-in for migrating Typecho article data to Emlog Pro
 
 ## Preparation before migration
 
-- You need to prepare the typecho program for the old site and the emlog pro program for the new site
+- You need to prepare the typecho program for the old site and the Emlog Pro program for the new site
 - If your articles exceed thousands or tens of thousands, please calculate the time yourself: 5,000 articles * 2 seconds = 10,000 seconds
 
 ## Install the migration plug-in in typecho
@@ -16,8 +16,8 @@ This is a typecho plug-in for migrating Typecho article data to emlog pro
 
 ## Migration steps:
 
-- Old site: aa.com Program: typecho
-- New site: bb.com Program: emlog
+- Old site: aa.com Program: Typecho
+- New site: bb.com Program: Emlog
 - Note: All articles that have been reviewed are migrated
 
 
@@ -27,7 +27,7 @@ This is a typecho plug-in for migrating Typecho article data to emlog pro
 ## Precautions:
 
 - File tinfeng.txt will be automatically created in the plug-in directory. If it cannot be created, it may be a permission setting issue.
-- Enable API in emlog system-settings-api settings
+- Enable API in Emlog System-&gt;Settings-&gt;API settings
 - During migration, do not close the page
 
 ## Half of the migration, stuck or failed processing

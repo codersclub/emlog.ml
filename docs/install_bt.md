@@ -1,4 +1,4 @@
-# &#x1f964; One-click emlog deployment and installation in Pagoda panel
+# &#x1f964; One-click Emlog deployment and installation in Pagoda panel
 
 ## Introduction
 
@@ -15,11 +15,11 @@ Pagoda Panel is a server management software that supports more than 100 server 
 - PHP5.6 or higher, PHP7.4 recommended
 - MySQL5.6 or higher, MySQL5.6 is recommended
 
-## Start deploying emlog
+## Start deploying Emlog
 
-### 1. Search emlog in software store
+### 1. Search "emlog" in software store
 
-#### Software Store -> Application search emlog, application classification one-click deployment
+#### Software Store -> Search Application "emlog", Application category one-click deployment
 
 ![](bt1.png)
 

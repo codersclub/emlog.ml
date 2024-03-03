@@ -620,7 +620,7 @@ Release date: 2021-09-20
 - [feature] Resource management: add support for uploading mp4 video files and inserting videos into articles
 - [feature] Add user login IP and time display
 - [feature] Optimize the store, display plugins and templates separately
-- [feature] Write the default template "Powered by emlog" into the database, which is convenient for users to modify and delete in the settings
+- [feature] Write the default template "Powered by Emlog" into the database, which is convenient for users to modify and delete in the settings
 - [fix] Solve the problem that the page cannot insert resources.
 - [fix] Optimize registration configuration writing, increase registration success rate
 - [fix] Solve the problem that the default template display release time is wrong
@@ -675,7 +675,7 @@ Release date: 2021-07-17
 
 Release date: 2021-07-10
 
-- [feature] hi emlog pro, a new world
+- [feature] Hi Emlog Pro, a new world
 
 ---
 
