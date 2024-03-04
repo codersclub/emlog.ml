@@ -1,5 +1,17 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.2.9
+
+Release date: 2024-2-27
+
+- [Function] Add batch review and rejection functions for articles
+- [Function] Add article publishing preprocessing mount point (pre_save_log) to facilitate the development of plug-ins such as xss filtering.
+- [Function] Optimize the app store and other interface details
+- [Fix] The problem of no animation in the pop-up window of editing article & page media resources
+- [Fix] The problem that the resource pop-up window on the edit page cannot use Media categories
+
+Installation package: [emlog_pro_2.2.9.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.9.zip)
+
 ## Pro 2.2.8
 
 Release date: 2024-1-26
