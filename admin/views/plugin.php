@@ -31,6 +31,10 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
+    <div>
+        <a href="store.php?action=plu" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> 应用商店</a>
+        <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
+    </div>
 </div>
 <div class="panel-heading">
     <ul class="nav nav-tabs">
@@ -48,12 +52,14 @@
 <div class="card shadow mb-4">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover dataTable no-footer">
+            <div class="my-3" id="upMsg"></div>
+            <table class="table table-striped table-hover dataTable no-footer">
                 <thead>
                 <tr>
                     <th><?= lang('plugin_name') ?></th>
                     <th><?= lang('plugin_status') ?></th>
                     <th><?= lang('description') ?></th>
+                    <th><?= lang('author') ?></th>
                     <th><?= lang('version') ?></th>
                     <th><?= lang('operation') ?></th>
                 </tr>
@@ -76,17 +82,23 @@
                         $alias = $val['alias'];
                         ?>
                         <tr data-plugin-alias="<?= $val['Plugin'] ?>" data-plugin-version="<?= $val['Version'] ?>">
-                            <td><?= $val['Name'] ?></td>
+                            <td><img src="<?= $val['preview'] ?>" height="45" width="45" class="rounded"/></td>
                             <td>
-                                <input class="mui-switch mui-switch-animbg" type="checkbox" id="sw<?= $i ?>" <?= $plug_state ?> onchange="toggleSwitch('<?= $alias ?>', '<?= 'sw' . $i ?>', '<?= LoginAuth::genToken() ?>')">
+                                <?= $val['Name'] ?>
+                                <div class="small mt-3">
+                                    <?= $val['Description'] ?>
+                                    <?php if (strpos($val['Url'], 'https://www.emlog.net') === 0): ?><a href="<?= $val['Url'] ?>" target="_blank">更多信息&raquo;</a><?php endif ?>
+                                </div>
                             </td>
                             <td>
-                                <?= $val['Description'] ?>
-                                <?php if ($val['Url'] != ''): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_info') ?></a><?php endif ?>
-                                <div class="small mt-3">
+                                <div class="mt-3">
+                                    <input class="mui-switch mui-switch-animbg" type="checkbox" id="sw<?= $i ?>" <?= $plug_state ?> onchange="toggleSwitch('<?= $alias ?>', '<?= 'sw' . $i ?>', '<?= LoginAuth::genToken() ?>')">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mt-3">
                                     <?php if ($val['Author'] != ''): ?>
-<!--vot-->                                    <?= lang('author') ?>:
-                                        <?php if ($val['AuthorUrl'] != ''): ?>
+<!--vot-->                              <?php if (!empty($val['AuthorUrl'])): ?>
                                             <a href="<?= $val['AuthorUrl'] ?>" target="_blank"><?= $val['Author'] ?></a>
                                         <?php else: ?>
                                             <?= $val['Author'] ?>
@@ -94,20 +106,25 @@
                                     <?php endif ?>
                                 </div>
                             </td>
-                            <td><?= $val['Version'] ?></td>
                             <td>
-                                <a href="javascript: em_confirm('<?= $alias ?>', 'plu', '<?= LoginAuth::genToken() ?>');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-                                <span class="update-btn"></span>
+                                <div class="mt-3 small">
+                                    <?= $val['Version'] ?>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mt-3">
+                                    <a href="javascript: em_confirm('<?= $alias ?>', 'plu', '<?= LoginAuth::genToken() ?>');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+                                    <span class="update-btn"></span>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; else: ?>
                     <tr>
-                        <td colspan="5"><?= lang('plugin_not_found') ?></td>
+                        <td colspan="6"><?= lang('plugin_not_found') ?></td>
                     </tr>
                 <?php endif ?>
                 </tbody>
             </table>
-            <div class="my-3" id="upMsg"></div>
         </div>
     </div>
 </div>

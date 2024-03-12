@@ -74,6 +74,7 @@ if ($action === 'plu') {
         1  => lang('plu_category_1'),
         2  => lang('plu_category_2'),
         18 => lang('plu_category_18'),
+        3  => lang('plu_category_3'),
         4  => lang('plu_category_4'),
         5  => lang('plu_category_5'),
         11 => lang('plu_category_11'),
@@ -81,7 +82,9 @@ if ($action === 'plu') {
         14 => lang('plu_category_14'),
         13 => lang('plu_category_13'),
         15 => lang('plu_category_15'),
+        20 => lang('plu_category_20'),
         6  => lang('plu_category_6')
+
     ];
 
     $r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id, $sid);

@@ -1,8 +1,8 @@
 <?php
 /*
-Template options plug-in
+Plugin Name: Template options
 Version: 4.2.5
-Plugin URL: https://www.emlog.net/plugin/detail/377
+Plugin URL: https://www.emlog.net/docs/#/template?id=%e6%a8%a1%e6%9d%bf%e8%ae%be%e7%bd%ae
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
 Author: emlog
 Author URL: https://www.emlog.net/author/index/577

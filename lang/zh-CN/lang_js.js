@@ -50,7 +50,7 @@ var LNG = {
 
 //---------------------------
 //admin/views/js/common.js
-    'twitter_del_sure': '确定要删除该笔记吗？',//'Are you sure you want to delete this note?',
+    'twitter_del_sure': '确定要删除该条微语吗？',//'Are you sure you want to delete this note?',
     'comment_del_sure': '确定要删除该评论吗？',//'Are you sure you want to delete this comment?',
     'comment_ip_del_sure': '确定要删除来自该IP的所有评论吗？',//'Are you sure you want to delete all comments from that IP?',
     'link_del_sure': '确定要删除该链接吗？',//'Are you sure you want to delete this link?',

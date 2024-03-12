@@ -30,7 +30,10 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('template_manager') ?></h1>
-    <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('template_add') ?></a>
+    <div>
+        <a href="store.php" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> 应用商店</a>
+        <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('template_add') ?></a>
+    </div>
 </div>
 <div class="row app-list">
     <?php foreach ($templates as $key => $value): ?>
@@ -43,7 +46,7 @@
                 </div>
                 <div class="card-body">
                     <a href="template.php?action=use&tpl=<?= $value['tplfile'] ?>&token=<?= LoginAuth::genToken() ?>">
-                        <img class="card-img-top" src="<?= TPLS_URL . $value['tplfile'] ?>/preview.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="<?= $value['preview'] ?>" alt="preview image">
                     </a>
                 </div>
                 <div class="card-footer">
@@ -51,12 +54,14 @@
                     <?php if ($value['version']): ?>
                         <div class="small"><?=lang('version_number')?>: <?= $value['version'] ?></div>
                     <?php endif ?>
-                    <?php if ($value['author']): ?>
-                        <div class="small"><?= lang('template_author') ?>: <?= $value['author'] ?></div>
+<!--vot-->          <?php if (!empty($value['author_url']): ?>
+                        <div class="small"><?= lang('author') ?>: <a href="<?= $value['author_url'] ?>" target="_blank"><?= $value['author'] ?></a></div>
+                    <?php else: ?>
+                        <div class="small"><?= lang('author') ?>: <?= $value['author'] ?></div>
                     <?php endif ?>
                     <div class="small">
                         <?= $value['tpldes'] ?>
-                        <?php if ($value['tplurl']): ?>
+                        <?php if (strpos($value['tplurl'], 'https://www.emlog.net') === 0): ?>
                             <a href="<?= $value['tplurl'] ?>" target="_blank"><?= lang('more_info') ?></a>
                         <?php endif ?>
                     </div>

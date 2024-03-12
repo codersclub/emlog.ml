@@ -79,6 +79,8 @@ define('BLOG_URL', Option::get('blogurl'));
 const TPLS_URL = BLOG_URL . 'content/templates/';
 //Template Library Path
 const TPLS_PATH = EMLOG_ROOT . '/content/templates/';
+const PLUGIN_URL = BLOG_URL . 'content/plugins/';
+const PLUGIN_PATH = EMLOG_ROOT . '/content/plugins/';
 
 //Site URL
 define('DYNAMIC_BLOGURL', Option::get('blogurl'));

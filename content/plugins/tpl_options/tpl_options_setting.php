@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Template options plugin
+Plugin Name: Template options
 */
 defined('EMLOG_ROOT') || exit('access denied!');
 

@@ -84,8 +84,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item" id="menu_store">
-                <a class="nav-link" href="store.php"><i class="icofont-shopping-cart"></i><span><?= lang('app_store') ?></span></a>
+            <li class="nav-item" id="menu_category_ext">
+                <a class="nav-link" href="plugin.php"><i class="icofont-plugin"></i><span><?= lang('plugins') ?></span></a>
             </li>
             <li class="nav-item" id="menu_category_sys">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_sys" aria-expanded="true" aria-controls="menu_sys">
@@ -98,16 +98,8 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item" id="menu_category_ext">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_ext" aria-expanded="true" aria-controls="menu_ext">
-                    <i class="icofont-plugin"></i><span><?= lang('extensions') ?></span>
-                </a>
-                <div id="menu_ext" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" id="menu_plug" href="plugin.php"><?= lang('plugins') ?></a>
-                        <?php doAction('adm_menu_ext') ?>
-                    </div>
-                </div>
+            <li class="nav-item" id="menu_store">
+                <a class="nav-link" href="store.php"><i class="icofont-shopping-cart"></i><span><?= lang('app_store') ?></span></a>
             </li>
             <hr class="sidebar-divider d-none d-md-block">
             <?php doAction('adm_menu') ?>

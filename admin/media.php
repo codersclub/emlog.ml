@@ -88,7 +88,7 @@ if ($action === 'upload') {
         $attach = isset($_FILES['editormd-image-file']) ? $_FILES['editormd-image-file'] : '';
     }
 
-    // Registered users are limited in the number of posts (including drafts) within 24 hours. When it is 0, it is forbidden to post notes and upload graphic resources
+    // Registered users are limited to the number of posts they can post in a 24-hour period (including drafts). When the limit is 0, posting tweets and uploading graphic resources are prohibited.
     if (!User::haveEditPermission() && Option::get('posts_per_day') <= 0) {
         $ret['message'] = lang('upload_restricted');
         if ($editor) {
@@ -165,6 +165,18 @@ if ($action === 'operate_media') {
             emDirect("media.php?active_mov=1");
             break;
     }
+}
+
+if ($action === 'update_media') {
+    $filename = Input::postStrVar('filename');
+    $id = Input::postIntVar('id');
+
+    if (empty($filename)) {
+        emDirect("./media.php?error_a=1");
+    }
+
+    $Media_Model->updateMedia(["filename" => $filename], $id);
+    emDirect("./media.php?active_edit=1");
 }
 
 if ($action === 'add_media_sort') {

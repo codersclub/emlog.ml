@@ -65,7 +65,7 @@
                     <a href="<?= $media_url ?>" <?= $imgviewer ?> target="_blank"><img class="card-img-top" src="<?= $media_icon ?>"/></a>
                     <div class="card-body">
                         <p class="card-text text-muted small">
-                            <?= $media_name ?> <span class="badge badge-primary"><?= $sort_name ?></span><br>
+                            <a href="#" data-toggle="modal" data-target="#editMediaModal" data-id="<?= $value['aid'] ?>" data-filename="<?= $media_name ?>"><?= $media_name ?></a> <span class="badge badge-primary"><?= $sort_name ?></span><br>
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
                             <?= lang('founder') ?>: <?= $author ?>,
                             <?php if (User::haveEditPermission()): ?>
@@ -141,7 +141,7 @@
             <form action="media.php?action=add_media_sort" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="alias"><?= lang('category_name') ?></label>
+                        <label for="sortname"><?= lang('category_name') ?></label>
                         <input class="form-control" id="sortname" maxlength="255" name="sortname" required>
                     </div>
                 </div>
@@ -180,6 +180,32 @@
     </div>
 </div>
 
+<div class="modal fade" id="editMediaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">编辑资源</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="media.php?action=update_media">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="alias">资源名称</label>
+                        <input type="text" class="form-control" id="filename" name="filename" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" value="" id="id" name="id"/>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-sm btn-success">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <link rel="stylesheet" type="text/css" href="./views/components/highslide/highslide.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"/>
 <script src="./views/components/highslide/highslide.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
@@ -210,6 +236,15 @@
             var id = button.data('id')
             var modal = $(this)
             modal.find('.modal-body input').val(sortname)
+            modal.find('.modal-footer input').val(id)
+        })
+
+        $('#editMediaModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var filename = button.data('filename')
+            var id = button.data('id')
+            var modal = $(this)
+            modal.find('.modal-body input').val(filename)
             modal.find('.modal-footer input').val(id)
         })
 

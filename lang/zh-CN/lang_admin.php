@@ -131,12 +131,13 @@ $lang = array(
     'tpl_category_10' => '其他',//'Other',
     'plu_category_11' => '用户互动',//'User Interaction',
     'plu_category_12' => '内容运营',//'Content Operation',
-    'plu_category_13' => '移动端',//'Mobile terminal',
+    'plu_category_13' => '移动端',//'Mobile terminal (mini program)',
     'plu_category_14' => '编程开发',//'Program development',
-    'plu_category_15' => '内容创作（编辑器）',//'Content Creation (Editor)',
+    'plu_category_15' => '内容创作（编辑器）',//'Content Creation',
     'tpl_category_17' => '网址导航',//'Site navigation',
     'tpl_category_18' => '微信生态',//'WeChat Ecosystem',
     'tpl_category_19' => '企业展示',//'Enterprise Show',
+    'plu_category_20' => '编辑器',//'Editor',
     'free_zone' => '仅看免费',//'Free only',
     'paid_zone' => '仅看付费',//'Paid only',
     'search_by_category' => '按分类查找',//'Search by category',
@@ -559,7 +560,7 @@ $lang = array(
 //---------------------------
 //admin/views/links.php
     'link_add' => '新建链接',//'Add Link',
-    'link_management' => '友情链接',//'Friend links',
+    'link_management' => '链接',//'Links',
     'links_created' => '已创建的链接',//'Links created',
     'order' => '排序',//'Order',
     'edit_link' => '编辑链接',//'Edit link',
@@ -602,7 +603,7 @@ $lang = array(
     'founder' => '创建人',//'Author',
     'this_user_files'	=> '仅看TA的',//'All files of this author',
     'image_address_original' => '原图地址',//'Original image address',
-    'media_category_add_ok' => '分类添加成功',//'Category added successfully',
+    'media_category_add_ok' => '添加成功',//'Category added successfully',
     'media_category_add' => '添加资源分类',//'Add media category',
     'category_name' => '分类名称',//'Category Name',
     'modify' => '修改',//'Modify',
@@ -684,7 +685,7 @@ $lang = array(
     'plugin_active_click' => '点击开启插件',//'Click to activate the plug-in',
     'plugin_disable_click' => '点击禁用插件',//'Click to disable the plug-in',
     'plugin_settings_click' => '点击设置插件',//'Click to plug-in settings',
-    'more_info' => '更多信息&raquo;',//'更多介绍&raquo;',//'More Info&raquo;',
+    'more_info' => '更多信息&rarr;',//'More Info&rarr;',
     'plugin_no_installed' => '还没有安装插件',//'No installed plugins',
     'plugin_not_found' => '未找到插件',//'Plugin not found',
     'plugin_install' => '安装插件',//'Install plugin',
@@ -834,8 +835,8 @@ $lang = array(
     'api_list' => 'API接口列表',//'List of API interfaces',
     'api_1' => '1. 文章发布 (可用于对接内容发布软件，文章发布接口URL：',//'1. Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',
     'api_2' => '2. 分类列表',//'2. Article details',
-    'api_3' => '3. 笔记发布',//'3. Category list',
-    'api_4' => '4. 笔记列表',//'4. Note list',
+    'api_3' => '3. 微语发布',//'3. Note publishing',
+    'api_4' => '4. 微语列表',//'4. Note list',
     'api_5' => '5. 资源文件上传',//'5. Resource file upload',
     'api_more' => '更多接口',//'More info',
     'api_docs' => '详见接口文档→',//'See the API documentation for details→',
@@ -984,7 +985,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/template.php
-    'template_manager' => '模板外观',//'Templates',
+    'template_manager' => '模板主题',//'Templates',
     'template_current' => '当前模板',//'Current template',
     'template_change_ok' => '模板更换成功',//'Template have been replaced successfully',
     'template_current_use' => '当前使用的模板',//'Currently used template',
@@ -1036,14 +1037,14 @@ $lang = array(
 //---------------------------
 //admin/views/twitter.php
     'twitter_del_ok' => '笔记删除成功',//'Note deleted successfully',
-    'twitter_empty' => '笔记内容不能为空',//'Note content cannot be empty',
+    'twitter_empty' => '内容不能为空',//'Content cannot be empty',
     'twitter_add' => '微语笔记',//'Add a note',
     'twitter_prompt' => '捕捉稍纵即逝的想法，记录生活中的点点滴滴',//'Capture fleeting thoughts and record every moment in life',
     'twitter_save' => '保存笔记',//'Save the note',
     'twitters' => '笔记',//'Notes',
-    '_twitters' => '条笔记',//' note(s)',
-    'twitter_edit' => '编辑笔记',//'Edit note',
-    'twitter_post_disabled' => '抱歉，系统限制用户发布笔记',//'Sorry, the system restricts users from posting notes',
+    '_twitters' => '条微语',//' note(s)',
+    'twitter_edit' => '编辑微语',//'Edit note',
+    'twitter_post_disabled' => '抱歉，系统限制用户发布微语笔记',//'Sorry, the system restricts users from posting notes',
 
 //---------------------------
 //admin/views/upload.php

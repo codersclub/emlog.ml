@@ -50,6 +50,34 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card" id="twitter">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed widget-title" type="button" data-toggle="collapse" data-target="#twitterForm" aria-expanded="false"
+                                        aria-controls="collapseThree">微语
+                                </button>
+                                <li class="widget-act-add"></li>
+                                <li class="widget-act-del"></li>
+                            </h2>
+                        </div>
+                        <div id="twitterForm" class="collapse" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <form action="widgets.php?action=setwg&wg=twitter" method="post">
+                                    <div class="form-group">
+                                        <label>标题</label>
+                                        <input type="text" name="title" class="form-control" value="<?= $customWgTitle['twitter']; ?>"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>展示数量</label>
+                                        <input maxlength="5" size="10" class="form-control" type="number" min="1" required value="<?= Option::get('index_newtwnum'); ?>" name="index_newtwnum"/>
+                                    </div>
+                                    <input type="submit" name="" value="保存" class="btn btn-success btn-sm"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card" id="tag">
                         <div class="card-header">
                             <h2 class="mb-0">
@@ -126,15 +154,18 @@
                         <div id="newcommFrom" class="collapse" data-parent="#accordionExample">
                             <div class="card-body">
                                 <form action="widgets.php?action=setwg&wg=newcomm" method="post">
-                                    <li><?= lang('title') ?></li>
-                                    <li><input type="text" name="title" class="form-control" value="<?= $customWgTitle['newcomm'] ?>"/></li>
-                                    <li><?= lang('last_comments_num') ?></li>
-                                    <li><input class="form-control" maxlength="5" size="10" value="<?= Option::get('index_comnum') ?>" name="index_comnum"/></li>
-                                    <li><?= lang('new_comments_length') ?></li>
-                                    <li>
+                                    <div class="form-group">
+                                        <label><?= lang('title') ?></label>
+                                        <input type="text" name="title" class="form-control" value="<?= $customWgTitle['newcomm'] ?>"/>
+                                    <div class="form-group">
+                                        <label><?= lang('last_comments_num') ?></label>
+                                        <input class="form-control" maxlength="5" size="10" value="<?= Option::get('index_comnum') ?>" name="index_comnum"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?= lang('new_comments_length') ?></label>
                                         <input class="form-control" maxlength="5" size="10" value="<?= Option::get('comment_subnum') ?>" name="comment_subnum"/>
+                                    </div>
                                         <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
-                                    </li>
                                 </form>
                             </div>
                         </div>
@@ -152,13 +183,15 @@
                         <div id="newlogForm" class="collapse" data-parent="#accordionExample">
                             <div class="card-body">
                                 <form action="widgets.php?action=setwg&wg=newlog" method="post">
-                                    <li><?= lang('title') ?></li>
-                                    <li><input type="text" name="title" class="form-control" value="<?= $customWgTitle['newlog'] ?>"/></li>
-                                    <li><?= lang('new_posts_show') ?></li>
-                                    <li>
+                                    <div class="form-group">
+                                        <label><?= lang('title') ?></label>
+                                        <input type="text" name="title" class="form-control" value="<?= $customWgTitle['newlog'] ?>"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?= lang('new_posts_show') ?></label>
                                         <input class="form-control" maxlength="5" size="10" value="<?= Option::get('index_newlognum') ?>" name="index_newlog"/>
-                                        <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
-                                    </li>
+                                    </div>
+                                    <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
                                 </form>
                             </div>
                         </div>
@@ -176,13 +209,15 @@
                         <div id="hotlogForm" class="collapse" data-parent="#accordionExample">
                             <div class="card-body">
                                 <form action="widgets.php?action=setwg&wg=hotlog" method="post">
-                                    <li><?= lang('title') ?></li>
-                                    <li><input type="text" name="title" class="form-control" value="<?= $customWgTitle['hotlog'] ?>"/></li>
-                                    <li><?= lang('hot_posts_home') ?></li>
-                                    <li>
+                                    <div class="form-group">
+                                        <label><?= lang('title') ?></label>
+                                        <input type="text" name="title" class="form-control" value="<?= $customWgTitle['hotlog'] ?>"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?= lang('hot_posts_home') ?></label>
                                         <input class="form-control" maxlength="5" size="10" value="<?= Option::get('index_hotlognum') ?>" name="index_hotlognum"/>
-                                        <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
-                                    </li>
+                                    </div>
+                                    <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
                                 </form>
                             </div>
                         </div>

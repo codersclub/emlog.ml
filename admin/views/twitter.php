@@ -15,7 +15,7 @@
     <div class="form-group">
         <div id="t"><textarea></textarea></div>
     </div>
-    <button type="submit" class="btn btn-sm btn-success"><?= lang('twitter_save') ?></button>
+    <button type="submit" class="btn btn-sm btn-success"><?= lang('publish') ?></button>
 </form>
 <div class="card-columns mt-5">
     <?php
