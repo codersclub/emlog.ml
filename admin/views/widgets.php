@@ -157,6 +157,7 @@
                                     <div class="form-group">
                                         <label><?= lang('title') ?></label>
                                         <input type="text" name="title" class="form-control" value="<?= $customWgTitle['newcomm'] ?>"/>
+                                    </div>
                                     <div class="form-group">
                                         <label><?= lang('last_comments_num') ?></label>
                                         <input class="form-control" maxlength="5" size="10" value="<?= Option::get('index_comnum') ?>" name="index_comnum"/>
@@ -165,7 +166,7 @@
                                         <label><?= lang('new_comments_length') ?></label>
                                         <input class="form-control" maxlength="5" size="10" value="<?= Option::get('comment_subnum') ?>" name="comment_subnum"/>
                                     </div>
-                                        <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
+                                    <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
                                 </form>
                             </div>
                         </div>
