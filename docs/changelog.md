@@ -1,5 +1,21 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.2.10
+
+Release date: 2024-3-11
+
+- [Function] Notes are renamed to Twits (微语, Weiyu, Only in Chinese!),
+  the front sidebar supports Twits display,
+  and the backend sidebar management supports Twits
+- [Function] Resource management supports editing resource names
+- [Function] Optimize the plug-in list, and the plug-in supports displaying cover icons
+- [Function] The default theme settings support modifying the browser icon (favicon)
+- [Function] Add commonly used functions and plug-in quick access to the backend homepage
+- [Fix] UI adjustments such as background menu
+
+Installation package: [emlog_pro_2.2.10.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.10.zip)
+
+
 ## Pro 2.2.9
 
 Release date: 2024-2-27
