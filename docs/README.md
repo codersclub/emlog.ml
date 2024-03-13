@@ -29,7 +29,7 @@ Emlog is a lightweight blog and CMS website building system, dedicated to creati
 - Chinese official user community: <https://emlog.cn>
 - English Emlog site: <https://emlog.in>
 
-!> Except for the listed above domain names, all others sites are not official domain names, and some are even fake sites. For security reasons, please do not download installation packages and scripts from these unofficial domain names.
+> Except for the listed above domain names, all others sites are not official domain names, and some are even fake sites. For security reasons, please do not download installation packages and scripts from these unofficial domain names.
 
 ## Github
 

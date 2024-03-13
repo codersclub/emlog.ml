@@ -13,7 +13,7 @@ Release date: 2018-10-02
 - Deleted Weiyu\Delete mobile version
 - Compatible with php7.2
 
-!> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
+> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
 
 Installation package: [emlog_6.0.0.zip](https://oss.emlog.net/download/release/emlog_6.0.0.zip)
 
@@ -31,7 +31,7 @@ Release date: 2014-07-21
 - Repair possible security risks in database backup
 - Fix the problem of line break in editorial comments
 
-!> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
+> This version is too old and has security risks. Please install the latest pro version. The pro version is an upgrade to 5.3.1 and 6.0.0, involving more than 200 function improvements and optimizations, more functions, faster speed, and more Safety.
 
 Installation package: [emlog_5.3.1.zip](https://oss.emlog.net/download/release/emlog_5.3.1.zip)
 

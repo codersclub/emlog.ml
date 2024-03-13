@@ -442,7 +442,7 @@ It is not supported yet. Currently, you can use the above two methods instead, a
 
 #### &#x1F534;Important hint
 
-!> Plug-ins must not modify Emlog core database tables and fields, including adding fields to core tables. Especially adding fields that don't have default values.
+> Plug-ins must not modify Emlog core database tables and fields, including adding fields to core tables. Especially adding fields that don't have default values.
 
 ## Mount point type
 

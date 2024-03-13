@@ -259,7 +259,7 @@ The following code format is the plug-in mounting point in the template. Refer t
 <?php doAction('xxx') ?>
 ```
 
-!> Note: Be sure to refer to the default template when developing templates to retain the following mount points to facilitate compatibility with other plug-ins.
+> Note: Be sure to refer to the default template when developing templates to retain the following mount points to facilitate compatibility with other plug-ins.
 
 | Mount point | Owned file | Change point description | Example |
 |----------------------------------|------------- -|-----------------------------|----|
