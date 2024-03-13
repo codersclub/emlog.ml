@@ -8,4 +8,5 @@ $lang = array(
 	'blog'			=> '博客',//'Blog',
 	'download'		=> '下载',//'Download',
 	'docs'			=> '文档',//'Docs',
+	'twitters'		=> '微语',//'Notes',
 );

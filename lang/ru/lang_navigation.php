@@ -8,4 +8,5 @@ $lang = array(
 	'blog'			=> 'Блог',//'Blog',
 	'download'		=> 'Скачать',//'Download',
 	'docs'			=> 'Документация',//'Docs',
+	'twitters'		=> 'Заметки',//'Notes',
 );
