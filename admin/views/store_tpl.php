@@ -77,7 +77,7 @@
                                 <small>
                                     <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= lang('this_author_only') ?></a><br>
                                     <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
-                                    下载次数：<?= $v['downloads'] ?><br>
+                                    <?= lang('download_count') ?>: <?= $v['downloads'] ?><br>
                                     <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
                                 </small>
                             </p>

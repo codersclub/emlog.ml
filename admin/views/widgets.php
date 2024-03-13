@@ -55,7 +55,7 @@
                         <div class="card-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed widget-title" type="button" data-toggle="collapse" data-target="#twitterForm" aria-expanded="false"
-                                        aria-controls="collapseThree">微语
+                                        aria-controls="collapseThree"><?= lang('twitters') ?>
                                 </button>
                                 <li class="widget-act-add"></li>
                                 <li class="widget-act-del"></li>
@@ -65,14 +65,14 @@
                             <div class="card-body">
                                 <form action="widgets.php?action=setwg&wg=twitter" method="post">
                                     <div class="form-group">
-                                        <label>标题</label>
+                                        <label><?= lang('title') ?></label>
                                         <input type="text" name="title" class="form-control" value="<?= $customWgTitle['twitter']; ?>"/>
                                     </div>
                                     <div class="form-group">
-                                        <label>展示数量</label>
+                                        <label><?= lang('twitter_latest_num') ?></label>
                                         <input maxlength="5" size="10" class="form-control" type="number" min="1" required value="<?= Option::get('index_newtwnum'); ?>" name="index_newtwnum"/>
                                     </div>
-                                    <input type="submit" name="" value="保存" class="btn btn-success btn-sm"/>
+                                    <input type="submit" name="" value="<?= lang('save') ?>" class="btn btn-success btn-sm"/>
                                 </form>
                             </div>
                         </div>

@@ -31,7 +31,7 @@
                         <p class="card-text text-muted small">
                             <?=lang('developer')?>: <?= $v['author'] ?><br>
                             <?=lang('version_number')?>: <?= $v['ver'] ?><br>
-                            下载次数：<?= $v['downloads'] ?><br>
+                            <?= lang('download_count') ?>: <?= $v['downloads'] ?><br>
                             <?=lang('update_time')?>: <?= $v['update_time'] ?><br>
                         </p>
                         <div class="card-text d-flex justify-content-between">

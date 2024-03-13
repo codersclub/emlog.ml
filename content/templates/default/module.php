@@ -121,7 +121,7 @@ function widget_sort($title) {
     </div>
 <?php } ?>
 <?php
-//widget：最新微语
+//widget: last twits
 function widget_twitter($title) {
     global $CACHE;
     $index_newtwnum = Option::get('index_newtwnum') ?: 10;

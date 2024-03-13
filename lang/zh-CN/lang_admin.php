@@ -133,7 +133,7 @@ $lang = array(
     'plu_category_12' => '内容运营',//'Content Operation',
     'plu_category_13' => '移动端',//'Mobile terminal (mini program)',
     'plu_category_14' => '编程开发',//'Program development',
-    'plu_category_15' => '内容创作（编辑器）',//'Content Creation',
+    'plu_category_15' => '内容创作',//'Content Creation',
     'tpl_category_17' => '网址导航',//'Site navigation',
     'tpl_category_18' => '微信生态',//'WeChat Ecosystem',
     'tpl_category_19' => '企业展示',//'Enterprise Show',
@@ -550,6 +550,9 @@ $lang = array(
     'app_development' => '应用开发 | 开发文档',//'Application Development | Development Documentation',
     'os' => '操作系统',//'Operating system',
     'refresh_page' => '刷新页面',//'Refresh the page',
+    'quick_entries' => '快捷入口',//'Quick entries',
+    'tips' => '小贴士',//'Tips',
+    'tpl_options' => '模板设置',//'Template options',
 
 //---------------------------
 //admin/views/index_user.php
@@ -614,6 +617,8 @@ $lang = array(
     'original_file' => '原文件',//'Original file',
     'link_copied' => '链接已复制',//'Link copied',
     'view_from_date' => '查看该日期及之前的资源',//'View resources from this date and earlier',
+    'edit_media' => '编辑资源',//'Edit media',
+    'media_name' => '资源名称',//'File Name',
 
 //---------------------------
 //admin/views/media_lib.php
@@ -955,6 +960,7 @@ $lang = array(
     '_plugins' => '个插件',//' plugins',// Number of plugins
     'recommend_today' => '今日推荐',//'Recommended today',
     'limited_offer' => '限时优惠',//'Limited Time Offer',
+    'download_count' => '下载次数',//'Downloads',
 
 //---------------------------
 //admin/views/store_svip.php

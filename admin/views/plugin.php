@@ -32,7 +32,7 @@
     <h1 class="h4 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
     <div>
-        <a href="store.php?action=plu" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> 应用商店</a>
+        <a href="store.php?action=plu" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> <?= lang('app_store') ?></a>
         <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
     </div>
 </div>
@@ -87,7 +87,7 @@
                                 <?= $val['Name'] ?>
                                 <div class="small mt-3">
                                     <?= $val['Description'] ?>
-                                    <?php if (strpos($val['Url'], 'https://www.emlog.net') === 0): ?><a href="<?= $val['Url'] ?>" target="_blank">更多信息&raquo;</a><?php endif ?>
+                                    <?php if (strpos($val['Url'], 'https://www.emlog.net') === 0): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_php_info') ?>&raquo;</a><?php endif ?>
                                 </div>
                             </td>
                             <td>

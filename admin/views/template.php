@@ -31,7 +31,7 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('template_manager') ?></h1>
     <div>
-        <a href="store.php" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> 应用商店</a>
+        <a href="store.php" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> <?= lang('app_store') ?></a>
         <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('template_add') ?></a>
     </div>
 </div>
@@ -54,7 +54,7 @@
                     <?php if ($value['version']): ?>
                         <div class="small"><?=lang('version_number')?>: <?= $value['version'] ?></div>
                     <?php endif ?>
-<!--vot-->          <?php if (!empty($value['author_url']): ?>
+<!--vot-->          <?php if (!empty($value['author_url'])): ?>
                         <div class="small"><?= lang('author') ?>: <a href="<?= $value['author_url'] ?>" target="_blank"><?= $value['author'] ?></a></div>
                     <?php else: ?>
                         <div class="small"><?= lang('author') ?>: <?= $value['author'] ?></div>

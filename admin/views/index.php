@@ -22,17 +22,17 @@
         <div class="col-lg-12 mb-3">
             <div class="card shadow mb-3">
                 <div class="card-body">
-                    快捷入口：
-                    <a href="article.php" class="mr-2">文章</a>
-                    <a href="article.php" class="mr-2">草稿</a>
-                    <a href="page.php" class="mr-2">页面</a>
-                    <a href="template.php" class="mr-2">模板</a>
+                    <?= lang('quick_entries') ?>:
+                    <a href="article.php" class="mr-2"><?= lang('articles') ?></a>
+                    <a href="article.php?draft=1" class="mr-2"><?= lang('drafts') ?></a>
+                    <a href="page.php" class="mr-2"><?= lang('page_management') ?></a>
+                    <a href="template.php" class="mr-2"><?= lang('templates') ?></a>
                     <span class="text-gray-300 mr-2">|</span>
                     <?php foreach ($plugins as $val):
                         if (false === $val['Setting']) {
                             continue;
                         }
-                        if (in_array($val['Name'], ['小贴士', '模板设置'])) {
+                        if (in_array($val['Name'], [lang('tips'), lang('tpl_options')])) {
                             continue;
                         }
                         ?>

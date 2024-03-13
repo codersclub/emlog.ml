@@ -131,12 +131,13 @@ $lang = array(
     'tpl_category_10' => 'Other',//'其他',
     'plu_category_11' => 'User Interaction',//'用户互动',
     'plu_category_12' => 'Content Operation',//'内容运营',
-    'plu_category_13' => 'Mobile (applet)',//'移动端(小程序)',
+    'plu_category_13' => 'Mobile (applets)',//'移动端（小程序）',
     'plu_category_14' => 'Program development',//'编程开发',
     'plu_category_15' => 'Content Creation',//'内容创作',
     'tpl_category_17' => 'Site navigation',//'网址导航',
     'tpl_category_18' => 'WeChat Ecosystem',//'微信生态',
     'tpl_category_19' => 'Enterprise Show',//'企业展示',
+    'plu_category_20' => 'Editor',//'编辑器',
     'free_zone' => 'Free only',//'仅看免费',
     'paid_zone' => 'Paid only',//'仅看付费',
     'search_by_category' => 'Search by category',//'按分类查找',
@@ -559,7 +560,7 @@ $lang = array(
 //---------------------------
 //admin/views/links.php
     'link_add' => 'Add Link',//'新建链接',
-    'link_management' => 'Friend links',//'友情链接',
+    'link_management' => 'Links',//'链接',
     'links_created' => 'Links created',//'已创建的链接',
     'order' => 'Order',//'排序',
     'edit_link' => 'Edit link',//'编辑链接',
@@ -602,7 +603,7 @@ $lang = array(
     'founder' => 'Author',//'创建人',
     'this_user_files'	=> 'All files of this author',//'仅看TA的',
     'image_address_original' => 'Original image address',//'原图地址',
-    'media_category_add_ok' => 'Category added successfully',//'分类添加成功',
+    'media_category_add_ok' => 'Category added successfully',//'添加成功',
     'media_category_add' => 'Add media category',//'添加资源分类',
     'category_name' => 'Category Name',//'分类名称',
     'modify' => 'Modify',//'修改',
@@ -684,7 +685,7 @@ $lang = array(
     'plugin_active_click' => 'Click to activate the plug-in',//'点击激活插件',
     'plugin_disable_click' => 'Click to disable the plug-in',//'点击禁用插件',
     'plugin_settings_click' => 'Click to plug-in settings',//'点击设置插件',
-    'more_info' => 'More Info&raquo;',//'更多信息&raquo;',
+    'more_info' => 'More Info&rarr;',//'更多信息&rarr;',
     'plugin_no_installed' => 'No installed plugins',//'还没有安装插件',
     'plugin_not_found' => 'Plugin not found',//'未找到插件',
     'plugin_install' => 'Install plugin',//'安装插件',
@@ -834,8 +835,8 @@ $lang = array(
     'api_list' => 'List of API interfaces',//'API接口列表',
     'api_1' => '1. Article publishing (can be used to connect with content publishing software, article publishing interface URL: ',//'1. 文章发布 (可用于对接内容发布软件，文章发布接口URL：',
     'api_2' => '2. Article details',//'2. 分类列表',
-    'api_3' => '3. Category list',//'3. 笔记发布',
-    'api_4' => '4. Note list',//'4. 笔记列表',
+    'api_3' => '3. Note publishing',//'3. 微语发布',
+    'api_4' => '4. Note list',//'4. 微语列表',
     'api_5' => '5. Resource file upload',//'5. 资源文件上传',
     'api_more' => 'More info',//'更多接口',
     'api_docs' => 'See the API documentation for details→',//'详见接口文档→',
@@ -984,7 +985,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/template.php
-    'template_manager' => 'Templates',//'模板外观',
+    'template_manager' => 'Templates',//'模板主题',
     'template_current' => 'Current template',//'当前模板',
     'template_change_ok' => 'Template have been replaced successfully',//'模板更换成功',
     'template_current_use' => 'Currently used template',//'当前使用的模板',
@@ -1036,14 +1037,14 @@ $lang = array(
 //---------------------------
 //admin/views/twitter.php
     'twitter_del_ok' => 'Note deleted successfully',//'笔记删除成功',
-    'twitter_empty' => 'Note content cannot be empty',//'笔记内容不能为空',
+    'twitter_empty' => 'Content cannot be empty',//'内容不能为空',
     'twitter_add' => 'Add a note',//'卡片笔记',
     'twitter_prompt' => 'Quickly record ideas, help you easily capture inspiration and accumulate knowledge compound interest',//'快速记录想法，帮你方便的捕捉灵感，积累知识的复利',
     'twitter_save' => 'Save the note',//'保存笔记',
     'twitters' => 'Notes',//'笔记',
-    '_twitters' => ' note(s)',//'条笔记',
-    'twitter_edit' => 'Edit note',//'编辑笔记',
-    'twitter_post_disabled' => 'Sorry, the system restricts users from posting notes',//'抱歉，系统限制用户发布笔记',
+    '_twitters' => ' note(s)',//'条微语',
+    'twitter_edit' => 'Edit note',//'编辑微语',
+    'twitter_post_disabled' => 'Sorry, the system restricts users from posting notes',//'抱歉，系统限制用户发布微语笔记',
 
 //---------------------------
 //admin/views/upload.php

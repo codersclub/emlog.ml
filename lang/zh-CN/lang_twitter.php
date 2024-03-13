@@ -40,7 +40,7 @@ $lang = array(
 //---------------------------
 //admin/views/widgets.php
 'twitter_latest'            => '最新微语',//'Latest twits',
-'twitter_latest_num'        => '首页显示最新微语数',//'Number of latest twits',
+'twitter_latest_num'        => '展示数量',//'Number of twits',
 
 //---------------------------
 //include/model/twitter_model.php

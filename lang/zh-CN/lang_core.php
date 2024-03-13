@@ -220,6 +220,8 @@ $lang = array(
 'tpl_logo_image' => '图片',//'Image',
 'tpl_logo_upload' => 'LOGO上传',//'LOGO upload',
 'tpl_logo_upload_descr' => '上传LOGO图片。',//'Upload the LOGO image.',
+'favicon' => '浏览器图标（favicon）',//'Browser icon (favicon)',
+'favicon_descr' => '上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',//'Upload browser icon, PNG or JPG image, recommended size: 48×48px',
 
 //---------------------------
 //content/templates/default/pw.php

@@ -184,7 +184,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">编辑资源</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('edit_media') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -192,14 +192,14 @@
             <form method="post" action="media.php?action=update_media">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="alias">资源名称</label>
+                        <label for="alias"><?= lang('media_name') ?></label>
                         <input type="text" class="form-control" id="filename" name="filename" required>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" value="" id="id" name="id"/>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-sm btn-success">保存</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </form>
         </div>
