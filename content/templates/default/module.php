@@ -275,6 +275,7 @@ function widget_custom_text($title, $content) { ?>
 function blog_navi() {
     global $CACHE;
     $navi_cache = $CACHE->readCache('navi');
+/*vot*/ load_language('navigation'); // Translate Navigation Links!
     ?>
     <div class="blog-header-nav" id="navbarResponsive">
         <ul class="nav-list">
@@ -315,7 +316,7 @@ function blog_navi() {
                     <?php endif ?>
                 </li>
             <?php else: ?>
-                <li class="list-item list-menu"><a class="nav-link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= $value['naviname'] ?></a></li>
+<!--vot-->      <li class="list-item list-menu"><a class="nav-link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= lang($value['naviname']) ?></a></li>
             <?php endif ?>
             <?php endforeach ?>
 
