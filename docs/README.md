@@ -1,10 +1,9 @@
-<p align="center">
-  <img src="./logo.png" width=100 />
-</p>
-
 # &#x1f680; Emlog
 
-Emlog is a lightweight blog and CMS website building system, dedicated to creating an easy-to-use personal cloud content management system.
+![](./logo.png){.center}
+
+Emlog is a lightweight blog and CMS website building system,
+dedicated to creating an easy-to-use personal cloud content management system.
 
 ## Overview
 
