@@ -1,5 +1,27 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.2.11
+
+Release time: 2024-3-14
+
+[Function] Optimize the captcha code font
+[Function] Optimize the logic of upgrade version comparison
+[Fix] The problem of incorrect quick link in Admin CP
+
+Installation package: [emlog_pro_2.2.11.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.11.zip)
+
+
+## Pro2.2.11
+
+Release date: 2024-03-14
+
+[功能] 优化图形验证码字体
+[功能] 优化升级版本比对逻辑
+[修复] 后台快捷入口链接错误的问题
+
+Installation package: [emlog_pro_2.2.11.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.11.zip)
+
+
 ## Pro 2.2.10
 
 Release date: 2024-3-11
