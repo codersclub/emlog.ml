@@ -1,5 +1,17 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.3.0
+
+Release time: 2024-3-20
+
+[Function] Add the icon URL to a link
+[Function] Support private notes
+[Function] Optimize background UI details
+[Fix] The problem of enabling graphic verification code (captcha) even if the gd library is not supported
+[Fix] Solve 360 Speed Browser compatibility issue
+
+Installation package: [emlog_pro_2.3.0.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.0.zip)
+
 ## Pro 2.2.11
 
 Release time: 2024-3-14

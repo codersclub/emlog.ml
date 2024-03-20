@@ -21,21 +21,18 @@ function insert_cover(imgsrc) {
     $('#cover_rm').show();
 }
 
-async function delete_media(id) {
-    const confirmed = await Swal.fire({
-        title: lang('del_media_sure'),
-        icon: 'warning',
-        showCancelButton: true,
-        cancelButtonText: lang('cancel'),
-        confirmButtonText: lang('delete'),
-    }).then((result) => result.isConfirmed);
-
-    if (confirmed) {
-        await $.post('./media.php?action=delete_async', {aid: id});
-        $('#image-list').html('');
-        page = 1
-        loadImages();
-    }
+function delete_media(id) {
+    layer.confirm(lang('del_media_sure'), {
+        icon: 3,
+        btn: [lang('delete'), lang('cancel')]
+    }, function (index) {
+        $.post('./media.php?action=delete_async', {aid: id}, function () {
+            $('#image-list').html('');
+            page = 1;
+            loadImages();
+        });
+        layer.close(index);
+    });
 }
 
 // Insert resource list

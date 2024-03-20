@@ -58,7 +58,6 @@
                 <tr>
                     <th><?= lang('plugin_name') ?></th>
                     <th><?= lang('plugin_status') ?></th>
-                    <th><?= lang('description') ?></th>
                     <th><?= lang('author') ?></th>
                     <th><?= lang('version') ?></th>
                     <th><?= lang('operation') ?></th>
@@ -82,12 +81,17 @@
                         $alias = $val['alias'];
                         ?>
                         <tr data-plugin-alias="<?= $val['Plugin'] ?>" data-plugin-version="<?= $val['Version'] ?>">
-                            <td><img src="<?= $val['preview'] ?>" height="45" width="45" class="rounded"/></td>
                             <td>
-                                <?= $val['Name'] ?>
-                                <div class="small mt-3">
-                                    <?= $val['Description'] ?>
-                                    <?php if (strpos($val['Url'], 'https://www.emlog.net') === 0): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_php_info') ?>&raquo;</a><?php endif ?>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <img src="<?= $val['preview'] ?>" height="45" width="45" class="rounded"/>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <div class="align-items-center mb-3">
+                                            <p class="mb-0 m-2"><?= $val['Name'] ?></p>
+                                            <p class="mb-0 m-2 small"><?= $val['Description'] ?> <?php if (strpos($val['Url'], 'https://www.emlog.net') === 0): ?><a href="<?= $val['Url'] ?>" target="_blank"><?= lang('more_php_info') ?></a><?php endif ?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                             <td>

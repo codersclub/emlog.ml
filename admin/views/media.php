@@ -86,28 +86,30 @@
             </div>
         <?php endforeach ?>
     </div>
-    <div class="form-row align-items-center">
-        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-        <input name="operate" id="operate" value="" type="hidden"/>
-        <div class="col-auto my-1">
-            <div class="custom-control custom-checkbox mr-sm-2">
-                <input type="checkbox" class="custom-control-input" id="checkAllCard">
-                <label class="custom-control-label" for="checkAllCard"><?=lang('select_all')?></label>
+    <?php if ($count > 0): ?>
+        <div class="form-row align-items-center">
+            <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+            <input name="operate" id="operate" value="" type="hidden"/>
+            <div class="col-auto my-1">
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" id="checkAllCard">
+                    <label class="custom-control-label" for="checkAllCard"><?=lang('select_all')?></label>
+                </div>
+            </div>
+            <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+            <div class="col-auto my-1 form-inline">
+                <?php if (User::isAdmin()): ?>
+                    <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
+                        <option value="" selected="selected"><?= lang('move_to') ?></option>
+                        <?php foreach ($sorts as $key => $value): ?>
+                            <option value="<?= $value['id'] ?>"><?= $value['sortname'] ?></option>
+                        <?php endforeach; ?>
+                        <option value="0"><?= lang('uncategorized') ?></option>
+                    </select>
+                <?php endif; ?>
             </div>
         </div>
-        <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-        <div class="col-auto my-1 form-inline">
-            <?php if (User::isAdmin()): ?>
-                <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
-                    <option value="" selected="selected"><?= lang('move_to') ?></option>
-                    <?php foreach ($sorts as $key => $value): ?>
-                        <option value="<?= $value['id'] ?>"><?= $value['sortname'] ?></option>
-                    <?php endforeach; ?>
-                    <option value="0"><?= lang('uncategorized') ?></option>
-                </select>
-            <?php endif; ?>
-        </div>
-    </div>
+    <?php endif; ?>
 </form>
 <div class="page"><?= $page ?> </div>
 <div class="text-center small">(<?= lang('have') ?> <?= $count ?> <?= lang('_resources') ?>)</div>
@@ -290,24 +292,15 @@
 
     function mediaact(act) {
         if (getChecked('aids') === false) {
-/*vot*/     Swal.fire("", lang('resource_select'), "info");
+/*vot*/     infoAlert(lang('resource_select'));
             return;
         }
 
         if (act === 'del') {
-            Swal.fire({
-/*vot*/         title: lang('resource_del_sure'),
-/*vot*/         text: lang('delete_not_recover'),
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: lang('cancel'),
-                confirmButtonText: lang('ok'),
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#operate").val(act);
-                    $("#form_media").submit();
-                }
-            });
+            delAlert2(lang('resource_del_sure'), lang('delete_not_recover'), function () {
+                $("#operate").val(act);
+                $("#form_media").submit();
+            })
             return;
         }
         $("#operate").val(act);
@@ -317,7 +310,7 @@
     // Change category
     function changeSort(obj) {
         if (getChecked('aids') === false) {
-/*vot*/     Swal.fire("", lang('media_select'), "info");
+/*vot*/     infoAlert(lang('media_select'));
             return;
         }
         if ($('#sort').val() === '') return;

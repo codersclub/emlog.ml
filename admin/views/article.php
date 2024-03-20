@@ -252,46 +252,32 @@ $isdraft = $draft ? '&draft=1' : '';
 <script>
     function logact(act) {
         if (getChecked('ids') === false) {
-            Swal.fire("", lang('select_article'), "info");
+            infoAlert(lang('select_article'));
             return;
         }
 
         if (act === 'del') {
-            Swal.fire({
+            layer.confirm(lang('delete_not_recover'), {
                 title: lang('sure_delete_articles'),
-                text: lang('delete_not_recover'),
-                icon: 'warning',
-                showDenyButton: true,
-                showCancelButton: true,
-                cancelButtonText: lang('cancel'),
-                confirmButtonText: lang('save_draft'),
-                denyButtonText: lang('del_completely'),
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#operate").val("hide");
-                    $("#form_log").submit();
-                } else if (result.isDenied) {
-                    $("#operate").val(act);
-                    $("#form_log").submit();
-                }
+                icon: 0,
+                btn: [lang('save_draft'), '<span class="text-danger">' + lang('del_completely') + '</span>', lang('cancel')]
+            }, function (index) {
+                $("#operate").val("hide");
+                $("#form_log").submit();
+                layer.close(index);
+            }, function (index) {
+                $("#operate").val(act);
+                $("#form_log").submit();
+                layer.close(index);
             });
             return;
         }
 
         if (act === 'del_draft') {
-            Swal.fire({
-                title: lang('sure_del_draft'),
-                text: lang('delete_not_recover'),
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: lang('cancel'),
-                confirmButtonText: lang('ok'),
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#operate").val("del");
-                    $("#form_log").submit();
-                }
-            });
+            delAlert2(lang('sure_del_draft'), lang('delete_not_recover'), function () {
+                $("#operate").val("del");
+                $("#form_log").submit();
+            })
             return;
         }
 
@@ -301,7 +287,7 @@ $isdraft = $draft ? '&draft=1' : '';
 
     function changeSort(obj) {
         if (getChecked('ids') === false) {
-            Swal.fire("", lang('select_article'), "info");
+            infoAlert(lang('select_article'));
             return;
         }
         if ($('#sort').val() === '') return;
@@ -311,7 +297,7 @@ $isdraft = $draft ? '&draft=1' : '';
 
     function changeAuthor(obj) {
         if (getChecked('ids') === false) {
-            Swal.fire("", lang('select_article'), "info");
+            infoAlert(lang('select_article'));
             return;
         }
         if ($('#author').val() === '') return;
@@ -321,7 +307,7 @@ $isdraft = $draft ? '&draft=1' : '';
 
     function changeTop(obj) {
         if (getChecked('ids') === false) {
-            Swal.fire("", lang('select_article'), "info");
+            infoAlert(lang('select_article'));
             return;
         }
         if ($('#top').val() === '') return;

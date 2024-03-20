@@ -87,23 +87,14 @@
 
     function pageact(act) {
         if (getChecked('ids') === false) {
-/*vot*/     Swal.fire("", lang('select_page_to_operate', "info");
+            infoAlert(lang('select_page_to_operate'));
             return;
         }
         if (act === 'del') {
-            Swal.fire({
-/*vot*/         title: lang('sure_delete_selected_pages'),
-/*vot*/         text: lang('delete_not_recover'),
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: lang('cancel'),
-                confirmButtonText: lang('ok'),
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#operate").val(act);
-                    $("#form_page").submit();
-                }
-            });
+            delAlert2(lang('sure_delete_selected_pages'), lang('delete_not_recover'), function () {
+                $("#operate").val(act);
+                $("#form_page").submit();
+            })
             return;
         }
         $("#operate").val(act);

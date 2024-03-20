@@ -1426,3 +1426,12 @@ if (!function_exists('getFirstImage')) {
         return null;
     }
 }
+
+// 检查PHP是否支持GD图形库
+function checkGDSupport() {
+    if (function_exists("gd_info") && function_exists('imagepng')) {
+        return true;
+    } else {
+        return false;
+    }
+}

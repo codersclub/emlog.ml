@@ -67,7 +67,7 @@ $lang = array(
 //admin/setting.php
     'site_address' => '站点地址：',//'Site address',
     'verification_code_not_supported' => '开启登录验证码失败!服务器空间不支持GD图形库',//'Failed to open the login verification code! The server space does not support the GD graphics library',
-    'verification_code_comment_not_supported' => '开启评论验证码失败，服务器空间不支持GD图形库',//'Failed to open comment verification code! Server space does not support GD graphics library',
+    'verification_code_comment_not_supported' => ''开启评论验证码失败，服务器PHP不支持GD图形库'',//'Failed to open comment verification code! Server PHP does not support GD graphics library',
     'detect_url' => '自动检测站点地址 (如开启后首页样式丢失，请关闭并手动填写站点地址)',//'Automatically detect the site address (if the home page style is lost after opening, please close and fill in the site address manually)',
     'email_enter_please' => '请正确填写邮箱',//'Please enter correct email',
     'test_mail_subj' => '测试邮件',//'Test mail',
@@ -825,10 +825,10 @@ $lang = array(
     'other_settings' => '其他设置',//'Other settings',
     'admin_per_page' => '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
     'admin_per_page_tips' => '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
-    'today_app_news' => '接收来自官方的应用推荐（后台首页应用推荐展示）',//'Receive official application recommendations (show backend home page with application recommendations)',
+    'today_app_news' => '接收来自官方应用商店信息（后台首页应用相关展示）',//'Receive information from the official app store (application-related display on the backend homepage)',
     'unit_kb' => '（单位：KB，1MB=1024KB）',//'(unit: KB, 1MB=1024KB)',
     'login_before_comment_on' => '登录后评论，开启后仅登录用户可评论',//'Comment after login. Only logged-in users can comment after this is turned on',
-    'app_recommended' => '应用推荐',//'Recommended applications',
+    'app_recommended' => '应用推荐',//'Updated applications',
     'menu' => '菜单',//'Menu',
 
 //---------------------------

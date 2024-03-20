@@ -18,8 +18,16 @@ function widget_link($title) {
             <h3><?= $title ?></h3>
         </div>
         <ul class="widget-list no-margin-bottom unstyle-li">
-            <?php foreach ($link_cache as $value): ?>
-                <li><a href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"><?= $value['link'] ?></a></li>
+            <?php
+            foreach ($link_cache as $value):
+                $icon = isset($value['icon']) ? $value['icon'] : '';
+                ?>
+                <li style="display: flex; align-items: center;">
+                    <?php if ($icon): ?>
+                        <img src="<?= $icon ?>" height="20" width="20" class="rounded" style="margin-right: 5px;">
+                    <?php endif; ?>
+                    <a href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"><?= $value['link'] ?></a>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
@@ -284,7 +292,7 @@ function blog_navi() {
                 if ($value['pid'] != 0) {
                     continue;
                 }
-                if ($value['url'] == 'admin' && (!User::isVistor())):
+                if ($value['url'] == 'admin' && (!User::isVisitor())):
                     ?>
                     <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/" class="nav-link"><?= lang('site_management') ?></a></li>
                     <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/account.php?action=logout" class="nav-link"><?= lang('logout') ?></a></li>
@@ -528,7 +536,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
                       is-chinese="<?= $isNeedChinese ?>">
                     <input type="hidden" name="gid" value="<?= $logid ?>"/>
                     <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" required></textarea>
-                    <?php if (User::isVistor()): ?>
+                    <?php if (User::isVisitor()): ?>
                         <div class="comment-info" id="comment-info">
                             <input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"
                                    value="<?= $ckname ?>" size="22"

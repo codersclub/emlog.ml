@@ -159,24 +159,15 @@
 <script>
     function commentact(act) {
         if (getChecked('ids') === false) {
-            Swal.fire("", lang('comment_operation_select'), "info");
+            infoAlert(lang('comment_operation_select'));
             return;
         }
 
         if (act === 'del') {
-            Swal.fire({
-/*vot*/         title: lang('comment_selected_delete_sure'),
-/*vot*/         text: lang('delete_not_recover'),
-                icon: 'warning',
-                showCancelButton: true,
-                cancelButtonText: lang('cancel'),
-                confirmButtonText: lang('ok'),
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    $("#operate").val(act);
-                    $("#form_com").submit();
-                }
-            });
+            delAlert2(lang('comment_selected_delete_sure'), lang('delete_not_recover'), function () {
+                $("#operate").val(act);
+                $("#form_com").submit();
+            })
             return
         }
         $("#operate").val(act);

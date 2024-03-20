@@ -47,7 +47,7 @@ class Comment_Controller {
             $err = lang('comment_error_article_no');
         } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
             $err = lang('comment_error_comment_disabled');
-        } elseif (User::isVistor() && $Comment_Model->isCommentTooFast() === true) {
+        } elseif (User::isVisitor() && $Comment_Model->isCommentTooFast() === true) {
             $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
             $err = lang('comment_error_name_enter');
@@ -59,7 +59,7 @@ class Comment_Controller {
             $err = lang('comment_error_empty');
         } elseif (strlen($content) > 60000) {
             $err = lang('comment_error_content_invalid');
-        } elseif (User::isVistor() && Option::get('comment_needchinese') == 'y' && !preg_match('/[\x{4e00}-\x{9fa5}]/iu', $content)) {
+        } elseif (User::isVisitor() && Option::get('comment_needchinese') == 'y' && !preg_match('/[\x{4e00}-\x{9fa5}]/iu', $content)) {
             $err = lang('comment_error_national_chars');
         } elseif (ISLOGIN === false && Option::get('comment_code') == 'y' && session_start() && (empty($imgcode) || $imgcode !== $_SESSION['code'])) {
             $err = lang('comment_error_captcha_invalid');

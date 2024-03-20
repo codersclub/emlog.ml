@@ -211,7 +211,8 @@
                 <div class="card mb-3">
                     <h6 class="card-header"><?= lang('app_recommended') ?></h6>
                     <div class="card-body">
-                        <div class="row" id="app-list"></div>
+                        <ul class="list-group list-group-flush" id="app-list">
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -67,7 +67,7 @@ $lang = array(
 //admin/setting.php
     'site_address' => 'Site address',//'站点地址',
     'verification_code_not_supported' => 'Failed to open the login verification code! The server space does not support the GD graphics library',//'开启登录验证码失败!服务器空间不支持GD图形库',
-    'verification_code_comment_not_supported' => 'Failed to open comment verification code! Server space does not support GD graphics library',//'开启评论验证码失败!服务器空间不支持GD图形库',
+    'verification_code_comment_not_supported' => 'Failed to open comment verification code! Server PHP does not support GD graphics library',//''开启评论验证码失败，服务器PHP不支持GD图形库'',
     'detect_url' => 'Automatic detection of site address (may be incompatible with some CDN solutions)',//'自动检测站点地址 (可能和部分CDN解决方案不兼容)',
     'email_enter_please' => 'Please enter correct email',//'请填写邮箱',
     'test_mail_subj' => 'Test mail',//'测试邮件',
@@ -823,7 +823,7 @@ $lang = array(
     'today_app_news' => 'Receive official app recommendations (affects the display of today\'s apps on the background homepage)',//'接收来自官方的应用推荐（影响后台首页今日应用的展示）',
     'unit_kb' => '(unit: KB, 1MB=1024KB)',//'（单位：KB，1MB=1024KB）',
     'login_before_comment_on' => 'Comment after login. Only logged-in users can comment after this is turned on',//'登录后评论，开启后仅登录用户可评论',
-    'app_recommended' => 'Recommended applications',//'应用推荐',
+    'app_recommended' => 'Updated applications',//'应用推荐',
     'menu' => 'Menu',//'菜单',
 
 //---------------------------

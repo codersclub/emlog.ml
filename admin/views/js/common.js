@@ -20,120 +20,125 @@ function em_confirm(id, property, token) {
             url = 'article.php?action=del&gid=' + id;
             msg = lang('article_del_sure');
             text = lang('delete_not_recover');
-            swalDelArticle(msg, text, url, token);
+            delArticle(msg, text, url, token);
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
             msg = lang('draft_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
             msg = lang('twitter_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'comment':
             url = 'comment.php?action=del&id=' + id;
             msg = lang('comment_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'commentbyip':
             url = 'comment.php?action=delbyip&ip=' + id;
             msg = lang('comment_ip_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'link':
             url = 'link.php?action=del&linkid=' + id;
             msg = lang('link_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'navi':
             url = 'navbar.php?action=del&id=' + id;
             msg = lang('navi_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'media':
             url = 'media.php?action=delete&aid=' + id;
             msg = lang('attach_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'avatar':
             url = 'blogger.php?action=delicon';
             msg = lang('avatar_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'sort':
             url = 'sort.php?action=del&sid=' + id;
             msg = lang('category_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'del_user':
             url = 'user.php?action=del&uid=' + id;
             msg = lang('user_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
             msg = lang('user_disable_sure');
             text = '';
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
             msg = lang('template_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
             msg = lang('plugin_reset_sure');
-            text = '';
-            swalDel(msg, text, url, token)
+            text = lang('plugin_reset_info');
+            delAlert(msg, text, url, token)
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
             msg = lang('plugin_del_sure');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
             msg = lang('media_category_del_sure');
 /*vot*/     text = lang('category_not_deleted');
-            swalDel(msg, text, url, token)
+            delAlert(msg, text, url, token)
             break;
     }
 }
 
-function swalDel(msg, text, url, token) {
-    Swal.fire({
-        title: msg,
-        icon: 'warning',
-        text: text,
-        showCancelButton: true,
-        cancelButtonText: lang('cancel'),
-        confirmButtonText: lang('ok'),
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location = url + '&token=' + token;
-        }
+function infoAlert(msg) {
+    layer.alert(msg, {
+        icon: 2,
+        shadeClose: true,
+        title: '',
     });
 }
 
-function swalDelArticle(msg, text, url, token) {
-    Swal.fire({
+function delAlert(msg, text, url, token) {
+    // icon: 0 default, 1 ok, 2 err, 3 ask
+    layer.confirm(text, {icon: 0, title: msg}, function (index) {
+        window.location = url + '&token=' + token;
+        layer.close(index);
+    });
+}
+
+function delAlert2(msg, text, actionClosure) {
+    layer.confirm(text, {icon: 0, title: msg}, function (index) {
+        actionClosure(); // 执行闭包
+        layer.close(index);
+    });
+}
+
+function delArticle(msg, text, url, token) {
+    layer.confirm(text, {
         title: msg,
-        icon: 'warning',
-        text: text,
-        showDenyButton: true,
-        showCancelButton: true,
-        cancelButtonText: lang('cancel'),
-        confirmButtonText: lang('save_draft'),
-        denyButtonText: lang('del_completely'),
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location = url + '&token=' + token;
-        } else if (result.isDenied) {
-            window.location = url + '&rm=1&token=' + token;
-        }
+        icon: 0,
+        btn: ['放入草稿', '<span class="text-danger">彻底删除</span>', '取消']
+    }, function (index) {
+        window.location = url + '&token=' + token;
+        layer.close(index);
+    }, function (index) {
+        window.location = url + '&rm=1&token=' + token;
+        layer.close(index);
+    }, function (index) {
+        layer.close(index);
     });
 }
 
@@ -515,11 +520,12 @@ function loadTopAddons() {
                     storeUlr = './store.php?action=plu';
                 }
                 if (app.price > 0) {
-/*vot*/             insertBtnHtml = app.price + lang('price_unit') + ' <a href="' + app.buy_url + '" target="_blank">' + lang('buy') + '</a>';
+/*vot*/             insertBtnHtml = app.price + lang('price_unit');
                 } else {
-/*vot*/             insertBtnHtml = lang('free') + ' <a href="' + storeUlr + '&keyword=' + app.name + '">' + lang('install') + '</a>';
+/*vot*/             insertBtnHtml = lang('free');
                 }
-                const cardHtml = '<div class="col-md-4">' + '<div class="card">' + '<a href="' + app.buy_url + '" target="_blank"><img class="card-img-top" style="max-height: 90px;" src="' + app.icon + '" alt="icon"/></a>' + '<div class="card-body">' + '<div class="card-text text-muted small">' + app.name + '</div>' + '<p class="card-text d-flex justify-content-between small">' + insertBtnHtml + '</p>' + '</div></div></div>';
+                apptitle = '<a href="' + storeUlr + '&keyword=' + app.name + '">' + app.name + '</a>';
+                const cardHtml = '<li class="list-group-item d-flex justify-content-between align-items-center"><span>' + apptitle + '<small class="text-muted"><br>' + app.info + '</small></span>' + '<span class="small">' + insertBtnHtml + '</span></li>';
                 $('#app-list').append(cardHtml);
             });
         },

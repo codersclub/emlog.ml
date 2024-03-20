@@ -36,6 +36,7 @@ $lang = array(
 'reply_length_max_140'      => '回复长度需在140个字内',//'Reply length should be within 140 characters',
 'replied_already'           => '该回复已经存在',//'The reply already exists',
 'reply_delete_sure'         => '你确定要删除该条回复吗？',//'Are you sure you want to delete the post reply?',
+'private'		    => '私密',//'Private',
 
 //---------------------------
 //admin/views/widgets.php

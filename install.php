@@ -578,14 +578,15 @@ CREATE TABLE {$db_prefix}link (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Link table',
   sitename varchar(255) NOT NULL default '' COMMENT 'Name',
   siteurl varchar(255) NOT NULL default '' COMMENT 'URL',
+  icon varchar(512) NOT NULL default '' COMMENT 'Icon URL',
   description varchar(512) NOT NULL default '' COMMENT 'Description',
   hide enum('n','y') NOT NULL default 'n' COMMENT 'Hide or not',
   taxis int(11) unsigned NOT NULL default '0' COMMENT 'Sort order',
   PRIMARY KEY  (id)
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}link (id, sitename, siteurl, description, taxis) VALUES
-(1, 'emlog.ru', 'https://emlog.ru', '" . lang('emlog_ml_official_site') . "', 0),
-(2, 'emlog.net', 'http://www.emlog.net', '" . lang('emlog_official_site') . "', 0);
+INSERT INTO {$db_prefix}link (id, sitename, siteurl, icon, description, taxis) VALUES
+(1, 'emlog.ru', 'https://emlog.ru', 'https://emlog.ru/docs/logo.png', '" . lang('emlog_ml_official_site') . "', 0),
+(2, 'emlog.net', 'http://www.emlog.net', 'https://oss-pub.emlog.net/img/logo.png', '" . lang('emlog_official_site') . "', 0);
 DROP TABLE IF EXISTS {$db_prefix}navi;
 CREATE TABLE {$db_prefix}navi (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Navigation table',
@@ -650,6 +651,7 @@ img varchar(255) DEFAULT NULL COMMENT 'Image',
 author int(11) NOT NULL default '1' COMMENT 'Author UID',
 date bigint(20) NOT NULL COMMENT 'Create time',
 replynum int(11) unsigned NOT NULL default '0' COMMENT 'Number of replies',
+private enum('n','y') NOT NULL default 'n' COMMENT '是否私密',
 PRIMARY KEY (id),
 KEY author (author)
 )" . $table_charset_sql . "
