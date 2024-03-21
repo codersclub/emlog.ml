@@ -35,6 +35,7 @@ $lang = array(
     'no_links' => 'Yet no links added',//'还没有添加链接',
     'order_change' => 'Change order',//'保存拖动排序',
     'link_add' => 'Add link',//'新建链接',
+    'icon_url' => 'Icon URL',//'图标URL',
 
 //---------------------------
 //include/model/link_model.php

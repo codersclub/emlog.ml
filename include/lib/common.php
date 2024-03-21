@@ -67,15 +67,6 @@ function getBlogUrl() {
 }
 
 /**
- * Check for running in Windows
- * @return int
- * @author Valery Votintsev
- */
-function is_win() {
-    return isset($_SERVER['WINDIR']) ? 1 : 0;
-}
-
-/**
  * Get the currently visited base url
  */
 function realUrl() {
@@ -1200,8 +1191,53 @@ if (!function_exists('get_browse')) {
     }
 }
 
+// Get the first image in the content
+if (!function_exists('getFirstImage')) {
+    function getFirstImage($content) {
+        // Match images in Markdown
+        preg_match('/!\[.*?\]\((.*?)\)/', $content, $matches);
+
+        if (!empty($matches[1])) {
+            return $matches[1];
+        }
+
+        // Match images in HTML
+        $dom = new DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($content);
+        libxml_clear_errors();
+
+        $xpath = new DOMXPath($dom);
+        $imgNode = $xpath->query('//img')->item(0);
+
+        if ($imgNode) {
+            return $imgNode->getAttribute('src');
+        }
+
+        return null;
+    }
+}
+
+// Check if PHP supports GD graphics library
+function checkGDSupport() {
+    if (function_exists("gd_info") && function_exists('imagepng')) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 //------------------------------------------------------------------
 // Functions added by Valery Votintsev (vot) at codersclub.org
+
+/**
+ * Check for running in Windows
+ * @return int
+ * @author Valery Votintsev
+ */
+function is_win() {
+    return isset($_SERVER['WINDIR']) ? 1 : 0;
+}
 
 /**
  * Load Language File
@@ -1398,40 +1434,4 @@ function build_url($parsed_url) {
     $query = ($query == '?') ? '' : $query;
     $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
     return "$scheme$user$pass$host$port$path$query$fragment";
-}
-
-// Get the first image in the content
-if (!function_exists('getFirstImage')) {
-    function getFirstImage($content) {
-        // Match images in Markdown
-        preg_match('/!\[.*?\]\((.*?)\)/', $content, $matches);
-
-        if (!empty($matches[1])) {
-            return $matches[1];
-        }
-
-        // Match images in HTML
-        $dom = new DOMDocument();
-        libxml_use_internal_errors(true);
-        $dom->loadHTML($content);
-        libxml_clear_errors();
-
-        $xpath = new DOMXPath($dom);
-        $imgNode = $xpath->query('//img')->item(0);
-
-        if ($imgNode) {
-            return $imgNode->getAttribute('src');
-        }
-
-        return null;
-    }
-}
-
-// 检查PHP是否支持GD图形库
-function checkGDSupport() {
-    if (function_exists("gd_info") && function_exists('imagepng')) {
-        return true;
-    } else {
-        return false;
-    }
 }

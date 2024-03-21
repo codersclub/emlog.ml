@@ -232,5 +232,8 @@ $lang = array(
 'rss_feed'                   => 'RSS订阅',//'RSS Subscription',
 'feed_rss'                   => '订阅Rss',//'RSS Subscription',
 
+//---------------------------
+//iclude/model/plugin_model.php
+'unknown'		=> '未知',//'Unknown',
 
 );

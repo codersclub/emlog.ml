@@ -271,7 +271,7 @@ if ($action == 'user_save') {
     ];
 
     if ($data['login_code'] == 'y' && !checkGDSupport()) {
-        Output::error('开启图形验证码失败，服务器PHP不支持GD图形库');
+        Output::error(lang('verification_code_not_supported'));
     }
 
     foreach ($data as $key => $val) {

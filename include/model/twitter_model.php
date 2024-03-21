@@ -45,11 +45,11 @@ class Twitter_Model {
     }
 
     /**
-     * 获取微语
-     * @param int $uid 用户ID
-     * @param int $page 页码
-     * @param int $perpage_num 每页数量
-     * @param bool $private 是否返回私密微语
+     * Get twitters
+     * @param int $uid User ID
+     * @param int $page Page number
+     * @param int $perpage_num Quantity per page
+     * @param bool $private Whether to return private twitters
      * @return array
      */
     function getTwitters($uid, $page = 1, $perpage_num = 20, $private = false) {

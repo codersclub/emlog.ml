@@ -121,7 +121,7 @@ function delAlert(msg, text, url, token) {
 
 function delAlert2(msg, text, actionClosure) {
     layer.confirm(text, {icon: 0, title: msg}, function (index) {
-        actionClosure(); // 执行闭包
+        actionClosure(); // Execute closure
         layer.close(index);
     });
 }
@@ -130,7 +130,7 @@ function delArticle(msg, text, url, token) {
     layer.confirm(text, {
         title: msg,
         icon: 0,
-        btn: ['放入草稿', '<span class="text-danger">彻底删除</span>', '取消']
+        btn: [lang('save_draft'), '<span class="text-danger">'+lang('del_completely')+'</span>', lang('cancel')]
     }, function (index) {
         window.location = url + '&token=' + token;
         layer.close(index);

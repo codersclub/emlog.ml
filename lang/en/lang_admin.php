@@ -66,8 +66,8 @@ $lang = array(
 //---------------------------
 //admin/setting.php
     'site_address' => 'Site address',//'站点地址',
-    'verification_code_not_supported' => 'Failed to open the login verification code! The server space does not support the GD graphics library',//'开启登录验证码失败!服务器空间不支持GD图形库',
-    'verification_code_comment_not_supported' => 'Failed to open comment verification code! Server PHP does not support GD graphics library',//''开启评论验证码失败，服务器PHP不支持GD图形库'',
+    'verification_code_not_supported' => 'Failed to turn on the graphics verification code, the server PHP does not support the GD graphics library',//'开启图形验证码失败，服务器PHP不支持GD图形库',
+    'verification_code_comment_not_supported' => 'Failed to open comment verification code! Server PHP does not support GD graphics library',//'开启评论验证码失败，服务器PHP不支持GD图形库',
     'detect_url' => 'Automatic detection of site address (may be incompatible with some CDN solutions)',//'自动检测站点地址 (可能和部分CDN解决方案不兼容)',
     'email_enter_please' => 'Please enter correct email',//'请填写邮箱',
     'test_mail_subj' => 'Test mail',//'测试邮件',

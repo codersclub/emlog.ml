@@ -101,7 +101,7 @@
                         <input class="form-control" id="siteurl" maxlength="255" name="siteurl" type="url" required>
                     </div>
                     <div class="form-group">
-                        <label for="template">图标URL</label>
+                        <label for="template"><?= lang('icon_url') ?></label>
                         <input class="form-control" id="icon" name="icon" type="url">
                     </div>
                     <div class="form-group">

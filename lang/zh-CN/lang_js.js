@@ -17,6 +17,18 @@ var LNG = {
     'comment_operation_select': '请选择评论',//'Please select a comment',
     'comment_selected_delete_sure': '确定要删除所选评论吗',//'Are you sure you want to delete the selected comment',
 
+// admin/views/components/layer/layer.js
+    'rotate' : '旋转',//'Rotate',
+    'scalex' : '变换',//'Scale X',
+    'zoom_in' : '放大',//'Zoom In',
+    'zoom_out' : '缩小',//'Zoom Out',
+    'reset' : '还原',//'Reset',
+    'close' : '关闭',//'Close',
+    'view_original' : '查看原图',//'View original photo',
+    'image_url_invalid' : '&#x5F53;&#x524D;&#x56FE;&#x7247;&#x5730;&#x5740;&#x5F02;&#x5E38;<br>&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x67E5;&#x770B;&#x4E0B;&#x4E00;&#x5F20;&#xFF1F;',//'The current image address is invalid.<br>Do you want to continue viewing the next one?',
+    'next_one' : '&#x4E0B;&#x4E00;&#x5F20;',//'Next one',
+    'stop_watch' : '&#x4E0D;&#x770B;&#x4E86;',//'Stop watching',
+
 // admin/views/media.php
     'resource_select': '请选择资源文件',//'Please select a resource file',
     'resource_del_sure': '确定要删除所选资源文件吗',//'Are you sure you want to delete the selected resource file',

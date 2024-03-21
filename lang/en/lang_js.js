@@ -17,6 +17,18 @@ var LNG = {
     'comment_operation_select': 'Please select a comment',//'请选择评论',
     'comment_selected_delete_sure': 'Are you sure you want to delete the selected comment',//'确定要删除所选评论吗',
 
+// admin/views/components/layer/layer.js
+    'rotate' : 'Rotate',//'旋转',
+    'scalex' : 'Scale X',//'变换',
+    'zoom_in' : 'Zoom In',//'放大',
+    'zoom_out' : 'Zoom Out',//'缩小',
+    'reset' : 'Reset',//'还原',
+    'close' : 'Close',//'关闭',
+    'view_original' : 'View original photo',//'查看原图',
+    'image_url_invalid' : 'The current image address is invalid.<br>Do you want to continue viewing the next one?',//'&#x5F53;&#x524D;&#x56FE;&#x7247;&#x5730;&#x5740;&#x5F02;&#x5E38;<br>&#x662F;&#x5426;&#x7EE7;&#x7EED;&#x67E5;&#x770B;&#x4E0B;&#x4E00;&#x5F20;&#xFF1F;',
+    'next_one' : 'Next one',//'&#x4E0B;&#x4E00;&#x5F20;',
+    'stop_watch' : 'Stop watching',//'&#x4E0D;&#x770B;&#x4E86;',
+
 // admin/views/media.php
     'resource_select': 'Please select a resource file',//'请选择资源文件',
     'resource_del_sure': 'Are you sure you want to delete the selected resource file',//'确定要删除所选资源文件吗',
@@ -61,6 +73,7 @@ var LNG = {
     'user_del_sure': 'Are you sure you want to delete this user?',//'确定要删除该用户吗？',
     'template_del_sure': 'Are you sure you want to delete default template?',//'确定要删除该模板吗？'
     'plugin_reset_sure': 'Are you sure you want to restore default plugin settings? This operation will lose your custom plugin configuration.',//'确定要恢复组件设置到初始状态吗？这样会丢失你自定义的组件。',
+    'plugin_reset_info': 'Resetting will lose all the component customization',//'重置会丢失自定义的组件',
     'plugin_del_sure': 'Are you sure you want to delete this plugin?',//'确定要删除该插件吗？',
     'alias_link_error': 'Link Alias error',//'链接别名错误',
     'alias_invalid_chars': 'Alias should contain only latin letters, numbers, underscores and dashes',//'别名错误，应由字母、数字、下划线、短横线组成',
@@ -89,6 +102,7 @@ var LNG = {
     'installing': 'Installing...',//'安装中…',
     'install_free': 'Install for free',//'免费安装',
     'get_result_fail': 'Failed to get result!',//'获取结果失败！',
+    'install': 'Install',//'安装',
 
 //----
     'backup_import_sure': 'Are you sure you want to import the backup files?',//'你确定要导入该备份文件吗？',

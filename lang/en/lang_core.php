@@ -220,6 +220,8 @@ $lang = array(
 'tpl_logo_image'	=> 'Image',//'图片',
 'tpl_logo_upload'	=> 'LOGO upload',//'LOGO上传',
 'tpl_logo_upload_descr'	=> 'Upload the LOGO image.',//'上传LOGO图片。',
+'favicon'		=> 'Browser icon (favicon)',//'浏览器图标（favicon）',
+'favicon_descr'		=> 'Upload browser icon, PNG or JPG image, recommended size: 48×48px',//'上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',
 
 //---------------------------
 //content/templates/default/pw.php
@@ -230,5 +232,8 @@ $lang = array(
 'rss_feed'                   => 'RSS Subscription',//'RSS订阅',
 'feed_rss'                   => 'RSS Subscription',//'订阅Rss',
 
+//---------------------------
+//iclude/model/plugin_model.php
+'unknown'		=> 'Unknown',//'未知',
 
 );
