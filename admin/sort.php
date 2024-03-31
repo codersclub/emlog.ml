@@ -51,6 +51,7 @@ if ($action == 'save') {
     $template = isset($_POST['template']) && $_POST['template'] != 'log_list' ? addslashes(trim($_POST['template'])) : '';
     $description = Input::postStrVar('description');
     $kw = Input::postStrVar('kw');
+    $sortimg = Input::postStrVar('sortimg');
 
     if (empty($sortname)) {
         emDirect("./sort.php?error_a=1");
@@ -86,7 +87,8 @@ if ($action == 'save') {
         'template'    => $template,
         'description' => $description,
         'kw'          => $kw,
-        'alias'       => $alias
+        'alias'       => $alias,
+        'sortimg'     => $sortimg
     ];
 
     if ($sid) {
@@ -94,6 +96,9 @@ if ($action == 'save') {
     } else {
         $Sort_Model->addSort($sort_data);
     }
+
+    doAction('save_sort', $sid, $sort_data);
+
     $CACHE->updateCache(['sort', 'logsort', 'navi']);
     emDirect("./sort.php?active_save=1");
 }

@@ -45,9 +45,9 @@
 						backgroundColor : settings.dialogMaskBgColor
 					},
 					buttons    : {
-						close : [lang.buttons.close, function() {      
+						close : [lang.buttons.close, function() {
 							this.hide().lockScreen(false).hideMask();
-							
+
 							return false;
 						}]
 					}
@@ -60,15 +60,15 @@
 			this.dialogLockScreen();
 			dialog.show();
 
-			/* 
+			/*
 			var helpContent = dialog.find(".markdown-body");
 
-			if (helpContent.html() === "") 
+			if (helpContent.html() === "")
 			{
 				$.get(path + "help.md", function(text) {
 					var md = exports.$marked(text);
 					helpContent.html(md);
-                    
+
                     helpContent.find("a").attr("target", "_blank");
 				});
 			}
@@ -76,10 +76,10 @@
 		};
 
 	};
-    
+
 	// CommonJS/Node.js
 	if (typeof require === "function" && typeof exports === "object" && typeof module === "object")
-    { 
+    {
         module.exports = factory;
     }
 	else if (typeof define === "function")  // AMD/CMD/Sea.js
@@ -96,7 +96,7 @@
                 factory(editormd);
             });
 		}
-	} 
+	}
 	else
 	{
         factory(window.editormd);

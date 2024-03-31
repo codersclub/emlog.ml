@@ -80,7 +80,7 @@ class Media_Model {
         $query = $this->db->query("SELECT * FROM $this->table WHERE aid = $media_id $author");
         $attach = $this->db->fetch_array($query);
         if (empty($attach)) {
-            return;
+            return false;
         }
         $filepath_thum = $attach['filepath'];
         $filepath = str_replace("thum-", "", $attach['filepath']);
@@ -90,6 +90,8 @@ class Media_Model {
         if (file_exists($filepath)) {
             @unlink($filepath) or emMsg(lang('del_failed'));
         }
+
+        doAction('del_media', $filepath);
 
         return $this->db->query("DELETE FROM $this->table WHERE aid = $media_id $author");
     }

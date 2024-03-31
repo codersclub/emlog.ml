@@ -8,18 +8,19 @@
 class Link_Model {
 
     private $db;
+    private $table;
 
     function __construct() {
         $this->db = Database::getInstance();
+        $this->table = DB_PREFIX . 'link';
     }
 
     function getLinks() {
-        $res = $this->db->query("SELECT * FROM " . DB_PREFIX . "link ORDER BY taxis ASC");
+        $res = $this->db->query("SELECT * FROM $this->table ORDER BY taxis ASC");
         $links = [];
         while ($row = $this->db->fetch_array($res)) {
             $row['sitename'] = htmlspecialchars($row['sitename']);
             $row['description'] = htmlClean($row['description'], false);
-            $row['siteurl'] = $row['siteurl'];
             $links[] = $row;
         }
         return $links;
@@ -31,16 +32,22 @@ class Link_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "link SET $upStr WHERE id=$linkId");
+/*vot*/ $this->db->query("UPDATE $this->table SET $upStr WHERE id=$linkId");
     }
 
-    function addLink($name, $url, $des) {
-/*vot*/        $sql = "INSERT INTO " . DB_PREFIX . "link (sitename,siteurl,description) VALUES('$name','$url','$des')";
-        $this->db->query($sql);
+    public function addLink($logData) {
+        $kItem = $dItem = [];
+        foreach ($logData as $key => $data) {
+            $kItem[] = $key;
+            $dItem[] = $data;
+        }
+        $field = implode(',', $kItem);
+        $values = "'" . implode("','", $dItem) . "'";
+        $this->db->query("INSERT INTO $this->table ($field) VALUES ($values)");
+        return $this->db->insert_id();
     }
 
     function deleteLink($linkId) {
-/*vot*/        $this->db->query("DELETE FROM " . DB_PREFIX . "link WHERE id=$linkId");
+/*vot*/ $this->db->query("DELETE FROM $this->table WHERE id=$linkId");
     }
-
 }

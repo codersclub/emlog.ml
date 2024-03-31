@@ -95,9 +95,7 @@
                                 <a href="#" data-toggle="modal" class="badge badge-success" data-target="#replyModal"
                                    data-cid="<?= $cid ?>"
                                    data-comment="<?= $comment ?>"
-                                   data-hide="<?= $value['hide'] ?>"
-                                   data-gid="<?= $gid ?> ">
-                                    <?= lang ('comment_reply') ?>
+                                   data-hide="<?= $value['hide'] ?>"><?= lang ('comment_reply') ?>
                                 </a>
                                 <?php if (User::haveEditPermission()): ?>
                                     <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');"
@@ -142,7 +140,6 @@
                     <p class="comment-replay-content"></p>
                     <div class="form-group">
                         <input type="hidden" value="" name="cid" id="cid"/>
-                        <input type="hidden" value="" name="gid" id="gid"/>
                         <input type="hidden" value="" name="hide" id="hide"/>
                         <textarea class="form-control" id="reply" name="reply" required></textarea>
                     </div>
@@ -182,12 +179,10 @@
             var button = $(event.relatedTarget)
             var comment = button.html()
             var cid = button.data('cid')
-            var gid = button.data('gid')
             var hide = button.data('hide')
             var modal = $(this)
             modal.find('.modal-body p').html(comment)
             modal.find('.modal-body #cid').val(cid)
-            modal.find('.modal-body #gid').val(gid)
             modal.find('.modal-body #hide').val(hide)
         })
     });

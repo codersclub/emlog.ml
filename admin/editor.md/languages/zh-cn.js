@@ -1,7 +1,7 @@
 (function(){
     var factory = function (exports) {
         var lang = {
-            name        : "zh-cn",
+            name	: "zh-cn",
             description : "开源在线Markdown编辑器<br/>Open source online Markdown editor.",
             tocTitle    : "目录",
             placeholder : "使用 Markdown! 开始你的创作...",
@@ -100,12 +100,9 @@
                     title : "使用帮助",
                     body  : `<div class=\"markdown-body\" style=\"font-family:微软雅黑, Helvetica, Tahoma, STXihei,Arial;height:390px;overflow:auto;font-size:14px;border-bottom:1px solid #ddd;padding:0 20px 20px 0;\">
 				<h5>Markdown语法教程</h5><ul>
-				<li><p><a target="_blank" href="https://daringfireball.net/projects/markdown/syntax" title="Markdown Syntax">John Gruber Markdown Syntax</a></p>
-				</li><li><p><a target="_blank" href="https://guides.github.com/features/mastering-markdown/" title="Mastering Markdown">Mastering Markdown - Github guide</a></p>
-				</li><li><p><a target="_blank" href="https://help.github.com/articles/markdown-basics/" title="Markdown Basics">Markdown Basics from Github</a></p>
-				</li><li><p><a target="_blank" href="https://help.github.com/articles/github-flavored-markdown/" title="GitHub Flavored Markdown">GitHub Flavored Markdown</a></p>
-				</li><li><p><a target="_blank" href="http://www.markdown.cn/" title="Markdown 语法说明（简体中文）">Markdown 语法说明（简体中文）</a></p>
-				</li><li><p><a target="_blank" href="http://markdown.tw/" title="Markdown 語法說明（繁體中文）">Markdown 語法說明（繁體中文）</a></p>
+				<li><p><a href="https://markdown.p2hp.com/basic-syntax/" title="Markdown 语法说明（简体中文）">Markdown 语法说明（简体中文）</a></p>
+				</li><li><p><a href="http://markdown.tw/" title="Markdown 語法說明（繁體中文）">Markdown 語法說明（繁體中文）</a></p>
+				</li><li><p><a href="https://guides.github.com/features/mastering-markdown/" title="Mastering Markdown">Mastering Markdown</a></p>
 				</li></ul>
 				<h5 id="h5--keyboard-shortcuts-">键盘快捷键</h5>
 				<blockquote>
@@ -114,82 +111,82 @@
 				<table>
 					<thead>
 					<tr>
-					<th style="text-align: center;"><strong>Ctrl + S</strong></th>
+					<th style="text-align: center;"><strong><strong>Ctrl + S</strong></strong></th>
 					<th style="text-align: center;">保存</th>
-					<th style="text-align: center;"><strong>F9</strong></th>
+					<th style="text-align: center;"><strong><strong>F9</strong></strong></th>
 					<th style="text-align: center;">切换实时预览</th>
-					<th style="text-align: center;"><strong>Ctrl + Shift + R</strong></th>
+					<th style="text-align: center;"><strong><strong>Ctrl + Shift + R</strong></strong></th>
 					<th style="text-align: center;">全部替换</th>
 					</tr>
 					</thead>
 					<tbody>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl+1~6</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl+1~6</strong></strong></td>
 					<td style="text-align: center;">分别对应H1到H6</td>
-					<td style="text-align: center;"><strong>F10</strong></td>
+					<td style="text-align: center;"><strong><strong>F10</strong></strong></td>
 					<td style="text-align: center;">编辑器全屏预览</td>
-					<td style="text-align: center;"><strong>Ctrl + D</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + D</strong></strong></td>
 					<td style="text-align: center;">当前时间</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl + U</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + U</strong></strong></td>
 					<td style="text-align: center;">无序列表</td>
-					<td style="text-align: center;"><strong>按住Ctrl键的同时，选择编辑区的不同地方</strong></td>
+					<td style="text-align: center;"><strong><strong>按住Ctrl键的同时，选择编辑区的不同地方</strong></strong></td>
 					<td style="text-align: center;">多光标选择</td>
-					<td style="text-align: center;"><strong>Ctrl + H</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + H</strong></strong></td>
 					<td style="text-align: center;">水平线</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl + B</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + B</strong></strong></td>
 					<td style="text-align: center;">粗体</td>
-					<td style="text-align: center;"><strong>Ctrl+ A</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl+ A</strong></strong></td>
 					<td style="text-align: center;">全选</td>
-					<td style="text-align: center;"><strong>Ctrl + L</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + L</strong></strong></td>
 					<td style="text-align: center;">链接</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl + I</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + I</strong></strong></td>
 					<td style="text-align: center;">斜体</td>
-					<td style="text-align: center;"><strong>Ctrl+ Z</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl+ Z</strong></strong></td>
 					<td style="text-align: center;">撤销</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + A</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + A</strong></strong></td>
 					<td style="text-align: center;">Github链接</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl + K</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + K</strong></strong></td>
 					<td style="text-align: center;">行内代码</td>
-					<td style="text-align: center;"><strong>Ctrl+ Y</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl+ Y</strong></strong></td>
 					<td style="text-align: center;">重做</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + I</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + I</strong></strong></td>
 					<td style="text-align: center;">图片</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Shift + Alt + L</strong></td>
+					<td style="text-align: center;"><strong><strong>Shift + Alt + L</strong></strong></td>
 					<td style="text-align: center;">所选文本转为小写</td>
-					<td style="text-align: center;"><strong>Ctrl + F</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + F</strong></strong></td>
 					<td style="text-align: center;">查找搜索</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + C</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + C</strong></strong></td>
 					<td style="text-align: center;">代码区块</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Shift + Alt+ U</strong></td>
+					<td style="text-align: center;"><strong><strong>Shift + Alt+ U</strong></strong></td>
 					<td style="text-align: center;">首字母转为大写</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + G</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + G</strong></strong></td>
 					<td style="text-align: center;">上一个结果</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + P</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + P</strong></strong></td>
 					<td style="text-align: center;">Pre标签代码区块</td>
 					</tr>
 					<tr>
-					<td style="text-align: center;"><strong>Ctrl + Alt + G</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Alt + G</strong></strong></td>
 					<td style="text-align: center;">跳转到行</td>
-					<td style="text-align: center;"><strong>Ctrl + G</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + G</strong></strong></td>
 					<td style="text-align: center;">下一个结果</td>
-					<td style="text-align: center;"><strong>Ctrl + Shift + H</strong></td>
+					<td style="text-align: center;"><strong><strong>Ctrl + Shift + H</strong></strong></td>
 					<td style="text-align: center;">Html实体字符</td>
 					</tr>
 					</tbody>
 				</table>
-			    </div>`
+			</div>`
                 }
             }
         };
@@ -216,10 +213,10 @@
                 factory(editormd);
             });
 		}
-	} 
+	}
 	else
 	{
         factory(window.editormd);
 	}
-    
+
 })();

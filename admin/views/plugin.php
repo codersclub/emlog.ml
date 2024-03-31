@@ -207,9 +207,9 @@
     function toggleSwitch(plugin, id, token) {
         var switchElement = document.getElementById(id);
         if (switchElement.checked) {
-            window.location.href = './plugin.php?action=active&plugin=' + plugin + '&token=' + token;
+            window.location.href = './plugin.php?action=active&plugin=' + plugin + '&token=' + token + '<?= '&filter=' . $filter ?>';
         } else {
-            window.location.href = './plugin.php?action=inactive&plugin=' + plugin + '&token=' + token;
+            window.location.href = './plugin.php?action=inactive&plugin=' + plugin + '&token=' + token + '<?= '&filter=' . $filter ?>';
         }
     }
 </script>

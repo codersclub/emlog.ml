@@ -539,7 +539,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('comment_needchinese','n'),
 ('comment_interval',60),
 ('isgravatar','y'),
-('isthumbnail','y'),
+('isthumbnail','n'),
 ('att_maxsize','1024000'),
 ('att_type','rar,zip,gif,jpg,jpeg,png,txt,pdf,docx,doc,xls,xlsx,mp4,mp3'),
 ('att_imgmaxw','600'),
@@ -621,6 +621,7 @@ CREATE TABLE {$db_prefix}sort (
   description text NOT NULL COMMENT 'Description',
   kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
+  sortimg varchar(512) NOT NULL default '' COMMENT '分类图像',
   PRIMARY KEY  (sid)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}user;

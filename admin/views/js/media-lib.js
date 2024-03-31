@@ -1,6 +1,6 @@
 // Media management
-function insert_media_img(fileurl, imgsrc) {
-    Editor.insertValue('[![](' + imgsrc + ')](' + fileurl + ')\n\n');
+function insert_media_img(fileurl) {
+    Editor.insertValue('![](' + fileurl + ')\n\n');
 }
 
 function insert_media_video(fileurl) {
@@ -52,6 +52,7 @@ function loadImages() {
                 let insertBtnHtml = '';
                 if (image.media_type === 'image') {
                     insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_url + '\', \'' + image.media_icon + '\')" class="btn btn-sm"><i class="icofont-plus"></i> ' + lang('insert_to_article') + '</a>' +
+                    insertBtnHtml = '<a href="javascript:insert_media_img(\'' + image.media_icon + '\')" class="btn btn-sm"><i class="icofont-plus"></i> 插入文章</a>' +
                         '<a href="javascript:insert_cover(\'' + image.media_icon + '\')" class="btn btn-sm"><i class="icofont-image"></i> ' + lang('set_cover') + '</a>';
                 } else if (image.media_type === 'video') {
                     insertBtnHtml = '<a href="javascript:insert_media_video(\'' + image.media_url + '\')" class="btn btn-sm"><i class="icofont-plus"></i> ' + lang('insert_to_article') + '</a>';

@@ -1,7 +1,7 @@
 (function(){
     var factory = function (exports) {
         var lang = {
-            name : "en",
+            name	: "en",
             description : "Open source online Markdown editor.",
             tocTitle    : "Table of Contents",
             placeholder : "Enjoy Markdown! coding now...",
@@ -104,8 +104,6 @@
 				</li><li><p><a target="_blank" href="https://guides.github.com/features/mastering-markdown/" title="Mastering Markdown">Mastering Markdown - Github guide</a></p>
 				</li><li><p><a target="_blank" href="https://help.github.com/articles/markdown-basics/" title="Markdown Basics">Markdown Basics from Github</a></p>
 				</li><li><p><a target="_blank" href="https://help.github.com/articles/github-flavored-markdown/" title="GitHub Flavored Markdown">GitHub Flavored Markdown</a></p>
-				</li><li><p><a target="_blank" href="http://www.markdown.cn/" title="Markdown syntax description (Simplified Chinese)">Markdown syntax description (Simplified Chinese)</a></p>
-				</li><li><p><a target="_blank" href="http://markdown.tw/" title="Markdown syntax description (Traditional Chinese)">Markdown syntax description (Traditional Chinese)</a></p>
 				</li></ul>
 				<h5 id="h5--keyboard-shortcuts-">Keyboard shortcuts</h5>
 				<blockquote>
@@ -189,7 +187,7 @@
 					</tr>
 					</tbody>
 				</table>
-			    </div>`
+			</div>`
                 }
             }
         };

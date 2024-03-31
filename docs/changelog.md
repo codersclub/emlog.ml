@@ -1,5 +1,19 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.3.1
+
+Release time: 2024-3-31
+
+[Function] Create a category to support adding category images
+[Function] Add resource deletion extension point to facilitate cloud storage plug-in deletion of remote files
+[Function] Add save category extension point.
+[Function] Turn off picture thumbnails by default and wait for detailed adjustments.
+[Fix] Fixed the problem that filling in the icon address when creating a link does not take effect.
+[Fix] Fixed the problem that some hosts could not read the verification code font file
+
+Installation package: [emlog_pro_2.3.1.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.1.zip)
+
+
 ## Pro 2.3.0
 
 Release time: 2024-3-20
