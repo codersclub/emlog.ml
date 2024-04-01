@@ -621,7 +621,7 @@ CREATE TABLE {$db_prefix}sort (
   description text NOT NULL COMMENT 'Description',
   kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
-  sortimg varchar(512) NOT NULL default '' COMMENT '分类图像',
+  sortimg varchar(512) NOT NULL default '' COMMENT 'Category image',
   PRIMARY KEY  (sid)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}user;
@@ -652,7 +652,7 @@ img varchar(255) DEFAULT NULL COMMENT 'Image',
 author int(11) NOT NULL default '1' COMMENT 'Author UID',
 date bigint(20) NOT NULL COMMENT 'Create time',
 replynum int(11) unsigned NOT NULL default '0' COMMENT 'Number of replies',
-private enum('n','y') NOT NULL default 'n' COMMENT '是否私密',
+private enum('n','y') NOT NULL default 'n' COMMENT 'Is it private?',
 PRIMARY KEY (id),
 KEY author (author)
 )" . $table_charset_sql . "

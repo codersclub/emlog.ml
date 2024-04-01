@@ -161,7 +161,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="sortimg">分类图像</label>
+                        <label for="sortimg"><?= lang('category_image') ?></label>
                         <input class="form-control" id="sortimg" name="sortimg" type="url">
                     </div>
                     <div class="form-group">

@@ -112,7 +112,7 @@ if ($action === 'doreply') {
 
     $comment = $Comment_Model->getOneComment($commentId);
     $blogId = isset($comment['gid']) ? (int)$comment['gid'] : null;
-    $content = '@' . addslashes($comment['poster']) . '：' . $reply;
+/*vot*/ $content = '@' . addslashes($comment['poster']) . ': ' . $reply;
 
     $Comment_Model->replyComment($blogId, $commentId, $content, $hide);
     notice::sendNewCommentMail($reply, $blogId, $commentId);

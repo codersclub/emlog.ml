@@ -550,6 +550,9 @@ $lang = array(
     'app_development' => 'Application Development | Development Documentation',//'应用开发 | 开发文档',
     'os' => 'Operating system',//'操作系统',
     'refresh_page' => 'Refresh the page',//'刷新页面',
+    'quick_entries' => 'Quick entries',//'快捷入口',
+    'tips' => 'Tips',//'小贴士',
+    'tpl_options' => 'Template options',//'模板设置',
 
 //---------------------------
 //admin/views/index_user.php
@@ -614,6 +617,8 @@ $lang = array(
     'original_file' => 'Original file',//'原文件',
     'link_copied' => 'Link copied',//'链接已复制',
     'view_from_date' => 'View resources from this date and earlier',//'查看该日期及之前的资源',
+    'edit_media' => 'Edit media',//'编辑资源',
+    'media_name' => 'File Name',//'资源名称',
 
 //---------------------------
 //admin/views/media_lib.php
@@ -893,6 +898,8 @@ $lang = array(
     'keywords' => 'Keywords',//'关键词',
     'keywords_info' => ' (English characters comma separated. Keywords used for a page classification)',//'（英文逗号分割，用于分类页的 keywords）',
     'self_parent' => 'Cannot set itself as a parent category',//'不能设置自身为父分类',
+    'image' => 'Image',//'图像',
+    'category_image' => 'Category image',//'分类图像',
 
 //---------------------------
 //admin/views/sort_edit.php
@@ -955,6 +962,7 @@ $lang = array(
     '_plugins' => ' plugins',//'个插件',// Number of plugins
     'recommend_today' => 'Recommended today',//'今日推荐',
     'limited_offer' => 'Limited Time Offer',//'限时优惠',
+    'download_count' => 'Downloads',//'下载次数',
 
 //---------------------------
 //admin/views/store_svip.php
