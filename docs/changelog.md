@@ -2,7 +2,7 @@
 
 ## Pro 2.3.1
 
-Release time: 2024-3-31
+Release date: 2024-3-31
 
 [Function] Create a category to support adding category images
 [Function] Add resource deletion extension point to facilitate cloud storage plug-in deletion of remote files
@@ -16,7 +16,7 @@ Installation package: [emlog_pro_2.3.1.zip](https://oss.emlog.net/download/relea
 
 ## Pro 2.3.0
 
-Release time: 2024-3-20
+Release date: 2024-3-20
 
 [Function] Add the icon URL to a link
 [Function] Support private notes
@@ -28,7 +28,7 @@ Installation package: [emlog_pro_2.3.0.zip](https://oss.emlog.net/download/relea
 
 ## Pro 2.2.11
 
-Release time: 2024-3-14
+Release date: 2024-3-14
 
 [Function] Optimize the captcha code font
 [Function] Optimize the logic of upgrade version comparison
