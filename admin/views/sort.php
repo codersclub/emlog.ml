@@ -162,7 +162,7 @@
                     </div>
                     <div class="form-group">
                         <label for="sortimg"><?= lang('category_image') ?></label>
-                        <input class="form-control" id="sortimg" name="sortimg" type="url">
+                        <input class="form-control" id="sortimg" name="sortimg" type="url" placeholder="https://">
                     </div>
                     <div class="form-group">
                         <label for="alias"><?=lang('category_description')?></label>

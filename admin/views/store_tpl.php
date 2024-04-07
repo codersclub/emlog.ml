@@ -20,8 +20,8 @@
         <a href="./store.php?tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
         <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
         <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
-        <a href="./store.php?tag=free_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_free') ?>-TOP12</a>
-        <a href="./store.php?tag=paid_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_paid') ?>-TOP12</a>
+        <a href="./store.php?tag=free_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_free') ?></a>
+        <a href="./store.php?tag=paid_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_paid') ?></a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">

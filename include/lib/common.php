@@ -765,7 +765,10 @@ function emFetchFile($source) {
     $wh = fopen($temp_file, 'w+b');
 
     $r = parse_url($source);
-    if (isset($r['host']) && strlen($r['host']) !== 13) {
+    if (!isset($r['host'])) {
+        return FALSE;
+    }
+    if (strlen($r['host']) !== 13) {
         return FALSE;
     }
 
@@ -1006,6 +1009,7 @@ function get_mimetype($extension) {
     $ct['jpg'] = 'image/jpeg';
     $ct['jpe'] = 'image/jpeg';
     $ct['png'] = 'image/png';
+    $ct['webp'] = 'image/webp';
     $ct['ico'] = 'image/vnd.microsoft.icon';
     $ct['mpeg'] = 'video/mpeg';
     $ct['mpg'] = 'video/mpeg';

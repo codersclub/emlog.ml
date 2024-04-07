@@ -1,5 +1,21 @@
 # &#x1f335; Emlog version update records
 
+## Pro-2.3.2
+
+Release date: 2024-4-07
+
+[Function] Support WEBP format images in resource management 
+[Function] Support customizing the background left menu title
+[Function] Remove an abstract in editor, it is recommended to use plain text
+[Function] Adjust the installation database address to localhost, compatible with IPv6
+[Function] New configuration item: turn off background application upload and installation
+[Fix] Fix a possible SQL injection security issue
+[Fix] Solve the problem of abnormal mouse gestures in background switches and other controls
+[Fix] Optimization of other code and UI details
+
+Installation package: [emlog_pro_2.3.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.2.zip)
+
+
 ## Pro 2.3.1
 
 Release date: 2024-3-31

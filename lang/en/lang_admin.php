@@ -128,10 +128,10 @@ $lang = array(
     'tpl_category_7' => 'Resource download',//'资源下载',
     'tpl_category_8' => 'Blog We Media',//'博客自媒体',
     'tpl_category_9' => 'Community Forum',//'社区论坛',
-    'tpl_category_10' => 'Other',//'其他',
+    'tpl_category_10' => 'General Theme',//'通用主题',
     'plu_category_11' => 'User Interaction',//'用户互动',
     'plu_category_12' => 'Content Operation',//'内容运营',
-    'plu_category_13' => 'Mobile (applets)',//'移动端（小程序）',
+    'plu_category_13' => 'Mobile Terminal',//'移动端',
     'plu_category_14' => 'Program development',//'编程开发',
     'plu_category_15' => 'Content Creation',//'内容创作',
     'tpl_category_17' => 'Site navigation',//'网址导航',
@@ -141,8 +141,8 @@ $lang = array(
     'free_zone' => 'Free only',//'仅看免费',
     'paid_zone' => 'Paid only',//'仅看付费',
     'search_by_category' => 'Search by category',//'按分类查找',
-    'rank_free'	=> 'Free ranking',//'免费排行',
-    'rank_paid'	=> 'Paid ranking',//'付费排行',
+    'rank_free'	=> 'Free ranking',//'免费排行榜',
+    'rank_paid'	=> 'Paid ranking',//'付费排行榜',
 
 //---------------------------
 //admin/style.php
@@ -822,7 +822,7 @@ $lang = array(
     'upload_settings' => 'Upload settings',//'上传设置',
     'comment_settings' => 'Comment settings',//'评论设置',
     'rss_url' => 'RSS URL (for RSS readers to subscribe to your site content)',//'RSS地址(用于RSS阅读器订阅你的站点内容)',
-    'other_settings' => 'Other settings',//'其他设置',
+    'other_settings' => 'Panel settings',//'面板设置',
     'admin_per_page' => 'The number of items displayed per page in the admin panel',//'后台每页展示条目数量',
     'admin_per_page_tips' => '(Affect background articles, comments, user lists)',//'（影响后台文章、评论、用户列表）',
     'today_app_news' => 'Receive official app recommendations (affects the display of today\'s apps on the background homepage)',//'接收来自官方的应用推荐（影响后台首页今日应用的展示）',

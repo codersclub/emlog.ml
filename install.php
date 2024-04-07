@@ -224,7 +224,7 @@ if (!$act) {
                     <p class="install-title"><?= lang('mysql_settings') ?></p>
                     <div class="input-group mb10">
                         <label class="input-group-text"><?= lang('db_hostname') ?></label>
-                        <input name="hostname" type="text" class="form-control" value="127.0.0.1">
+                        <input name="hostname" type="text" class="form-control" value="localhost">
                     </div>
                     <div class="mb10">
                         <label class="form-label care"><?= lang('db_hostname_info') ?></label>
@@ -541,7 +541,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('isgravatar','y'),
 ('isthumbnail','n'),
 ('att_maxsize','1024000'),
-('att_type','rar,zip,gif,jpg,jpeg,png,txt,pdf,docx,doc,xls,xlsx,mp4,mp3'),
+('att_type','rar,zip,gif,jpg,jpeg,png,webp,txt,pdf,docx,doc,xls,xlsx,mp4,mp3'),
 ('att_imgmaxw','600'),
 ('att_imgmaxh','370'),
 ('comment_paging','y'),
@@ -572,7 +572,8 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('smtp_port',''),
 ('is_openapi','n'),
 ('apikey','$apikey'),
-('accept_app_recs','y');
+('accept_app_recs','y'),
+('panel_menu_title','');
 DROP TABLE IF EXISTS {$db_prefix}link;
 CREATE TABLE {$db_prefix}link (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Link table',

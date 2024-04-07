@@ -13,14 +13,18 @@
                     <?php doAction('adm_writelog_bar') ?>
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
-                <label><?= lang('post_description') ?><?= lang('optional') ?>:
-                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
+                <div class="mt-3">
+                    <label><?= lang('post_description') ?><?= lang('optional') ?>:
+                        <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
                     <label for="sortop" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
-                </label>
-                <div id="logexcerpt"><textarea><?= $excerpt ?></textarea></div>
-                <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
-                <div id="post_bar">
-                    <?php doAction('adm_writelog_head') ?>
+                    </label>
+                    <textarea id="logexcerpt" name="logexcerpt" class="form-control" rows="5"><?= $excerpt ?></textarea>
+                </div>
+                <div class="mt-3">
+                    <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
+                    <div id="post_bar">
+                        <?php doAction('adm_writelog_head') ?>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,7 +229,7 @@
     $("#menu_write").addClass('active');
 
     // Editor
-    var Editor, Editor_summary;
+    var Editor;
     $(function () {
         Editor = editormd("logcontent", {
             width: "100%",
@@ -258,27 +262,7 @@
                 hooks.doAction("loaded", this);
             }
         });
-        Editor_summary = editormd("logexcerpt", {
-            width: "100%",
-            height: 180,
-            toolbarIcons: function () {
-                return ["bold", "h1", "h2", "h3", "|", "list-ul", "list-ol", "|", "link", "image", "preview"]
-            },
-            path: "editor.md/lib/",
-            tex: false,
-            watch: false,
-            htmlDecode: true,
-            flowChart: false,
-            autoFocus: false,
-            lineNumbers: false,
-            sequenceDiagram: false,
-            placeholder: lang('enter_summary'),
-            onload: function () {
-                hooks.doAction("sum_loaded", this);
-            }
-        });
         Editor.setToolbarAutoFixed(false);
-        Editor_summary.setToolbarAutoFixed(false);
     });
 
     // Cover image
