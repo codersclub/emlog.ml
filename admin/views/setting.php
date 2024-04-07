@@ -133,7 +133,7 @@
 
 <!--vot-->        <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
-                <label>左侧菜单标题</label>
+                <label><?= lang('lmenu_title') ?></label>
                 <input class="form-control ml-2" value="<?= $panel_menu_title ?>" name="panel_menu_title">
             </div>
             <div class="form-group form-inline">

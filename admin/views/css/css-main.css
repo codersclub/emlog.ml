@@ -39,7 +39,7 @@ textarea {
     font-size: 12px
 }
 
-/* 鼠标悬停时显示手型 */
+/* Show hand shape on mouseover */
 input[type="checkbox"]:hover, select:hover {
     cursor: pointer;
 }

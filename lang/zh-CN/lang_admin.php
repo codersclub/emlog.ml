@@ -62,6 +62,7 @@ $lang = array(
     'plugin_upload_error' => '插件上传失败， 错误码：',//'Plugin upload failed, error code: ',
     'update_failed_network' => '请求更新失败，可能是网络问题',//'The update request failed, it may be a network problem',
     'pro_unregistered' => '未注册的pro版本',//'Unregistered pro version',
+    'apps_forbid' => '系统禁止上传安装应用',//'The system prohibits uploading and installing applications',
 
 //---------------------------
 //admin/setting.php
@@ -830,6 +831,7 @@ $lang = array(
     'login_before_comment_on' => '登录后评论，开启后仅登录用户可评论',//'Comment after login. Only logged-in users can comment after this is turned on',
     'app_recommended' => '应用推荐',//'Updated applications',
     'menu' => '菜单',//'Menu',
+    'lmenu_title' => '左侧菜单标题',//'Left menu title',
 
 //---------------------------
 //admin/views/setting_api.php
