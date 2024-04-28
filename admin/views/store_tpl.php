@@ -50,7 +50,7 @@
                 ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
-                        <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
+                        <a href="#appModal" class="p-1" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>">
                             <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
                         </a>
                         <div class="card-body">
@@ -58,10 +58,9 @@
                                 <?php if ($v['top'] === 1): ?>
                                     <span class="badge badge-success p-1"><?= lang('recommend_today') ?></span>
                                 <?php endif; ?>
-                                <a class="text-secondary" href="<?= $v['buy_url'] ?>" target="_blank"><?= subString($v['name'], 0, 22) ?></a>
+                                <a href="#appModal" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>"><?= subString($v['name'], 0, 22) ?></a>
                             </p>
                             <p class="card-text text-muted">
-                                <small><?= subString($v['info'], 0, 56) ?></small><br><br>
                                 <?= lang('price') ?>:
                                 <?php if ($v['price'] > 0): ?>
                                     <?php if ($v['promo_price'] > 0): ?>
@@ -75,7 +74,7 @@
                                 <?php endif; ?>
                                 <br>
                                 <small>
-                                    <?= lang('developer') ?>: <?= $v['author'] ?> <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= lang('this_author_only') ?></a><br>
+                                    <?= lang('developer') ?>: <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= $v['author'] ?></a><br>
                                     <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
                                     <?= lang('download_count') ?>: <?= $v['downloads'] ?><br>
                                     <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
@@ -102,6 +101,23 @@
             <div class="alert alert-info"><?= lang('store_no_results') ?></div>
         </div>
     <?php endif ?>
+</div>
+<div class="modal fade" id="appModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <div>
+                    <a href="" class="modal-buy-url text-muted" target="_blank">去官网查看</a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     $(function () {

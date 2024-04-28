@@ -203,21 +203,22 @@ $isdraft = $draft ? '&draft=1' : '';
                         <?php endforeach ?>
                     </select>
                 <?php endif ?>
-                <div class="btn-group btn-group-sm ml-1" role="group">
-                    <?php if ($draft): ?>
-                        <a href="javascript:logact('del_draft');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-                        <a href="javascript:logact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
-                    <?php else: ?>
-                        <a href="javascript:logact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
-                        <a href="javascript:logact('hide');" class="btn btn-sm btn-success"><?= lang('add_draft') ?></a>
-                    <?php endif ?>
-                </div>
-                <?php if ($multiCheckBtn): ?>
-                    <div class="btn-group btn-group-sm ml-1" role="group">
-                        <a href="javascript:logact('check');" class="btn btn-sm btn-success"><?= lang('check') ?></a>
-                        <a href="javascript:logact('uncheck');" class="btn btn-sm btn-warning"><?= lang('uncheck') ?></a>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <div class="dropdown-menu">
+                        <?php if ($multiCheckBtn): ?>
+                            <a href="javascript:logact('check');" class="dropdown-item"><?= lang('check') ?></a>
+                            <a href="javascript:logact('uncheck');" class="dropdown-item"><?= lang('uncheck') ?></a>
+                        <?php endif ?>
+                        <?php if ($draft): ?>
+                            <a href="javascript:logact('pub');" class="dropdown-item"><?= lang('publish') ?></a>
+                            <a href="javascript:logact('del_draft');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
+                        <?php else: ?>
+                            <a href="javascript:logact('hide');" class="dropdown-item"><?= lang('add_draft') ?></a>
+                            <a href="javascript:logact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
+                        <?php endif ?>
                     </div>
-                <?php endif ?>
+                </div>
             </div>
         </form>
         <div class="page"><?= $pageurl ?> </div>

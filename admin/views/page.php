@@ -64,10 +64,13 @@
                 </table>
             </div>
             <div class="list_footer">
-                <div class="btn-group btn-group-sm" role="group">
-                    <a href="javascript:pageact('hide');" class="btn btn-sm btn-primary"><?= lang('make_draft') ?></a>
-                    <a href="javascript:pageact('pub');" class="btn btn-sm btn-success"><?= lang('publish') ?></a>
-                    <a href="javascript:pageact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <div class="dropdown-menu">
+                        <a href="javascript:pageact('hide');" class="dropdown-item"><?= lang('make_draft') ?></a>
+                        <a href="javascript:pageact('pub');" class="dropdown-item"><?= lang('publish') ?></a>
+                        <a href="javascript:pageact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
+                    </div>
                 </div>
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input name="operate" id="operate" value="" type="hidden"/>

@@ -109,14 +109,16 @@
                 </table>
             </div>
             <div class="list_footer">
-                <div class="btn-group btn-group-sm" role="group">
-                    <?php if (User::haveEditPermission()): ?>
-                        <a href="javascript:commentact('top');" class="btn btn-sm btn-primary"><?= lang('top') ?></a>
-                        <a href="javascript:commentact('untop');" class="btn btn-sm btn-primary"><?= lang('untop') ?></a>
-                        <a href="javascript:commentact('hide');" class="btn btn-sm btn-warning"><?= lang('hide') ?></a>
-                        <a href="javascript:commentact('pub');" class="btn btn-sm btn-success"><?= lang('approve') ?></a>
-                    <?php endif; ?>
-                    <a href="javascript:commentact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <div class="dropdown-menu">
+                        <?php if (User::haveEditPermission()): ?>
+                        <a href="javascript:commentact('top');" class="dropdown-item"><?= lang('top') ?></a>
+                        <a href="javascript:commentact('untop');" class="dropdown-item"><?= lang('untop') ?></a>
+                        <a href="javascript:commentact('hide');" class="dropdown-item text-primary"><?= lang('hide') ?></a>
+                        <a href="javascript:commentact('pub');" class="dropdown-item text-primary"><?= lang('approve') ?></a>
+                        <?php endif; ?>
+                    <a href="javascript:commentact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
 
                 </div>
                 <input name="operate" id="operate" value="" type="hidden"/>

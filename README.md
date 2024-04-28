@@ -27,22 +27,22 @@ A fast and stable lightweight blog and CMS website building system to create an 
 - Custom pages: Supports the creation of custom pages, including message boards, personal introductions, etc., to help you create a more personalized and functional site.
 - Tags and categories: Articles can be easily categorized and tagged, providing better information organization and retrieval capabilities.
 
-## Quick Start (Docker)
-
-```bash
-$ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
-```
-
 ## Environmental requirements
 
-* PHP5.6, PHP7, PHP8. PHP7.4 recommended
-* MySQL5.6 and above. 5.6 is recommended
+* PHP5.6, PHP7, PHP8. PHP7.4 and above recommended
+* MySQL5.6 and above, or MariaDB 10.3 and above
 * Recommended server environment: Linux + Nginx
 
 ## Installation and deployment
 
 - [Pagoda one-click deployment](/docs/install_bt/)
 - [1Panel deployment](/docs/install_1panel/)
+
+## Quick Start (Docker)
+
+```bash
+$ docker run --name emlog-pro -p 8080:80 -d emlog/emlog:pro-latest-php7.4-apache
+```
 
 ## Start via `docker-compose`
 

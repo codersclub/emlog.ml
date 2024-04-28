@@ -22,7 +22,7 @@ $lang = array(
     'check' => '审核',//'Check',
     'uncheck' => '驳回',//'Uncheck',
     'view_by_tag' => '按标签查看',//'View by tag',
-    'article_add' => '写新文章',//'Write a new article',
+    'article_add' => '写文章',//'Write a new article',
     'attachment_delete_error' => '删除失败!',//'Failed to delete the file!',
 
 //---------------------------

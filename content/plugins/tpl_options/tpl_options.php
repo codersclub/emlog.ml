@@ -20,7 +20,7 @@ class TplOptions {
     //Plug-in ID
     const ID = 'tpl_options';
     const NAME = 'Template options';
-    const VERSION = '4.2.4';
+    const VERSION = '4.2.5';
 
     //DB table prefix
     private $_prefix = 'tpl_options_';

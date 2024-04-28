@@ -28,12 +28,12 @@
     <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
     <?php doAction('adm_head') ?>
 </head>
-<body>
+<body id="page-top">
 <div id="editor-md-dialog"></div>
 <div id="wrapper">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sd-hidden" id="accordionSidebar">
         <li class="nav-item active emlog_title" id="menu_home">
-            <a class="nav-link" href="./"><?= subString(Option::get('panel_menu_title'), 0, 11) ?: 'EMLOG PRO' ?> <?php if (!Register::isRegLocal()) : ?> <small><?= lang('unregistered') ?></small><?php endif ?></a>
+            <a class="nav-link" href="./"><?= subString(Option::get('panel_menu_title'), 0, 11) ?: 'EMLOG PRO' ?></a>
         </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item" id="menu_panel">
@@ -105,6 +105,12 @@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
+            <?php if (!Register::isRegLocal()) : ?>
+                <div class="sidebar-card">
+                    <p class="text-center mb-2">您安装的emlog尚未注册，完成注册解锁全部功能和服务</p>
+                    <a class="btn btn-success btn-sm" href="auth.php">去注册</a>
+                </div>
+            <?php endif ?>
         <?php endif ?>
     </ul>
     <div id="content-wrapper" class="d-flex flex-column">
@@ -122,7 +128,7 @@
                             ?>
                         </a>
                     </li>
-                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="topbar-divider d-none d-sm-block"></li>
 <!-- Change Language -->
                     <li class="nav-item mx-1 dropdown">
                         <span class="nav-link dropdown-toggle" data-toggle="dropdown"><?= lang('language') ?>:&nbsp;<img src="<?= BLOG_URL ?>lang/<?= LANG ?>/flag.gif"></span>
@@ -143,7 +149,7 @@
                                  src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
                         </a>
                     </li>
-                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="topbar-divider d-none d-sm-block"></li>
                     <li class="nav-item mx-1">
                         <a class="nav-link" href="account.php?action=logout" title="<?= lang('logout') ?>" role="button">
                             <i class="icofont-logout icofont-1x"></i>

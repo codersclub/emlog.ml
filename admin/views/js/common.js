@@ -142,13 +142,13 @@ function delArticle(msg, text, url, token) {
     });
 }
 
-function submitForm(formId) {
+function submitForm(formId, successMsg) {
     $.ajax({
         type: "POST",
         url: $(formId).attr('action'),
         data: $(formId).serialize(),
         success: function () {
-/*vot*/     cocoMessage.success(lang('save_success'))
+/*vot*/     cocoMessage.success(successMsg || lang('save_success'))
         },
         error: function (xhr) {
             const errorMsg = JSON.parse(xhr.responseText).msg;
@@ -359,35 +359,6 @@ function removeHTMLTag(str) {
     return str;
 }
 
-// Select all forms
-$(function () {
-    $('#checkAll').click(function (event) {
-        let tr_checkbox = $('table tbody tr').find('input[type=checkbox]');
-        tr_checkbox.prop('checked', $(this).prop('checked'));
-        event.stopPropagation();
-    });
-    // Click on the checkbox in each row of the table, and when the number of checkboxes selected in the table = the number of table rows, set the "checkAll" radio box in the header of the table to be selected, otherwise it is unselected
-    $('table tbody tr').find('input[type=checkbox]').click(function (event) {
-        let tbr = $('table tbody tr');
-        $('#checkAll').prop('checked', tbr.find('input[type=checkbox]:checked').length == tbr.length ? true : false);
-        event.stopPropagation();
-    });
-});
-
-// Select all cards
-$(function () {
-    $('#checkAllCard').click(function (event) {
-        let card_checkbox = $('.card-body').find('input[type=checkbox]');
-        card_checkbox.prop('checked', $(this).prop('checked'));
-        event.stopPropagation();
-    });
-    $('.card-body').find('input[type=checkbox]').click(function (event) {
-        let cards = $('.card-body');
-        $('#checkAllCard').prop('checked', cards.find('input[type=checkbox]:checked').length == cards.length ? true : false);
-        event.stopPropagation();
-    });
-});
-
 // editor.md js hook
 var queue = new Array();
 var hooks = {
@@ -544,12 +515,10 @@ function lang(key) {
 }
 
 $(function () {
-    // Check once the page is loaded
-    // Setting interface, if "automatically detect address" is set, set input to read-only to indicate that the item is invalid
+    // Setting interface: Automatically detect site address. If "Automatically detect address" is set, set the input to read-only to indicate that the item is invalid.
     if ($("#detect_url").prop("checked")) {
         $("[name=blogurl]").attr("readonly", "readonly")
     }
-
     $("#detect_url").click(function () {
         if ($(this).prop("checked")) {
             $("[name=blogurl]").attr("readonly", "readonly")
@@ -557,6 +526,31 @@ $(function () {
             $("[name=blogurl]").removeAttr("readonly")
         }
     })
+
+    // 表格全选
+    $('#checkAll').click(function (event) {
+        let tr_checkbox = $('table tbody tr').find('input[type=checkbox]');
+        tr_checkbox.prop('checked', $(this).prop('checked'));
+        event.stopPropagation();
+    });
+    // 点击表格每一行的checkbox，表格所有选中的checkbox数 = 表格行数时，则将表头的‘checkAll’单选框置为选中，否则置为未选中
+    $('table tbody tr').find('input[type=checkbox]').click(function (event) {
+        let tbr = $('table tbody tr');
+        $('#checkAll').prop('checked', tbr.find('input[type=checkbox]:checked').length == tbr.length ? true : false);
+        event.stopPropagation();
+    });
+
+    // 卡片全选
+    $('#checkAllCard').click(function (event) {
+        let card_checkbox = $('.card-body').find('input[type=checkbox]');
+        card_checkbox.prop('checked', $(this).prop('checked'));
+        event.stopPropagation();
+    });
+    $('.card-body').find('input[type=checkbox]').click(function (event) {
+        let cards = $('.card-body');
+        $('#checkAllCard').prop('checked', cards.find('input[type=checkbox]:checked').length == cards.length ? true : false);
+        event.stopPropagation();
+    });
 
     // store app install
     $('.installBtn').click(function (e) {
@@ -572,5 +566,33 @@ $(function () {
 /*vot*/            link.text(lang('install_free'));
             link.parent().prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
         });
+    });
+
+    // 应用商店：查看应用信息
+    $('#appModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var name = button.data('name');
+        var url = button.data('url');
+        var buy_url = button.data('buy-url');
+        var modal = $(this);
+
+        modal.find('.modal-body').empty();
+        modal.find('.modal-title').html(name);
+        modal.find('.modal-buy-url').attr('href', buy_url);
+
+        var loadingSpinner = '<div class="spinner-border text-primary ml-3"><span class="sr-only">Loading...</span></div>';
+        modal.find('.modal-title').append(loadingSpinner);
+
+        var iframe = $('<iframe>', {
+            'class': 'iframe-content',
+            'src': url,
+            'frameborder': 0
+        });
+
+        iframe.on('load', function () {
+            $('.spinner-border').remove();
+        });
+
+        modal.find('.modal-body').append(iframe);
     });
 })

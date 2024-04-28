@@ -23,11 +23,13 @@
             ?>
             <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 shadow-sm">
-                    <a class="p-1" href="<?= $v['buy_url'] ?>" target="_blank">
+                    <a href="#appModal" class="p-1" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>">
                         <img class="bd-placeholder-img card-img-top" alt="cover" width="100%" height="225" src="<?= $icon ?>">
                     </a>
                     <div class="card-body">
-                        <p class="card-text font-weight-bold"><?= $v['name'] ?></p>
+                        <p class="card-text font-weight-bold">
+                            <a href="#appModal" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>"><?= $v['name'] ?></a>
+                        </p>
                         <p class="card-text text-muted small">
                             <?=lang('developer')?>: <?= $v['author'] ?><br>
                             <?=lang('version_number')?>: <?= $v['ver'] ?><br>
@@ -44,6 +46,23 @@
                 </div>
             </div>
         <?php endforeach ?>
+    </div>
+</div>
+<div class="modal fade" id="appModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <div>
+                    <a href="" class="modal-buy-url text-muted" target="_blank">去官网查看</a>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
     </div>
 </div>
 <script>
