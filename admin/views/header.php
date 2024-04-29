@@ -107,8 +107,8 @@
             </div>
             <?php if (!Register::isRegLocal()) : ?>
                 <div class="sidebar-card">
-                    <p class="text-center mb-2">您安装的emlog尚未注册，完成注册解锁全部功能和服务</p>
-                    <a class="btn btn-success btn-sm" href="auth.php">去注册</a>
+                    <p class="text-center mb-2"><?= lang('emlog_notregistered') ?></p>
+                    <a class="btn btn-success btn-sm" href="auth.php"><?= lang('go_to_register') ?></a>
                 </div>
             <?php endif ?>
         <?php endif ?>

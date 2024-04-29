@@ -204,7 +204,7 @@ $isdraft = $draft ? '&draft=1' : '';
                     </select>
                 <?php endif ?>
                 <div class="btn-group">
-                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                     <div class="dropdown-menu">
                         <?php if ($multiCheckBtn): ?>
                             <a href="javascript:logact('check');" class="dropdown-item"><?= lang('check') ?></a>

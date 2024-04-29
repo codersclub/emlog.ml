@@ -1,17 +1,32 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.3.3
+
+Release date: 2024-4-28
+
+- [Function] The app store supports pop-up modal windows to view app details without having to jump to the official website every time
+- [Function] Add a button for return to the top in the lower right corner of the Admin CP
+- [Function] Improve the article publishing API and add fields such as pinned and password
+- [Function] Add a plug-in mount point that can take over 404 processing
+- [Function] Add a mount point for a twit publishing, and supports passing the id parameter.
+- [Fix] Fix article mount point parameter error
+- [Fix] Optimization of other code and UI details
+
+Installation package: [emlog_pro_2.3.3.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.3.zip)
+
+
 ## Pro-2.3.2
 
 Release date: 2024-4-07
 
-[Function] Support WEBP format images in resource management 
-[Function] Support customizing the background left menu title
-[Function] Remove an abstract in editor, it is recommended to use plain text
-[Function] Adjust the installation database address to localhost, compatible with IPv6
-[Function] New configuration item: turn off background application upload and installation
-[Fix] Fix a possible SQL injection security issue
-[Fix] Solve the problem of abnormal mouse gestures in background switches and other controls
-[Fix] Optimization of other code and UI details
+- [Function] Support WEBP format images in resource management 
+- [Function] Support customizing the background left menu title
+- [Function] Remove an abstract in editor, it is recommended to use plain text
+- [Function] Adjust the installation database address to localhost, compatible with IPv6
+- [Function] New configuration item: turn off background application upload and installation
+- [Fix] Fix a possible SQL injection security issue
+- [Fix] Solve the problem of abnormal mouse gestures in background switches and other controls
+- [Fix] Optimization of other code and UI details
 
 Installation package: [emlog_pro_2.3.2.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.2.zip)
 
@@ -20,12 +35,12 @@ Installation package: [emlog_pro_2.3.2.zip](https://oss.emlog.net/download/relea
 
 Release date: 2024-3-31
 
-[Function] Create a category to support adding category images
-[Function] Add resource deletion extension point to facilitate cloud storage plug-in deletion of remote files
-[Function] Add save category extension point.
-[Function] Turn off picture thumbnails by default and wait for detailed adjustments.
-[Fix] Fixed the problem that filling in the icon address when creating a link does not take effect.
-[Fix] Fixed the problem that some hosts could not read the verification code font file
+- [Function] Create a category to support adding category images
+- [Function] Add resource deletion extension point to facilitate cloud storage plug-in deletion of remote files
+- [Function] Add save category extension point.
+- [Function] Turn off picture thumbnails by default and wait for detailed adjustments.
+- [Fix] Fixed the problem that filling in the icon address when creating a link does not take effect.
+- [Fix] Fixed the problem that some hosts could not read the verification code font file
 
 Installation package: [emlog_pro_2.3.1.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.1.zip)
 
@@ -34,11 +49,11 @@ Installation package: [emlog_pro_2.3.1.zip](https://oss.emlog.net/download/relea
 
 Release date: 2024-3-20
 
-[Function] Add the icon URL to a link
-[Function] Support private notes
-[Function] Optimize background UI details
-[Fix] The problem of enabling graphic verification code (captcha) even if the gd library is not supported
-[Fix] Solve 360 Speed Browser compatibility issue
+- [Function] Add the icon URL to a link
+- [Function] Support private notes
+- [Function] Optimize background UI details
+- [Fix] The problem of enabling graphic verification code (captcha) even if the gd library is not supported
+- [Fix] Solve 360 Speed Browser compatibility issue
 
 Installation package: [emlog_pro_2.3.0.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.0.zip)
 
@@ -46,9 +61,9 @@ Installation package: [emlog_pro_2.3.0.zip](https://oss.emlog.net/download/relea
 
 Release date: 2024-3-14
 
-[Function] Optimize the captcha code font
-[Function] Optimize the logic of upgrade version comparison
-[Fix] The problem of incorrect quick link in Admin CP
+- [Function] Optimize the captcha code font
+- [Function] Optimize the logic of upgrade version comparison
+- [Fix] The problem of incorrect quick link in Admin CP
 
 Installation package: [emlog_pro_2.2.11.zip](https://oss.emlog.net/download/release/emlog_pro_2.2.11.zip)
 

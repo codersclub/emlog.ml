@@ -812,7 +812,7 @@ input[type="checkbox"]:hover, select:hover {
     border-radius: 10px;
 }
 
-/* 应用商店-应用介绍弹出窗 */
+/* App Store - App introduction pop-up window */
 #appModal .modal-dialog {
     max-width: 60%;
     margin: 1.75rem auto;
@@ -827,7 +827,7 @@ input[type="checkbox"]:hover, select:hover {
     height: 98%;
 }
 
-/* 在小屏幕上，展示更大比例 */
+/* On small screens, show a larger proportion */
 @media (max-width: 767px) {
     #appModal .modal-dialog {
         max-width: 90%;

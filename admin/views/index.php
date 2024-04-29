@@ -23,7 +23,7 @@
             <div class="card shadow mb-3">
                 <div class="card-body">
                     <?= lang('quick_entries') ?>:
-                    <a href="./article.php?action=write" class="mr-2">写文章</a>
+                    <a href="./article.php?action=write" class="mr-2"><?= lang('article_add') ?></a>
                     <a href="article.php" class="mr-2"><?= lang('articles') ?></a>
                     <a href="article.php?draft=1" class="mr-2"><?= lang('drafts') ?></a>
                     <a href="page.php" class="mr-2"><?= lang('page_management') ?></a>

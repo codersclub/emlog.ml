@@ -324,7 +324,7 @@ $lang = array(
 //admin/views/auth.php
     'ext_store_info' => '扩展商店用于下载模板和插件，仅开放给已完成注册用户',//'The extension store is used to download templates and plug-ins, only open to registered users',
     'too_many_articles' => '文章数量已经超过未注册版本限额',//'The number of articles has exceeded the unregistered version limit',
-    'emlog_notregistered' => '抱歉！您的emlog pro尚未完成注册， 完成注册来解锁emlog pro的全部功能',//'Sorry! Your emlog pro has not been registered, complete the registration to unlock all the functions of emlog pro',
+    'emlog_notregistered' => '您安装的emlog尚未注册，完成注册解锁全部功能和服务',//'The emlog you installed has not been registered yet. Complete the registration to unlock all functions and services.',
     'emlog_registration' => '正版注册',//'Genuine registration',
     'submit_regitration' => '提交注册',//'Submit registration',
 
@@ -952,6 +952,7 @@ $lang = array(
     'install_app' => '安装应用',//'Install app',
     'not_paid_user' => '您还不是付费注册用户，无法使用应用商店已购功能，',//'You are not a paid registered user and cannot use the functions purchased in the app store.',
     'paid_support' => '付费支持',//'Paid Support',
+    'go_off_site' => '去官网查看',//'Go to the official website to view',
 
 //---------------------------
 //admin/views/store_plu.php

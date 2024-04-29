@@ -54,7 +54,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <div>
-                    <a href="" class="modal-buy-url text-muted" target="_blank">去官网查看</a>
+                    <a href="" class="modal-buy-url text-muted" target="_blank"><?= lang('go_off_site') ?></a>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -1,7 +1,7 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <footer class="py-4">
     <div class="text-center">
-        <small>© <?= date("Y") ?> <?= Option::get('blogname') ?> </small>
+        <small>&copy; <?= date("Y") ?> <?= Option::get('blogname') ?> </small>
     </div>
 </footer>
 </div>
