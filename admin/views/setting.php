@@ -26,11 +26,11 @@
             </div>
             <div class="form-group">
                 <label><?= lang('site_address') ?>:</label>
-                <input class="form-control" value="<?= $blogurl ?>" name="blogurl" type="url">
+                <input class="form-control" value="<?= $blogurl ?>" name="blogurl" type="url" required>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="detect_url" id="detect_url" <?= $conf_detect_url ?> />
-                <label class="form-check-label" for="exampleCheck1"><?= lang('detect_url') ?></label>
+                <label class="form-check-label" for="detect_url"><?= lang('detect_url') ?></label>
             </div>
 
             <div class="form-group">
@@ -51,37 +51,35 @@
                 <label><?= lang('home_footer_info') ?> <?= lang('home_footer_info_html') ?></label>
                 <textarea name="footer_info" rows="6" class="form-control"><?= $footer_info ?></textarea>
             </div>
-
             <hr>
-
             <h4><?= lang('comment_settings') ?></h4>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="iscomment" id="iscomment" <?= $conf_iscomment ?> />
-                <label><?= lang('enable_comments') ?></label>
+                <label for="iscomment"><?= lang('enable_comments') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkcomment" id="ischkcomment" <?= $conf_ischkcomment ?> />
-                <label><?= lang('comment_moderation') ?></label>
+                <label for="ischkcomment"><?= lang('comment_moderation') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_code" id="comment_code" <?= $conf_comment_code ?> />
-                <label><?= lang('comment_verification_code') ?></label>
+                <label for="comment_code"><?= lang('comment_verification_code') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="isgravatar" id="isgravatar" <?= $conf_isgravatar ?> />
-                <label><?= lang('comment_avatar') ?></label>
+                <label for="isgravatar"><?= lang('comment_avatar') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
-                <label><?= lang('login_before_comment_on') ?></label>
+                <label for="login_comment"><?= lang('login_before_comment_on') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_needchinese" id="comment_needchinese" <?= $conf_comment_needchinese ?> />
-                <label><?= lang('comment_must_contain_chinese') ?></label>
+                <label for="comment_needchinese"><?= lang('comment_must_contain_chinese') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_paging" id="comment_paging" <?= $conf_comment_paging ?> />
-                <label><?= lang('comment_per_page') ?></label>
+                <label for="comment_paging"><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
                 <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0"/>
@@ -125,7 +123,8 @@
                 <?= lang('allow_attach_type') ?> <input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('separate_by_comma') ?>
             </div>
             <div class="form-group form-inline">
-                <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> /> <?= lang('thumbnail_max_size') ?>
+                <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> />
+                <label for="isthumbnail">上传图片生成缩略图</label>，最大尺寸：
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
             </div>
@@ -142,7 +141,11 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="accept_app_recs" id="accept_app_recs" <?= $conf_accept_app_recs ?> />
-                <label><?= lang('today_app_news') ?></label>
+                <label for="accept_app_recs"><?= lang('today_app_news') ?></label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="y" name="help_guide" id="help_guide" <?= $conf_help_guide ?> />
+                <label for="help_guide">开启获取帮助模块（影响台首页获取帮助模块）</label>
             </div>
             <hr>
 

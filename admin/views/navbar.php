@@ -142,8 +142,8 @@
                     <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url" id="url" required></textarea>
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" value="y" name="newtab">
-                    <label class="form-check-label" for="exampleCheck1"><?= lang('open_new_win') ?></label>
+                    <input type="checkbox" class="form-check-input" value="y" name="newtab" id="newtab">
+                    <label class="form-check-label" for="newtab"><?= lang('open_new_win') ?></label>
                 </div>
                 <div class="form-group">
                     <label><?= lang('nav_parent') ?></label>

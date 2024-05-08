@@ -14,10 +14,9 @@
                 </div>
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <div class="mt-3">
-                    <label><?= lang('post_description') ?><?= lang('optional') ?>:
-                        <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
-                    <label for="sortop" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
-                    </label>
+                    <?= lang('post_description') ?><?= lang('optional') ?>:
+                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
+                    <label for="auto_excerpt" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
                     <textarea id="logexcerpt" name="logexcerpt" class="form-control" rows="5"><?= $excerpt ?></textarea>
                 </div>
                 <div class="mt-3">
@@ -83,7 +82,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-<!--vot-->          <label><?= lang('tags') ?>: <small class="text-muted"><?= lang('tags_tips') ?></small></label>
+                    <label><?= lang('tags') ?>:</label>
                     <?php if ($tags): ?>
                         <span class="small"> <a href="javascript:doToggle('tags', 1);"><?= lang('recently_used') ?></a></span>
                         <div id="tags" class="mb-2" style="display: none">
@@ -95,11 +94,13 @@
                         </div>
                     <?php endif; ?>
                     <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>"/>
+                    <small class="text-muted">也用于页面关键词，英文逗号分隔</small>
                 </div>
                 <?php if (User::haveEditPermission()): ?>
                     <div class="form-group">
-                        <label><?= lang('publish_time') ?>: <small class="text-muted"><?= lang('publish_time_tips') ?></small></label>
+                        <label><?= lang('publish_time') ?>:</label>
                         <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
+                        <small class="text-muted">当设置未来时间，文章将在该时间点定时发布</small>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
@@ -116,12 +117,14 @@
                 <div id="advset">
                     <?php if (User::haveEditPermission()): ?>
                         <div class="form-group">
-<!--vot-->                  <label><?= lang('link_alias_info') ?>: <small class="text-muted">(<?= lang('link_alias_info') ?> <a href="./setting.php?action=seo">&rarr;</a>)</small></label>
+<!--vot-->                  <label><?= lang('link_alias_info') ?>:</label>
                             <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                            <small class="text-muted"><?= lang('link_alias_info') ?> <a href="./setting.php?action=seo"></a></small>
                         </div>
                         <div class="form-group">
-<!--vot-->                  <label><?=lang('jump_link')?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+<!--vot-->                  <label><?=lang('jump_link')?>:</label>
                             <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                            <small class="text-muted"><?=lang('jump_link_info')?></small>
                         </div>
                         <div class="form-group">
                             <label><?= lang('access_password') ?>:</label>
@@ -233,7 +236,7 @@
     $(function () {
         Editor = editormd("logcontent", {
             width: "100%",
-            height: 640,
+            height: 745,
             toolbarIcons: function () {
                 return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "hr", "|",
                     "link", "image", "video", "code", "preformatted-text", "code-block", "table", "|", "search", "preview", "fullscreen", "help"]

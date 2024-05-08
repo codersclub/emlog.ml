@@ -17,33 +17,33 @@
         <form action="setting.php?action=user_save" method="post" name="user_setting_form" id="user_setting_form">
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="is_signup" id="is_signup" <?= $conf_is_signup ?> />
-                <label class="form-check-label"><?= lang('registration_open') ?></label>
+                <label class="form-check-label" for="is_signup"><?= lang('registration_open') ?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="login_code" id="login_code" <?= $conf_login_code ?> >
-                <label class="form-check-label"><?= lang('registration_captcha') ?></label>
+                <label class="form-check-label" for="login_code"><?= lang('registration_captcha') ?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
-<!--vot-->                <label class="form-check-label"><?=lang('enable_email_code')?></label>
+                <label class="form-check-label" for="email_code"><?=lang('enable_email_code')?></label>
             </div>
             <hr>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="ischkarticle" id="ischkarticle" <?= $conf_ischkarticle ?> />
-                <label class="form-check-label"><?= lang('writer_need_approve') ?></label>
+                <label class="form-check-label" for="ischkarticle"><?= lang('writer_need_approve') ?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="article_uneditable" id="article_uneditable" <?= $conf_article_uneditable ?> />
-                <label><?= lang('not_editable') ?></label>
+                <label for="article_uneditable"><?= lang('not_editable') ?></label>
             </div>
             <div class="form-group form-inline">
-                <label><?=lang('limit_daily_posts')?>:</label>
-                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day"/> <?= lang('if_0_upload_disabled') ?>
+                <label for="posts_per_day"><?=lang('limit_daily_posts')?>:</label>
+                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $conf_posts_per_day ?>" type="number" min="0" name="posts_per_day" id="posts_per_day"/> <?= lang('if_0_upload_disabled') ?>
             </div>
 <!--vot NOT COMPATIBLE WITH MULTILINGUAL!
             <div class="form-group form-inline">
-                <label><?= lang('article_alias_prompt') ?></label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name"/> <?= lang('article_alias_prompt') ?>
+                <label for="posts_name"><?= lang('article_alias_prompt') ?></label>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $conf_posts_name ?>" name="posts_name" id="posts_name"/> <?= lang('article_alias_prompt') ?>
             </div>
 -->
             <div class="form-group">

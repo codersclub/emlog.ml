@@ -488,8 +488,8 @@ $lang = array(
     'emlog_reg_advantages' => 'The emlog you installed has not been registered, after registration you will get:',//'您安装的emlog尚未注册，注册后将获得：',
     'advantage1' => '1. Unlock the online upgrade function, upgrade to the latest version with one click, and get official security and function updates.',//'1. 解锁在线升级功能，一键升级到最新版本，获得来自官方的安全和功能更新。',
     'advantage2' => '2. Unlock the app store to get more templates and extensions.',//'2. 解锁应用商店，获得更多模板和扩展插件。',
-    'advantage3' => '3. Remove all unregistered prompts and functional restrictions.',//'3. 去除所有未注册提示及功能限制。',
-    'advantage4' => '4. Join the exclusive Q group and get official technical guidance and answers.',//'4. 加入专属Q群，获得官方技术指导问题解答。',
+    'advantage3' => '3. Remove all unregistered prompts and functional restrictions, join the exclusive Q group, and get official technical guidance and answers',//'3. 去除所有未注册提示及功能限制，加入专属Q群，获得官方技术指导问题解答',
+    'advantage4' => '4. Exclusive applications, more than 20 paid applications (limited to hardcore SVIP)',//'4. 专属应用，20多款收费应用（限铁杆SVIP）',
     'advantage5' => '5. Comes with a variety of paid applications (hardcore SVIP only).',//'5. 附赠多款收费应用（限铁杆SVIP）。',
     'advantage6' => '6. "Give me a peach and give me a plum in return." Your support will also help emlog become better and continue to be updated.',//'6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',
     'register_now' => 'Register now',//'现在去注册',
@@ -666,15 +666,15 @@ $lang = array(
     'page_title' => 'Page title',//'页面标题',
     'setting_items' => 'Setting items',//'设置项',
     'alias' => 'Alias',//'别名',
-    'as_home' => '- it has been set as the home page, please visit the original default home page: ',//'已设为首页，原默认首页请访问：',
+    'as_home' => '- it has been set as the home page, original default homepage: ',//'已设为首页，原默认首页：',
     'set_as_home' => 'Set as the homepage, ',//'设为首页，',
     'original_home' => 'Original homepage: ',//'原首页：',
 
 //---------------------------
 //admin/views/page_create.php
     'default' => 'Default',//'默认',
-    'select_tmpl_option' => '(Select the page template supported by the current template, optional)',//'(选择当前模板支持的页面模板，可不选)',
-    'custom_tmpl_info' => '(Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',//'(用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',
+    'select_tmpl_option' => 'Select the page template supported by the current template, optional',//'选择当前模板支持的页面模板，可不选)',
+    'custom_tmpl_info' => 'Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank',//'用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填',
 
 //---------------------------
 //admin/views/plugin.php
@@ -826,7 +826,7 @@ $lang = array(
     'other_settings' => 'Panel settings',//'面板设置',
     'admin_per_page' => 'The number of items displayed per page in the admin panel',//'后台每页展示条目数量',
     'admin_per_page_tips' => '(Affect background articles, comments, user lists)',//'（影响后台文章、评论、用户列表）',
-    'today_app_news' => 'Receive official app recommendations (affects the display of today\'s apps on the background homepage)',//'接收来自官方的应用推荐（影响后台首页今日应用的展示）',
+    'today_app_news' => 'Receive information from the official app store (influence platform homepage application update module)',//'接收来自官方应用商店信息（影响台首页应用更新模块）',
     'unit_kb' => '(unit: KB, 1MB=1024KB)',//'（单位：KB，1MB=1024KB）',
     'login_before_comment_on' => 'Comment after login. Only logged-in users can comment after this is turned on',//'登录后评论，开启后仅登录用户可评论',
     'app_recommended' => 'Updated applications',//'应用推荐',
@@ -952,6 +952,8 @@ $lang = array(
     'install_app' => 'Install app',//'安装应用',
     'not_paid_user' => 'You are not a paid registered user and cannot use the functions purchased in the app store.',//'您还不是付费注册用户，无法使用应用商店已购功能，',
     'paid_support' => 'Paid Support',//'付费支持',
+    'go_off_site' => 'Go to the official website to view',//'去官网查看',
+    'all_apps' => 'All applications',//'全部应用',
 
 //---------------------------
 //admin/views/store_plu.php

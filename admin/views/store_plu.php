@@ -7,9 +7,10 @@
 </div>
 <div class="row mb-4 ml-1">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link" href="./store.php"><?= lang('ext_store_templates') ?></a></li>
-        <li class="nav-item"><a class="nav-link active" href="./store.php?action=plu"><i class="icofont-plugin"></i> <?= lang('ext_store_plugins') ?></a></li>
-        <li class="nav-item"><a class="nav-link text-danger" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php"><?= lang('all_apps') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=tpl"><?= lang('ext_store_templates') ?></a></li>
+        <li class="nav-item"><a class="nav-link active" href="./store.php?action=plu"><?= lang('ext_store_plugins') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?= lang('my_apps') ?></a></li>
     </ul>
 </div>
@@ -25,7 +26,7 @@
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
             <select name="action" id="plugin-category" class="form-control">
-                <?php foreach ($categories as $k => $v) { ?>
+                <?php foreach ($plugin_categories as $k => $v) { ?>
                     <option value="<?= $k; ?>" <?= $sid == $k ? 'selected' : '' ?>><?= $v; ?></option>
                 <?php } ?>
             </select>

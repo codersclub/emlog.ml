@@ -14,6 +14,33 @@ require_once 'globals.php';
 
 $Store_Model = new Store_Model();
 
+$template_categories = [
+    0  => lang('search_by_category'),
+    8  => lang('tpl_category_8'),
+    7  => lang('tpl_category_7'),
+    9  => lang('tpl_category_9'),
+    17 => lang('tpl_category_17'),
+    19 => lang('tpl_category_19'),
+    10 => lang('tpl_category_10'),
+];
+
+$plugin_categories = [
+    0  => lang('search_by_category'),
+    20 => lang('plu_category_20'),
+    1  => lang('plu_category_1'),
+    2  => lang('plu_category_2'),
+    18 => lang('plu_category_18'),
+    3  => lang('plu_category_3'),
+    4  => lang('plu_category_4'),
+    5  => lang('plu_category_5'),
+    11 => lang('plu_category_11'),
+    12 => lang('plu_category_12'),
+    14 => lang('plu_category_14'),
+    13 => lang('plu_category_13'),
+    15 => lang('plu_category_15'),
+    6  => lang('plu_category_6')
+];
+
 if (empty($action)) {
     $tag = Input::getStrVar('tag');
     $page = Input::getIntVar('page', 1);
@@ -21,22 +48,46 @@ if (empty($action)) {
     $author_id = Input::getStrVar('author_id');
     $sid = Input::getStrVar('sid');
 
-/*vot*/    $categories = [
-        0  => lang('search_by_category'),
-        8  => lang('tpl_category_8'),
-        7  => lang('tpl_category_7'),
-        9  => lang('tpl_category_9'),
-        17 => lang('tpl_category_17'),
-        19 => lang('tpl_category_19'),
-        10 => lang('tpl_category_10'),
-    ];
+    $r = $Store_Model->getApps($tag, $keyword, $page, $author_id, $sid);
+    $apps = $r['apps'];
+    $count = $r['count'];
+    $page_count = $r['page_count'];
+
+    $sub_title = '全部应用';
+    if ($tag === 'free') {
+        $sub_title = '免费应用';
+    } elseif ($tag === 'paid') {
+        $sub_title = '付费应用';
+    } elseif ($tag === 'promo') {
+        $sub_title = '限时优惠';
+    }
+
+    $subPage = '';
+    foreach ($_GET as $key => $val) {
+        $subPage .= $key != 'page' ? "&$key=$val" : '';
+    }
+
+    $pageurl = pagination($count, $page_count, $page, "store.php?{$subPage}&page=");
+
+    include View::getAdmView('header');
+    require_once(View::getAdmView('store'));
+    include View::getAdmView('footer');
+    View::output();
+}
+
+if ($action === 'tpl') {
+    $tag = Input::getStrVar('tag');
+    $page = Input::getIntVar('page', 1);
+    $keyword = Input::getStrVar('keyword');
+    $author_id = Input::getStrVar('author_id');
+    $sid = Input::getStrVar('sid');
 
     $r = $Store_Model->getTemplates($tag, $keyword, $page, $author_id, $sid);
     $templates = $r['templates'];
     $count = $r['count'];
     $page_count = $r['page_count'];
 
-/*vot*/ $sub_title = lang('templates');
+/*vot*/ $sub_title = lang('ext_store_templates');
     if ($tag === 'free') {
 /*vot*/ $sub_title = lang('free_template');
     } elseif ($tag === 'paid') {
@@ -69,33 +120,16 @@ if ($action === 'plu') {
     $author_id = Input::getIntVar('author_id');
     $sid = Input::getIntVar('sid');
 
-/*vot*/    $categories = [
-        0  => lang('search_by_category'),
-        20 => lang('plu_category_20'),
-        1  => lang('plu_category_1'),
-        2  => lang('plu_category_2'),
-        18 => lang('plu_category_18'),
-        3  => lang('plu_category_3'),
-        4  => lang('plu_category_4'),
-        5  => lang('plu_category_5'),
-        11 => lang('plu_category_11'),
-        12 => lang('plu_category_12'),
-        14 => lang('plu_category_14'),
-        13 => lang('plu_category_13'),
-        15 => lang('plu_category_15'),
-        6  => lang('plu_category_6')
-    ];
-
     $r = $Store_Model->getPlugins($tag, $keyword, $page, $author_id, $sid);
     $plugins = $r['plugins'];
     $count = $r['count'];
     $page_count = $r['page_count'];
 
-/*vot*/ $sub_title = lang('plugins');
+    $sub_title = lang('ext_store_plugins');
     if ($tag === 'free') {
-/*vot*/ $sub_title = lang('free_plugin');
+        $sub_title = lang('free_plugin');
     } elseif ($tag === 'paid') {
-/*vot*/ $sub_title = lang('paid_plugin');
+        $sub_title = lang('paid_plugin');
     } elseif ($tag === 'promo') {
         $sub_title = lang('limited_offer');
     } elseif ($tag === 'free_top') {
@@ -128,7 +162,7 @@ if ($action === 'mine') {
 
 if ($action === 'svip') {
     $addons = $Store_Model->getSvipAddon();
-/*vot*/ $sub_title = lang('svip');
+    $sub_title = lang('hard');
 
     include View::getAdmView('header');
     require_once(View::getAdmView('store_svip'));
@@ -146,7 +180,7 @@ if ($action === 'error') {
     $sub_title = '';
 
     include View::getAdmView('header');
-    require_once(View::getAdmView('store_tpl'));
+    require_once(View::getAdmView('store'));
     include View::getAdmView('footer');
     View::output();
 }

@@ -28,12 +28,14 @@
             </div>
             <div class="shadow-sm p-3 mb-2 bg-white rounded">
                 <div class="form-group">
-                    <label><?= lang('link_alias') ?></label>
+                    <label><?= lang('link_alias') ?>:</label>
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
+                    <small class="text-muted">英文字母、数字组成，用于<a href="./setting.php?action=seo">seo设置</a></small>
                 </div>
                 <div class="form-group">
-                    <label><?= lang('jump_link') ?>: <small class="text-muted"><?=lang('jump_link_info')?></small></label>
+                    <label><?= lang('jump_link') ?>:</label>
                     <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://"/>
+                    <small class="text-muted"><?=lang('jump_link_info')?></small>
                 </div>
                 <div class="form-group">
                     <label><?= lang('page_template') ?>:</label>
@@ -55,7 +57,7 @@
                     <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
                     <label for="allow_remark"><?= lang('allow_comments') ?></label><br>
                     <input type="checkbox" value="y" name="home_page" id="home_page" <?= $is_home_page ?> />
-<!--vot-->          <label for="allow_remark"><?= lang('set_as_home') ?></label><br><small class="text-muted"><?= lang('original_home') ?><?= BLOG_URL ?>posts</small>
+                    <label for="home_page"><?= lang('set_as_home') ?></label>
                 </div>
             </div>
         </div>
@@ -125,7 +127,7 @@
     $(function () {
         Editor = editormd("pagecontent", {
             width: "100%",
-            height: 640,
+            height: 745,
             toolbarIcons: function () {
                 return ["bold", "del", "italic", "quote", "|",
                     "h1", "h2", "h3", "|",

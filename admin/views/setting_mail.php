@@ -85,11 +85,11 @@
             <h4><?= lang('email_notify') ?></h4>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="mail_notice_comment" id="mail_notice_comment" <?= $conf_mail_notice_comment ?> />
-                <label class="form-check-label"><?= lang('comment_new_notify') ?></label>
+                <label class="form-check-label" for="mail_notice_comment"><?= lang('comment_new_notify') ?></label>
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="mail_notice_post" id="mail_notice_post" <?= $conf_mail_notice_post ?> >
-                <label class="form-check-label"><?= lang('article_new_notify') ?></label>
+                <label class="form-check-label" for="mail_notice_post"><?= lang('article_new_notify') ?></label>
             </div>
             <div class="form-group">
                 <hr>

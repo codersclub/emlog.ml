@@ -22,7 +22,7 @@
         <div class="col-auto ml-2">
             <div class="form-check mb-2">
                 <input class="form-check-input" type="checkbox" value="y" name="private" id="private"/>
-                <label class="form-check-label"><?= lang('private') ?></label>
+                <label class="form-check-label" for="private"><?= lang('private') ?></label>
             </div>
         </div>
     </div>

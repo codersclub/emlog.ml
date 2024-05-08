@@ -488,8 +488,8 @@ $lang = array(
     'emlog_reg_advantages' => '您安装的emlog尚未注册，完成注册可使用全部功能，包括如下：',//'The emlog you installed has not been registered, and you can use all the functions after registration, including the following:',
     'advantage1' => '1. 解锁在线升级功能，一键升级到最新版本，获得来自官方的安全和功能更新。',//'1. Unlock the online upgrade function, upgrade to the latest version with one click, and get official security and function updates.',
     'advantage2' => '2. 解锁应用商店，获得更多模板和插件，并支持应用在线一键更新。',//'2. Unlock the app store, get more templates and plug-ins, and support online one-click update of apps.',
-    'advantage3' => '3. 去除所有未注册提示及功能限制。',//'3. Remove all unregistered prompts and functional restrictions.',
-    'advantage4' => '4. 加入专属Q群，获得官方技术指导问题解答。',//'4. Join the exclusive Q group and get answers to official technical guidance questions.',
+    'advantage3' => '3. 去除所有未注册提示及功能限制，加入专属Q群，获得官方技术指导问题解答',//'3. Remove all unregistered prompts and functional restrictions, join the exclusive Q group, and get official technical guidance and answers',
+    'advantage4' => '4. 专属应用，20多款收费应用（限铁杆SVIP）',//'4. Exclusive applications, more than 20 paid applications (limited to hardcore SVIP)',
     'advantage5' => '5. 附赠多款收费应用（限铁杆SVIP）。',//'5. Comes with a variety of paid applications (limited to hardcore SVIP).',
     'advantage6' => '6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',//'6. "Throw me a peach, give me a favor", your support will also help emlog become better and continue to be updated.',
     'register_now' => '现在去注册',//'Register now',
@@ -666,15 +666,15 @@ $lang = array(
     'page_title' => '页面标题',//'Page title',
     'setting_items' => '设置项',//'Setting items',
     'alias' => '别名',//'Alias',
-    'as_home' => '已设为首页，原默认首页请访问',//'- it has been set as the home page, please visit the original default home page',
+    'as_home' => '已设为首页，原默认首页：',//'- it has been set as the home page, original default homepage: ',
     'set_as_home' => '设为首页，',//'Set as the homepage, ',
     'original_home' => '原首页：',//'Original homepage: ',
 
 //---------------------------
 //admin/views/page_create.php
     'default' => '默认',//'Default',
-    'select_tmpl_option' => '(选择当前模板支持的页面模板，可不选)',//'(Select the page template supported by the current template, optional)',
-    'custom_tmpl_info' => '(用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',//'(Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',
+    'select_tmpl_option' => '选择当前模板支持的页面模板，可不选',//'Select the page template supported by the current template, optional',
+    'custom_tmpl_info' => '用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填',//'Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank',
 
 //---------------------------
 //admin/views/plugin.php
@@ -826,7 +826,7 @@ $lang = array(
     'other_settings' => '面板设置',//'Panel settings',
     'admin_per_page' => '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
     'admin_per_page_tips' => '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
-    'today_app_news' => '接收来自官方应用商店信息（后台首页应用相关展示）',//'Receive information from the official app store (application-related display on the backend homepage)',
+    'today_app_news' => '接收来自官方应用商店信息（影响台首页应用更新模块）',//'Receive information from the official app store (influence platform homepage application update module)',
     'unit_kb' => '（单位：KB，1MB=1024KB）',//'(unit: KB, 1MB=1024KB)',
     'login_before_comment_on' => '登录后评论，开启后仅登录用户可评论',//'Comment after login. Only logged-in users can comment after this is turned on',
     'app_recommended' => '应用推荐',//'Updated applications',
@@ -953,6 +953,7 @@ $lang = array(
     'not_paid_user' => '您还不是付费注册用户，无法使用应用商店已购功能，',//'You are not a paid registered user and cannot use the functions purchased in the app store.',
     'paid_support' => '付费支持',//'Paid Support',
     'go_off_site' => '去官网查看',//'Go to the official website to view',
+    'all_apps' => '全部应用',//'All applications',
 
 //---------------------------
 //admin/views/store_plu.php

@@ -257,15 +257,15 @@ if (!$act) {
                 <p class="install-title"><?= lang('admin_settings') ?></p>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_name') ?></span>
-                    <input name="username" type="text" class="form-control">
+                    <input name="username" type="text" class="form-control" required>
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password') ?></span>
-                    <input name="password" type="password" class="form-control" placeholder="<?= lang('admin_password_info') ?>">
+                    <input name="password" type="password" class="form-control" placeholder="<?= lang('admin_password_info') ?>" required>
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
-                    <input name="repassword" type="password" class="form-control">
+                    <input name="repassword" type="password" class="form-control" required>
                 </div>
                 <div class="input-group mb10">
                     <span class="input-group-text"><?= lang('email') ?></span>
@@ -573,6 +573,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('is_openapi','n'),
 ('apikey','$apikey'),
 ('accept_app_recs','y'),
+('help_guide','y'),
 ('panel_menu_title','');
 DROP TABLE IF EXISTS {$db_prefix}link;
 CREATE TABLE {$db_prefix}link (

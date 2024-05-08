@@ -29,7 +29,10 @@
             <form action="data.php?action=backup" method="post">
                 <div id="backup">
                     <p><?= lang('backup_prompt') ?></p>
-                    <p id="local_bakzip"><?= lang('compress_zip') ?>: <input type="checkbox" style="vertical-align:middle;" value="y" name="zipbak" id="zipbak"></p>
+                    <p id="local_bakzip">
+                        <input type="checkbox" value="y" name="zipbak" id="zipbak">
+                        <label for="zipbak"><?= lang('compress_zip') ?></label>
+                    </p>
                     <p>
                         <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                         <input type="submit" value="<?= lang('backup_start') ?>" class="btn btn-sm btn-success"/>

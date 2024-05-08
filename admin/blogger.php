@@ -33,23 +33,17 @@ if ($action == 'update') {
     $email = Input::postStrVar('email');
     $description = Input::postStrVar('description');
     $login = Input::postStrVar('username');
-    $newpass = Input::postStrVar('newpass');
-    $repeatpass = Input::postStrVar('repeatpass');
 
     if (empty($nickname)) {
         Output::error(lang('nickname_is_empty'));
     } elseif (!checkMail($email)) {
         Output::error(lang('email_enter_please'));
-    } elseif (strlen($newpass) > 0 && strlen($newpass) < 6) {
-        Output::error(lang('password_length_short'));
-    } elseif (!empty($newpass) && $newpass != $repeatpass) {
-        Output::error(lang('password_not_equal'));
-    } elseif ($User_Model->isUserExist($login, UID)) {
-        Output::error(lang('username_exists'));
     } elseif ($User_Model->isNicknameExist($nickname, UID)) {
         Output::error(lang('nickname_exists'));
     } elseif ($User_Model->isMailExist($email, UID)) {
         Output::error(lang('email_is_used'));
+    } elseif ($User_Model->isUserExist($login, UID)) {
+        Output::error(lang('username_exists'));
     }
 
     $d = [
@@ -59,11 +53,26 @@ if ($action == 'update') {
         'username'    => $login,
     ];
 
-    if (!empty($newpass)) {
-        $PHPASS = new PasswordHash(8, true);
-        $newpass = $PHPASS->HashPassword($newpass);
-        $d['password'] = $newpass;
+    $User_Model->updateUser($d, UID);
+    $CACHE->updateCache('user');
+    Output::ok();
+}
+
+if ($action === 'change_password') {
+    LoginAuth::checkToken();
+    $User_Model = new User_Model();
+    $new_passwd = Input::postStrVar('new_passwd');
+    $new_passwd2 = Input::postStrVar('new_passwd2');
+
+    if (strlen($new_passwd) < 6) {
+        Output::error('密码不得小于6位');
+    } elseif ($new_passwd !== $new_passwd2) {
+        Output::error('两次密码不一致');
     }
+
+    $PHPASS = new PasswordHash(8, true);
+    $new_passwd = $PHPASS->HashPassword($new_passwd);
+    $d['password'] = $new_passwd;
 
     $User_Model->updateUser($d, UID);
     $CACHE->updateCache('user');

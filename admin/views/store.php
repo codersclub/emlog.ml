@@ -1,43 +1,47 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['error'])): ?>
-    <div class="alert alert-danger"><?= lang('store_unavailable') ?></div><?php endif ?>
+    <div class="alert alert-danger">商店暂不可用，可能是网络问题</div><?php endif ?>
 
 <div class="d-sm-flex align-items-center mb-4">
-    <h1 class="h4 mb-0 text-gray-800"><?= lang('app_store') ?> - <?= $sub_title ?></h1>
+    <h1 class="h4 mb-0 text-gray-800">应用商店 - <?= $sub_title ?></h1>
 </div>
 <div class="row mb-4 ml-1">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a class="nav-link" href="./store.php"><?= lang('all_apps') ?></a></li>
-        <li class="nav-item"><a class="nav-link active" href="./store.php?action=tpl"><?= lang('ext_store_templates') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?= lang('ext_store_plugins') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?= lang('svip') ?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine"><?= lang('my_apps') ?></a></li>
+        <li class="nav-item"><a class="nav-link active" href="./store.php">全部应用</a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=tpl">模板主题</a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=plu">扩展插件</a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip">铁杆专属</a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=mine">我的已购</a></li>
     </ul>
 </div>
 
 <div class="d-flex flex-column flex-sm-row justify-content-between mb-4 ml-1">
     <div class="mb-3 mb-sm-0">
-        <a href="./store.php?action=tpl" class="badge badge-success m-1 p-2"><?= lang('all') ?></a>
-        <a href="./store.php?action=tpl&tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
-        <a href="./store.php?action=tpl&tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
-        <a href="./store.php?action=tpl&tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
-        <a href="./store.php?action=tpl&tag=free_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_free') ?></a>
-        <a href="./store.php?action=tpl&tag=paid_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('rank_paid') ?></a>
+        <a href="./store.php" class="badge badge-success m-1 p-2">全部</a>
+        <a href="./store.php?tag=free" class="badge badge-success m-1 p-2">仅看免费</a>
+        <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2">仅看付费</a>
+        <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2">限时优惠</a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
-            <select name="action" id="template-category" class="form-control">
+            <select name="action" class="form-control category">
                 <?php foreach ($template_categories as $k => $v) { ?>
+                    <option value="<?= $k; ?>" <?= $sid == $k ? 'selected' : '' ?>><?= $v; ?></option>
+                <?php } ?>
+            </select>
+        </form>
+        <form action="#" method="get" class="mr-sm-2">
+            <select name="action" class="form-control category">
+                <?php foreach ($plugin_categories as $k => $v) { ?>
                     <option value="<?= $k; ?>" <?= $sid == $k ? 'selected' : '' ?>><?= $v; ?></option>
                 <?php } ?>
             </select>
         </form>
         <form action="./store.php" method="get" class="form-inline ml-2">
             <div class="input-group">
-                <input type="hidden" name="action" value="tpl">
-                <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="<?= lang('temlate_search') ?>">
+                <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="搜索应用...">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="submit"><?= lang('search') ?></button>
+                    <button class="btn btn-outline-success" type="submit">搜索</button>
                 </div>
             </div>
         </form>
@@ -45,10 +49,12 @@
 </div>
 
 <div class="mb-3">
-    <?php if (!empty($templates)): ?>
+    <?php if (!empty($apps)): ?>
         <div class="d-flex flex-wrap app-list">
-            <?php foreach ($templates as $k => $v):
+            <?php foreach ($apps as $k => $v):
                 $icon = $v['icon'] ?: "./views/images/theme.png";
+                $type = $v['app_type'] === 'template' ? 'tpl' : 'plugin';
+                $order_url = 'https://www.emlog.net/order/submit/' . $type . '/' . $v['id']
                 ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
@@ -58,37 +64,42 @@
                         <div class="card-body">
                             <p class="card-text font-weight-bold">
                                 <?php if ($v['top'] === 1): ?>
-                                    <span class="badge badge-success p-1"><?= lang('recommend_today') ?></span>
+                                    <span class="badge badge-success p-1">今日推荐</span>
                                 <?php endif; ?>
                                 <a href="#appModal" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>"><?= subString($v['name'], 0, 15) ?></a>
+                                <?php if ($type === 'tpl'): ?>
+                                    <span class="badge badge-success p-1">模板</span>
+                                <?php else: ?>
+                                    <span class="badge badge-primary p-1">插件</span>
+                                <?php endif; ?>
                             </p>
                             <p class="card-text text-muted">
-                                <?= lang('price') ?>:
+                                售价：
                                 <?php if ($v['price'] > 0): ?>
                                     <?php if ($v['promo_price'] > 0): ?>
-                                        <span style="text-decoration:line-through"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
-                                        <span class="text-danger"><?= $v['promo_price'] ?><small><?= lang('price_unit') ?></small></span>
+                                        <span style="text-decoration:line-through"><?= $v['price'] ?><small>元</small></span>
+                                        <span class="text-danger"><?= $v['promo_price'] ?><small>元</small></span>
                                     <?php else: ?>
-                                        <span class="text-danger"><?= $v['price'] ?><small><?= lang('price_unit') ?></small></span>
+                                        <span class="text-danger"><?= $v['price'] ?><small>元</small></span>
                                     <?php endif; ?>
                                 <?php else: ?>
-                                    <span class="text-success"><?= lang('free') ?></span>
+                                    <span class="text-success">免费</span>
                                 <?php endif; ?>
                                 <br>
                                 <small>
-                                    <?= lang('developer') ?>: <a href="./store.php?action=tpl&author_id=<?= $v['author_id'] ?>"><?= $v['author'] ?></a><br>
-                                    <?= lang('version_number') ?>: <?= $v['ver'] ?><br>
-                                    <?= lang('download_count') ?>: <?= $v['downloads'] ?><br>
-                                    <?= lang('update_time') ?>: <?= $v['update_time'] ?><br>
+                                    开发者：<a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= $v['author'] ?></a><br>
+                                    版本号：<?= $v['ver'] ?><br>
+                                    下载次数：<?= $v['downloads'] ?><br>
+                                    更新时间：<?= $v['update_time'] ?><br>
                                 </small>
                             </p>
                             <div class="card-text d-flex justify-content-between">
                                 <div class="installMsg"></div>
                                 <div>
                                     <?php if ($v['price'] > 0): ?>
-                                        <a href="https://www.emlog.net/order/submit/tpl/<?= $v['id'] ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+                                        <a href="<?= $order_url ?>" class="btn btn-danger" target="_blank">立即购买</a>
                                     <?php else: ?>
-                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="tpl"><?= lang('install_free') ?></a>
+                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $type ?>">免费安装</a>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -100,7 +111,7 @@
         <div class="col-md-12 page my-5"><?= $pageurl ?></div>
     <?php else: ?>
         <div class="col-md-12">
-            <div class="alert alert-info"><?= lang('store_no_results') ?></div>
+            <div class="alert alert-info">暂未找到结果，应用商店进货中，敬请期待：）</div>
         </div>
     <?php endif ?>
 </div>
@@ -110,7 +121,7 @@
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <div>
-                    <a href="" class="modal-buy-url text-muted" target="_blank"><?= lang('go_off_site') ?></a>
+                    <a href="" class="modal-buy-url text-muted" target="_blank">去官网查看</a>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -126,10 +137,10 @@
         $("#menu_store").addClass('active');
         setTimeout(hideActived, 3600);
 
-        $('#template-category').on('change', function () {
+        $('.category').on('change', function () {
             var selectedCategory = $(this).val();
             if (selectedCategory) {
-                window.location.href = './store.php?action=tpl&sid=' + selectedCategory;
+                window.location.href = './store.php?sid=' + selectedCategory;
             }
         });
     });

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Template options
-Version: 4.2.5
+Version: 4.2.6
 Plugin URL: https://www.emlog.net/docs/#/template?id=%e6%a8%a1%e6%9d%bf%e8%ae%be%e7%bd%ae
 Description: Add rich setting functions to the template, please see the official website documentation - Template Development for details.
 Author: emlog
@@ -1197,7 +1197,6 @@ class TplOptions {
      */
     private function renderImage($option) {
         $tpl = '<div class="tpl-block-upload">
-                    <span class="image-tip">' . lang('tpl_upload_tips') . '</span>
                     <div class="tpl-image-preview">
                         <img src="{value}">
                     </div>
@@ -1220,7 +1219,6 @@ class TplOptions {
         $tpl = '';
         if (isset($option['pattern']) && trim($option['pattern']) === 'image') {
 /*vot*/     $tpl .= '<div class="tpl-block-upload">
-                        <span class="image-tip">' . lang('tpl_upload_tips') . '</span>
                         <span>' . lang('enter_block_title') . ':</span>
                         <input class="block-title-input" type="text" name="{title}" value="{tvalue}">
                          <div class="tpl-image-preview">

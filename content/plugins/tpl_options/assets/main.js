@@ -161,7 +161,6 @@ $(function () {
         let type_html = ''
         if (_type === 'image') {
 /*vot*/     type_html = '<div class="tpl-block-upload"><span>' + lang('enter_block_title') + ':</span>' +
-                '<span class="image-tip">' + lang('overwrite_tips') + '</span>' +
                 '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">' +
                 '<div class="tpl-image-preview"><img src=""></div><div class="tpl-block-upload-input">' +
                 '<input type="text" name="' + _name + '[content][]" value=""><label>\n' +

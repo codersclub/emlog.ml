@@ -1,21 +1,20 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-    <div class="d-sm-flex align-items-center justify-content-between mb-3">
-        <div class="d-flex align-items-center">
-            <div class="flex-shrink-0">
-                <a class="mr-2" href="blogger.php">
-                    <img src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>"
-                         alt="avatar" class="img-fluid rounded-circle border border-mute border-3"
-                         style="width: 56px;">
-                </a>
-            </div>
-            <div class="flex-grow-1 ms-3">
-                <div class="align-items-center mb-3">
-                    <p class="mb-0 m-2"><a class="mr-2" href="blogger.php"><?= $user_cache[UID]['name'] ?></a></p>
-                    <p class="mb-0 m-2 small"><?= $role_name ?></p>
-                </div>
+<?php if (isset($_GET['add_shortcut_suc'])): ?>
+    <div class="alert alert-success">设置成功</div><?php endif ?>
+    <div class="d-flex align-items-center mb-3">
+        <div class="flex-shrink-0">
+            <a class="mr-2" href="blogger.php">
+                <img src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>"
+                     alt="avatar" class="img-fluid rounded-circle border border-mute border-3"
+                     style="width: 56px;">
+            </a>
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <div class="align-items-center mb-3">
+                <p class="mb-0 m-2"><a class="mr-2" href="blogger.php"><?= $user_cache[UID]['name'] ?></a></p>
+                <p class="mb-0 m-2 small"><?= $role_name ?></p>
             </div>
         </div>
-        <a href="./article.php?action=write" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-pencil-alt-5"></i> <?= lang('article_add') ?></a>
     </div>
     <div class="row ml-1 mb-1"><?php doAction('adm_main_top') ?></div>
     <div class="row">
@@ -26,19 +25,11 @@
                     <a href="./article.php?action=write" class="mr-2"><?= lang('article_add') ?></a>
                     <a href="article.php" class="mr-2"><?= lang('articles') ?></a>
                     <a href="article.php?draft=1" class="mr-2"><?= lang('drafts') ?></a>
-                    <a href="page.php" class="mr-2"><?= lang('page_management') ?></a>
-                    <a href="template.php" class="mr-2"><?= lang('templates') ?></a>
-                    <span class="text-gray-300 mr-2">|</span>
-                    <?php foreach ($plugins as $val):
-                        if (false === $val['Setting']) {
-                            continue;
-                        }
-                        if (in_array($val['Name'], [lang('tips'), lang('tpl_options')])) {
-                            continue;
-                        }
-                        ?>
-                        <a href="./plugin.php?plugin=<?= $val['Plugin'] ?>" class="text-success mr-2"><?= $val['Name'] ?></a>
+                    <?php foreach ($shortcut as $item): ?>
+                        <a href="<?= $item['url'] ?>" class="mr-2"><?= $item['name'] ?></a>
                     <?php endforeach; ?>
+                    <span class="text-gray-300 mr-2">|</span>
+                    <a href="#" class="my-1" data-toggle="modal" data-target="#shortcutModal"><i class="icofont-plus"></i></a>
                 </div>
             </div>
         </div>
@@ -49,64 +40,24 @@
                 <h6 class="card-header"><?= lang('site_info') ?></h6>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="row">
-                            <div class="col-xl-4 col-md-6 mb-1">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col">
-                                                <div class="small font-weight-bold text-primary text-uppercase mb-1"><?= lang('articles_pending') ?></div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./article.php?checked=n"><?= $sta_cache['checknum'] ?></a></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="icofont-pencil-alt-5 fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-4 col-md-6 mb-1">
-                                <div class="card border-left-warning shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col">
-                                                <div class="small font-weight-bold text-warning text-uppercase mb-1">
-                                                    <?= lang('pending_review') ?>
-                                                </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./comment.php?hide=y"><?= $sta_cache['hidecomnum'] ?></a></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="icofont-comment fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 mb-1">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col">
-                                                <div class="small font-weight-bold text-success text-uppercase mb-1">
-                                                    <?= lang('user_num') ?>
-                                                </div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="./user.php"><?= count($user_cache) ?></a></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="icofont-user fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="./article.php?checked=n">待审文章</a>
+                            <a href="./article.php?checked=n"><span class="badge badge-danger badge-pill"><?= $sta_cache['checknum'] ?></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="./comment.php?hide=y">待审评论</a>
+                            <a href="./comment.php?hide=y"><span class="badge badge-warning badge-pill"><?= $sta_cache['hidecomnum'] ?></span></a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="./user.php">用户</a>
+                            <a href="./user.php"><span class="badge badge-success badge-pill"><?= count($user_cache) ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="./article.php"><?= lang('articles') ?></a>
                             <a href="./article.php"><span class="badge badge-primary badge-pill"><?= $sta_cache['lognum'] ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="./twitter.php"><?= lang('twitters') ?></a>
+                            <a href="./twitter.php?all=y"><?= lang('twitters') ?></a>
                             <a href="./twitter.php?all=y"><span class="badge badge-primary badge-pill"><?= $sta_cache['note_num'] ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -139,7 +90,11 @@
                             <?= lang('os') ?>
                             <span class="small"><?= $os ?></span>
                         </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            系统负载
+                            <span class="small"><?= implode(', ', array_map(function ($item) { return round($item, 2); }, sys_getloadavg()));?></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             <span>
                             <?php if (!Register::isRegLocal()) : ?>
                                 <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
@@ -168,11 +123,10 @@
                         <h6 class="my-0"><?= lang('emlog_reg_advantages') ?></h6>
                     </div>
                     <div class="card-body">
-                        <div><?= lang('advantage1') ?></div>
-                        <div><?= lang('advantage2') ?></div>
-                        <div><?= lang('advantage3') ?></div>
-                        <div><?= lang('advantage4') ?></div>
-                        <div><?= lang('advantage5') ?></div>
+                        <p><?= lang('advantage1') ?></p>
+                        <p><?= lang('advantage2') ?></p>
+                        <p><?= lang('advantage3') ?></p>
+                        <p><?= lang('advantage4') ?></p>
                     </div>
                     <div class="card-footer text-center">
                         <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>
@@ -181,32 +135,34 @@
                 </div>
             </div>
         <?php endif ?>
-        <div class="col-lg-6 mb-3">
-            <div class="card shadow mb-3">
-                <h6 class="card-header">Emlog.ML <?= lang('official_news') ?></h6>
-                <div class="card-body admin_index_list">
-                    <ul class="list-group list-group-flush">
-<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('help_faq') ?></a></li>
-<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/contact/" target="_blank"><?= lang('contacts') ?></a></li>
-<!--vot-->              <li class="msg_type_0"><a href="<?= ROOT_URL ?>/docs/develop/" target="_blank"><?= lang('app_development') ?></a></li>
-<!--vot-->              <li class="msg_type_0"><a href="https://github.com/codersclub/emlog.ml" target="_blank">Emlog.ML at github</a></li>
-<!--vot-->              <li class="msg_type_0"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
-<!--vot-->              <li class="msg_type_0"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
+        <?php if (option::get('help_guide') === 'y'): ?>
+            <div class="col-lg-6 mb-3">
+                <div class="card shadow mb-3">
+                    <h6 class="card-header"><?= lang('official_news') ?></h6>
+                    <div class="card-body admin_index_list">
+                        <ul class="list-group list-group-flush">
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('help_faq') ?></a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/contact/" target="_blank"><?= lang('contacts') ?></a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/develop/" target="_blank"><?= lang('app_development') ?></a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml" target="_blank">Emlog.ML at github</a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
                     </ul>
                 </div>
 <!--vot-->      <h6 class="card-header">Chinese emlog <?= lang('official_news') ?></h6>
                 <div class="card-body admin_index_list">
                     <ul class="list-group list-group-flush">
-                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
-                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
-                        <li class="msg_type_0"><a href="https://emlog.cn/" target="_blank"><?= lang('feedback') ?></a></li>
-                        <li class="msg_type_0"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
-<!--vot-->              <li class="msg_type_0"><a href="https://github.com/emlog/emlog" target="_blank">Chinese emlog at github</a></li>
-<!--vot-->              <li class="msg_type_0"><a href="https://github.com/emlog/emlog/discussions" target="_blank"><?= lang('feedback') ?></a></li>
-                    </ul>
+                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
+                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
+                        <li class="msg_type_0 mt-2"><a href="https://emlog.cn/" target="_blank"><?= lang('feedback') ?></a></li>
+                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog" target="_blank">Chinese emlog at github</a></li>
+<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog/discussions" target="_blank"><?= lang('feedback') ?></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
         <?php if (Register::isRegLocal() && option::get('accept_app_recs') === 'y'): ?>
             <div class="col-lg-6 mb-3">
                 <div class="card mb-3">
@@ -238,85 +194,44 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="shortcutModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="shortcutModalLabel">快捷入口</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="index.php?action=add_shortcut" method="post">
+                    <div class="modal-body">
+                        <?php foreach ($shortcutAll as $k => $v):
+                            $checked = in_array($v, $shortcut) ? 'checked' : '';
+                            ?>
+                            <input type="checkbox" name="shortcut[]" id="shortcut-<?= $k ?>" value="<?= $v['name'] ?>||<?= $v['url'] ?>" <?= $checked ?>>
+                            <label class="mr-2" for="shortcut-<?= $k ?>"><?= $v['name'] ?></label>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-sm btn-success">保存</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
     <script>
         setTimeout(hideActived, 3600);
         const menuPanel = $("#menu_panel").addClass('active');
 
-        // Check for updates
+        // auto check update
         $.get("./upgrade.php?action=check_update", function (result) {
             if (result.code === 200) {
                 $("#ckup").append('<span class="badge bg-danger ml-1">!</span>');
             }
         });
-
-        function checkUpdate() {
-            const updateModal = $("#update-modal");
-            const updateModalLoading = $("#update-modal-loading");
-            const updateModalMsg = $("#update-modal-msg");
-            const updateModalChanges = $("#update-modal-changes");
-            const updateModalBtn = $("#update-modal-btn");
-
-            updateModal.modal('show');
-            updateModalLoading.addClass("spinner-border text-primary");
-
-            let rep_msg = "";
-            let rep_changes = "";
-            let rep_btn = "";
-
-            updateModalMsg.html(rep_msg);
-            updateModalChanges.html(rep_changes);
-            updateModalBtn.html(rep_btn);
-
-            $.get("./upgrade.php?action=check_update", function (result) {
-                if (result.code === 1001) {
-                    rep_msg = lang('emlog_not_registered') + ", <a href=\"auth.php\">" + lang('register') + "</a>";
-                } else if (result.code === 1002) {
-                    rep_msg = lang('is_latest_version');
-                } else if (result.code === 200) {
-/*vot*/             rep_msg = `${lang('new_ver_available')}: <span class="text-danger">${result.data.version}</span> <br><br>`;
-                    rep_changes = "<b>" + lang('view_changelog') + "</b>:<br>" + result.data.changes;
-/*vot*/             rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" id="upbtn" class="btn btn-success btn-sm">${lang('update_now')}</a>`;
-                } else {
-                    rep_msg = lang('check_failed');
-                }
-
-                updateModalLoading.removeClass();
-                updateModalMsg.html(rep_msg);
-                updateModalChanges.html(rep_changes);
-                updateModalBtn.html(rep_btn);
-            });
-        }
-
-        function doUp(source, upSQL) {
-            const updateModalLoading = $("#update-modal-loading");
-            const updateModalMsg = $("#update-modal-msg");
-            const updateModalChanges = $("#update-modal-changes");
-            const upmsg = $("#upmsg");
-            const upbtn = $("#upbtn");
-
-            updateModalLoading.addClass("spinner-border text-primary");
-            updateModalMsg.html(lang('updating_now'));
-            updateModalChanges.html("");
-
-            $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
-                upmsg.removeClass();
-                if (data.includes("succ")) {
-                    upbtn.text(lang('refresh_page'));
-                    upbtn.attr('href', './');
-                    updateModalMsg.html(lang('updated_ok'));
-                } else if (data.includes("error_down")) {
-                    updateModalMsg.html(lang('update_download_fail'));
-                } else if (data.includes("error_zip")) {
-                    updateModalMsg.html(lang('unzip_fail'));
-                } else if (data.includes("error_dir")) {
-                    updateModalMsg.html(lang('update_not_writable'));
-                } else {
-                    updateModalMsg.html(lang('update_fail'));
-                }
-
-                updateModalLoading.removeClass();
-            });
-        }
     </script>
 <?php endif ?>
 <?php if (User::isAdmin()): ?>

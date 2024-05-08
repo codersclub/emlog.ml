@@ -1,5 +1,19 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.3.4
+
+Release date: 2024-5-7
+
+- [Function] The backend homepage quick entrance supports customization
+- [Function] The homepage of the app store will display all applications, including themes and plug-ins
+- [Function] Optimize the checkbox click experience of the entire site
+- [Fix] Fixed the issue where the default theme settings logo is not displayed
+- [Fix] Fixed the problem of incorrect label usage in some forms
+- [Fix] Optimization of other interface details
+
+Installation package: [emlog_pro_2.3.4.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.4.zip)
+
+
 ## Pro 2.3.3
 
 Release date: 2024-4-28

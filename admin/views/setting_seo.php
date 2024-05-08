@@ -16,30 +16,55 @@
     <div class="card-body">
         <form action="setting.php?action=seo_save" method="post" name="seo_setting_form" id="seo_setting_form">
             <h4><?= lang('post_url') ?></h4>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="permalink" value="0" <?= $ex0 ?>>
-                <label class="form-check-label"><?= lang('default_format') ?>: <span class="permalink_url"><?= BLOG_URL ?>?post=1</span></label>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="permalink" id="permalink0" value="0" <?= $ex0 ?>>
+                                <label class="form-check-label" for="permalink0"></label>
+                            </div>
+                        </td>
+                        <td><span class="permalink_url"><?= BLOG_URL ?>?post=1</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="permalink" id="permalink1" value="1" <?= $ex1 ?>>
+                                <label class="form-check-label" for="permalink1"><?= lang('file_format') ?>:</label>
+                            </div>
+                        </td>
+                        <td><span class="permalink_url"><?= BLOG_URL ?>post-1.html</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="permalink" id="permalink2" value="2" <?= $ex2 ?>>
+                <label class="form-check-label" for="permalink2"><?= lang('directory_format') ?>:</label>
+                            </div>
+                        </td>
+                        <td><span class="permalink_url"><?= BLOG_URL ?>post/1</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="permalink" id="permalink3" value="3" <?= $ex3 ?>>
+                <label class="form-check-label" for="permalink3"><?= lang('category_format') ?>:</label>
+                            </div>
+                        </td>
+                        <td><span class="permalink_url"><?= BLOG_URL ?>category/1.html</span></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="permalink" value="1" <?= $ex1 ?>>
-                <label class="form-check-label"><?= lang('file_format') ?>: <span class="permalink_url"><?= BLOG_URL ?>post-1.html</span></label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="permalink" value="2" <?= $ex2 ?>>
-                <label class="form-check-label"><?= lang('directory_format') ?>: <span class="permalink_url"><?= BLOG_URL ?>post/1</span></label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="permalink" value="3" <?= $ex3 ?>>
-                <label class="form-check-label"><?= lang('category_format') ?>: <span class="permalink_url"><?= BLOG_URL ?>category/1.html</span></label>
-            </div>
-
             <div class="form-check mt-3">
                 <input class="form-check-input" type="checkbox" value="y" name="isalias" id="isalias" <?= $isalias ?> />
-                <label><?= lang('post_alias_enable') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc</span></label>
+                <label for="isalias"><?= lang('post_alias_enable') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc</span></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="isalias_html" id="isalias_html" <?= $isalias_html ?> />
-                <label><?= lang('enable_html_suffix') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc.html</span></label>
+                <label for="isalias_html"><?= lang('enable_html_suffix') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc.html</span></label>
             </div>
 
             <div class="alert alert-warning">
