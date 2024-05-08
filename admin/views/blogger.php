@@ -34,9 +34,9 @@
                     <input class="form-control" value="<?= $nickname ?>" name="name" maxlength="20" required>
                 </div>
                 <div class="form-group">
-                    <label>用户名</label>
+                    <label><?= lang('user_name') ?></label>
                     <input class="form-control" value="<?= $username ?>" name="username" id="username">
-                    <small>未设置用户名时，请使用邮箱登录</small>
+                    <small><?= lang('user_name_tips') ?></small>
                 </div>
                 <div class="form-group">
                     <label><?= lang('email') ?></label>
@@ -48,7 +48,7 @@
                 </div>
                 <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input type="submit" value="<?= lang('save_data') ?>" name="submit_form" id="submit_form" class="btn btn-sm btn-success"/>
-                <a href="#" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#editPasswordModal">修改密码</a>
+                <a href="#" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#editPasswordModal"><?= lang('change_password') ?></a>
             </div>
         </form>
     </div>
@@ -84,7 +84,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">修改密码</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('change_password') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -92,17 +92,17 @@
             <div class="modal-body">
                 <form action="blogger.php?action=change_password" id="passwd_setting_form" method="post">
                     <div class="form-group">
-                        <label>新的密码（不少于6位）</label>
-                        <input type="password" class="form-control" id="new_passwd" name="new_passwd" minlength="6" required>
+                        <label><?= lang('new_password_info') ?></label>
+<!--vot-->              <input type="password" class="form-control" id="new_passwd" name="new_passwd" minlength="5" required>
                     </div>
                     <div class="form-group">
-                        <label>重复新的密码</label>
-                        <input type="password" class="form-control" id="new_passwd2" name="new_passwd2" minlength="6" required>
+                        <label><?= lang('new_password_repeat') ?></label>
+<!--vot-->              <input type="password" class="form-control" id="new_passwd2" name="new_passwd2" minlength="5" required>
                     </div>
                     <div class="modal-footer">
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-sm btn-success">保存</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                        <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>
             </div>
@@ -123,10 +123,10 @@
             submitForm("#profile_setting_form");
         });
 
-        // 修改用户密码表单
+        // Change user password form
         $("#passwd_setting_form").submit(function (event) {
             event.preventDefault();
-            submitForm("#passwd_setting_form", '密码修改成功, 请退出重新登录');
+            submitForm("#passwd_setting_form", lang('password_changed_ok'));
             $("#editPasswordModal").modal('hide');
         });
 

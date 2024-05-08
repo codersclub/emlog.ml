@@ -13,6 +13,9 @@ var LNG = {
     'select_article': '请选择文章',//'Please select an article',
     'sure_delete_articles': '确定要删除所选文章吗',//'Are you sure you want to delete the selected articles',
 
+// admin/views/blogger.php
+    'password_changed_ok' : '密码修改成功, 请退出重新登录',//'Password changed successfully, please log out and log in again',
+
 // admin/views/comment.php
     'comment_operation_select': '请选择评论',//'Please select a comment',
     'comment_selected_delete_sure': '确定要删除所选评论吗',//'Are you sure you want to delete the selected comment',

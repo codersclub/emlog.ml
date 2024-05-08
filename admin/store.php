@@ -53,13 +53,13 @@ if (empty($action)) {
     $count = $r['count'];
     $page_count = $r['page_count'];
 
-    $sub_title = '全部应用';
+    $sub_title = lang('all_apps');
     if ($tag === 'free') {
-        $sub_title = '免费应用';
+        $sub_title = lang('free_apps');
     } elseif ($tag === 'paid') {
-        $sub_title = '付费应用';
+        $sub_title = lang('paid_apps');
     } elseif ($tag === 'promo') {
-        $sub_title = '限时优惠';
+        $sub_title = lang('limited_offer');
     }
 
     $subPage = '';

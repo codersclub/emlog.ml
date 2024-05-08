@@ -144,6 +144,8 @@ $lang = array(
     'search_by_category' => '按分类查找',//'Search by category',
     'rank_free'	=> '免费排行榜',//'Free ranking',
     'rank_paid'	=> '付费排行榜',//'Paid ranking',
+    'free_apps' => '免费应用',//'Free apps',
+    'paid_apps' => '付费应用',//'Paid apps',
 
 //---------------------------
 //admin/style.php
@@ -263,7 +265,7 @@ $lang = array(
 //---------------------------
 //admin/views/article_write.php
     'publish_time' => '发布时间',//'Publish time',
-    'publish_time_tips' => '（当设置未来时间，文章将在该时间点定时发布）',//'(When the future time is set, the article will be published regularly at that point in time)',
+    'publish_time_tips' => '当设置未来时间，文章将在该时间点定时发布',//'When the future time is set, the article will be published regularly at that point in time',
     'access_password' => '访问密码',//'Access Password',
     'choose_file' => '选择文件上传...',//'Choose a file for upload...',
     'tags_have' => '已有标签+',//'Have tags+',
@@ -283,7 +285,7 @@ $lang = array(
     'recently_used' => '近期使用的+',//'Recently used+',
     'jump_link' => '跳转链接',//'Jump link',
     'jump_link_info' => '（填写后不展示页面内容，直接跳转该地址）',//'(The content of the page will not be displayed after filling in, and the address will be redirected to this link)',
-    'tags_tips' => '(也用于页面关键词，英文逗号分隔)',//'(Also used for page keywords, separated by English commas)',
+    'tags_tips' => '也用于页面关键词，英文逗号分隔',//'Also used for page keywords, separated by English commas',
     'select_file_category' => '选择资源分类…',//'Select resource category...',
     'load_more' => '加载更多…',//'Load more...',
     'crop_hold_shift' => '按住 Shift 等比例调整裁剪区域',//'Hold Shift to adjust the cropping area proportionally',
@@ -340,8 +342,8 @@ $lang = array(
     'avatar_deleted_ok' => '头像删除成功',//'Avatar deleted successfully',
     'nickname_is_empty' => '昵称不能为空',//'Nickname can not be empty',
     'email_format_invalid' => '电子邮件格式错误',//'E-mail format invalid',
-    'password_length_short' => '密码长度不得小于5位',//'Password length must be not less than 5 characters',
-    'password_not_equal' => '两次输入的密码不一致',//'Two passwords are not equal',
+    'password_length_short' => '密码不得小于5位',//'Password must not be less than 5 characters',
+    'password_not_equal' => '两次密码不一致',//'Two passwords are not equal',
     'username_exists' => '该登录名已被占用',//'This login name already exists',
     'nickname_exists' => '该昵称已被占用',//'This nickname already exists',
     'avatar' => '头像',//'Avatar',
@@ -350,11 +352,14 @@ $lang = array(
     'email' => '邮箱',//'E-mail',
     'personal_description' => '个人描述',//'Personal Description',
     'login_name' => '登录用户名（为空则使用邮箱登录）',//'Login username (if it is empty, use email to log in)',
-    'new_password_info' => '新密码（不小于5位，不修改请留空）',//'New Password (not less than 5 characters, left blank if do not need to modify)',
-    'new_password_repeat' => '再输入一次新密码',//'Repeat new password',
+    'new_password_info' => '新的密码（不少于5位）',//'New password (not less than 5 characters)',
+    'new_password_repeat' => '重复新的密码',//'Repeat new password',
     'save_data' => '保存资料',//'Save Data',
     'api_interface' => 'API',//'API',
     'account_password' => '账号密码',//'Account password',
+    'user_name' => '用户名',//'User name',
+    'user_name_tips' => '未设置用户名时，请使用邮箱登录',//'If no username is set, please log in using your email address',
+    'change_password' => '修改密码',//'Change password',
 
 //---------------------------
 //admin/views/comment.php
@@ -563,6 +568,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/links.php
+    'links' => '链接',//'Links',
     'link_add' => '新建链接',//'Add Link',
     'link_management' => '链接',//'Links',
     'links_created' => '已创建的链接',//'Links created',

@@ -65,9 +65,9 @@ if ($action === 'change_password') {
     $new_passwd2 = Input::postStrVar('new_passwd2');
 
     if (strlen($new_passwd) < 6) {
-        Output::error('密码不得小于6位');
+        Output::error(lang('password_length_short'));
     } elseif ($new_passwd !== $new_passwd2) {
-        Output::error('两次密码不一致');
+        Output::error(lang('password_not_equal'));
     }
 
     $PHPASS = new PasswordHash(8, true);

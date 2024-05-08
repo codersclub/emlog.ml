@@ -94,13 +94,13 @@
                         </div>
                     <?php endif; ?>
                     <input name="tag" id="tag" class="form-control" value="<?= $tagStr ?>"/>
-                    <small class="text-muted">也用于页面关键词，英文逗号分隔</small>
+                    <small class="text-muted"><?= lang('tags_tips') ?></small>
                 </div>
                 <?php if (User::haveEditPermission()): ?>
                     <div class="form-group">
                         <label><?= lang('publish_time') ?>:</label>
                         <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control"/>
-                        <small class="text-muted">当设置未来时间，文章将在该时间点定时发布</small>
+                        <small class="text-muted"><?= lang('publish_time_tips') ?></small>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />

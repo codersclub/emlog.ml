@@ -37,21 +37,21 @@ if (empty($action)) {
         $php_ver .= ',gd';
     }
 
-    // 快捷入口
+    // Quick entries
     $Plugin_Model = new Plugin_Model();
     $plugins = $Plugin_Model->getPlugins('on');
     $shortcutAll = [
-        ['name' => '模板', 'url' => 'template.php'],
-        ['name' => '插件', 'url' => 'plugin.php'],
-        ['name' => '分类', 'url' => 'sort.php'],
-        ['name' => '标签', 'url' => 'tag.php'],
-        ['name' => '页面', 'url' => 'page.php'],
-        ['name' => '导航', 'url' => 'navbar.php'],
-        ['name' => '边栏', 'url' => 'widgets.php'],
-        ['name' => '链接', 'url' => 'link.php'],
+        ['name' => lang('templates'), 'url' => 'template.php'],
+        ['name' => lang('plugins'), 'url' => 'plugin.php'],
+        ['name' => lang('categories'), 'url' => 'sort.php'],
+        ['name' => lang('tags'), 'url' => 'tag.php'],
+        ['name' => lang('pages'), 'url' => 'page.php'],
+        ['name' => lang('navigation'), 'url' => 'navbar.php'],
+        ['name' => lang('sidebar'), 'url' => 'widgets.php'],
+        ['name' => lang('links'), 'url' => 'link.php'],
     ];
     foreach ($plugins as $val) {
-        if (empty($val) || !$val['Setting'] || in_array($val['Name'], ['小贴士', '模板设置'])) {
+        if (empty($val) || !$val['Setting'] || in_array($val['Name'], [lang('tips'), lang('tpl_options')])) {
             continue;
         }
         $shortcutAll[] = [
