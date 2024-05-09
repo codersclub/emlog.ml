@@ -127,12 +127,12 @@ var LNG = {
     'is_latest_version': '已经是最新版本',//'Already the latest version',
     'update_expired': '更新服务已到期',//'Update service has expired',
     'log_in_renew': '登录官网续期',//'Log in to the official website to renew',
-    'new_ver_available': '有可用的新版本',//'There is a new version available ',
+    'new_ver_available': '有可用的新版本',//'There is a new version available',
     'view_changelog': '更新内容',//'View changelog',
     'update_now': '现在更新',//'Update now',
     'check_failed': '检查失败，可能是网络问题',//'Check failed, may be a network problem',
     'updating_now': '更新中... 请耐心等待',//'Updating... please wait patiently',
-    'updated_ok': '?恭喜，更新成功了?，<a href="./">刷新页面</a> 开始体验新版本',//'?Congratulations, the update is successful?, <a href="./">Refresh the page</a> to start experiencing the new version',
+    'updated_ok': '&#x1F389;恭喜，更新成功了&#x1F389;',//'&#x1F389;Congratulations, the update is successful&#x1F389;',
     'update_download_fail': '下载更新失败，可能是服务器网络问题',//'Failed to download the update, it may be a server network problem',
     'unzip_fail': '解压更新失败，可能是你的服务器空间不支持zip模块',//'Failed to decompress and update. your server does not support zip',
     'update_not_writable': '更新失败，目录不可写',//'Update failed, the directory is not writable',
@@ -146,7 +146,9 @@ var LNG = {
     'free': '免费',//'Free',
     'price': '应用售价',//'Price: ',
     'article_preview': '预览文章',//'Preview article',
-    'price_unit'	: '元',//' &yen;',
+    'price_unit': '元',//' &yen;',
+    'refresh_page': '刷新页面',//'Refresh page',
+    'to_use_new': '开始体验新版本',//' to start experiencing the new version',
 
 //---------------------------
 //include/lib/js/common_tpl.js

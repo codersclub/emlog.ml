@@ -124,7 +124,7 @@
             </div>
             <div class="form-group form-inline">
                 <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" <?= $conf_isthumbnail ?> />
-                <label for="isthumbnail">上传图片生成缩略图</label>，最大尺寸：
+                <label for="isthumbnail"><?= lang('thumbnail_image') ?></label>, <?= lang('max_size') ?>:
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
             </div>
@@ -145,7 +145,7 @@
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="help_guide" id="help_guide" <?= $conf_help_guide ?> />
-                <label for="help_guide">开启获取帮助模块（影响台首页获取帮助模块）</label>
+                <label for="help_guide"><?= lang('help_turn_on') ?></label>
             </div>
             <hr>
 

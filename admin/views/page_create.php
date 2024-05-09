@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label><?= lang('link_alias') ?>:</label>
                     <input name="alias" id="alias" class="form-control" value="<?= $alias ?>"/>
-                    <small class="text-muted">英文字母、数字组成，用于<a href="./setting.php?action=seo">seo设置</a></small>
+                    <small class="text-muted"><?= lang('link_alias_info') ?></small>
                 </div>
                 <div class="form-group">
                     <label><?= lang('jump_link') ?>:</label>

@@ -155,17 +155,17 @@ $options = [
 
 As shown above, in the *$options* array, the key is the id of the setting item, and the value is an array containing several elements. The type attribute and name attribute are required. name is the name of the setting item, and type is used to specify the type of the setting item. The supported types are as follows:
 
-- radio: radio button
-- checkbox: check box
-- checkon: switch
-- text: text
-- image: picture
-- page: page
-- sort: category
+- radio: Radio button
+- checkbox: Check box
+- checkon: Switch
+- text: Text
+- image: Image
+- page: Page
+- sort: Category
 - tag: tag
-- select: search selection
-- block: multi content block
-- color: color selection
+- select: Search selection
+- block: Multi content block
+- color: Color selection
 
 1. For all types, the default attribute is used to specify the default value. When default is not specified, the first value in values is used. If neither is specified, a strange default value will be used.
 2. For radio and chexkbox types, the values attribute is used to set the value and display name of each button.
@@ -211,8 +211,8 @@ An example is as follows: Configuration of site logo from default theme settings
 ```php
 
 <?php if (_g('logotype') == 1): ?>
-   <a class="blog-header-title" href="<?= BLOG_URL ?>"><?= $blogname ?></a>
-   <div class="blog-header-subtitle subtitle-overflow" title="<?= $bloginfo ?>"><?= $bloginfo ?></div>
+    <a class="blog-header-title" href="<?= BLOG_URL ?>"><?= $blogname ?></a>
+    <div class="blog-header-subtitle subtitle-overflow" title="<?= $bloginfo ?>"><?= $bloginfo ?></div>
 <?php else: ?>
    <a href="<?php echo BLOG_URL; ?>" title="<?php echo $bloginfo; ?>"><img src="<?php echo _g('logoimg'); ?>" alt="<?php echo $blogname; ?>"/></a>
 <?php endif; ?>
@@ -229,4 +229,3 @@ Use Cases:
 ```php
 _getBlock('image-block', 'content')
 ```
-

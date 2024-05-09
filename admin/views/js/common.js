@@ -523,15 +523,15 @@ function checkUpdate() {
 
     $.get("./upgrade.php?action=check_update", function (result) {
         if (result.code === 1001) {
-            rep_msg = "您的emlog pro尚未注册，<a href=\"auth.php\">去注册</a>";
+/*vot*/     rep_msg = lang('emlog_not_registered') + ': <a href="auth.php">' + lang('register') + '</a>';
         } else if (result.code === 1002) {
-            rep_msg = "已经是最新版本";
+            rep_msg = lang('is_latest_version');
         } else if (result.code === 200) {
-            rep_msg = `有可用的新版本：<span class="text-danger">${result.data.version}</span> <br><br>`;
-            rep_changes = "<b>更新内容</b>:<br>" + result.data.changes;
-            rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" id="upbtn" class="btn btn-success btn-sm">现在更新</a>`;
+            rep_msg = lang('new_ver_available') + `: <span class="text-danger">${result.data.version}</span> <br><br>`;
+            rep_changes = '<b>' + lang('view_changelog') + '</b>:<br>' + result.data.changes;
+            rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" id="upbtn" class="btn btn-success btn-sm">` + lang('update_now') + '</a>';
         } else {
-            rep_msg = "检查失败，可能是网络问题";
+            rep_msg = lang('check_failed');
         }
 
         updateModalLoading.removeClass();
@@ -549,23 +549,23 @@ function doUp(source, upSQL) {
     const upbtn = $("#upbtn");
 
     updateModalLoading.addClass("spinner-border text-primary");
-    updateModalMsg.html("更新中... 请耐心等待");
+    updateModalMsg.html(lang('updating_now'));
     updateModalChanges.html("");
 
     $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
         upmsg.removeClass();
         if (data.includes("succ")) {
-            upbtn.text('刷新页面');
+            upbtn.text(lang('refresh_page'));
             upbtn.attr('href', './');
-            updateModalMsg.html('🎉恭喜，更新成功了🎉，<a href="./">刷新页面</a> 开始体验新版本');
+            updateModalMsg.html(lang('updated_ok') + ', <a href="./">' + lang('refresh_page') +'</a> ' + lang('to_use_new'));
         } else if (data.includes("error_down")) {
-            updateModalMsg.html('下载更新失败，可能是服务器网络问题');
+            updateModalMsg.html(lang('update_download_fail'));
         } else if (data.includes("error_zip")) {
-            updateModalMsg.html('解压更新失败，可能是你的服务器空间不支持zip模块');
+            updateModalMsg.html(lang('unzip_fail'));
         } else if (data.includes("error_dir")) {
-            updateModalMsg.html('更新失败，目录不可写');
+            updateModalMsg.html(lang('update_not_writable'));
         } else {
-            updateModalMsg.html('更新失败');
+            updateModalMsg.html(lang('update_fail'));
         }
 
         updateModalLoading.removeClass();

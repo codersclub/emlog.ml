@@ -185,7 +185,7 @@ $lang = array(
     'page_title_info' => '输入页面标题',//'Enter the page title',
     'upload_insert' => '上传插入',//'Insert upload',
     'link_alias' => '链接别名',//'Link alias',
-    'link_alias_info' => '英文字母、数字组成，用于seo设置',//'composed of English letters and numbers, used for seo settings',
+    'link_alias_info' => '英文字母、数字组成，用于<a href="./setting.php?action=seo">seo设置</a>',//'Composed of English letters and numbers, used for <a href="./setting.php?action=seo">SEO settings</a>',
     'link_alias_enable' => '启用链接别名',//'Enable Link Alias',
     'page_template' => '页面模板',//'Page template',
     'page_template_info' => '（用于自定义页面模板，对应模板目录下.php文件）',//'(For custom page template, use the corresponding .php file under the template directory)',
@@ -559,6 +559,8 @@ $lang = array(
     'quick_entries' => '快捷入口',//'Quick entries',
     'tips' => '小贴士',//'Tips',
     'tpl_options' => '模板设置',//'Template options',
+    'set_ok' => '设置成功',//'Set successfully',
+    'system_loading' => '系统负载',//'System loading',
 
 //---------------------------
 //admin/views/index_user.php
@@ -772,6 +774,7 @@ $lang = array(
     'nginx_rewrite' => 'Nginx服务器请配置如下伪静态规则',//'Please configure the following pseudo-static rules for the Nginx server',
     'other_config' => '其他服务器配置见官网文档：',//'For other server configurations, see the official website documentation: ',
     'common_problems' => '常见问题',//'Common problems',
+    'help_turn_on' => '开启获取帮助模块（影响台首页获取帮助模块）',//'Turn on the get help module (get the help module on the home page of the Impact Desk)',
 
 //---------------------------
 //admin/views/setting.php
@@ -815,7 +818,8 @@ $lang = array(
     'php_upload_max_size' => '上传文件还受到服务器空间PHP配置最大上传',//'Upload file has been configured by server PHP maximum upload space',
     'allow_attach_type' => '允许上传的附件类型',//'Allow attachment types to upload',
     'separate_by_comma' => '（多个用半角逗号分隔）',//' (Separate multiple values by a comma)',
-    'thumbnail_max_size' => '上传图片生成缩略图，最大尺寸：',//'Uploaded pictures generated thumbnail maximum size: ',
+    'thumbnail_image' => '上传图片生成缩略图',//'Uploaded pictures generated thumbnail maximum size: ',
+    'max_size' => '最大尺寸',//'Maximum size',
     'unit_pixels' => '（单位：像素）',//' (Unit: pixels)',
     'icp_reg_no' => 'ICP备案号',//'ICP Reg.&nbsp;No.',
     'home_footer_info' => '首页底部信息',//'Footer info at the Home',
@@ -928,7 +932,7 @@ $lang = array(
     'ext_store' => '扩展商店',//'Extension Store',
     'ext_store_templates' => '模板主题',//'Template themes',
     'extensions' => '扩展',//'Extensions',
-    'ext_store_plugins' => '扩展插件',//'Extensions',
+    'ext_store_plugins' => '扩展插件',//'Plugins',
 
     'developer' => '开发者',//'Developer',
     'update_time' => '更新时间',//'Update time',
@@ -939,6 +943,9 @@ $lang = array(
     'download&install' => '下载安装',//'Download and install',
     'app_store' => '应用商店',//'App store',
     'version_number' => '版本号',//'Version number',
+    'app_search' => '搜索应用',//'Search apps',
+    'search' => '搜索',//'Search',
+    'sell_price' => '售价',//'Sale price',
 
 //---------------------------
 //admin/views/store_install.php

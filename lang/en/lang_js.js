@@ -13,6 +13,9 @@ var LNG = {
     'select_article': 'Please select an article',//'请选择文章',
     'sure_delete_articles': 'Are you sure you want to delete the selected articles',//'确定要删除所选文章吗',
 
+// admin/views/blogger.php
+    'password_changed_ok' : 'Password changed successfully, please log out and log in again',//'密码修改成功, 请退出重新登录',
+
 // admin/views/comment.php
     'comment_operation_select': 'Please select a comment',//'请选择评论',
     'comment_selected_delete_sure': 'Are you sure you want to delete the selected comment',//'确定要删除所选评论吗',
@@ -124,12 +127,12 @@ var LNG = {
     'is_latest_version': 'Already the latest version',//'已经是最新版本',
     'update_expired': 'Update service has expired',//'更新服务已到期',
     'log_in_renew': 'Log in to the official website to renew',//'登录官网续期',
-    'new_ver_available': 'There is a new version available ',//'有可用的新版本 ',
+    'new_ver_available': 'There is a new version available',//'有可用的新版本',
     'view_changelog': 'View changelog',//'更新内容',
     'update_now': 'Update now',//'现在更新',
     'check_failed': 'Check failed, may be a network problem',//'检查失败，可能是网络问题',
     'updating_now': 'Updating... please wait patiently',//'更新中... 请耐心等待',
-    'updated_ok': '?Congratulations, the update is successful?, <a href="./">Refresh the page</a> to start experiencing the new version',//'?恭喜，更新成功了?，<a href="./">刷新页面</a> 开始体验新版本',
+    'updated_ok': '&#x1F389;Congratulations, the update is successful&#x1F389;',//'&#x1F389;恭喜，更新成功了&#x1F389;',
     'update_download_fail': 'Failed to download the update, it may be a server network problem',//'下载更新失败，可能是服务器网络问题',
     'unzip_fail': 'Failed to decompress and update. your server does not support zip',//'解压更新失败，可能是你的服务器空间不支持zip模块',
     'update_not_writable': 'Update failed, the directory is not writable',//'更新失败，目录不可写',
@@ -143,7 +146,9 @@ var LNG = {
     'free': 'Free',//'免费',
     'price': 'Price: ',//'应用售价',
     'article_preview': 'Preview article',//'预览文章',
-    'price_unit'	: ' &yen;',//'元',
+    'price_unit': ' &yen;',//'元',
+    'refresh_page': 'Refresh page',//'刷新页面',
+    'to_use_new': ' to start experiencing the new version',//'开始体验新版本',
 
 //---------------------------
 //include/lib/js/common_tpl.js

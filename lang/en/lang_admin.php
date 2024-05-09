@@ -144,6 +144,8 @@ $lang = array(
     'search_by_category' => 'Search by category',//'按分类查找',
     'rank_free'	=> 'Free ranking',//'免费排行榜',
     'rank_paid'	=> 'Paid ranking',//'付费排行榜',
+    'free_apps' => 'Free apps',//'免费应用',
+    'paid_apps' => 'Paid apps',//'付费应用',
 
 //---------------------------
 //admin/style.php
@@ -183,7 +185,7 @@ $lang = array(
     'page_title_info' => 'Enter the page title',//'输入页面标题',
     'upload_insert' => 'Insert upload',//'上传插入',
     'link_alias' => 'Link alias',//'链接别名',
-    'link_alias_info' => 'composed of English letters and numbers, used for seo settings',//'英文字母、数字组成，用于seo设置',
+    'link_alias_info' => 'Composed of English letters and numbers, used for <a href="./setting.php?action=seo">SEO settings</a>',//'英文字母、数字组成，用于<a href="./setting.php?action=seo">seo设置</a>',
     'link_alias_enable' => 'Enable Link Alias',//'启用链接别名',
     'page_template' => 'Page template',//'页面模板',
     'page_template_info' => '(For custom page template, use the corresponding .php file under the template directory)',//'（用于自定义页面模板，对应模板目录下.php文件）',
@@ -355,6 +357,9 @@ $lang = array(
     'save_data' => 'Save Data',//'保存资料',
     'api_interface' => 'API',//'API',
     'account_password' => 'Account password',//'账号密码',
+    'user_name' => 'User name',//'用户名',
+    'user_name_tips' => 'If no username is set, please log in using your email address',//'未设置用户名时，请使用邮箱登录',
+    'change_password' => 'Change password',//'修改密码',
 
 //---------------------------
 //admin/views/comment.php
@@ -554,6 +559,8 @@ $lang = array(
     'quick_entries' => 'Quick entries',//'快捷入口',
     'tips' => 'Tips',//'小贴士',
     'tpl_options' => 'Template options',//'模板设置',
+    'set_ok' => 'Set successfully',//'设置成功',
+    'system_loading' => 'System loading',//'系统负载',
 
 //---------------------------
 //admin/views/index_user.php
@@ -563,6 +570,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/links.php
+    'links' => 'Links',//'链接',
     'link_add' => 'Add Link',//'新建链接',
     'link_management' => 'Links',//'链接',
     'links_created' => 'Links created',//'已创建的链接',
@@ -766,6 +774,7 @@ $lang = array(
     'nginx_rewrite' => 'Please configure the following pseudo-static rules for the Nginx server',//'Nginx服务器请配置如下伪静态规则',
     'other_config' => 'For other server configurations, see the official website documentation: ',//'其他服务器配置见官网文档：',
     'common_problems' => 'Common problems',//'常见问题',
+    'help_turn_on' => 'Turn on the get help module (get the help module on the home page of the Impact Desk)',//'开启获取帮助模块（影响台首页获取帮助模块）',
 
 //---------------------------
 //admin/views/setting.php
@@ -809,7 +818,8 @@ $lang = array(
     'php_upload_max_size' => 'Upload file has been configured by server PHP maximum upload space',//'上传文件还受到服务器空间PHP配置最大上传',
     'allow_attach_type' => 'Allow attachment types to upload',//'允许上传的附件类型',
     'separate_by_comma' => ' (Separate multiple values by a comma)',//'（多个用半角逗号分隔）',
-    'thumbnail_max_size' => 'Uploaded pictures generated thumbnail maximum size: ',//'上传图片生成缩略图，最大尺寸：',
+    'thumbnail_image' => 'Uploaded pictures generated thumbnail maximum size: ',//'上传图片生成缩略图',
+    'max_size' => 'Maximum size',//'最大尺寸',
     'unit_pixels' => ' (Unit: pixels)',//'（单位：像素）',
     'icp_reg_no' => 'ICP Reg.&nbsp;No.',//'ICP备案号',
     'home_footer_info' => 'Footer info at the Home',//'首页底部信息',
@@ -922,7 +932,7 @@ $lang = array(
     'ext_store' => 'Extension Store',//'扩展商店',
     'ext_store_templates' => 'Template themes',//'模板主题',
     'extensions' => 'Extensions',//'扩展插件',
-    'ext_store_plugins' => 'Extensions',//'扩展插件',
+    'ext_store_plugins' => 'PLugins',//'扩展插件',
 
     'developer' => 'Developer',//'开发者',
     'update_time' => 'Update time',//'更新时间',
@@ -933,6 +943,9 @@ $lang = array(
     'download&install' => 'Download and install',//'下载安装',
     'app_store' => 'App store',//'应用商店',
     'version_number' => 'Version number',//'版本号',
+    'app_search' => 'Search apps',//'搜索应用',
+    'search' => 'Search',//'搜索',
+    'sell_price' => 'Sale price',//'售价',
 
 //---------------------------
 //admin/views/store_install.php

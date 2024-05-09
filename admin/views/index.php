@@ -1,6 +1,6 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['add_shortcut_suc'])): ?>
-    <div class="alert alert-success">设置成功</div><?php endif ?>
+    <div class="alert alert-success"><?= lang('set_ok') ?></div><?php endif ?>
     <div class="d-flex align-items-center mb-3">
         <div class="flex-shrink-0">
             <a class="mr-2" href="blogger.php">
@@ -41,15 +41,15 @@
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="./article.php?checked=n">待审文章</a>
+                            <a href="./article.php?checked=n"><?= lang('articles_pending') ?></a>
                             <a href="./article.php?checked=n"><span class="badge badge-danger badge-pill"><?= $sta_cache['checknum'] ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="./comment.php?hide=y">待审评论</a>
+                            <a href="./comment.php?hide=y"><?= lang('pending_review') ?></a>
                             <a href="./comment.php?hide=y"><span class="badge badge-warning badge-pill"><?= $sta_cache['hidecomnum'] ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="./user.php">用户</a>
+                            <a href="./user.php"><?= lang('users') ?></a>
                             <a href="./user.php"><span class="badge badge-success badge-pill"><?= count($user_cache) ?></span></a>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -91,7 +91,7 @@
                             <span class="small"><?= $os ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            系统负载
+                            <?= lang('system_loading') ?>
                             <span class="small"><?= implode(', ', array_map(function ($item) { return round($item, 2); }, sys_getloadavg()));?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -199,7 +199,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="shortcutModalLabel">快捷入口</h5>
+                    <h5 class="modal-title" id="shortcutModalLabel"><?= lang('quick_entries') ?></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -214,8 +214,8 @@
                         <?php endforeach; ?>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-sm btn-success">保存</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                        <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>
 
