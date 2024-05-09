@@ -560,7 +560,7 @@ $lang = array(
     'tips' => 'Tips',//'小贴士',
     'tpl_options' => 'Template options',//'模板设置',
     'set_ok' => 'Set successfully',//'设置成功',
-    'system_loading' => 'System loading',//'系统负载',
+    'system_timezone' => 'System time zone',//'系统时区',
 
 //---------------------------
 //admin/views/index_user.php
