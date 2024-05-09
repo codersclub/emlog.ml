@@ -1,5 +1,14 @@
 # &#x1f335; Emlog version update records
 
+## Pro 2.3.5
+
+Release date: 2024-5-8
+
+[Fix] Fixed the error report that the windows server function did not exist in the previous version
+
+Installation package: [emlog_pro_2.3.5.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.5.zip)
+
+
 ## Pro 2.3.4
 
 Release date: 2024-5-7
