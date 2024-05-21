@@ -19,7 +19,7 @@
                 <table class="table table-bordered table-striped table-hover dataTable no-footer">
                     <thead>
                     <tr>
-                        <th><input type="checkbox" id="checkAll"/></th>
+                        <th><input type="checkbox" id="checkAllItem"/></th>
                         <th><?= lang('title') ?></th>
                         <th><?= lang('comments') ?></th>
                         <th><?= lang('views') ?></th>
@@ -28,7 +28,7 @@
                         <th><?= lang('time') ?></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="checkboxContainer">
                     <?php foreach ($pages as $key => $value):
                         $isHide = '';
                         if ($value['hide'] == 'y') {
@@ -40,6 +40,7 @@
                                 <input type="checkbox" name="page[]" value="<?= $value['gid'] ?>" class="ids"/></td>
                             <td>
                                 <a href="page.php?action=mod&id=<?= $value['gid'] ?>"><?= $value['title'] ?></a>
+                                <a href="<?= Url::log($value['gid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
                                 <?= $isHide ?>
                                 <?php if ($value['gid'] == Option::get('home_page_id')): ?>
                                     <br>

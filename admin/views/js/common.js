@@ -230,7 +230,7 @@ function checkform() {
     if (0 == isalias(a)) {
         return true;
     } else {
-        alert(lang('alias_link_error'));
+        infoAlert(lang('alias_link_error'));
         $("#alias").focus();
         return false;
     }
@@ -252,7 +252,7 @@ function checkalias() {
     }
 }
 
-// act 1:auto save 2:save
+// act 1：Auto save 2：User manually saves
 function autosave(act) {
     const nodeid = "as_logid";
     const timeout = 60000;
@@ -281,10 +281,8 @@ function autosave(act) {
         return;
     }
     // Manual saving is not allowed when the last successful save time is less than one second
-    if ((new Date().getTime() - Cookies.get('em_saveLastTime')) < 1000 && act != 1) {
-        alert(lang('too_quick'));
-        return;
-    }
+    if ((new Date().getTime() - Cookies.get('em_saveLastTime')) < 1000 && act != 1) return;
+
     const $savedf = $("#savedf");
     const btname = $savedf.val();
     $savedf.val(lang('saving')).attr("disabled", "disabled");
@@ -301,6 +299,9 @@ function autosave(act) {
             const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
             $("#save_info").html(lang('saved_ok_time') + tm + ' <a href="../?post=' + logid + '" target="_blank">' + lang('article_preview') + '</a>');
             $('title').text(lang('saved_ok') + titleText);
+            setTimeout(function () {
+                $('title').text(titleText);
+            }, 2000);
             articleTextRecord = $("#addlog textarea[name=logcontent]").val(); // After the save is successful, replace the original text record value with the current text
             Cookies.set('em_saveLastTime', new Date().getTime()); // Put (or update) the save success timestamp into a cookie
             $("#" + nodeid).val(logid);
@@ -326,8 +327,8 @@ function pagesave() {
         }
     });
     let url = "page.php?action=save";
-    if ($("[name='pageid']").attr("value") < 0) return alert(lang('save_first'));
-/*vot*/ if (!$("[name='pagecontent']").html()) return alert(lang('content_empty'));
+    if ($("[name='pageid']").attr("value") < 0) return infoAlert(lang('save_first'));
+/*vot*/ if (!$("[name='pagecontent']").html()) return infoAlert(lang('content_empty'));
 /*vot*/ $('title').text(lang('saving_in') + ' ' + pagetitle);
     $.post(url, $("#addlog").serialize(), function (data) {
 /*vot*/ $('title').text(lang('saved_ok') + pagetitle);
@@ -337,7 +338,7 @@ function pagesave() {
         pageText = $("textarea").text();
     }).fail(function () {
 /*vot*/ $('title').text(lang('save_failed') + pagetitle);
-/*vot*/ alert(lang('save_failed!'))
+/*vot*/ infoAlert(lang('save_failed!'))
     });
 }
 
@@ -369,7 +370,8 @@ var hooks = {
         if (typeof func == 'function') {
             queue[hook].push(func);
         }
-    }, doAction: function (hook, obj) {
+    },
+    doAction: function (hook, obj) {
         try {
             for (var i = 0; i < queue[hook].length; i++) {
                 queue[hook][i](obj);
@@ -466,11 +468,11 @@ function imgPasteExpand(thisEditor) {
 /*vot*/                 replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
 /*vot*/                 console.log(lang('get_result_fail'));
-/*vot*/                 alert(lang('get_result_fail'));
+/*vot*/                 infoAlert(lang('get_result_fail'));
                     }
                 })
             }, error: function (result) {
-                alert(lang('upload_failed_error'));
+                infoAlert(lang('upload_failed_error'));
                 replaceByNum(lang('upload_failed_error'), 6);
             }
         })
@@ -529,7 +531,12 @@ function checkUpdate() {
         } else if (result.code === 200) {
             rep_msg = lang('new_ver_available') + `: <span class="text-danger">${result.data.version}</span> <br><br>`;
             rep_changes = '<b>' + lang('view_changelog') + '</b>:<br>' + result.data.changes;
-            rep_btn = `<hr><a href="javascript:doUp('${result.data.file}','${result.data.sql}');" id="upbtn" class="btn btn-success btn-sm">` + lang('update_now') + '</a>';
+
+            // 检查 cdn_sql 和 cdn_file 是否为空
+            let sqlFile = result.data.cdn_sql || result.data.sql;
+            let fileFile = result.data.cdn_file || result.data.file;
+
+            rep_btn = `<hr><a href="javascript:doUp('${fileFile}','${sqlFile}');" id="upbtn" class="btn btn-success btn-sm">` + lang('update_now') + '</a>';
         } else {
             rep_msg = lang('check_failed');
         }
@@ -596,29 +603,21 @@ $(function () {
         }
     })
 
-    // Select all tables
-    $('#checkAll').click(function (event) {
-        let tr_checkbox = $('table tbody tr').find('input[type=checkbox]');
-        tr_checkbox.prop('checked', $(this).prop('checked'));
-        event.stopPropagation();
-    });
-    // Click the checkbox of each row of the table. When the number of all selected checkboxes in the table = the number of rows in the table, set the 'checkAll' radio button in the header to selected, otherwise set it to unchecked.
-    $('table tbody tr').find('input[type=checkbox]').click(function (event) {
-        let tbr = $('table tbody tr');
-        $('#checkAll').prop('checked', tbr.find('input[type=checkbox]:checked').length == tbr.length ? true : false);
-        event.stopPropagation();
+    // Select all checkboxes
+    $('#checkAllItem').click(function () {
+        let cardCheckboxes = $('.checkboxContainer').find('input[type=checkbox]');
+        cardCheckboxes.prop('checked', $(this).prop('checked'));
     });
 
-    // Select all cards
-    $('#checkAllCard').click(function (event) {
-        let card_checkbox = $('.card-body').find('input[type=checkbox]');
-        card_checkbox.prop('checked', $(this).prop('checked'));
-        event.stopPropagation();
-    });
-    $('.card-body').find('input[type=checkbox]').click(function (event) {
-        let cards = $('.card-body');
-        $('#checkAllCard').prop('checked', cards.find('input[type=checkbox]:checked').length == cards.length ? true : false);
-        event.stopPropagation();
+    $('.checkboxContainer').find('input[type=checkbox]').click(function () {
+        let allChecked = true;
+        $('.checkboxContainer').find('input[type=checkbox]').each(function () {
+            if (!$(this).prop('checked')) {
+                allChecked = false;
+                return false;
+            }
+        });
+        $('#checkAllItem').prop('checked', allChecked);
     });
 
     // store app install
@@ -626,11 +625,12 @@ $(function () {
         e.preventDefault();
         let link = $(this);
         let down_url = link.data('url');
+        let cdn_down_url = link.data('cdn-url');
         let type = link.data('type');
 /*vot*/        link.text(lang('installing'));
         link.parent().prev(".installMsg").html("").addClass("spinner-border text-primary");
 
-        let url = './store.php?action=install&type=' + type + '&source=' + down_url;
+        let url = './store.php?action=install&type=' + type + '&source=' + down_url + '&cdn_source=' + cdn_down_url;
         $.get(url, function (data) {
 /*vot*/            link.text(lang('install_free'));
             link.parent().prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");

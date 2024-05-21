@@ -213,6 +213,7 @@ class Comment_Model {
         }
 
         $name = addslashes($user_info['name_orig']);
+
         $uid = UID;
         $ipaddr = getIp();
         $timestamp = time();

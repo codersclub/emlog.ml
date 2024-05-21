@@ -40,7 +40,7 @@
                                     <?php if (empty($v['download_url'])): ?>
                                         <a href="<?= $v['buy_url'] ?>" class="btn btn-success btn-sm"><?=lang('contact_to_install')?></a>
                                     <?php else: ?>
-                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $v['type'] ?>"><?= lang('install_app') ?></a>
+                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="<?= $v['type'] ?>">立即安装</a>
                                     <?php endif ?>
                                 </div>
                             </div>

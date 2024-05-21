@@ -186,9 +186,6 @@
         </div>
     </div>
 </div>
-<div class="dropzone-previews" style="display: none;"></div>
-<script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<script src="./views/js/media-lib.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <!-- Cover image cropping -->
 <div class="modal fade" id="modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
@@ -218,6 +215,9 @@
         </div>
     </div>
 </div>
+<div class="dropzone-previews" style="display: none;"></div>
+<script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<script src="./views/js/media-lib.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <!-- vot: Load Editor.MD -->
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <!-- vot: Load Editor.MD current language file -->
@@ -353,6 +353,7 @@
 
     // When leaving the page, if the content of the article has been modified, ask the user whether to leave
     var articleTextRecord;
+    var titleText = $('title').text();
     hooks.addAction("loaded", function () {
         articleTextRecord = $("textarea[name=logcontent]").text();
     });
@@ -363,17 +364,6 @@
         return lang('leave_prompt');
     }
 
-    // If the content of the article has been modified, make the page title modified to 'modified'
-    var titleText = $('title').text()
-    hooks.addAction("loaded", function (obj) {
-        obj.config({
-            onchange: function () {
-                if ($("textarea[name=logcontent]").text() == articleTextRecord) return
-                $('title').text(lang('already_edited') + titleText);
-            }
-        });
-    });
-
     // The global shortcut key of the article editing interface Ctrl (Cmd) + S to save the content
     document.addEventListener('keydown', function (e) {
         if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
@@ -381,15 +371,6 @@
             autosave(2);
         }
     });
-
-    // Use cookie to decide whether to collapse [More Options]
-    if (Cookies.get('em_advset') === "right") {
-        $("#advset").toggle();
-        icon_mod = "right";
-        $(".icofont-simple-down").attr("class", "icofont-simple-right")
-    } else {
-        $(".icofont-simple-right").attr("class", "icofont-simple-down")
-    }
 
     // Show plugin extension label
     const postBar = $("#post_bar");

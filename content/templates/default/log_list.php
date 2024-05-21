@@ -23,7 +23,7 @@ defined('EMLOG_ROOT') || exit('access denied!');
                                     <?php topflg($value['top'], $value['sortop'], isset($sortid) ? $sortid : '') ?>
                                     <?php bloglist_sort($value['sortid']) ?>
                                 </h3>
-                                <div class="loglist-content markdown"><?= $value['log_description'] ?></div>
+                                <div class="loglist-content markdown"><?php echo subContent($value['log_description'], 180, 1); ?></div>
                                 <div class="loglist-tag"><?php blog_tag($value['logid']) ?></div>
                             </div>
                             <hr class="list-line"/>
@@ -33,8 +33,8 @@ defined('EMLOG_ROOT') || exit('access denied!');
                                     <?= date('Y-m-d H:i', $value['date']) ?>&nbsp;
                                 </div>
                                 <div class="log-count">
-                                <a href="<?= $value['log_url'] ?>#comment"><?=lang('comments')?> (<?= $value['comnum'] ?>)&nbsp;</a>
-                                <a href="<?= $value['log_url'] ?>"><?=lang('views')?>: (<?= $value['views'] ?>)</a>
+                                    <a href="<?= $value['log_url'] ?>"><?= $value['views'] ?><?=lang('_views')?></a>
+                                    <a href="<?= $value['log_url'] ?>#comment"><?= $value['comnum'] ?><?=lang('_comments')?></a>
                                 </div>
                             </div>
                         </div>

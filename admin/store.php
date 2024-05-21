@@ -187,13 +187,19 @@ if ($action === 'error') {
 
 if ($action === 'install') {
     $source = isset($_GET['source']) ? trim($_GET['source']) : ''; // plugin/down/11
+    $cdn_source = isset($_GET['cdn_source']) ? trim($_GET['cdn_source']) : '';
     $source_type = isset($_GET['type']) ? trim($_GET['type']) : '';
 
     if (empty($source)) {
 /*vot*/ exit(lang('install_failed'));
     }
 
-    $temp_file = emFetchFile('https://www.emlog.net/' . $source);
+    if ($cdn_source) {
+        $temp_file = emFetchFile($cdn_source);
+    } else {
+        $temp_file = emFetchFile('https://www.emlog.net/' . $source);
+    }
+
     if (!$temp_file) {
         if (false === Register::verifyDownload($source)) {
             exit(lang('emlog_unregistered') . ', <a href="auth.php">' . lang('go_to_register') . '</a>');

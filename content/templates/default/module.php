@@ -162,7 +162,6 @@ function widget_twitter($title) {
 function widget_newcomm($title) {
     global $CACHE;
     $com_cache = $CACHE->readCache('comment');
-    $isGravatar = Option::get('isgravatar');
     ?>
     <div class="widget shadow-theme">
         <div class="widget-title">
@@ -173,11 +172,10 @@ function widget_newcomm($title) {
             <?php
             foreach ($com_cache as $value):
                 $url = Url::comment($value['gid'], $value['page'], $value['cid']);
+                $avatar = getEmUserAvatar($value['uid'], $value['mail']);
                 ?>
                 <li class="comment-info">
-                    <?php if ($isGravatar == 'y'): ?>
-                        <img class='comment-info_img' src="<?= getGravatar($value['mail']) ?>" alt="commentator"/>
-                    <?php endif ?>
+                    <img class='comment-info_img' src="<?= $avatar ?>" alt="commentator"/>
                     <span class='comm-lates-name'><?= $value['name'] ?></span>
                     <span class='logcom-latest-time'><?= smartDate($value['date']) ?></span><br/>
                     <a href="<?= $url ?>"><?= $value['content'] ?></a>
@@ -201,7 +199,17 @@ function widget_newlog($title) {
         </div>
         <ul class="unstyle-li">
             <?php foreach ($newLogs_cache as $value): ?>
-                <li class="blog-lates"><a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a></li>
+                <li class="blog-lates" style="position: relative;">
+                    <?php if ($value['cover']): ?>
+                        <div class="side-cover-image" style="background-image: url('<?= $value['cover'] ?>');">
+                            <div class="side-title-container">
+                                <a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a>
+                    <?php endif ?>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
@@ -220,7 +228,17 @@ function widget_hotlog($title) {
         </div>
         <ul class="unstyle-li">
             <?php foreach ($hotLogs as $value): ?>
-                <li class="blog-hot"><a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a></li>
+                <li class="blog-lates" style="position: relative;">
+                    <?php if ($value['cover']): ?>
+                        <div class="side-cover-image" style="background-image: url('<?= $value['cover'] ?>');">
+                            <div class="side-title-container">
+                                <a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <a href="<?= Url::log($value['gid']) ?>"><?= $value['title'] ?></a>
+                    <?php endif ?>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
@@ -314,7 +332,7 @@ function blog_navi() {
                         </ul>
                     <?php endif ?>
                     <?php if (!empty($value['childnavi'])) : ?>
-                        <a class='nav-link has-down' id="nav_link" <?= $newtab ?> ><?= $value['naviname'] ?></a>
+                        <a class='nav-link has-down' id="nav_link" href="<?= $value['url'] ?>" <?= $newtab ?> ><?= $value['naviname'] ?></a>
                         <ul class="dropdown-menus">
                             <?php foreach ($value['childnavi'] as $row) {
                                 $newtab = $row['newtab'] == 'y' ? 'target="_blank"' : '';
@@ -378,8 +396,6 @@ function blog_sort($sortID) {
     ?>
     <?php if (!empty($sortName)) { ?>
         <a href="<?= Url::sort($sortID) ?>"><?= $sortName ?></a>
-    <?php } else { ?>
-        <a href="#" title="<?= lang('uncategorized') ?>"><?= lang('no') ?></a>
     <?php }
 } ?>
 <?php
@@ -406,9 +422,10 @@ function blog_tag($blogid) {
     $tag_ids = $tag_model->getTagIdsFromBlogId($blogid);
     $tag_names = $tag_model->getNamesFromIds($tag_ids);
     if (!empty($tag_names)) {
-/*vot*/ $tag = lang('tags') . ': ';
+        $tag = '';
         foreach ($tag_names as $value) {
 /*vot*/     $tag .= '    <a href="' . Url::tag(rawurlencode($value)) . '" class="tags">' . htmlspecialchars($value) . '</a>';
+            $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
         }
         echo $tag;
     }
@@ -450,32 +467,22 @@ function blog_comments($comments) {
         <div class="comment-header"><b><?= lang('comments') ?>:</b></div>
     <?php endif ?>
     <?php
-    $isGravatar = Option::get('isgravatar');
-
     foreach ($commentStacks as $cid):
         $comment = $comments[$cid];
-        $comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" rel="external nofollow" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
         ?>
         <div class="comment" id="<?= $comment['cid'] ?>">
-            <?php if ($isGravatar == 'y'): ?>
-                <div class="avatar"><img src="<?= getGravatar($comment['mail']) ?>" alt="avatar"/></div>
-                <div class="comment-infos">
-                    <div class="arrow"></div>
-                    <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
-                    <div class="comment-content"><?= $comment['content'] ?></div>
-                    <div class="comment-reply">
-                        <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
-                    </div>
+            <?php
+            $avatar = getEmUserAvatar($comment['uid'], $comment['mail']);
+            ?>
+            <div class="avatar"><img src="<?= $avatar ?>" alt="avatar"/></div>
+            <div class="comment-infos">
+                <div class="arrow"></div>
+                <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
+                <div class="comment-content"><?= $comment['content'] ?></div>
+                <div class="comment-reply">
+                    <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
                 </div>
-            <?php else: ?>
-                <div class="comment-infos-unGravatar">
-                    <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
-                    <div class="comment-content"><?= $comment['content'] ?></div>
-                    <div class="comment-reply">
-                        <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
-                    </div>
-                </div>
-            <?php endif ?>
+            </div>
             <?php blog_comments_children($comments, $comment['children']) ?>
         </div>
     <?php endforeach ?>
@@ -488,34 +495,25 @@ function blog_comments($comments) {
  * Article details page: sub-comments
  */
 function blog_comments_children($comments, $children) {
-    $isGravatar = Option::get('isgravatar');
     foreach ($children as $child):
         $comment = $comments[$child];
-        $comment['poster'] = $comment['url'] ? '<a href="' . $comment['url'] . '" rel="external nofollow" target="_blank">' . $comment['poster'] . '</a>' : $comment['poster'];
         ?>
         <div class="comment comment-children" id="<?= $comment['cid'] ?>">
-            <?php if ($isGravatar == 'y'): ?>
-                <div class="avatar"><img src="<?= getGravatar($comment['mail']) ?>" alt="commentator"/></div>
-                <div class="comment-infos">
-                    <div class="arrow"></div>
-                    <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
-                    <div class="comment-content"><?= $comment['content'] ?></div>
-                    <?php if ($comment['level'] < 4): ?>
-                        <div class="comment-reply">
+            <?php
+            $avatar = getEmUserAvatar($comment['uid'], $comment['mail']);
+            ?>
+            <div class="avatar"><img src="<?= $avatar ?>" alt="commentator"/></div>
+            <div class="comment-infos">
+                <div class="arrow"></div>
+                <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
+                <div class="comment-content"><?= $comment['content'] ?></div>
+                <?php if ($comment['level'] < 4): ?>
+                    <div class="comment-reply">
                         <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
-                        </div><?php endif ?>
-                </div>
-            <?php else: ?>
-                <div class="comment-infos-unGravatar">
-                    <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
-                    <div class="comment-content"><?= $comment['content'] ?></div>
-                    <?php if ($comment['level'] < 4): ?>
-                        <div class="comment-reply">
-                            <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
-                        </div>
                     <?php endif ?>
-                </div>
-            <?php endif ?>
+                    </div>
+                <?php endif ?>
+            </div>
             <?php blog_comments_children($comments, $comment['children']) ?>
         </div>
     <?php endforeach ?>
@@ -525,18 +523,14 @@ function blog_comments_children($comments, $children) {
  * Article Details Page: Comment Form
  */
 function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark) {
-    $isNeedChinese = Option::get('comment_needchinese');
+    $isLoginComment = Option::get('login_comment');
     if ($allow_remark == 'y'): ?>
         <div id="comments">
             <div class="comment-post" id="comment-post">
-                <div class="cancel-reply" id="cancel-reply" style="display:none">
-                    <button class="comment-replay-btn"><?= lang('cancel_reply') ?></button>
-                </div>
-                <form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform"
-                      is-chinese="<?= $isNeedChinese ?>">
+                <form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform">
                     <input type="hidden" name="gid" value="<?= $logid ?>"/>
                     <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" required></textarea>
-                    <?php if (User::isVisitor()): ?>
+                    <?php if (User::isVisitor() && $isLoginComment === 'n'): ?>
                         <div class="comment-info" id="comment-info">
                             <input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"
                                    value="<?= $ckname ?>" size="22"
@@ -544,24 +538,21 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
                             <input class="form-control com_control comment-mail" id="info_m" autocomplete="off" type="text" name="commail" maxlength="128"
                                    value="<?= $ckmail ?>" size="22"
                                    tabindex="2" placeholder="<?= lang('email') ?>"/>
-                            <input class="form-control com_control comment-url" id="info_u" autocomplete="off" type="text" name="comurl" maxlength="128"
-                                   value="<?= $ckurl ?>" size="22"
-                                   tabindex="3" placeholder="<?= lang('homepage') ?>"/>
                         </div>
                     <?php endif ?>
-
                     <span class="com_submit_p">
-                        <input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
+                        <?php if (User::isVisitor() && $isLoginComment === 'y'): ?>
+                            请先 <a href="./admin/index.php">登录</a> 再评论
+                        <?php else: ?>
+                            <input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
                                id="comment_submit" value="<?= lang('comment_leave') ?>" tabindex="6"/>
+                        <?php endif; ?>
                     </span>
                     <?php if ($verifyCode != "") { ?>
-                        <!-- Verification window -->
                         <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content" style="display: table-cell;">
-                                    <div class="modal-header" style="border-bottom: 0px;">
-                                        <?= lang('enter_captcha') ?>
-                                    </div>
+                                    <div class="modal-header" style="border-bottom: 0px;"><?= lang('enter_captcha') ?></div>
                                     <?= $verifyCode ?>
                                     <div class="modal-footer" style="border-top: 0px;">
                                         <button type="button" class="btn" id="close-modal" data-dismiss="modal"><?= lang('close') ?></button>
@@ -571,7 +562,6 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
                             </div>
                             <div class="lock-screen"></div>
                         </div>
-                        <!-- Verification window (end)  -->
                     <?php } ?>
                     <input type="hidden" name="pid" id="comment-pid" value="0" tabindex="1"/>
                 </form>
@@ -589,6 +579,20 @@ function blog_tool_ishome() {
     } else {
         return FALSE;
     }
+}
+
+?>
+<?php
+function getEmUserAvatar($uid, $mail) {
+    $avatar = '';
+    if ($uid) {
+        $userModel = new User_Model();
+        $user = $userModel->getOneUser($uid);
+        $avatar = $user['photo'];
+    } elseif ($mail) {
+        $avatar = getGravatar($mail);
+    }
+    return $avatar ?: BLOG_URL . "admin/views/images/avatar.svg";
 }
 
 ?>

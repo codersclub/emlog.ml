@@ -72,6 +72,9 @@
                                 <?php else: ?>
                                     <span class="badge badge-primary p-1"><?= lang('plugins') ?></span>
                                 <?php endif; ?>
+                                <?php if ($v['svip']): ?>
+                                    <a href="https://www.emlog.net/register" class="badge badge-warning p-1" target="_blank">铁杆专属</a>
+                                <?php endif; ?>
                             </p>
                             <p class="card-text text-muted">
                                 <?= lang('sell_price') ?>:
@@ -97,9 +100,16 @@
                                 <div class="installMsg"></div>
                                 <div>
                                     <?php if ($v['price'] > 0): ?>
-                                        <a href="<?= $order_url ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+                                        <?php if ($v['purchased'] === true): ?>
+                                            <a href="store.php?action=mine" class="btn btn-light">已购买</a>
+                                            <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="<?= $type ?>">立即安装</a>
+                                        <?php elseif ($v['svip'] && Register::getRegType() == 2): ?>
+                                            <a href="#" class="btn btn-warning installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="<?= $type ?>">立即安装</a>
+                                        <?php else: ?>
+                                            <a href="<?= $order_url ?>" class="btn btn-danger" target="_blank"><?= lang('go_buy') ?></a>
+                                        <?php endif ?>
                                     <?php else: ?>
-                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-type="<?= $type ?>"><?= lang('install_free') ?></a>
+                                        <a href="#" class="btn btn-success installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="<?= $type ?>"><?= lang('install_free') ?></a>
                                     <?php endif ?>
                                 </div>
                             </div>

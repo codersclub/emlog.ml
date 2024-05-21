@@ -55,7 +55,7 @@
                     <?php endif ?>
 <!--vot-->          <?php if (!empty($value['author_url'])): ?>
                         <div class="small"><?= lang('author') ?>: <a href="<?= $value['author_url'] ?>" target="_blank"><?= $value['author'] ?></a></div>
-                    <?php else: ?>
+                    <?php elseif ($value['author']): ?>
                         <div class="small"><?= lang('author') ?>: <?= $value['author'] ?></div>
                     <?php endif ?>
                     <div class="small">

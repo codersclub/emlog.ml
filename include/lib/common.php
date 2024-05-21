@@ -764,14 +764,6 @@ function emFetchFile($source) {
     $temp_file = tempnam(EMLOG_ROOT . '/content/cache/', 'tmp_');
     $wh = fopen($temp_file, 'w+b');
 
-    $r = parse_url($source);
-    if (!isset($r['host'])) {
-        return FALSE;
-    }
-    if (strlen($r['host']) !== 13) {
-        return FALSE;
-    }
-
     $ctx_opt = set_ctx_option();
     $ctx = stream_context_create($ctx_opt);
     $rh = @fopen($source, 'rb', false, $ctx);
@@ -816,16 +808,14 @@ function emDownFile($source) {
 }
 
 function set_ctx_option() {
-    $data = http_build_query(['emkey' => Option::get('emkey')]);
+    $emkey = Option::get('emkey');
     return [
         'http' => [
             'timeout' => 120,
-            'method'  => 'POST',
-            'header'  => "Content-type: application/x-www-form-urlencoded\r\n"
-                . "Content-Length: " . strlen($data) . "\r\n"
-                . "Referer: " . BLOG_URL . "\r\n"
+            'method'  => 'GET',
+            'header'  => "Referer: " . BLOG_URL . "\r\n"
+                . "Emkey: " . $emkey . "\r\n"
                 . "User-Agent: emlog " . Option::EMLOG_VERSION . "\r\n",
-            'content' => $data
         ],
         "ssl"  => [
             "verify_peer"      => false,

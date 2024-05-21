@@ -98,7 +98,7 @@ $isdraft = $draft ? '&draft=1' : '';
                 <table class="table table-bordered table-striped table-hover dataTable no-footer">
                     <thead>
                     <tr>
-                        <th><input type="checkbox" id="checkAll"/></th>
+                        <th><input type="checkbox" id="checkAllItem"/></th>
                         <th><?= lang('title') ?></th>
                         <th><a href="article.php?sortComm=<?= $sortComm . $sorturl ?>"><?= lang('comments') ?></a></th>
                         <th><a href="article.php?sortView=<?= $sortView . $sorturl ?>"><?= lang('reads') ?></a></th>
@@ -108,7 +108,7 @@ $isdraft = $draft ? '&draft=1' : '';
                         <th><?= lang('operation') ?></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="checkboxContainer">
                     <?php
                     $multiCheckBtn = false; // Whether to display the batch review reject button
                     foreach ($logs as $key => $value):
@@ -120,7 +120,9 @@ $isdraft = $draft ? '&draft=1' : '';
                         <tr>
                             <td style="width: 20px;"><input type="checkbox" name="blog[]" value="<?= $value['gid'] ?>" class="ids"/></td>
                             <td>
-                                <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a><br>
+                                <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a>
+                                <a href="<?= Url::log($value['gid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
+                                <br>
                                 <?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
                                 <?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
                                 <?php if (!$draft && $value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>

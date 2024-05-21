@@ -1,12 +1,13 @@
 <?php
 /*
 Template Name: Default template
-Version:1.0
-Template Url:https://www.emlog.net/template/
-Description: Emlog Pro Default template
+Version:1.1.3
+Template Url:https://www.emlog.net/template/detail/1167
+Description: EMLOG Default template
 Author: emlog
 Author Url:https://www.emlog.net/author/index/577
 */
+
 defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
 

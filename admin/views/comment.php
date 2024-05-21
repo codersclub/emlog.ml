@@ -51,7 +51,7 @@
                 <table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
-                        <th><input type="checkbox" id="checkAll"/></th>
+                        <th><input type="checkbox" id="checkAllItem"/></th>
                         <th><?= lang('content') ?></th>
                         <th><?= lang('comment_author') ?></th>
                         <th><?= lang('from_article') ?></th>
@@ -59,7 +59,7 @@
 <!--vot-->              <th><?= lang('operation') ?></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="checkboxContainer">
                     <?php foreach ($comment as $key => $value):
                         $ishide = $value['hide'] == 'y' ? '<span class="text-danger">' . lang('pending') . '</span>' : '';
                         $mail = $value['mail'] ? " <br />email: {$value['mail']}" : '';

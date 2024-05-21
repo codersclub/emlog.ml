@@ -31,7 +31,7 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" id="top-bar">
         <h4 class="my-0 mr-md-5 font-weight-normal"><a href="./" class="text-dark"><?= subString(Option::get('blogname'), 0, 12) ?></a></h4>
         <nav class="my-2 my-md-0 mr-md-auto">
-            <a class="p-2 text-dark" href="/"><?= lang('front_end') ?></a>
+            <a class="p-2 text-dark" href="<?= BLOG_URL ?>"><?= lang('front_end') ?></a>
             <a class="p-2 text-dark" href="./"><?= lang('user_center') ?></a>
 <!--vot-->  <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
             <a class="p-2 text-dark" href="media.php"><?= lang('resources') ?></a>

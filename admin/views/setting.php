@@ -66,16 +66,8 @@
                 <label for="comment_code"><?= lang('comment_verification_code') ?></label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="isgravatar" id="isgravatar" <?= $conf_isgravatar ?> />
-                <label for="isgravatar"><?= lang('comment_avatar') ?></label>
-            </div>
-            <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
                 <label for="login_comment"><?= lang('login_before_comment_on') ?></label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="comment_needchinese" id="comment_needchinese" <?= $conf_comment_needchinese ?> />
-                <label for="comment_needchinese"><?= lang('comment_must_contain_chinese') ?></label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="comment_paging" id="comment_paging" <?= $conf_comment_paging ?> />

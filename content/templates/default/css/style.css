@@ -11,18 +11,20 @@
 
 /* Some variables */
 * {
-    --marRadius: 8px;              /* Card rounded corners */
+    --marRadius: 5px;              /* Card rounded corners */
     --conBgcolor: #ffffff;   /* Background color for navigation, cards, content */
     --bodyBground: #f5f5f6;  /* Page background color */
     --fontColor: #5a5c69;    /* Normal text color */
-    --aColor:  #333333;      /* Link color (a tag) */
-    --aHoverColor:  #f6607d; /* Link hover color */
-    --lightColor: #757575      /* Lighter text color */
+    --aColor: #333333;       /* Link color (a tag) */
+    --aHoverColor: #f6607d;  /* Link hover color */
+    --lightColor: #757575    /* Lighter text color */
 }
+
 /* Define width = (border+padding) for all elements to facilitate subsequent calculations */
 * {
     box-sizing: border-box
 }
+
 /* Initialization */
 body {
     margin: 0;
@@ -46,7 +48,7 @@ p {
 a {
     color: var(--aColor);
     transition: all 0.2s;
-    text-decoration: none 
+    text-decoration: none
 }
 
 a:focus, a:hover {
@@ -60,17 +62,18 @@ img {
 
 hr {
     border: 0;
-    border-top: 1px solid rgba(0,0,0,.1)
+    border-top: 1px solid rgba(0, 0, 0, .1)
 }
 
 blockquote {
     font-style: italic;
     color: #868e96
 }
-input,textarea {
+
+input, textarea {
     font-family: inherit;
     color: #495057;
-    outline:none
+    outline: none
 }
 
 input[type="submit"] {
@@ -84,7 +87,8 @@ textarea {
 footer {
     margin-top: 60px;
     background-color: var(--conBgcolor);
-} 
+}
+
 footer .list-inline {
     margin: 0;
     padding: 0
@@ -95,6 +99,7 @@ footer .copyright {
     margin-bottom: 0;
     text-align: center
 }
+
 /* Non styled list  */
 
 .unstyle-li {
@@ -103,6 +108,7 @@ footer .copyright {
     margin-block: 8px;
     font-size: medium
 }
+
 /* Card attributes. The page is composed of cards, which are directly configured here, so that the cards on the entire page have a uniform inner margin. */
 .card-padding {
     padding: 1.25rem
@@ -150,6 +156,7 @@ footer .copyright {
         text-align: right
     }
 }
+
 /* Columns under the small screen */
 
 @media (max-width: 767px) {
@@ -189,11 +196,32 @@ footer .copyright {
     margin-right: auto;
     margin-left: auto
 }
+
 /* Configuration of container on different screens */
-@media (min-width: 576px) {.container {max-width: 540px}}
-@media (min-width: 768px) {.container {max-width: 720px}}
-@media (min-width: 992px) {.container {max-width: 960px}}
-@media (min-width: 1201px) {.container {max-width: 1140px}}
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px
+    }
+}
+
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1140px
+    }
+}
+
 /* Set the inner and outer margins of the container on the small screen to make it more in line with the look and feel of the small screen */
 @media (min-width: 768px) {
     .container {
@@ -209,6 +237,30 @@ footer .copyright {
 @media (min-width: 1px) {
     .rea-width {
         width: calc(100% - 18px)
+    }
+}
+
+@media (min-width: 576px) {
+    .rea-width {
+        width: 524px
+    }
+}
+
+@media (min-width: 768px) {
+    .rea-width {
+        width: 450px
+    }
+}
+
+@media (min-width: 992px) {
+    .rea-width {
+        width: 609px
+    }
+}
+
+@media (min-width: 1201px) {
+    .rea-width {
+        width: 730px
     }
 }
 
@@ -260,10 +312,8 @@ body {
 ---------------------------------------------------*/
 .blog-header {
     margin-bottom: 2.3rem;
-    color: #fff;
-    background-color: #4e73df;
-    background: linear-gradient(to right, #4e73df, #224abe);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02);
+    background-color: var(--conBgcolor);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02)
 }
 
 .blog-header-c {
@@ -271,6 +321,7 @@ body {
     display: flex;
     justify-content: space-between /* The navigation bar is aligned at both ends of the main axis, that is, the heading and the navigation are two parts, one is aligned to the left, and the other is aligned to the right. */
 }
+
 /* Blog title and subtitle */
 .blog-header-title {
     font-size: 26px;
@@ -360,18 +411,21 @@ body {
         padding-block: 4.5px;
         text-align: center
     }
+
     /* Large screen list style */
     .list-menu .list-menu {
         border-bottom: 1px solid #f1f1f1;
     }
 
-    .list-menu:last-child { 
+    .list-menu:last-child {
         border-bottom: unset
     }
+
     .blog-header-toggle {
         display: none
     }
 }
+
 /* Small screen */
 @media (max-width: 767px) {
     .header {
@@ -391,6 +445,7 @@ body {
         left: 17px;
         top: -9px
     }
+
     /* Display the toggle menu border and toggle menu only on the small screen */
     .blog-header-toggle {
         cursor: pointer;
@@ -398,6 +453,7 @@ body {
         top: 25px;
         right: 25px;
     }
+
     .blogtoggle-icon {
         display: inline-block;
         width: 28px;
@@ -405,6 +461,7 @@ body {
         margin-top: -3px;
         vertical-align: middle;
     }
+
     /* The navigation of the small screen becomes a drop-down box */
     .blog-header-nav {
         display: none;
@@ -415,6 +472,7 @@ body {
         top: 72px;
         left: 0
     }
+
     /* List style of the header on the small screen */
     .nav-list {
         margin-top: 0px;
@@ -441,7 +499,7 @@ body {
     border-radius: 4px;
     top: -3000px;
     margin-bottom: -34px;
-	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02)
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02)
 }
 
 .dropdown-menus .list-menu {
@@ -456,6 +514,7 @@ body {
         letter-spacing: 3px;
         line-height: 17px
     }
+
     .dropdown-menus {
         opacity: 1;
         margin-left: 0px;
@@ -491,10 +550,12 @@ body {
 .bottom-5 {
     margin-bottom: 1.5rem !important
 }
+
 /* Label attributes, set margin-top to level three */
 .top-5, .mtop-5 {
     margin-top: 3rem !important
 }
+
 /* Configuration of verification code modal window */
 .modal-dialog {
     display: none;
@@ -508,6 +569,7 @@ body {
     left: 50%;
     transform: translate3d(-50%, -50%, 0)
 }
+
 /* The button of the verification code modal window */
 .btn {
     cursor: pointer;
@@ -523,7 +585,8 @@ body {
 
 .btn:hover {
     color: #50525e
-} 
+}
+
 .modal-header {
     text-align: center;
     border-bottom: 0px;
@@ -551,9 +614,10 @@ body {
     padding: 10px;
     text-align: center
 }
+
 /* After the verification code modal window pops up, the screen background should be locked */
 .lock-screen {
-    display:none;
+    display: none;
     z-index: 99;
     position: fixed;
     width: 100vw;
@@ -563,13 +627,16 @@ body {
     left: 0;
     opacity: 0.5
 }
+
 /* Click style of verification code */
 #captcha {
     cursor: pointer
 }
 
 /* No scrolling */
-.scroll-fix {overflow: hidden}
+.scroll-fix {
+    overflow: hidden
+}
 
 /* Shadow
    The shadow of the article summary card and the sidebar component card of the article list page and the shadow after the mouse is floating
@@ -617,9 +684,9 @@ body {
 }
 
 .calendar td a:link {
-	color: #000;
-	font-weight: bolder;    
-	text-decoration: underline
+    color: #000;
+    font-weight: bolder;
+    text-decoration: underline
 }
 
 .calendar td a:hover {
@@ -656,6 +723,7 @@ body {
     margin-bottom: 24px;
     padding: 20px
 }
+
 /* The title of the sidebar component */
 .side-bar h3 {
     position: relative;
@@ -729,6 +797,7 @@ body {
         height: 250px
     }
 }
+
 #comments {
     margin-top: 80px;
 }
@@ -739,10 +808,7 @@ body {
 }
 
 .comment-mail {
-    float: left
-}
 
-.comment-url {
     border-right: 1px #d6d6d6 solid !important;
     border-bottom-right-radius: 10px !important
 }
@@ -821,7 +887,7 @@ body {
     padding: 7px 40px;
     font-size: small;
     color: #848797;
-    width: 33.3333334%
+    width: 50%
 }
 
 .comment-post #comment {
@@ -943,6 +1009,7 @@ body {
     margin-top: -8px;
     white-space: nowrap
 }
+
 /* The margin-top of the latest comment information in the sidebar should be 0 */
 .unstyle-li .comment-info {
     margin-top: 4px
@@ -951,6 +1018,7 @@ body {
 .cancel-reply {
     font-size: large
 }
+
 /* Commenter's avatar */
 .avatar img {
     width: 40px;
@@ -969,6 +1037,7 @@ body {
     border-radius: 0 3px 3px 0;
     padding: 0
 }
+
 /* Reply, Cancel reply buttons in the comment area */
 .comment-replay-btn {
     border: none;
@@ -989,6 +1058,7 @@ body {
 .card-title {
     margin-bottom: 30px
 }
+
 /* The sticky pattern in the article entry */
 .log-topflg {
     user-select: none;
@@ -1068,11 +1138,13 @@ body {
     font-family: inherit;
     margin: 0
 }
+
 /* Need to change the name, the friendship link attribute of the sidebar link card */
 .no-margin-bottom {
     font-size: medium;
     padding-left: 10px
 }
+
 /* Abstract content section */
 .loglist-body {
     margin-bottom: -22px;
@@ -1082,6 +1154,7 @@ body {
 .loglist-body p {
     margin: 0 -6px 0 0
 }
+
 /* Article title and tags, etc. */
 .loglist-title {
     font-size: x-large
@@ -1117,19 +1190,45 @@ body {
     transform: scale(1.01);
     clip: rect(50px, 730px, 250px, 0px)
 }
+
 /* Article category */
 .loglist-sort {
     user-select: none;
     display: inline-block;
     position: relative;
-    margin-left: 10px;
-    bottom: 2px;
-    padding: 6px;
-    padding-bottom: 3px;
-    border: 1px solid #e8e8e8
+    height: 26px;
+    padding: 3px 4.5px;
+    bottom: 3.5px;
+    font-size: 14px;
+    margin-left: 8px;
+    cursor: default;
+    background-color: Lavender
 }
-@media (max-width:415px) {.loglist-cover{ height: 160px;overflow: hidden}.loglist-cover img {position:unset;    width: 730px;}}
-@media (max-width:375px) {.loglist-cover{ height: 140px;overflow: hidden}.loglist-cover img {position:unset;    width: 730px;}}
+
+@media (max-width: 415px) {
+    .loglist-cover {
+        height: 160px;
+        overflow: hidden
+    }
+
+    .loglist-cover img {
+        position: unset;
+        width: 730px;
+    }
+}
+
+@media (max-width: 375px) {
+    .loglist-cover {
+        height: 140px;
+        overflow: hidden
+    }
+
+    .loglist-cover img {
+        position: unset;
+        width: 730px;
+    }
+}
+
 /* Other contents of the entry */
 .loglist-content {
     font-size: medium;
@@ -1155,6 +1254,7 @@ body {
 .log-count a {
     color: var(--fontColor)
 }
+
 /* Some styles of sidebar components */
 .bloggerinfo {
     margin-bottom: -10px;
@@ -1183,6 +1283,7 @@ body {
     margin-bottom: 15px;
     color: #929292
 }
+
 /* Search bar */
 .search {
     width: 80%;
@@ -1197,6 +1298,7 @@ body {
     margin-block: 0;
     border-radius: 0.25rem
 }
+
 /* Article reading and article tags */
 .tags {
     border: 1px solid #e8e8e8;
@@ -1204,6 +1306,7 @@ body {
     border-radius: 4px;
     white-space: nowrap
 }
+
 /* Tags in the sidebar widget */
 .tag-container {
     margin-block: 0;
@@ -1215,12 +1318,15 @@ body {
     border-radius: 4px;
     white-space: nowrap
 }
+
 /* The latest article style in the sidebar widget */
 .blog-lates, .blog-hot {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    margin-bottom: 8px;
 }
+
 /* Back to the previous page icon */
 .back-top {
     font-size: 20px;
@@ -1240,13 +1346,15 @@ body {
     border: 1px solid #bbbbbb;
     color: #bbbbbb
 }
+
 /* Dividing lines in article entries */
 .list-line {
     border: 0;
     margin-top: 12px;
     margin-bottom: -7px;
-    border-top: 2px solid rgb(245, 245, 246)
+    border-top: 1px solid rgb(245, 245, 246)
 }
+
 /* Article categories in the sidebar */
 .log-classify-f {
     letter-spacing: 1px;
@@ -1259,6 +1367,7 @@ body {
     list-style: none;
     font-size: medium
 }
+
 /* Latest comments in the sidebar */
 .logcom-latest-time {
     position: absolute;
@@ -1276,6 +1385,7 @@ body {
     vertical-align: middle;
     border-style: none
 }
+
 /* Date text style everywhere */
 .date {
     margin: 0;
@@ -1293,7 +1403,7 @@ body {
 
 .log-title {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 1.75rem
 }
 
@@ -1301,6 +1411,7 @@ body {
     margin-bottom: 30px;
     font-size: 1.75rem
 }
+
 /* The style of the adjacent article button */
 .neighbor-log {
     overflow: hidden;
@@ -1308,21 +1419,21 @@ body {
 }
 
 .prev-log {
-    margin: 3px 0px;
+    margin: 3px 0;
     float: left;
-    padding: 6px 6px 4px 6px;
-    font-size: medium;
+    padding: 4px 8px 4px 8px;
+    font-size: small;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50rem
+    border-radius: 0.5rem
 }
 
 .next-log {
-    margin: 3px 0px;
+    margin: 3px 0;
     float: right;
-    padding: 6px 6px 4px 6px;
-    font-size: medium;
+    padding: 4px 8px 4px 8px;
+    font-size: small;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 50rem
+    border-radius: 0.5rem;
 }
 
 .comment-info a {
@@ -1402,15 +1513,17 @@ img.zoom-img {
     position: absolute;
     top: 200px
 }
+
 .toc-con .close-toc {
-	color: #dcdcdd;
+    color: #dcdcdd;
     left: 0px;
     position: absolute;
-	padding-top: 5px;
+    padding-top: 5px;
 }
-.toc-con ul{
-	margin: 0;
-	padding: 0
+
+.toc-con ul {
+    margin: 0;
+    padding: 0
 }
 
 .toc-con li {
@@ -1435,6 +1548,7 @@ img.zoom-img {
 .toc-con div::-webkit-scrollbar-thumb {
     background-color: rgb(0 0 0 / 10%)
 }
+
 /* page style */
 #page {
     margin-bottom: 24px
@@ -1481,7 +1595,9 @@ img.zoom-img {
     .bloginfo-name {
         margin-top: 32px
     }
+
     /* Calendar in medium screen state */
+    /* 中型屏状态下的日历 */
     #calendar {
         margin-left: -8px;
     }
@@ -1502,6 +1618,7 @@ img.zoom-img {
         margin: -2px;
         padding-left: 2px
     }
+
     /* mh is a class that is convenient for hiding elements on medium and small screens */
     .mh {
         display: none
@@ -1549,19 +1666,23 @@ img.zoom-img {
     .loglist-tag {
         margin-top: 10px
     }
+
     /* The bottom margin of the blog header */
     .blog-header {
         margin-bottom: 1.6rem
     }
+
     /* Changes in the comment column */
     .comment-post input {
         padding: 0.5em 0.75em
     }
+
     /* Sidebar Calendar */
     #calendar {
         margin-left: 0
     }
 }
+
 /* The zoom and other adjustment styles made on some unusual devices in the middle size of the tablet */
 @media all and (max-width: 991px) and (min-width: 768px) {
 
@@ -1576,12 +1697,14 @@ img.zoom-img {
         width: 255px;
         margin-left: -47px
     }
+
     /* The comment content of the latest comment is slightly smaller */
     .logcom-latest-time {
         max-width: 60px
     }
 
 }
+
 /* Compromise zooming and other adjustments made to some extremely small screens */
 @media all and (max-width: 349px) {
 
@@ -1601,6 +1724,7 @@ img.zoom-img {
         font-size: small
     }
 }
+
 /* The display style of ordinary mobile devices */
 @media all and (max-width: 577px) {
     .dropdown-menus .list-menu {
@@ -1610,6 +1734,7 @@ img.zoom-img {
     .nav-link {
         padding: 8px;
     }
+
     /* The inner margin of the card container is slightly smaller */
     .card-padding {
         padding: 14px;
@@ -1660,6 +1785,7 @@ img.zoom-img {
     .loglist-content p {
         font-size: 14px;
     }
+
     /* Comment related */
     .comment-post #comment {
         border-radius: 6px;
@@ -1672,6 +1798,7 @@ img.zoom-img {
     .commentform .comment-info {
         margin-top: -5px
     }
+
     #comments {
         margin-bottom: 80px
     }
@@ -1689,6 +1816,7 @@ img.zoom-img {
     .comment .comment-post {
         display: table
     }
+
     /* New style of comment list */
     .arrow {
         display: none
@@ -1704,16 +1832,19 @@ img.zoom-img {
         height: 30px;
         width: 30px;
     }
+
     /* Summary overflow peration is a bit more cropped on small screens */
     .subtitle-overflow {
         max-width: 80%
     }
+
     /* Optimize the display of the drop-down menu at the top of the webpage on the mobile terminal */
     .dropdown-menus .list-menu {
         padding: 0px;
         letter-spacing: 2px
     }
 }
+
 /* Styles for mobile toc */
 @media all and (max-width: 1274px) {
     .toc-con {
@@ -1737,4 +1868,27 @@ img.zoom-img {
         font-size: 10px;
         padding-left: 10px;
     }
+}
+
+/* 侧边栏文章封面样式 */
+.side-cover-image {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+}
+
+.side-title-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.side-title-container a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
 }
