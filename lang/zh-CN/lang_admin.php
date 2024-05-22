@@ -685,6 +685,7 @@ $lang = array(
     'default' => '默认',//'Default',
     'select_tmpl_option' => '选择当前模板支持的页面模板，可不选',//'Select the page template supported by the current template, optional',
     'custom_tmpl_info' => '用于自定义页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填',//'Used to customize the page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank',
+    'cover_url' => '封面图URL',//'Cover image URL',
 
 //---------------------------
 //admin/views/plugin.php
@@ -948,6 +949,8 @@ $lang = array(
     'app_search' => '搜索应用',//'Search apps',
     'search' => '搜索',//'Search',
     'sell_price' => '售价',//'Sale price',
+    'bought' => '已购买',//'I bought',
+    'install_now' => '立即安装',//'Install now',
 
 //---------------------------
 //admin/views/store_install.php

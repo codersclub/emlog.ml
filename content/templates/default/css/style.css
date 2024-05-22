@@ -1597,7 +1597,7 @@ img.zoom-img {
     }
 
     /* Calendar in medium screen state */
-    /* 中型屏状态下的日历 */
+    /* Calendar on medium screen */
     #calendar {
         margin-left: -8px;
     }
@@ -1870,7 +1870,7 @@ img.zoom-img {
     }
 }
 
-/* 侧边栏文章封面样式 */
+/* Sidebar article cover style */
 .side-cover-image {
     position: relative;
     width: 100%;

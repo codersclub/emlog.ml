@@ -28,11 +28,11 @@
             </div>
             <div class="shadow-sm p-3 mb-2 bg-white rounded">
                 <div class="form-group">
-                    <input name="cover" id="cover" class="form-control" placeholder="封面图URL" value="<?= $cover ?>"/>
+                    <input name="cover" id="cover" class="form-control" placeholder="<?= lang('cover_url') ?>" value="<?= $cover ?>"/>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="upload_img">
-                                <img src="<?= $cover ?: './views/images/cover.svg' ?>" width="200" id="cover_image" class="rounded" alt="封面图片"/>
+                                <img src="<?= $cover ?: './views/images/cover.svg' ?>" width="200" id="cover_image" class="rounded" alt="<?= lang('cover_image') ?>"/>
                                 <input type="file" name="upload_img" class="image" id="upload_img" style="display:none"/>
                                 <button type="button" id="cover_rm" class="btn-sm btn btn-link" <?php if (!$cover): ?>style="display:none"<?php endif ?>>x</button>
                             </label>
@@ -109,14 +109,14 @@
         </div>
     </div>
 </div>
-<!-- 封面图裁剪 -->
+<!-- Cover image cropping -->
 <div class="modal fade" id="modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">上传封面</h5>
+                <h5 class="modal-title"><?= lang('cover_upload') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+<!--vot-->          <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -129,10 +129,10 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <div>按住 Shift 等比例调整裁剪区域</div>
+                <div><?= lang('crop_hold_shift') ?></div>
                 <div>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="button" id="crop" class="btn btn-sm btn-success">保存</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </div>
         </div>
@@ -208,7 +208,7 @@
         }
     });
 
-    // 封面图
+    // Cover image
     $(function () {
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');

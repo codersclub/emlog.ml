@@ -252,7 +252,7 @@ function checkalias() {
     }
 }
 
-// act 1：Auto save 2：User manually saves
+// act: 1 = Auto save, 2 = User manually saves
 function autosave(act) {
     const nodeid = "as_logid";
     const timeout = 60000;
@@ -532,7 +532,7 @@ function checkUpdate() {
             rep_msg = lang('new_ver_available') + `: <span class="text-danger">${result.data.version}</span> <br><br>`;
             rep_changes = '<b>' + lang('view_changelog') + '</b>:<br>' + result.data.changes;
 
-            // 检查 cdn_sql 和 cdn_file 是否为空
+            // Check if cdn_sql and cdn_file are empty
             let sqlFile = result.data.cdn_sql || result.data.sql;
             let fileFile = result.data.cdn_file || result.data.file;
 

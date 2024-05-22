@@ -40,7 +40,7 @@
                         <div class="card-text d-flex justify-content-between">
                             <div class="installMsg"></div>
                             <div>
-                                <a href="#" class="btn btn-warning installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="plu">立即安装</a>
+                                <a href="#" class="btn btn-warning installBtn" data-url="<?= urlencode($v['download_url']) ?>" data-cdn-url="<?= urlencode($v['cdn_download_url']) ?>" data-type="plu"><?= lang('install_now') ?></a>
                             </div>
                         </div>
                     </div>

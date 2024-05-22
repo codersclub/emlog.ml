@@ -209,6 +209,7 @@ $lang = array(
 'homepage_optional'          => 'Homepage (optional)',//'个人主页 (选填)',
 'comment_leave'              => 'Post a comment',//'发布评论',
 'enter_captcha'			=> 'Enter confirmation code',//'输入验证码',
+'login_before_comment'		=> 'Please <a href="./admin/index.php">Log In</a> before commenting',//'请先 <a href="./admin/index.php">登录</a> 再评论',
 
 //---------------------------
 //content/templates/default/options.php
@@ -225,7 +226,7 @@ $lang = array(
 
 //---------------------------
 //content/templates/default/pw.php
-'submit'                                  => 'Submit',//'提交',
+'submit'                     => 'Submit',//'提交',
 
 //---------------------------
 //content/templates/default/side.php

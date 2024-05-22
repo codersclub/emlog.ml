@@ -1,8 +1,8 @@
-## Emlog Pro模板设置插件使用文档
+## Emlog Pro template options plug-in usage documentation
 
-> 模板支持自定义设置功能，为模板提供更丰富的设置功能。
+> The template supports custom setting functions, providing richer setting functions for the template.
 
-在模板目录里放入 `options.php` 文件，内容格式如下即可，可以任意增加设置项，开头注释不可以删除或更改，参考如下：
+Place the `options.php` file in the template directory. The content format is as follows. You can add setting items arbitrarily. The opening comments cannot be deleted or changed. Please refer to the following:
 
 ```php
 <?php
@@ -11,73 +11,73 @@
 !defined('EMLOG_ROOT') && exit('access denied!');
 
 $options = [
-    /** 此项必需存在 */
+    /** This item must exist */
     'TplOptionsNavi'   => [
         'type'         => 'radio',
-        'name'         => '定义设置项标签页名称',
+        'name'         => 'Define setting item tab name',
         'values'       => [
-            'tpl-head' => '头部设置',
+            'tpl-head' => 'Head settings',
         ],
         'icons' => array(
             'tpl-head' => 'ri-home-line',
         ),
-        'description'  => '<p>模板：晨 <br>欢迎使用这款简约的模板，目前仅支持设置头部logo</p>'
+        'description'  => '<p>Template: Chen <br>Welcome to use this simple template, currently only supports setting the head logo</p>'
     ],
     'sale_qq'          => [
         'labels'       => 'tpl-head',
         'type'         => 'text',
-        'name'         => 'QQ咨询',
+        'name'         => 'QQ Consulting',
       	'multi'        => 'true',
         'values'       => ['12345678'],
     ],
     'logotype'         => [
         'labels'       => 'tpl-head',
         'type'         => 'radio',
-        'name'         => 'LOGO显示模式',
+        'name'         => 'LOGO display mode',
         'values'       => [
-            '1' => '文字',
-            '0' => '图片',
+            '1' => 'Text',
+            '0' => 'Picture',
         ],
         'default'      => '1',
     ],
-    'appearance-color'   => [
-        'labels'      => 'tpl-appearance',
-        'type'        => 'color',
-        'name'        => '网站主色调',
+    'appearance-color' => [
+        'labels' => 'tpl-appearance',
+        'type' => 'color',
+        'name' => 'Website main color',
         'description' => '',
-        'values'      => array('#006fff'),
+        'values' => array('#006fff'),
     ],
     'logoimg'          => [
         'labels'       => 'tpl-head',
         'type'         => 'image',
-        'name'         => 'LOGO上传',
+        'name'         => 'LOGO upload',
         'values'       => [
             TEMPLATE_URL . 'images/logo.png',
         ],
-        'description'  => '上传LOGO图片。'
+        'description'  => 'Upload a LOGO image. '
     ],
     'index_sort_list' => [
         'labels'       => 'modules',
         'type'         => 'sort',
-        'name'         => '分类多选',
+        'name'         => 'Category multiple selection',
         'multi'        => 'true',
         'description'  => ''
     ],
     'index_page_list' => [
         'labels'       => 'modules',
         'type'         => 'page',
-        'name'         => '页面多选',
+        'name'         => 'Page multiple selection',
         'multi'        => 'true',
         'description'  => ''
     ],
      'styles-lazyopts' => [
         'labels'       => 'styles',
         'type'         => 'checkbox',
-        'name'         => '图像异步懒加载',
+        'name'         => 'Image asynchronous lazy loading',
         'values'       => [
-            'view'   => '浏览量',
-            'comnum' => '评论数量',
-            'agree'  => '点赞数量',
+            'view'     => 'Views',
+            'comnum'   => 'Number of comments',
+            'agree'    => 'Number of likes',
         ],
         'default' => array('view', 'comnum'),
         'description' => '',
@@ -85,15 +85,15 @@ $options = [
     'index_tag'        => [
         'labels'       => 'tpl-head',
         'type'         => 'checkon',
-        'name'         => '首页是否显示标签列表',
-        'values'       => ['1' => '开启'],
+        'name'         => 'Whether the label list is displayed on the home page',
+        'values'       => ['1' => 'On'],
         'default'      => '1',
-        'description'  => '点击设置开关，蓝色为开。'
+        'description'  => 'Click the setting switch, blue is on. '
     ],
     'index_post_list'  => [
         'labels'       => 'tpl-head',
         'type'         => 'select',
-        'name'         => '搜索文章',
+        'name'         => 'Search article',
         'new'          => 'NEW',
         'pattern'      => 'post',
         'description'  => ''
@@ -101,7 +101,7 @@ $options = [
     'index_cate_list'  => [
         'labels'       => 'tpl-head',
         'type'         => 'select',
-        'name'         => '搜索分类',
+        'name'         => 'Search category',
         'new'          => 'NEW',
         'pattern'      => 'cate',
         'description'  => ''
@@ -109,7 +109,7 @@ $options = [
     'index_page_list'  => [
         'labels'       => 'tpl-head',
         'type'         => 'select',
-        'name'         => '搜索页面',
+        'name'         => 'Search page',
         'new'          => 'NEW',
         'pattern'      => 'page',
         'description'  => ''
@@ -117,14 +117,14 @@ $options = [
     'index_block_list' => [
         'labels'       => 'tpl-head',
         'type'         => 'block',
-        'name'         => '拖动多内容块',
-        'new'          =>  'NEW',
+        'name'         => 'Drag multiple content blocks',
+        'new'          => 'NEW',
         'description'  => ''
     ],
     'index-image_list' => [
         'labels'       => 'tpl-head',
         'type'         => 'block',
-        'name'         => '拖动多图片内容块',
+        'name'         => 'Drag multiple image content blocks',
         'new'          => 'NEW',
         'pattern'      => 'image',
         'description'  => ''
@@ -132,10 +132,10 @@ $options = [
     'index-num_text'   => [
         'labels'       => 'tpl-head',
         'type'         => 'text',
-        'name'         => '数字文本框',
-        'new'          =>  'NEW',
+        'name'         => 'Number text box',
+        'new'          => 'NEW',
         'pattern'      => 'num',
-        'unit'         => '秒',
+        'unit'         => 'second',
         'max'          => '10',
         'min'          => '1',
         'description'  => ''
@@ -143,54 +143,51 @@ $options = [
     'index-date_text'   => [
         'labels'       => 'tpl-head',
         'type'         => 'text',
-        'name'         => '日期文本框',
-        'new'          =>  'NEW',
+        'name'         => 'Date text box',
+        'new'          => 'NEW',
         'date'         => 'true',
         'description'  => ''
     ],
 ];
 ```
 
-### options.php里，每个元素都该写什么？
+### In options.php, what should be written in each element?
 
-如上所示，*$options* 数组里，key为设置项的id，而value是一个数组，数组里包含若干个元素。其中type属性和name属性必选，name是设置项名字，而type用来指定设置项的类型，支持的类型如下：
+As shown above, in the *$options* array, the key is the id of the setting item, and the value is an array containing several elements. The type attribute and name attribute are required. name is the name of the setting item, and type is used to specify the type of the setting item. The supported types are as follows:
 
-- radio: 单选按钮
-- checkbox: 复选按钮
-- checkon: 开关
-- text: 文本
-- image: 图片
-- page: 页面
-- sort: 分类
-- tag: 标签
-- select: 搜索选择
-- block: 多内容块
-- color: 颜色选择
+- radio: Radio button
+- checkbox: Check box
+- checkon: Switch
+- text: Text
+- image: Image
+- page: Page
+- sort: Category
+- tag: tag
+- select: Search selection
+- block: Multi content block
+- color: Color selection
 
-1. 对于所有类型，default属性用于指定默认值，当没有指定default时，使用values里第一个值，若都没有指定，则会使用奇怪的默认值。
-2. 对于radio和chexkbox类型，values属性用来设置各个按钮的值和显示名称。
-3. 除sort外，均可以指定depend为sort，表示该选项可以根据不同的分类设置不同的值，当指定depend为sort时，可选unsorted属性，为true时，表示包括未分类，为false不包括，默认为true。
-4. 除tag外，均可以指定depend为tag，表示该选项可以根据不同的标签设置不同的值，例如给标签添加图标
-5. sort和page可设置multi属性为true，表示多选。
-6. (可选) description属性用于描述该选项。
-7. 若type为text，可设置multi属性为true，表示多行文本，即input和textarea的区别，可选属性rich用以支持富文本，若设置该值，将加载编辑器。
-8.
+1. For all types, the default attribute is used to specify the default value. When default is not specified, the first value in values is used. If neither is specified, a strange default value will be used.
+2. For radio and chexkbox types, the values attribute is used to set the value and display name of each button.
+3. Except for sort, you can specify depend as sort, which means that this option can set different values according to different categories. When specifying depend as sort, the unsorted attribute can be optional. When it is true, it means that uncategorized is included, and when it is false, it does not. Include, defaults to true.
+4. Except for tag, you can specify depend as tag, which means that this option can set different values according to different tags, such as adding an icon to the tag.
+5. Sort and page can set the multi attribute to true to indicate multiple selections.
+6. (Optional) The description attribute is used to describe this option.
+7. If type is text, you can set the multi attribute to true to indicate multi-line text, which is the difference between input and textarea. The optional attribute rich is used to support rich text. If this value is set, the editor will be loaded.
+8. If you want to use a numeric text box and the type is still text, you can set the pattern attribute to num. Max, min, and unit can be specified, that is, the maximum limit value, the minimum limit value, and the quantity unit. The minimum or maximum value can be set independently. For example, only the minimum value is set, the maximum value does not limit the input. The unit of measurement is displayed on the far right side of the text box.
+9. If you use a date text box and the type is still text, you can set the date attribute to true.
+10. If type is sort, page or tag, and multiple selection is set, the default value will be empty, otherwise it will be the first value of this type.
+11. For type **select**, the pattern attribute is **required** and can be filled in: (1). post (2).cate (3)
+     .page. Correspond to articles, categories, and pages respectively. This function module may query slowly when the data is very large. The content of the array obtained using the built-in function is the ID of the set type, for example, a set of article gids is obtained.
+12. (Optional) The above **all types** support the *new* attribute, that is, a reminder logo will be displayed after the setting item name, and the effect can be seen in the default template. Fill in the attribute value freely, such as: NEW, new, etc. If it is empty or not filled in, it will not be displayed.
+13. For type **block**, you can optionally set the pattern attribute. If the pattern attribute is not set, the default content is text. You can set the multi attribute to true to indicate multiple lines of text. Set the pattern attribute to image to use multiple image content blocks.
+14. For how to write setting items, please refer to the code example at the beginning of the document.
 
-如果要使用数字文本框，type仍为text，可设置pattern属性为num。可指定max、min、unit，即限制最大值、限制最小值和数量单位。可单独设置最小值或最大值。例如仅设置最小值，最大值不会限制输入。计量单位会显示在文本框最右侧。
+### Add icon to settings menu
 
-9. 如果使用日期文本框，type仍为text，可设置date属性为true即可。
-10. 若type为sort、page或者tag，且设置了多选，默认值将为空，否则将为第一个该类型的值。
-11. 对于类型**select**，pattern属性是**必填项**，可以填入：(1). post  (2).cate  (3)
-    .page。分别依次对应文章、分类、页面。此功能模块在数据非常庞大时可能查询缓慢。使用内置函数获取的数组内容为设置类型的ID，例如获取到一组文章gid。
-12. (可选) 上述**所有类型**均支持 *new* 属性，即会在设置项名称后显示提醒徽标，效果可见默认模板。该属性值随意填写，如：NEW、新等。若为空或不填写将不显示。
-13. 对于类型**block**，可选设置pattern属性，若不设置pattern属性默认内容为文本，可设置multi属性为true，表示多行文本。pattern属性设置为image可以使用多图片内容块。
-14. 设置项书写方法请参考文档开头的代码举例。
-
-### 为设置菜单增加图标
-
-TplOptionsNavi项内可加入图标icons数组，为你的主题设置侧边栏菜单父设置名称前增加图标。icons数组的键名和TplOptionsNavi项values数组一致。使用的是[Remixicon](https://remixicon.com/)
-，去图标站点找到合适的图标，复制其class内的属性值即可，例如class="ri-home-line"
-，只需复制ri-home-line即可。另外需在模板plugins.php内加入以下代码用于引入图标CSS。
+The icons array can be added to the TplOptionsNavi item, and an icon can be added before the parent setting name of the sidebar menu for your theme. The key names of the icons array are consistent with the TplOptionsNavi item values array. I am using [Remixicon](https://remixicon.com/).
+Go to the icon site to find the appropriate icon, and copy the attribute value in its class. For example, class="ri-home-line",
+just copy ri-home-line is enough. In addition, you need to add the following code to the template plugins.php to introduce the icon CSS.
 
 ```php
 function optionIconFont() {
@@ -199,37 +196,36 @@ function optionIconFont() {
 addAction('adm_head', 'optionIconFont');
 ```
 
-### 模板里如何调用设置项
+### How to call setting items in the template
 
-插件提供简单方法  _g($key) 或 _em($key)，来获取设置，以_g($key)为例如：
+The plug-in provides simple methods _g($key) or _em($key) to obtain settings, taking _g($key) as an example:
 
-- 使用_g('sidebar')来获取侧边栏的设置，取到的值将为0或者1，
-- 使用_g('sortIcon')来获取分类icon的全部设置，以分类id为key的数组，
-- 使用_g('sortIcon.1')来获取分类id为1（如果存在）的sortIcon。需要注意的是，对于类型为page的，将取到页面id，类型为sort的，将取到分类id，类型为tag的，将取到标签名。
+- Use _g('sidebar') to get the sidebar settings, the value obtained will be 0 or 1,
+- Use _g('sortIcon') to get all the settings of the category icon, with the category id as the key array,
+- Use _g('sortIcon.1') to get the sortIcon with category id 1 (if it exists). It should be noted that for the type of page, the page id will be obtained, for the type of sort, the category id will be obtained, and for the type of tag, the tag name will be obtained.
 
-若不传递参数，即使用 _g() 方法将获取到所有设置项，对于老的模板迁移来的，可以用extract( _g() );来代替原来的加载option文件。
+If no parameters are passed, all setting items will be obtained using the _g() method. For old templates migrated, you can use extract(_g()); to replace the original loaded option file.
 
-示例如下: 来自默认主题设置站点 logo 的配置
+An example is as follows: Configuration of site logo from default theme settings
 
 ```php
 
 <?php if (_g('logotype') == 1): ?>
-   <a class="blog-header-title" href="<?= BLOG_URL ?>"><?= $blogname ?></a>
-   <div class="blog-header-subtitle subtitle-overflow" title="<?= $bloginfo ?>"><?= $bloginfo ?></div>
+    <a class="blog-header-title" href="<?= BLOG_URL ?>"><?= $blogname ?></a>
+    <div class="blog-header-subtitle subtitle-overflow" title="<?= $bloginfo ?>"><?= $bloginfo ?></div>
 <?php else: ?>
    <a href="<?php echo BLOG_URL; ?>" title="<?php echo $bloginfo; ?>"><img src="<?php echo _g('logoimg'); ?>" alt="<?php echo $blogname; ?>"/></a>
 <?php endif; ?>
 ```
 
-如需获取多内容块的数据，提供_getBlock($key, $type)方法获取：
+If you need to obtain the data of multiple content blocks, provide the _getBlock($key, $type) method to obtain:
 
-- $key同_g()方法提供的参数
-- $type是多内容块的数据类型，分为title和content，此参数可缺省，默认会获取content。title是多内容块填入的标题。content即内容，使用内置该函数可获取多内容块文本类型的文本或多内容块图片类型设置的图片URL
-- 返回值类型为array
+- $key is the same as the parameter provided by the _g() method
+- $type is the data type of multi-content block, which is divided into title and content. This parameter can be omitted by default, and content will be obtained by default. title is the title filled in by the multi-content block. Content is the content. Use the built-in function to obtain the text of the multi-content block text type or the image URL set by the multi-content block image type.
+- The return value type is array
 
-使用案例：
+Use Cases:
 
 ```php
 _getBlock('image-block', 'content')
 ```
-

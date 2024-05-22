@@ -542,7 +542,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
                     <?php endif ?>
                     <span class="com_submit_p">
                         <?php if (User::isVisitor() && $isLoginComment === 'y'): ?>
-                            请先 <a href="./admin/index.php">登录</a> 再评论
+                            <?= lang('login_before_comment') ?>
                         <?php else: ?>
                             <input class="btn"<?php if ($verifyCode != "") { ?> type="button" data-toggle="modal" data-target="#myModal"<?php } else { ?> type="submit" <?php } ?>
                                id="comment_submit" value="<?= lang('comment_leave') ?>" tabindex="6"/>

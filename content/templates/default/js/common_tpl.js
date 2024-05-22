@@ -93,7 +93,7 @@ var myBlog = {
             let mail = $('#info_m').val()
 
             if (typeof mail !== "undefined" && mail !== '' && !mailReg.test(mail)) {
-                this.comTip = "邮箱格式错误！"
+                this.comTip = lang('email_invalid')
             } else {
                 this.comTip = ''
             }

@@ -14,6 +14,7 @@ $lang = array(
     //content/templates/default/echo_log.php
     'time'				=> '时间',//'Time',
     'author'				=> '作者',//'Author',
+    '_times_read'			=> '&nbsp;次阅读',//'&nbsp;times read',//==='_views'
 
     //---------------------------
     //content/templates/default/log_list.php

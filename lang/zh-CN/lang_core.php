@@ -209,6 +209,7 @@ $lang = array(
 'homepage_optional'          => '个人主页 (选填)',//'Homepage (optional)',
 'comment_leave'              => '发布评论',//'Post a comment',
 'enter_captcha'			=> '输入验证码',//'Enter confirmation code',
+'login_before_comment'		=> '请先 <a href="./admin/index.php">登录</a> 再评论',//'Please <a href="./admin/index.php">Log In</a> before commenting',
 
 //---------------------------
 //content/templates/default/options.php

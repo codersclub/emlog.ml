@@ -209,6 +209,7 @@ $lang = array(
 'homepage_optional'	=> 'Домашняя страница (не обязательно)',//'个人主页 (选填)',
 'comment_leave'		=> 'Опубликовать комментарий',//'发布评论',
 'enter_captcha'		=> 'Введите проверочный код',//'输入验证码',
+'login_before_comment'	=> 'Пожалуйста, <a href="./admin/index.php">войдите в систему</a> прежде чем комментировать',//'请先 <a href="./admin/index.php">登录</a> 再评论',
 
 //---------------------------
 //content/templates/default/options.php
@@ -220,6 +221,8 @@ $lang = array(
 'tpl_logo_image'	=> 'Изображение',//'图片',
 'tpl_logo_upload'	=> 'Загрузка логотипа',//'LOGO上传',
 'tpl_logo_upload_descr'	=> 'Загрузить файл с изображением логотипа.',//'上传LOGO图片。',
+'favicon'		=> 'Иконка для браузера (favicon)',//'浏览器图标（favicon）',
+'favicon_descr'		=> 'Загрузите иконка для браузера (в формате PNG или JPG), рекомендуемый размер: 48×48px',//'上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',
 
 //---------------------------
 //content/templates/default/pw.php
@@ -230,5 +233,8 @@ $lang = array(
 'rss_feed'		=> 'RSS лента',//'RSS订阅',
 'feed_rss'		=> 'Лента RSS',//'订阅Rss',
 
+//---------------------------
+//iclude/model/plugin_model.php
+'unknown'		=> 'Неизвестно',//'未知',
 
 );
