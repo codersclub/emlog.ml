@@ -1,4 +1,18 @@
-# &#x1f335; Emlog version update records
+# &#x1f335; Emlog Changelog
+
+## pro-2.3.6
+
+Release date: 2024-5-21
+
+- [Function] Optimize default theme UI and comment avatar and other logic
+- [Function] The page supports cover setting
+- [Function] Development: Add article jump link extension points to facilitate the development of functions such as jumping to intermediate pages.
+- [Function] Optimize the background UI and code, add a view icon to the title of the article list
+- [Feature] Added purchased status to App Store
+- [Fix] Fixed the problem of abnormal background label selection
+
+Installation package: [emlog_pro_2.3.6.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.6.zip)
+
 
 ## Pro 2.3.5
 
