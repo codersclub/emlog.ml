@@ -8,9 +8,11 @@
 class User_Model {
 
     private $db;
+    private $table;
 
     public function __construct() {
         $this->db = Database::getInstance();
+        $this->table = DB_PREFIX . 'user';
     }
 
     public function getUsers($email = '', $nickname = '', $admin = '', $page = 1) {
@@ -29,7 +31,7 @@ class User_Model {
             $startId = ($page - 1) * $perpage_num;
             $limit = "LIMIT $startId, " . $perpage_num;
         }
-/*vot*/        $res = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE 1=1 $condition ORDER BY uid DESC $limit");
+/*vot*/ $res = $this->db->query("SELECT * FROM $this->table WHERE 1=1 $condition ORDER BY uid DESC $limit");
         $users = [];
         while ($row = $this->db->fetch_array($res)) {
             $row['name'] = htmlspecialchars($row['nickname']);
@@ -45,7 +47,7 @@ class User_Model {
     }
 
     public function getOneUser($uid) {
-/*vot*/        $row = $this->db->once_fetch_array("SELECT * FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/        $row = $this->db->once_fetch_array("SELECT * FROM $this->table WHERE uid=$uid");
         $userData = [];
         if ($row) {
             $row['nickname'] = empty($row['nickname']) ? $row['username'] : $row['nickname'];
@@ -72,7 +74,7 @@ class User_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE uid=$uid");
+/*vot*/ $this->db->query("UPDATE $this->table SET $upStr WHERE uid=$uid");
     }
 
     public function updateUserByMail($userData, $mail) {
@@ -82,27 +84,27 @@ class User_Model {
             $Item[] = "$key='$data'";
         }
         $upStr = implode(',', $Item);
-/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET $upStr WHERE email='$mail'");
+/*vot*/ $this->db->query("UPDATE $this->table SET $upStr WHERE email='$mail'");
     }
 
     public function addUser($username, $mail, $password, $role) {
         $timestamp = time();
         $nickname = getRandStr(8, false);
-/*vot*/        $sql = "INSERT INTO " . DB_PREFIX . "user (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
+/*vot*/ $sql = "INSERT INTO $this->table (username,email,password,nickname,role,create_time,update_time) VALUES('$username','$mail','$password','$nickname','$role',$timestamp,$timestamp)";
         $this->db->query($sql);
     }
 
     public function deleteUser($uid) {
 /*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "blog SET author=1, checked='y' WHERE author=$uid");
-/*vot*/        $this->db->query("DELETE FROM " . DB_PREFIX . "user WHERE uid=$uid");
+/*vot*/        $this->db->query("DELETE FROM $this->table WHERE uid=$uid");
     }
 
     public function forbidUser($uid) {
-/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET state=1 WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE $this->table SET state=1 WHERE uid=$uid");
     }
 
     public function unforbidUser($uid) {
-/*vot*/        $this->db->query("UPDATE " . DB_PREFIX . "user SET state=0 WHERE uid=$uid");
+/*vot*/        $this->db->query("UPDATE $this->table SET state=0 WHERE uid=$uid");
     }
 
     /**
@@ -117,7 +119,7 @@ class User_Model {
             return false;
         }
         $subSql = $uid ? 'and uid!=' . $uid : '';
-        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE username='$user_name' $subSql");
+        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM $this->table WHERE username='$user_name' $subSql");
         return $data['total'] > 0;
     }
 
@@ -126,7 +128,7 @@ class User_Model {
             return FALSE;
         }
         $subSql = $uid ? 'and uid!=' . $uid : '';
-        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE nickname='$nickname' $subSql");
+        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM $this->table WHERE nickname='$nickname' $subSql");
         return $data['total'] > 0;
     }
 
@@ -135,7 +137,7 @@ class User_Model {
             return FALSE;
         }
         $subSql = $uid ? 'and uid!=' . $uid : '';
-        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user WHERE email='$mail' $subSql");
+        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM $this->table WHERE email='$mail' $subSql");
         return $data['total'] > 0;
     }
 
@@ -150,7 +152,34 @@ class User_Model {
         if ($admin) {
             $condition = " and role IN('admin','editor')";
         }
-        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "user where 1=1 $condition");
+        $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM $this->table where 1=1 $condition");
         return $data['total'];
     }
+
+    /**
+     * 增加用户的积分
+     */
+    public function addCredits($uid, $count) {
+        $uid = (int)$uid;
+        $count = (int)$count;
+        if ($count < 0) {
+            $count = 0;
+        }
+        $this->db->query("UPDATE $this->table SET credits=credits+$count WHERE uid=$uid");
+        return true;
+    }
+
+    /**
+     * 减少用户的积分
+     */
+    public function reduceCredits($uid, $count) {
+        $uid = (int)$uid;
+        $count = (int)$count;
+        if ($count < 0) {
+            $count = 0;
+        }
+        $this->db->query("UPDATE $this->table SET credits = IF(credits >= $count, credits - $count, 0) WHERE uid = $uid");
+        return true;
+    }
+
 }

@@ -74,8 +74,8 @@ function em_confirm(id, property, token) {
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
-            msg = lang('user_disable_sure');
-            text = '';
+            msg = lang('prompt');
+            text = lang('user_disable_sure');
             delAlert(msg, text, url, token)
             break;
         case 'tpl':

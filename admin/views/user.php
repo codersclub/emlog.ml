@@ -55,7 +55,6 @@
                     <th><?= lang('user_name') ?></th>
                     <th><?= lang('email') ?></th>
                     <th><?= lang('user_id') ?></th>
-                    <th><?= lang('posts') ?></th>
                     <th><?= lang('login_ip') ?></th>
                     <th><?= lang('last_login_time') ?></th>
                     <th><?= lang('create_time') ?></th>
@@ -77,14 +76,20 @@
                             <?php else: ?>
                                 <a href="blogger.php"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
                             <?php endif ?>
-                            <span class="small"><?= "<br/>" . $val['role'] ?></span>
                             <?php if ($forbid): ?>
                                 <span class="badge badge-warning"><?= lang('disabled') ?></span>
+                            <?php endif ?>
+                            <br/>
+                            <span class="small"><?= $val['role'] ?><br/></span>
+                            <?php if ($user_log_num > 0): ?>
+                                <span class="small">文章：<a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></span>
+                            <?php endif ?>
+                            <?php if ($val['credits'] > 0): ?>
+                                <span class="small">  积分：<?= $val['credits'] ?></span>
                             <?php endif ?>
                         </td>
                         <td><?= $val['email'] ?></td>
                         <td><?= $val['uid'] ?></td>
-                        <td><a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></td>
                         <td><?= $val['ip'] ?></td>
                         <td><?= $val['update_time'] ?></td>
                         <td><?= $val['create_time'] ?></td>

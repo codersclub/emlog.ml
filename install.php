@@ -464,6 +464,7 @@ INSERT INTO {$db_prefix}blog (gid,title,date,content,excerpt,author,views,comnum
 DROP TABLE IF EXISTS {$db_prefix}attachment;
 CREATE TABLE {$db_prefix}attachment (
   aid int(11) unsigned NOT NULL auto_increment COMMENT 'Resource file table',
+  alias varchar(64) NOT NULL default '' COMMENT 'Resource Alias',
   author int(11) unsigned NOT NULL default '1' COMMENT 'Author UID',
   sortid int(11) NOT NULL default '0' COMMENT 'Category ID',
   blogid int(11) unsigned NOT NULL default '0' COMMENT 'Post ID (obsolete)',
@@ -475,6 +476,7 @@ CREATE TABLE {$db_prefix}attachment (
   height int(11) NOT NULL default '0' COMMENT 'Image Height',
   mimetype varchar(64) NOT NULL default '' COMMENT 'File mime type',
   thumfor int(11) NOT NULL default 0 COMMENT 'Thumbnail for original resource ID (obsolete)',
+  download_count bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '下载次数',
   PRIMARY KEY  (aid),
   KEY thum_uid (thumfor,author),
   KEY addtime (addtime)
@@ -565,6 +567,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('is_signup','y'),
 ('ischkarticle','y'),
 ('article_uneditable','n'),
+('forbid_user_upload','n'),
 ('posts_per_day',10),
 ('smtp_mail',''),
 ('smtp_pw',''),
@@ -639,6 +642,7 @@ CREATE TABLE {$db_prefix}user (
   description varchar(255) NOT NULL default '' COMMENT 'Description',
   ip varchar(128) NOT NULL default '' COMMENT 'IP address',
   state tinyint NOT NULL DEFAULT '0' COMMENT 'User status: 0 normal, 1 disabled',
+  credits int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'User credits',
   create_time int(11) NOT NULL COMMENT 'Create time',
   update_time int(11) NOT NULL COMMENT 'Update time',
 PRIMARY KEY  (uid),

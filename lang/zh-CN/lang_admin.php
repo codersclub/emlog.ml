@@ -146,6 +146,8 @@ $lang = array(
     'rank_paid'	=> '付费排行榜',//'Paid ranking',
     'free_apps' => '免费应用',//'Free apps',
     'paid_apps' => '付费应用',//'Paid apps',
+    'top_free'	=> '下载排行榜',//'Top free',
+    'top_paid'	=> '购买排行榜',//'Top paid',
 
 //---------------------------
 //admin/style.php

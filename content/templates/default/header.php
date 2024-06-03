@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Default template
-Version:1.1.3
+Version:1.1.7
 Template Url:https://www.emlog.net/template/detail/1167
 Description: EMLOG Default template
 Author: emlog
@@ -17,7 +17,7 @@ if (!function_exists('_g')) {
 
 ?>
 <!doctype html>
-<html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">
+<html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>" data-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,18 +26,26 @@ if (!function_exists('_g')) {
     <meta name="description" content="<?= $site_description ?>"/>
     <base href="<?= BLOG_URL ?>"/>
     <link rel="alternate" title="RSS" href="<?= BLOG_URL ?>rss.php" type="application/rss+xml"/>
-    <link href="<?= TEMPLATE_URL ?>css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
-    <link href="<?= TEMPLATE_URL ?>css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= TEMPLATE_URL ?>css/style.css?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= TEMPLATE_URL ?>css/icon/iconfont.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= TEMPLATE_URL ?>css/markdown.css?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= empty(_g('favicon')) ? BLOG_URL . 'favicon.ico' : _g('favicon'); ?>" rel="icon">
     <script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="<?= TEMPLATE_URL ?>js/common_tpl.js?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="<?= TEMPLATE_URL ?>js/zoom.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <?php doAction('index_head') ?>
     <script>
         // Calendar generation and page turning
         function sendinfo(url) {
             $("#calendar").load(url)
         }
+
+        // 切换夜间模式主题
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
     </script>
-    <?php doAction('index_head') ?>
-    <!-- Favicon -->
-    <link href="<?= empty(_g('favicon')) ? BLOG_URL . 'favicon.ico' : _g('favicon'); ?>" rel="icon">
 </head>
 <body>
 <nav class="blog-header">

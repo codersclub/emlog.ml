@@ -46,11 +46,9 @@ var myBlog = {
         if ($("#comment-pid").attr("value") === "0") {
             $ele.append($com_board);
             $("#comment-pid").attr("value", getpid);
-            $("#cancel-reply").css("display", "unset");
             $("#comments").toggleClass("com-bottom");
         } else {
             $("#comment-pid").attr("value", "0");
-            $("#cancel-reply").css("display", "none");
             $("#comments").append($("#comment-post")).toggleClass("com-bottom");
         }
     },
@@ -351,40 +349,56 @@ $(document).ready(function () {
 
     $(".com-reply").click(function () {
         myBlog.toggleCommentInput($(this))
-    }),
+    })
 
-        $(".blog-header-toggle").click(function () {
-            myBlog.navToggle($(this))
-        }),
+    $(".blog-header-toggle").click(function () {
+        myBlog.navToggle($(this))
+    })
 
-        $(".has-down").mouseenter(function () {
-            myBlog.calMargin($(this))
-        }),
+    $(".has-down").mouseenter(function () {
+        myBlog.calMargin($(this))
+    })
 
-        $("#captcha").click(function () {
-            myBlog.captchaRefresh($(this))
-        }),
+    $("#captcha").click(function () {
+        myBlog.captchaRefresh($(this))
+    })
 
-        $('#comment_submit[type="button"], #close-modal').click(function () {
-            myBlog.comSubmitTip('judge')
-            if (myBlog.comSubmitTip()) {  // Before displaying the verification code modal box of the comment, check the content of the comment area first
-                myBlog.viewModal()
+    $('#comment_submit[type="button"], #close-modal').click(function () {
+        myBlog.comSubmitTip('judge')
+        if (myBlog.comSubmitTip()) {  // Before displaying the verification code modal box of the comment, check the content of the comment area first
+            myBlog.viewModal()
+        }
+    })
+
+    $(".form-control").blur(function () {
+        myBlog.comSubmitTip('judge')
+    })
+
+    $(".markdown img").click(function () {
+        myBlog.toggleImgSrc($(this))
+    })
+
+    $("#archive").change(function () {
+        myBlog.jumpLink($(this))
+    })
+
+    $("#closeToc").click(function () {
+        myBlog.tocClose()
+    })
+
+    // 切换夜间模式主题
+    const toggleButton = document.getElementById('theme-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = 'light';
+
+            if (currentTheme === 'light') {
+                targetTheme = 'dark';
             }
-        }),
 
-        $(".form-control").blur(function () {
-            myBlog.comSubmitTip('judge')
-        }),
-
-        $(".markdown img").click(function () {
-            myBlog.toggleImgSrc($(this))
-        }),
-
-        $("#archive").change(function () {
-            myBlog.jumpLink($(this))
-        }),
-
-        $("#closeToc").click(function () {
-            myBlog.tocClose()
-        })
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+        });
+    }
 })

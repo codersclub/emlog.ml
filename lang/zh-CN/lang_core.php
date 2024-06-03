@@ -64,7 +64,7 @@ $lang = array(
 '_hour_ago'                  => ' 小时前',//' hour(s) ago.',
 'file_size_exceeds_system'   => '文件大小超过系统',//'File size exceeds the system limit ',
 '_limit'                     => '限制',//'',//' limit',//LEAVE THIS EMPTY???
-'upload_failed_error_code'   => '上传文件失败,错误码：',//'Upload failed. Error code: ',
+'upload_failed_error_code'   => '上传失败,错误码：',//'Upload failed. Error code: ',
 'file_type_not_supported'    => '错误的文件类型',//'This file type is not supported.',
 'file_size_exceeds_'         => '文件大小超出',//'File size exceeds the limit ',
 '_of_limit'                  => '的限制',//'',//' limit',
@@ -220,7 +220,7 @@ $lang = array(
 'tpl_logo_text' => '文字',//'Text',
 'tpl_logo_image' => '图片',//'Image',
 'tpl_logo_upload' => 'LOGO上传',//'LOGO upload',
-'tpl_logo_upload_descr' => '上传LOGO图片。',//'Upload the LOGO image.',
+'tpl_logo_upload_descr' => '上传LOGO图片，推荐尺寸 180x60像素，高度不超60像素',//'Upload LOGO image, recommended size 180x60px, height no more than 60px',
 'favicon' => '浏览器图标（favicon）',//'Browser icon (favicon)',
 'favicon_descr' => '上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',//'Upload browser icon, PNG or JPG image, recommended size: 48×48px',
 

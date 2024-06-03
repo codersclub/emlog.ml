@@ -7,8 +7,8 @@
 
 class Option {
 
-    const EMLOG_VERSION = 'pro 2.3.6';
-    const EMLOG_VERSION_TIMESTAMP = 1716257309;
+    const EMLOG_VERSION = 'pro 2.3.7';
+    const EMLOG_VERSION_TIMESTAMP = 1717321122;
     const UPLOADFILE_PATH = '../content/uploadfile/';
     const UPLOADFILE_FULL_PATH = EMLOG_ROOT . '/content/uploadfile/';
 
@@ -119,6 +119,11 @@ class Option {
                 'model'  => 'Api_Controller',
                 'method' => 'starter',
                 'reg_0'  => '|^.*/\?(rest-api)=(\w+)([\?&].*)?$|',
+            ],
+            [
+                'model'  => 'Download_Controller',
+                'method' => 'index',
+                'reg_0'  => '|^.*/\?(resource_alias)=(\w+)$|',
             ],
             [
                 'model'  => 'Log_Controller',

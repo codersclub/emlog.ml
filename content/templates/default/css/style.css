@@ -1,59 +1,150 @@
 /**
  * Template style sheet
  */
-
-/* Global style
----------------------------------------------------*/
-/* Disable scroll bar for a page overflow */
 :root {
-    overflow-x: hidden
-}
-
-/* Some variables */
-* {
-    --marRadius: 5px;              /* Card rounded corners */
+    --marRadius: 5px;
     --conBgcolor: #ffffff;   /* Background color for navigation, cards, content */
     --bodyBground: #f5f5f6;  /* Page background color */
     --fontColor: #5a5c69;    /* Normal text color */
     --aColor: #333333;       /* Link color (a tag) */
     --aHoverColor: #f6607d;  /* Link hover color */
-    --lightColor: #757575    /* Lighter text color */
+    --lightColor: #757575;    /* Lighter text color */
+
+    /* 表单和按钮的常规样式 */
+    --inputBgColor: #ffffff;
+    --inputBorderColor: #cccccc;
+    --inputTextColor: #333333;
+    --buttonBgColor: #cccccc;
+    --buttonTextColor: #ffffff;
+    --buttonBorderColor: #cccccc;
+    --selectBgColor: #ffffff;
+    --selectBorderColor: #cccccc;
+    --selectTextColor: #333333;
+    --dividerColor: #e0e0e0;
+    --borderColor: #00000019;
 }
 
-/* Define width = (border+padding) for all elements to facilitate subsequent calculations */
-* {
-    box-sizing: border-box
+/* 黑夜模式 */
+[data-theme="dark"] {
+    --conBgcolor: #2e2e2e; /* 导航、卡片、内容的背景颜色 */
+    --bodyBground: #121212; /* 页面背景颜色 */
+    --fontColor: #cfcfcf; /* 普通文本的颜色 */
+    --aColor: #a8a8a8; /* a 标签的颜色 */
+    --aHoverColor: #f6607d; /* a 标签 hover 状态的颜色 */
+    --lightColor: #757575; /* 比较浅一点的文本颜色 */
+
+    /* 表单和按钮的黑夜模式样式 */
+    --inputBgColor: #3a3a3a;
+    --inputBorderColor: #5a5a5a;
+    --inputTextColor: #cfcfcf;
+    --buttonBgColor: #444444;
+    --buttonTextColor: #ffffff;
+    --buttonBorderColor: #5a5a5a;
+    --selectBgColor: #3a3a3a;
+    --selectBorderColor: #5a5a5a;
+    --selectTextColor: #cfcfcf;
+    --dividerColor: #444444;
+    --borderColor: #848797;
 }
 
-/* Initialization */
 body {
     margin: 0;
     line-height: 1.5;
     font-size: 16px;
     color: var(--fontColor);
     background-color: var(--bodyBground);
-    font-family: helvetica neue, Helvetica, Arial, sans-serif
+    font-family: helvetica neue, Helvetica, Arial, sans-serif;
 }
 
+/* 其他样式 */
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
-    font-weight: 400
+    font-weight: 400;
 }
 
 p {
     line-height: 2;
-    margin: 30px 0
+    margin: 30px 0;
 }
 
 a {
     color: var(--aColor);
     transition: all 0.2s;
-    text-decoration: none
+    text-decoration: none;
 }
 
 a:focus, a:hover {
     color: var(--aHoverColor);
-    text-decoration: none
+    text-decoration: none;
+}
+
+/* 表单输入框样式 */
+input, textarea {
+    background-color: var(--inputBgColor);
+    border: 1px solid var(--inputBorderColor);
+    color: var(--inputTextColor);
+    padding: 10px;
+    border-radius: var(--marRadius);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 按钮样式 */
+button {
+    background-color: var(--buttonBgColor);
+    color: var(--buttonTextColor);
+    border: 1px solid var(--buttonBorderColor);
+    padding: 10px 20px;
+    border-radius: var(--marRadius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover {
+    background-color: darken(var(--buttonBgColor), 10%);
+    border-color: darken(var(--buttonBorderColor), 10%);
+}
+
+/* 下拉选择框样式 */
+select {
+    background-color: var(--selectBgColor);
+    border: 1px solid var(--selectBorderColor);
+    color: var(--selectTextColor);
+    padding: 10px;
+    border-radius: var(--marRadius);
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 分割线样式 */
+hr {
+    border: none;
+    border-top: 1px solid var(--dividerColor);
+    margin: 20px 0;
+}
+
+.small {
+    font-size: 12px;
+}
+
+.m-r-3 {
+    margin-right: 3px;
+}
+
+.m-r-5 {
+    margin-right: 5px;
+}
+
+.m-r-10 {
+    margin-right: 10px;
+}
+
+/* 定义所有元素的 width =（border+padding），方便后续计算 */
+* {
+    box-sizing: border-box
 }
 
 img {
@@ -72,7 +163,7 @@ blockquote {
 
 input, textarea {
     font-family: inherit;
-    color: #495057;
+    color: #848797;
     outline: none
 }
 
@@ -468,7 +559,7 @@ body {
         z-index: 999;
         position: absolute;
         width: calc(100% - 4px);
-        background: white;
+        background: var(--bodyBground);
         top: 72px;
         left: 0
     }
@@ -495,7 +586,7 @@ body {
     margin-left: -26px;
     position: absolute;
     padding-left: 0px;
-    border: 1px solid #f1f1f1;
+    border: 1px solid var(--borderColor);
     border-radius: 4px;
     top: -3000px;
     margin-bottom: -34px;
@@ -520,7 +611,7 @@ body {
         margin-left: 0px;
         position: unset;
         padding-left: 30px;
-        border: 0px solid #f1f1f1;
+        border: 0px solid var(--borderColor);
         width: auto;
         top: 0px;
         margin-bottom: 0px;
@@ -559,9 +650,9 @@ body {
 /* Configuration of verification code modal window */
 .modal-dialog {
     display: none;
-    background-color: white;
+    background-color: var(--bodyBground);
     border-radius: var(--marRadius);
-    border: 1px solid #dedede;
+    border: 1px solid var(--bodyBground);
     position: fixed;
     z-index: 100;
     /* Position */
@@ -573,14 +664,14 @@ body {
 /* The button of the verification code modal window */
 .btn {
     cursor: pointer;
-    color: #848798;
-    background-color: white;
+    color: var(--fontColor);
+    background-color: var(--bodyBground);
     padding: 8px 11px;
     font-weight: 800;
     border-radius: var(--marRadius);
     margin-block: 12px;
     margin-inline: 17.5px;
-    border: 1px solid #dedede
+    border: 1px solid var(--bodyBground);
 }
 
 .btn:hover {
@@ -607,7 +698,7 @@ body {
     margin-left: 8px;
     text-align: left;
     margin-block: 30px;
-    border: 1px solid #dedede
+    border: 1px solid var(--borderColor)
 }
 
 .modal-content .modal-footer {
@@ -652,11 +743,11 @@ body {
 ---------------------------------------------------*/
 /* The loading style of the calendar prevents too much visual changes caused by page turning */
 .cal_loading {
-    margin-bottom: 243px
+    margin-bottom: 243px;
 }
 
 #calendar {
-    color: #212529
+    color: #212529;
 }
 
 
@@ -665,54 +756,89 @@ body {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
-    color: #000
+    color: #000;
 }
 
 .calendartop a {
-    font-weight: 100 !important
+    font-weight: 100 !important;
 }
 
 .calendar {
     margin-bottom: -10px;
-    width: 100%
+    width: 100%;
 }
 
 .calendar td {
     text-align: center;
     padding: 1px 10px;
-    line-height: 1.6
+    line-height: 1.6;
 }
 
 .calendar td a:link {
     color: #000;
     font-weight: bolder;
-    text-decoration: underline
+    text-decoration: underline;
 }
 
 .calendar td a:hover {
     color: #886353;
-    text-decoration: none
+    text-decoration: none;
 }
 
 .calendar tr {
-    height: 40px
+    height: 40px;
 }
 
 .day {
     color: #212529;
     background: #eaeaea;
-    border-radius: var(--marRadius)
+    border-radius: var(--marRadius);
 }
 
 .sun {
-    color: #333
+    color: #333;
 }
 
 .week {
-    color: #333
+    color: #333;
 }
 
-/* Sidebar card style
+/* 黑夜模式下的日历样式 */
+[data-theme="dark"] #calendar {
+    color: #cfcfcf;
+}
+
+[data-theme="dark"] .calendartop {
+    color: #cfcfcf;
+}
+
+[data-theme="dark"] .calendar td {
+    color: #cfcfcf;
+}
+
+[data-theme="dark"] .calendar td a:link {
+    color: #cfcfcf;
+}
+
+[data-theme="dark"] .calendar td a:hover {
+    color: #f6607d;
+}
+
+[data-theme="dark"] .day {
+    color: #cfcfcf;
+    background: #3a3a3a;
+    border-radius: var(--marRadius);
+}
+
+[data-theme="dark"] .sun {
+    color: #a8a8a8;
+}
+
+[data-theme="dark"] .week {
+    color: #a8a8a8;
+}
+
+
 ---------------------------------------------------*/
 /* Card inner and outer margins */
 .side-bar {
@@ -755,9 +881,9 @@ body {
 }
 
 .pagination a {
-    color: #c0bcbc;
+    color: var(--aColor);
     padding: 5.5px 10px 6px 10px;
-    background: white;
+    background: var(--buttonBgColor);
     margin: 0 5px;
     line-height: 3;
     border-radius: 8px
@@ -794,7 +920,7 @@ body {
 /* Post comment form style */
 @media (min-width: 768px) {
     .commentform {
-        height: 250px
+        height: 210px
     }
 }
 
@@ -808,8 +934,7 @@ body {
 }
 
 .comment-mail {
-
-    border-right: 1px #d6d6d6 solid !important;
+    border-right: 1px var(--borderColor) solid !important;
     border-bottom-right-radius: 10px !important
 }
 
@@ -823,7 +948,7 @@ body {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--borderColor);
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-out, box-shadow 0.15s ease-in-out
 }
@@ -835,7 +960,7 @@ body {
 .com_control {
     display: block;
     border-radius: 0px;
-    border: 1px #d6d6d6 solid;
+    border: 1px var(--borderColor) solid;
     border-right: 0px;
     height: 50px
 }
@@ -868,16 +993,6 @@ body {
     margin: 5px 0px
 }
 
-.comment-post .cancel-reply {
-    float: right;
-    cursor: pointer;
-    padding-right: 10%
-}
-
-.comment-post .cancel-reply:hover {
-    text-decoration: underline
-}
-
 .comment-post small {
     font-size: 12px;
     color: #999
@@ -892,7 +1007,7 @@ body {
 
 .comment-post #comment {
     width: 100%;
-    border: 1px #d6d6d6 solid;
+    border: 1px var(--borderColor) solid;
     font-size: small;
     border-radius: var(--marRadius) 10px 0 0;
     height: 130px;
@@ -908,15 +1023,15 @@ body {
     float: right;
     margin-right: 1px;
     border-radius: 8px;
-    border: 1px solid #dedede;
+    border: 1px solid var(--borderColor);
     padding: 7px 10px;
     justify-content: center
 }
 
 .comment-post #comment_submit:hover {
     cursor: pointer;
-    color: #fff;
-    background-color: #007bff
+    color: var(--inputTextColor);
+    background-color: var(--buttonBgColor);
 }
 
 .comment-post .input {
@@ -927,13 +1042,12 @@ body {
     margin: 10px 0;
     padding: 10px 0px;
     font-size: medium;
-    border-bottom: 1px #f7f7f7 solid;
     overflow: hidden;
     color: #333
 }
 
 .comment span {
-    color: #ff7a15
+    color: var(--fontColor);
 }
 
 .comment .comment-time {
@@ -948,12 +1062,12 @@ body {
 }
 
 .comment .comment-infos {
-    background: #f7f7f7;
-    padding: 12px;
-    padding-bottom: 5px;
+    background: var(--bodyBground);
+    padding: 12px 12px 5px;
     border-radius: var(--marRadius);
     margin-top: 9px;
-    margin-left: 58px
+    margin-left: 58px;
+    color: var(--fontColor);
 }
 
 .comment .comment-infos-unGravatar {
@@ -971,12 +1085,13 @@ body {
     margin-left: -34px;
     border-width: 13px;
     border-style: solid;
-    border-color: transparent #f7f7f7 transparent transparent
+    border-color: transparent var(--bodyBground) transparent transparent
 }
 
 .comment .comment-content {
-    margin: 8px 0px 0px 0px;
-    word-break: break-word
+    margin: 8px 0 0 0;
+    word-break: break-word;
+    color: var(--fontColor);
 }
 
 .comment .comment-reply {
@@ -1028,28 +1143,14 @@ body {
 }
 
 .unstyle-li input[type="submit"] {
-    background-color: #313131;
-    color: #FFFFFF;
+    background-color: var(--inputBorderColor);
+    color: var(--buttonTextColor);
     margin-left: -25px;
     height: 39px;
     width: 55px;
     border: 0;
     border-radius: 0 3px 3px 0;
     padding: 0
-}
-
-/* Reply, Cancel reply buttons in the comment area */
-.comment-replay-btn {
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    background-color: unset
-}
-
-.comment-replay-btn:hover {
-    color: #f6607d;
-    text-decoration: underline;
-    transition: all 0.2s
 }
 
 /*Some styles in article entries
@@ -1070,7 +1171,8 @@ body {
     font-size: 14px;
     margin-left: 8px;
     cursor: default;
-    background-color: antiquewhite
+    background-color: antiquewhite;
+    border-radius: 3px;
 }
 
 /* Article content page style
@@ -1202,7 +1304,8 @@ body {
     font-size: 14px;
     margin-left: 8px;
     cursor: default;
-    background-color: Lavender
+    background-color: Lavender;
+    border-radius: 3px;
 }
 
 @media (max-width: 415px) {
@@ -1264,7 +1367,7 @@ body {
 .bloggerinfo-img {
     width: 100px;
     height: 100px;
-    border: 0px solid #c2a9a9;
+    border: 0px solid var(--borderColor);
     border-radius: 50%
 }
 
@@ -1293,7 +1396,7 @@ body {
     padding: 0.4rem 0.75rem;
     line-height: 1.5;
     color: #495057;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--borderColor);
     /* Compatible with Safari, Safari default input will have 1px top and bottom margins */
     margin-block: 0;
     border-radius: 0.25rem
@@ -1301,7 +1404,7 @@ body {
 
 /* Article reading and article tags */
 .tags {
-    border: 1px solid #e8e8e8;
+    border: 1px solid var(--borderColor);
     padding: 1px 6px;
     border-radius: 4px;
     white-space: nowrap
@@ -1336,14 +1439,14 @@ body {
     margin-left: -90px;
     position: absolute;
     top: 151px;
-    border: 1px solid #dcdcdd;
-    color: #dcdcdd;
+    border: 2px solid var(--borderColor);
+    color: var(--fontColor);
     border-radius: 50%;
     cursor: pointer
 }
 
 .back-top:hover {
-    border: 1px solid #bbbbbb;
+    border: 2px solid var(--borderColor);
     color: #bbbbbb
 }
 
@@ -1423,7 +1526,7 @@ body {
     float: left;
     padding: 4px 8px 4px 8px;
     font-size: small;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--borderColor);
     border-radius: 0.5rem
 }
 
@@ -1432,7 +1535,7 @@ body {
     float: right;
     padding: 4px 8px 4px 8px;
     font-size: small;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--borderColor);
     border-radius: 0.5rem;
 }
 
@@ -1804,7 +1907,7 @@ img.zoom-img {
     }
 
     .com_control {
-        border: 1px solid #ced4da;
+        border: 1px solid var(--borderColor);
         border-radius: 6px !important;
         margin-top: 10px
     }
@@ -1824,7 +1927,7 @@ img.zoom-img {
 
     .comment .comment-infos {
         margin-left: 0;
-        font-size: 14px
+        font-size: 14px;
     }
 
     .comment .avatar {
@@ -1891,4 +1994,88 @@ img.zoom-img {
     color: white;
     text-decoration: none;
     padding: 10px;
+}
+
+#theme-toggle {
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* 首页轮播图样式 */
+* {
+    box-sizing: border-box;
+}
+
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.slideshow-prev,
+.slideshow-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.slideshow-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slideshow-prev:hover,
+.slideshow-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.slideshow-text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.active {
+    background-color: #717171;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
 }

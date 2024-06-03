@@ -14,6 +14,7 @@ $options = [
         'name'        => lang('tpl_setting_tab_name'),
         'values'      => [
             'tpl-head' => lang('tpl_setting_header'),
+            'tpl-home' => '首页设置',
         ],
         'description' => '<p>' . lang('tpl_setting_descr') .'</p>'
     ],
@@ -45,5 +46,12 @@ $options = [
             TEMPLATE_URL . 'images/favicon.png',
         ],
         'description' => lang('favicon_descr'),
+    ],
+    'slideShow'      => [
+        'labels'      => 'tpl-home',
+        'type'        => 'text',
+        'name'        => '首页轮播图',
+        'multi'       => true,
+        'description' => '每行一个，图片高度推荐260像素，格式：图片地址 | 图片标题 | 跳转地址',
     ],
 ];

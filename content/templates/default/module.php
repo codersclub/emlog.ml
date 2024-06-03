@@ -129,7 +129,9 @@ function widget_sort($title) {
     </div>
 <?php } ?>
 <?php
-//widget: last twits
+/**
+ * widget: last twits
+ */
 function widget_twitter($title) {
     global $CACHE;
     $index_newtwnum = Option::get('index_newtwnum') ?: 10;
@@ -167,7 +169,6 @@ function widget_newcomm($title) {
         <div class="widget-title">
             <h3><?= $title ?></h3>
         </div>
-        <hr>
         <ul class="unstyle-li">
             <?php
             foreach ($com_cache as $value):
@@ -345,7 +346,7 @@ function blog_navi() {
 <!--vot-->      <li class="list-item list-menu"><a class="nav-link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= lang($value['naviname']) ?></a></li>
             <?php endif ?>
             <?php endforeach ?>
-
+            <li class="list-item list-menu"><span class="iconfont icon-DarkTheme" id="theme-toggle"></span></li>
 <!--vot-->  <li class="list-item list-menu drop">
                 <span class="toggle"><?= lang('language') ?>:&nbsp;<img src="<?= ROOT_URL ?>lang/<?= LANG ?>/flag.gif"></span>
                 <div class="down"><!-- RIGHT -->
@@ -362,11 +363,11 @@ function blog_navi() {
 <?php } ?>
 <?php
 /**
- * blog:Top
+ * widget: top articles
  */
 function topflg($top, $sortop = 'n', $sortid = null) {
-    $ishome_flg = '<span title="' . lang('home_top') . '" class="log-topflg" >' . lang('top') . '</span>';
-    $issort_flg = '<span title="' . lang('category_top') . '" class="log-topflg" >' . lang('category_top') . '</span>';
+    $ishome_flg = '<span class="log-topflg" >' . lang('home_top') . '</span>';
+    $issort_flg = '<span class="log-topflg" >' . lang('category_top') . '</span>';
     if (blog_tool_ishome()) {
         echo $top == 'y' ? $ishome_flg : '';
     } elseif ($sortid) {
@@ -380,7 +381,7 @@ function topflg($top, $sortop = 'n', $sortid = null) {
  * Article details page: edit link
  */
 function editflg($logid, $author) {
-    $editflg = User::haveEditPermission() || $author == UID ? '&nbsp;&nbsp;&nbsp;<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank">' . lang('edit') . '</a>' : '';
+    $editflg = User::haveEditPermission() || $author == UID ? '<a href="' . BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid . '" target="_blank"><span class="iconfont icon-edit"></span></a>' : '';
     echo $editflg;
 }
 
@@ -451,20 +452,20 @@ function blog_author($uid) {
 function neighbor_log($neighborLog) {
     extract($neighborLog) ?>
     <?php if ($prevLog): ?>
-        <span class="prev-log"><a href="<?= Url::log($prevLog['gid']) ?>" title="<?= $prevLog['title'] ?>"><?= lang('prev') ?></a></span>
+        <span class="prev-log"><a href="<?= Url::log($prevLog['gid']) ?>" title="<?= lang('prev') ?>: <?= $prevLog['title'] ?>"><span class="iconfont icon-prev"></span></a></span>
     <?php endif ?>
     <?php if ($nextLog): ?>
-        <span class="next-log"><a href="<?= Url::log($nextLog['gid']) ?>" title="<?= $nextLog['title'] ?>"><?= lang('next') ?></a></span>
+        <span class="next-log"><a href="<?= Url::log($nextLog['gid']) ?>" title="<?= lang('next') ?>: <?= $nextLog['title'] ?>"><span class="iconfont icon-next"></span></a></span>
     <?php endif ?>
 <?php } ?>
 <?php
 /**
  * Article details page: comment list
  */
-function blog_comments($comments) {
+function blog_comments($comments, $comnum) {
     extract($comments);
     if ($commentStacks): ?>
-        <div class="comment-header"><b><?= lang('comments') ?>:</b></div>
+        <div class="comment-header"><b>收到<?= $comnum ?>条评论</b></div>
     <?php endif ?>
     <?php
     foreach ($commentStacks as $cid):
@@ -480,7 +481,7 @@ function blog_comments($comments) {
                 <b><?= $comment['poster'] ?> </b><span class="comment-time"><?= $comment['date'] ?></span>
                 <div class="comment-content"><?= $comment['content'] ?></div>
                 <div class="comment-reply">
-                    <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
+                    <span class="com-reply"><?= lang('reply') ?></span>
                 </div>
             </div>
             <?php blog_comments_children($comments, $comment['children']) ?>
@@ -509,7 +510,7 @@ function blog_comments_children($comments, $children) {
                 <div class="comment-content"><?= $comment['content'] ?></div>
                 <?php if ($comment['level'] < 4): ?>
                     <div class="comment-reply">
-                        <button class="com-reply comment-replay-btn"><?= lang('reply') ?></button>
+                        <span class="com-reply comment-replay-btn"><?= lang('reply') ?></span>
                     <?php endif ?>
                     </div>
                 <?php endif ?>
@@ -529,7 +530,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
             <div class="comment-post" id="comment-post">
                 <form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform">
                     <input type="hidden" name="gid" value="<?= $logid ?>"/>
-                    <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" required></textarea>
+                    <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" placeholder="撰写评论" required></textarea>
                     <?php if (User::isVisitor() && $isLoginComment === 'n'): ?>
                         <div class="comment-info" id="comment-info">
                             <input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"

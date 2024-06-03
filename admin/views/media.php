@@ -18,7 +18,7 @@
         <div>
         <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
             <?php foreach ($sorts as $key => $val):
-                $cur_tab = $val['id'] == $sid ? "btn-success" : "btn-primary";
+                $cur_tab = $val['id'] == $sid ? "btn-info" : "btn-success";
                 ?>
                 <div class="btn-group mr-2 my-1">
                     <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
@@ -65,17 +65,24 @@
                     <a href="<?= $media_url ?>" <?= $imgviewer ?> target="_blank"><img class="card-img-top" src="<?= $media_icon ?>"/></a>
                     <div class="card-body">
                         <p class="card-text text-muted small">
-                            <a href="#" data-toggle="modal" data-target="#editMediaModal" data-id="<?= $value['aid'] ?>" data-filename="<?= $media_name ?>"><?= $media_name ?></a> <span class="badge badge-primary"><?= $sort_name ?></span><br>
+                            <a href="#" data-toggle="modal" data-target="#editMediaModal" data-id="<?= $value['aid'] ?>" data-filename="<?= $media_name ?>"><?= $media_name ?></a> <span class="badge badge-success"><?= $sort_name ?></span><br>
                             <?= lang('create_time') ?>: <?= $value['addtime'] ?><br>
-                            <?= lang('founder') ?>: <?= $author ?>,
+                            <?= lang('founder') ?>:
                             <?php if (User::haveEditPermission()): ?>
-                                <a href="./media.php?uid=<?= $value['author'] ?>"><?= lang('this_user_files') ?></a><br>
-                            <?php endif ?>
+                                <a href="./media.php?uid=<?= $value['author'] ?>"><?= $author ?> </a>
+                            <?php else: ?>
+                                <?= $author ?>
+                            <?php endif; ?><br>
                             <?= lang('file_size') ?>: <?= $value['attsize'] ?>
                             <?php if ($value['width'] && $value['height']): ?>
                                 <?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
                             <?php endif ?><br>
-                            <?= lang('original_file') ?>: <a href="#" class="copy-link text-gray-400" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a>
+                            <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_url ?>" title="<?= $media_url ?>">原文件地址</a>
+                            <?php if ($value['alias'] && $value['mimetype'] === 'application/zip'):
+                                $media_down_url = BLOG_URL . '?resource_alias=' . $value['alias'];
+                                ?>
+                                ｜ <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_down_url ?>" title="<?= $media_down_url ?>">用户下载地址</a> （下载<?= $value['download_count'] ?>）
+                            <?php endif ?>
                         </p>
                         <p class="card-text d-flex justify-content-between">
                             <a href="javascript: em_confirm(<?= $value['aid'] ?>, 'media', '<?= LoginAuth::genToken() ?>');" class="text-danger small"><?= lang('delete') ?></a>

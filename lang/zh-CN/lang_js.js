@@ -149,6 +149,7 @@ var LNG = {
     'price_unit': '元',//' &yen;',
     'refresh_page': '刷新页面',//'Refresh page',
     'to_use_new': '开始体验新版本',//' to start experiencing the new version',
+    'prompt': '提示',//'Prompt', 
 
 //---------------------------
 //include/lib/js/common_tpl.js

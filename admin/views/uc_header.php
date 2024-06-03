@@ -24,14 +24,22 @@
     <script src="./views/components/layer/layer.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/components/message.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <?php doAction('adm_head') ?>
+    <style>
+        #top-bar {
+            background: #4e73df;
+        }
+
+        #top-bar a {
+            color: white;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column h-100 bg-light">
 <div id="editor-md-dialog"></div>
 <main class="flex-shrink-0">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" id="top-bar">
-        <h4 class="my-0 mr-md-5 font-weight-normal"><a href="./" class="text-dark"><?= subString(Option::get('blogname'), 0, 12) ?></a></h4>
+        <h4 class="my-0 mr-md-5 font-weight-normal"><a href="./"><?= subString(Option::get('blogname'), 0, 12) ?></a></h4>
         <nav class="my-2 my-md-0 mr-md-auto">
-            <a class="p-2 text-dark" href="<?= BLOG_URL ?>"><?= lang('front_end') ?></a>
             <a class="p-2 text-dark" href="./"><?= lang('user_center') ?></a>
 <!--vot-->  <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
             <a class="p-2 text-dark" href="media.php"><?= lang('resources') ?></a>
@@ -42,8 +50,9 @@
             <a class="mr-2" href="blogger.php">
                 <img width="30" height="30" class="img-profile rounded-circle" src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
             </a>
-            <a class="text-dark" href="account.php?action=logout">
-                <i class="icofont-logout icofont-1x"></i><?= lang('logout') ?>
+            <a class="p-2" href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
+            <a class="" href="account.php?action=logout">
+                <i class="icofont-logout icofont-1x"></i>
             </a>
         </nav>
     </div>

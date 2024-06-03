@@ -18,7 +18,7 @@ class MediaSort_Model {
     }
 
     function getSorts() {
-        $res = $this->db->query("SELECT * FROM " . $this->table . " ORDER BY id DESC");
+        $res = $this->db->query("SELECT * FROM $this->table ORDER BY id DESC");
         $sorts = [];
         while ($row = $this->db->fetch_array($res)) {
             $row['sortname'] = htmlspecialchars($row['sortname']);
@@ -38,13 +38,13 @@ class MediaSort_Model {
     }
 
     function addSort($name) {
-/*vot*/        $sql = "INSERT INTO " . $this->table . " (sortname) VALUES('$name')";
+/*vot*/ $sql = "INSERT INTO $this->table (sortname) VALUES('$name')";
         $this->db->query($sql);
     }
 
     function deleteSort($id) {
-/*vot*/        $this->db->query("UPDATE " . $this->table_media . " SET sortid=0 WHERE sortid=$id");
-/*vot*/        $this->db->query("DELETE FROM " . $this->table . " WHERE id=$id");
+/*vot*/        $this->db->query("UPDATE $this->table_media SET sortid=0 WHERE sortid=$id");
+/*vot*/        $this->db->query("DELETE FROM $this->table WHERE id=$id");
     }
 
 }

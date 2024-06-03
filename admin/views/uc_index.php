@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <a class="btn btn-primary px-4 py-3" href="./article.php?action=write">
+    <a class="btn btn-success px-4 py-3" href="./article.php?action=write">
         <div class="d-inline-block bi bi-download me-2"></div>
 <!--vot--><i class="icofont-plus"></i><?= lang('article_add') ?>
     </a>
