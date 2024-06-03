@@ -386,7 +386,7 @@ $(document).ready(function () {
         myBlog.tocClose()
     })
 
-    // 切换夜间模式主题
+    // Switch to dark mode theme
     const toggleButton = document.getElementById('theme-toggle');
     if (toggleButton) {
         toggleButton.addEventListener('click', () => {

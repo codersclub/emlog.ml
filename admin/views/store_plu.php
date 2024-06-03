@@ -20,7 +20,7 @@
         <a href="./store.php?action=plu&tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
         <a href="./store.php?action=plu&tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
         <a href="./store.php?action=plu&tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
-        <a href="./store.php?action=plu&tag=download_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('top_free') ?></a>
+        <a href="./store.php?action=plu&tag=download_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('top_down') ?></a>
         <a href="./store.php?action=plu&tag=paid_top" class="badge badge-light text-primary m-1 p-2 small"><?= lang('top_paid') ?></a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">

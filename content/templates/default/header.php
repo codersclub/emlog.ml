@@ -40,7 +40,7 @@ if (!function_exists('_g')) {
             $("#calendar").load(url)
         }
 
-        // 切换夜间模式主题
+        // Switch to dark mode theme
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             document.documentElement.setAttribute('data-theme', savedTheme);

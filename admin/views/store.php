@@ -21,7 +21,7 @@
         <a href="./store.php?tag=free" class="badge badge-success m-1 p-2"><?= lang('free_zone') ?></a>
         <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
         <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
-        <a href="./store.php?tag=download_top" class="badge badge-light text-primary m-1 p-2 small">🔥下载排行榜</a>
+        <a href="./store.php?tag=download_top" class="badge badge-light text-primary m-1 p-2 small">&#x1F525;<?= lang('top_down') ?></a>
 
     </div>
     <div class="d-flex mb-3 mb-sm-0">

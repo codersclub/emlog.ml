@@ -177,6 +177,8 @@ var LNG = {
     'file_size': '文件大小：',//'File size: ',
     'del_media_sure': '确定要删除该资源吗？',//'Are you sure you want to delete this resource?',
     'delete': '删除',//'Delete',
+    'public_download': '公开下载',//'Public Downloads',
+    'user_download': '用户下载',//'User downloads',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

@@ -465,7 +465,7 @@ function neighbor_log($neighborLog) {
 function blog_comments($comments, $comnum) {
     extract($comments);
     if ($commentStacks): ?>
-        <div class="comment-header"><b>收到<?= $comnum ?>条评论</b></div>
+        <div class="comment-header"><b><?= lang('total') ?>: <?= $comnum ?><?= lang('_comments') ?></b></div>
     <?php endif ?>
     <?php
     foreach ($commentStacks as $cid):
@@ -530,7 +530,7 @@ function blog_comments_post($logid, $ckname, $ckmail, $ckurl, $verifyCode, $allo
             <div class="comment-post" id="comment-post">
                 <form class="commentform" method="post" name="commentform" action="<?= BLOG_URL ?>index.php?action=addcom" id="commentform">
                     <input type="hidden" name="gid" value="<?= $logid ?>"/>
-                    <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" placeholder="撰写评论" required></textarea>
+                    <textarea class="form-control log_comment" name="comment" id="comment" rows="10" tabindex="4" placeholder="<?= lang('write_comment') ?>" required></textarea>
                     <?php if (User::isVisitor() && $isLoginComment === 'n'): ?>
                         <div class="comment-info" id="comment-info">
                             <input class="form-control com_control comment-name" id="info_n" autocomplete="off" type="text" name="comname" maxlength="49"

@@ -64,7 +64,7 @@ $lang = array(
 '_hour_ago'                  => ' hour(s) ago.',//' 小时前',
 'file_size_exceeds_system'   => 'File size exceeds the system limit ',//'文件大小超过系统 ',
 '_limit'                     => '',//' limit',//'限制',//LEAVE THIS EMPTY???
-'upload_failed_error_code'   => 'Upload failed. Error code: ',//'上传文件失败,错误码: ',
+'upload_failed_error_code'   => 'Upload failed. Error code: ',//'上传失败,错误码：',
 'file_type_not_supported'    => 'This file type is not supported.',//'错误的文件类型',
 'file_size_exceeds_'         => 'File size exceeds the limit ',//'文件大小超出',
 '_of_limit'                  => '',//' limit',//'的限制',
@@ -210,6 +210,7 @@ $lang = array(
 'comment_leave'              => 'Post a comment',//'发布评论',
 'enter_captcha'			=> 'Enter confirmation code',//'输入验证码',
 'login_before_comment'		=> 'Please <a href="./admin/index.php">Log In</a> before commenting',//'请先 <a href="./admin/index.php">登录</a> 再评论',
+'write_comment'			=> 'Write a comment',//'撰写评论',
 
 //---------------------------
 //content/templates/default/options.php
@@ -220,9 +221,12 @@ $lang = array(
 'tpl_logo_text'		=> 'Text',//'文字',
 'tpl_logo_image'	=> 'Image',//'图片',
 'tpl_logo_upload'	=> 'LOGO upload',//'LOGO上传',
-'tpl_logo_upload_descr'	=> 'Upload the LOGO image.',//'上传LOGO图片。',
+'tpl_logo_upload_descr' => 'Upload LOGO image, recommended size 180x60px, height no more than 60px',//'上传LOGO图片，推荐尺寸 180x60像素，高度不超60像素',
 'favicon'		=> 'Browser icon (favicon)',//'浏览器图标（favicon）',
 'favicon_descr'		=> 'Upload browser icon, PNG or JPG image, recommended size: 48×48px',//'上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',
+'home_settings'		=> 'Home Settings',//'首页设置',
+'home_carousel'		=> 'Homepage carousel',//'首页轮播图',
+'home_carousel_info'	=> 'One item per line. Image height recommended to be 260 pixels. Format: Image URL | Image Title | Jump Address',//'每行一个，图片高度推荐260像素，格式：图片地址 | 图片标题 | 跳转地址',
 
 //---------------------------
 //content/templates/default/pw.php

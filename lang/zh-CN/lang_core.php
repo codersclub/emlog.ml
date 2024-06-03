@@ -210,6 +210,7 @@ $lang = array(
 'comment_leave'              => '发布评论',//'Post a comment',
 'enter_captcha'			=> '输入验证码',//'Enter confirmation code',
 'login_before_comment'		=> '请先 <a href="./admin/index.php">登录</a> 再评论',//'Please <a href="./admin/index.php">Log In</a> before commenting',
+'write_comment'			=> '撰写评论',//'Write a comment',
 
 //---------------------------
 //content/templates/default/options.php
@@ -223,6 +224,9 @@ $lang = array(
 'tpl_logo_upload_descr' => '上传LOGO图片，推荐尺寸 180x60像素，高度不超60像素',//'Upload LOGO image, recommended size 180x60px, height no more than 60px',
 'favicon' => '浏览器图标（favicon）',//'Browser icon (favicon)',
 'favicon_descr' => '上传浏览器图标，推荐尺寸48×48的PNG或JPG图片',//'Upload browser icon, PNG or JPG image, recommended size: 48×48px',
+'home_settings' => '首页设置',//'Home Settings',
+'home_carousel' => '首页轮播图',//'Homepage carousel',
+'home_carousel_info' => '每行一个，图片高度推荐260像素，格式：图片地址 | 图片标题 | 跳转地址',//'One item per line. Image height recommended to be 260 pixels. Format: Image URL | Image Title | Jump Address',
 
 //---------------------------
 //content/templates/default/pw.php

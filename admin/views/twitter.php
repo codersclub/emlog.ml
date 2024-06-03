@@ -38,7 +38,7 @@
             <div class="markdown t"><?= $val['t'] ?></div>
             <footer>
                 <p class="text-muted small card-text d-flex justify-content-between">
-<!--No translate--> <?= $val['date'] ?> | by <?= $author ?> <?= $private ? '｜ '.lang('private') : '' ?>
+<!--vot-->          <?= $val['date'] ?> | by <?= $author ?> <?= $private ? '| '.lang('private') : '' ?>
                     <span>
                     <a href="#" class="text-muted" data-toggle="modal" data-target="#editModal" data-id="<?= $val['id'] ?>" data-t="<?= htmlspecialchars($val['t_raw']) ?>"><?= lang('edit') ?></a>
                     <a href="javascript: em_confirm(<?= $tid ?>, 'tw', '<?= LoginAuth::genToken() ?>');" class="care"><?= lang('delete') ?></a>

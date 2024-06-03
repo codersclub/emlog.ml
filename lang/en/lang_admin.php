@@ -146,6 +146,8 @@ $lang = array(
     'rank_paid'	=> 'Paid ranking',//'付费排行榜',
     'free_apps' => 'Free apps',//'免费应用',
     'paid_apps' => 'Paid apps',//'付费应用',
+    'top_down'	=> 'Top downloads',//'下载排行榜',
+    'top_paid'	=> 'Top paid',//'购买排行榜',
 
 //---------------------------
 //admin/style.php
@@ -623,11 +625,13 @@ $lang = array(
     'modified_ok' => 'Successfully modified',//'修改成功',
     'media_all' => 'All media files',//'全部资源',
     'move_to' => 'Move to',//'移动到',
-    'original_file' => 'Original file',//'原文件',
     'link_copied' => 'Link copied',//'链接已复制',
     'view_from_date' => 'View resources from this date and earlier',//'查看该日期及之前的资源',
     'edit_media' => 'Edit media',//'编辑资源',
     'media_name' => 'File Name',//'资源名称',
+    'original_file_url' => 'Original file address',//'原文件地址',
+    'downloads' => 'Downloads',//'下载',
+    'download_url' => 'User download URL',//'用户下载地址',
 
 //---------------------------
 //admin/views/media_lib.php
@@ -889,6 +893,7 @@ $lang = array(
     'if_0_upload_disabled' => '(0 means prohibit uploading of graphic resources)',//'（为0同时禁止上传图文资源）',
     'article_alias' => 'User center article alias:',//'用户中心文章别名：',
     'article_alias_prompt' => 'Such as: posts, contributions, resources, etc.',//'如：帖子、投稿、资源等',
+    'disable_upload' => 'Registered users are prohibited from uploading graphic resources',//'注册用户禁止上传图文资源',
 
 //---------------------------
 //admin/views/signin.php
@@ -1124,6 +1129,7 @@ $lang = array(
     'ban' => 'Ban',//'解禁',
     'banned' => 'Banned',//'已禁用',
     'unban' => 'Unban',//'解禁',
+    'credits' => 'Credits',//'积分',
 
 //---------------------------
 //admin/views/user_edit.php

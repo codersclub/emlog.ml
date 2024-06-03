@@ -10,7 +10,7 @@
     --aHoverColor: #f6607d;  /* Link hover color */
     --lightColor: #757575;    /* Lighter text color */
 
-    /* 表单和按钮的常规样式 */
+    /* General styles for forms and buttons */
     --inputBgColor: #ffffff;
     --inputBorderColor: #cccccc;
     --inputTextColor: #333333;
@@ -24,16 +24,16 @@
     --borderColor: #00000019;
 }
 
-/* 黑夜模式 */
+/* Dark Mode */
 [data-theme="dark"] {
-    --conBgcolor: #2e2e2e; /* 导航、卡片、内容的背景颜色 */
-    --bodyBground: #121212; /* 页面背景颜色 */
-    --fontColor: #cfcfcf; /* 普通文本的颜色 */
-    --aColor: #a8a8a8; /* a 标签的颜色 */
-    --aHoverColor: #f6607d; /* a 标签 hover 状态的颜色 */
-    --lightColor: #757575; /* 比较浅一点的文本颜色 */
+    --conBgcolor: #2e2e2e; /* Background color of navigation, cards, and content */
+    --bodyBground: #121212; /* Page body background color */
+    --fontColor: #cfcfcf; /* Normal text color */
+    --aColor: #a8a8a8; /* a Label color */
+    --aHoverColor: #f6607d; /* a label hover color */
+    --lightColor: #757575; /* Light text color */
 
-    /* 表单和按钮的黑夜模式样式 */
+    /* Dark mode styles for forms and buttons */
     --inputBgColor: #3a3a3a;
     --inputBorderColor: #5a5a5a;
     --inputTextColor: #cfcfcf;
@@ -56,7 +56,7 @@ body {
     font-family: helvetica neue, Helvetica, Arial, sans-serif;
 }
 
-/* 其他样式 */
+/* Other styles */
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     font-weight: 400;
@@ -78,7 +78,7 @@ a:focus, a:hover {
     text-decoration: none;
 }
 
-/* 表单输入框样式 */
+/* Form input box style */
 input, textarea {
     background-color: var(--inputBgColor);
     border: 1px solid var(--inputBorderColor);
@@ -90,7 +90,7 @@ input, textarea {
     box-sizing: border-box;
 }
 
-/* 按钮样式 */
+/* Button Style */
 button {
     background-color: var(--buttonBgColor);
     color: var(--buttonTextColor);
@@ -107,7 +107,7 @@ button:hover {
     border-color: darken(var(--buttonBorderColor), 10%);
 }
 
-/* 下拉选择框样式 */
+/* Drop-down selection box style */
 select {
     background-color: var(--selectBgColor);
     border: 1px solid var(--selectBorderColor);
@@ -119,7 +119,7 @@ select {
     box-sizing: border-box;
 }
 
-/* 分割线样式 */
+/* Divider line style */
 hr {
     border: none;
     border-top: 1px solid var(--dividerColor);
@@ -142,7 +142,7 @@ hr {
     margin-right: 10px;
 }
 
-/* 定义所有元素的 width =（border+padding），方便后续计算 */
+/* Define the width of all elements = (border + padding) to facilitate subsequent calculations */
 * {
     box-sizing: border-box
 }
@@ -803,7 +803,7 @@ body {
     color: #333;
 }
 
-/* 黑夜模式下的日历样式 */
+/* Calendar style in dark mode */
 [data-theme="dark"] #calendar {
     color: #cfcfcf;
 }
@@ -2001,7 +2001,7 @@ img.zoom-img {
     padding: 8px;
 }
 
-/* 首页轮播图样式 */
+/* Home page carousel style */
 * {
     box-sizing: border-box;
 }

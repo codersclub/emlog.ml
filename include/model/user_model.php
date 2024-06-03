@@ -157,7 +157,7 @@ class User_Model {
     }
 
     /**
-     * 增加用户的积分
+     * Add user credits
      */
     public function addCredits($uid, $count) {
         $uid = (int)$uid;
@@ -170,7 +170,7 @@ class User_Model {
     }
 
     /**
-     * 减少用户的积分
+     * Reduce user credits
      */
     public function reduceCredits($uid, $count) {
         $uid = (int)$uid;

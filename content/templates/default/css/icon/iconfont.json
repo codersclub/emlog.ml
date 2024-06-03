@@ -3,7 +3,7 @@
   "name": "default",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
-  "description": "emlog的默认主题",
+  "description": "Emlog default theme",
   "glyphs": [
     {
       "icon_id": "6151277",

@@ -35,6 +35,7 @@ $lang = array(
 '_comments'                      => '条评论',//' comments',
 'comment_operation_select'       => '请选择要操作的评论',//'Please select the operation for comments',
 'comment_selected_delete_sure'   => '确定要删除所选评论吗？',//'Are you sure you want to delete selected comments?',
+'total'				=> '收到',//'Total',
 
 //---------------------------
 //admin/views/comment_edit.php

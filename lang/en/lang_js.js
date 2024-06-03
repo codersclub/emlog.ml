@@ -149,6 +149,7 @@ var LNG = {
     'price_unit': ' &yen;',//'元',
     'refresh_page': 'Refresh page',//'刷新页面',
     'to_use_new': ' to start experiencing the new version',//'开始体验新版本',
+    'prompt': 'Prompt',//'提示',
 
 //---------------------------
 //include/lib/js/common_tpl.js
@@ -176,6 +177,8 @@ var LNG = {
     'file_size': 'File size: ',//'文件大小：',
     'del_media_sure': 'Are you sure you want to delete this resource?',//'确定要删除该资源吗？',
     'delete': 'Delete',//'删除',
+    'public_download': 'Public Downloads',//'公开下载',
+    'user_download': 'User downloads',//'用户下载',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

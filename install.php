@@ -476,7 +476,7 @@ CREATE TABLE {$db_prefix}attachment (
   height int(11) NOT NULL default '0' COMMENT 'Image Height',
   mimetype varchar(64) NOT NULL default '' COMMENT 'File mime type',
   thumfor int(11) NOT NULL default 0 COMMENT 'Thumbnail for original resource ID (obsolete)',
-  download_count bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT '下载次数',
+  download_count bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'Download counter',
   PRIMARY KEY  (aid),
   KEY thum_uid (thumfor,author),
   KEY addtime (addtime)

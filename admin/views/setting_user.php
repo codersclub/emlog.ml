@@ -38,7 +38,7 @@
             </div>
             <div class="form-group form-check">
                 <input class="form-check-input" type="checkbox" value="y" name="forbid_user_upload" id="forbid_user_upload" <?= $conf_forbid_user_upload ?> />
-                <label class="form-check-label" for="forbid_user_upload">注册用户禁止上传图文资源</label>
+                <label class="form-check-label" for="forbid_user_upload"><?= lang('disable_upload') ?></label>
             </div>
             <div class="form-group form-inline">
                 <label for="posts_per_day"><?=lang('limit_daily_posts')?>:</label>

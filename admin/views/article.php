@@ -140,9 +140,9 @@ $isdraft = $draft ? '&draft=1' : '';
                             <td class="small"><?= $value['date'] ?></td>
                             <td>
                                 <?php if ($draft): ?>
-                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
+                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php else: ?>
-                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
+                                    <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php endif ?>
                                 <?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>
                                     <a class="badge badge-success"
@@ -152,7 +152,7 @@ $isdraft = $draft ? '&draft=1' : '';
                                 if (!$draft && User::haveEditPermission() && $author_role == User::ROLE_WRITER):
                                     $multiCheckBtn = true;
                                     ?>
-                                    <a class="badge badge-warning" href="#" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#uncheckModel">驳回</a>
+                                    <a class="badge badge-warning" href="#" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#uncheckModel"><?= lang('uncheck') ?></a>
                                 <?php endif ?>
                             </td>
                         </tr>

@@ -14,7 +14,7 @@ $options = [
         'name'        => lang('tpl_setting_tab_name'),
         'values'      => [
             'tpl-head' => lang('tpl_setting_header'),
-            'tpl-home' => '首页设置',
+            'tpl-home' => lang('home_settings'),
         ],
         'description' => '<p>' . lang('tpl_setting_descr') .'</p>'
     ],
@@ -50,8 +50,8 @@ $options = [
     'slideShow'      => [
         'labels'      => 'tpl-home',
         'type'        => 'text',
-        'name'        => '首页轮播图',
+        'name'        => lang('home_carousel'),
         'multi'       => true,
-        'description' => '每行一个，图片高度推荐260像素，格式：图片地址 | 图片标题 | 跳转地址',
+        'description' => lang('home_carousel_info'),
     ],
 ];

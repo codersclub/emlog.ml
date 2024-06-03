@@ -61,7 +61,7 @@ class Download_Controller {
             show_404_page();
         }
 
-        // 防止输出缓存影响下载
+        // Prevent output caching from affected downloads
         if (ob_get_length()) {
             ob_end_clean();
         }
