@@ -12,11 +12,12 @@
 
 require_once 'globals.php';
 
+$Template_Model = new Template_Model();
+
 if ($action === '') {
     $nonce_template = Option::get('nonce_templet');
     $nonce_template_data = @file(TPLS_PATH . $nonce_template . '/header.php');
 
-    $Template_Model = new Template_Model();
     $templates = $Template_Model->getTemplates();
 
     include View::getAdmView('header');
@@ -31,6 +32,8 @@ if ($action === 'use') {
 
     Option::updateOption('nonce_templet', $tplName);
     $CACHE->updateCache('options');
+    $Template_Model->initCallback($tplName);
+
     emDirect("./template.php?activated=1");
 }
 
@@ -42,6 +45,8 @@ if ($action === 'del') {
     if ($tplName === $nonce_templet) {
         emMsg(lang('template_used'));
     }
+
+    $Template_Model->rmCallback($tplName);
 
     $path = preg_replace("/^([\w-]+)$/i", "$1", $tplName);
     if ($path && true === emDeleteFile(TPLS_PATH . $path)) {
@@ -138,6 +143,7 @@ if ($action === 'upgrade') {
     @unlink($temp_file);
     switch ($ret) {
         case 0:
+            $Template_Model->upCallback($alias);
             emDirect("./template.php?activate_upgrade=1");
             break;
         case 1:

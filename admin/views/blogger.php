@@ -46,6 +46,9 @@
                     <label><?= lang('personal_description') ?></label>
                     <textarea name="description" class="form-control"><?= $description ?></textarea>
                 </div>
+                <div class="form-group">
+                    <?php doAction('blogger_ext') ?>
+                </div>
                 <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input type="submit" value="<?= lang('save_data') ?>" name="submit_form" id="submit_form" class="btn btn-sm btn-success"/>
                 <a href="#" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#editPasswordModal"><?= lang('change_password') ?></a>

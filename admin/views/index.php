@@ -98,9 +98,9 @@
                             <span>
                             <?php if (!Register::isRegLocal()) : ?>
                                 <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
-                            <?php elseif (Register::getRegType() == 2): ?>
+                            <?php elseif (Register::getRegType() === 2): ?>
                                 <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-warning"><?= lang('svip_hard') ?></a>
-                            <?php elseif (Register::getRegType() == 1): ?>
+                            <?php elseif (Register::getRegType() === 1): ?>
                                 <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('vip_friend') ?></a>
                             <?php else: ?>
                                 <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('registered') ?></a>

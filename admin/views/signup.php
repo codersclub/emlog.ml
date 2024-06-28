@@ -52,6 +52,7 @@
                                 <button class="btn btn-success btn-user btn-block" type="submit"><?= lang('register') ?></button>
                                 <hr>
 <!-- vot-->                     <div class="text-center"><a href="./"><?= lang('log_in') ?></a></div>
+                                <div class="text-center"><?php doAction('signup_ext') ?></div>
                                 <hr>
 <!-- vot-->                     <div class="text-center"><a href="<?= BLOG_URL ?>" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
                             </form>

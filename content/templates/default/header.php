@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Default template
-Version:1.1.8
+Version:1.1.9
 Template Url:https://www.emlog.net/template/detail/1167
 Description: EMLOG Default template
 Author: emlog
@@ -10,7 +10,7 @@ Author Url:https://www.emlog.net/author/index/577
 
 defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
-
+$v = '1717917042';
 if (!function_exists('_g')) {
     emMsg(lang('enable_tpl_settings'));
 }
@@ -24,15 +24,14 @@ if (!function_exists('_g')) {
     <title><?= $site_title ?></title>
     <meta name="keywords" content="<?= $site_key ?>"/>
     <meta name="description" content="<?= $site_description ?>"/>
-    <base href="<?= BLOG_URL ?>"/>
-    <link rel="alternate" title="RSS" href="<?= BLOG_URL ?>rss.php" type="application/rss+xml"/>
-    <link href="<?= TEMPLATE_URL ?>css/style.css?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
-    <link href="<?= TEMPLATE_URL ?>css/icon/iconfont.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
-    <link href="<?= TEMPLATE_URL ?>css/markdown.css?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
     <link href="<?= empty(_g('favicon')) ? BLOG_URL . 'favicon.ico' : _g('favicon'); ?>" rel="icon">
-    <script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-    <script src="<?= TEMPLATE_URL ?>js/common_tpl.js?v=1717317557&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-    <script src="<?= TEMPLATE_URL ?>js/zoom.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <link rel="alternate" title="RSS" href="<?= BLOG_URL ?>rss.php" type="application/rss+xml"/>
+    <link href="<?= TEMPLATE_URL ?>css/style.css?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
+    <link href="<?= TEMPLATE_URL ?>css/icon/iconfont.css?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
+    <link href="<?= TEMPLATE_URL ?>css/markdown.css?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
+    <script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="<?= TEMPLATE_URL ?>js/common_tpl.js?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="<?= TEMPLATE_URL ?>js/zoom.js?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <?php doAction('index_head') ?>
     <script>
         // Calendar generation and page turning

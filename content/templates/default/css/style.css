@@ -28,8 +28,8 @@
 [data-theme="dark"] {
     --conBgcolor: #2e2e2e; /* Background color of navigation, cards, and content */
     --bodyBground: #121212; /* Page body background color */
-    --fontColor: #cfcfcf; /* Normal text color */
-    --aColor: #a8a8a8; /* a Label color */
+    --fontColor: #ffffff; /* Normal text color */
+    --aColor: #cfcfcf; /* a Label color */
     --aHoverColor: #f6607d; /* a label hover color */
     --lightColor: #757575; /* Light text color */
 
