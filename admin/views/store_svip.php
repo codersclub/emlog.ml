@@ -32,9 +32,9 @@
                         <p class="card-text font-weight-bold">
                             <a href="#appModal" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>"><?= $v['name'] ?></a>
                             <?php if ($type === 'tpl'): ?>
-                                <span class="badge badge-success p-1">模板</span>
+                                <span class="badge badge-success p-1"><?= lang('templates') ?></span>
                             <?php else: ?>
-                                <span class="badge badge-primary p-1">插件</span>
+                                <span class="badge badge-primary p-1"><?= lang('plugins') ?></span>
                             <?php endif; ?>
                         </p>
                         <p class="card-text text-muted small">
