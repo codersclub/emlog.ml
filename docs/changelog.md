@@ -1,5 +1,34 @@
 # &#x1f335; Emlog Changelog
 
+## pro-2.3.8
+
+Release date: 2024-6-14
+
+[Function] App Store Optimization: Support for exclusive themes for hardcore gamers
+[Function] Optimize the default theme: the rotation of the carousel is smoother, and the page elements are more in line with the HTML5 specification
+[Function] Developer: The template supports callback functions for enabling, deleting, and updating
+[Function] Developer: Add a mount point to the user registration page
+[Function] Developer: Adjust the configuration method of the development mode and go to config.php
+[Function] Developer: User Model supports querying user points
+[Fix] Fix the accidentally deleted user profile edit page plugin mount point
+
+Installation package: [emlog_pro_2.3.8.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.8.zip)
+
+
+## pro-2.3.7
+
+Release date: 2024-6-2
+
+- [Function] Optimize the default theme UI: add switching to night mode, homepage carousel
+- [Function] Add resource files for inserting articles that can only be downloaded by registered users
+- [Function] Reserve user points field and points deduction method for developers
+- [Function] Registered users can be individually set to prohibit uploading graphic resources
+- [Function] App store adds download rankings
+- [Fix] Trigger the issue of deleting the mount point when converting to draft
+- [Fix] Other improvements and bug fixes for interface details
+
+Installation package: [emlog_pro_2.3.7.zip](https://oss.emlog.net/download/release/emlog_pro_2.3.7.zip)
+
 ## pro-2.3.6
 
 Release date: 2024-5-21
