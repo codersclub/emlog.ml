@@ -15,11 +15,11 @@ $lang = array(
     'time'				=> 'Time',//'时间',
     'author'				=> 'Author',//'作者',
     '_times_read'			=> '&nbsp;times read',//'&nbsp;次阅读',//==='_views'
+    'views'				=> 'Views',//'阅读',
 
     //---------------------------
     //content/templates/default/log_list.php
     'post_time'				=> 'Posted on',//'发布于',
-    'views'				=> 'Views',//'浏览',
     'comments'				=> 'Comments',//'评论',
     'sorry_no_results'			=> 'Sorry, there is no content yet.',//'抱歉，暂时还没有内容。',
 
