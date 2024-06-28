@@ -511,7 +511,6 @@ function blog_comments_children($comments, $children) {
                 <?php if ($comment['level'] < 4): ?>
                     <div class="comment-reply">
                         <span class="com-reply comment-replay-btn"><?= lang('reply') ?></span>
-                    <?php endif ?>
                     </div>
                 <?php endif ?>
             </div>
