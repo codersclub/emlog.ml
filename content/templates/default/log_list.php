@@ -73,7 +73,7 @@ defined('EMLOG_ROOT') || exit('access denied!');
                             }
 
                             slides[slideIndex - 1].style.display = "block";
-                            timeoutID = setTimeout(autoSlides, 2000);
+                            timeoutID = setTimeout(autoSlides, 6000);
                         }
 
                         autoSlides();
@@ -101,7 +101,7 @@ defined('EMLOG_ROOT') || exit('access denied!');
                             <div class="row info-row">
                                 <div class="log-info">
                                     <?php blog_author($value['author']) ?>&nbsp;<?=lang('post_time')?>&nbsp;
-<!--vot-->                          <?= date('Y-m-d H:i', $value['date']) ?>&nbsp;
+<!--vot-->                          <time><?= date('Y-m-d H:i', $value['date']) ?></time>
                                 </div>
                                 <div class="log-count">
                                     <a href="<?= $value['log_url'] ?>" class="m-r-10"><span class="iconfont icon-view"></span> <?= $value['views'] ?></a>

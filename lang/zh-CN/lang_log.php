@@ -14,12 +14,12 @@ $lang = array(
     //content/templates/default/echo_log.php
     'time'				=> '时间',//'Time',
     'author'				=> '作者',//'Author',
-    '_times_read'			=> '&nbsp;次阅读',//'&nbsp;times read',//==='_views'
+    '_times_read'			=> '次阅读',//'&nbsp;times read',//==='_views'
+    'views'				=> '阅读',//'Views',
 
     //---------------------------
     //content/templates/default/log_list.php
     'post_time'				=> '发布于',//'Posted on',			LANG_ADMIN
-    'views'				=> '浏览',//'Views',
     'comments'				=> '评论',//'Comments',
     'sorry_no_results'			=> '抱歉，暂时还没有内容。',//'Sorry, there is no content yet.',
 

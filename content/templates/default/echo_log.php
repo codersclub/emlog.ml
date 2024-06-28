@@ -8,9 +8,10 @@ defined('EMLOG_ROOT') || exit('access denied!');
     <span class="back-top mh" onclick="history.go(-1);">&laquo;</span>
     <h1 class="log-title"><?php topflg($top) ?><?= $log_title ?></h1>
     <p class="date">
-<!--vot--><?php blog_author($author) ?> <?= lang('post_time') ?> <?= date('Y-m-d H:i', $date) ?>&nbsp;&nbsp;
-        <?= $views ?><?= lang('_times_read') ?> &nbsp;&nbsp;
-        <?php blog_sort($sortid) ?>&nbsp;&nbsp;
+    <?php blog_author($author) ?> <?= lang('post_time') ?>
+<!--vot--><time class="m-r-5"><?= date('Y-m-d H:i', $date) ?></time>
+<!--vot--><span class="m-r-5"><?= lang('views') ?>: <?= $views ?></span>
+        <span class="m-r-5"><?php blog_sort($sortid) ?></span>
         <?php editflg($logid, $author) ?>
     </p>
     <hr class="bottom-5"/>

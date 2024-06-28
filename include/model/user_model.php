@@ -47,24 +47,23 @@ class User_Model {
     }
 
     public function getOneUser($uid) {
-/*vot*/        $row = $this->db->once_fetch_array("SELECT * FROM $this->table WHERE uid=$uid");
-        $userData = [];
-        if ($row) {
-            $row['nickname'] = empty($row['nickname']) ? $row['username'] : $row['nickname'];
-            $userData = [
-                'username'    => htmlspecialchars($row['username']),
-                'nickname'    => htmlspecialchars($row['nickname']),
-                'name_orig'   => $row['nickname'],
-                'email'       => htmlspecialchars($row['email']),
-                'photo'       => htmlspecialchars($row['photo']),
-                'description' => htmlspecialchars($row['description']),
-                'role'        => $row['role'],
-                'ischeck'     => $row['ischeck'],
-                'state'       => (int)$row['state'],
-                'ip'          => $row['ip'],
-            ];
+        $uid = (int)$uid;
+/*vot*/ $row = $this->db->once_fetch_array("SELECT * FROM $this->table WHERE uid=$uid");
+
+        if (empty($row)) {
+            return [];
         }
-        return $userData;
+
+        $row['username'] = htmlspecialchars($row['username']);
+        $row['nickname'] = htmlspecialchars(empty($row['nickname']) ? $row['username'] : $row['nickname']);
+        $row['name_orig'] = $row['nickname'];
+        $row['email'] = htmlspecialchars($row['email']);
+        $row['photo'] = htmlspecialchars($row['photo']);
+        $row['description'] = htmlspecialchars($row['description']);
+        $row['state'] = (int)$row['state'];
+        $row['credits'] = (int)$row['credits'];
+
+        return $row;
     }
 
     public function updateUser($userData, $uid) {
