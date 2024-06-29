@@ -66,7 +66,7 @@
             </div>
             <div class="list_footer">
                 <div class="btn-group">
-                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
+                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                     <div class="dropdown-menu">
                         <a href="javascript:pageact('hide');" class="dropdown-item"><?= lang('make_draft') ?></a>
                         <a href="javascript:pageact('pub');" class="dropdown-item"><?= lang('publish') ?></a>

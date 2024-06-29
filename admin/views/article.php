@@ -163,16 +163,31 @@ $isdraft = $draft ? '&draft=1' : '';
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
             <input name="operate" id="operate" value="" type="hidden"/>
             <div class="form-inline">
-                <?php if (User::haveEditPermission()): ?>
-                    <select name="top" id="top" onChange="changeTop(this);" class="form-control m-1">
-                        <option value="" selected="selected"><?= lang('top') ?></option>
-                        <option value="top"><?= lang('home_top') ?></option>
-                        <option value="sortop"><?= lang('category_top') ?></option>
-                        <option value="notop"><?= lang('untop') ?></option>
-                    </select>
-                <?php endif ?>
-                <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
-                    <option value="" selected="selected"><?= lang('move_to_category') ?></option>
+                <div class="btn-group">
+                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <div class="dropdown-menu">
+                        <?php if ($multiCheckBtn): ?>
+                            <a href="javascript:logact('check');" class="dropdown-item">审核</a>
+                            <a href="javascript:logact('uncheck');" class="dropdown-item">驳回</a>
+                            <hr>
+                        <?php endif ?>
+                        <?php if ($draft): ?>
+                            <a href="javascript:logact('pub');" class="dropdown-item">发布</a>
+                            <a href="javascript:logact('del_draft');" class="dropdown-item text-danger">删除</a>
+                        <?php else: ?>
+                            <?php if (User::haveEditPermission()): ?>
+                                <a href="javascript:logact('top');" class="dropdown-item">首页置顶</a>
+                                <a href="javascript:logact('sortop');" class="dropdown-item">分类置顶</a>
+                                <a href="javascript:logact('notop');" class="dropdown-item">取消置顶</a>
+                                <hr>
+                            <?php endif ?>
+                            <a href="javascript:logact('hide');" class="dropdown-item">放入草稿箱</a>
+                            <a href="javascript:logact('del');" class="dropdown-item text-danger">删除</a>
+                        <?php endif ?>
+                    </div>
+                </div>
+                <select name="sort" id="sort" onChange="changeSort(this);" class="form-control form-control-sm m-1">
+                    <option value="" selected="selected">移动到分类</option>
                     <?php
                     foreach ($sorts as $key => $value):
                         if ($value['pid'] != 0) {
@@ -197,29 +212,13 @@ $isdraft = $draft ? '&draft=1' : '';
                 $c = count($user_cache);
                 if (User::haveEditPermission() && $c > 1 && $c < 50):
                     ?>
-                    <select name="author" id="author" onChange="changeAuthor(this);" class="form-control m-1">
+                    <select name="author" id="author" onChange="changeAuthor(this);" class="form-control form-control-sm m-1">
                         <option value="" selected="selected"><?= lang('user_edit') ?></option>
                         <?php foreach ($user_cache as $key => $val): ?>
                             <option value="<?= $key ?>"><?= $val['name'] ?></option>
                         <?php endforeach ?>
                     </select>
                 <?php endif ?>
-                <div class="btn-group">
-                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
-                    <div class="dropdown-menu">
-                        <?php if ($multiCheckBtn): ?>
-                            <a href="javascript:logact('check');" class="dropdown-item"><?= lang('check') ?></a>
-                            <a href="javascript:logact('uncheck');" class="dropdown-item"><?= lang('uncheck') ?></a>
-                        <?php endif ?>
-                        <?php if ($draft): ?>
-                            <a href="javascript:logact('pub');" class="dropdown-item"><?= lang('publish') ?></a>
-                            <a href="javascript:logact('del_draft');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
-                        <?php else: ?>
-                            <a href="javascript:logact('hide');" class="dropdown-item"><?= lang('add_draft') ?></a>
-                            <a href="javascript:logact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
-                        <?php endif ?>
-                    </div>
-                </div>
             </div>
         </form>
     </div>
@@ -304,16 +303,6 @@ $isdraft = $draft ? '&draft=1' : '';
         }
         if ($('#author').val() === '') return;
         $("#operate").val('change_author');
-        $("#form_log").submit();
-    }
-
-    function changeTop(obj) {
-        if (getChecked('ids') === false) {
-            infoAlert(lang('select_article'));
-            return;
-        }
-        if ($('#top').val() === '') return;
-        $("#operate").val(obj.value);
         $("#form_log").submit();
     }
 

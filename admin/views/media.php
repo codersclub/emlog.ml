@@ -106,7 +106,7 @@
             <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
             <div class="col-auto my-1 form-inline">
                 <?php if (User::isAdmin()): ?>
-                    <select name="sort" id="sort" onChange="changeSort(this);" class="form-control m-1">
+                    <select name="sort" id="sort" onChange="changeSort(this);" class="form-control form-control-sm m-1">
                         <option value="" selected="selected"><?= lang('move_to') ?></option>
                         <?php foreach ($sorts as $key => $value): ?>
                             <option value="<?= $value['id'] ?>"><?= $value['sortname'] ?></option>
