@@ -2,7 +2,7 @@ var LNG = {
 //---------------------------
 //admin/views/article_write.php
     'leave_prompt': '离开页面提示',//'Leave page prompt',
-    'already_edited': '[已修改] ',//'[already edited] ',
+    'already_edited' : '[已修改] ',//'[already edited] ',
     'use_markdown' : '使用 Markdown 开始你的创作吧...',//'Start your creation using Markdown...',
     'enter_summary' : '如果留空，则使用正文作为摘要。',//'If left blank, the content will be used as a summary.',
     'save_draft' : '放入草稿',//'Save as draft',
@@ -117,7 +117,7 @@ var LNG = {
     'user_disable_sure': '禁用该用户？',//'Disable this user?',
     'disable': '禁用',//'Disable',
     'article_del_sure': '删除这篇文章？',//'Delete this article?',
-    'draft_del_sure': '删除这篇草稿？',//'Are you sure you want to delete this draft? ',
+    'draft_del_sure': '删除这篇草稿？',//'Are you sure you want to delete this draft?',
     'media_category_del_sure': '确定要删除该资源分类吗（不会删除资源文件）？',//'Are you sure you want to delete this resource category (resource files will not be deleted)?',
     'media_select': '请选择要移动的资源',//'Please select a media file to move',
     'delete_not_recover': '彻底删除将无法恢复',//'Deleted may not be recoverable',

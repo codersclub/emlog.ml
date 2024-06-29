@@ -38,7 +38,7 @@ $lang = array(
     'nav_url_http' => 'Address (with http)',//'地址(带http)',
     'no' => 'No',//'无',
     'nav_parent' => 'Parent navigation',//'父导航',
-    'open_new_win' => 'Open in new window',//'在新窗口打开',
+    'open_new_win' => 'Open in new window',//'新窗口打开',
     'add' => 'Add',//'添加',
     'nav_add_category' => 'Add category navigation',//'添加分类到导航',
     'no_categories' => 'No categories',//'还没有分类',
@@ -48,6 +48,6 @@ $lang = array(
 //---------------------------
 //admin/views/naviedit.php
     'nav_modify' => 'Modify navigation',//'修改导航',
-    'nav_address' => 'Navigation address',//'导航地址',
+    'nav_address' => 'Navigation URL',//'导航网址',
 
 );
