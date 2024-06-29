@@ -164,30 +164,30 @@ $isdraft = $draft ? '&draft=1' : '';
             <input name="operate" id="operate" value="" type="hidden"/>
             <div class="form-inline">
                 <div class="btn-group">
-                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                     <div class="dropdown-menu">
                         <?php if ($multiCheckBtn): ?>
-                            <a href="javascript:logact('check');" class="dropdown-item">审核</a>
-                            <a href="javascript:logact('uncheck');" class="dropdown-item">驳回</a>
+                            <a href="javascript:logact('check');" class="dropdown-item"><?= lang('check') ?></a>
+                            <a href="javascript:logact('uncheck');" class="dropdown-item"><?= lang('uncheck') ?></a>
                             <hr>
                         <?php endif ?>
                         <?php if ($draft): ?>
-                            <a href="javascript:logact('pub');" class="dropdown-item">发布</a>
-                            <a href="javascript:logact('del_draft');" class="dropdown-item text-danger">删除</a>
+                            <a href="javascript:logact('pub');" class="dropdown-item"><?= lang('publish') ?></a>
+                            <a href="javascript:logact('del_draft');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
                         <?php else: ?>
                             <?php if (User::haveEditPermission()): ?>
-                                <a href="javascript:logact('top');" class="dropdown-item">首页置顶</a>
-                                <a href="javascript:logact('sortop');" class="dropdown-item">分类置顶</a>
-                                <a href="javascript:logact('notop');" class="dropdown-item">取消置顶</a>
+                                <a href="javascript:logact('top');" class="dropdown-item"><?= lang('home_top') ?></a>
+                                <a href="javascript:logact('sortop');" class="dropdown-item"><?= lang('category_top') ?></a>
+                                <a href="javascript:logact('notop');" class="dropdown-item"><?= lang('untop') ?></a>
                                 <hr>
                             <?php endif ?>
-                            <a href="javascript:logact('hide');" class="dropdown-item">放入草稿箱</a>
-                            <a href="javascript:logact('del');" class="dropdown-item text-danger">删除</a>
+                            <a href="javascript:logact('hide');" class="dropdown-item"><?= lang('add_draft') ?></a>
+                            <a href="javascript:logact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
                         <?php endif ?>
                     </div>
                 </div>
                 <select name="sort" id="sort" onChange="changeSort(this);" class="form-control form-control-sm m-1">
-                    <option value="" selected="selected">移动到分类</option>
+                    <option value="" selected="selected"><?= lang('move_to_category') ?></option>
                     <?php
                     foreach ($sorts as $key => $value):
                         if ($value['pid'] != 0) {
