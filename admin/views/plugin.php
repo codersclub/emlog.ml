@@ -164,8 +164,6 @@
     $(function () {
         setTimeout(hideActived, 3600);
         $("#menu_category_ext").addClass('active');
-        $("#menu_ext").addClass('show');
-        $("#menu_plug").addClass('active');
 
         var pluginList = [];
         $('table tbody tr').each(function () {

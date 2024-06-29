@@ -25,7 +25,7 @@ if ($action === 'backup') {
 
     $DB = Database::getInstance();
     $tables = $DB->listTables();
-    
+
     $bakfname = 'emlog_' . date('Ymd') . '_' . substr(md5(AUTH_KEY . uniqid('', true)), 0, 18);
     $filename = '';
     $sqldump = '';
@@ -122,8 +122,14 @@ function checkSqlFileInfo($sqlfile) {
     if (empty($dumpinfo)) {
         emMsg(lang('import_failed_not_emlog'));
     }
-    if (!strstr($dumpinfo[0], '#version:emlog ' . Option::EMLOG_VERSION)) {
-        emMsg(lang('import_failed_not_emlog_ver') . Option::EMLOG_VERSION);
+
+    if (preg_match("/pro\s\d+\.\d+\.\d+/", $dumpinfo[0], $matches)) {
+        $v = $matches[0];
+        if ($v !== Option::EMLOG_VERSION) {
+/*vot*/     emMsg(sprintf(lang('import_failed_not_emlog_ver'), $v));
+        }
+    } else {
+        emMsg(lang('import_failed_not_emlog_pro'));
     }
     if (preg_match('/#tableprefix:' . DB_PREFIX . '/', $dumpinfo[2]) === 0) {
         emMsg(lang('import_failed_bad_prefix') . $dumpinfo[2]);

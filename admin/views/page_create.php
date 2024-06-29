@@ -7,8 +7,6 @@
                 <div>
                     <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('page_title') ?>"/>
                 </div>
-                <div id="post_bar">
-                </div>
                 <div id="post_bar" class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('resource_library') ?></a>
                     <?php doAction('adm_writelog_head') ?>
@@ -133,6 +131,7 @@
                 <div>
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
+                    <button type="button" id="use_original_image" class="btn btn-sm btn-google"><?= lang('use_original_image') ?></button>
                 </div>
             </div>
         </div>
@@ -141,7 +140,9 @@
 <div class="dropzone-previews" style="display: none;"></div>
 <script src="./views/js/dropzone.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script src="./views/js/media-lib.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<!-- vot: Load Editor.MD -->
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+<!-- vot: Load Editor.MD current language file -->
 <? if (strtolower(LANG) !== 'zh-cn') { ?>
     <script src="./editor.md/languages/<?= strtolower(LANG) ?>.js"></script>
 <? } ?>
@@ -164,6 +165,7 @@
     });
     if ($("#title").val() != '') $("#title_label").hide();
 
+    // Editor
     var Editor;
     $(function () {
         Editor = editormd("pagecontent", {
@@ -236,40 +238,50 @@
             cropper.destroy();
             cropper = null;
         });
+
+        // Upload image
+        function uploadImage(blob) {
+            var formData = new FormData();
+            formData.append('image', blob, 'cover.jpg');
+            $.ajax('./article.php?action=upload_cover', {
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $modal.modal('hide');
+                    if (data.code == 0) {
+                        $('#cover_image').attr('src', data.data);
+                        $('#cover').val(data.data);
+                        $('#cover_rm').show();
+                    } else {
+                        alert(data.msg);
+                    }
+                },
+                error: function (xhr) {
+                    var data = xhr.responseJSON;
+                    if (data && typeof data === "object") {
+                        alert(data.msg);
+                    } else {
+                        alert("An error occurred during the file upload.");
+                    }
+                }
+            });
+        }
+
         $('#crop').click(function () {
             canvas = cropper.getCroppedCanvas({
                 width: 650,
                 height: 366
             });
             canvas.toBlob(function (blob) {
-                var formData = new FormData();
-                formData.append('image', blob, 'cover.jpg');
-                $.ajax('./article.php?action=upload_cover', {
-                    method: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        $modal.modal('hide');
-                        if (data.code == 0) {
-                            $('#cover_image').attr('src', data.data);
-                            $('#cover').val(data.data);
-                            $('#cover_rm').show();
-                        } else {
-                            alert(data.msg);
-                        }
-                    },
-                    error: function (xhr) {
-                        var data = xhr.responseJSON;
-                        if (data && typeof data === "object") {
-                            alert(data.msg);
-                        } else {
-                            alert("An error occurred during the file upload.");
-                        }
-                    }
-
-                });
+                uploadImage(blob)
             });
+        });
+
+        $('#use_original_image').click(function () {
+            var blob = $('#upload_img')[0].files[0];
+            uploadImage(blob)
         });
 
         $('#cover_rm').click(function () {

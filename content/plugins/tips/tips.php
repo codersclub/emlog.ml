@@ -20,14 +20,14 @@ vot*/
 load_language('plugins/tips');
 
 
-function tips() {
+function tips_init() {
 /*vot*/    $array_tips = lang('array_tips');
     $i = mt_rand(0, count($array_tips) - 1);
     $tip = $array_tips[$i];
     echo "<div id=\"tip\"> $tip</div>";
 }
 
-addAction('adm_main_top', 'tips');
+addAction('adm_main_top', 'tips_init');
 
 function tips_css() {
     echo "<style>

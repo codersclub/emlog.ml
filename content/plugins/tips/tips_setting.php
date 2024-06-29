@@ -19,7 +19,7 @@ function plugin_setting_view() {
             <form method="post" id="tips_form" action="./plugin.php?plugin=tips&action=setting">
                 <div class="form-group">
                     <p><?= lang('tips_plugin_info') ?></p>
-                    <?php tips(); ?>
+                    <?php tips_init(); ?>
                     <hr>
                     <p><?= lang('tips_plugin_info2') ?></p>
                 </div>
@@ -32,11 +32,11 @@ function plugin_setting_view() {
     </div>
     <script>
         setTimeout(hideActived, 3600);
-        $("#menu_category_ext").addClass('active');
-        $("#menu_ext").addClass('show');
-        $("#menu_plug").addClass('active');
 
-        // Ajax asynchronous form submission
+        // Highlight the left side plugin menu
+        $("#menu_category_ext").addClass('active');
+
+        // Asynchronous form submission
         $("#tips_form").submit(function (event) {
             event.preventDefault();
             submitForm("#tips_form");

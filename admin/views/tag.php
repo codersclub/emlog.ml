@@ -7,25 +7,18 @@
     <div class="alert alert-danger"><?= lang('tag_select') ?></div><?php endif ?>
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('tag_management') ?></h1>
+    <form action="tag.php" method="get">
+        <div class="form-inline search-inputs-nowrap">
+            <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('tag_search') ?>">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-success" type="submit">
+                    <i class="icofont-search-2"></i>
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <div class="row justify-content-between">
-            <div class="form-inline">
-                <h6 class="m-2 font-weight-bold"><?= lang('tags_total') ?> (<?= $tags_count ?>)</h6>
-            </div>
-            <form action="tag.php" method="get">
-                <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('tag_search') ?>">
-                    <div class="input-group-append">
-                        <button class="btn btn-sm btn-success" type="submit">
-                            <i class="icofont-search-2"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     <form action="tag.php?action=operate_tag" method="post" name="form_tag" id="form_tag">
         <div class="card-body checkboxContainer">
             <?php if ($tags): ?>
@@ -44,7 +37,7 @@
                 <p class="m-3"><?= lang('tags_no_info') ?></p>
             <?php endif ?>
         </div>
-        <div class="form-row align-items-center mx-4">
+        <div class="form-row align-items-center mx-4 mb-4">
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
             <input name="operate" id="operate" value="" type="hidden"/>
             <div class="col-auto my-1">
@@ -57,9 +50,10 @@
                 <a href="javascript:tagact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
             </div>
         </div>
-        <div class="page"><?= $pageurl ?></div>
     </form>
 </div>
+<div class="page"><?= $pageurl ?></div>
+<div class="text-center small"><?= lang('have') ?> <?= $tags_count ?> <?= lang('_tags') ?></div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -111,7 +105,7 @@
         }
 
         if (act === 'del') {
-            delAlert2(lang('tag_delete_sure'), lang('delete_not_recover'), function () {
+            delAlert2('', lang('tag_delete_sure'), function () {
                 $("#operate").val(act);
                 $("#form_tag").submit();
             })
@@ -123,7 +117,7 @@
 
     function deltags() {
         var tid = $('#tid').val()
-        delAlert2(lang('tag_delete_sure'), lang('delete_not_recover'), function () {
+        delAlert2('', lang('tag_delete_sure'), function () {
             window.open("./tag.php?action=del_tag&token=<?= LoginAuth::genToken() ?>&tid=" + tid, "_self");
         })
     }

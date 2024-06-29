@@ -7,7 +7,7 @@ var LNG = {
     'enter_summary' : '如果留空，则使用正文作为摘要。',//'If left blank, the content will be used as a summary.',
     'save_draft' : '放入草稿',//'Save as draft',
     'del_completely' : '彻底删除',//'Remove completely',
-    'sure_del_draft' : '确定要删除所选草稿吗',//'Are you sure you want to delete the selected draft',
+    'sure_del_draft' : '删除所选草稿？',//'Delete selected drafts?',
 
 // admin/views/article.php
     'select_article': '请选择文章',//'Please select an article',
@@ -18,7 +18,7 @@ var LNG = {
 
 // admin/views/comment.php
     'comment_operation_select': '请选择评论',//'Please select a comment',
-    'comment_selected_delete_sure': '确定要删除所选评论吗',//'Are you sure you want to delete the selected comment',
+    'comment_selected_delete_sure': '删除所选评论？',//'Delete selected comments?',
 
 // admin/views/components/layer/layer.js
     'rotate' : '旋转',//'Rotate',
@@ -34,11 +34,11 @@ var LNG = {
 
 // admin/views/media.php
     'resource_select': '请选择资源文件',//'Please select a resource file',
-    'resource_del_sure': '确定要删除所选资源文件吗',//'Are you sure you want to delete the selected resource file',
+    'resource_del_sure': '删除所选资源文件？',//'Delete the selected resource file?',
 
 // admin/views/page.php
     'select_page_to_operate': '请选择页面',//'Please select a page',
-    'sure_delete_selected_pages': '确定要删除所选页面吗',//'Are you sure you want to delete the selected page',
+    'sure_delete_selected_pages': '删除所选页面？',//'Delete selected pages?',
 
 //---------------------------
 //admin/views/plugin.php
@@ -56,7 +56,7 @@ var LNG = {
 //---------------------------
 //admin/views/tag.php
     'tag_select_del': '请选择要删除的标签',//'Please select a tag to delete',
-    'tag_delete_sure': '确定要删除所选标签吗',//'Are you sure you want to delete the selected tags',
+    'tag_delete_sure': '删除所选标签？',//'Delete selected tags?',
 
 //---------------------------
 //admin/views/template.php
@@ -65,19 +65,20 @@ var LNG = {
 
 //---------------------------
 //admin/views/js/common.js
-    'twitter_del_sure': '确定要删除该条微语吗？',//'Are you sure you want to delete this note?',
-    'comment_del_sure': '确定要删除该评论吗？',//'Are you sure you want to delete this comment?',
-    'comment_ip_del_sure': '确定要删除来自该IP的所有评论吗？',//'Are you sure you want to delete all comments from that IP?',
-    'link_del_sure': '确定要删除该链接吗？',//'Are you sure you want to delete this link?',
-    'navi_del_sure': '确定要删除该导航吗？',//'Are you sure you want to delete this navigation?',
-    'attach_del_sure': '确定要删除该媒体文件吗？',//'Are you sure you want to delete this media file?',
-    'avatar_del_sure': '确定要删除头像吗？',//'Are you sure you want to delete this avatar?',
-    'category_del_sure': '确定要删除该分类吗？',//'Are you sure you want to delete this category?',
-    'user_del_sure': '确定要删除该用户吗？',//'Are you sure you want to delete this user?',
-    'template_del_sure': '确定要删除该模板吗？',//'Are you sure you want to delete default template?',
-    'plugin_reset_sure': '确定要重置组件吗？',//'Are you sure you want to reset the plugin settings?',
-    'plugin_reset_info': '重置会丢失自定义的组件',//'Resetting will lose all the component customization',
-    'plugin_del_sure': '确定要删除该插件吗？',//'Are you sure you want to delete this plugin?',
+    'twitter_del_sure': '删除这条微语？',//'Delete this note?',
+    'comment_del_sure': '删除这条评论？',//'Delete this comment?',
+    'comment_ip_del_sure': '删除来自该IP的所有评论？',//'Delete all comments from that IP?',
+    'link_del_sure': '删除该链接？',//'Delete this link?',
+    'navi_del_sure': '删除该导航？',//'Delete this navigation?',
+    'attach_del_sure': '删除该文件？',//'Delete this media file?',
+    'avatar_del_sure': '删除头像？',//'Delete this avatar?',
+    'category_del_sure': '删除该分类？',//'Delete this category?',
+    'user_del_sure': '删除该用户？',//'Delete this user?',
+    'template_del_sure': '删除该模板？',//'Delete this template?',
+    'plugin_reset_sure': '重置组件？',//'Reset the plugin settings?',
+    'plugin_reset_info': '重置会丢失自定义的组件',//' Resetting will lose all the plugin customization',
+    'reset': '重置',//'Reset',
+    'plugin_del_sure': '删除该插件？',//'Delete this plugin?',
     'alias_link_error': '链接别名错误',//'Link Alias error',
     'alias_invalid_chars': '别名错误，应由字母、数字、下划线、短横线组成',//'Alias should contain only latin letters, numbers, underscores and dashes',
     'alias_digital': '别名错误，不能为纯数字',//'Alias cannot contain numbers only',
@@ -113,15 +114,16 @@ var LNG = {
     'title_empty': '标题不能为空',//'Title can not be empty',
     'wysiwyg_switch': '请先切换到所见所得模式',//'Please, switch to WYSIWYG mode',
     'click_view_fullsize': '点击查看原图',//'Click to view full size',
-    'user_disable_sure': '确定要禁用该用户吗？',//'Are you sure you want to disable this user?',
-    'article_del_sure': '确定要删除该篇文章吗？',//'Are you sure you want to delete this article?',
-    'draft_del_sure': '确定要删除该篇草稿吗？',//'Are you sure you want to delete this draft? ',
+    'user_disable_sure': '禁用该用户？',//'Disable this user?',
+    'disable': '禁用',//'Disable',
+    'article_del_sure': '删除这篇文章？',//'Delete this article?',
+    'draft_del_sure': '删除这篇草稿？',//'Are you sure you want to delete this draft? ',
     'media_category_del_sure': '确定要删除该资源分类吗（不会删除资源文件）？',//'Are you sure you want to delete this resource category (resource files will not be deleted)?',
     'media_select': '请选择要移动的资源',//'Please select a media file to move',
     'delete_not_recover': '彻底删除将无法恢复',//'Deleted may not be recoverable',
     'ok': '确定',//'OK',
     'cancel': '取消',//'Cancel',
-    'category_not_deleted': '不会删除分类下资源文件',//'The resource files under the category will not be deleted',
+    'category_not_deleted': '不会删除分类下资源文件',//' Media files under the category will not be deleted',
     'emlog_not_registered': '您的emlog pro尚未注册',//'Your emlog has not been registered',
     'register': '去注册',//'Register',
     'is_latest_version': '已经是最新版本',//'Already the latest version',

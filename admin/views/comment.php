@@ -123,10 +123,10 @@
                 </div>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>
-            <div class="page"><?= $pageurl ?> </div>
-            <div class="text-center small">(<?= lang('have') ?> <?= $cmnum ?> <?= lang('_comments') ?>)</div>
         </div>
     </div>
+    <div class="page"><?= $pageurl ?></div>
+    <div class="text-center small">(<?= lang('have') ?> <?= $cmnum ?> <?= lang('_comments') ?>)</div>
 </form>
 <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -163,7 +163,7 @@
         }
 
         if (act === 'del') {
-            delAlert2(lang('comment_selected_delete_sure'), lang('delete_not_recover'), function () {
+            delAlert2('', lang('comment_selected_delete_sure'), function () {
                 $("#operate").val(act);
                 $("#form_com").submit();
             })

@@ -13,14 +13,14 @@ function timestamp() {
 }
 
 function em_confirm(id, property, token) {
-    let url, msg;
-/*vot*/    let text = lang('delete_not_recover')
+    let url;
+    let msg = '';
+    let text = ''
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
-            msg = lang('article_del_sure');
-            text = lang('delete_not_recover');
-            delArticle(msg, text, url, token);
+            text = lang('article_del_sure');
+            delArticle(msg, text, url, token)
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
@@ -74,9 +74,8 @@ function em_confirm(id, property, token) {
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
-            msg = lang('prompt');
             text = lang('user_disable_sure');
-            delAlert(msg, text, url, token)
+            delAlert(msg, text, url, token, lang('disable'))
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
@@ -85,9 +84,8 @@ function em_confirm(id, property, token) {
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
-            msg = lang('plugin_reset_sure');
-            text = lang('plugin_reset_info');
-            delAlert(msg, text, url, token)
+            text = lang('plugin_reset_sure') + lang('plugin_reset_info');
+            delAlert(msg, text, url, lang('reset'))
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
@@ -96,8 +94,7 @@ function em_confirm(id, property, token) {
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
-            msg = lang('media_category_del_sure');
-/*vot*/     text = lang('category_not_deleted');
+            text = lang('media_category_del_sure') + lang('category_not_deleted');
             delAlert(msg, text, url, token)
             break;
     }
@@ -111,16 +108,16 @@ function infoAlert(msg) {
     });
 }
 
-function delAlert(msg, text, url, token) {
+function delAlert(msg, text, url, token, btnText = lang('delete')) {
     // icon: 0 default, 1 ok, 2 err, 3 ask
-    layer.confirm(text, {icon: 0, title: msg}, function (index) {
+    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, lang('cancel')]}, function (index) {
         window.location = url + '&token=' + token;
         layer.close(index);
     });
 }
 
-function delAlert2(msg, text, actionClosure) {
-    layer.confirm(text, {icon: 0, title: msg}, function (index) {
+function delAlert2(msg, text, actionClosure, btnText = lang('delete')) {
+    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, lang('cancel')]}, function (index) {
         actionClosure(); // Execute closure
         layer.close(index);
     });
@@ -129,7 +126,7 @@ function delAlert2(msg, text, actionClosure) {
 function delArticle(msg, text, url, token) {
     layer.confirm(text, {
         title: msg,
-        icon: 0,
+        icon: 3,
         btn: [lang('save_draft'), '<span class="text-danger">'+lang('del_completely')+'</span>', lang('cancel')]
     }, function (index) {
         window.location = url + '&token=' + token;

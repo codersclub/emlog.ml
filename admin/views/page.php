@@ -76,10 +76,10 @@
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
                 <input name="operate" id="operate" value="" type="hidden"/>
             </div>
-            <div class="page"><?= $pageurl ?></div>
-            <div class="text-center small">(<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
         </div>
     </div>
+    <div class="page"><?= $pageurl ?></div>
+    <div class="text-center small">(<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
 </form>
 <script>
     $(function () {
@@ -95,7 +95,7 @@
             return;
         }
         if (act === 'del') {
-            delAlert2(lang('sure_delete_selected_pages'), lang('delete_not_recover'), function () {
+            delAlert2('',lang('sure_delete_selected_pages'), function () {
                 $("#operate").val(act);
                 $("#form_page").submit();
             })

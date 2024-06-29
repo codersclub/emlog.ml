@@ -591,7 +591,7 @@ CREATE TABLE {$db_prefix}link (
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}link (id, sitename, siteurl, icon, description, taxis) VALUES
 (1, 'emlog.ru', 'https://emlog.ru', 'https://emlog.ru/docs/logo.png', '" . lang('emlog_ml_official_site') . "', 0),
-(2, 'emlog.net', 'http://www.emlog.net', 'https://oss-pub.emlog.net/img/logo.png', '" . lang('emlog_official_site') . "', 0);
+(2, 'emlog.net', 'http://www.emlog.net', '', '" . lang('emlog_official_site') . "', 0);
 DROP TABLE IF EXISTS {$db_prefix}navi;
 CREATE TABLE {$db_prefix}navi (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Navigation table',

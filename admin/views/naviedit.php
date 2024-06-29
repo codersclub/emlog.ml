@@ -12,8 +12,8 @@
                 <input class="form-control" id="url" value="<?= $url ?>" name="url" <?= $conf_isdefault ?>>
             </div>
             <div class="form-group">
-                <label for="newtab"><?= lang('open_new_win') ?></label>
                 <input type="checkbox" value="y" name="newtab" id="newtab" <?= $conf_newtab ?> />
+                <label for="newtab"><?= lang('open_new_win') ?></label>
             </div>
             <?php if ($type == Navi_Model::navitype_custom && $pid != 0): ?>
                 <div class="form-group">

@@ -17,12 +17,12 @@
     </div>
     <div class="form-row align-items-center">
         <div class="col-auto">
-            <button type="submit" class="btn btn-sm btn-success"><?= lang('publish') ?></button>
+            <button type="submit" class="btn btn-success btn-sm mb-2"><?= lang('publish') ?></button>
         </div>
-        <div class="col-auto ml-2">
+        <div class="col-auto">
             <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" value="y" name="private" id="private"/>
-                <label class="form-check-label" for="private"><?= lang('private') ?></label>
+                <input class="form-check-input" type="checkbox" value="y" name="private" id="private">
+                <label class="form-check-label small" for="private"><?= lang('private') ?></label>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
     </div>
 </div>
 <div class="page"><?= $pageurl ?> </div>
-<div class="text-center small">(<?= lang('have') ?> <?= $twnum ?><?= lang('_twitters') ?>)</div>
+<div class="text-center small"><?= lang('have') ?> <?= $twnum ?><?= lang('_twitters') ?></div>
 
 <link rel="stylesheet" type="text/css" href="./views/css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
 <script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
@@ -87,10 +87,10 @@
     $(function () {
         Editor = editormd("t", {
             width: "100%",
-            height: 340,
+            height: 260,
             toolbarIcons: function () {
                 return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "|",
-                    "link", "image", "table", "|", "preview"]
+                    "link", "image", "|", "preview"]
             },
             path: "editor.md/lib/",
             tex: false,

@@ -158,14 +158,15 @@ if ($action == 'operate_page') {
 
     switch ($operate) {
         case 'del':
+            $home_page_id = Option::get('home_page_id');
             foreach ($pages as $value) {
                 $emPage->deleteLog($value);
-                unset($navibar[$value]);
+                // If the deleted page is the home page, you need to restore the default home page
+                if ($home_page_id == $value) {
+                    Option::updateOption('home_page_id', 0);
+                }
             }
-            $navibar = addslashes(serialize($navibar));
-            Option::updateOption('navibar', $navibar);
             $CACHE->updateCache(array('options', 'sta', 'comment', 'logalias'));
-
             emDirect("./page.php?active_del=1");
             break;
         case 'hide':
@@ -173,10 +174,7 @@ if ($action == 'operate_page') {
             $ishide = $operate == 'hide' ? 'y' : 'n';
             foreach ($pages as $value) {
                 $emPage->hideSwitch($value, $ishide);
-                $navibar[$value]['hide'] = $ishide;
             }
-            $navibar = addslashes(serialize($navibar));
-            Option::updateOption('navibar', $navibar);
             $CACHE->updateCache(array('options', 'sta', 'comment'));
             emDirect("./page.php?active_hide_" . $ishide . "=1");
             break;
