@@ -227,7 +227,7 @@ var myBlog = {
         tocHtml = tocHtml + '</ul></div></div>'
         $logcon.before(tocHtml)
 
-        function tocSetListen(){  // Add listening events in batches
+        function tocSetListen() {  // Add listening events in batches
             for (var i = 0; i < data.length; i++) {
                 let tempPos = myBlog.tocArray[i]["pos"]
                 $('#to' + i).off("click");
@@ -387,6 +387,21 @@ $(document).ready(function () {
     })
 
     // Switch to dark mode theme
+/*
+    $("#theme-toggle").click(function () {
+            var currentTheme = localStorage.getItem('theme');
+            var targetTheme;
+            if (currentTheme === 'light') {
+                targetTheme = 'dark';
+            } else {
+                targetTheme = 'light';
+            }
+
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+    })
+*/
+
     const toggleButton = document.getElementById('theme-toggle');
     if (toggleButton) {
         toggleButton.addEventListener('click', () => {
@@ -401,4 +416,5 @@ $(document).ready(function () {
             localStorage.setItem('theme', targetTheme);
         });
     }
+
 })

@@ -9,4 +9,5 @@ $lang = array(
 	'download'		=> 'Скачать',//'Download',
 	'docs'			=> 'Документация',//'Docs',
 	'twitters'		=> 'Заметки',//'Notes',
+        'login'			=> 'Войти',//'登 录',
 );

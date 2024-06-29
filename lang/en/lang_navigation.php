@@ -9,4 +9,5 @@ $lang = array(
 	'download'		=> 'Download',//'下载',
 	'docs'			=> 'Docs',//'文档',
 	'twitters'		=> 'Notes',//'微语',
+        'login'			=> 'Log in',//'登 录',
 );
