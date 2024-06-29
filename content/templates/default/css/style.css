@@ -192,7 +192,6 @@ footer .copyright {
 }
 
 /* Non styled list  */
-
 .unstyle-li {
     padding-left: 0px;
     list-style: none;
@@ -249,7 +248,6 @@ footer .copyright {
 }
 
 /* Columns under the small screen */
-
 @media (max-width: 767px) {
 
     .column-big {
@@ -355,30 +353,6 @@ footer .copyright {
     }
 }
 
-@media (min-width: 576px) {
-    .rea-width {
-        width: 524px
-    }
-}
-
-@media (min-width: 768px) {
-    .rea-width {
-        width: 450px
-    }
-}
-
-@media (min-width: 992px) {
-    .rea-width {
-        width: 609px
-    }
-}
-
-@media (min-width: 1201px) {
-    .rea-width {
-        width: 730px
-    }
-}
-
 /* There is no gap at the bottom (footer) of the blog page (that is, to prevent the weird phenomenon that the footer appears in the middle of the page)
 ---------------------------------------------------*/
 body {
@@ -426,12 +400,6 @@ body {
     padding-top: 48px;
     z-index: 0
 }
-/*vot*/ .blog-header a {
-    color: rgba(255, 255, 255, 0.8);
-}
-/*vot*/ .blog-header a:focus, .blog-header a:hover {
-  color: #fff;
-}
 
 /* The padding-block of the navigation link should be large, so that the sub-navigation label can still be evoked after the cursor leaves the character for a certain distance
  * In addition, the list item of the li tag is marked as empty (list-style: none) */
@@ -441,54 +409,6 @@ body {
 
 .list-menu {
     list-style: none
-}
-
-/* Dropdown */
-.drop {
-    position: relative;
-    display: inline-block;
-}
-
-.drop .toggle {
-    cursor: pointer;
-}
-
-.down {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    white-space: nowrap;
-    min-width: 6em;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.down.right {
-    right: 0;
-}
-
-.down a {
-    color: black;
-    padding: 4px;
-    text-align: left;
-    text-decoration: none;
-    display: block;
-}
-
-.down a:hover {
-    background-color: #4e73df;
-    text-decoration: none;
-}
-
-.drop:hover .down {
-    display: block;
-}
-
-.drop:hover .toggle {
-}
-
-/* Change language */
-.language {
 }
 
 /* Responsive configuration of navigation list
@@ -750,7 +670,6 @@ body {
     color: #212529;
 }
 
-
 .calendartop {
     letter-spacing: 3px;
     width: 100%;
@@ -839,6 +758,7 @@ body {
 }
 
 
+/* Sidebar card style
 ---------------------------------------------------*/
 /* Card inner and outer margins */
 .side-bar {
@@ -1699,7 +1619,6 @@ img.zoom-img {
         margin-top: 32px
     }
 
-    /* Calendar in medium screen state */
     /* Calendar on medium screen */
     #calendar {
         margin-left: -8px;
@@ -2078,4 +1997,52 @@ img.zoom-img {
     to {
         opacity: 1;
     }
+}
+
+/* Dropdown */
+.drop {
+    position: relative;
+    display: inline-block;
+}
+
+.drop .toggle {
+    cursor: pointer;
+}
+
+.down {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    white-space: nowrap;
+    min-width: 6em;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.down.right {
+    right: 0;
+}
+
+.down a {
+    color: black;
+    padding: 4px;
+    text-align: left;
+    text-decoration: none;
+    display: block;
+}
+
+.down a:hover {
+    background-color: #4e73df;
+    text-decoration: none;
+}
+
+.drop:hover .down {
+    display: block;
+}
+
+.drop:hover .toggle {
+}
+
+/* Change language */
+.language {
 }

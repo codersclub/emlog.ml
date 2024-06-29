@@ -53,7 +53,7 @@ if (forceDispose) {
   document.removeEventListener('click', this._boundClick, true)
   this._activeZoom = null
 
-   /* Modification: After closing the picture, the picture is restored to its original address */
+  /* Modification: After closing the picture, the picture is restored to its original address */
   let $zoomImg = $('.zoomFocus')
   $zoomImg.attr('src',$zoomImg.attr('src2'))
           .removeClass('zoomFocus')
@@ -158,7 +158,7 @@ Zoom.prototype._triggerAnimation = function () {
  this._targetImage.offsetWidth
 
  var imageOffset = $(this._targetImage).offset()
-  var scrollTop = $(window).scrollTop() // The distance between the scroll bar and the top
+ var scrollTop = $(window).scrollTop() // The distance between the scroll bar and the top
  var viewportY = scrollTop + ($(window).height() / 2)
  var viewportX = ($(window).width() / 2)
  var imageCenterY = imageOffset.top + (this._targetImage.height / 2)
@@ -167,7 +167,7 @@ Zoom.prototype._triggerAnimation = function () {
  this._translateY = viewportY - imageCenterY
  this._translateX = viewportX - imageCenterX
 
-  /* Modification: If the enlarged image is higher than the screen, then align the upper edge of the enlarged image with the upper edge of the screen */
+ /* Modification: If the enlarged image is higher than the screen, then align the upper edge of the enlarged image with the upper edge of the screen */
  if (this._targetImage.height > $(window).height()) {
    this._translateY = this._translateY + (this._targetImage.height / 2) - ($(window).height() / 2)
  }

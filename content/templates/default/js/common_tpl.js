@@ -15,8 +15,8 @@ var myBlog = {
      * Initialization
      */
     init: function () {
-      this.tocAnalyse()  // TOC catalog generation
-      if ($("#comment-info").length === 0) {  // Large screen login status, the bottom two corners of the comment box are rounded 
+        this.tocAnalyse()  // TOC catalog generation
+        if ($("#comment-info").length === 0) {  // Large screen login status, the bottom two corners of the comment box are rounded 
             $(".commentform #comment").css("height", "140px")
                 .css('border-radius', '10px')
         }
@@ -144,9 +144,9 @@ var myBlog = {
      *
      * Enable toc directory method: write '[toc]' or'<!--[toc]-->' at the beginning of the article, preferably on a single line
      */
-     tocFlag: /\[toc\]/gi,  // Regular expression to determine whether toc is declared
-     tocArray: new Array(),  // Array to store toc
-     tocSetArray: function(){  // Fill the toc array with data
+    tocFlag: /\[toc\]/gi,  // Regular expression to determine whether toc is declared
+    tocArray: new Array(),  // Array to store toc
+    tocSetArray: function(){  // Fill the toc array with data
         var $titles = $("#emlogEchoLog h1,h2,h3,h4,h5,h6:eq(0)")
 
         for (var i = 0; i < $titles.length; i++) {  // Store the label data into an array in sequence
@@ -166,9 +166,9 @@ var myBlog = {
     tocAnalyse: function () {
         var tocFlag = document.querySelector("#emlogEchoLog p")
 
-       if ($("#emlogEchoLog").length === 0) return  // Not reading the page, Exit
-       if (!this.tocFlag.test($('#emlogEchoLog').html().substring(0, 30))) return  // Toc tag bot detected, Exit
-       tocFlag.innerHTML = tocFlag.innerHTML.replace(this.tocFlag, "")  // Remove toc statement
+        if ($("#emlogEchoLog").length === 0) return  // Not reading the page, Exit
+        if (!this.tocFlag.test($('#emlogEchoLog').html().substring(0, 30))) return  // Toc tag bot detected, Exit
+        tocFlag.innerHTML = tocFlag.innerHTML.replace(this.tocFlag, "")  // Remove toc statement
 
         var $logCon = $(".log-con")
         var logConMar = parseInt($logCon.css("margin-left"))
@@ -176,10 +176,10 @@ var myBlog = {
 
         if ($titles.length > 0) {
             if (window.outerWidth > 1275 || window.outerWidth === 0) {
-               $logCon.css("margin-left", logConMar + 150 + 'px')  // The text of the article is offset 150px to the right
+                $logCon.css("margin-left", logConMar + 150 + 'px')  // The text of the article is offset 150px to the right
             }
         } else {
-           return  // No title found (h tag), Exit
+            return  // No title found (h tag), Exit
         }
 
         $titles.attr("toc-date", "title")
@@ -246,7 +246,7 @@ var myBlog = {
             }
         }
 
-       function tocSetPos() {  // Determine location and set positioning style
+        function tocSetPos() {  // Determine location and set positioning style
             let articleTop = 200
 
             if (document.documentElement.scrollTop > articleTop) {
@@ -258,7 +258,7 @@ var myBlog = {
             }
         }
 
-       function tocGetPos() {  // Get the position and change the color of the specified title
+        function tocGetPos() {  // Get the position and change the color of the specified title
             let $tempItem
             let dataArr = myBlog.tocArray
 
@@ -291,8 +291,8 @@ var myBlog = {
         window.onscroll = function () {
             tocSetPos();
             tocGetPos()
-       }  // Wheel event
-       $('#toc-con div').mouseover(function () {  // Adjust the wheel event according to the mouse position
+        }  // Wheel event
+        $('#toc-con div').mouseover(function () {  // Adjust the wheel event according to the mouse position
             window.onscroll = function () {
                 tocSetPos()
             }
@@ -303,7 +303,7 @@ var myBlog = {
             }
         })
 
-       setInterval(function () {  // Refresh toc listener events and toc directory coordinates every 1.5 seconds
+        setInterval(function () {  // Refresh toc listener events and toc directory coordinates every 1.5 seconds
             tocSetListen()
             myBlog.tocSetArray()
         }, 1500)
