@@ -224,7 +224,7 @@ $isdraft = $draft ? '&draft=1' : '';
     </div>
 </div>
 <div class="page"><?= $pageurl ?> </div>
-<div class="text-center small"><?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?><?= $draft ? <?= lang('_drafts') ?> : <?= lang('_articles') ?> ?></div>
+<div class="text-center small"><?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?><?= $draft ? lang('_drafts') : lang('_articles') ?></div>
 <!--Article reject-->
 <div class="modal fade" id="uncheckModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

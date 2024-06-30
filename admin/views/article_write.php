@@ -48,7 +48,7 @@
                 <div class="form-group">
                     <label><?= lang('cover_image') ?>:</label>
                     <input name="cover" id="cover" class="form-control" placeholder="" value="<?= $cover ?>"/>
-                    <small class="text-muted"><?= lang('cover_upload_prompt) ?></small>
+                    <small class="text-muted"><?= lang('cover_upload_prompt') ?></small>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <label for="upload_img">
