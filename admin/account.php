@@ -80,10 +80,10 @@ if ($action == 'signup') {
     $error_msg = '';
 
     if (Option::get('is_signup') !== 'y') {
-        emMsg(lang('registration_disabled'));
+/*vot*/        emMsg(lang('registration_disabled'));
     }
 
-    $page_title = lang('account_register');
+/*vot*/    $page_title = lang('account_register');
     include View::getAdmView('user_head');
     require_once View::getAdmView('signup');
     View::output();
@@ -174,7 +174,7 @@ if ($action == 'reset') {
     $login_code = Option::get('login_code') === 'y';
     $error_msg = '';
 
-    $page_title = lang('retrieve_password');
+/*vot*/    $page_title = lang('retrieve_password');
     include View::getAdmView('user_head');
     require_once View::getAdmView('reset');
     View::output();
@@ -222,7 +222,7 @@ if ($action == 'reset2') {
     $login_code = Option::get('login_code') === 'y';
     $error_msg = '';
 
-    $page_title = lang('retrieve_password');
+/*vot*/    $page_title = lang('retrieve_password');
     include View::getAdmView('user_head');
     require_once View::getAdmView('reset2');
     View::output();
