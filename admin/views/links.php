@@ -93,7 +93,7 @@
             <form action="link.php?action=save" method="post" name="link" id="link">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="alias"><?= lang('name') ?></label>
+                        <label for="sitename"><?= lang('name') ?></label>
                         <input class="form-control" id="sitename" maxlength="255" name="sitename" required>
                     </div>
                     <div class="form-group">
@@ -105,7 +105,7 @@
                         <input class="form-control" id="icon" name="icon" type="url">
                     </div>
                     <div class="form-group">
-                        <label for="alias"><?= lang('description') ?></label>
+                        <label for="description"><?= lang('description') ?></label>
                         <textarea name="description" id="description" maxlength="512" type="text" class="form-control"></textarea>
                     </div>
                 </div>

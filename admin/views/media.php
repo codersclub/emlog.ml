@@ -199,7 +199,7 @@
             <form method="post" action="media.php?action=update_media">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="alias"><?= lang('media_name') ?></label>
+                        <label for="filename"><?= lang('media_name') ?></label>
                         <input type="text" class="form-control" id="filename" name="filename" required>
                     </div>
                 </div>

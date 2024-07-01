@@ -319,8 +319,8 @@
                                         <input class="form-control" id="new_title" name="new_title" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alias"><?= lang('widget_content_info') ?></label>
-                                        <textarea name="new_content" class="form-control" rows="10" required></textarea>
+                                        <label for="new_content"><?= lang('widget_content_info') ?></label>
+                                        <textarea id="new_content" name="new_content" class="form-control" rows="10" required></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

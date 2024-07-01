@@ -160,7 +160,7 @@
                         <input class="form-control" id="sortimg" name="sortimg" type="url" placeholder="https://">
                     </div>
                     <div class="form-group">
-                        <label for="alias"><?=lang('category_description')?></label>
+                        <label for="description"><?=lang('category_description')?></label>
                         <textarea name="description" id="description" type="text" class="form-control"></textarea>
                     </div>
                     <div class="form-group">

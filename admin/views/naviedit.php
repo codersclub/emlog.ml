@@ -8,7 +8,7 @@
                 <input class="form-control" id="naviname" value="<?= $naviname ?>" name="naviname">
             </div>
             <div class="form-group">
-                <label for="alias"><?= lang('nav_address') ?></label>
+                <label for="url"><?= lang('nav_address') ?></label>
                 <input class="form-control" id="url" value="<?= $url ?>" name="url" <?= $conf_isdefault ?>>
             </div>
             <div class="form-group">
