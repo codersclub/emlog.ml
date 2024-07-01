@@ -138,7 +138,7 @@ class Option {
         $options_cache['site_title'] = $options_cache['site_title'] ?: $options_cache['blogname'];
         $options_cache['site_description'] = $options_cache['site_description'] ?: $options_cache['bloginfo'];
         if (empty($options_cache['emkey'])) {
-/*vot*/     $options_cache['site_title'] = (@DEV_MODE ? '' : lang('unregistered_version') . ' ') . $options_cache['site_title'];
+/*vot*/     $options_cache['site_title'] = (ENVIRONMENT == 'develop' ? '' : lang('unregistered_version') . ' ') . $options_cache['site_title'];
         }
         return $options_cache;
     }

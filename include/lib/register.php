@@ -15,7 +15,7 @@ class Register {
         $emkey = isset($options_cache['emkey']) ? $options_cache['emkey'] : '';
 
         if (strlen($emkey) !== self::EMKEY_LEN) {
-/*vot*/     return (defined('DEV_MODE')) ? true : false;
+/*vot*/     return (ENVIRONMENT == 'develop');
         }
         return true;
     }
