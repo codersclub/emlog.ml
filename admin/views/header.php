@@ -21,11 +21,11 @@
     <script src="./views/js/jquery.ui.touch-punch.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/js.cookie-2.2.1.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/cropper.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script>    var em_lang = '<?= LANG ?>'; var LNG;</script>
+    <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
     <script src="./views/js/common.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/components/layer/layer.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/components/message.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-    <script>    var em_lang = '<?= LANG ?>';</script>
-    <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
     <?php doAction('adm_head') ?>
 </head>
 <body id="page-top">

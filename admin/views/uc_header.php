@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=renderer content=webkit>
     <title><?= lang('user_center') ?> - <?= Option::get('blogname') ?></title>
+    <link rel="shortcut icon" href="./views/images/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="./views/css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
     <link rel="stylesheet" type="text/css" href="./editor.md/css/editormd.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
     <link rel="stylesheet" type="text/css" href="./views/css/bootstrap-sbadmin-4.5.3.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
@@ -20,6 +21,8 @@
     <script src="./views/js/jquery.ui.touch-punch.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/js.cookie-2.2.1.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/cropper.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script>    var em_lang = '<?= LANG ?>'; var LNG;</script>
+    <script src="<?= BLOG_URL ?>lang/<?= LANG ?>/lang_js.js"></script>
     <script src="./views/js/common.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/components/layer/layer.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/components/message.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
@@ -40,10 +43,10 @@
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom shadow-sm" id="top-bar">
         <h4 class="my-0 mr-md-5 font-weight-normal"><a href="./"><?= subString(Option::get('blogname'), 0, 12) ?></a></h4>
         <nav class="my-2 my-md-0 mr-md-auto">
-            <a class="p-2 text-dark" href="./"><?= lang('user_center') ?></a>
-<!--vot-->  <a class="p-2 text-dark" href="article.php"><?= lang('articles') ?></a>
-            <a class="p-2 text-dark" href="media.php"><?= lang('resources') ?></a>
-            <a class="p-2 text-dark" href="comment.php"><?= lang('comments') ?></a>
+            <a class="p-2" href="./"><?= lang('user_center') ?></a>
+<!--vot-->  <a class="p-2" href="article.php"><?= lang('articles') ?></a>
+            <a class="p-2" href="media.php"><?= lang('resources') ?></a>
+            <a class="p-2" href="comment.php"><?= lang('comments') ?></a>
             <?php doAction('user_menu') ?>
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">
