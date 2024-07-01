@@ -24,7 +24,7 @@
                                 <div class="alert alert-danger"><?= lang('password_not_equal') ?></div><?php endif ?>
                             <form method="post" class="user" action="./account.php?action=dosignup">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('user_name') ?>" required
+                                    <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('email') ?>" required
                                            autofocus>
                                 </div>
                                 <div class="form-group">
@@ -54,7 +54,7 @@
 <!-- vot-->                     <div class="text-center"><a href="./"><?= lang('log_in') ?></a></div>
                                 <div class="text-center"><?php doAction('signup_ext') ?></div>
                                 <hr>
-<!-- vot-->                     <div class="text-center"><a href="<?= BLOG_URL ?>" class="small" role="button">&larr;<?= lang('back_home') ?></a></div>
+<!-- vot-->                     <div class="text-center"><a href="<?= BLOG_URL ?>" class="" role="button">&larr;<?= lang('back_home') ?></a></div>
                             </form>
                         </div>
                     </div>
