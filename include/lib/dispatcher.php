@@ -47,6 +47,14 @@ class Dispatcher {
 
         $urlMode = Option::get('isurlrewrite');
         foreach ($this->_routingTable as $route) {
+/*vot*/     if(is_win()) {
+                if(isset($route['reg_0'])) {
+                    $route['reg_0'] .= 'i';
+                }
+                if(isset($route['reg'])) {
+                    $route['reg'] .= 'i';
+                }
+            }
             $reg = isset($route['reg_' . $urlMode]) ? $route['reg_' . $urlMode] : (isset($route['reg']) ? $route['reg'] : $route['reg_0']);
             if (preg_match($reg, $this->_path, $matches)) {
                 $this->_model = $route['model'];

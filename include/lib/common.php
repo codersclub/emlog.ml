@@ -77,10 +77,6 @@ function realUrl() {
 
 /*vot*/ $emlog_path = EMLOG_ROOT . '/';
     $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
-/*vot*/ if(is_win()) {
-/*vot*/     $emlog_path = strtolower($emlog_path);
-/*vot*/     $script_path = str_replace('\\', '/', $script_path);
-/*vot*/ }
     $path_element = explode('/', $script_path);
 
     $this_match = '';
@@ -94,6 +90,7 @@ function realUrl() {
         }
         $current_deep++;
     }
+
     $best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
 
     $protocol = 'http://';
