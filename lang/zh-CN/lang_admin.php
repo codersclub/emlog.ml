@@ -596,6 +596,7 @@ $lang = array(
     'login' => '登录',//'Login',
     'user_name' => '用户昵称',//'User name',
     'password' => '密码',//'Password',
+    'password_confirm' => '确认密码',//'Confirm Password',
     'remember_me' => '记住我',//'Remember me',
     'log_in' => ' 登 录 ',//' Log in ',
     'back_home' => '返回首页',//'Back to home',
