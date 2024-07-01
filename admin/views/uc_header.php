@@ -45,8 +45,8 @@
         <nav class="my-2 my-md-0 mr-md-auto">
             <a class="p-2" href="./"><?= lang('user_center') ?></a>
 <!--vot-->  <a class="p-2" href="article.php"><?= lang('articles') ?></a>
-            <a class="p-2" href="media.php"><?= lang('resources') ?></a>
-            <a class="p-2" href="comment.php"><?= lang('comments') ?></a>
+<!--vot-->  <a class="p-2" href="media.php"><?= lang('resources') ?></a>
+<!--vot-->  <a class="p-2" href="comment.php"><?= lang('comments') ?></a>
             <?php doAction('user_menu') ?>
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">

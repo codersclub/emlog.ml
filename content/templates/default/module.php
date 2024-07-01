@@ -313,8 +313,8 @@ function blog_navi() {
                 }
                 if ($value['url'] == 'admin' && (!User::isVisitor())):
                     ?>
-                    <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/" class="nav-link"><?= lang('site_management') ?></a></li>
-                    <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/account.php?action=logout" class="nav-link"><?= lang('logout') ?></a></li>
+                    <li class="list-item list-menu nav-link"><a href="<?= BLOG_URL ?>admin/"><?= lang('site_management') ?></a></li>
+                    <li class="list-item list-menu nav-link"><a href="<?= BLOG_URL ?>admin/account.php?action=logout"><?= lang('logout') ?></a></li>
                     <?php
                     continue;
                 endif;
@@ -323,12 +323,12 @@ function blog_navi() {
                 $current_tab = BLOG_URL . trim(Dispatcher::setPath(), '/') == $value['url'] ? 'active' : '';
                 ?>
                 <?php if (!empty($value['children']) || !empty($value['childnavi'])) : ?>
-                <li class="list-item list-menu">
+                <li class="list-item list-menu nav-link">
                     <?php if (!empty($value['children'])): ?>
-                        <a class="nav-link has-down" id="nav_link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= $value['naviname'] ?></a>
+                        <a class="has-down" id="nav_link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= $value['naviname'] ?></a>
                         <ul class="dropdown-menus">
                             <?php foreach ($value['children'] as $row) {
-                                echo '<li class="list-item list-menu"><a class="nav-link" href="' . Url::sort($row['sid']) . '">' . $row['sortname'] . '</a></li>';
+                                echo '<li class="list-item list-menu nav-link"><a href="' . Url::sort($row['sid']) . '">' . $row['sortname'] . '</a></li>';
                             } ?>
                         </ul>
                     <?php endif ?>
@@ -337,17 +337,16 @@ function blog_navi() {
                         <ul class="dropdown-menus">
                             <?php foreach ($value['childnavi'] as $row) {
                                 $newtab = $row['newtab'] == 'y' ? 'target="_blank"' : '';
-                                echo '<li class="list-item list-menu"><a class="nav-link" href="' . $row['url'] . "\" $newtab >" . $row['naviname'] . '</a></li>';
+                                echo '<li class="list-item list-menu nav-link"><a href="' . $row['url'] . "\" $newtab >" . $row['naviname'] . '</a></li>';
                             } ?>
                         </ul>
                     <?php endif ?>
                 </li>
             <?php else: ?>
-<!--vot-->      <li class="list-item list-menu"><a class="nav-link" href="<?= $value['url'] ?>" <?= $newtab ?>><?= lang($value['naviname']) ?></a></li>
+<!--vot-->      <li class="list-item list-menu nav-link"><a href="<?= $value['url'] ?>" <?= $newtab ?>><?= lang($value['naviname']) ?></a></li>
             <?php endif ?>
             <?php endforeach ?>
-            <li class="list-item list-menu"><span class="iconfont icon-DarkTheme" id="theme-toggle"></span></li>
-<!--vot-->  <li class="list-item list-menu drop">
+<!--vot-->  <li class="list-item list-menu drop nav-link">
                 <span class="toggle"><?= lang('language') ?>:&nbsp;<img src="<?= ROOT_URL ?>lang/<?= LANG ?>/flag.gif"></span>
                 <div class="down"><!-- RIGHT -->
                 <?php
@@ -358,6 +357,7 @@ function blog_navi() {
                 <?php } ?>
                 </div>
 <!--vot-->  </li>
+<!--vot-->  <li class="list-item list-menu nav-link"><?= lang('theme') ?>:<span class="iconfont icon-DarkTheme" id="theme-toggle"></span></li>
         </ul>
     </div>
 <?php } ?>
