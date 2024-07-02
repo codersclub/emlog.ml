@@ -7,6 +7,7 @@ $lang = array(
 	'Home'			=> 'Главная',//'首页',
 	'theme'			=> 'Тема',//'主题',
 	'about'			=> 'О проекте',//'About',
+	'Blog'			=> 'Блог',//'Blog',
 	'blog'			=> 'Блог',//'Blog',
 	'download'		=> 'Скачать',//'Download',
 	'docs'			=> 'Документация',//'Docs',

@@ -8,6 +8,7 @@ $lang = array(
 	'theme'			=> '主题',//'Theme',
 	'about'			=> '关于',//'About',
 	'blog'			=> '博客',//'Blog',
+	'Blog'			=> '博客',//'Blog',
 	'download'		=> '下载',//'Download',
 	'docs'			=> '文档',//'Docs',
 	'twitters'		=> '微语',//'Notes',
