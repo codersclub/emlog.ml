@@ -128,7 +128,7 @@ if ($action == 'update') {
     if ($User_Model->isUserExist($login, $uid)) {
         emDirect("./user.php?action=edit&uid={$uid}&error_exist=1");
     }
-    if (strlen($password) > 0 && strlen($password) < 6) {
+/*vot*/    if (strlen($password) > 0 && strlen($password) < 5) { // Minimum 5 characters
         emDirect("./user.php?action=edit&uid={$uid}&error_pwd_len=1");
     }
     if ($password != $password2) {
