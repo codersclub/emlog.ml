@@ -84,7 +84,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><?= lang('thelink') ?></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('link') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -112,7 +112,7 @@
                 <div class="modal-footer">
                     <input type="hidden" value="" name="linkid" id="linkid"/>
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
-                    <button type="submit" class="btn btn-sm btn-success"><?= lang('link_add') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('link_save') ?></button>
                     <span id="alias_msg_hook"></span>
                 </div>
             </form>

@@ -589,7 +589,9 @@ $lang = array(
     'no_links' => 'No link added yet',//'还没有添加链接',
     'name' => 'Name',//'名称',
     'link_url' => 'Link URL',//'地址',
+    'icon_url' => 'Icon URL',//'图标网址',
     'site_and_url_empty' => 'Site name and address can not be empty',//'名称和地址不能为空',
+    'link_save' => 'Save link',//'保存链接',
 
 //---------------------------
 //admin/views/login.php
