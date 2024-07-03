@@ -24,7 +24,7 @@ $lang = array(
 'tag_delete_ok'        => 'Tag has been removed successfully',//'删除标签成功',
 'tag_modify_ok'        => 'Tag has been modified successfully',//'修改标签成功',
 'tag_select_to_delete' => 'Please, select tag that you want to delete',//'请选择要删除的标签',
-'tags_no_info'         => 'No tags yet! You can play with tags when writing a post',//'还没有标签，写文章的时候可以给文章打标签',
+'tags_no_info'         => 'There are no tags yet. You can add tags when writing articles.',//'还没有标签，写文章时可以打标签',
 'tag_delete_sure'      => 'Are you sure you want to delete the selected tags?',//'你确定要删除所选标签吗？',
 
 //---------------------------

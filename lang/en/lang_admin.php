@@ -160,7 +160,7 @@ $lang = array(
 //admin/template.php
     'ok_for_emlog' => 'Suitable for Emlog: ',//'适用于emlog: ',
     'template_upload_failed' => 'Template upload failed',//'模板上传失败',
-    'template_used' => 'You can not delete a template being used',//'您不能删除正在使用的模板',
+    'template_used' => 'You can not delete a template being used',//'不能删除正在使用的模板',
 
 //---------------------------
 //admin/views/add_log.php
@@ -503,9 +503,9 @@ $lang = array(
     'advantage5' => '5. Comes with a variety of paid applications (hardcore SVIP only).',//'5. 附赠多款收费应用（限铁杆SVIP）。',
     'advantage6' => '6. "Give me a peach and give me a plum in return." Your support will also help emlog become better and continue to be updated.',//'6. "投我以桃，报之以李"，您的支持也将帮助emlog变的更好并持续更新下去。',
     'register_now' => 'Register now',//'现在去注册',
-    'click_to_register' => 'click to register',//'点击去注册',
+    'click_to_register' => 'Click to register',//'点击去注册',
     'emlog_registered_ok' => 'Congratulations, your EMLOG has been registered.',//'恭喜，您的EMLOG已经完成注册。',
-    'em_reg_ok' => '&#x1F389; Congratulations, you have successfully completed the registration &#x1F389;',//'&#x1F389; 恭喜您，已经成功完成注册 &#x1F389;',
+    'em_reg_ok' => '&#x1F389; Congratulations, you have successfully completed the registration &#x1F389;',//'&#x1F389; 恭喜，成功完成注册 &#x1F389;',
     'register_emlog' => 'Register EMLOG PRO',//'注册EMLOG PRO',
     'enter_emkey' => 'Please enter the registration code',//'请输入注册码',
     'reg_failed' => 'Registration failed. May be the registration code is incorrect, or the server cannot access the official website emlog.net.',//'注册失败了，可能是注册码不正确，或服务器无法访问官网 emlog.net',
@@ -976,7 +976,7 @@ $lang = array(
 //---------------------------
 //admin/views/store_mine.php
     'contact_to_install' => 'Please contact the author to install',//'请联系作者安装',
-    'no_my_apps' => 'You have not purchased any apps.',//'你还没有购买任何应用。',
+    'no_my_apps' => 'You have not purchased any apps.',//'还没有购买任何应用。',
     'install_app' => 'Install app',//'安装应用',
     'not_paid_user' => 'You are not a paid registered user and cannot use the functions purchased in the app store.',//'您还不是付费注册用户，无法使用应用商店已购功能，',
     'paid_support' => 'Paid Support',//'付费支持',
@@ -1102,7 +1102,7 @@ $lang = array(
 //admin/views/user.php
     'user_management' => 'Users',//'用户',
     'user_modify_ok' => 'User data has been modified successfully',//'修改用户资料成功',
-    'user_add_ok' => 'User has been added successfully',//'添加用户成功',
+    'user_add_ok' => 'Modified successfully',//'修改成功',
     'user_name_empty' => 'Username cannot be empty',//'用户名不能为空',
     'user_name_exists' => 'The username already exists',//'该用户名已存在',
     'passwords_not_equal' => 'Entered twice passwords are not equal',//'两次输入密码不一致',
@@ -1128,7 +1128,7 @@ $lang = array(
     'login_ip' => 'Login IP',//'登录IP',
     'last_login_time' => 'Last active time',//'更新/登录时间',
     'search_by_email' => 'Search E-mail or username...',//'输入邮箱或用户昵称搜索...',
-    'email_empty' => 'E-mail can not be empty',//'邮箱不能为空',
+    'email_empty' => 'Email and Username cannot both be empty',//'邮箱和用户名不能都为空',
     'email_is_used' => 'This email is used already',//'该邮箱已被占用',
     'user_ban_ok' => 'Locked successfully, the user can no longer log in',//'禁用成功，该用户无法再登录',
     'user_unban_ok' => 'Unlocked successfully',//'解禁成功',

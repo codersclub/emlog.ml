@@ -162,7 +162,7 @@ $lang = array(
 'new_comment_review'         => '你的文章收到新的评论',//'Your article has received a new comment',
 'new_comment_is'             => '评论内容：',//'Comment content: ',
 'from_article'			=> '来自文章',//'From article: ',
-'email_verif_code_title'	=> '邮件验证码',//'Email verification code';
+'email_verif_code_title'	=> '邮件验证码',//'Email verification code',
 'email_verif_code'		=> '邮件验证码：',//'Email Verification Code: '
 
 //---------------------------------------
