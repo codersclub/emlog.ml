@@ -158,7 +158,7 @@ if ($action == 'send_email_code') {
 /*vot*/ Output::error(lang('email_wrong'));
     }
 
-    $ret = Notice::sendRegMailCode($mail);
+    $ret = Notice::sendVerifyMailCode($mail);
     if ($ret) {
         Output::ok();
     } else {

@@ -13,6 +13,11 @@ class User {
     const ROLE_VISITOR = 'visitor'; // Guest
     const ROLE_EDITOR = 'editor';   // Content editor
 
+    static function isFounder($role = ROLE, $uid = UID) {
+        $uid = (int)$uid;
+        return $role == self::ROLE_ADMIN && $uid === 1;
+    }
+
     static function isAdmin($role = ROLE) {
         return $role == self::ROLE_ADMIN;
     }

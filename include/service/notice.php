@@ -9,8 +9,8 @@
 
 class Notice {
 
-    // Send user registration verification code email
-    public static function sendRegMailCode($mail) {
+    // Send verification code email
+    public static function sendVerifyMailCode($mail) {
         if (!self::smtpServerReady()) {
             return false;
         }
@@ -22,7 +22,7 @@ class Notice {
         $_SESSION['mail'] = $mail;
 
 /*vot*/ $title = lang('email_verif_code_title');
-        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<span>%s</span></div>', $randCode);
+        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<b style="color: orange;">%s</b></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }
 

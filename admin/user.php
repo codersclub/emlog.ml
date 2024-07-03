@@ -98,7 +98,7 @@ if ($action == 'edit') {
 }
 
 if ($action == 'update') {
-    $login = isset($_POST['username']) ? addslashes(trim($_POST['username'])) : '';
+    $username = isset($_POST['username']) ? addslashes(trim($_POST['username'])) : '';
     $nickname = isset($_POST['nickname']) ? addslashes(trim($_POST['nickname'])) : '';
     $password = isset($_POST['password']) ? addslashes(trim($_POST['password'])) : '';
     $password2 = isset($_POST['password2']) ? addslashes(trim($_POST['password2'])) : '';
@@ -109,23 +109,23 @@ if ($action == 'update') {
 
     LoginAuth::checkToken();
 
-    if (UID == $uid) {
-        emDirect('./user.php');
-    }
     //Founder account can not be edited by others
-    if ($uid == 1) {
+    if (!User::isFounder() && $uid === 1) {
         emDirect('./user.php?error_del_b=1');
+    }
+    if ($uid === 1) {
+        $role = User::ROLE_ADMIN;
     }
     if (empty($nickname)) {
         emDirect("./user.php?action=edit&uid={$uid}&error_nickname=1");
     }
-    if (empty($email)) {
+    if (empty($email) && empty($username)) {
         emDirect("./user.php?action=edit&uid={$uid}&error_email=1");
     }
     if ($User_Model->isMailExist($email, $uid)) {
         emDirect("./user.php?action=edit&uid={$uid}&error_exist_email=1");
     }
-    if ($User_Model->isUserExist($login, $uid)) {
+    if ($User_Model->isUserExist($username, $uid)) {
         emDirect("./user.php?action=edit&uid={$uid}&error_exist=1");
     }
 /*vot*/    if (strlen($password) > 0 && strlen($password) < 5) { // Minimum 5 characters
@@ -136,7 +136,7 @@ if ($action == 'update') {
     }
 
     $userData = [
-        'username'    => $login,
+        'username'    => $username,
         'nickname'    => $nickname,
         'email'       => $email,
         'description' => $description,

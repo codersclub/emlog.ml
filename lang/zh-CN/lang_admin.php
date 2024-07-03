@@ -160,7 +160,7 @@ $lang = array(
 //admin/template.php
     'ok_for_emlog' => '适用于emlog: ',//'Suitable for Emlog: ',
     'template_upload_failed' => '模板上传失败， 错误码：',//'Template upload failed, error code: ',
-    'template_used' => '您不能删除正在使用的模板',//'You can not delete a template being used',
+    'template_used' => '不能删除正在使用的模板',//'You can not delete a template being used',
 
 //---------------------------
 //admin/views/add_log.php
@@ -505,7 +505,7 @@ $lang = array(
     'register_now' => '现在去注册',//'Register now',
     'click_to_register' => '点击注册',//'Click to register',
     'emlog_registered_ok' => '恭喜，您的EMLOG已经完成注册。',//'Congratulations, your EMLOG has been registered.',
-    'em_reg_ok' => '&#x1F389; 恭喜您，已经成功完成注册 &#x1F389;',//'&#x1F389; Congratulations, you have successfully completed the registration &#x1F389;',
+    'em_reg_ok' => '&#x1F389; 恭喜，成功完成注册 &#x1F389;',//'&#x1F389; Congratulations, you have successfully completed the registration &#x1F389;',
     'register_emlog' => '注册EMLOG PRO',//'Register EMLOG PRO',
     'enter_emkey' => '请输入注册码',//'Please enter the registration code',
     'reg_failed' => '注册失败了，可能是注册码不正确，或服务器无法访问官网 emlog.net',//'Registration failed. May be the registration code is incorrect, or the server cannot access the official website emlog.net.',
@@ -976,7 +976,7 @@ $lang = array(
 //---------------------------
 //admin/views/store_mine.php
     'contact_to_install' => '请联系作者安装',//'Please contact the author to install',
-    'no_my_apps' => '您还没有购买任何应用。',//'You have not purchased any apps.',
+    'no_my_apps' => '还没有购买任何应用。',//'You have not purchased any apps.',
     'install_app' => '安装应用',//'Install app',
     'not_paid_user' => '您还不是付费注册用户，无法使用应用商店已购功能，',//'You are not a paid registered user and cannot use the functions purchased in the app store.',
     'paid_support' => '付费支持',//'Paid Support',
@@ -1101,7 +1101,7 @@ $lang = array(
 //---------------------------
 //admin/views/user.php
     'user_management' => '用户',//'Users',
-    'user_modify_ok' => '修改用户资料成功',//'User data has been modified successfully',
+    'user_modify_ok' => '修改成功',//'Modified successfully',
     'user_add_ok' => '添加用户成功',//'User has been added successfully',
     'user_name_empty' => '用户名不能为空',//'Username cannot be empty',
     'user_name_exists' => '该用户名已存在',//'The username already exists',
@@ -1128,7 +1128,7 @@ $lang = array(
     'login_ip' => '登录IP',//'Login IP',
     'last_login_time' => '更新/登录时间',//'Last active time',
     'search_by_email' => '输入邮箱或用户昵称搜索...',//'Email or username to search...',
-    'email_empty' => '邮箱不能为空',//'E-mail can not be empty',
+    'email_empty' => '邮箱和用户名不能都为空',//'E-mail can not be empty',
     'email_is_used' => '该邮箱已被占用',//'This email is used already',
     'user_ban_ok' => '禁用成功，该用户无法再登录',//'Locked successfully, the user can no longer log in',
     'user_unban_ok' => '解禁成功',//'Unlocked successfully',

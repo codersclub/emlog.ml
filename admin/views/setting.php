@@ -131,16 +131,7 @@
 <!--vot-->      <label><?=lang('admin_per_page')?></label>
 <!--vot-->      <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number" min="1" max="1000"/> <?=lang('admin_per_page_tips')?>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="accept_app_recs" id="accept_app_recs" <?= $conf_accept_app_recs ?> />
-                <label for="accept_app_recs"><?= lang('today_app_news') ?></label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="help_guide" id="help_guide" <?= $conf_help_guide ?> />
-                <label for="help_guide"><?= lang('help_turn_on') ?></label>
-            </div>
             <hr>
-
             <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
             <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
         </form>

@@ -71,11 +71,7 @@
                     <tr>
                         <td><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle"/></td>
                         <td>
-                            <?php if (UID != $val['uid']): ?>
-                                <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
-                            <?php else: ?>
-                                <a href="blogger.php"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
-                            <?php endif ?>
+                            <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
                             <span class="small"><?= $val['role'] ?></span>
                             <?php if ($forbid): ?>
                                 <span class="badge badge-warning"><?= lang('disabled') ?></span>

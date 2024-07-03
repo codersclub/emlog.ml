@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="email"><?= lang('email') ?></label>
-                <input type="email" class="form-control" value="<?= $email ?>" name="email" id="email" required>
+                <input type="email" class="form-control" value="<?= $email ?>" name="email" id="email">
             </div>
             <div class="form-group">
                 <label for="role"><?= lang('user_role') ?></label>

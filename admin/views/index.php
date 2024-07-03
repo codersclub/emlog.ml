@@ -95,20 +95,23 @@
                             <span class="small"><?= Option::get('timezone') ?></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>
-                            <?php if (!Register::isRegLocal()) : ?>
-                                <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
-                            <?php elseif (Register::getRegType() === 2): ?>
-                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-warning"><?= lang('svip_hard') ?></a>
-                            <?php elseif (Register::getRegType() === 1): ?>
-                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('vip_friend') ?></a>
-                            <?php else: ?>
-                                <span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span> <a href="https://www.emlog.net/register" class="badge badge-success"><?= lang('registered') ?></a>
-                            <?php endif ?>
-                                </span>
-                            <span>
+                            <div>
+                                <?php if (!Register::isRegLocal()) : ?>
+                                    <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
+                                <?php else: ?>
+                                    <a href="https://www.emlog.net" target="_blank"><span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span></a>
+                                    <?php if (Register::getRegType() === 2): ?>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-warning">铁杆SVIP</a>
+                                    <?php elseif (Register::getRegType() === 1): ?>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success">友情VIP</a>
+                                    <?php else: ?>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success">已注册</a>
+                                    <?php endif ?>
+                                <?php endif; ?>
+                            </div>
+                            <div>
                                 <a id="ckup" href="javascript:checkUpdate();" class="badge badge-success d-flex align-items-center"><span><?= lang('update_check') ?></span></a>
-                            </span>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -135,16 +138,6 @@
                 </div>
             </div>
         <?php endif ?>
-        <?php if (option::get('help_guide') === 'y'): ?>
-            <div class="col-lg-6 mb-3">
-                <div class="card shadow mb-3">
-                    <h6 class="card-header"><?= lang('official_news') ?></h6>
-                    <div class="card-body admin_index_list">
-                        <ul class="list-group list-group-flush">
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('help_faq') ?></a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/contact/" target="_blank"><?= lang('contacts') ?></a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="<?= ROOT_URL ?>/docs/develop/" target="_blank"><?= lang('app_development') ?></a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml" target="_blank">Emlog.ML at github</a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
                     </ul>
@@ -158,23 +151,6 @@
                         <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog" target="_blank">Chinese emlog at github</a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog/discussions" target="_blank"><?= lang('feedback') ?></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
-        <?php if (Register::isRegLocal() && option::get('accept_app_recs') === 'y'): ?>
-            <div class="col-lg-6 mb-3">
-                <div class="card mb-3">
-                    <h6 class="card-header"><?= lang('app_recommended') ?></h6>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush" id="app-list">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <script>loadTopAddons();</script>
-        <?php endif; ?>
     </div>
     <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="update-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
