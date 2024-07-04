@@ -80,13 +80,13 @@ if ($action === 'change_email') {
     $mail_code = Input::postStrVar('mail_code');
 
     if (!checkMail($email)) {
-        Output::error('请正确填写邮箱');
+/*vot*/        Output::error(lang('email_enter_please'));
     } elseif ($User_Model->isMailExist($email, UID)) {
-        Output::error('邮箱已被占用');
+/*vot*/        Output::error(lang('email_used'));
     }
 
     if (!User::checkMailCode($mail_code)) {
-        Output::error('验证码错误');
+/*vot*/        Output::error(lang('captcha_invalid'));
     }
 
     $d = [

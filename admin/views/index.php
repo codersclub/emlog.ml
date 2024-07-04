@@ -101,11 +101,11 @@
                                 <?php else: ?>
                                     <a href="https://www.emlog.net" target="_blank"><span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span></a>
                                     <?php if (Register::getRegType() === 2): ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-warning">铁杆SVIP</a>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-warning"><?= lang('svip_hard') ?></a>
                                     <?php elseif (Register::getRegType() === 1): ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success">友情VIP</a>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('vip_friend') ?></a>
                                     <?php else: ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success">已注册</a>
+                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('registered_already') ?></a>
                                     <?php endif ?>
                                 <?php endif; ?>
                             </div>

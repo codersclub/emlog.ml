@@ -118,7 +118,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">修改邮箱</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><?= lang('email_modify') ?></h5>
                 <span id="message" class="small ml-5"></span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -127,19 +127,19 @@
             <div class="modal-body">
                 <form action="blogger.php?action=change_email" id="email_setting_form" method="post">
                     <div class="form-group">
-                        <label>邮箱</label>
+                        <label><?= lang('email') ?></label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="邮件验证码" name="mail_code" required>
+                        <input type="text" class="form-control" placeholder="<?= lang('email_verification_code') ?>" name="mail_code" required>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-success" type="button" id="button-send-auth-email">发送验证码</button>
+                            <button class="btn btn-outline-success" type="button" id="button-send-auth-email"><?= lang('captcha_send') ?></button>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-sm btn-success">保存</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                        <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>
             </div>
@@ -167,21 +167,21 @@
             $("#editPasswordModal").modal('hide');
         });
 
-        // 修改邮箱表单提交
+        // Modify email form submission
         $("#email_setting_form").submit(function (event) {
             event.preventDefault();
-            submitForm("#email_setting_form", '邮箱修改成功');
+/*vot*/     submitForm("#email_setting_form", lang('email_modified_ok'));
             $("#editEmailModal").modal('hide');
         });
 
-        // 修改邮箱
+        // Modify Email
         $('#editEmailModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget)
             var email = button.data('email')
             var modal = $(this)
             modal.find('.modal-body #email').val(email)
         })
-        // 邮箱验证
+        // Email Verification
         $('#button-send-auth-email').click(function () {
             var email = $('#email').val();
             var $btn = $(this);
@@ -189,10 +189,10 @@
             $btn.prop('disabled', true);
             var count = 60;
             var countdown = setInterval(function () {
-                $btn.text('重新发送 (' + count + ')');
+/*vot*/         $btn.text(lang('resend') + ' (' + count + ')');
                 if (count == 0) {
                     clearInterval(countdown);
-                    $btn.text('发送验证码');
+/*vot*/             $btn.text(lang('captcha_send'));
                     $btn.prop('disabled', false);
                 }
                 count--;
@@ -203,12 +203,12 @@
                 method: 'POST',
                 data: {mail: email},
                 success: function (response) {
-                    $message.text('验证码已发送，请查收邮件').css('color', 'green');
+/*vot*/             $message.text(lang('captcha_sent_ok')).css('color', 'green');
                 },
                 error: function (data) {
                     $message.text(data.responseJSON.msg).css('color', 'red');
                     clearInterval(countdown);
-                    $btn.text('发送验证码');
+/*vot*/             $btn.text(lang('captcha_send'));
                     $btn.prop('disabled', false);
                 }
             });
