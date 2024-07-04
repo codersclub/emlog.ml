@@ -28,6 +28,8 @@ $lang = array(
 //---------------------------
 //admin/blogger.php
     'avatar_delete' => 'Delete avatar',//'删除头像',
+    'email_used' => 'This mailbox is used already',//'邮箱已被占用',
+    'captcha_invalid' => 'Invalid captcha.',//'验证码错误',
 
 //---------------------------
 //admin/data.php
@@ -380,6 +382,8 @@ $lang = array(
     'operation' => 'Operation',//'操作',
     'comment_selected_delete_sure' => 'Are you sure you want to delete the selected comments?',//'确定要删除所选评论吗？',
     'article_all_comments' => 'This article comments',//'该文所有评论',
+    'email_modify' => 'Modify Email',//'修改邮箱',
+    'captcha_send' => 'Send verification code',//'发送验证码',
 
 //---------------------------
 //admin/views/data.php

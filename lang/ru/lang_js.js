@@ -15,6 +15,10 @@ var LNG = {
 
 // admin/views/blogger.php
     'password_changed_ok' : 'Пароль успешно изменён, выйдите и зайдите снова',//'密码修改成功, 请退出重新登录',
+    'email_modified_ok' : 'Email успешно изменён',//'邮箱修改成功',
+    'resend' : 'Отправить заново',//'重新发送',
+    'captcha_send' : 'Отправить код верификации',//'发送验证码',
+    'captcha_sent_ok' : 'Проверочный код успешно отправлен. Проверьте Ваш почтовый ящик',//'验证码已发送，请查收邮件',
 
 // admin/views/comment.php
     'comment_operation_select'     : 'Пожалуйста, выберите комментарий',//'请选择评论',
@@ -181,6 +185,10 @@ var LNG = {
 'delete'		: 'Удалить',//'删除',
 'public_download'	: 'Бесплатные загрузки',//'公开下载',
 'user_download'		: 'Пользовательские загрузки',//'用户下载',
+
+//---------------------------
+//admin/views/components/message.min.js
+    'is_loading': 'Загрузка',//'正在加载',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

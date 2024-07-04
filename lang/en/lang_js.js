@@ -15,6 +15,10 @@ var LNG = {
 
 // admin/views/blogger.php
     'password_changed_ok' : 'Password changed successfully, please log out and log in again',//'密码修改成功, 请退出重新登录',
+    'email_modified_ok' : 'Email modified successfully',//'邮箱修改成功',
+    'resend' : 'Resend',//'重新发送',
+    'captcha_send' : 'Send verification code',//'发送验证码',
+    'captcha_sent_ok' : 'Verification code has been sent, please check your email',//'验证码已发送，请查收邮件',
 
 // admin/views/comment.php
     'comment_operation_select': 'Please select a comment',//'请选择评论',
@@ -181,6 +185,10 @@ var LNG = {
     'delete': 'Delete',//'删除',
     'public_download': 'Public Downloads',//'公开下载',
     'user_download': 'User downloads',//'用户下载',
+
+//---------------------------
+//admin/views/components/message.min.js
+    'is_loading': 'Loading',//'正在加载',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!
