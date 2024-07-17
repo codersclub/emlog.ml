@@ -58,7 +58,7 @@ $lang = array(
 
 //---------------------------
 //admin/media.php
-    'upload_restricted' => '抱歉，系统限制用户上传资源',//'Sorry, the system restricts users from uploading resources',
+    'upload_restricted' => '系统关闭了资源上传',//'Resource upload is restricted',
 
 //---------------------------
 //admin/plugin.php
@@ -142,15 +142,15 @@ $lang = array(
     'tpl_category_18' => '微信生态',//'WeChat Ecosystem',
     'tpl_category_19' => '企业展示',//'Enterprise Show',
     'plu_category_20' => '编辑器',//'Editor',
-    'free_zone' => '仅看免费',//'Free only',
-    'paid_zone' => '仅看付费',//'Paid only',
+    'free_zone' => '免费',//'Free only',
+    'paid_zone' => '付费',//'Paid only',
     'search_by_category' => '按分类查找',//'Search by category',
     'rank_free'	=> '免费排行榜',//'Free ranking',
     'rank_paid'	=> '付费排行榜',//'Paid ranking',
     'free_apps' => '免费应用',//'Free apps',
     'paid_apps' => '付费应用',//'Paid apps',
-    'top_down'	=> '下载排行榜',//'Top downloads',
-    'top_paid'	=> '购买排行榜',//'Top paid',
+    'top_down'	=> '下载排行',//'Top downloads',
+    'top_paid'	=> '购买排行',//'Top paid',
 
 //---------------------------
 //admin/style.php
@@ -848,7 +848,7 @@ $lang = array(
     'article_settigs' => '文章设置',//'Article Settings',
     'upload_settings' => '上传设置',//'Upload settings',
     'comment_settings' => '评论设置',//'Comment settings',
-    'rss_url' => 'RSS地址(用于RSS阅读器订阅你的站点内容)',//'RSS URL (for RSS readers to subscribe to your site content)',
+    'rss_url' => 'RSS订阅地址 (用于RSS阅读器订阅站点内容)',//'RSS subscription address (for RSS readers to subscribe to site content)',
     'other_settings' => '面板设置',//'Panel settings',
     'admin_per_page' => '后台每页展示条目数量',//'The number of items displayed per page in the admin panel',
     'admin_per_page_tips' => '（影响后台文章、评论、用户列表）',//'(Affect background articles, comments, user lists)',
@@ -904,7 +904,7 @@ $lang = array(
     'if_0_upload_disabled' => '（为0同时禁止上传图文资源）',//'(0 means prohibit uploading of graphic resources)',
     'article_alias' => '用户中心文章别名：',//'User center article alias:',
     'article_alias_prompt' => '如：帖子、投稿、资源等',//'Such as: posts, contributions, resources, etc.',
-    'disable_upload' => '注册用户禁止上传图文资源',//'Registered users are prohibited from uploading graphic resources',
+    'disable_upload' => '禁止注册用户上传图文资源',//'Prohibit registered users from uploading graphic resources',
 
 //---------------------------
 //admin/views/signin.php
@@ -997,7 +997,7 @@ $lang = array(
     'this_author_only' => '仅看Ta的作品',//'View only this author items',
     '_plugins' => '个插件',//' plugins',// Number of plugins
     'recommend_today' => '今日推荐',//'Recommended today',
-    'limited_offer' => '限时优惠',//'Limited Time Offer',
+    'limited_offer' => '优惠',//'Limited Offer',
     'download_count' => '下载次数',//'Downloads',
 
 //---------------------------

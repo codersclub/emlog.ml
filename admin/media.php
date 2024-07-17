@@ -22,6 +22,7 @@ if (empty($action)) {
     $page = Input::getIntVar('page', 1);
     $date = Input::getStrVar('date');
     $uid = Input::getIntVar('uid');
+    $keyword = Input::getStrVar('keyword');
 
     if (!User::haveEditPermission()) {
         $uid = UID;
@@ -32,9 +33,10 @@ if (empty($action)) {
     $page_url .= $sid ? "sid=$sid&" : '';
     $page_url .= $date ? "date=$date&" : '';
     $page_url .= $uid ? "uid=$uid&" : '';
+    $page_url .= $keyword ? "keyword=$keyword&" : '';
     $dateTime = $date . ' 23:59:59';
-    $medias = $Media_Model->getMedias($page, $page_count, $uid, $sid, $dateTime);
-    $count = $Media_Model->getMediaCount($uid, $sid, $dateTime);
+    $medias = $Media_Model->getMedias($page, $page_count, $uid, $sid, $dateTime, $keyword);
+    $count = $Media_Model->getMediaCount($uid, $sid, $dateTime, $keyword);
     $page = pagination($count, $page_count, $page, $page_url . 'page=');
 
     $sorts = $MediaSortModel->getSorts();
@@ -91,25 +93,13 @@ if ($action === 'upload') {
         $attach = isset($_FILES['editormd-image-file']) ? $_FILES['editormd-image-file'] : '';
     }
 
-    // Registered users are limited to the number of posts they can post in a 24-hour period (including drafts). When the limit is 0, posting tweets and uploading graphic resources are prohibited.
     if (!User::haveEditPermission() && Option::get('forbid_user_upload') === 'y') {
-        $ret['message'] = lang('upload_restricted');
-        if ($editor) {
-            exit(json_encode($ret));
-        } else {
-            header("HTTP/1.0 400 Bad Request");
-            exit($ret['message']);
-        }
+        Media::uploadRespond(['message' => lang('upload_restricted')], $editor);
     }
 
-    if (!$attach || $attach['error'] === 4) {
-        if ($editor) {
-            echo json_encode(['success' => 0, 'message' => 'upload error']);
-        } else {
-            header("HTTP/1.0 400 Bad Request");
-            echo "upload error";
-        }
-        exit;
+    $uploadCheckResult = Media::checkUpload($attach);
+    if ($uploadCheckResult !== true) {
+        Media::uploadRespond(['message' => $uploadCheckResult], $editor);
     }
 
     $ret = '';
@@ -118,21 +108,11 @@ if ($action === 'upload') {
     doOnceAction('upload_media', $attach, $ret);
 
     if (empty($ret['success'])) {
-        if ($editor) {
-            echo json_encode($ret);
-        } else {
-            header("HTTP/1.0 400 Bad Request");
-            echo $ret['message'];
-        }
-        exit;
+        Media::uploadRespond($ret, $editor);
     }
 
     $aid = $Media_Model->addMedia($ret['file_info'], $sid);
-    if ($editor) {
-        echo json_encode($ret);
-    } else {
-        echo 'success';
-    }
+    Media::uploadRespond($ret, $editor, true);
 }
 
 if ($action === 'delete') {

@@ -1,12 +1,14 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <?php if (isset($_GET['add_shortcut_suc'])): ?>
-    <div class="alert alert-success"><?= lang('set_ok') ?></div><?php endif ?>
+    <div class="alert alert-success"><?= lang('set_ok') ?></div>
+<?php endif ?>
+<?php endif ?>
     <div class="d-flex align-items-center mb-3">
         <div class="flex-shrink-0">
             <a class="mr-2" href="blogger.php">
                 <img src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>"
                      alt="avatar" class="img-fluid rounded-circle border border-mute border-3"
-                     style="width: 56px;">
+                     style="width: 56px; height: 56px;">
             </a>
         </div>
         <div class="flex-grow-1 ms-3">
@@ -69,57 +71,59 @@
             </div>
         </div>
         <?php if (User::isAdmin()): ?>
-        <div class="col-lg-6 mb-3">
-            <div class="card shadow mb-3">
-                <h6 class="card-header"><?= lang('software_info') ?></h6>
-                <div class="card-body">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            PHP
-                            <span class="small"><?= $php_ver ?></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <?= lang('database') ?>
-                            <span class="small">MySQL <?= $mysql_ver ?></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <?= lang('web_server') ?>
-                            <span class="small"><?= $server_app ?></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <?= lang('os') ?>
-                            <span class="small"><?= $os ?></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <?= lang('system_timezone') ?>
-                            <span class="small"><?= Option::get('timezone') ?></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <?php if (!Register::isRegLocal()) : ?>
-                                    <a href="auth.php"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?>, <?= lang('click_to_register') ?></span></a>
-                                <?php else: ?>
-                                    <a href="https://www.emlog.net" target="_blank"><span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span></a>
-                                    <?php if (Register::getRegType() === 2): ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-warning"><?= lang('svip_hard') ?></a>
-                                    <?php elseif (Register::getRegType() === 1): ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('vip_friend') ?></a>
+            <div class="col-lg-6 mb-3">
+                <div class="card shadow mb-3">
+                    <h6 class="card-header"><?= lang('software_info') ?></h6>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                PHP
+                                <span class="small"><?= $php_ver ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= lang('database') ?>
+                                <span class="small">MySQL <?= $mysql_ver ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= lang('web_server') ?>
+                                <span class="small"><?= $server_app ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= lang('os') ?>
+                                <span class="small"><?= $os ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?= lang('system_timezone') ?>
+                                <span class="small"><?= Option::get('timezone') ?></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <?php if (!Register::isRegLocal()) : ?>
+                                        <a href="https://www.emlog.net/register" target="_blank"><span class="badge badge-secondary">Emlog <?= Option::EMLOG_VERSION ?> <?= lang('unregistered') ?></span></a>
                                     <?php else: ?>
-                                        <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('registered_already') ?></a>
-                                    <?php endif ?>
-                                <?php endif; ?>
-                            </div>
-                            <div>
-                                <a id="ckup" href="javascript:checkUpdate();" class="badge badge-success d-flex align-items-center"><span><?= lang('update_check') ?></span></a>
-                            </div>
-                        </li>
-                    </ul>
+                                        <a href="https://www.emlog.net" target="_blank"><span class="badge badge-success">Emlog <?= ucfirst(Option::EMLOG_VERSION) ?></span></a>
+                                        <?php if (Register::getRegType() === 2): ?>
+                                            <a href="https://www.emlog.net/register" target="_blank" class="badge badge-warning"><?= lang('svip_hard') ?></a>
+                                        <?php elseif (Register::getRegType() === 1): ?>
+                                            <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('vip_friend') ?></a>
+                                        <?php else: ?>
+                                            <a href="https://www.emlog.net/register" target="_blank" class="badge badge-success"><?= lang('registered_already') ?></a>
+                                        <?php endif ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div>
+                                    <a id="ckup" href="javascript:checkUpdate();" class="badge badge-success d-flex align-items-center"><span><?= lang('update_check') ?></span></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
     </div>
-    <div class="row">
-        <?php if (!Register::isRegLocal()) : ?>
+<?php if (User::isAdmin()): ?>
+    <?php if (!Register::isRegLocal()) : ?>
+        <div class="row">
             <div class="col-lg-6 mb-3">
                 <div class="card shadow">
                     <div class="card-header bg-danger text-white">
@@ -137,7 +141,6 @@
                     </div>
                 </div>
             </div>
-        <?php endif ?>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
                     </ul>
@@ -151,7 +154,8 @@
                         <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog" target="_blank">Chinese emlog at github</a></li>
 <!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog/discussions" target="_blank"><?= lang('feedback') ?></a></li>
-    </div>
+        </div>
+    <?php endif ?>
     <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="update-modal-label" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -170,7 +174,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade" id="shortcutModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">

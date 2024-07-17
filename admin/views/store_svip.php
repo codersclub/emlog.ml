@@ -38,7 +38,7 @@
                             <?php endif; ?>
                         </p>
                         <p class="card-text text-muted small">
-                            <?=lang('developer')?>: <?= $v['author'] ?><br>
+                            <?=lang('developer')?>: <a href="./store.php?author_id=<?= $v['author_id'] ?>"><?= $v['author'] ?></a><br>
                             <?=lang('version_number')?>: <?= $v['ver'] ?><br>
                             <?= lang('download_count') ?>: <?= $v['downloads'] ?><br>
                             <?=lang('update_time')?>: <?= $v['update_time'] ?><br>

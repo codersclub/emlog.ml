@@ -27,17 +27,18 @@ $template_categories = [
 $plugin_categories = [
     0  => lang('search_by_category'),
     20 => lang('plu_category_20'),
-    1  => lang('plu_category_1'),
     2  => lang('plu_category_2'),
+    1  => lang('plu_category_1'),
     18 => lang('plu_category_18'),
     3  => lang('plu_category_3'),
     4  => lang('plu_category_4'),
-    5  => lang('plu_category_5'),
     11 => lang('plu_category_11'),
     12 => lang('plu_category_12'),
-    14 => lang('plu_category_14'),
     13 => lang('plu_category_13'),
+    14 => lang('plu_category_14'),
     15 => lang('plu_category_15'),
+    16 => '数据采集',
+    5  => lang('plu_category_5'),
     6  => lang('plu_category_6')
 ];
 

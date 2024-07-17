@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Default template
-Version:1.1.9
+Version:1.2.1
 Template Url:https://www.emlog.net/template/detail/1167
 Description: EMLOG Default template
 Author: emlog
@@ -10,7 +10,7 @@ Author Url:https://www.emlog.net/author/index/577
 
 defined('EMLOG_ROOT') || exit('access denied!');
 require_once View::getView('module');
-$v = '1717917042';
+$v = '1720327727';
 if (!function_exists('_g')) {
     emMsg(lang('enable_tpl_settings'));
 }

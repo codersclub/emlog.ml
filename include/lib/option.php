@@ -7,8 +7,8 @@
 
 class Option {
 
-    const EMLOG_VERSION = 'pro 2.3.9';
-    const EMLOG_VERSION_TIMESTAMP = 1719973346;
+    const EMLOG_VERSION = 'pro 2.3.11';
+    const EMLOG_VERSION_TIMESTAMP = 1721139603;
     const UPLOADFILE_PATH = '../content/uploadfile/';
     const UPLOADFILE_FULL_PATH = EMLOG_ROOT . '/content/uploadfile/';
 
@@ -149,6 +149,23 @@ class Option {
 
     static function getAttMaxSize() {
         return self::get('att_maxsize') * 1024;
+    }
+
+    static function getAdminAttType() {
+        if (defined('UPLOAD_ATT_TYPE')) {
+            return explode(',', UPLOAD_ATT_TYPE);
+        } else {
+            return [
+                'rar', 'zip', '7z', 'gz',
+                'gif', 'jpg', 'jpeg', 'png', 'webp',
+                'txt', 'pdf', 'docx', 'doc', 'xls', 'xlsx', 'key', 'ppt', 'pptx',
+                'mp4', 'mp3', 'mkv', 'webm', 'avi',
+            ];
+        }
+    }
+
+    static function getAdminAttMaxSize() {
+        return (defined('UPLOAD_MAX_SIZE') ? UPLOAD_MAX_SIZE : 2097152) * 1024;
     }
 
     static function getWidgetTitle() {

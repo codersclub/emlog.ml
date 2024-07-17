@@ -685,7 +685,7 @@ class TplOptions {
             $result['msg'] = lang('file_wrong_type');
             return $result;
         }
-        $maxSize = Option::getAttMaxSize();
+        $maxSize = defined(UPLOAD_MAX_SIZE) ? UPLOAD_MAX_SIZE : 2097152;
 
         if ($file['size'] > $maxSize) {
             $result['code'] = 103;

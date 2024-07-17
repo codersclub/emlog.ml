@@ -21,13 +21,13 @@ $MediaSort_Model = new MediaSort_Model();
 $Template_Model = new Template_Model();
 
 if (empty($action)) {
-    $draft = isset($_GET['draft']) ? (int)$_GET['draft'] : 0;
-    $tagId = isset($_GET['tagid']) ? (int)$_GET['tagid'] : '';
-    $sid = isset($_GET['sid']) ? (int)$_GET['sid'] : '';
-    $uid = isset($_GET['uid']) ? (int)$_GET['uid'] : '';
-    $keyword = isset($_GET['keyword']) ? addslashes(trim($_GET['keyword'])) : '';
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $checked = isset($_GET['checked']) ? addslashes($_GET['checked']) : '';
+    $draft = Input::getIntVar('draft');
+    $tagId = Input::getIntVar('tagid');
+    $sid = Input::getIntVar('sid');
+    $uid = Input::getIntVar('uid');
+    $page = Input::getIntVar('page', 1);
+    $keyword = Input::getStrVar('keyword');
+    $checked = Input::getStrVar('checked');
 
     $sortView = (isset($_GET['sortView']) && $_GET['sortView'] == 'ASC') ? 'DESC' : 'ASC';
     $sortComm = (isset($_GET['sortComm']) && $_GET['sortComm'] == 'ASC') ? 'DESC' : 'ASC';
@@ -70,6 +70,7 @@ if (empty($action)) {
     $logNum = $Log_Model->getLogNum($hide_state, $condition, 'blog', 1);
     $logs = $Log_Model->getLogsForAdmin($condition . $orderBy, $hide_state, $page);
     $sorts = $CACHE->readCache('sort');
+    $tags = $Tag_Model->getTags();
 
     $subPage = '';
     foreach ($_GET as $key => $val) {
@@ -97,6 +98,18 @@ if ($action == 'del') {
     }
     $CACHE->updateCache();
     emDirect("./article.php?&active_del=1&draft=$draft");
+}
+
+if ($action == 'tag') {
+    $gid = Input::postIntVar('gid');
+    $tagsStr = strip_tags(Input::postStrVar('tag'));
+
+    if (!User::haveEditPermission()) {
+        emMsg('权限不足！', './');
+    }
+
+    $Tag_Model->updateTag($tagsStr, $gid);
+    emDirect("./article.php");
 }
 
 if ($action == 'operate_log') {

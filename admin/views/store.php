@@ -22,7 +22,10 @@
         <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
         <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
         <a href="./store.php?tag=download_top" class="badge badge-light text-primary m-1 p-2 small">&#x1F525;<?= lang('top_down') ?></a>
-
+        <a href="./store.php?sid=2" class="badge badge-light text-primary m-1 p-2 small">SEO</a>
+        <a href="./store.php?sid=1" class="badge badge-light text-primary m-1 p-2 small">资源下载</a>
+        <a href="./store.php?sid=12" class="badge badge-light text-primary m-1 p-2 small">内容运营</a>
+        <a href="./store.php?sid=11" class="badge badge-light text-primary m-1 p-2 small">用户互动</a>
     </div>
     <div class="d-flex mb-3 mb-sm-0">
         <form action="#" method="get" class="mr-sm-2">
@@ -39,11 +42,13 @@
                 <?php } ?>
             </select>
         </form>
-        <form action="./store.php" method="get" class="form-inline ml-2">
+        <form action="./store.php" method="get" class="form-inline ml-2 mr-3">
             <div class="input-group">
                 <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="<?= lang('app_search') ?>...">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-success" type="submit"><?= lang('search') ?></button>
+                    <button class="btn btn-sm btn-success" type="submit">
+                        <i class="icofont-search-2"></i>
+                    </button>
                 </div>
             </div>
         </form>

@@ -31,8 +31,18 @@
             <?php endforeach ?>
             <a href="#" class="btn btn-success btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i> <?= lang('category') ?></a>
         </div>
-        <div class="mr-3">
+        <div class="d-flex mb-3 mb-sm-0">
             <input type="text" id="datePicker" class="form-control" placeholder="<?= lang('view_from_date') ?>">
+            <form action="./media.php" method="get" class="form-inline ml-2 mr-3 w-100">
+                <div class="input-group">
+                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control small" placeholder="搜索资源文件名...">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-success" type="submit">
+                            <i class="icofont-search-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 <?php endif; ?>

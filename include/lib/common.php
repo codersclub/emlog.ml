@@ -406,31 +406,14 @@ function getRandStr($length = 12, $special_chars = true, $numeric_only = false) 
  */
 function upload2local($attach, &$result) {
     $fileName = $attach['name'];
-    $errorNum = $attach['error'];
     $tmpFile = $attach['tmp_name'];
     $fileSize = $attach['size'];
 
-    $isthum = Option::get('isthumbnail') === 'y';
     $fileName = Database::getInstance()->escape_string($fileName);
-    $type = Option::getAttType();
 
-    $ret = upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $isthum);
+    $ret = upload($fileName, $tmpFile, $fileSize);
     $success = 0;
     switch ($ret) {
-        case '100':
-            $message = lang('file_size_exceeds_system') . ini_get('upload_max_filesize') . lang('_limit');
-            break;
-        case '101':
-        case '104':
-            $message = lang('upload_failed_error_code') . $ret;
-            break;
-        case '102':
-            $message = lang('file_type_not_supported');
-            break;
-        case '103':
-            $r = changeFileSize(Option::getAttMaxSize());
-            $message = lang('file_size_large') . ': ' . $r;
-            break;
         case '105':
             $message = lang('upload_folder_unwritable');
             break;
@@ -461,28 +444,13 @@ function upload2local($attach, &$result) {
  * thum_file   Thumbnail path
  *
  * @param string $fileName File Name
- * @param string $errorNum Error code: $_FILES['error']
  * @param string $tmpFile Temporary File Uploaded
  * @param string $fileSize File Size KB
- * @param array $type Allowed to upload file types
- * @param boolean $is_thumbnail Whether to generate thumbnail
  * @return array | string File Data Index
  *
  */
-function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail = true) {
-    if ($errorNum == 1) {
-        return '100'; //File size exceeds the system limit
-    }
-    if ($errorNum > 1) {
-        return '101'; //File upload failed
-    }
+function upload($fileName, $tmpFile, $fileSize) {
     $extension = getFileSuffix($fileName);
-    if (!in_array($extension, $type)) {
-        return '102'; //Incorrect file type
-    }
-    if ($fileSize > Option::getAttMaxSize()) {
-        return '103'; //File size exceeds the system limit
-    }
     $file_info = [];
     $file_info['file_name'] = $fileName;
     $file_info['mime_type'] = get_mimetype($extension);
@@ -505,12 +473,13 @@ function upload($fileName, $errorNum, $tmpFile, $fileSize, $type, $is_thumbnail 
     $file_info['file_path'] = $uploadFile;
 
     if (!createDirectoryIfNeeded($uploadFullPath)) {
-        return '105'; //Failed to create upload directory
+        return '105'; // Failed to create upload directory
     }
 
     doAction('attach_upload', $tmpFile);
 
     // Generate thumbnail
+    $is_thumbnail = Option::get('isthumbnail') === 'y';
     if ($is_thumbnail && resizeImage($tmpFile, $thumFullFile, Option::get('att_imgmaxw'), Option::get('att_imgmaxh'))) {
         $file_info['thum_file'] = $thumFile;
     }
@@ -1125,8 +1094,10 @@ function getTimeZoneOffset($remote_tz, $origin_tz = 'UTC') {
  */
 function uploadCropImg() {
     $attach = isset($_FILES['image']) ? $_FILES['image'] : '';
-    if (!$attach || $attach['error'] === 4) {
-        Output::error(lang('file_upload_failed'));
+
+    $uploadCheckResult = Media::checkUpload($attach);
+    if ($uploadCheckResult !== true) {
+        Output::error($uploadCheckResult);
     }
 
     $ret = '';

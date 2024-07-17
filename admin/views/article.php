@@ -116,22 +116,29 @@ $isdraft = $draft ? '&draft=1' : '';
                         $sortName = $value['sortid'] == -1 ? lang('uncategorized') : $sortName;
                         $author = isset($user_cache[$value['author']]['name']) ? $user_cache[$value['author']]['name'] : lang('unknown_author');
                         $author_role = isset($user_cache[$value['author']]['role']) ? $user_cache[$value['author']]['role'] : lang('unknown_role');
+                        $logTags = [];
+                        if ($value['tags']) {
+                            $logTags = $Tag_Model->getNamesFromIdStr($value['tags']);
+                        }
                         ?>
                         <tr>
                             <td style="width: 20px;"><input type="checkbox" name="blog[]" value="<?= $value['gid'] ?>" class="ids"/></td>
                             <td>
                                 <a href="article.php?action=edit&gid=<?= $value['gid'] ?>"><?= $value['title'] ?></a>
                                 <a href="<?= Url::log($value['gid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
-                                <br>
                                 <?php if ($value['top'] == 'y'): ?><span class="badge small badge-success"><?= lang('home_top') ?></span><?php endif ?>
                                 <?php if ($value['sortop'] == 'y'): ?><span class="badge small badge-info"><?= lang('category_top') ?></span><?php endif ?>
                                 <?php if (!$draft && $value['timestamp'] > time()): ?><span class="badge small badge-warning"><?= lang('publish_regular') ?></span><?php endif ?>
 <!--vot:Lock Char-->            <?php if ($value['password']): ?><span class="small">&#128274;</span><?php endif ?>
 <!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
                                 <?php if (!$draft && $value['checked'] == 'n'): ?>
-                                    <span class="badge small badge-secondary"><?= lang('is_pending') ?></span><br>
-                                    <small class="text-secondary"><?= $value['feedback'] ? lang('feedback_review') . $value['feedback'] : '' ?></small>
+                                    <span class="badge small badge-secondary"><?= lang('is_pending') ?></span>
+                                    <?= $value['feedback'] ? '<br><small class="text-secondary">' . lang('feedback_review') . $value['feedback'] . '</small>' : '' ?>
                                 <?php endif ?>
+                                <br>
+                                <?php foreach ($logTags as $tid => $t): ?>
+                                    <a href="./article.php?tagid=<?= $tid . $isdraft ?>" class='em-badge small em-badge-tag'><?= htmlspecialchars($t) ?></a>
+                                <?php endforeach; ?>
                             </td>
                             <td><a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-primary mx-2 px-3"><?= $value['comnum'] ?></a></td>
                             <td><a href="<?= Url::log($value['gid']) ?>" class="badge badge-success  mx-2 px-3" target="_blank"><?= $value['views'] ?></a></td>
@@ -142,6 +149,7 @@ $isdraft = $draft ? '&draft=1' : '';
                                 <?php if ($draft): ?>
                                     <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php else: ?>
+                                    <a class="badge badge-primary" href="#" data-tag="<?= implode(',', $logTags) ?>" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#tagModel">标签</a>
                                     <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php endif ?>
                                 <?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>
@@ -250,6 +258,41 @@ $isdraft = $draft ? '&draft=1' : '';
         </div>
     </div>
 </div>
+<!--打标签-->
+<div class="modal fade" id="tagModel" tabindex="-1" role="dialog" aria-labelledby="tagModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tagModelLabel">标签</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="article.php?action=tag" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input name="tag" id="tag" class="form-control" value=""/>
+                        <input type="hidden" value="" name="gid" id="gid"/>
+                        <small class="text-muted">多个标签用英文逗号分隔</small>
+                    </div>
+                    <?php if ($tags): ?>
+                        <div id="tags" class="mb-2">
+                            <?php
+                            foreach ($tags as $val) {
+                                echo " <a class=\"em-badge small em-badge-tag\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
+                            }
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-sm btn-success">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script>
     function logact(act) {
         if (getChecked('ids') === false) {
@@ -325,6 +368,15 @@ $isdraft = $draft ? '&draft=1' : '';
             var gid = button.data('gid')
             var modal = $(this)
             modal.find('.modal-footer #gid').val(gid)
+        })
+
+        $('#tagModel').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var tag = button.data('tag')
+            var gid = button.data('gid')
+            var modal = $(this)
+            modal.find('.modal-body #tag').val(tag)
+            modal.find('.modal-body #gid').val(gid)
         })
     });
 </script>

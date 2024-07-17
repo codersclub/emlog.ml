@@ -20,7 +20,7 @@
     <div class="card-body">
         <div class="row m-5">
             <label for="upload_image">
-                <img src="<?= $icon ?>" width="120" id="avatar_image" class="rounded-circle"/>
+                <img src="<?= $icon ?>" width="120" height="120" id="avatar_image" class="rounded-circle"/>
                 <input type="file" name="image" class="image" id="upload_image" style="display:none"/>
             </label>
         </div>
@@ -225,6 +225,10 @@
                 $modal.modal('show');
             };
             if (files && files.length > 0) {
+                if (!files[0].type.startsWith('image')) {
+                    alert('只能上传图片');
+                    return;
+                }
                 reader = new FileReader();
                 reader.onload = function (event) {
                     done(reader.result);
@@ -249,19 +253,19 @@
             });
 
             canvas.toBlob(function (blob) {
-                uploadImage(blob)
+                uploadImage(blob, 'avatar.jpg');
             });
         });
 
         $('#use_original_image').click(function () {
             var blob = $('#upload_image')[0].files[0];
-            uploadImage(blob)
+            uploadImage(blob, blob.name)
         });
 
         // Upload image
-        function uploadImage(blob) {
+        function uploadImage(blob, filename) {
             var formData = new FormData();
-            formData.append('image', blob, 'avatar.jpg');
+            formData.append('image', blob, filename);
             $.ajax('./blogger.php?action=update_avatar', {
                 method: 'POST',
                 data: formData,
@@ -280,7 +284,7 @@
                     if (data && typeof data === "object") {
                         alert(data.msg);
                     } else {
-                        alert("An error occurred during the file upload.");
+                        alert("上传头像出错了");
                     }
                 }
             });

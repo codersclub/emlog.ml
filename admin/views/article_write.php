@@ -90,7 +90,7 @@
                         <div id="tags" class="mb-2" style="display: none">
                             <?php
                             foreach ($tags as $val) {
-                                echo " <a class=\"badge badge-primary\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
+                                echo " <a class=\"em-badge small em-badge-tag\" href=\"javascript: insertTag('{$val['tagname']}','tag');\">{$val['tagname']}</a> ";
                             }
                             ?>
                         </div>
@@ -286,6 +286,10 @@
                 $modal.modal('show');
             };
             if (files && files.length > 0) {
+                if (!files[0].type.startsWith('image')) {
+                    alert('只能上传图片');
+                    return;
+                }
                 reader = new FileReader();
                 reader.onload = function (event) {
                     done(reader.result);
@@ -304,9 +308,9 @@
         });
 
         // Upload image
-        function uploadImage(blob) {
+        function uploadImage(blob, filename) {
             var formData = new FormData();
-            formData.append('image', blob, 'cover.jpg');
+            formData.append('image', blob, filename);
             $.ajax('./article.php?action=upload_cover', {
                 method: 'POST',
                 data: formData,
@@ -327,7 +331,7 @@
                     if (data && typeof data === "object") {
                         alert(data.msg);
                     } else {
-                        alert("An error occurred during the file upload.");
+                        alert("上传封面出错了");
                     }
                 }
             });
@@ -339,13 +343,13 @@
                 height: 366
             });
             canvas.toBlob(function (blob) {
-                uploadImage(blob)
+                uploadImage(blob, 'cover.jpg')
             });
         });
 
         $('#use_original_image').click(function () {
             var blob = $('#upload_img')[0].files[0];
-            uploadImage(blob)
+            uploadImage(blob, blob.name)
         });
 
         $('#cover_rm').click(function () {
