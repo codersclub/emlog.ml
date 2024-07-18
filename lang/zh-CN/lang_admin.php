@@ -647,7 +647,7 @@ $lang = array(
     'original_file_url' => '原文件地址',//'Original file address',
     'downloads' => '下载',//'Downloads',
     'download_url' => '用户下载地址',//'User download URL',
-    'search_file_name' : '搜索资源文件名...',//'Search media file name...',
+    'search_file_name' => '搜索资源文件名...',//'Search media file name...',
 
 //---------------------------
 //admin/views/media_lib.php

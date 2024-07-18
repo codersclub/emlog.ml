@@ -5,7 +5,7 @@ $lang = array(
 //---------------------------
 //admin/views/add_log.php
 
-'post_tags_separated'  => 'Article tags, separated by commas',//'文章标签，使用逗号分隔',
+'post_tags_separated' => 'Multilple tags, separated by commas',//'多个标签用英文逗号分隔',
 'tags_have'            => 'Have tags+',//'已有标签+',
 'tag_not_set'          => 'Tags have not been set!',//'还没有设置过标签！',
 

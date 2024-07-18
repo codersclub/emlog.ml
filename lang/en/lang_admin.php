@@ -104,6 +104,10 @@ $lang = array(
     'writer_need_approve' => 'Articles published by registered users need to be reviewed',//'注册用户发布文章需要审核',
     'sending' => 'Sending',//'发送中',
     'send_ok' => 'Sent successfully',//'发送成功',
+    'posts_per_day' => 'Registered users are limited to the number of posts (including drafts) they can post in 24 hours: ',//'注册用户限制24小时发文数量（包括草稿）：',
+    'att_maxsize' => 'Maximum upload limit for registered users: ',//'注册用户上传最大限制：',
+    'att_type_enabled' => 'File types allowed to upload for registered users: ',//'允许注册用户上传的文件类型：',
+    'att_type_prompt' => '(separate multiple file types with commas)',//'（多个用英文逗号分隔）',
 
 //---------------------------
 //admin/store.php
@@ -138,6 +142,7 @@ $lang = array(
     'plu_category_13' => 'Mobile Terminal',//'移动端',
     'plu_category_14' => 'Program development',//'编程开发',
     'plu_category_15' => 'Content Creation',//'内容创作',
+    'plu_category_16' => 'Data collection',//'数据采集',
     'tpl_category_17' => 'Site navigation',//'网址导航',
     'tpl_category_18' => 'WeChat Ecosystem',//'微信生态',
     'tpl_category_19' => 'Enterprise Show',//'企业展示',
@@ -276,7 +281,7 @@ $lang = array(
     'access_password' => 'Access Password',//'访问密码',
     'choose_file' => 'Choose a file for upload...',//'选择文件上传...',
     'tags_have' => 'Have tags+',//'已有标签+',
-    'post_tags_separated' => 'Article tags, separated by commas',//'文章标签，使用逗号分隔',
+    'post_tags_separated' => 'Multilple tags, separated by commas',//'多个标签用英文逗号分隔',
     'resource_library' => 'Media gallery',//'资源媒体库',
     'no_resources' => 'No resources available',//'暂无可用资源',
     'file_insert' => 'Insert file',//'插入文件',
@@ -642,6 +647,7 @@ $lang = array(
     'original_file_url' => 'Original file address',//'原文件地址',
     'downloads' => 'Downloads',//'下载',
     'download_url' => 'User download URL',//'用户下载地址',
+    'search_file_name' => 'Search media file name...',//'搜索资源文件名...',
 
 //---------------------------
 //admin/views/media_lib.php

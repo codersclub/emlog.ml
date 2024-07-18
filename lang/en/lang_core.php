@@ -155,6 +155,12 @@ $lang = array(
 'uncategorized'            => 'Uncategorized',//'未分类',
 
 //---------------------------------------
+//include/service/media.php
+'att_size_php_limit' => 'File size exceeds PHP limit: ',//'文件大小超过PHP',
+'att_type_disabled' => 'Cannot upload this type of file',//'不能上传该类型文件',
+'att_size_system_limit' => 'File size exceeds the system upload limit: ',//'文件太大了，系统限制上传：',
+
+//---------------------------------------
 //include/service/notice.php
 'new_article_review'         => 'Your site has received new submissions',//'你的站点收到新的文章投稿',
 'new_article_title'          => 'The article title is: ',//'文章标题是：',

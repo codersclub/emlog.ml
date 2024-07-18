@@ -8,6 +8,9 @@ var LNG = {
     'save_draft' : 'Save as draft',//'放入草稿',
     'del_completely' : 'Remove completely',//'彻底删除',
     'sure_del_draft' : 'Delete selected drafts?',//'删除所选草稿？',
+    'upload_images_only' : 'Only pictures can be uploaded',//'只能上传图片',
+    'cover_upload_error' : 'Error uploading cover',//'上传封面出错了',
+    'avatar_upload_error' : 'Error uploading avatar',//'上传头像出错了',
 
 // admin/views/article.php
     'select_article': 'Please select an article',//'请选择文章',
