@@ -149,7 +149,7 @@ $isdraft = $draft ? '&draft=1' : '';
                                 <?php if ($draft): ?>
                                     <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'draft', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php else: ?>
-                                    <a class="badge badge-primary" href="#" data-tag="<?= implode(',', $logTags) ?>" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#tagModel">标签</a>
+                                    <a class="badge badge-primary" href="#" data-tag="<?= implode(',', $logTags) ?>" data-gid="<?= $value['gid'] ?>" data-toggle="modal" data-target="#tagModel"><?= lang('tags') ?></a>
                                     <a href="javascript: em_confirm(<?= $value['gid'] ?>, 'article', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 <?php endif ?>
                                 <?php if (!$draft && User::haveEditPermission() && $value['checked'] == 'n'): ?>
@@ -258,12 +258,12 @@ $isdraft = $draft ? '&draft=1' : '';
         </div>
     </div>
 </div>
-<!--打标签-->
+<!-- Tags -->
 <div class="modal fade" id="tagModel" tabindex="-1" role="dialog" aria-labelledby="tagModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="tagModelLabel">标签</h5>
+                <h5 class="modal-title" id="tagModelLabel"><?= lang('tags') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -273,7 +273,7 @@ $isdraft = $draft ? '&draft=1' : '';
                     <div class="form-group">
                         <input name="tag" id="tag" class="form-control" value=""/>
                         <input type="hidden" value="" name="gid" id="gid"/>
-                        <small class="text-muted">多个标签用英文逗号分隔</small>
+                        <small class="text-muted"><?= lang('post_tags_separated') ?></small>
                     </div>
                     <?php if ($tags): ?>
                         <div id="tags" class="mb-2">
@@ -286,8 +286,8 @@ $isdraft = $draft ? '&draft=1' : '';
                     <?php endif; ?>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-sm btn-success">保存</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </form>
         </div>

@@ -105,7 +105,7 @@ if ($action == 'tag') {
     $tagsStr = strip_tags(Input::postStrVar('tag'));
 
     if (!User::haveEditPermission()) {
-        emMsg('权限不足！', './');
+/*vot*/ emMsg(lang('no_permission'), './');
     }
 
     $Tag_Model->updateTag($tagsStr, $gid);

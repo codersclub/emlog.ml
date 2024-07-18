@@ -37,7 +37,7 @@ $plugin_categories = [
     13 => lang('plu_category_13'),
     14 => lang('plu_category_14'),
     15 => lang('plu_category_15'),
-    16 => '数据采集',
+    16 => lang('plu_category_16'),
     5  => lang('plu_category_5'),
     6  => lang('plu_category_6')
 ];

@@ -37,7 +37,7 @@
                 <label for="article_uneditable"><?= lang('not_editable') ?></label>
             </div>
             <div class="form-group form-inline">
-                <label for="posts_per_day">注册用户限制24小时发文数量（包括草稿）：</label>
+                <label for="posts_per_day"><?= lang('posts_per_day') ?></label>
                 <input class="form-control mx-sm-3" style="width:60px;" value="<?= $posts_per_day ?>" type="number" min="0" name="posts_per_day" id="posts_per_day"/>
             </div>
             <hr>
@@ -46,13 +46,13 @@
                 <label class="form-check-label" for="forbid_user_upload"><?= lang('disable_upload') ?></label>
             </div>
             <div class="form-group form-inline" id="form_att_maxsize">
-                注册用户上传最大限制：<input type="number" min="0" style="width:200px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> （单位：KB）
+                <?= lang('att_maxsize') ?><input type="number" min="0" style="width:200px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> <?= lang('unit_kb') ?>
             </div>
             <div class="form-group form-inline" id="form_att_type">
-                允许注册用户上传的文件类型：<input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/>（多个用英文逗号分隔）
+                <?= lang('att_type_enabled') ?><input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('att_type_prompt') ?>
             </div>
             <hr>
-<!--vot NOT COMPATIBLE WITH MULTILINGUAL!
+<!--vot NOT COMPATIBLE WITH MULTILINGUAL!!
             <div class="form-group form-inline">
                 <label for="posts_name"><?= lang('article_alias_prompt') ?></label>
                 <input class="form-control mx-sm-3" style="width:80px;" value="<?= $posts_name ?>" name="posts_name" id="posts_name"/> <?= lang('article_alias_prompt') ?>

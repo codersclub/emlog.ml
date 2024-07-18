@@ -287,7 +287,7 @@
             };
             if (files && files.length > 0) {
                 if (!files[0].type.startsWith('image')) {
-                    alert('只能上传图片');
+                    alert(lang('upload_images_only'));
                     return;
                 }
                 reader = new FileReader();
@@ -331,7 +331,7 @@
                     if (data && typeof data === "object") {
                         alert(data.msg);
                     } else {
-                        alert("上传封面出错了");
+                        alert(lang('cover_upload_error'));
                     }
                 }
             });

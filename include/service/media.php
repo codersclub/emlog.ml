@@ -15,21 +15,21 @@ class Media {
         $extension = getFileSuffix($fileName);
 
         if ($errorNum == 1) {
-            return '文件大小超过PHP' . ini_get('upload_max_filesize') . '限制';
+            return lang('att_size_php_limit') . ini_get('upload_max_filesize') . lang('_limit');
         }
 
         if (!$attach || $errorNum > 1) {
-            return '上传失败,错误码：' . $errorNum;
+            return lang('upload_failed_error_code') . $errorNum;
         }
 
-        // 检查类型和大小限制
+        // Check type and size limits
         $attType = User::haveEditPermission() ? Option::getAdminAttType() : Option::getAttType();
         $maxSize = User::haveEditPermission() ? Option::getAdminAttMaxSize() : Option::getAttMaxSize();
         if (!in_array($extension, $attType)) {
-            return '不能上传该类型文件';
+            return lang('att_type_disabled');
         }
         if ($fileSize > $maxSize) {
-            return '文件太大了，系统限制上传：' . changeFileSize($maxSize);
+            return lang('att_size_system_limit') . changeFileSize($maxSize);
         }
         return true;
     }

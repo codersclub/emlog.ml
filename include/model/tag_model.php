@@ -243,7 +243,7 @@ class Tag_Model {
     }
 
     /**
-     * 查找一堆标签名
+     * Find a bunch of tag names
      * @param string $tagIdStr
      * @return array
      */

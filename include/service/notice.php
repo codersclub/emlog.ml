@@ -9,7 +9,7 @@
 
 class Notice {
 
-    // 发送用户注册邮件验证码，部分主题依赖该函数
+    // Send the user registration email verification code. Some themes rely on this function.
     public static function sendRegMailCode($mail) {
         if (!self::smtpServerReady()) {
             return false;
@@ -21,12 +21,12 @@ class Notice {
         $_SESSION['mail_code'] = $randCode;
         $_SESSION['mail'] = $mail;
 
-        $title = "用户注册邮件验证码";
-        $content = sprintf('<div id="email_code">邮件验证码：<b style="color: orange;">%s</b></div>', $randCode);
+        $title = lang('email_verif_code_title');
+        $content = sprintf('<div id="email_code">' . lang('email_verif_code') . '<b style="color: orange;">%s</b></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }
 
-    // 通用的发送验证码方法
+    // Universal method for sending verification codes
     public static function sendVerifyMailCode($mail) {
         if (!self::smtpServerReady()) {
             return false;
