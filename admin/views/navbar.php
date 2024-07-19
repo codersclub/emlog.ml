@@ -65,7 +65,7 @@
                                 </td>
                                 <td><?= $value['type_name'] ?></td>
                                 <td>
-                                    <a href="<?= $value['url'] ?>" target="_blank">
+                                    <a href="<?= rtrim(BLOG_URL, '/') . $value['url'] ?>" target="_blank">
                                         <img src="./views/images/<?= $value['newtab'] == 'y' ? 'vlog.gif' : 'vlog2.gif' ?>"/>
                                     </a>
                                 </td>
