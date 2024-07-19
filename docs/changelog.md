@@ -1,5 +1,40 @@
 # &#x1f335; Emlog Changelog
 
+## Pro 2.3.11
+
+Release time: 2024-7-16
+
+[Fix] Fix the problem that resources cannot be uploaded due to file case
+
+Installation package: [emlog_pro_2.3.11.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.11/emlog_pro_2.3.11.zip)
+
+## Pro 2.3.10
+
+Release time: 2024-7-16
+
+[Function] You can set the size and type of the file uploaded by the registered user separately
+[Function] The background article list displays tags and supports quick tagging
+[Function] Apply the article summary to the TDK of the article to facilitate article SEO optimization
+[Function] Resource management adds search by file name
+[Function] Developer: Input method output error supports returning 200 status
+[Fix] Fixed the problem of failure to change the default theme to a graphic verification code
+[Fix] Fixed the dependency problem of sending user registration email verification code function
+[Fix] Improvement of other UI and details
+
+Installation package: [emlog_pro_2.3.10.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.10/emlog_pro_2.3.10.zip)
+
+## Pro 2.3.9
+
+Release time: 2024-7-3
+
+[Function] Users need to verify by email to modify the registered email address
+[Function] Upload avatars and covers to support skipping cropping and directly using the original image
+[Function] Insert media library images and use the file name as alt information by default
+[Function] Optimize the UI experience, including pop-up window prompts, operation buttons, etc.
+[Fix] The problem of the page being set as the homepage and then deleted
+
+Installation package: [emlog_pro_2.3.9.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.9/emlog_pro_2.3.9.zip)
+
 ## pro-2.3.8
 
 Release date: 2024-6-14

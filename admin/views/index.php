@@ -2,7 +2,6 @@
 <?php if (isset($_GET['add_shortcut_suc'])): ?>
     <div class="alert alert-success"><?= lang('set_ok') ?></div>
 <?php endif ?>
-<?php endif ?>
     <div class="d-flex align-items-center mb-3">
         <div class="flex-shrink-0">
             <a class="mr-2" href="blogger.php">
@@ -141,19 +140,6 @@
                     </div>
                 </div>
             </div>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://codersclub.org/discuzx/forum.php?mod=forumdisplay&fid=133" target="_blank"><?= lang('discussion') ?></a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/codersclub/emlog.ml/issues" target="_blank"><?= lang('feedback') ?></a></li>
-                    </ul>
-                </div>
-<!--vot-->      <h6 class="card-header">Chinese emlog <?= lang('official_news') ?></h6>
-                <div class="card-body admin_index_list">
-                    <ul class="list-group list-group-flush">
-                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/faq" target="_blank"><?= lang('help_faq') ?></a></li>
-                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/contact" target="_blank"><?= lang('contacts') ?></a></li>
-                        <li class="msg_type_0 mt-2"><a href="https://emlog.cn/" target="_blank"><?= lang('feedback') ?></a></li>
-                        <li class="msg_type_0 mt-2"><a href="https://www.emlog.net/docs/#/develop" target="_blank"><?= lang('app_development') ?></a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog" target="_blank">Chinese emlog at github</a></li>
-<!--vot-->              <li class="msg_type_0 mt-2"><a href="https://github.com/emlog/emlog/discussions" target="_blank"><?= lang('feedback') ?></a></li>
         </div>
     <?php endif ?>
     <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="update-modal-label" aria-hidden="true">
