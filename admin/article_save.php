@@ -38,6 +38,8 @@ $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
 $pubPost = Input::postStrVar('pubPost'); // Whether to publish the article directly instead of saving a draft
 $auto_excerpt = Input::postStrVar('auto_excerpt');
+$field_keys = Input::postStrArray('field_keys');
+$field_values = Input::postStrArray('field_values');
 
 if ($auto_excerpt === 'y') {
     $origContent = trim($_POST['logcontent']);
@@ -97,6 +99,8 @@ if ($blogid > 0) {
 }
 
 $CACHE->updateArticleCache();
+
+Field::updateField($blogid, $field_keys, $field_values);
 
 doAction('save_log', $blogid, $pubPost, $logData);
 

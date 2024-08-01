@@ -51,7 +51,7 @@
         </nav>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="mr-2" href="blogger.php">
-                <img width="30" height="30" class="img-profile rounded-circle" src="<?= empty($user_cache[UID]['avatar']) ? './views/images/avatar.svg' : '../' . $user_cache[UID]['avatar'] ?>">
+                <img width="30" height="30" class="img-profile rounded-circle" src="<?= User::getAvatar($user_cache[UID]['avatar']) ?>">
             </a>
             <a class="p-2" href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
             <a class="" href="account.php?action=logout">
@@ -61,4 +61,4 @@
     </div>
     <div class="container px-1 my-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-11 col-xl-10 col-xxl-8">
+            <div class="col-lg-12 col-xl-12 col-xxl-12">

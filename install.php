@@ -507,7 +507,7 @@ CREATE TABLE {$db_prefix}comment (
   KEY date (date),
   KEY hide (hide)
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'snow', 'stay hungry stay foolish');
+INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '这是系统生成的演示评论');
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
 option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
@@ -589,7 +589,7 @@ CREATE TABLE {$db_prefix}link (
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}link (id, sitename, siteurl, icon, description, taxis) VALUES
 (1, 'emlog.ru', 'https://emlog.ru', 'https://emlog.ru/docs/logo.png', '" . lang('emlog_ml_official_site') . "', 0),
-(2, 'emlog.net', 'http://www.emlog.net', '', '" . lang('emlog_official_site') . "', 0);
+(2, 'emlog.net', 'https://www.emlog.net', '', '" . lang('emlog_official_site') . "', 0);
 DROP TABLE IF EXISTS {$db_prefix}navi;
 CREATE TABLE {$db_prefix}navi (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Navigation ID',
@@ -681,6 +681,15 @@ CREATE TABLE {$db_prefix}tpl_options_data (
   `data` longtext NOT NULL COMMENT 'Option data',
   PRIMARY KEY (`id`),
   UNIQUE KEY `template` (`template`,`name`)
+)" . $table_charset_sql . "
+DROP TABLE IF EXISTS {$db_prefix}blog_fields;
+CREATE TABLE {$db_prefix}blog_fields (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `gid` bigint unsigned NOT NULL DEFAULT '0',
+  `field_key` varchar(255) DEFAULT NULL DEFAULT '',
+  `field_value` longtext,
+  PRIMARY KEY (`id`),
+  KEY `gid` (`gid`)
 )" . $table_charset_sql;
 
     $array_sql = preg_split("/;[\r\n]/", $sql);

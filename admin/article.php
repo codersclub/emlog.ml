@@ -28,10 +28,7 @@ if (empty($action)) {
     $page = Input::getIntVar('page', 1);
     $keyword = Input::getStrVar('keyword');
     $checked = Input::getStrVar('checked');
-
-    $sortView = (isset($_GET['sortView']) && $_GET['sortView'] == 'ASC') ? 'DESC' : 'ASC';
-    $sortComm = (isset($_GET['sortComm']) && $_GET['sortComm'] == 'ASC') ? 'DESC' : 'ASC';
-    $sortDate = (isset($_GET['sortDate']) && $_GET['sortDate'] == 'DESC') ? 'ASC' : 'DESC';
+    $order = Input::getStrVar('order');
 
     $condition = '';
     if ($tagId) {
@@ -48,14 +45,19 @@ if (empty($action)) {
     }
 
     $orderBy = ' ORDER BY ';
-    if (isset($_GET['sortView'])) {
-        $orderBy .= "views $sortView";
-    } elseif (isset($_GET['sortComm'])) {
-        $orderBy .= "comnum $sortComm";
-    } elseif (isset($_GET['sortDate'])) {
-        $orderBy .= "date $sortDate";
-    } else {
-        $orderBy .= 'top DESC, sortop DESC, date DESC';
+    switch ($order) {
+        case 'view':
+            $orderBy .= 'views DESC';
+            break;
+        case 'comm':
+            $orderBy .= 'comnum DESC';
+            break;
+        case 'top':
+            $orderBy .= 'top DESC, sortop DESC';
+            break;
+        default:
+            $orderBy .= 'date DESC';
+            break;
     }
 
     $hide_state = $draft ? 'y' : 'n';
@@ -257,6 +259,7 @@ if ($action === 'write') {
     $postDate = date('Y-m-d H:i');
     $mediaSorts = $MediaSort_Model->getSorts();
     $customTemplates = $Template_Model->getCustomTemplates('log');
+    $fields = [];
 
     if (!Register::isRegLocal() && $sta_cache['lognum'] > 50) {
         emDirect("auth.php?error_article=1");
@@ -291,6 +294,9 @@ if ($action === 'edit') {
     $tags = $Tag_Model->getTags();
 
     $mediaSorts = $MediaSort_Model->getSorts();
+
+    // fields
+    $fields = Field::getFields($logid);
 
     $customTemplates = $Template_Model->getCustomTemplates('log');
 

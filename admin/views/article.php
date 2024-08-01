@@ -77,6 +77,14 @@ $isdraft = $draft ? '&draft=1' : '';
                         </option>
                     </select>
                 </div>
+                <div id="f_t_order" class="mx-1">
+                    <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最新发布</option>
+                        <option value="top" <?= ($order === 'top') ? 'selected' : '' ?>>置顶优先</option>
+                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>>评论最多</option>
+                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>>浏览最多</option>
+                    </select>
+                </div>
             </div>
             <form action="article.php" method="get">
                 <div class="form-inline search-inputs-nowrap">
@@ -100,11 +108,11 @@ $isdraft = $draft ? '&draft=1' : '';
                     <tr>
                         <th><input type="checkbox" id="checkAllItem"/></th>
                         <th><?= lang('title') ?></th>
-                        <th><a href="article.php?sortComm=<?= $sortComm . $sorturl ?>"><?= lang('comments') ?></a></th>
-                        <th><a href="article.php?sortView=<?= $sortView . $sorturl ?>"><?= lang('reads') ?></a></th>
+                        <th><?= lang('comments') ?></th>
+                        <th><?= lang('reads') ?></th>
                         <th><?= lang('user') ?></th>
                         <th><?= lang('category') ?></th>
-                        <th><a href="article.php?sortDate=<?= $sortDate . $sorturl ?>"><?= lang('time') ?></a></th>
+                        <th><?= lang('time') ?></th>
                         <th><?= lang('operation') ?></th>
                     </tr>
                     </thead>
@@ -351,6 +359,10 @@ $isdraft = $draft ? '&draft=1' : '';
 
     function selectSort(obj) {
         window.open("./article.php?sid=" + obj.value + "<?= $isdraft?>", "_self");
+    }
+
+    function selectOrder(obj) {
+        window.open("./article.php?order=" + obj.value + "<?= $isdraft?>", "_self");
     }
 
     function selectUser(obj) {
