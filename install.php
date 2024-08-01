@@ -507,7 +507,7 @@ CREATE TABLE {$db_prefix}comment (
   KEY date (date),
   KEY hide (hide)
 )" . $table_charset_sql . "
-INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '这是系统生成的演示评论');
+INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '" . lang('system_generated_demo') . "');
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
 option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',

@@ -95,7 +95,7 @@
 <!--vot-->                      | <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_down_url ?>"><?= lang('download_url') ?></a> (<?= lang('downloads') ?>: <?= $value['download_count'] ?>)
                             <?php endif ?>
                             <?php if ($thumbnail_url): ?>
-                                ｜ <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $thumbnail_url ?>">缩略图地址</a>
+                                | <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $thumbnail_url ?>"><?= lang('thumbnail_url') ?></a>
                             <?php endif ?>
                         </p>
                         <p class="card-text d-flex justify-content-between">

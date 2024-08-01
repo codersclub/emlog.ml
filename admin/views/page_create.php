@@ -13,7 +13,7 @@
                 </div>
                 <div id="pagecontent"><textarea><?= $content ?></textarea></div>
                 <div class="mt-3">
-                    <label id="post_bar_label">插件扩展：</label>
+                    <label id="post_bar_label"><?= lang('plugin_manage') ?>:</label>
                     <div id="post_bar"><?php doAction('adm_writelog_head') ?></div>
                 </div>
             </div>
@@ -311,7 +311,7 @@
         }
     );
 
-    // 显示插件扩展label
+    // Show plugin extensions label
     const postBar = $("#post_bar");
     var a = postBar.children()
     console.log(a)

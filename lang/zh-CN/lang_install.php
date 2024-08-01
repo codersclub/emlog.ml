@@ -52,5 +52,6 @@ $lang = array(
 'delete_install'               => '警告：请手动删除根目录下安装文件：install.php',//'Warning! Please delete the installation file install.php',
 'go_to_front'                  => '访问首页',//'Visit the Blog',
 'go_to_admincp'                => '登录后台',//'Go to Administration Control Panel',
+'system_generated_demo'        => '这是系统生成的演示评论',//'This is a system generated demo review',
 
 );

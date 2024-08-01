@@ -20,19 +20,19 @@
                     <textarea id="logexcerpt" name="logexcerpt" class="form-control" rows="5"><?= $excerpt ?></textarea>
                 </div>
                 <div class="mt-3">
-                    <a href="javascript:void (0);" class="field_add cursor-pointer">添加字段<i class="icofont-plus"></i></a>
+                    <a href="javascript:void (0);" class="field_add cursor-pointer"><?= lang('add_field') ?><i class="icofont-plus"></i></a>
                     <div class="mt-2" id="field_box">
                         <?php
                         foreach ($fields as $key => $value): ?>
                             <div class="form-row field_list">
                                 <div class="col-sm-4">
-                                    <input type="text" name="field_keys[]" value="<?= $key ?>" id="field_keys" class="form-control" placeholder="字段名称" maxlength="120" required>
+                                    <input type="text" name="field_keys[]" value="<?= $key ?>" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
                                 </div>
                                 <div class="col-sm-6 mx-sm-3">
-                                    <input type="text" name="field_values[]" value="<?= $value ?>" id="field_values" class="form-control" placeholder="字段值" required>
+                                    <input type="text" name="field_values[]" value="<?= $value ?>" id="field_values" class="form-control" placeholder="<?= lang('field_value') ?>" required>
                                 </div>
                                 <div class="col-auto mt-1 text-align-right">
-                                    <button type="button" class="btn btn-sm btn-outline-danger field_del">删除</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger field_del"><?= lang('delete') ?></button>
                                 </div>
                             </div>
                         <?php endforeach ?>
@@ -417,7 +417,7 @@
         $("#post_bar_label").hide();
     }
 
-    // 自定义字段
+    // Custom fields
     $(document).on('click', '.field_del', function () {
         $(this).closest('.field_list').remove();
     });
@@ -425,20 +425,20 @@
         var newField = `
                     <div class="form-row field_list">
                         <div class="col-sm-4">
-                            <input type="text" name="field_keys[]" value="" id="field_keys" class="form-control" placeholder="字段名称" maxlength="120" required>
+                            <input type="text" name="field_keys[]" value="" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
                         </div>
                         <div class="col-sm-6 mx-sm-3">
-                            <input type="text" name="field_values[]" value="" id="field_values" class="form-control" placeholder="字段值" required>
+                            <input type="text" name="field_values[]" value="" id="field_values" class="form-control" placeholder="<?= lang('field_value') ?>" required>
                         </div>
                         <div class="col-auto mt-1">
-                            <button type="button" class="btn btn-sm btn-outline-danger field_del">删除</button>
+                            <button type="button" class="btn btn-sm btn-outline-danger field_del"><?= lang('delete') ?></button>
                         </div>
                     </div>
                 `;
         $('#field_box').append(newField);
     });
 
-    // 检查右侧高级选项展开状态
+    // Check the expansion status of the advanced options on the right
     applyStoredState('adv_set');
 
 </script>

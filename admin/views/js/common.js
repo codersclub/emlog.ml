@@ -179,7 +179,7 @@ function displayToggle(id) {
         $(".icofont-simple-right").attr("class", "icofont-simple-down");
     }
 
-    // 使用本地存储来保存状态
+    // Using local storage to save state
     localStorage.setItem('em_' + id, icon_mod);
 }
 

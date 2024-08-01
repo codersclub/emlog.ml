@@ -273,6 +273,10 @@ $lang = array(
     'feedback_review' => '审核反馈：',//'Review feedback: ',
     'article_reject' => '驳回文章',//'Reject article',
     'article_reject_prompt' => '请填写驳回文章的理由，不填请留空。',//'Please fill in the reasons for rejecting the article, please leave blank if not filled.',
+    'last_published' => '最新发布',//'Last published',
+    'top_rated' => '置顶优先',//'Top rated',
+    'most_commented' => '评论最多',//'Most commented',
+    'most_viewed' => '浏览最多',//'Most viewed',
 
 //---------------------------
 //admin/views/article_write.php
@@ -303,6 +307,9 @@ $lang = array(
     'crop_hold_shift' => '按住 Shift 等比例调整裁剪区域',//'Hold Shift to adjust the cropping area proportionally',
     'advanced_options' => '高级选项',//'Advanced options',
     'article_template' => '文章模板',//'Article template',
+    'add_field' => '添加字段',//'Add field',
+    'field_name' => '字段名称',//'Field Name',
+    'field_value' => '字段值',//'Field value',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -648,6 +655,7 @@ $lang = array(
     'downloads' => '下载',//'Downloads',
     'download_url' => '用户下载地址',//'User download URL',
     'search_file_name' => '搜索资源文件名...',//'Search media file name...',
+    'thumbnail_url' => '缩略图地址',//'Thumbnail URL',
 
 //---------------------------
 //admin/views/media_lib.php

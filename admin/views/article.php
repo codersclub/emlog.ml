@@ -79,10 +79,10 @@ $isdraft = $draft ? '&draft=1' : '';
                 </div>
                 <div id="f_t_order" class="mx-1">
                     <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
-                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最新发布</option>
-                        <option value="top" <?= ($order === 'top') ? 'selected' : '' ?>>置顶优先</option>
-                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>>评论最多</option>
-                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>>浏览最多</option>
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>><?= lang('last_published') ?></option>
+                        <option value="top" <?= ($order === 'top') ? 'selected' : '' ?>><?= lang('top_rated') ?></option>
+                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>><?= lang('most_commented') ?></option>
+                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>><?= lang('most_viewed') ?></option>
                     </select>
                 </div>
             </div>
