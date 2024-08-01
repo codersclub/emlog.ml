@@ -42,7 +42,7 @@
             <?= lang('api_4') ?><br>
             <?= lang('api_5') ?><br>
             ...<br><br>
-            <?= lang('api_more') ?>: <a href="/docs/api/" target="_blank" class="small"><?= lang('api_docs') ?></a>
+            <?= lang('api_more') ?>: <a href="<?= BLOG_URL ?>docs/api/" target="_blank" class="small"><?= lang('api_docs') ?></a>
         </div>
     </div>
 </div>
