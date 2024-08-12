@@ -162,9 +162,9 @@
                         <input class="form-control" id="sortimg" name="sortimg" type="url" placeholder="https://">
                     </div>
                     <div class="form-group">
-                        <label for="title">标题（用于分类页的 title）</label>
+                        <label for="title"><?= lang('cat_title_prompt') ?></label>
                         <textarea name="title" id="title" type="text" class="form-control"></textarea>
-                        <small class="form-text text-muted">支持变量: {{site_title}}, {{site_name}}, {{sort_name}}</small>
+                        <small class="form-text text-muted"><?= lang('cat_tpl_variables') ?></small>
                     </div>
                     <div class="form-group">
                         <label for="description"><?=lang('category_description')?></label>

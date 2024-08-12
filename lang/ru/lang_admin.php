@@ -896,6 +896,8 @@ $lang = array(
 'select_email_template'	=> 'Выберите шаблон',//'选择模板',//+:
 'simple'		=> 'Простой',//'简约',
 'email_template_placeholer'	=> 'Шаблон Email (поддерживает html). Оставьте поле пустым, если не используете шаблон.',//'邮件模板(支持html)，不使用模板请留空。',
+'template_prompt'	=> 'Переменные шаблона: {{mail_content}} = текст письма, {{mail_site_title}} = название сайта',//'模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',
+'template_from'		=> 'С сайта: {{mail_site_title}}',//'来自站点：{{mail_site_title}}',
 
 //---------------------------
 //admin/views/setting_user.php
@@ -943,6 +945,8 @@ $lang = array(
 'self_parent'		=> 'Категория не может быть родительской для самой себя',//'不能设置自身为父分类',
 'image'			=> 'Изображение',//'图像',
 'category_image'	=> 'Картинка категории',//'分类图像',
+'cat_title_prompt'	=> 'Заголовок (используется для страниц категории)',//'标题（用于分类页的 title）',
+'cat_tpl_variables'	=> 'Доступные переменные: {{site_title}}, {{site_name}}, {{sort_name}}',//'支持变量: {{site_title}}, {{site_name}}, {{sort_name}}',
 
 //---------------------------
 //admin/views/sort_edit.php

@@ -896,6 +896,8 @@ $lang = array(
     'select_email_template' => 'Select template',//'选择模板',//+:
     'simple' => 'Simple',//'简约',
     'email_template_placeholer' => 'Email template (supports html). Please leave it blank if you do not use a template.',//'邮件模板(支持html)，不使用模板请留空。',
+    'template_prompt' => 'Template variables: {{mail_content}} = email content, {{mail_site_title}} = site title',//'模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',
+    'template_from' => 'From site: {{mail_site_title}}',//'来自站点：{{mail_site_title}}',
 
 //---------------------------
 //admin/views/setting_user.php
@@ -943,6 +945,8 @@ $lang = array(
     'self_parent' => 'Cannot set itself as a parent category',//'不能设置自身为父分类',
     'image' => 'Image',//'图像',
     'category_image' => 'Category image',//'分类图像',
+    'cat_title_prompt' => 'Title (used for category pages)',//'标题（用于分类页的 title）',
+    'cat_tpl_variables' => 'Supported variables: {{site_title}}, {{site_name}}, {{sort_name}}',//'支持变量: {{site_title}}, {{site_name}}, {{sort_name}}',
 
 //---------------------------
 //admin/views/sort_edit.php
