@@ -1,5 +1,39 @@
 # &#x1f335; Emlog Changelog
 
+## Pro 2.3.14
+
+Release time: 2024-8-11
+
+[Function] Support custom category page title
+[Function] Email template supports site name parameter
+[Function] Add email verification code sending mount point, cooperate with Redis application plug-in to achieve anti-brushing
+[Function] Add a separate release button to the draft list, etc. UI optimization
+[Fix] The problem of registered users posting comments without limiting the frequency
+
+Installation package: [emlog_pro_2.3.14.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.14/emlog_pro_2.3.14.zip)
+
+## Pro 2.3.13
+
+Release time: 2024-7-31
+
+[Function] Optimize version upgrade logic
+[Fix] Database table index problem of custom fields
+
+Installation package: [emlog_pro_2.3.13.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.13/emlog_pro_2.3.13.zip)
+
+## Pro 2.3.12
+
+Release time: 2024-7-30
+
+[Function] Add article custom field function (including API support)
+[Function] Optimize the background article list sorting query experience
+[Function] Optimize resource display: If there is a thumbnail, support copying the thumbnail address
+[Fix] Fix the mount point error below the page title
+[Fix] Fix the problem that the advanced options of the article writing page cannot save the folding state
+[Fix] Fix the problem of returning an incorrect URL when the template sets the image to an empty value
+
+Installation package: [emlog_pro_2.3.12.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.12/emlog_pro_2.3.12.zip)
+
 ## Pro 2.3.11
 
 Release time: 2024-7-16
