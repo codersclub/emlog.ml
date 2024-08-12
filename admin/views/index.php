@@ -22,7 +22,6 @@
         <div class="col-lg-12 mb-3">
             <div class="card shadow mb-3">
                 <div class="card-body">
-                    <?= lang('quick_entries') ?>:
                     <a href="./article.php?action=write" class="mr-2"><?= lang('article_add') ?></a>
                     <a href="article.php" class="mr-2"><?= lang('articles') ?></a>
                     <a href="article.php?draft=1" class="mr-2"><?= lang('drafts') ?></a>

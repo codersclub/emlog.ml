@@ -38,19 +38,28 @@ class Sort_Controller {
             show_404_page();
         }
         $sort = $sort_cache[$sortid];
-        $sortName = $sort['sortname'];
+        $sortPid = isset($sort['pid']) ? $sort['pid'] : 0;
+        $sortChildren = isset($sort['children']) ? $sort['children'] : [];
+        $sortName = isset($sort['sortname']) ? $sort['sortname'] : '';
+        $sortTitle = isset($sort['title']) ? $sort['title'] : '';
+        $sortKw = isset($sort['kw']) ? $sort['kw'] : '';
+        $sortDesc = isset($sort['description']) ? $sort['description'] : '';
         //page meta
-        $site_title = $sortName . ' - ' . $site_title;
-        if (!empty($sort['description'])) {
-            $site_description = $sort['description'];
-        }
-        if (!empty($sort['kw'])) {
-            $site_key = $sort['kw'];
-        }
-        if ($sort['pid'] != 0 || empty($sort['children'])) {
-/*vot*/            $sqlSegment = "AND sortid=$sortid";
+        if ($sortTitle) {
+            $site_title = $sortTitle;
         } else {
-            $sortids = array_merge(array($sortid), $sort['children']);
+            $site_title = $sortName . ' - ' . $site_title;
+        }
+        if ($sortDesc) {
+            $site_description = $sortDesc;
+        }
+        if ($sortKw) {
+            $site_key = $sortKw;
+        }
+        if ($sortPid || empty($sortChildren)) {
+/*vot*/     $sqlSegment = "AND sortid=$sortid";
+        } else {
+            $sortids = array_merge(array($sortid), $sortChildren);
 /*vot*/            $sqlSegment = "AND sortid in (" . implode(',', $sortids) . ")";
         }
 /*vot*/ $orderBy = " ORDER BY sortop DESC, date DESC";

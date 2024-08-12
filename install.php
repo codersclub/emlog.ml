@@ -542,8 +542,8 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('comment_interval',60),
 ('isgravatar','y'),
 ('isthumbnail','n'),
-('att_maxsize','1024000'),
-('att_type','rar,zip,gif,jpg,jpeg,png,webp,txt,pdf,docx,doc,xls,xlsx,mp4,mp3'),
+('att_maxsize','2048'),
+('att_type','jpg,jpeg,png,gif,zip,rar'),
 ('att_imgmaxw','600'),
 ('att_imgmaxh','370'),
 ('comment_paging','y'),
@@ -623,6 +623,7 @@ CREATE TABLE {$db_prefix}sort (
   pid int(11) unsigned NOT NULL default '0' COMMENT 'Parent category ID',
   description text NOT NULL COMMENT 'Description',
   kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
+  title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
   sortimg varchar(512) NOT NULL default '' COMMENT 'Category image',
   PRIMARY KEY  (sid)

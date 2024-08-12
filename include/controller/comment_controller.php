@@ -47,7 +47,7 @@ class Comment_Controller {
             $err = lang('comment_error_article_no');
         } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
             $err = lang('comment_error_comment_disabled');
-        } elseif (User::isVisitor() && $Comment_Model->isCommentTooFast() === true) {
+        } elseif (!User::haveEditPermission() && $Comment_Model->isCommentTooFast() === true) {
             $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
             $err = lang('comment_error_name_enter');
