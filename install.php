@@ -224,14 +224,14 @@ if (!$act) {
                     <p class="install-title"><?= lang('mysql_settings') ?></p>
                     <div class="input-group mb10">
                         <label class="input-group-text"><?= lang('db_hostname') ?></label>
-                        <input name="hostname" type="text" class="form-control" value="localhost">
+                        <input name="hostname" type="text" class="form-control" value="localhost" required>
                     </div>
                     <div class="mb10">
                         <label class="form-label care"><?= lang('db_hostname_info') ?></label>
                     </div>
                     <div class="input-group mb10">
                         <span class="input-group-text"><?= lang('db_user') ?></span>
-                        <input name="dbuser" type="text" class="form-control" value="">
+                        <input name="dbuser" type="text" class="form-control" value="" required>
                     </div>
                     <div class="input-group mb10">
                         <span class="input-group-text"><?= lang('db_password') ?></span>
@@ -239,7 +239,7 @@ if (!$act) {
                     </div>
                     <div class="input-group mb10">
                         <span class="input-group-text"><?= lang('db_name') ?></span>
-                        <input name="dbname" type="text" class="form-control" value="">
+                        <input name="dbname" type="text" class="form-control" value="" required>
                     </div>
                     <div class="mb10">
                         <label class="form-label care"><?= lang('db_name_info') ?></label>

@@ -143,7 +143,7 @@ class MySqlii {
         return $this->conn->affected_rows;
     }
 
-    public function getMysqlVersion() {
+    public function getVersion() {
         return $this->conn->server_info;
     }
 

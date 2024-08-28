@@ -34,6 +34,7 @@ class Api_Controller {
     public $Comment_Model;
 
     public $Cache;
+    public $authApiKey;
     public $authReqSign;
     public $authReqTime;
     public $curUserInfo;
@@ -246,25 +247,27 @@ class Api_Controller {
 
         $user_info = $this->User_Model->getOneUser($r['author']);
         $author_name = isset($user_info['nickname']) ? $user_info['nickname'] : '';
+        $author_avatar = isset($user_info['photo']) ? getFileUrl($user_info['photo']) : '';
 
         $article = [
-            'title'       => $r['log_title'],
-            'date'        => date('Y-m-d H:i:s', $r['date']),
-            'id'          => (int)$r['logid'],
-            'sort_id'     => (int)$r['sortid'],
-            'sort_name'   => isset($sort_cache[$r['sortid']]['sortname']) ? $sort_cache[$r['sortid']]['sortname'] : '',
-            'type'        => $r['type'],
-            'author_id'   => (int)$r['author'],
-            'author_name' => $author_name,
-            'content'     => $r['log_content'],
-            'excerpt'     => $r['excerpt'],
-            'cover'       => $r['log_cover'],
-            'views'       => (int)$r['views'],
-            'comnum'      => (int)$r['comnum'],
-            'top'         => $r['top'],
-            'sortop'      => $r['sortop'],
-            'tags'        => $this->getTags($id),
-            'fields'      => $r['fields'],
+            'title'         => $r['log_title'],
+            'date'          => date('Y-m-d H:i:s', $r['date']),
+            'id'            => (int)$r['logid'],
+            'sort_id'       => (int)$r['sortid'],
+            'sort_name'     => isset($sort_cache[$r['sortid']]['sortname']) ? $sort_cache[$r['sortid']]['sortname'] : '',
+            'type'          => $r['type'],
+            'author_id'     => (int)$r['author'],
+            'author_name'   => $author_name,
+            'author_avatar' => $author_avatar,
+            'content'       => $r['log_content'],
+            'excerpt'       => $r['excerpt'],
+            'cover'         => $r['log_cover'],
+            'views'         => (int)$r['views'],
+            'comnum'        => (int)$r['comnum'],
+            'top'           => $r['top'],
+            'sortop'        => $r['sortop'],
+            'tags'          => $this->getTags($id),
+            'fields'        => $r['fields'],
         ];
 
         output::ok(['article' => $article,]);
@@ -362,6 +365,28 @@ class Api_Controller {
         output::ok(['userinfo' => $data]);
     }
 
+    public function user_detail() {
+        $uid = Input::getIntVar('id');
+
+        $this->checkApiKey();
+
+        $userInfo = $this->User_Model->getOneUser($uid);
+        if (empty($userInfo)) {
+            output::ok(['userinfo' => []]);
+        }
+
+        $data = [
+            'uid'         => (int)$userInfo['uid'],
+            'nickname'    => htmlspecialchars($userInfo['nickname']),
+            'role'        => $userInfo['role'],
+            'avatar'      => getFileUrl($userInfo['photo']),
+            'description' => htmlspecialchars($userInfo['description']),
+            'create_time' => (int)$userInfo['create_time'],
+        ];
+
+        output::ok(['userinfo' => $data]);
+    }
+
     public function upload() {
         $sid = Input::postIntVar('sid');
         $author_uid = Input::postIntVar('author_uid', 1);
@@ -423,19 +448,25 @@ class Api_Controller {
     }
 
     private function checkApiKey() {
+        $this->authApiKey = Input::requestStrVar('api_key');
         $this->authReqSign = Input::requestStrVar('req_sign');
         $this->authReqTime = Input::requestStrVar('req_time');
 
-        if (empty($this->authReqSign) || empty($this->authReqTime)) {
+        if (empty($this->authApiKey) && (empty($this->authReqSign) || empty($this->authReqTime))) {
             Output::authError('auth param error');
         }
 
         $apikey = Option::get('apikey');
-        $sign = md5($this->authReqTime . $apikey);
 
-        if ($sign !== $this->authReqSign) {
-            Output::authError('sign error');
+        if ($apikey === $this->authApiKey) {
+            return;
         }
+
+        $sign = md5($this->authReqTime . $apikey);
+        if ($sign === $this->authReqSign) {
+            return;
+        }
+        Output::authError('auth error');
     }
 
     private function checkAuthCookie() {
