@@ -140,7 +140,9 @@ $lang = array(
 //---------------------------------------
 //include/lib/mysqlpdo.php
 'pdo_not_supported'          => 'Server PHP does not support PDO function',//'服务器空间PHP不支持PDO函数',
-'pdo_connect_error'          => 'Failed to connect to the database, please check the database information. Error message: ',//'连接数据库失败，请检查数据库信息。错误原因：',
+'dbtype_unsupported'         => 'Unsupported database type: ',//'不支持的数据库类型: ',
+'pdo_connect_error'          => 'Failed to connect to the database, please check the database information. Error message: ',//'连接数据库失败，请检查数据库信息。错误原因： ',
+'sql_error'                  => 'SQL statement execution error: ',//'SQL语句执行错误: ',
 
 //---------------------------------------
 //include/lib/twitter_model.php

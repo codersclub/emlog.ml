@@ -1,5 +1,17 @@
 # &#x1f335; Emlog Changelog
 
+## Pro 2.3.15
+
+Release time: 2024-8-27
+
+[Function] API: Key authentication adds signature-free authentication, see the interface document for details
+[Function] API: Add an interface for querying user information through uid
+[Function] API: The article details interface also returns the author's avatar information
+[Function] Optimize the article display mount point to facilitate the processing of tdk information
+[Fix] Add two page-related mount points: save page and edit page sidebar display.
+
+Installation package: [emlog_pro_2.3.15.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.15/emlog_pro_2.3.15.zip)
+
 ## Pro 2.3.14
 
 Release time: 2024-8-11
