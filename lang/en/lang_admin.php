@@ -702,7 +702,7 @@ $lang = array(
     'page_title' => 'Page title',//'页面标题',
     'setting_items' => 'Setting items',//'设置项',
     'alias' => 'Alias',//'别名',
-    'as_home' => '- it has been set as the home page, original default homepage: ',//'已设为首页，原默认首页：',
+    'as_home' => '- it has been set as the home page.<br>Original default homepage: ',//'已设为首页，原默认首页：',
     'set_as_home' => 'Set as the homepage, ',//'设为首页，',
     'original_home' => 'Original homepage: ',//'原首页：',
 
