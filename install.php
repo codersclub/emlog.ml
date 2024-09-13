@@ -1,4 +1,5 @@
 <?php
+
 /**
  * install
  * @package EMLOG
@@ -36,9 +37,10 @@ $env_db_user = getenv('EMLOG_DB_USER');
 $env_db_password = getenv('EMLOG_DB_PASSWORD');
 
 if (!$act) {
-    ?>
+?>
     <!doctype html>
     <html dir="<?= LANG_DIR ?>" lang="<?= LANG ?>">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
@@ -198,89 +200,91 @@ if (!$act) {
             }
         </style>
     </head>
+
     <body>
-    <form name="form1" method="post" action="install.php?action=install">
-        <div class="main">
-            <p class="logo"></p>
+        <form name="form1" method="post" action="install.php?action=install">
+            <div class="main">
+                <p class="logo"></p>
 <!--vot-->  <p class="title mb20">Emlog.ML <?= Option::EMLOG_VERSION ?></p>
-            <?php if ($env_db_user): ?>
-                <div class="b">
-                    <input name="hostname" type="hidden" value="<?= $env_db_host ?>">
-                    <input name="dbuser" type="hidden" value="<?= $env_db_user ?>">
-                    <input name="dbpasswd" type="hidden" value="<?= $env_db_password ?>">
-                    <input name="dbname" type="hidden" value="<?= $env_db_name ?>">
-                    <input name="dbprefix" type="hidden" value="emlog_">
-                </div>
-            <?php elseif (strpos($bt_db_username, 'BT_DB_') === false): ?>
-                <div class="b">
-                    <input name="hostname" type="hidden" value="<?= $bt_db_host ?>">
-                    <input name="dbuser" type="hidden" value="<?= $bt_db_username ?>">
-                    <input name="dbpasswd" type="hidden" value="<?= $bt_db_password ?>">
-                    <input name="dbname" type="hidden" value="<?= $bt_db_name ?>">
-                    <input name="dbprefix" type="hidden" value="emlog_">
-                </div>
-            <?php else: ?>
-                <div class="b mb20">
-                    <p class="install-title"><?= lang('mysql_settings') ?></p>
+                <?php if ($env_db_user): ?>
+                    <div class="b">
+                        <input name="hostname" type="hidden" value="<?= $env_db_host ?>">
+                        <input name="dbuser" type="hidden" value="<?= $env_db_user ?>">
+                        <input name="dbpasswd" type="hidden" value="<?= $env_db_password ?>">
+                        <input name="dbname" type="hidden" value="<?= $env_db_name ?>">
+                        <input name="dbprefix" type="hidden" value="emlog_">
+                    </div>
+                <?php elseif (strpos($bt_db_username, 'BT_DB_') === false): ?>
+                    <div class="b">
+                        <input name="hostname" type="hidden" value="<?= $bt_db_host ?>">
+                        <input name="dbuser" type="hidden" value="<?= $bt_db_username ?>">
+                        <input name="dbpasswd" type="hidden" value="<?= $bt_db_password ?>">
+                        <input name="dbname" type="hidden" value="<?= $bt_db_name ?>">
+                        <input name="dbprefix" type="hidden" value="emlog_">
+                    </div>
+                <?php else: ?>
+                    <div class="b mb20">
+                        <p class="install-title"><?= lang('mysql_settings') ?></p>
+                        <div class="input-group mb10">
+                            <label class="input-group-text"><?= lang('db_hostname') ?></label>
+                            <input name="hostname" type="text" class="form-control" value="localhost" required>
+                        </div>
+                        <div class="mb10">
+                            <label class="form-label care"><?= lang('db_hostname_info') ?></label>
+                        </div>
+                        <div class="input-group mb10">
+                            <span class="input-group-text"><?= lang('db_user') ?></span>
+                            <input name="dbuser" type="text" class="form-control" value="" required>
+                        </div>
+                        <div class="input-group mb10">
+                            <span class="input-group-text"><?= lang('db_password') ?></span>
+                            <input name="dbpasswd" type="password" class="form-control" value="">
+                        </div>
+                        <div class="input-group mb10">
+                            <span class="input-group-text"><?= lang('db_name') ?></span>
+                            <input name="dbname" type="text" class="form-control" value="" required>
+                        </div>
+                        <div class="mb10">
+                            <label class="form-label care"><?= lang('db_name_info') ?></label>
+                        </div>
+                        <div class="input-group mb10">
+                            <span class="input-group-text"><?= lang('db_prefix') ?></span>
+                            <input name="dbprefix" type="text" class="form-control" value="emlog_">
+                        </div>
+                        <div class="mb10">
+                            <label class="form-label care"><?= lang('db_prefix_info') ?></label>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="c">
+                    <p class="install-title"><?= lang('admin_settings') ?></p>
                     <div class="input-group mb10">
-                        <label class="input-group-text"><?= lang('db_hostname') ?></label>
-                        <input name="hostname" type="text" class="form-control" value="localhost" required>
-                    </div>
-                    <div class="mb10">
-                        <label class="form-label care"><?= lang('db_hostname_info') ?></label>
+                        <span class="input-group-text"><?= lang('admin_name') ?></span>
+                        <input name="username" type="text" class="form-control" required>
                     </div>
                     <div class="input-group mb10">
-                        <span class="input-group-text"><?= lang('db_user') ?></span>
-                        <input name="dbuser" type="text" class="form-control" value="" required>
+                        <span class="input-group-text"><?= lang('admin_password') ?></span>
+                        <input name="password" type="password" class="form-control" placeholder="<?= lang('admin_password_info') ?>" required>
                     </div>
                     <div class="input-group mb10">
-                        <span class="input-group-text"><?= lang('db_password') ?></span>
-                        <input name="dbpasswd" type="password" class="form-control" value="">
+                        <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
+                        <input name="repassword" type="password" class="form-control" required>
                     </div>
                     <div class="input-group mb10">
-                        <span class="input-group-text"><?= lang('db_name') ?></span>
-                        <input name="dbname" type="text" class="form-control" value="" required>
-                    </div>
-                    <div class="mb10">
-                        <label class="form-label care"><?= lang('db_name_info') ?></label>
-                    </div>
-                    <div class="input-group mb10">
-                        <span class="input-group-text"><?= lang('db_prefix') ?></span>
-                        <input name="dbprefix" type="text" class="form-control" value="emlog_">
-                    </div>
-                    <div class="mb10">
-                        <label class="form-label care"><?= lang('db_prefix_info') ?></label>
+                        <span class="input-group-text"><?= lang('email') ?></span>
+                        <input name="email" type="text" class="form-control">
                     </div>
                 </div>
-            <?php endif; ?>
-            <div class="c">
-                <p class="install-title"><?= lang('admin_settings') ?></p>
-                <div class="input-group mb10">
-                    <span class="input-group-text"><?= lang('admin_name') ?></span>
-                    <input name="username" type="text" class="form-control" required>
-                </div>
-                <div class="input-group mb10">
-                    <span class="input-group-text"><?= lang('admin_password') ?></span>
-                    <input name="password" type="password" class="form-control" placeholder="<?= lang('admin_password_info') ?>" required>
-                </div>
-                <div class="input-group mb10">
-                    <span class="input-group-text"><?= lang('admin_password_repeat') ?></span>
-                    <input name="repassword" type="password" class="form-control" required>
-                </div>
-                <div class="input-group mb10">
-                    <span class="input-group-text"><?= lang('email') ?></span>
-                    <input name="email" type="text" class="form-control">
+                <div class="next_btn">
+                    <button type="submit" class="btn"><?= lang('install_emlog') ?></button>
                 </div>
             </div>
-            <div class="next_btn">
-                <button type="submit" class="btn"><?= lang('install_emlog') ?></button>
-            </div>
-        </div>
-    </form>
-    <div class="footer">Powered by <a href="https://emlog.ru">Emlog.ML</a></div>
+        </form>
+        <div class="footer">Powered by <a href="https://emlog.ru">Emlog.ML</a></div>
     </body>
+
     </html>
-    <?php
+<?php
 }
 if ($act == 'install' || $act == 'reinstall') {
     $db_host = isset($_POST['hostname']) ? addslashes(trim($_POST['hostname'])) : '';

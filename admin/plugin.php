@@ -1,4 +1,5 @@
 <?php
+
 /**
  * plugin management
  * @package EMLOG
@@ -133,7 +134,7 @@ if ($action === 'check_update') {
         'apps'  => json_encode($plugins),
     ];
     $emcurl->setPost($post_data);
-    $emcurl->request('https://www.emlog.net/plugin/upgrade');
+    $emcurl->request('https://store.emlog.net/plugin/upgrade');
     $retStatus = $emcurl->getHttpStatus();
     if ($retStatus !== MSGCODE_SUCCESS) {
 /*vot*/        Output::error(lang('update_failed_network'));

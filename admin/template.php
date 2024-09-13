@@ -1,4 +1,5 @@
 <?php
+
 /**
  * templates
  * @package EMLOG
@@ -110,7 +111,7 @@ if ($action === 'check_update') {
         'apps'  => json_encode($templates),
     ];
     $emcurl->setPost($post_data);
-    $emcurl->request('https://www.emlog.net/template/upgrade');
+    $emcurl->request('https://store.emlog.net/template/upgrade');
     $retStatus = $emcurl->getHttpStatus();
     if ($retStatus !== MSGCODE_SUCCESS) {
 /*vot*/        Output::error(lang('update_failed_network'));

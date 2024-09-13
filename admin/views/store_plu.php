@@ -49,7 +49,7 @@
         <div class="d-flex flex-wrap app-list">
             <?php foreach ($plugins as $k => $v):
                 $icon = $v['icon'] ?: "./views/images/plugin.png";
-                ?>
+            ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
                         <a href="#appModal" class="p-1" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>">
@@ -132,11 +132,11 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_store").addClass('active');
         setTimeout(hideActived, 3600);
 
-        $('#plugin-category').on('change', function () {
+        $('#plugin-category').on('change', function() {
             var selectedCategory = $(this).val();
             if (selectedCategory) {
                 window.location.href = './store.php?action=plu&sid=' + selectedCategory;

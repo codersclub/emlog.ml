@@ -1,4 +1,5 @@
 <?php
+
 /**
  * upgrade
  * @package EMLOG
@@ -20,7 +21,7 @@ if ($action === 'check_update') {
         'timestamp' => Option::EMLOG_VERSION_TIMESTAMP,
     ]);
 
-    $emcurl->request('https://www.emlog.net/service/upgrade');
+    $emcurl->request('https://store.emlog.net/service/upgrade');
     $retStatus = $emcurl->getHttpStatus();
     $response = $emcurl->getRespone();
     header('Content-Type: application/json; charset=UTF-8');
@@ -82,8 +83,9 @@ if ($action === 'update' && User::isAdmin()) {
     $ret = emUnZip($temp_zip_file, '../', 'update');
     switch ($ret) {
         case 1:
-        case 2:
             exit('error_dir');
+        case 2:
+            exit('error_down');
         case 3:
             exit('error_zip');
     }

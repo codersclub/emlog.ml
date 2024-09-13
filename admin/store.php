@@ -1,4 +1,5 @@
 <?php
+
 /**
  * store
  * @package EMLOG
@@ -225,8 +226,9 @@ if ($action === 'install') {
         case 0:
 /*vot*/            exit(lang('install_ok') . ' <a href="' . $suc_url . '">' . lang('go_check') . '</a>');
         case 1:
-        case 2:
 /*vot*/            exit(lang('install_failed_permission'));
+        case 2:
+            exit('安装失败，安装包下载异常');
         case 3:
 /*vot*/            exit(lang('install_failed_zip'));
         default:

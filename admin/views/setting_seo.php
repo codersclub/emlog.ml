@@ -19,42 +19,42 @@
             <div class="table-responsive">
                 <table class="table table-striped">
                     <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permalink" id="permalink0" value="0" <?= $ex0 ?>>
-                                <label class="form-check-label" for="permalink0"></label>
-                            </div>
-                        </td>
-                        <td><span class="permalink_url"><?= BLOG_URL ?>?post=1</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permalink" id="permalink1" value="1" <?= $ex1 ?>>
-                                <label class="form-check-label" for="permalink1"><?= lang('file_format') ?>:</label>
-                            </div>
-                        </td>
-                        <td><span class="permalink_url"><?= BLOG_URL ?>post-1.html</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permalink" id="permalink2" value="2" <?= $ex2 ?>>
-                <label class="form-check-label" for="permalink2"><?= lang('directory_format') ?>:</label>
-                            </div>
-                        </td>
-                        <td><span class="permalink_url"><?= BLOG_URL ?>post/1</span></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="permalink" id="permalink3" value="3" <?= $ex3 ?>>
-                <label class="form-check-label" for="permalink3"><?= lang('category_format') ?>:</label>
-                            </div>
-                        </td>
-                        <td><span class="permalink_url"><?= BLOG_URL ?>category/1.html</span></td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="permalink" id="permalink0" value="0" <?= $ex0 ?>>
+                                    <label class="form-check-label" for="permalink0"><?= lang('default_format') ?></label>
+                                </div>
+                            </td>
+                            <td><span class="permalink_url"><?= BLOG_URL ?>?post=1</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="permalink" id="permalink1" value="1" <?= $ex1 ?>>
+                                    <label class="form-check-label" for="permalink1"><?= lang('file_format') ?>:</label>
+                                </div>
+                            </td>
+                            <td><span class="permalink_url"><?= BLOG_URL ?>post-1.html</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="permalink" id="permalink2" value="2" <?= $ex2 ?>>
+                                    <label class="form-check-label" for="permalink2"><?= lang('directory_format') ?>:</label>
+                                </div>
+                            </td>
+                            <td><span class="permalink_url"><?= BLOG_URL ?>post/1</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="permalink" id="permalink3" value="3" <?= $ex3 ?>>
+                                    <label class="form-check-label" for="permalink3"><?= lang('category_format') ?>:</label>
+                                </div>
+                            </td>
+                            <td><span class="permalink_url"><?= BLOG_URL ?>category/1.html</span></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -81,8 +81,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;}<br>
                     }
                 </p>
-                <hr>
-                <p><?= lang('other_config') ?><a href="<?= ROOT_URL ?>/docs/faq/" target="_blank"><?= lang('common_problems') ?></a></p>
             </div>
 
             <h4 class="mt-4"><?= lang('meta_settings') ?>:</h4>
@@ -107,20 +105,20 @@
                 </select>
             </div>
 
-            <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-            <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
+            <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+            <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success" />
         </form>
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 3600);
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
 
         // submit Form
-        $("#seo_setting_form").submit(function (event) {
+        $("#seo_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#seo_setting_form");
         });

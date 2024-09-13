@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="form-group mt-3">
-                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
             </div>
         </form>
         <div class="alert alert-warning">
@@ -47,13 +47,13 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
     });
-    $('#setting_api_form').change(function () {
+    $('#setting_api_form').change(function() {
         submitForm('#setting_api_form');
     });
 </script>

@@ -126,7 +126,7 @@ $lang = array(
     'install_failed_permission' => '安装失败，请检查content下目录是否可写',//'Installation failed, please check whether the directory under content is writable',
     'install_failed_zip' => '安装失败，请安装php的Zip扩展',//'Installation failed, please install the Zip extension for php',
     'svip' => '铁杆svip专属',//'Hardcore svip exclusive',
-    'hard' => '铁杆专属',//'Hardcore exclusive',
+    'hard' => '铁杆免费',//'Hardcore Free',
     'plu_category_1' => '资源下载',//'Resource download',
     'plu_category_2' => 'SEO优化',//'SEO optimization',
     'plu_category_3' => '多媒体',//'Multimedia',
@@ -959,7 +959,7 @@ $lang = array(
 //admin/views/store.php
     'install_ok' => '安装成功',//'Successful installation',
     'install_failed' => '安装失败',//'Installation failed',
-    'install_failed_download' => '安装失败，下载超时或没有权限',//'Installation failed, download timed out or no permissions',
+    'install_failed_download' => '安装失败，下载超时',//'Installation failed, download timed out',
     'install_failed_write' => '安装失败，无法写文件，请检查content/下目录是否可写',//'Installation failed, unable to write files, please check whether the content/ directory is writable',
     'install_failed_zip' => '安装失败，无法解压，请安装php的Zip扩展',//'Installation failed, unable to decompress, please install php Zip extension',
     'install_invalid_ext' => '安装失败，不是有效的安装包',//'Installation failed, not a valid installation package',

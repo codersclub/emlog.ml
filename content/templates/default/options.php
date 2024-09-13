@@ -3,7 +3,7 @@
 
 /**
  * Configuration file for template settings
- * For details, please refer to the official website documentation-template development: https://www.emlog.net/docs/#/template
+ * For details, please refer to the official website documentation-template development: https://www.emlog.net/docs/dev/template
  */
 
 defined('EMLOG_ROOT') || exit('access denied!');
