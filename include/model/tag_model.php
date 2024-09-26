@@ -200,9 +200,9 @@ class Tag_Model
     }
 
     /**
-     * 从标签名查找标签详情
-     * @param string $tagName 标签名
-     * @return array|bool 标签ID | FALSE(未找到标签)
+     * Find tag details from tag name
+     * @param string $tagName Tag Name
+     * @return array|bool Tag ID | FALSE (tag not found)
      */
     function getDetailByName($tagName)
     {

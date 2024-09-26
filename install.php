@@ -614,9 +614,9 @@ DROP TABLE IF EXISTS {$db_prefix}tag;
 CREATE TABLE {$db_prefix}tag (
   tid int(11) unsigned NOT NULL auto_increment COMMENT 'Tag ID',
   tagname varchar(255) NOT NULL default '' COMMENT 'Tag name',
-  description VARCHAR(2048) NOT NULL DEFAULT '' COMMENT '页面描述',
-  title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT '页面标题',
-  kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT '关键词',
+  description VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page description',
+  title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
+  kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
   gid text NOT NULL COMMENT 'Article ID',
   PRIMARY KEY  (tid),
   KEY tagname (tagname)

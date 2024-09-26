@@ -125,6 +125,7 @@ $lang = array(
     'go_check' => '去启用',//'Go to check',
     'install_failed_permission' => '安装失败，请检查content下目录是否可写',//'Installation failed, please check whether the directory under content is writable',
     'install_failed_zip' => '安装失败，请安装php的Zip扩展',//'Installation failed, please install the Zip extension for php',
+    'install_failed_pack' => '安装失败，安装包下载异常',//'Installation failed, installation package download error',
     'svip' => '铁杆svip专属',//'Hardcore svip exclusive',
     'hard' => '铁杆免费',//'Hardcore Free',
     'plu_category_1' => '资源下载',//'Resource download',
@@ -656,6 +657,7 @@ $lang = array(
     'download_url' => '用户下载地址',//'User download URL',
     'search_file_name' => '搜索资源文件名...',//'Search media file name...',
     'thumbnail_url' => '缩略图地址',//'Thumbnail URL',
+    'source_file' => '源文件',//'Source File',
 
 //---------------------------
 //admin/views/media_lib.php
@@ -1044,6 +1046,11 @@ $lang = array(
     '_tags' => '个标签',//' tags',// Number of tags
     'tags_total' => '总标签数',//'Total tags',
     'tag_search' => '搜索标签名...',//'Search tag name...',
+    'tag_name' => '标签名',//'Tag Name',
+    'tab_title' => '标签页标题',//'Tab title',
+    'var_support' => '支持变量',//'Variables supported',
+    'tab_keywords' => '标签页关键词（英文逗号分割）',//'Tab keywords (comma separated)',
+    'tab_desc' => '标签页描述',//'Tab Description',
 
 //---------------------------
 //admin/views/template.php

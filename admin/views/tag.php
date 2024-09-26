@@ -69,20 +69,20 @@
             <form method="post" action="tag.php?action=update_tag">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="tagname">标签名</label>
+                        <label for="tagname"><?= lang('tag_name') ?></label>
                         <input type="text" class="form-control" id="tagname" name="tagname" required>
                     </div>
                     <div class="form-group">
-                        <label for="title">标签页标题</label>
+                        <label for="title"><?= lang('tab_title') ?></label>
                         <input type="text" class="form-control" id="title" name="title">
-                        <small class="form-text text-muted">支持变量: {{site_title}}, {{site_name}}, {{tag_name}}</small>
+                        <small class="form-text text-muted"><?= lang('var_support') ?>: {{site_title}}, {{site_name}}, {{tag_name}}</small>
                     </div>
                     <div class="form-group">
-                        <label for="kw">标签页关键词（英文逗号分割）</label>
+                        <label for="kw"><?= lang('tab_keywords') ?></label>
                         <input type="text" class="form-control" id="kw" name="kw">
                     </div>
                     <div class="form-group">
-                        <label for="alias">标签页描述</label>
+                        <label for="alias"><?= lang('tab_desc') ?></label>
                         <textarea name="description" id="description" type="text" class="form-control"></textarea>
                     </div>
                 </div>

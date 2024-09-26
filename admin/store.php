@@ -228,7 +228,7 @@ if ($action === 'install') {
         case 1:
 /*vot*/            exit(lang('install_failed_permission'));
         case 2:
-            exit('安装失败，安装包下载异常');
+/*vot*/            exit(lang('install_failed_pack'));
         case 3:
 /*vot*/            exit(lang('install_failed_zip'));
         default:

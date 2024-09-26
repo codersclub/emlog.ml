@@ -88,7 +88,7 @@
                             <?php if ($value['width'] && $value['height']): ?>
                                 <?= lang('img_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?>
                             <?php endif ?><br>
-                            源文件：<a href="#" class="copy-link text-muted" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a><br>
+                            <?= lang('source_file') ?>: <a href="#" class="copy-link text-muted" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a><br>
                             <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_url ?>"><?= lang('original_file') ?></a>
                             <?php if ($value['alias'] && $value['mimetype'] === 'application/zip'):
                                 $media_down_url = BLOG_URL . '?resource_alias=' . $value['alias'];

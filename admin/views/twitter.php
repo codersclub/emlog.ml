@@ -56,7 +56,7 @@
     <?php endforeach ?>
 </div>
 <div class="page"><?= $pageurl ?> </div>
-<div class="text-center small">有 <?= $twnum ?> 条微语</div>
+<div class="text-center small"><?= lang('have') ?> <?= $twnum ?> <?= lang('_twitters') ?></div>
 
 <!--Edit Microblog-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
@@ -84,7 +84,7 @@
     </div>
 </div>
 
-<!--预览微语-->
+<!--Preview Microblog-->
 <div class="modal fade" id="tModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
