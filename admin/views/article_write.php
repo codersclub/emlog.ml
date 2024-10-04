@@ -120,7 +120,7 @@
                 <?php if (User::haveEditPermission()): ?>
                     <div class="form-group">
                         <label><?= lang('publish_time') ?>:</label>
-                        <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control" />
+                        <input type="text" maxlength="200" name="postdate" id="postdate" value="<?= $postDate ?>" class="form-control datepicker" required />
                         <small class="text-muted"><?= lang('publish_time_tips') ?></small>
                     </div>
                     <div class="form-group">
@@ -133,6 +133,7 @@
                     </div>
                     <div><a href="javascript:void (0);" class="show_adv_set" onclick="displayToggle('adv_set');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
                 <?php else: ?>
+                    <input type="hidden" name="postdate" id="postdate" value="<?= $postDate ?>" />
                     <input type="hidden" value="y" name="allow_remark" id="allow_remark" />
                 <?php endif; ?>
                 <div id="adv_set">

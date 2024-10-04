@@ -445,6 +445,7 @@ CREATE TABLE {$db_prefix}blog (
   type varchar(20) NOT NULL default 'blog' COMMENT 'Article or Page',
   views int(11) unsigned NOT NULL default '0' COMMENT 'Read counter',
   comnum int(11) unsigned NOT NULL default '0' COMMENT 'Number of comments',
+  like_count int(11) unsigned NOT NULL default '0' COMMENT 'Number of Likes',
   attnum int(11) unsigned NOT NULL default '0' COMMENT 'Number of attachments (obsolete)',
   top enum('n','y') NOT NULL default 'n' COMMENT 'Top',
   sortop enum('n','y') NOT NULL default 'n' COMMENT 'Top category',
@@ -498,6 +499,7 @@ CREATE TABLE {$db_prefix}comment (
   pid int(11) unsigned NOT NULL default '0' COMMENT 'Parent comment ID',
   top enum('n','y') NOT NULL default 'n' COMMENT 'Top',
   poster varchar(255) NOT NULL default '' COMMENT 'Publisher nickname',
+  avatar varchar(512) NOT NULL default '' COMMENT 'Avatar URL',
   uid int(11) NOT NULL default '0' COMMENT 'Publisher UID',
   comment text NOT NULL COMMENT 'Comment content',
   mail varchar(255) NOT NULL default '' COMMENT 'Email',
@@ -512,6 +514,20 @@ CREATE TABLE {$db_prefix}comment (
   KEY hide (hide)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '" . lang('system_generated_demo') . "');
+DROP TABLE IF EXISTS {$db_prefix}like;
+CREATE TABLE {$db_prefix}like (
+  id int(11) unsigned NOT NULL auto_increment COMMENT '点赞表',
+  gid int(11) unsigned NOT NULL default '0' COMMENT '文章ID',
+  poster varchar(20) NOT NULL default '' COMMENT '昵称',
+  avatar varchar(512) NOT NULL default '' COMMENT '头像URL',
+  uid int(11) NOT NULL default '0',
+  ip varchar(128) NOT NULL default '',
+  agent varchar(512) NOT NULL default '',
+  date bigint(20) NOT NULL,
+  PRIMARY KEY  (id),
+  KEY gid (gid),
+  KEY date (date)
+)" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
 option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',

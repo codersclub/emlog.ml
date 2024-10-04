@@ -34,8 +34,8 @@
                         <label for="zipbak"><?= lang('compress_zip') ?></label>
                     </p>
                     <p>
-                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                        <input type="submit" value="<?= lang('backup_start') ?>" class="btn btn-sm btn-success"/>
+                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                        <input type="submit" value="<?= lang('backup_start') ?>" class="btn btn-sm btn-success" />
                     </p>
                 </div>
             </form>
@@ -48,9 +48,9 @@
                 <div id="import">
                     <p class="des"><?= lang('backup_version_tip') ?> <?= DB_PREFIX ?></p>
                     <p>
-                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                        <input type="file" name="sqlfile" required/>
-                        <input type="submit" value="<?= lang('import') ?>" class="btn btn-sm btn-success"/>
+                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                        <input type="file" name="sqlfile" required />
+                        <input type="submit" value="<?= lang('import') ?>" class="btn btn-sm btn-success" />
                     </p>
                 </div>
             </form>
@@ -61,13 +61,13 @@
         <div class="card-body">
             <div id="cache">
                 <p class="des"><?= lang('cache_update_info') ?></p>
-                <p><input type="button" onclick="window.location='data.php?action=Cache';" value="<?= lang('cache_update') ?>" class="btn btn-sm btn-success"></p>
+                <p><input type="button" onclick="window.location='data.php?action=Cache';" value="<?= lang('cache_update') ?>" class="btn btn-sm btn-success" /></p>
             </div>
         </div>
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_data").addClass('active');

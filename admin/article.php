@@ -268,7 +268,7 @@ if ($action === 'write') {
     $is_top = '';
     $is_sortop = '';
     $is_allow_remark = 'checked="checked"';
-    $postDate = date('Y-m-d H:i');
+    $postDate = date('Y-m-d H:i:s');
     $mediaSorts = $MediaSort_Model->getSorts();
     $customTemplates = $Template_Model->getCustomTemplates('log');
     $fields = [];
@@ -293,7 +293,7 @@ if ($action === 'edit') {
     $isdraft = $hide == 'y' ? true : false;
 //vot    $postsName = User::isAdmin() ? lang('article') : Option::get('posts_name');
 /*vot*/    $containerTitle = $isdraft ? lang('draft_edit') : lang('post_edit');
-    $postDate = date('Y-m-d H:i', $date);
+    $postDate = date('Y-m-d H:i:s', $date);
     $sorts = $CACHE->readCache('sort');
 
     //tag

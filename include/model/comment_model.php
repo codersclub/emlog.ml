@@ -1,22 +1,26 @@
 <?php
+
 /**
  * commment model
  * @package EMLOG
  * @link https://www.emlog.net
  */
 
-class Comment_Model {
+class Comment_Model
+{
 
     private $db;
 
-    function __construct() {
+    function __construct()
+    {
         $this->db = Database::getInstance();
     }
 
     /**
      * get comment list
      */
-    function getComments($blogId = null, $hide = null, $page = null) {
+    function getComments($blogId = null, $hide = null, $page = null)
+    {
         $andQuery = '1=1';
         $andQuery .= $blogId ? " and a.gid=$blogId" : '';
         $andQuery .= $hide ? " and a.hide='$hide'" : '';
@@ -70,10 +74,53 @@ class Comment_Model {
         return $comments;
     }
 
+    function getCommentListForApi($blogId = null, $hide = null)
+    {
+        $andQuery = '1=1';
+        $andQuery .= $blogId ? " and a.gid=$blogId" : '';
+        $andQuery .= $hide ? " and a.hide='$hide'" : '';
+        $condition = '';
+
+        $sql = "SELECT * FROM " . DB_PREFIX . "comment as a where $andQuery ORDER BY a.top ASC, a.date ASC $condition";
+
+        $ret = $this->db->query($sql);
+        $comments = [];
+        while ($row = $this->db->fetch_array($ret)) {
+            $comments[$row['cid']] = [
+                'cid' => (int)$row['cid'],
+                'gid' => (int)$row['gid'],
+                'pid' => (int)$row['pid'],
+                'uid' => (int)$row['uid'],
+                'top' => $row['top'],
+                'poster' => htmlspecialchars($row['poster']),
+                'avatar' => $this->getAvatar($row['uid'], $row['mail'], $row['avatar']),
+                'url' => htmlspecialchars($row['url']),
+                'content' => htmlClean($row['comment']),
+                'date' => smartDate($row['date']),
+            ];
+        }
+        foreach ($comments as $cid => $comment) {
+            $pid = $comment['pid'];
+            if ($pid != 0 && isset($comments[$pid])) {
+                $comments[$pid]['children'][] = &$comments[$cid];
+            }
+        }
+
+        $commentList = [];
+        foreach ($comments as $comment) {
+            if ($comment['pid'] == 0) {
+                $commentList[] = $comment;
+            }
+        }
+
+        return $commentList;
+    }
+
     /**
      * get comment list for admin
      */
-    function getCommentsForAdmin($blogId = null, $uid = null, $hide = null, $page = null) {
+    function getCommentsForAdmin($blogId = null, $uid = null, $hide = null, $page = null)
+    {
         $orderBy = $blogId ? "ORDER BY a.top DESC, a.date DESC" : 'ORDER BY a.date DESC';
         $andQuery = '1=1';
 /*vot*/        $andQuery .= $blogId ? " AND a.gid=$blogId" : '';
@@ -109,7 +156,8 @@ class Comment_Model {
         return $comments;
     }
 
-    function getOneComment($commentId, $nl2br = false) {
+    function getOneComment($commentId, $nl2br = false)
+    {
 /*vot*/        $sql = "SELECT * FROM " . DB_PREFIX . "comment WHERE cid=$commentId";
         $res = $this->db->query($sql);
         if ($this->db->affected_rows() < 1) {
@@ -122,7 +170,8 @@ class Comment_Model {
         return $comment;
     }
 
-    function getCommentNum($blogId = null, $uid = null, $hide = null) {
+    function getCommentNum($blogId = null, $uid = null, $hide = null)
+    {
         $andQuery = '1=1';
 /*vot*/        $andQuery .= $blogId ? " AND a.gid=$blogId" : '';
 /*vot*/        $andQuery .= $uid ? " AND a.uid=$uid" : '';
@@ -136,7 +185,8 @@ class Comment_Model {
         return $res['count(*)'];
     }
 
-    function delComment($commentId) {
+    function delComment($commentId)
+    {
         $this->isYoursComment($commentId);
         $row = $this->db->once_fetch_array("SELECT gid FROM " . DB_PREFIX . "comment WHERE cid=$commentId");
         $blogId = (int)$row['gid'];
@@ -153,7 +203,8 @@ class Comment_Model {
         $this->updateCommentNum($blogId);
     }
 
-    function delCommentByIp($ip) {
+    function delCommentByIp($ip)
+    {
         $blogids = [];
         $sql = "SELECT DISTINCT gid FROM " . DB_PREFIX . "comment WHERE ip='$ip'";
         $query = $this->db->query($sql);
@@ -164,7 +215,8 @@ class Comment_Model {
         $this->updateCommentNum($blogids);
     }
 
-    function hideComment($commentId) {
+    function hideComment($commentId)
+    {
         $this->isYoursComment($commentId);
         $row = $this->db->once_fetch_array("SELECT gid FROM " . DB_PREFIX . "comment WHERE cid=$commentId");
         $blogId = (int)$row['gid'];
@@ -181,7 +233,8 @@ class Comment_Model {
         $this->updateCommentNum($blogId);
     }
 
-    function showComment($commentId) {
+    function showComment($commentId)
+    {
         $this->isYoursComment($commentId);
         $row = $this->db->once_fetch_array("SELECT gid,pid FROM " . DB_PREFIX . "comment WHERE cid=$commentId");
         $blogId = (int)$row['gid'];
@@ -197,14 +250,16 @@ class Comment_Model {
         $this->updateCommentNum($blogId);
     }
 
-    function topComment($commentId, $top = 'y') {
+    function topComment($commentId, $top = 'y')
+    {
         $this->isYoursComment($commentId);
         $commentIds = array($commentId);
         $commentIds = implode(',', $commentIds);
         $this->db->query("UPDATE " . DB_PREFIX . "comment SET top='$top' WHERE cid IN ($commentIds)");
     }
 
-    function replyComment($blogId, $pid, $content, $hide) {
+    function replyComment($blogId, $pid, $content, $hide)
+    {
         $User_Model = new User_Model();
         $user_info = $User_Model->getOneUser(UID);
 
@@ -223,7 +278,8 @@ class Comment_Model {
         $this->updateCommentNum($blogId);
     }
 
-    function batchComment($action, $comments) {
+    function batchComment($action, $comments)
+    {
         switch ($action) {
             case 'delcom':
                 foreach ($comments as $val) {
@@ -253,7 +309,8 @@ class Comment_Model {
         }
     }
 
-    function updateCommentNum($blogId) {
+    function updateCommentNum($blogId)
+    {
         if (is_array($blogId)) {
             foreach ($blogId as $val) {
                 $this->updateCommentNum($val);
@@ -267,7 +324,8 @@ class Comment_Model {
         }
     }
 
-    function addComment($uid, $name, $content, $mail, $url, $blogId, $pid) {
+    function addComment($uid, $name, $content, $mail, $url, $avatar, $blogId, $pid)
+    {
         $ipaddr = getIp();
         $timestamp = time();
         $useragent = addslashes(getUA());
@@ -279,8 +337,8 @@ class Comment_Model {
 
         $hide = Option::get('ischkcomment') == 'y' && !User::haveEditPermission() ? 'y' : 'n';
 
-        $sql = 'INSERT INTO ' . DB_PREFIX . "comment (uid,date,poster,gid,comment,mail,url,hide,ip,agent,pid)
-                VALUES ($uid,'$timestamp','$name','$blogId','$content','$mail','$url','$hide','$ipaddr','$useragent','$pid')";
+        $sql = 'INSERT INTO ' . DB_PREFIX . "comment (uid,date,poster,gid,comment,mail,url,avatar,hide,ip,agent,pid)
+                VALUES ($uid,'$timestamp','$name','$blogId','$content','$mail','$url','$avatar','$hide','$ipaddr','$useragent','$pid')";
         $this->db->query($sql);
         $cid = $this->db->insert_id();
         $CACHE = Cache::getInstance();
@@ -296,12 +354,14 @@ class Comment_Model {
         return ['cid' => $cid, 'hide' => 'y'];
     }
 
-    function isCommentExist($blogId, $name, $content) {
+    function isCommentExist($blogId, $name, $content)
+    {
         $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "comment WHERE gid=$blogId AND poster='$name' AND comment='$content'");
         return $data['total'] > 0;
     }
 
-    function isYoursComment($cid) {
+    function isYoursComment($cid)
+    {
         if (User::haveEditPermission() || User::isVisitor()) {
             return true;
         }
@@ -312,7 +372,8 @@ class Comment_Model {
         }
     }
 
-    function isCommentTooFast() {
+    function isCommentTooFast()
+    {
         $ipaddr = getIp();
         $utctimestamp = time() - Option::get('comment_interval');
 
@@ -323,10 +384,26 @@ class Comment_Model {
         return (int)$row['num'] > 0;
     }
 
-    function setCommentCookie($name, $mail, $url) {
+    function setCommentCookie($name, $mail, $url)
+    {
         $cookietime = time() + 31536000;
         setcookie('commentposter', $name, $cookietime);
         setcookie('postermail', $mail, $cookietime);
         setcookie('posterurl', $url, $cookietime);
+    }
+
+    function getAvatar($uid, $mail, $avatar = '')
+    {
+        if ($avatar) {
+            return $avatar;
+        }
+        if ($uid) {
+            $userModel = new User_Model();
+            $user = $userModel->getOneUser($uid);
+            $avatar = getFileUrl($user['photo']);
+        } elseif ($mail) {
+            $avatar = getGravatar($mail);
+        }
+        return $avatar ?: BLOG_URL . "admin/views/images/avatar.svg";
     }
 }

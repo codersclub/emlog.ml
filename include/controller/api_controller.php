@@ -34,6 +34,10 @@ class Api_Controller
      * @var Comment_Model
      */
     public $Comment_Model;
+    /**
+     * @var Like_Model
+     */
+    public $Like_Model;
 
     public $Cache;
     public $authApiKey;
@@ -60,6 +64,7 @@ class Api_Controller
             $this->User_Model = new User_Model();
             $this->Media_Model = new Media_Model();
             $this->Comment_Model = new Comment_Model();
+            $this->Like_Model = new Like_Model();
             $this->Cache = Cache::getInstance();
             $this->$_func();
         } else {
@@ -102,6 +107,15 @@ class Api_Controller
             $author_uid = $this->curUid;
         }
 
+        $checked = 'y';
+        if (isset($_COOKIE[AUTH_COOKIE_NAME])) {
+            if (Article::hasReachedDailyPostLimit()) {
+                Output::error('Exceeded daily posting limit');
+            }
+            //管理员发文不审核,注册用户受开关控制
+            $checked = Option::get('ischkarticle') == 'y' && !User::haveEditPermission() ? 'n' : 'y';
+        }
+
         $logData = [
             'title'        => $title,
             'content'      => $content,
@@ -111,6 +125,7 @@ class Api_Controller
             'cover'        => $cover,
             'date'         => strtotime($post_date ?: date('Y-m-d H:i:s')),
             'hide'         => $draft === 'y' ? 'y' : 'n',
+            'checked'      => $checked,
             'alias'        => $alias,
             'top '         => $top,
             'sortop '      => $sortop,
@@ -227,6 +242,7 @@ class Api_Controller
                 'sort_name'   => isset($sort_cache[$value['sortid']]['sortname']) ? $sort_cache[$value['sortid']]['sortname'] : '',
                 'views'       => (int)$value['views'],
                 'comnum'      => (int)$value['comnum'],
+                'like_count'  => (int)$value['like_count'],
                 'top'         => $value['top'],
                 'sortop'      => $value['sortop'],
                 'tags'        => $this->getTags((int)$value['gid']),
@@ -273,6 +289,7 @@ class Api_Controller
             'cover'         => $r['log_cover'],
             'views'         => (int)$r['views'],
             'comnum'        => (int)$r['comnum'],
+            'like_count'    => (int)$r['like_count'],
             'top'           => $r['top'],
             'sortop'        => $r['sortop'],
             'tags'          => $this->getTags($id),
@@ -431,8 +448,49 @@ class Api_Controller
         $id = Input::getIntVar('id');
         $page = Input::getIntVar('page', 1);
 
+        if (empty($id)) {
+            Output::error('parameter error');
+        }
+
         $comments = $this->Comment_Model->getComments($id, 'n', $page);
         output::ok($comments);
+    }
+
+    private function comment_list_simple()
+    {
+        $id = Input::getIntVar('id');
+
+        if (empty($id)) {
+            Output::error('parameter error');
+        }
+
+        $comments = $this->Comment_Model->getCommentListForApi($id, 'n');
+        output::ok(['comments' => $comments]);
+    }
+
+    private function like_list()
+    {
+        $id = Input::getIntVar('id');
+
+        if (empty($id)) {
+            Output::error('parameter error');
+        }
+
+        $r = $this->Like_Model->getList($id);
+
+        $likes = [];
+        foreach ($r as $value) {
+            $likes[] = [
+                'id'          => (int)$value['id'],
+                'gid'         => (int)$value['gid'],
+                'uid'         => (int)$value['uid'],
+                'date'        => $value['date'],
+                'avatar'      => $value['avatar'],
+                'poster'      => $value['poster'],
+            ];
+        }
+
+        output::ok(['likes' => $likes]);
     }
 
     private function getTags($id)

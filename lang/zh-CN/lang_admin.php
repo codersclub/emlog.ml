@@ -401,7 +401,7 @@ $lang = array(
 //---------------------------
 //admin/views/data.php
     'data_backup' => '数据',//'Data',
-    'backup_prompt' => '将站点内容数据库备份到自己电脑上。',//'Back up the site content database to your computer.',
+    'backup_prompt' => '将站点数据库备份到自己电脑上，包括文章、评论、用户等信息，但不包括上传的文件图片。',//'Back up the site database to your own computer, including articles, comments, users and other information, but excluding uploaded files and images.',
     'backup_delete_ok' => '备份文件删除成功',//'Backup file deleted successfully',
     'backup_create_ok' => '数据备份成功',//'Data backup created successfully',
     'backup_import_ok' => '备份导入成功',//'Backup imported successfully',

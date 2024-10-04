@@ -1,4 +1,5 @@
 <?php
+
 /**
  * article save and update
  * @package EMLOG
@@ -80,12 +81,9 @@ $logData = [
     'template'     => $template,
 ];
 
-if (User::isWriter()) {
-    $count = $Log_Model->getPostCountByUid(UID, time() - 3600 * 24);
-    $post_per_day = Option::get('posts_per_day');
-    if ($count >= $post_per_day) {
-        emDirect("./article.php?error_post_per_day=1");
-    }
+// 每日发文限制
+if (Article::hasReachedDailyPostLimit()) {
+    emDirect("./article.php?error_post_per_day=1");
 }
 
 doMultiAction('pre_save_log', $logData, $logData);
