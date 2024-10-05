@@ -138,7 +138,7 @@ body {
     margin: 0 auto;
 }
 
-/*时间选择器*/
+/* Time Picker */
 #ui-datepicker-div {
     box-shadow: 0 0 rgb(0 0 0 / 0), 0 0 rgb(0 0 0 / 0), 0 2px 12px -2px rgb(0 0 0 / .12), 0 3px 6px -3px rgb(0 0 0 / .1);
     background: #f8f9fc;

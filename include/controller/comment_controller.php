@@ -48,7 +48,7 @@ class Comment_Controller
         if (!ISLOGIN && Option::get('login_comment') === 'y') {
             $err = lang('login_before_comment');
         } elseif ($blogId <= 0 || empty($log)) {
-            $err = lang('comment_error_article_no');
+            $err = lang('error_article_no');
         } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
             $err = lang('comment_error_comment_disabled');
         } elseif (!User::haveEditPermission() && $Comment_Model->isCommentTooFast() === true) {
@@ -56,7 +56,7 @@ class Comment_Controller
         } elseif (empty($name)) {
             $err = lang('comment_error_name_enter');
         } elseif (strlen($name) > 100) {
-            $err = lang('comment_error_name_invalid');
+            $err = lang('error_name_invalid');
         } elseif ($mail !== '' && !checkMail($mail)) {
             $err = lang('comment_error_email_invalid');
         } elseif (empty($content)) {

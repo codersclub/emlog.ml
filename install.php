@@ -516,10 +516,10 @@ CREATE TABLE {$db_prefix}comment (
 INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '" . lang('system_generated_demo') . "');
 DROP TABLE IF EXISTS {$db_prefix}like;
 CREATE TABLE {$db_prefix}like (
-  id int(11) unsigned NOT NULL auto_increment COMMENT '点赞表',
-  gid int(11) unsigned NOT NULL default '0' COMMENT '文章ID',
-  poster varchar(20) NOT NULL default '' COMMENT '昵称',
-  avatar varchar(512) NOT NULL default '' COMMENT '头像URL',
+  id int(11) unsigned NOT NULL auto_increment COMMENT 'Like ID',
+  gid int(11) unsigned NOT NULL default '0' COMMENT 'Article ID',
+  poster varchar(255) NOT NULL default '' COMMENT 'User name',
+  avatar varchar(512) NOT NULL default '' COMMENT 'Avatar URL',
   uid int(11) NOT NULL default '0',
   ip varchar(128) NOT NULL default '',
   agent varchar(512) NOT NULL default '',

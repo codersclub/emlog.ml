@@ -112,7 +112,7 @@ class Api_Controller
             if (Article::hasReachedDailyPostLimit()) {
                 Output::error('Exceeded daily posting limit');
             }
-            //管理员发文不审核,注册用户受开关控制
+            // Administrators do not review posts, and registered users are controlled by switches
             $checked = Option::get('ischkarticle') == 'y' && !User::haveEditPermission() ? 'n' : 'y';
         }
 

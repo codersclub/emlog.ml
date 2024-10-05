@@ -34,15 +34,15 @@ class Like_Controller
         $err = '';
 
         if ($blogId <= 0 || empty($log)) {
-            $err = '文章不存在';
+            $err = lang('error_article_no');
         } elseif ($Like_Model->isLiked($blogId, $uid, $ip) === true) {
-            $err = '已经赞过了';
+            $err = lang('liked_already');
         } elseif (!User::haveEditPermission() && $Like_Model->isTooFast() === true) {
-            $err = '操作太频繁';
+            $err = lang('action_too_often');
         } elseif (strlen($name) > 100) {
-            $err = '昵称太长了';
+            $err = lang('error_name_invalid');
         } elseif (empty($ip) || empty($ua) || preg_match('/bot|crawler|spider|robot|crawling/i', $ua)) {
-            $err = '非正常请求';
+            $err = lang('invalid_request');
         }
 
         if ($err) {

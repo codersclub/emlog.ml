@@ -53,13 +53,13 @@ $lang = array(
 
 //---------------------------
 //include/controller/comment_controller.php
-'comment_error_article_no'       => 'Article does not exist',//'文章不存在',
+//'comment_error_article_no'       => 'Article does not exist',//'文章不存在',
 'comment_error_comment_disabled' => 'This article has no comments',//'该文章未开启评论',
 'comment_error_content_exists'   => 'The same content already exists.',//'已存在相同内容评论',
 'comment_error_flood_control'    => 'Comments are posted too often',//'评论发布太频繁',
 'comment_error_name_enter'       => 'Please, enter your name.',//'请填写姓名',
 'comment_error_name_invalid'     => 'Name does not meet requirements.',//'姓名不符合规范',
-'comment_error_email_invalid'    => 'E-mail address does not meet requirements.',//'邮件地址不符合规范',
+//'comment_error_email_invalid'    => 'E-mail address does not meet requirements.',//'邮件地址不符合规范',
 'comment_error_other_user'       => 'User data cannot be the same as administrator or other users.',//'禁止使用管理员昵称或邮箱评论',
 'comment_error_url_invalid'      => 'Homepage URL is invalid.',//'主页地址不符合规范',
 'comment_error_empty'            => 'Please, enter some content.',//'请填写评论内容',

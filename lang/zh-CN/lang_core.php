@@ -11,6 +11,14 @@ $lang = array(
 'article_private'	=> 'This article is private',
 
 //---------------------------
+//include/controller/like_controller.php
+'error_article_no'	=> '文章不存在',//'Article does not exist',
+'liked_already'		=> '已经赞过了',//'Already liked it',
+'action_too_often'	=> '操作太频繁',//'Operation too frequent',
+'invalid_request'	=> '非正常请求',//'Invalid request',
+'error_name_invalid'	=> '昵称太长了',//'Nickname is too long',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'Y年n月',//'m.Y',
 'cache_read_error'   => '写入缓存失败，可能是缓存目录(content/cache)不可写',//'Failed to write to the cache, it may be that the cache directory (content/cache) is not writable',

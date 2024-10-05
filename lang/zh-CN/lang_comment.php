@@ -53,12 +53,12 @@ $lang = array(
 
 //---------------------------
 //include/controller/comment_controller.php
-'comment_error_article_no'       => '文章不存在',//'Article does not exist',
+//'comment_error_article_no'       => '文章不存在',//'Article does not exist',
 'comment_error_comment_disabled' => '该文章未开启评论',//'This article has no comments',
 'comment_error_content_exists'   => '已存在相同内容评论',//'The same content already exists.',
 'comment_error_flood_control'    => '评论发布太频繁',//'Comments are posted too often',
 'comment_error_name_enter'       => '请填写昵称',//'Please, enter your nickname.',
-'comment_error_name_invalid'     => '昵称太长了',//'Nickname is too long',
+//'comment_error_name_invalid'     => '昵称太长了',//'Nickname is too long',
 'comment_error_email_invalid'    => '不是有效的邮箱',//'Invalid email address',
 'comment_error_other_user'       => '禁止使用管理员昵称或邮箱评论',//'User data cannot be the same as administrator or other users.',
 'comment_error_url_invalid'      => '主页地址不符合规范',//'Homepage URL is invalid.',
@@ -72,7 +72,6 @@ $lang = array(
 'mail_send_ok'			=> '邮件发送成功',//'Mail sent successfully',
 'mail_send_error'		=> '邮件发送失败',//'Mail sending failed',
 'comment_wait_approve'		=> '评论成功，请等待管理员审核',//'The comment is saved successfully, please wait for the administrator to approve',
-'invalid_request'		=> '非正常请求',//'Invalid request',
 
 //---------------------------
 //include/model/comment_model.php

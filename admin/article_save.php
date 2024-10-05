@@ -81,7 +81,7 @@ $logData = [
     'template'     => $template,
 ];
 
-// 每日发文限制
+// Daily post limit
 if (Article::hasReachedDailyPostLimit()) {
     emDirect("./article.php?error_post_per_day=1");
 }
