@@ -580,6 +580,10 @@ function lang(key) {
     return val;
 }
 
+/*vot*/    // Load Timepicker language
+/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
+
+
 $(function () {
     // Setting interface: Automatically detect site address. If "Automatically detect address" is set, set the input to read-only to indicate that the item is invalid.
     if ($("#detect_url").prop("checked")) {
@@ -658,48 +662,17 @@ $(function () {
 
 //jQuery ui date
 $(function () {
-    $.timepicker.regional['zh-CN'] = {
-        timeOnlyTitle: '选择时间',
-        timeText: '时间',
-        hourText: '时',
-        minuteText: '分',
-        secondText: '秒',
-        millisecText: '毫秒',
-        microsecText: '微秒',
-        timezoneText: '时区',
-        currentText: '现在时间',
-        closeText: '关闭',
-        timeFormat: 'HH:mm',
-        timeSuffix: '',
-        amNames: ['AM', 'A'],
-        pmNames: ['PM', 'P'],
-        isRTL: false,
-        prevText: '上个月',
-        nextText: '下个月',
-        showMonthAfterYear: true,
-        weekHeader: '周',
-        yearSuffix: '年',
-    };
-    $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
 
-    //日期
-    let dayNamesMin = ["日", "一", "二", "三", "四", "五", "六"];
-    let monthNamesShort = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-
-    // 获取屏幕宽度
+    // Get the screen width
     const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     let _left = screenWidth < 1200 ? 0 : 50;
     
     $(".datepicker").length && $(".datepicker").datetimepicker({
-        controlType: "select",
-        dayNamesMin: dayNamesMin,
-        monthNamesShort: monthNamesShort,
+        controlType: 'select', //'select', 'slider',
         changeMonth: true,
         changeYear: true,
         yearRange: "c-30:c+10",
         showSecond: true,
-        dateFormat: "yy-mm-dd",
-        timeFormat: "HH:mm:ss",
         beforeShow: function (input, inst) {
             setTimeout(function () {
                 inst.dpDiv.css({
