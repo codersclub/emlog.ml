@@ -25,7 +25,8 @@ if (!function_exists('_g')) {
     <meta name="keywords" content="<?= $site_key ?>"/>
     <meta name="description" content="<?= $site_description ?>"/>
     <base href="<?= BLOG_URL ?>"/>
-    <link href="<?= empty(_g('favicon')) ? BLOG_URL . 'favicon.ico' : _g('favicon'); ?>" rel="icon">
+    <!--link href="<?= empty(_g('favicon')) ? BLOG_URL . 'favicon.ico' : _g('favicon'); ?>" rel="icon"-->
+    <link href="<?= BLOG_URL . 'favicon.ico' ?>" rel="icon">
     <link rel="alternate" title="RSS" href="<?= BLOG_URL ?>rss.php" type="application/rss+xml"/>
     <link href="<?= TEMPLATE_URL ?>css/style.css?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
     <link href="<?= TEMPLATE_URL ?>css/icon/iconfont.css?v=<?= $v ?>&t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet"/>
