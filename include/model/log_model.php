@@ -129,7 +129,7 @@ class Log_Model
     }
 
     /**
-     * 获取文章详情.
+     * Get article details.
      *
      * @param int $blogId ID of the article to be retrieved.
      * @return array|false An array of article record, or false if not found.
@@ -150,7 +150,7 @@ class Log_Model
     }
 
     /**
-     * 批量获取文章详情.
+     * Get article details in batches.
      *
      * @param array $blogIds IDs of articles to be retrieved.
      * @return array|false An array of article records, or false if no records are found.
@@ -171,7 +171,7 @@ class Log_Model
     }
 
     /**
-     * 查询所有的子文章.
+     * Query all sub-articles.
      *
      * @param int $parentID The ID of the parent to filter logs.
      * @return array|false An array of logs matching the parent ID, or false if the parent ID is invalid.

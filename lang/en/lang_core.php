@@ -11,6 +11,14 @@ $lang = array(
 'article_private'	=> 'This article is private',
 
 //---------------------------
+//include/controller/like_controller.php
+'error_article_no'	=> 'Article does not exist',//'文章不存在',
+'liked_already'		=> 'Already liked it',//'已经赞过了',
+'action_too_often'	=> 'Operation too frequent',//'操作太频繁',
+'invalid_request'	=> 'Invalid request',//'非正常请求',
+'error_name_invalid'	=> 'Nickname is too long',//'昵称太长了',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'm.Y',//'Y年n月',
 'cache_read_error'   => 'Failed to write to the cache, it may be that the cache directory (content/cache) is not writable',//'写入缓存失败，可能是缓存目录(content/cache)不可写',
@@ -224,7 +232,7 @@ $lang = array(
 //content/templates/default/options.php
 'tpl_setting_tab_name'	=> 'Define settings tab name',//'定义设置项标签页名称',
 'tpl_setting_header'	=> 'Header settings',//'头部设置',
-'tpl_setting_descr'	=> 'Hello, this is the setting interface of the default template. Please click the menu above to enter the setting item.',//'你好，这是默认模板的设置界面，请点击上方菜单进入设置项。',
+'tpl_setting_descr'	=> 'Hello, this is the setting interface of the default template. Please click the menu on the left to enter the settings.',//'你好，这是默认模板的设置界面，请点击左侧菜单进入设置项。',
 'tpl_logo_mode'		=> 'LOGO display mode',//'LOGO显示模式',
 'tpl_logo_text'		=> 'Text',//'文字',
 'tpl_logo_image'	=> 'Image',//'图片',

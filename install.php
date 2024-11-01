@@ -457,7 +457,7 @@ CREATE TABLE {$db_prefix}blog (
   tags text COMMENT 'Tags',
   link varchar(255) NOT NULL DEFAULT '' COMMENT 'Article jump link',
   feedback varchar(2048) NOT NULL DEFAULT '' COMMENT 'audit feedback',
-  parent_id bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文章层级关系-父级ID',
+  parent_id bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Article parent ID',
   PRIMARY KEY (gid),
   KEY author (author),
   KEY views (views),
