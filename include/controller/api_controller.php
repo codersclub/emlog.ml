@@ -235,6 +235,7 @@ class Api_Controller
                 'cover'       => $value['log_cover'],
                 'url'         => $value['log_url'],
                 'description' => $value['log_description'],
+                'description_raw' => empty($value['excerpt']) ? $value['content'] : $value['excerpt'],
                 'date'        => date('Y-m-d H:i:s', $value['date']),
                 'author_id'   => (int)$value['author'],
                 'author_name' => $this->getAuthorName($value['author']),
@@ -248,6 +249,7 @@ class Api_Controller
                 'tags'        => $this->getTags((int)$value['gid']),
                 'need_pwd'    => $value['password'] ? 'y' : 'n',
                 'fields'      => $value['fields'],
+                'parent_id'   => (int)$value['parent_id'],
             ];
         }
 
@@ -285,7 +287,9 @@ class Api_Controller
             'author_name'   => $author_name,
             'author_avatar' => $author_avatar,
             'content'       => $r['log_content'],
+            'content_raw'   => $r['content_raw'],
             'excerpt'       => $r['excerpt'],
+            'excerpt_raw'   => $r['excerpt_raw'],
             'cover'         => $r['log_cover'],
             'views'         => (int)$r['views'],
             'comnum'        => (int)$r['comnum'],
@@ -294,6 +298,7 @@ class Api_Controller
             'sortop'        => $r['sortop'],
             'tags'          => $this->getTags($id),
             'fields'        => $r['fields'],
+            'parent_id'     => (int)$r['parent_id'],
         ];
 
         output::ok(['article' => $article,]);
@@ -466,6 +471,25 @@ class Api_Controller
 
         $comments = $this->Comment_Model->getCommentListForApi($id, 'n');
         output::ok(['comments' => $comments]);
+    }
+
+    private function unlike()
+    {
+        $blogId = Input::postIntVar('id', -1);
+
+        $this->checkAuthCookie();
+
+        if (empty($blogId)) {
+            Output::error('parameter error');
+        }
+
+        $r = $this->Like_Model->unLike($this->curUid, $blogId);
+
+        if ($r === false) {
+            Output::error('unlike failed');
+        }
+
+        output::ok();
     }
 
     private function like_list()

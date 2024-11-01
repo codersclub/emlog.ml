@@ -1,27 +1,31 @@
 <?php
+
 /**
  * article category model
  * @package EMLOG
  * @link https://www.emlog.net
  */
 
-class Sort_Model {
+class Sort_Model
+{
 
     private $db;
     private $table;
     private $table_blog;
 
-    function __construct() {
+    function __construct()
+    {
         $this->table = DB_PREFIX . 'sort';
         $this->table_blog = DB_PREFIX . 'blog';
         $this->db = Database::getInstance();
     }
 
-    function getSorts() {
+    function getSorts()
+    {
         $sorts = [];
         $query = $this->db->query("SELECT * FROM $this->table ORDER BY pid ASC,taxis ASC");
         while ($row = $this->db->fetch_array($query)) {
-            $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "blog WHERE sortid=" . $row['sid'] . " AND hide='n' AND checked='y' AND type='blog'");
+            $data = $this->db->once_fetch_array("SELECT COUNT(*) AS total FROM $this->table_blog WHERE sortid=" . $row['sid'] . " AND hide='n' AND checked='y' AND type='blog'");
             $logNum = $data['total'];
             $sortData = array(
                 'lognum'       => $logNum,
@@ -47,7 +51,8 @@ class Sort_Model {
         return $sorts;
     }
 
-    function updateSort($sortData, $sid) {
+    function updateSort($sortData, $sid)
+    {
         $Item = [];
         foreach ($sortData as $key => $data) {
             $Item[] = "$key='$data'";
@@ -56,7 +61,8 @@ class Sort_Model {
 /*vot*/        $this->db->query("UPDATE $this->table SET $upStr WHERE sid=$sid");
     }
 
-    public function addSort($data) {
+    public function addSort($data)
+    {
         $kItem = $dItem = [];
         foreach ($data as $key => $val) {
             $kItem[] = $key;
@@ -68,13 +74,15 @@ class Sort_Model {
         return $this->db->insert_id();
     }
 
-    function deleteSort($sid) {
+    function deleteSort($sid)
+    {
 /*vot*/        $this->db->query("UPDATE $this->table_blog SET sortid=-1 WHERE sortid=$sid");
 /*vot*/        $this->db->query("UPDATE $this->table SET pid=0 WHERE pid=$sid");
 /*vot*/        $this->db->query("DELETE FROM $this->table WHERE sid=$sid");
     }
 
-    function getOneSortById($sid) {
+    function getOneSortById($sid)
+    {
 /*vot*/        $sql = "SELECT * FROM $this->table WHERE sid=$sid";
         $res = $this->db->query($sql);
         $row = $this->db->fetch_array($res);
@@ -95,7 +103,8 @@ class Sort_Model {
         return $sortData;
     }
 
-    function getSortByAlias($alias) {
+    function getSortByAlias($alias)
+    {
         if (empty($alias)) {
             return [];
         }
@@ -105,7 +114,8 @@ class Sort_Model {
         return $row;
     }
 
-    function getSortName($sid) {
+    function getSortName($sid)
+    {
         if ($sid > 0) {
             $res = $this->db->query("SELECT sortname FROM $this->table WHERE sid = $sid");
             $row = $this->db->fetch_array($res);

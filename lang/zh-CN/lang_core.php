@@ -232,7 +232,7 @@ $lang = array(
 //content/templates/default/options.php
 'tpl_setting_tab_name' => '定义设置项标签页名称',//'Define settings tab name',
 'tpl_setting_header' => '头部设置',//'Header settings',
-'tpl_setting_descr' => '你好，这是默认模板的设置界面，请点击上方菜单进入设置项。',//'Hello, this is the setting interface of the default template. Please click the menu above to enter the setting item.',
+'tpl_setting_descr' => '你好，这是默认模板的设置界面，请点击左侧菜单进入设置项。',//'Hello, this is the setting interface of the default template. Please click the menu on the left to enter the settings.',
 'tpl_logo_mode' => 'LOGO显示模式',//'LOGO display mode',
 'tpl_logo_text' => '文字',//'Text',
 'tpl_logo_image' => '图片',//'Image',

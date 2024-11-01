@@ -58,16 +58,16 @@
                 $media_icon = getFileUrl($value['filepath_thum']);
                 $img_viewer = 'class="highslide" onclick="return hs.expand(this)"';
             } elseif (isZip($value['filename'])) {
-                $media_icon = "./views/images/zip.jpg";
+                $media_icon = "./views/images/zip.webp";
                 $img_viewer = '';
             } elseif (isVideo($value['filename'])) {
-                $media_icon = "./views/images/video.png";
+                $media_icon = "./views/images/video.webp";
                 $img_viewer = '';
             } elseif (isAudio($value['filename'])) {
-                $media_icon = "./views/images/audio.png";
+                $media_icon = "./views/images/audio.webp";
                 $img_viewer = '';
             } else {
-                $media_icon = "./views/images/fnone.png";
+                $media_icon = "./views/images/fnone.webp";
                 $img_viewer = '';
             }
         ?>
@@ -90,7 +90,7 @@
                             <?php endif ?><br>
                             <?= lang('source_file') ?>: <a href="#" class="copy-link text-muted" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a><br>
                             <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_url ?>"><?= lang('original_file') ?></a>
-                            <?php if ($value['alias'] && $value['mimetype'] === 'application/zip'):
+                            <?php if ($value['alias'] && isZip($value['filename'])):
                                 $media_down_url = BLOG_URL . '?resource_alias=' . $value['alias'];
                             ?>
 <!--vot-->                      | <a href="#" class="copy-link" data-toggle="popover" data-url="<?= $media_down_url ?>"><?= lang('download_url') ?></a> (<?= lang('downloads') ?>: <?= $value['download_count'] ?>)

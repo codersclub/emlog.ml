@@ -457,6 +457,7 @@ CREATE TABLE {$db_prefix}blog (
   tags text COMMENT 'Tags',
   link varchar(255) NOT NULL DEFAULT '' COMMENT 'Article jump link',
   feedback varchar(2048) NOT NULL DEFAULT '' COMMENT 'audit feedback',
+  parent_id bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文章层级关系-父级ID',
   PRIMARY KEY (gid),
   KEY author (author),
   KEY views (views),
@@ -727,7 +728,7 @@ CREATE TABLE {$db_prefix}blog_fields (
     $result = '';
     $result .= "
         <p style=\"font-size:24px; border-bottom:1px solid #E6E6E6; padding:10px 0px;\">" . lang('emlog_installed') . "</p>
-        <p>" . lang('emlog_installed_info') . "</p>
+
         <p><b>" . lang('user_name') . "</b>: {$username}</p>
         <p><b>" . lang('password') . "</b>: " . lang('password_entered') . "</p>";
     if ($env_emlog_env === 'develop' || ($env_emlog_env !== 'develop' && !@unlink('./install.php'))) {
