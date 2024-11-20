@@ -62,7 +62,7 @@ if ($action === 'delbyip') {
 if ($action === 'pub') {
     LoginAuth::checkToken();
     if (!User::haveEditPermission()) {
-        emMsg('权限不足！', './');
+        emMsg(lang('no_permission'), './');
     }
 
     $id = Input::getIntVar('id');

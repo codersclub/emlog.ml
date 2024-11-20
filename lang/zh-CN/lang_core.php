@@ -169,6 +169,7 @@ $lang = array(
 'att_size_php_limit' => '文件大小超过PHP',//'File size exceeds PHP limit: ',
 'att_type_disabled' => '不能上传该类型文件',//'Cannot upload this type of file',
 'att_size_system_limit' => '文件太大了，系统限制上传：',//'File size exceeds the system upload limit: ',
+'att_upload_failed' => '上传失败，未收到文件信息，可更换浏览器重试',//'Upload failed, no file information received, please change browser and try again',
 
 //---------------------------------------
 //include/service/notice.php

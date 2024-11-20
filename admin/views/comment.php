@@ -97,8 +97,8 @@
                                 <td class="small"><?= $date ?></td>
                                 <td>
                                     <?php if (User::haveEditPermission()): ?>
-                                        <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');" class="badge badge-pill badge-danger">按IP删</a>
-                                        <a href="javascript: em_confirm(<?= $cid ?>, 'comment', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
+                                        <a href="javascript: em_confirm('<?= $ip ?>', 'commentbyip', '<?= LoginAuth::genToken() ?>');" class="badge badge-pill badge-danger"><?= lang('del_from_ip') ?></a>
+                                        <a href="javascript: em_confirm(<?= $cid ?>, 'comment', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                     <?php endif ?>
                                     <a href="#" data-toggle="modal" class="badge badge-success" data-target="#replyModal"
                                         data-cid="<?= $cid ?>"
@@ -106,7 +106,7 @@
                                         data-hide="<?= $value['hide'] ?>"><?= lang('reply') ?>
                                     </a>
                                     <?php if ($value['hide'] === 'y' && User::haveEditPermission()): ?>
-                                        <a class="badge badge-warning" href="comment.php?action=pub&id=<?= $cid ?>&token=<?= LoginAuth::genToken() ?>">审核</a>
+                                        <a class="badge badge-warning" href="comment.php?action=pub&id=<?= $cid ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('check') ?></a>
                                     <?php endif ?>
                                 </td>
                             </tr>

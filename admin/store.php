@@ -22,7 +22,7 @@ $template_categories = [
     9  => lang('tpl_category_9'),
     17 => lang('tpl_category_17'),
     19 => lang('tpl_category_19'),
-    21 => '文档知识库',
+    21 => lang('plu_category_21'),
     10 => lang('tpl_category_10'),
 ];
 

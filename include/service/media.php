@@ -13,7 +13,7 @@ class Media
     static function checkUpload($attach)
     {
         if (!$attach) {
-            return '上传失败，未收到文件信息，可更换浏览器重试';
+            return lang('att_upload_failed');
         }
         $fileName = $attach['name'];
         $errorNum = $attach['error'];

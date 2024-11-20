@@ -89,7 +89,7 @@ $lang = array(
 'captcha_error_reenter'      => 'Captcha error. Please, re-enter.',//'验证错误，请重新输入',
 'user_name_wrong_reenter'    => 'Wrong username. Please, re-enter.',//'用户名错误，请重新输入',
 'password_wrong_reenter'     => 'Wrong password. Please, re-enter.',//'密码错误，请重新输入',
-'token_error'                => 'Security Token verification failed, please try to refresh the page or change the browser and try again',//'安全Token校验失败，请尝试刷新页面或者更换浏览器重试',
+'token_error'                => 'Token verification failed, please try to clear browser cookies and refresh the page or change browser and try again',//'Token校验失败，请尝试清理浏览器cookie后刷新页面或者更换浏览器重试',
 
 //---------------------------
 //include/lib/option.php
@@ -169,6 +169,7 @@ $lang = array(
 'att_size_php_limit' => 'File size exceeds PHP limit: ',//'文件大小超过PHP',
 'att_type_disabled' => 'Cannot upload this type of file',//'不能上传该类型文件',
 'att_size_system_limit' => 'File size exceeds the system upload limit: ',//'文件太大了，系统限制上传：',
+'att_upload_failed' => 'Upload failed, no file information received, please change browser and try again',//'上传失败，未收到文件信息，可更换浏览器重试',
 
 //---------------------------------------
 //include/service/notice.php

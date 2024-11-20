@@ -148,6 +148,7 @@ $lang = array(
     'tpl_category_18' => 'WeChat Ecosystem',//'微信生态',
     'tpl_category_19' => 'Enterprise Show',//'企业展示',
     'plu_category_20' => 'Editor',//'编辑器',
+    'plu_category_21' => 'Documentation Knowledge Base',//'文档知识库',
     'free_zone' => 'Free only',//'仅看免费',
     'paid_zone' => 'Paid only',//'仅看付费',
     'search_by_category' => 'Search by category',//'按分类查找',
@@ -389,7 +390,7 @@ $lang = array(
     'belongs_to_article' => 'Belongs to article',//'所属文章',
     'from_ip' => 'From IP',//'来自IP',
     'reply' => 'Reply',//'回复',
-    'del_from_ip' => 'Delete from this IP',//'按IP删除',
+    'del_from_ip' => 'Delete from this IP',//'按IP删',
     'view_article' => 'View the article',//'查看该文章',
     'no_comments_yet' => 'Yet no comments',//'还没有收到评论',
     'operation' => 'Operation',//'操作',
@@ -586,8 +587,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/index_user.php
-    'article_no_yet' => 'No articles have been published yet.',//'还没有发布过文章。',
-    'comment_no_yet' => 'No comments received yet.',//'还没收到评论。',
+    'article_no_yet' => 'No articles have been published yet.',//'这里是空的。',
+    'comment_no_yet' => 'No comments received yet.',//'这里是空的。',
     'user_des' => 'When the wind blows, leave a smile',//'当风吹过，留下微笑',
 
 //---------------------------
