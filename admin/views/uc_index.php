@@ -4,14 +4,14 @@
         <div class="flex-shrink-0">
             <a class="mr-2" href="blogger.php">
                 <img src="<?= User::getAvatar($user_cache[UID]['avatar']) ?>"
-                     alt="avatar" class="img-fluid rounded-circle border border-secondary border-3"
-                     style="width: 60px;">
+                    alt="avatar" class="img-fluid rounded-circle border border-secondary border-3"
+                    style="width: 60px;">
             </a>
         </div>
         <div class="flex-grow-1 ms-3">
             <div class="align-items-center mb-2">
                 <p class="mb-0 m-2"><a class="mr-2" href="blogger.php"><?= $user_cache[UID]['name'] ?></a></p>
-                <p class="mb-0 m-2 small"><?= $user_cache[UID]['des'] ?: lang('user_des') ?></p>
+                <p class="mb-0 m-2 small"><?= lang('registered_user') ?></p>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                     <?php
                     if ($logs):
                         foreach ($logs as $v) :
-                            ?>
+                    ?>
                             <li class="msg_type_0 d-flex justify-content-between align-items-center">
                                 <a href="<?= Url::log($v['gid']) ?>" target="_blank"><?= $v['title'] ?></a>
                                 <span class="badge badge-primary rounded-pill"><?= $v['views'] ?></span>
@@ -72,7 +72,7 @@
                         endforeach;
                     else:
                         ?>
-                        <p class="m-3"><?=lang('article_no_yet')?></p>
+                        <p class="m-2"><?=lang('article_no_yet')?></p>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -90,7 +90,7 @@
                         <?php endforeach;
                     else:
                         ?>
-                        <p class="m-3"><?=lang('comment_no_yet')?></p>
+                        <p class="m-2"><?=lang('comment_no_yet')?></p>
                     <?php endif; ?>
                 </ul>
             </div>

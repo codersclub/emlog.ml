@@ -89,7 +89,7 @@ $lang = array(
 'captcha_error_reenter'      => '验证错误，请重新输入',//'Captcha error. Please, re-enter.',
 'user_name_wrong_reenter'    => '用户名错误，请重新输入',//'Wrong username. Please, re-enter.',
 'password_wrong_reenter'     => '密码错误，请重新输入',//'Wrong password. Please, re-enter.',
-'token_error'                => '安全Token校验失败，请尝试刷新页面或者更换浏览器重试',//'Security Token verification failed, please try to refresh the page or change the browser and try again',
+'token_error'                => 'Token校验失败，请尝试清理浏览器cookie后刷新页面或者更换浏览器重试',//'Token verification failed, please try to clear browser cookies and refresh the page or change browser and try again',
 
 //---------------------------
 //include/lib/option.php

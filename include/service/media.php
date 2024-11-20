@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Service: Media
  *
@@ -6,9 +7,14 @@
  * @link https://www.emlog.net
  */
 
-class Media {
+class Media
+{
 
-    static function checkUpload($attach) {
+    static function checkUpload($attach)
+    {
+        if (!$attach) {
+            return '上传失败，未收到文件信息，可更换浏览器重试';
+        }
         $fileName = $attach['name'];
         $errorNum = $attach['error'];
         $fileSize = $attach['size'];
@@ -18,7 +24,7 @@ class Media {
             return lang('att_size_php_limit') . ini_get('upload_max_filesize') . lang('_limit');
         }
 
-        if (!$attach || $errorNum > 1) {
+        if ($errorNum > 1) {
             return lang('upload_failed_error_code') . $errorNum;
         }
 
@@ -34,7 +40,8 @@ class Media {
         return true;
     }
 
-    static function uploadRespond($ret, $isEditor, $isSuccess = false) {
+    static function uploadRespond($ret, $isEditor, $isSuccess = false)
+    {
         if ($isEditor) {
             exit(json_encode($ret));
         } else {
@@ -46,5 +53,4 @@ class Media {
             exit($ret['message']);
         }
     }
-
 }

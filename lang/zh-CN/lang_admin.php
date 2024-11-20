@@ -586,8 +586,8 @@ $lang = array(
 
 //---------------------------
 //admin/views/index_user.php
-    'article_no_yet' => '还没有发布过文章。',//'No articles have been published yet.',
-    'comment_no_yet' => '还没收到评论。',//'No comments received yet.',
+    'article_no_yet' => '这里是空的。',//'No articles have been published yet.',
+    'comment_no_yet' => '这里是空的。',//'No comments received yet.',
     'user_des' => '当风吹过，留下微笑',//'When the wind blows, leave a smile',
 
 //---------------------------
