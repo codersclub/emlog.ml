@@ -59,7 +59,7 @@ if ($action == 'dosignin') {
             Register::isRegServer();
             $User_Model->updateUser(['ip' => getIp()], $uid);
             LoginAuth::setAuthCookie($username, $persist);
-            doAction('login_succeed', $uid);
+            doAction('login_succeed', $uid, $resp);
             if ($resp === 'json') {
                 Output::ok();
             }
@@ -146,8 +146,11 @@ if ($action == 'dosignup') {
     $PHPASS = new PasswordHash(8, true);
     $passwd = $PHPASS->HashPassword($passwd);
 
-    $User_Model->addUser('', $mail, $passwd, User::ROLE_WRITER);
+    $uid = $User_Model->addUser('', $mail, $passwd, User::ROLE_WRITER);
     $CACHE->updateCache(['sta', 'user']);
+
+    doAction('register_succeed', $uid);
+
     if ($resp === 'json') {
         Output::ok();
     }

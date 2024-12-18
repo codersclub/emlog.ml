@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Input the article password page
  */
@@ -6,13 +7,14 @@ defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?= lang('page_password_enter') ?></title>
     <style>
         body {
-            font-family: helvetica neue, Helvetica, Arial, sans-serif
+            font-family: helvetica neue, Helvetica, Arial, sans-serif;
             background-color: #f5f5f5;
         }
 
@@ -69,16 +71,16 @@ defined('EMLOG_ROOT') || exit('access denied!');
         }
     </style>
 </head>
+
 <body>
-<form action="" method="post">
-    <h1><?= lang('page_password_enter') ?></h1>
-    <div style="display: flex;">
-        <input type="password" id="logpwd" name="logpwd" required autofocus>
-        <button type="submit"><?= lang('submit') ?></button>
-    </div>
-    <a href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
-</form>
+    <form action="" method="post">
+        <h1><?= lang('page_password_enter') ?></h1>
+        <div style="display: flex;">
+            <input type="password" id="logpwd" name="logpwd" required autofocus>
+            <button type="submit"><?= lang('submit') ?></button>
+        </div>
+        <a href="<?= BLOG_URL ?>"><?= lang('back_home') ?></a>
+    </form>
 </body>
+
 </html>
-
-

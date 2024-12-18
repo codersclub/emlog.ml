@@ -12,55 +12,79 @@
     <a href="page.php?action=new" class="btn btn-sm btn-success shadow-sm mt-4"><i class="icofont-plus"></i>
         <?= lang('add_page') ?></a>
 </div>
-<form action="page.php?action=operate_page" method="post" name="form_page" id="form_page">
-    <div class="card shadow mb-4">
-        <div class="card-body">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row justify-content-between">
+            <div class="form-inline">
+                <div id="f_t_order" class="mx-1">
+                    <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最新发布</option>
+                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>>评论最多</option>
+                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>>浏览最多</option>
+                    </select>
+                </div>
+            </div>
+            <form action="page.php" method="get">
+                <div class="form-inline search-inputs-nowrap">
+                    <input type="text" name="keyword" class="form-control m-1 small" placeholder="搜索标题..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-success" type="submit">
+                            <i class="icofont-search-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card-body">
+        <form action="page.php?action=operate_page" method="post" name="form_page" id="form_page">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover dataTable no-footer">
                     <thead>
-                    <tr>
-                        <th><input type="checkbox" id="checkAllItem"/></th>
-                        <th><?= lang('title') ?></th>
-                        <th><?= lang('comments') ?></th>
-                        <th><?= lang('views') ?></th>
-                        <th><?= lang('alias') ?></th>
-                        <th><?= lang('template') ?></th>
-                        <th><?= lang('time') ?></th>
-                    </tr>
+                        <tr>
+                            <th><input type="checkbox" id="checkAllItem" /></th>
+                            <th><?= lang('title') ?></th>
+                            <th><?= lang('comments') ?></th>
+                            <th><?= lang('views') ?></th>
+                            <th><?= lang('alias') ?></th>
+                            <th><?= lang('template') ?></th>
+                            <th><?= lang('time') ?></th>
+                        </tr>
                     </thead>
                     <tbody class="checkboxContainer">
-                    <?php foreach ($pages as $key => $value):
-                        $isHide = '';
-                        if ($value['hide'] == 'y') {
-                            $isHide = '<span class="text-danger ml-2"> - ' . lang('draft') . '</span>';
-                        }
+                        <?php foreach ($pages as $key => $value):
+                            $isHide = '';
+                            if ($value['hide'] == 'y') {
+                                $isHide = '<span class="text-danger ml-2"> - ' . lang('draft') . '</span>';
+                            }
                         ?>
-                        <tr>
-                            <td style="width: 19px;">
-                                <input type="checkbox" name="page[]" value="<?= $value['gid'] ?>" class="ids"/></td>
-                            <td>
-                                <a href="page.php?action=mod&id=<?= $value['gid'] ?>"><?= $value['title'] ?></a>
-                                <a href="<?= Url::log($value['gid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
-                                <?= $isHide ?>
-                                <?php if ($value['gid'] == Option::get('home_page_id')): ?>
-                                    <br>
-                                    <span class="text-secondary">
-                                        <span class="badge small badge-danger"><?= lang('home') ?></span> <?= lang('as_home') ?><a href="<?= BLOG_URL ?>posts" target="_blank"><?= BLOG_URL ?>posts</a>
-                                    </span>
-                                <?php endif; ?>
-<!--vot:Link Char-->            <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>
-                            </td>
-                            <td>
-                                <a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-primary mx-2 px-3"><?= $value['comnum'] ?></a>
-                            </td>
-                            <td>
-                                <a href="<?= Url::log($value['gid']) ?>" class="badge badge-success mx-2 px-3" target="_blank"><?= $value['views'] ?></a>
-                            </td>
-                            <td><?= $value['alias'] ?></td>
-                            <td><?= $value['template'] ?></td>
-                            <td class="small"><?= $value['date'] ?></td>
-                        </tr>
-                    <?php endforeach ?>
+                            <tr>
+                                <td style="width: 19px;">
+                                    <input type="checkbox" name="page[]" value="<?= $value['gid'] ?>" class="ids" />
+                                </td>
+                                <td>
+                                    <a href="page.php?action=mod&id=<?= $value['gid'] ?>"><?= $value['title'] ?></a>
+                                    <a href="<?= Url::log($value['gid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
+                                    <?= $isHide ?>
+                                    <?php if ($value['gid'] == Option::get('home_page_id')): ?>
+                                        <br>
+                                        <span class="text-secondary">
+                                            <span class="badge small badge-danger"><?= lang('home') ?></span> <?= lang('as_home') ?><a href="<?= BLOG_URL ?>posts" target="_blank"><?= BLOG_URL ?>posts</a>
+                                        </span>
+                                    <?php endif; ?>
+<!--vot:Link Char-->                <?php if ($value['link']): ?><br><span class="small">&#x1F517;</span><?php endif ?>
+                                </td>
+                                <td>
+                                    <a href="comment.php?gid=<?= $value['gid'] ?>" class="badge badge-primary mx-2 px-3"><?= $value['comnum'] ?></a>
+                                </td>
+                                <td>
+                                    <a href="<?= Url::log($value['gid']) ?>" class="badge badge-success mx-2 px-3" target="_blank"><?= $value['views'] ?></a>
+                                </td>
+                                <td><?= $value['alias'] ?></td>
+                                <td><?= $value['template'] ?></td>
+                                <td class="small"><?= $value['date'] ?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
@@ -73,16 +97,16 @@
                         <a href="javascript:pageact('del');" class="dropdown-item text-danger"><?= lang('delete') ?></a>
                     </div>
                 </div>
-                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input name="operate" id="operate" value="" type="hidden"/>
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                <input name="operate" id="operate" value="" type="hidden" />
             </div>
-        </div>
+        </form>
     </div>
-    <div class="page"><?= $pageurl ?></div>
-    <div class="text-center small">(<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
-</form>
+</div>
+<div class="page"><?= $pageurl ?></div>
+<div class="text-center small">(<?= lang('have') ?> <?= $pageNum ?> <?= lang('_pages') ?>)</div>
 <script>
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 3600);
         $("#menu_category_view").addClass('active');
         $("#menu_view").addClass('show');
@@ -95,7 +119,7 @@
             return;
         }
         if (act === 'del') {
-            delAlert2('',lang('sure_delete_selected_pages'), function () {
+            delAlert2('',lang('sure_delete_selected_pages'), function() {
                 $("#operate").val(act);
                 $("#form_page").submit();
             })
@@ -103,5 +127,9 @@
         }
         $("#operate").val(act);
         $("#form_page").submit();
+    }
+
+    function selectOrder(obj) {
+        window.open("./page.php?order=" + obj.value, "_self");
     }
 </script>

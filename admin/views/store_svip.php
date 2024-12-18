@@ -22,7 +22,7 @@
         <?php foreach ($addons as $k => $v):
             $icon = $v['icon'] ?: "./views/images/theme.png";
             $type = $v['app_type'] === 'template' ? 'tpl' : 'plugin';
-            ?>
+        ?>
             <div class="col-md-6 col-lg-3">
                 <div class="card mb-4 shadow-sm">
                     <a href="#appModal" class="p-1" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>">
@@ -73,7 +73,7 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_store").addClass('active');
         setTimeout(hideActived, 3600);
     });

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Page Bottom Information
  */
@@ -16,4 +17,5 @@ defined('EMLOG_ROOT') || exit('access denied!');
     </div>
 </footer>
 </body>
+
 </html>

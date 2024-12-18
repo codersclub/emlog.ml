@@ -9,8 +9,8 @@
 class Option
 {
 
-    const EMLOG_VERSION = 'pro 2.4.1';
-    const EMLOG_VERSION_TIMESTAMP = 1732002895;
+    const EMLOG_VERSION = 'pro 2.4.3';
+    const EMLOG_VERSION_TIMESTAMP = 1734415488;
     const UPLOADFILE_PATH = '../content/uploadfile/';
     const UPLOADFILE_FULL_PATH = EMLOG_ROOT . '/content/uploadfile/';
 
@@ -100,13 +100,18 @@ class Option
             ],
             [
                 'model'  => 'Like_Controller',
-                'method' => 'addLike',
-                'reg_0'  => '|^.*/\?(action)=(addlike)([\?&].*)?$|',
+                'method' => 'index',
+                'reg_0'  => '|^.*/\?(action)=([a-z]+)([\?&].*)?$|',
             ],
             [
                 'model'  => 'Plugin_Controller',
                 'method' => 'loadPluginShow',
                 'reg_0'  => '|^.*/\?(plugin)=([\w\-]+).*([\?&].*)?$|',
+            ],
+            [
+                'model'  => 'User_Controller',
+                'method' => 'index',
+                'reg_0'  => '|\/(user)(?:\/([\w\-]+))?|',
             ],
             [
                 'model'  => 'Plugin_Controller',

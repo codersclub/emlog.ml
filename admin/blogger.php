@@ -1,4 +1,5 @@
 <?php
+
 /**
  * user profile
  *
@@ -31,20 +32,20 @@ if ($action == 'update') {
     $User_Model = new User_Model();
     $nickname = Input::postStrVar('name');
     $description = Input::postStrVar('description');
-    $login = Input::postStrVar('username');
+    $username = Input::postStrVar('username');
 
     if (empty($nickname)) {
         Output::error(lang('nickname_is_empty'));
     } elseif ($User_Model->isNicknameExist($nickname, UID)) {
         Output::error(lang('nickname_exists'));
-    } elseif ($User_Model->isUserExist($login, UID)) {
+    } elseif ($User_Model->isUserExist($username, UID)) {
         Output::error(lang('username_exists'));
     }
 
     $d = [
         'nickname'    => $nickname,
         'description' => $description,
-        'username'    => $login,
+        'username'    => $username,
     ];
 
     $User_Model->updateUser($d, UID);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Custom 404 page
  */
@@ -6,10 +7,11 @@ defined('EMLOG_ROOT') || exit('access denied!');
 ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>" data-theme="light">
+
 <head>
     <meta charset="utf-8">
     <title><?=lang('404_error')?></title>
-    <link href="<?= TEMPLATE_URL ?>css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= TEMPLATE_URL ?>css/style.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>" rel="stylesheet" type="text/css" />
     <style>
         .main {
             background-color: var(--bodyBground);
@@ -39,12 +41,14 @@ defined('EMLOG_ROOT') || exit('access denied!');
         }
     </style>
 </head>
+
 <body>
-<div class="main">
-    <p><?= lang('404_description') ?></p>
-    <p><a href="<?= BLOG_URL ?>"><?= lang('click_return') ?></a></p>
-</div>
-<script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
-<script src="<?= TEMPLATE_URL ?>js/common_tpl.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <div class="main">
+        <p><?= lang('404_description') ?></p>
+        <p><a href="<?= BLOG_URL ?>"><?= lang('click_return') ?></a></p>
+    </div>
+    <script src="<?= TEMPLATE_URL ?>js/jquery.min.3.5.1.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="<?= TEMPLATE_URL ?>js/common_tpl.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 </body>
+
 </html>

@@ -456,15 +456,15 @@ CREATE TABLE {$db_prefix}blog (
   template varchar(255) NOT NULL default '' COMMENT 'Template',
   tags text COMMENT 'Tags',
   link varchar(255) NOT NULL DEFAULT '' COMMENT 'Article jump link',
-  feedback varchar(2048) NOT NULL DEFAULT '' COMMENT 'audit feedback',
+    feedback varchar(2048) NOT NULL DEFAULT '' COMMENT 'audit feedback',
   parent_id bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Article parent ID',
-  PRIMARY KEY (gid),
-  KEY author (author),
-  KEY views (views),
-  KEY comnum (comnum),
-  KEY sortid (sortid),
-  KEY top (top,date),
-  KEY date (date)
+    PRIMARY KEY (gid),
+    KEY author (author),
+    KEY views (views),
+    KEY comnum (comnum),
+    KEY sortid (sortid),
+    KEY top (top,date),
+    KEY date (date)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}blog (gid,title,date,content,excerpt,author,views,comnum,attnum,top,sortop,hide,allow_remark,password) VALUES (1, '" . lang('emlog_welcome') . "', '" . time() . "', '" . lang('emlog_install_congratulation') . "', '', 1, 0, 1, 0, 'n', 'n', 'n', 'y', '');
 DROP TABLE IF EXISTS {$db_prefix}attachment;
@@ -480,18 +480,18 @@ CREATE TABLE {$db_prefix}attachment (
   addtime bigint(20) NOT NULL default '0' COMMENT 'Creation time',
   width int(11) NOT NULL default '0' COMMENT 'Image width',
   height int(11) NOT NULL default '0' COMMENT 'Image Height',
-  mimetype varchar(64) NOT NULL default '' COMMENT 'File mime type',
+  mimetype varchar(40) NOT NULL default '' COMMENT 'File mime type',
   thumfor int(11) NOT NULL default 0 COMMENT 'Thumbnail for original resource ID (obsolete)',
   download_count bigint(20) unsigned NOT NULL DEFAULT 0 COMMENT 'Download counter',
-  PRIMARY KEY  (aid),
-  KEY thum_uid (thumfor,author),
-  KEY addtime (addtime)
+    PRIMARY KEY  (aid),
+    KEY thum_uid (thumfor,author),
+    KEY addtime (addtime)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}media_sort;
 CREATE TABLE {$db_prefix}media_sort (
   id int(11) unsigned NOT NULL auto_increment COMMENT 'Media Category ID',
   sortname varchar(255) NOT NULL default '' COMMENT 'Media Category Name',
-  PRIMARY KEY  (id)
+    PRIMARY KEY  (id)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}comment;
 CREATE TABLE {$db_prefix}comment (
@@ -509,10 +509,10 @@ CREATE TABLE {$db_prefix}comment (
   agent varchar(512) NOT NULL default '' COMMENT 'User agent',
   hide enum('n','y') NOT NULL default 'n' COMMENT 'Hide or not',
   date bigint(20) NOT NULL COMMENT 'Creation time',
-  PRIMARY KEY  (cid),
-  KEY gid (gid),
-  KEY date (date),
-  KEY hide (hide)
+    PRIMARY KEY  (cid),
+    KEY gid (gid),
+    KEY date (date),
+    KEY hide (hide)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}comment (gid, date, poster, comment) VALUES (1, '" . time() . "', 'emlog', '" . lang('system_generated_demo') . "');
 DROP TABLE IF EXISTS {$db_prefix}like;
@@ -521,21 +521,21 @@ CREATE TABLE {$db_prefix}like (
   gid int(11) unsigned NOT NULL default '0' COMMENT 'Article ID',
   poster varchar(255) NOT NULL default '' COMMENT 'User name',
   avatar varchar(512) NOT NULL default '' COMMENT 'Avatar URL',
-  uid int(11) NOT NULL default '0',
-  ip varchar(128) NOT NULL default '',
-  agent varchar(512) NOT NULL default '',
-  date bigint(20) NOT NULL,
-  PRIMARY KEY  (id),
-  KEY gid (gid),
-  KEY date (date)
+    uid int(11) NOT NULL default '0',
+    ip varchar(128) NOT NULL default '',
+    agent varchar(512) NOT NULL default '',
+    date bigint(20) NOT NULL,
+    PRIMARY KEY  (id),
+    KEY gid (gid),
+    KEY date (date)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
 option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
 option_name VARCHAR( 75 ) NOT NULL COMMENT 'Option name',
 option_value LONGTEXT NOT NULL COMMENT 'Option value',
-PRIMARY KEY (option_id),
-UNIQUE KEY `option_name_uindex` (`option_name`)
+    PRIMARY KEY (option_id),
+    UNIQUE KEY `option_name_uindex` (`option_name`)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('blogname','EMLOG'),
@@ -606,7 +606,7 @@ CREATE TABLE {$db_prefix}link (
   description varchar(512) NOT NULL default '' COMMENT 'Description',
   hide enum('n','y') NOT NULL default 'n' COMMENT 'Hide or not',
   taxis int(11) unsigned NOT NULL default '0' COMMENT 'Sort order',
-  PRIMARY KEY  (id)
+    PRIMARY KEY  (id)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}link (id, sitename, siteurl, icon, description, taxis) VALUES
 (1, 'emlog.ru', 'https://emlog.ru', 'https://emlog.ru/docs/logo.png', '" . lang('emlog_ml_official_site') . "', 0),
@@ -623,7 +623,7 @@ CREATE TABLE {$db_prefix}navi (
   isdefault enum('n','y') NOT NULL default 'n' COMMENT 'Is the system default navigation, i.e. home page',
   type tinyint(3) unsigned NOT NULL default '0' COMMENT 'Navigation type: 0=custom, 1=home, 2=Note, 3=AdminCP, 4=Categories, 5=page',
   type_id int(11) unsigned NOT NULL default '0' COMMENT 'Navigation type corresponding ID',
-  PRIMARY KEY  (id)
+    PRIMARY KEY  (id)
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}navi (id, naviname, url, taxis, isdefault, type) VALUES (1, '" . lang('home') . "', '', 1, 'y', 1);
 INSERT INTO {$db_prefix}navi (id, naviname, url, taxis, isdefault, type) VALUES (3, '" . lang('login') . "', 'admin', 3, 'y', 3);
@@ -635,8 +635,8 @@ CREATE TABLE {$db_prefix}tag (
   title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
   kw VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Keywords',
   gid text NOT NULL COMMENT 'Article ID',
-  PRIMARY KEY  (tid),
-  KEY tagname (tagname)
+    PRIMARY KEY  (tid),
+    KEY tagname (tagname)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}sort;
 CREATE TABLE {$db_prefix}sort (
@@ -650,7 +650,7 @@ CREATE TABLE {$db_prefix}sort (
   title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
   sortimg varchar(512) NOT NULL default '' COMMENT 'Category image',
-  PRIMARY KEY  (sid)
+    PRIMARY KEY  (sid)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}user;
 CREATE TABLE {$db_prefix}user (
@@ -668,9 +668,9 @@ CREATE TABLE {$db_prefix}user (
   credits int(11) unsigned NOT NULL DEFAULT '0' COMMENT 'User credits',
   create_time int(11) NOT NULL COMMENT 'Create time',
   update_time int(11) NOT NULL COMMENT 'Update time',
-PRIMARY KEY  (uid),
-KEY username (username),
-KEY email (email)         
+    PRIMARY KEY  (uid),
+    KEY username (username),
+    KEY email (email)         
 )" . $table_charset_sql . "
 INSERT INTO {$db_prefix}user (uid, username, email, password, nickname, role, create_time, update_time) VALUES (1,'$username','$email','$password', '$username','admin', " . time() . ", " . time() . ");
 DROP TABLE IF EXISTS {$db_prefix}twitter;
@@ -682,8 +682,8 @@ author int(11) NOT NULL default '1' COMMENT 'Author UID',
 date bigint(20) NOT NULL COMMENT 'Create time',
 replynum int(11) unsigned NOT NULL default '0' COMMENT 'Number of replies',
 private enum('n','y') NOT NULL default 'n' COMMENT 'Is it private?',
-PRIMARY KEY (id),
-KEY author (author)
+    PRIMARY KEY (id),
+    KEY author (author)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}storage;
 CREATE TABLE {$db_prefix}storage (
@@ -694,8 +694,8 @@ CREATE TABLE {$db_prefix}storage (
   `value` text NOT NULL COMMENT 'Object value',
   `createdate` int(11) NOT NULL COMMENT 'Create time',
   `lastupdate` int(11) NOT NULL COMMENT 'Update time',
-  PRIMARY KEY (`sid`),
-  UNIQUE KEY `plugin` (`plugin`,`name`)
+    PRIMARY KEY (`sid`),
+    UNIQUE KEY `plugin` (`plugin`,`name`)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}tpl_options_data;
 CREATE TABLE {$db_prefix}tpl_options_data (
@@ -704,17 +704,37 @@ CREATE TABLE {$db_prefix}tpl_options_data (
   `name` varchar(64) NOT NULL COMMENT 'Option name',
   `depend` varchar(64) NOT NULL DEFAULT '' COMMENT 'Option depends',
   `data` longtext NOT NULL COMMENT 'Option data',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `template` (`template`,`name`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `template` (`template`,`name`)
+)" . $table_charset_sql . "
+DROP TABLE IF EXISTS {$db_prefix}order;
+CREATE TABLE {$db_prefix}order (
+    id bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '订单表',
+    app_name varchar(32) NOT NULL COMMENT '应用英文别名',
+    order_id varchar(64) NOT NULL DEFAULT '' COMMENT '订单编号',
+    order_uid int unsigned NOT NULL COMMENT '用户id',
+    out_trade_no varchar(255) DEFAULT '' COMMENT '支付平台流水号',
+    pay_type varchar(64) NOT NULL DEFAULT '' COMMENT '支付方式（alipay/wechat）',
+    sku_name varchar(64) NOT NULL DEFAULT '' COMMENT '商品类型',
+    sku_id int NOT NULL,
+    price decimal(10, 2) NOT NULL COMMENT '应付金额',
+    pay_price decimal(10, 2) DEFAULT '0.00' COMMENT '实付金额',
+    refund_amount decimal(10, 2) NOT NULL DEFAULT '0.00' COMMENT '退款金额',
+    update_time int unsigned NOT NULL COMMENT '更新时间',
+    create_time int unsigned NOT NULL COMMENT '创建时间',
+    PRIMARY KEY (id),
+    UNIQUE KEY order_id (order_id),
+    KEY idx_uid_ctime (order_uid, create_time),
+    KEY idx_ctime (create_time)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}blog_fields;
 CREATE TABLE {$db_prefix}blog_fields (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `gid` bigint unsigned NOT NULL DEFAULT '0',
-  `field_key` varchar(255) DEFAULT NULL DEFAULT '',
-  `field_value` longtext,
-  PRIMARY KEY (`id`),
-  KEY `gid` (`gid`)
+    `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+    `gid` bigint unsigned NOT NULL DEFAULT '0',
+    `field_key` varchar(255) DEFAULT NULL DEFAULT '',
+    `field_value` longtext,
+    PRIMARY KEY (`id`),
+    KEY `gid` (`gid`)
 )" . $table_charset_sql;
 
     $array_sql = preg_split("/;[\r\n]/", $sql);
@@ -728,7 +748,6 @@ CREATE TABLE {$db_prefix}blog_fields (
     $result = '';
     $result .= "
         <p style=\"font-size:24px; border-bottom:1px solid #E6E6E6; padding:10px 0px;\">" . lang('emlog_installed') . "</p>
-
         <p><b>" . lang('user_name') . "</b>: {$username}</p>
         <p><b>" . lang('password') . "</b>: " . lang('password_entered') . "</p>";
     if ($env_emlog_env === 'develop' || ($env_emlog_env !== 'develop' && !@unlink('./install.php'))) {

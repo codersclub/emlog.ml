@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template file system call
  * After the template is enabled, this file will be automatically loaded by the system. Can be used to implement plug-in-like functionality.
@@ -7,7 +8,8 @@
 defined('EMLOG_ROOT') || exit('access denied!');
 
 // Add button style for download link
-function add_download_style($logData, &$result) {
+function add_download_style($logData, &$result)
+{
     // Modify the regular expression to match download links with href containing ?resource_alias and file extensions such as .zip
     $pattern = '/(href="[^"]*(\?resource_alias=.{16}|\.zip|\.rar|\.7z|\.gz|\.bz2))">/';
     $replacement = '$1" class="em-download-btn"><span class="iconfont icon-clouddownload"></span> ';
@@ -17,7 +19,8 @@ function add_download_style($logData, &$result) {
 addAction('article_content_echo', 'add_download_style');
 
 // Define the download button style
-function render_download_btn() {
+function render_download_btn()
+{
     echo <<<EOT
 <style>
 .em-download-btn {

@@ -1019,7 +1019,7 @@ $lang = array(
     '_plugins' => '个插件',//' plugins',// Number of plugins
     'recommend_today' => '今日推荐',//'Recommended today',
     'limited_offer' => '优惠',//'Limited Offer',
-    'download_count' => '下载次数',//'Downloads',
+    'download_count' => '安装次数',//'Downloads',
 
 //---------------------------
 //admin/views/store_svip.php

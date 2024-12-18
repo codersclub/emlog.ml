@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Service: User
  *
@@ -6,49 +7,58 @@
  * @link https://www.emlog.net
  */
 
-class User {
+class User
+{
 
     const ROLE_ADMIN = 'admin';     // Administrator, Founder
     const ROLE_WRITER = 'writer';   // Registered user
     const ROLE_VISITOR = 'visitor'; // Guest
     const ROLE_EDITOR = 'editor';   // Content editor
 
-    static function isFounder($role = ROLE, $uid = UID) {
+    static function isFounder($role = ROLE, $uid = UID)
+    {
         $uid = (int)$uid;
         return $role == self::ROLE_ADMIN && $uid === 1;
     }
 
-    static function isAdmin($role = ROLE) {
+    static function isAdmin($role = ROLE)
+    {
         return $role == self::ROLE_ADMIN;
     }
 
-    static function isVisitor($role = ROLE) {
+    static function isVisitor($role = ROLE)
+    {
         return $role == self::ROLE_VISITOR;
     }
 
-    static function isEditor($role = ROLE) {
+    static function isEditor($role = ROLE)
+    {
         return $role == self::ROLE_EDITOR;
     }
 
-    static function isWriter($role = ROLE) {
+    static function isWriter($role = ROLE)
+    {
         return $role == self::ROLE_WRITER;
     }
 
     /**
      * @deprecated This function is deprecated and will be removed in the future. Use isWriter instead.
      */
-    static function isWiter($role = ROLE) {
+    static function isWiter($role = ROLE)
+    {
         return $role == self::ROLE_WRITER;
     }
 
     /**
      * @deprecated This function is deprecated and will be removed in the future. Use isVisitor instead.
      */
-    static function isVistor($role = ROLE) {
+    static function isVistor($role = ROLE)
+    {
         return $role == self::ROLE_VISITOR;
     }
 
-    static function haveEditPermission($role = ROLE) {
+    static function haveEditPermission($role = ROLE)
+    {
         if (self::isAdmin($role)) {
             return true;
         }
@@ -58,7 +68,8 @@ class User {
         return false;
     }
 
-    static function getRoleName($role, $uid = 0) {
+    static function getRoleName($role, $uid = 0)
+    {
         $role_name = '';
         switch ($role) {
             case self::ROLE_ADMIN:
@@ -77,7 +88,8 @@ class User {
         return $role_name;
     }
 
-    static function checkLoginCode($login_code) {
+    static function checkLoginCode($login_code)
+    {
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -89,7 +101,8 @@ class User {
         return true;
     }
 
-    static function checkMailCode($mail_code) {
+    static function checkMailCode($mail_code)
+    {
         if (!isset($_SESSION)) {
             session_start();
         }
@@ -101,7 +114,8 @@ class User {
         return true;
     }
 
-    static function checkRolePermission() {
+    static function checkRolePermission()
+    {
         $request_uri = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
         if (ROLE === self::ROLE_WRITER && !in_array($request_uri, ['article', 'media', 'blogger', 'comment', 'index', 'article_save', 'plugin_user'])) {
             emMsg(lang('group_no_permission'), './');
@@ -111,7 +125,8 @@ class User {
         }
     }
 
-    static function getAvatar($avatar_path) {
+    static function getAvatar($avatar_path)
+    {
         if (empty($avatar_path)) {
             return BLOG_URL . 'admin/views/images/avatar.svg';
         }
@@ -124,4 +139,16 @@ class User {
         return getFileUrl($avatar_path);
     }
 
+    static function avatar($uid, $mail = '')
+    {
+        $avatar = '';
+        if ($uid) {
+            $userModel = new User_Model();
+            $user = $userModel->getOneUser($uid);
+            $avatar = $user['photo'];
+        } elseif ($mail) {
+            $avatar = getGravatar($mail);
+        }
+        return $avatar ?: BLOG_URL . "admin/views/images/avatar.svg";
+    }
 }
