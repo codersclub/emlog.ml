@@ -41,7 +41,7 @@ class Order_Model
     }
 
     /**
-     * 获取全部订单列表
+     * Get a list of all orders
      * @param int $page
      * @param int $perpage
      * @return array
@@ -67,10 +67,10 @@ class Order_Model
     }
 
     /**
-     * 获取当前应用的订单列表
-     * @param int $page 页码
-     * @param int $perpage 每页的订单数量
-     * @return array 订单列表
+     * Get the order list of the current application
+     * @param int $page Page number
+     * @param int $perpage Number of orders per page
+     * @return array Order List
      */
     function getAppOrders($page = 1, $perpage = 10)
     {
@@ -95,12 +95,12 @@ class Order_Model
     }
 
     /**
-     * 根据用户ID获取订单列表
-     * @param int $userId 用户ID
-     * @param int $page 页码
-     * @param int $perpage 每页的订单数量
-     * @param bool $isPaid 是否只获取已经支付的订单
-     * @return array 订单列表
+     * Get order list based on user ID
+     * @param int $userId User ID
+     * @param int $page Page number
+     * @param int $perpage Number of orders per page
+     * @param bool $isPaid Whether to obtain only paid orders
+     * @return array Order List
      */
     function getOrdersByUserId($userId, $page = 1, $perpage = 10, $isPaid = false)
     {

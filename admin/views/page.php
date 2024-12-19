@@ -18,15 +18,15 @@
             <div class="form-inline">
                 <div id="f_t_order" class="mx-1">
                     <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
-                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最新发布</option>
-                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>>评论最多</option>
-                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>>浏览最多</option>
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>><?= lang('last_published') ?></option>
+                        <option value="comm" <?= ($order === 'comm') ? 'selected' : '' ?>><?= lang('most_commented') ?></option>
+                        <option value="view" <?= ($order === 'view') ? 'selected' : '' ?>><?= lang('most_viewed') ?></option>
                     </select>
                 </div>
             </div>
             <form action="page.php" method="get">
                 <div class="form-inline search-inputs-nowrap">
-                    <input type="text" name="keyword" class="form-control m-1 small" placeholder="搜索标题..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" name="keyword" class="form-control m-1 small" placeholder="<?= lang('search_for') ?>" aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-sm btn-success" type="submit">
                             <i class="icofont-search-2"></i>

@@ -1,45 +1,45 @@
 <?php
 
 /**
- * 前台用户中心
+ * FrontEnd User Center
  */
 defined('EMLOG_ROOT') || exit('access denied!');
 
 /*
 
-前台用户中心模板使用说明如下：
+Instructions for using the front-end user center template are as follows:
 
-判断是否登录
+Determine whether you are logged in
 if (ISLOGIN) {
     //do something
 }
 
-获取当前登录用户信息
+Get the currently logged in user information
 $userData['photo']
 $userData['nickname']
 $userData['description']
 $userData['email']
 
-获取当前路由路径
-变量 $routerPath 存储了当前请求的路由路径，如：/user/profile，$routerPath 值为 profile
+Get the current route path
+The variable $routerPath stores the routing path of the current request, such as /user/profile, where the value of $routerPath is profile
 
-引入头部模板文件（可根据路由判断是否引入）
+Import the header template file (whether to import can be determined based on the route)
 if (in_array($routerPath, ['', 'order', 'account', 'profile', 'weiyu'])) {
     include View::getView('header');
 }
 
-实现路由对应功能
+Implement routing correspondence function
 if ($routerPath === 'profile') {
-    //展示个人资料页
+    //Display profile page
 } elseif ($routerPath === 'weiyu') {
-    // 展示微语页
+    // Show microblog page
 } elseif ($routerPath === 'order_calback') {
-    // 处理支付回调逻辑
+    // Processing payment callback logic
 } else {
     show_404_page();
 }
 
-引入底部模板文件
+Import the bottom template file
 include View::getView('footer')
 
 */

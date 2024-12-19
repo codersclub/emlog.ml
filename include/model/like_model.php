@@ -118,7 +118,7 @@ class Like_Model
     }
 
     /**
-     * 获取我点赞的文章列表
+     * Get a list of articles I like
      *
      * @param int $page
      * @param int $perpage

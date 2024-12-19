@@ -80,7 +80,7 @@ class Like_Controller
         $r = $Like_Model->unLike($uid, $blogId);
 
         if ($r === false) {
-            Output::error('取消失败');
+            Output::error(lang('cancel_failed'));
         }
 
         Output::ok();

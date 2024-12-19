@@ -17,6 +17,7 @@ $lang = array(
 'action_too_often'	=> 'Operation too frequent',//'操作太频繁',
 'invalid_request'	=> 'Invalid request',//'非正常请求',
 'error_name_invalid'	=> 'Nickname is too long',//'昵称太长了',
+'cancel_failed'		=> 'Cancellation failed',//'取消失败',
 
 //---------------------------
 //include/lib/cache.php
