@@ -11,6 +11,7 @@
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=mail"><?= lang('email_notify') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=seo"><?= lang('seo_settings') ?></a></li>
         <li class="nav-item"><a class="nav-link active" href="./setting.php?action=api"><?= lang('api_interface') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./setting.php?action=ai">&#10024;AI</a></li>
         <li class="nav-item"><a class="nav-link" href="./blogger.php"><?= lang('personal_settings') ?></a></li>
     </ul>
 </div>

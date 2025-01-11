@@ -26,43 +26,43 @@
     <div class="card">
         <h5 class="card-header"><?= lang('db_backup') ?></h5>
         <div class="card-body">
-            <form action="data.php?action=backup" method="post">
-                <div id="backup">
-                    <p><?= lang('backup_prompt') ?></p>
-                    <p id="local_bakzip">
-                        <input type="checkbox" value="y" name="zipbak" id="zipbak">
-                        <label for="zipbak"><?= lang('compress_zip') ?></label>
-                    </p>
-                    <p>
-                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                        <input type="submit" value="<?= lang('backup_start') ?>" class="btn btn-sm btn-success" />
-                    </p>
-                </div>
+            <div id="backup">
+                <p><?= lang('backup_prompt') ?></p>
+            </div>
+        </div>
+        <div class="card-footer">
+            <form action="data.php?action=backup" method="post" class="text-right">
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                    <input type="submit" value="<?= lang('backup_start') ?>" class="btn btn-sm btn-success" />
             </form>
         </div>
     </div>
     <div class="card">
         <h5 class="card-header"><?= lang('backup_import_local') ?></h5>
-        <div class="card-body">
-            <form action="data.php?action=import" enctype="multipart/form-data" method="post">
+        <form action="data.php?action=import" enctype="multipart/form-data" method="post">
+            <div class="card-body">
                 <div id="import">
                     <p class="des"><?= lang('backup_version_tip') ?> <?= DB_PREFIX ?></p>
-                    <p>
-                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                        <input type="file" name="sqlfile" required />
-                        <input type="submit" value="<?= lang('import') ?>" class="btn btn-sm btn-success" />
-                    </p>
                 </div>
-            </form>
-        </div>
+                <div>
+                    <input type="file" id="sqlfile" name="sqlfile" required>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                <input type="submit" value="导入备份" class="btn btn-sm btn-success" />
+            </div>
+        </form>
     </div>
     <div class="card">
         <h5 class="card-header"><?= lang('cache_update') ?></h5>
         <div class="card-body">
             <div id="cache">
                 <p class="des"><?= lang('cache_update_info') ?></p>
-                <p><input type="button" onclick="window.location='data.php?action=Cache';" value="<?= lang('cache_update') ?>" class="btn btn-sm btn-success" /></p>
             </div>
+        </div>
+        <div class="card-footer text-right">
+            <input type="button" onclick="window.location='data.php?action=Cache';" value="更新缓存" class="btn btn-sm btn-success" />
         </div>
     </div>
 </div>

@@ -69,7 +69,7 @@ class Log_Controller
         }
 
         // Authors and admins can preview draft and pending articles
-        if (($logData['hide'] === 'y' || $logData['checked'] === 'n') && $logData['author'] != UID && !User::haveEditPermission()) {
+        if (($logData['hide'] === 'y' || $logData['checked'] === 'n' || $logData['timestamp'] > time()) && $logData['author'] != UID && !User::haveEditPermission()) {
             show_404_page();
         }
 

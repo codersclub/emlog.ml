@@ -9,6 +9,7 @@
         <li class="nav-item"><a class="nav-link active" href="./setting.php?action=mail"><?= lang('email_notify') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=seo"><?= lang('seo_settings') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=api"><?= lang('api_interface') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./setting.php?action=ai">&#10024;AI</a></li>
         <li class="nav-item"><a class="nav-link" href="./blogger.php"><?= lang('personal_settings') ?></a></li>
     </ul>
 </div>
@@ -37,7 +38,7 @@
                 <input class="form-control" value="<?= $smtp_port ?>" name="smtp_port">
             </div>
             <div class="form-group">
-<!--vot-->      <input type="button" value="<?= lang('send_test') ?>" class="btn btn-primary" data-toggle="modal" data-target="#testMail"/>
+<!--vot-->      <input type="button" value="<?= lang('send_test') ?>" class="btn btn-primary" data-toggle="modal" data-target="#testMail" />
             </div>
             <div class="alert alert-warning">
                 <?= lang('send_test_prompt') ?>
@@ -89,13 +90,13 @@
                 <label class="form-check-label" for="mail_notice_comment"><?= lang('comment_new_notify') ?></label>
             </div>
             <div class="form-group form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="mail_notice_post" id="mail_notice_post" <?= $conf_mail_notice_post ?> >
+                <input class="form-check-input" type="checkbox" value="y" name="mail_notice_post" id="mail_notice_post" <?= $conf_mail_notice_post ?>>
                 <label class="form-check-label" for="mail_notice_post"><?= lang('article_new_notify') ?></label>
             </div>
             <div class="form-group">
                 <hr>
-                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-<!--vot-->          <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-success"/>
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+<!--vot-->          <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-success" />
             </div>
         </form>
     </div>
@@ -135,7 +136,7 @@
     updatePreview();
     htmlInput.addEventListener('input', updatePreview);
 
-    $(function () {
+    $(function() {
         // menu
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
@@ -143,15 +144,15 @@
         setTimeout(hideActived, 3600);
 
         // submit Form
-        $("#mail_setting_form").submit(function (event) {
+        $("#mail_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#mail_setting_form");
         });
 
         // test sendmail
-        $("#testSendBtn").click(function () {
+        $("#testSendBtn").click(function() {
             $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?>...<small>");
-            $.post("setting.php?action=mail_test", $("#mail_setting_form").serialize(), function (data) {
+            $.post("setting.php?action=mail_test", $("#mail_setting_form").serialize(), function(data) {
                 if (data === '') {
                     $("#testMailMsg").html("<small class='text-success'><?=lang('send_ok')?></small>");
                 } else {

@@ -9,6 +9,7 @@
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=mail"><?= lang('email_notify') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=seo"><?= lang('seo_settings') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=api"><?= lang('api_interface') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./setting.php?action=ai">&#10024;AI</a></li>
         <li class="nav-item"><a class="nav-link" href="./blogger.php"><?= lang('personal_settings') ?></a></li>
     </ul>
 </div>
@@ -45,7 +46,7 @@
 
             <div class="form-group">
                 <label><?= lang('icp_reg_no') ?></label>
-                <input class="form-control" value="<?= $icp ?>" name="icp"/>
+                <input class="form-control" value="<?= $icp ?>" name="icp" />
             </div>
             <div class="form-group">
                 <label><?= lang('home_footer_info') ?> <?= lang('home_footer_info_html') ?></label>
@@ -74,7 +75,7 @@
                 <label for="comment_paging"><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0"/>
+                <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0" />
             </div>
             <div class="form-group form-inline">
                 <?= lang('comment_sort') ?>: <select name="comment_order" class="form-control mx-sm-3" style="width: 120px;">
@@ -83,7 +84,7 @@
                 </select>
             </div>
             <div class="form-group form-inline">
-                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number" min="0"/>
+                <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number" min="0" />
             </div>
 
             <hr>
@@ -91,11 +92,11 @@
             <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('posts_per_page') ?></label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number" min="1"/>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number" min="1" />
             </div>
 
             <div class="form-group form-inline">
-                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" min="0" class="form-control" name="rss_output_num"/> <?= lang('rss_output_num') ?>
+                RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" min="0" class="form-control" name="rss_output_num" /> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control">
                     <option value="y" <?= $ex1 ?>><?= lang('full_text') ?></option>
                     <option value="n" <?= $ex2 ?>><?= lang('summary') ?></option>
@@ -111,8 +112,8 @@
             <div class="form-group form-inline">
                 <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" class="mr-1" <?= $conf_isthumbnail ?> />
                 <label for="isthumbnail"><?= lang('thumbnail_image') ?></label>, <?= lang('max_size') ?>:
-                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw"/> x
-                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh"/> <?= lang('unit_pixels') ?>
+                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw" /> x
+                <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh" /> <?= lang('unit_pixels') ?>
             </div>
             <hr>
 
@@ -121,25 +122,21 @@
                 <label><?= lang('lmenu_title') ?></label>
                 <input class="form-control ml-2" value="<?= $panel_menu_title ?>" name="panel_menu_title">
             </div>
-            <div class="form-group form-inline">
-<!--vot-->      <label><?=lang('admin_per_page')?></label>
-<!--vot-->      <input class="form-control mx-sm-3" style="width:80px;" value="<?= $admin_perpage_num ?>" name="admin_perpage_num" type="number" min="1" max="1000"/> <?=lang('admin_per_page_tips')?>
-            </div>
             <hr>
-            <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-            <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
+            <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+            <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success" />
         </form>
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
         // submit Form
-        $("#setting_form").submit(function (event) {
+        $("#setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#setting_form");
         });

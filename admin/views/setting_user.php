@@ -9,6 +9,7 @@
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=mail"><?= lang('email_notify') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=seo"><?= lang('seo_settings') ?></a></li>
         <li class="nav-item"><a class="nav-link" href="./setting.php?action=api"><?= lang('api_interface') ?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./setting.php?action=ai">&#10024;AI</a></li>
         <li class="nav-item"><a class="nav-link" href="./blogger.php"><?= lang('personal_settings') ?></a></li>
     </ul>
 </div>
@@ -20,11 +21,11 @@
                 <label class="form-check-label" for="is_signup"><?= lang('registration_open') ?></label>
             </div>
             <div class="form-group form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="login_code" id="login_code" <?= $conf_login_code ?> >
+                <input class="form-check-input" type="checkbox" value="y" name="login_code" id="login_code" <?= $conf_login_code ?>>
                 <label class="form-check-label" for="login_code"><?= lang('registration_captcha') ?></label>
             </div>
             <div class="form-group form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?> >
+                <input class="form-check-input" type="checkbox" value="y" name="email_code" id="email_code" <?= $conf_email_code ?>>
                 <label class="form-check-label" for="email_code"><?=lang('enable_email_code')?></label>
             </div>
             <hr>
@@ -38,7 +39,7 @@
             </div>
             <div class="form-group form-inline">
                 <label for="posts_per_day"><?= lang('posts_per_day') ?></label>
-                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $posts_per_day ?>" type="number" min="0" name="posts_per_day" id="posts_per_day"/>
+                <input class="form-control mx-sm-3" style="width:60px;" value="<?= $posts_per_day ?>" type="number" min="0" name="posts_per_day" id="posts_per_day" />
             </div>
             <hr>
             <div class="form-group form-check">
@@ -46,21 +47,21 @@
                 <label class="form-check-label" for="forbid_user_upload"><?= lang('disable_upload') ?></label>
             </div>
             <div class="form-group form-inline" id="form_att_maxsize">
-                <?= lang('att_maxsize') ?><input type="number" min="0" style="width:200px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize"/> <?= lang('unit_kb') ?>
+                <?= lang('att_maxsize') ?><input type="number" min="0" style="width:200px;" class="form-control" value="<?= $att_maxsize ?>" name="att_maxsize" /> <?= lang('unit_kb') ?>
             </div>
             <div class="form-group form-inline" id="form_att_type">
-                <?= lang('att_type_enabled') ?><input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type"/> <?= lang('att_type_prompt') ?>
+                <?= lang('att_type_enabled') ?><input maxlength="200" style="width:500px;" class="form-control" value="<?= $att_type ?>" name="att_type" /> <?= lang('att_type_prompt') ?>
             </div>
             <hr>
 <!--vot NOT COMPATIBLE WITH MULTILINGUAL!!
             <div class="form-group form-inline">
                 <label for="posts_name"><?= lang('article_alias_prompt') ?></label>
-                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $posts_name ?>" name="posts_name" id="posts_name"/> <?= lang('article_alias_prompt') ?>
+                <input class="form-control mx-sm-3" style="width:80px;" value="<?= $posts_name ?>" name="posts_name" id="posts_name" /> <?= lang('article_alias_prompt') ?>
             </div>
 -->
             <div class="form-group">
-                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success"/>
+                <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                <input type="submit" value="<?= lang('save_settings') ?>" class="btn btn-sm btn-success" />
             </div>
         </form>
         <div class="alert alert-warning">
@@ -69,14 +70,14 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
         // submit Form
-        $("#user_setting_form").submit(function (event) {
+        $("#user_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#user_setting_form");
         });

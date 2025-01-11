@@ -12,6 +12,7 @@
             <li class="nav-item"><a class="nav-link" href="./setting.php?action=mail"><?= lang('email_notify') ?></a></li>
             <li class="nav-item"><a class="nav-link" href="./setting.php?action=seo"><?= lang('seo_settings') ?></a></li>
             <li class="nav-item"><a class="nav-link" href="./setting.php?action=api"><?= lang('api_interface') ?></a></li>
+            <li class="nav-item"><a class="nav-link" href="./setting.php?action=ai">&#10024;AI</a></li>
             <li class="nav-item"><a class="nav-link active" href="./blogger.php"><?= lang('personal_settings') ?></a></li>
         </ul>
     <?php endif; ?>
@@ -20,8 +21,8 @@
     <div class="card-body">
         <div class="row m-5">
             <label for="upload_image">
-                <img src="<?= $icon ?>" width="120" height="120" id="avatar_image" class="rounded-circle"/>
-                <input type="file" name="image" class="image" id="upload_image" style="display:none"/>
+                <img src="<?= $icon ?>" width="120" height="120" id="avatar_image" class="rounded-circle" />
+                <input type="file" name="image" class="image" id="upload_image" style="display:none" />
             </label>
         </div>
         <form action="blogger.php?action=update" method="post" name="profile_setting_form" id="profile_setting_form" enctype="multipart/form-data">
@@ -44,13 +45,32 @@
                 </div>
                 <div class="form-group">
                     <label><?= lang('personal_description') ?></label>
-                    <textarea name="description" class="form-control"><?= $description ?></textarea>
+                    <?php if (User::haveEditPermission()): ?>
+                        <a href="javascript:void(0);" class="ml-3" id="ai_button">✨</a>
+                    <?php endif; ?>
+                    <textarea name="description" class="form-control" id="description"><?= $description ?></textarea>
                 </div>
+                <script>
+                    $(document).ready(function() {
+                        $('#ai_button').click(function() {
+                            $.ajax({
+                                url: 'ai.php?action=genBio',
+                                method: 'GET',
+                                success: function(response) {
+                                    $('#description').val(response.data);
+                                },
+                                error: function(xhr) {
+                                    alert('AI 请求失败，请稍后再试');
+                                }
+                            });
+                        });
+                    });
+                </script>
                 <div class="form-group">
                     <?php doAction('blogger_ext') ?>
                 </div>
-                <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
-                <input type="submit" value="<?= lang('save_data') ?>" name="submit_form" id="submit_form" class="btn btn-sm btn-success"/>
+                <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                <input type="submit" value="<?= lang('save_data') ?>" name="submit_form" id="submit_form" class="btn btn-sm btn-success" />
                 <a href="#" type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#editPasswordModal"><?= lang('change_password') ?></a>
             </div>
         </form>
@@ -70,7 +90,7 @@
                 <div class="img-container">
                     <div class="row">
                         <div class="col-md-11">
-                            <img src="" id="sample_image"/>
+                            <img src="" id="sample_image" />
                         </div>
                     </div>
                 </div>
@@ -104,7 +124,7 @@
 <!--vot-->              <input type="password" class="form-control" id="new_passwd2" name="new_passwd2" minlength="5" required>
                     </div>
                     <div class="modal-footer">
-                        <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+                        <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
                         <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
@@ -137,7 +157,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+                        <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
                         <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
@@ -148,47 +168,47 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         $("#menu_category_sys").addClass('active');
         $("#menu_sys").addClass('show');
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
         // submit Form
-        $("#profile_setting_form").submit(function (event) {
+        $("#profile_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#profile_setting_form");
         });
 
         // Change user password form
-        $("#passwd_setting_form").submit(function (event) {
+        $("#passwd_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#passwd_setting_form", lang('password_changed_ok'));
             $("#editPasswordModal").modal('hide');
         });
 
         // Modify email form submission
-        $("#email_setting_form").submit(function (event) {
+        $("#email_setting_form").submit(function(event) {
             event.preventDefault();
 /*vot*/     submitForm("#email_setting_form", lang('email_modified_ok'));
             $("#editEmailModal").modal('hide');
         });
 
         // Modify Email
-        $('#editEmailModal').on('show.bs.modal', function (event) {
+        $('#editEmailModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var email = button.data('email')
             var modal = $(this)
             modal.find('.modal-body #email').val(email)
         })
         // Email Verification
-        $('#button-send-auth-email').click(function () {
+        $('#button-send-auth-email').click(function() {
             var email = $('#email').val();
             var $btn = $(this);
             var $message = $('#message');
             $btn.prop('disabled', true);
             var count = 60;
-            var countdown = setInterval(function () {
+            var countdown = setInterval(function() {
 /*vot*/         $btn.text(lang('resend') + ' (' + count + ')');
                 if (count == 0) {
                     clearInterval(countdown);
@@ -201,11 +221,13 @@
             $.ajax({
                 url: 'account.php?action=send_email_code',
                 method: 'POST',
-                data: {mail: email},
-                success: function (response) {
+                data: {
+                    mail: email
+                },
+                success: function(response) {
 /*vot*/             $message.text(lang('captcha_sent_ok')).css('color', 'green');
                 },
-                error: function (data) {
+                error: function(data) {
                     $message.text(data.responseJSON.msg).css('color', 'red');
                     clearInterval(countdown);
 /*vot*/             $btn.text(lang('captcha_send'));
@@ -218,9 +240,9 @@
         var $modal = $('#modal');
         var image = document.getElementById('sample_image');
         var cropper;
-        $('#upload_image').change(function (event) {
+        $('#upload_image').change(function(event) {
             var files = event.target.files;
-            var done = function (url) {
+            var done = function(url) {
                 image.src = url;
                 $modal.modal('show');
             };
@@ -230,34 +252,34 @@
                     return;
                 }
                 reader = new FileReader();
-                reader.onload = function (event) {
+                reader.onload = function(event) {
                     done(reader.result);
                 };
                 reader.readAsDataURL(files[0]);
             }
         });
-        $modal.on('shown.bs.modal', function () {
+        $modal.on('shown.bs.modal', function() {
             cropper = new Cropper(image, {
                 aspectRatio: 1,
                 viewMode: 1,
             });
-        }).on('hidden.bs.modal', function () {
+        }).on('hidden.bs.modal', function() {
             cropper.destroy();
             cropper = null;
         });
 
-        $('#crop').click(function () {
+        $('#crop').click(function() {
             canvas = cropper.getCroppedCanvas({
                 width: 160,
                 height: 160
             });
 
-            canvas.toBlob(function (blob) {
+            canvas.toBlob(function(blob) {
                 uploadImage(blob, 'avatar.jpg');
             });
         });
 
-        $('#use_original_image').click(function () {
+        $('#use_original_image').click(function() {
             var blob = $('#upload_image')[0].files[0];
             uploadImage(blob, blob.name)
         });
@@ -271,7 +293,7 @@
                 data: formData,
                 processData: false,
                 contentType: false,
-                success: function (data) {
+                success: function(data) {
                     $modal.modal('hide');
                     if (data.code == 0) {
                         $('#avatar_image').attr('src', data.data);
@@ -279,7 +301,7 @@
                         alert(data.msg);
                     }
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     var data = xhr.responseJSON;
                     if (data && typeof data === "object") {
                         alert(data.msg);

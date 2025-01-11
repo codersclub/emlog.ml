@@ -25,89 +25,99 @@
     <h1 class="h4 mb-0 text-gray-800"><?= lang('user_management') ?></h1>
     <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#exampleModal"><i class="icofont-plus"></i> <?= lang('user_add') ?></a>
 </div>
-<div class="panel-heading justify-content-between d-flex">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link <?= $admin == '' ? 'active' : '' ?>" href="./user.php"><?= lang('all') ?></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?= $admin == 'y' ? 'active' : '' ?>" href="./user.php?admin=y"><?= lang('admins') ?></a>
-        </li>
-    </ul>
-    <form action="user.php" method="get">
-        <div class="form-inline search-inputs-nowrap">
-            <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
-            <div class="input-group-append">
-                <button class="btn btn-sm btn-success" type="submit">
-                    <i class="icofont-search-2"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
 <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <div class="row justify-content-between">
+            <div class="form-inline">
+                <div id="f_t_order" class="mx-1">
+                    <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最近注册</option>
+                        <option value="update" <?= ($order === 'update') ? 'selected' : '' ?>>最近活跃</option>
+                        <option value="admin" <?= ($order === 'admin') ? 'selected' : '' ?>>管理员优先</option>
+                    </select>
+                </div>
+            </div>
+            <form action="user.php" method="get">
+                <div class="form-inline search-inputs-nowrap">
+                    <input type="text" name="keyword" value="<?= $keyword ?>" class="form-control m-1 small" placeholder="<?= lang('search_by_email') ?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-success" type="submit">
+                            <i class="icofont-search-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover dataTable no-footer" id="adm_comment_list">
                 <thead>
-                <tr>
-                    <th></th>
-                    <th><?= lang('user_name') ?></th>
-                    <th><?= lang('email') ?></th>
-                    <th><?= lang('user_id') ?></th>
-                    <th><?= lang('login_ip') ?></th>
-                    <th><?= lang('last_login_time') ?></th>
-                    <th><?= lang('create_time') ?></th>
-                    <th><?= lang('operation') ?></th>
-                </tr>
+                    <tr>
+                        <th></th>
+                        <th><?= lang('user_name') ?></th>
+                        <th><?= lang('email') ?></th>
+                        <th><?= lang('user_id') ?></th>
+                        <th><?= lang('login_ip') ?></th>
+                        <th><?= lang('last_login_time') ?></th>
+                        <th><?= lang('create_time') ?></th>
+                        <th><?= lang('operation') ?></th>
+                    </tr>
                 </thead>
                 <tbody>
-                <?php
-                foreach ($users as $key => $val):
-                    $avatar = User::getAvatar($user_cache[$val['uid']]['avatar']);
-                    $forbid = $val['state'] == 1;
-                    $user_log_num = isset($sta_cache[$val['uid']]['lognum']) ? $sta_cache[$val['uid']]['lognum'] : 0;
+                    <?php
+                    foreach ($users as $key => $val):
+                        $avatar = User::getAvatar($user_cache[$val['uid']]['avatar']);
+                        $forbid = $val['state'] == 1;
+                        $user_log_num = isset($sta_cache[$val['uid']]['lognum']) ? $sta_cache[$val['uid']]['lognum'] : 0;
                     ?>
-                    <tr>
-                        <td><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle"/></td>
-                        <td>
-                            <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
-                            <span class="small"><?= $val['role'] ?></span>
-                            <?php if ($forbid): ?>
-                                <span class="badge badge-warning"><?= lang('disabled') ?></span>
-                            <?php endif ?>
-                            <br/>
-                            <?php if ($user_log_num > 0): ?>
-                                <span class="small mr-2"><?= lang('articles') ?>: <a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></span>
-                            <?php endif ?>
-                            <?php if ($val['credits'] > 0): ?>
-                                <span class="small"><?= lang('credits') ?>: <?= $val['credits'] ?></span>
-                            <?php endif ?>
-                        </td>
-                        <td><?= $val['email'] ?></td>
-                        <td><?= $val['uid'] ?></td>
-                        <td><?= $val['ip'] ?></td>
-                        <td><?= $val['update_time'] ?></td>
-                        <td><?= $val['create_time'] ?></td>
-                        <td>
-                            <?php if (UID != $val['uid']): ?>
-                                <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                        <tr>
+                            <td><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle" /></td>
+                            <td>
+                                <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
+                                <span class="small"><?= $val['role'] ?></span>
                                 <?php if ($forbid): ?>
-                                    <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>" class="badge badge-success"><?= lang('unban') ?></a>
-                                <?php else: ?>
-                                    <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-warning"><?= lang('ban') ?></a>
+                                    <span class="badge badge-warning"><?= lang('disabled') ?></span>
                                 <?php endif ?>
-                            <?php endif ?>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
+                                <br />
+                                <span class="small mr-2"><?= lang('articles') ?>: <a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></span>
+                                <span class="small"><?= lang('credits') ?>: <?= $val['credits'] ?></span>
+                            </td>
+                            <td><?= $val['email'] ?></td>
+                            <td><?= $val['uid'] ?></td>
+                            <td><?= $val['ip'] ?></td>
+                            <td><?= $val['update_time'] ?></td>
+                            <td><?= $val['create_time'] ?></td>
+                            <td>
+                                <?php if (UID != $val['uid']): ?>
+                                    <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                                    <?php if ($forbid): ?>
+                                        <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>" class="badge badge-success"><?= lang('unban') ?></a>
+                                    <?php else: ?>
+                                        <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-warning"><?= lang('ban') ?></a>
+                                    <?php endif ?>
+                                <?php endif ?>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 <div class="page"><?= $pageurl ?></div>
-<div class="text-center small"><?= lang('total') ?> <?= $userCount ?> <?= lang('_users') ?></div>
+<div class="d-flex justify-content-center mb-4 small">
+    <form action="user.php" method="get" class="form-inline">
+        <label for="perpage_num" class="mr-2">有 <?= $userCount ?> 个用户，每页显示</label>
+        <select name="perpage_num" id="perpage_num" class="form-control form-control-sm" onChange="this.form.submit();">
+            <option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
+            <option value="20" <?= ($perPage == 20) ? 'selected' : '' ?>>20</option>
+            <option value="50" <?= ($perPage == 50) ? 'selected' : '' ?>>50</option>
+            <option value="100" <?= ($perPage == 100) ? 'selected' : '' ?>>100</option>
+            <option value="500" <?= ($perPage == 500) ? 'selected' : '' ?>>500</option>
+        </select>
+    </form>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -145,7 +155,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+                    <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     <span id="alias_msg_hook"></span>
@@ -155,8 +165,12 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 3600);
         $("#menu_user").addClass('active');
     });
+
+    function selectOrder(obj) {
+        window.open("./user.php?order=" + obj.value, "_self");
+    }
 </script>

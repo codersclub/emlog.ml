@@ -1,4 +1,5 @@
 <?php
+
 /**
  * setting
  * @package EMLOG
@@ -67,7 +68,6 @@ if ($action == 'save') {
         'att_imgmaxw'         => Input::postIntVar('att_imgmaxw', 420),
         'att_imgmaxh'         => Input::postIntVar('att_imgmaxh', 460),
         'detect_url'          => Input::postStrVar('detect_url', 'n'),
-        'admin_perpage_num'   => Input::postIntVar('admin_perpage_num'),
         'panel_menu_title'    => Input::postStrVar('panel_menu_title'),
     ];
 
@@ -166,7 +166,6 @@ if ($action == 'mail') {
     require_once(View::getAdmView('setting_mail'));
     include View::getAdmView('footer');
     View::output();
-
 }
 
 if ($action == 'mail_save') {
@@ -308,4 +307,74 @@ if ($action == 'api_reset') {
     Option::updateOption('apikey', $apikey);
     $CACHE->updateCache('options');
     header('Location: ./setting.php?action=api&ok_reset=1');
+}
+
+if ($action == 'ai') {
+    $aiModel = Option::get('ai_model');
+    $aiModels = json_decode(Option::get('ai_models'), true);
+    if (!is_array($aiModels)) {
+        $aiModels = [];
+    }
+
+    include View::getAdmView('header');
+    require_once(View::getAdmView('setting_ai'));
+    include View::getAdmView('footer');
+    View::output();
+}
+
+if ($action == 'ai_save') {
+    LoginAuth::checkToken();
+
+    $aiApiUrl = Input::postStrVar('ai_api_url');
+    $aiApiKey = Input::postStrVar('ai_api_key');
+    $aiModel = Input::postStrVar('ai_model');
+
+    $aiModels = json_decode(Option::get('ai_models'), true);
+    if (!is_array($aiModels)) {
+        $aiModels = [];
+    }
+
+    $aiModels[$aiModel] = [
+        'api_url' => $aiApiUrl,
+        'api_key' => $aiApiKey,
+        'model' => $aiModel,
+    ];
+
+    Option::updateOption('ai_models', json_encode($aiModels));
+
+    // If there is only one model available, set it as the current model
+    if (count($aiModels) == 1) {
+        Option::updateOption('ai_model', $aiModel);
+    }
+
+    $CACHE->updateCache('options');
+    emDirect("./setting.php?action=ai");
+}
+
+if ($action == 'ai_model') {
+    $aiModel = Input::getStrVar('ai_model');
+    if (empty($aiModel)) {
+        emDirect("./setting.php?action=ai");
+    }
+
+    Option::updateOption('ai_model', $aiModel);
+    $CACHE->updateCache('options');
+    emDirect("./setting.php?action=ai");
+}
+
+if ($action == 'delete_model') {
+    $aiModel = Input::getStrVar('ai_model');
+    $aiModels = json_decode(Option::get('ai_models'), true);
+    $currentAiModel = Option::get('ai_model');
+    if (is_array($aiModels) && isset($aiModels[$aiModel])) {
+        unset($aiModels[$aiModel]);
+        Option::updateOption('ai_models', json_encode($aiModels));
+        if ($currentAiModel == $aiModel) {
+            Option::updateOption('ai_model', '');
+        }
+        $CACHE->updateCache('options');
+        emDirect("./setting.php?action=ai");
+    } else {
+        emDirect("./setting.php?action=ai");
+    }
 }
