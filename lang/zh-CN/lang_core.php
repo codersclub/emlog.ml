@@ -166,6 +166,12 @@ $lang = array(
 'uncategorized'            => '未分类',//'Uncategorized',
 
 //---------------------------------------
+//include/service/ai.php
+    'useful_assistant' => '你是一个有用的助手',//'You are a useful assistant',
+    'ai_model_not_configured' => 'AI 模型未配置',//'AI model not configured',
+    'model_exception' => '大模型处理异常，请稍后再试，错误信息：',//'Large model processing exception, please try again later, error message: ',
+
+//---------------------------------------
 //include/service/media.php
 'att_size_php_limit' => '文件大小超过PHP',//'File size exceeds PHP limit: ',
 'att_type_disabled' => '不能上传该类型文件',//'Cannot upload this type of file',

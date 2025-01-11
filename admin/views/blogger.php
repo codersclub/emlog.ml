@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label><?= lang('personal_description') ?></label>
                     <?php if (User::haveEditPermission()): ?>
-                        <a href="javascript:void(0);" class="ml-3" id="ai_button">✨</a>
+                        <a href="javascript:void(0);" class="ml-3" id="ai_button">&#10024;</a>
                     <?php endif; ?>
                     <textarea name="description" class="form-control" id="description"><?= $description ?></textarea>
                 </div>
@@ -60,7 +60,7 @@
                                     $('#description').val(response.data);
                                 },
                                 error: function(xhr) {
-                                    alert('AI 请求失败，请稍后再试');
+                                    alert('<?= lang('ai_request_failed') ?>');
                                 }
                             });
                         });

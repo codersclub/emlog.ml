@@ -9,7 +9,7 @@
 
 class Ai
 {
-    public static function chat($prompt, $system_prompt = '你是一个有用的助手')
+    public static function chat($prompt, $system_prompt = lang('useful_assistant'))
     {
         $messages = [
             [
@@ -25,7 +25,7 @@ class Ai
         return self::formatResponse($response);
     }
 
-    public static function chatStream($prompt, $system_prompt = '你是一个有用的助手')
+    public static function chatStream($prompt, $system_prompt = lang('useful_assistant'))
     {
         $messages = [
             [
@@ -44,7 +44,7 @@ class Ai
     {
         $modelInfo = self::getCurrentModelInfo();
         if ($modelInfo === null || !isset($modelInfo['api_url'])) {
-            echo "data: " . json_encode(["error" => "AI 模型未配置"]) . "\n\n";
+            echo "data: " . json_encode(["error" => lang('ai_model_not_configured')]) . "\n\n";
             return;
         }
 
@@ -90,7 +90,7 @@ class Ai
     {
         $model = self::getCurrentModelInfo();
         if ($model === null || !isset($model['api_url'])) {
-            return 'AI 模型未配置';
+            return lang('ai_model_not_configured');
         }
         $apiUrl = $model['api_url'];
         $apiKey = $model['api_key'];
@@ -137,7 +137,7 @@ class Ai
         if (isset($decodedResponse['choices'][0]['message']['content'])) {
             return $decodedResponse['choices'][0]['message']['content'];
         }
-        return '大模型处理异常，请稍后再试，错误信息：' . $response;
+        return lang('model_exception') . $response;
     }
 
     public static function getCurrentModelInfo()

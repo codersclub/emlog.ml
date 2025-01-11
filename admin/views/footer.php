@@ -3,7 +3,7 @@
 </div>
 <?php if (Option::get('ai_model')): ?>
     <a class="ai-chat-button" href="#" data-toggle="modal" data-target="#aiChatModal">
-        <span>✨</span>
+        <span>&#10024;</span>
     </a>
 <?php endif; ?>
 <a class="scroll-to-top" href="#page-top">
@@ -14,7 +14,7 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="aiChatModalLabel">✨AI 对话</h5>
+                <h5 class="modal-title" id="aiChatModalLabel"><?= lang(<?= lang('ai_chat') ?>) ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -25,12 +25,12 @@
                 </div>
                 <form id="chat-form">
                     <div class="input-group">
-                        <textarea class="form-control" id="chat-input" placeholder="输入消息..." rows="1" style="resize: none; overflow: hidden;"></textarea>
+                        <textarea class="form-control" id="chat-input" placeholder="<?= lang('input_msg') ?>" rows="1" style="resize: none; overflow: hidden;"></textarea>
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit" id="send-btn">发送</button>
+                            <button class="btn btn-primary" type="submit" id="send-btn"><?= lang('send') ?></button>
                         </div>
                     </div>
-                    <div class="text-muted text-xs mt-2">Model：<?= Option::get('ai_model') ?>，按 Shift + Enter 换行</div>
+                    <div class="text-muted text-xs mt-2">Model: <?= Option::get('ai_model') ?>, <?= lang('shift_enter') ?></div>
                 </form>
                 <script>
                     $(document).ready(function() {
@@ -64,24 +64,24 @@
             var message = $('#chat-input').val().trim();
             if (message === '') return;
 
-            // 显示用户消息
-            $('#chat-box').append('<div style="background-color:#69b4ff; color:#FFFFFF; border-radius: 10px; padding: 10px; margin: 5px 0;"><b>😄：</b> ' + $('<div>').text(message).html() + '</div>');
+            // Display User Messages
+            $('#chat-box').append('<div style="background-color:#69b4ff; color:#FFFFFF; border-radius: 10px; padding: 10px; margin: 5px 0;"><b>&#128516;:</b> ' + $('<div>').text(message).html() + '</div>');
             $('#chat-input').val('');
             $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
 
             var $sendBtn = $('#send-btn');
-            $sendBtn.prop('disabled', true).text('发送中...');
+            $sendBtn.prop('disabled', true).text('<?= lang('sending') ?>');
 
-            // 初始化 EventSource 进行流式通信
+            // Initialize EventSource for streaming communication
             var eventSource = new EventSource('ai.php?action=chat_stream&message=' + encodeURIComponent(message));
-            var $aiMessage = $('<div style="background-color: #f1f1f1; border-radius: 10px; padding: 10px; margin: 5px 0;"><b>🤖：</b> <span class="ai-typing"></span></div>');
+            var $aiMessage = $('<div style="background-color: #f1f1f1; border-radius: 10px; padding: 10px; margin: 5px 0;"><b>&#129302;:</b> <span class="ai-typing"></span></div>');
             $('#chat-box').append($aiMessage);
 
             var fullMessage = '';
 
             eventSource.onmessage = function(event) {
                 if (event.data === '[DONE]') {
-                    $sendBtn.prop('disabled', false).text('发送');
+                    $sendBtn.prop('disabled', false).text('<?= lang('send') ?>');
                     eventSource.close();
                 } else {
                     try {
@@ -95,7 +95,7 @@
                             $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
                         }
                     } catch (err) {
-                        console.error('解析流数据错误:', err);
+                        console.error('<?= lang('error_parsing') ?>:', err);
                     }
                 }
             };
@@ -103,9 +103,9 @@
             eventSource.onerror = function() {
                 var $typing = $aiMessage.find('.ai-typing');
                 var currentContent = $typing.html();
-                $typing.html(currentContent + "连接出错，可能是模型配置或者网络问题");
+                $typing.html(currentContent + " <?= lang('error_model_net') ?>");
                 $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
-                $sendBtn.prop('disabled', false).text('发送');
+                $sendBtn.prop('disabled', false).text('<?= lang('send') ?>');
                 eventSource.close();
             };
         });

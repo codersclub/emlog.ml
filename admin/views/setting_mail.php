@@ -151,7 +151,7 @@
 
         // test sendmail
         $("#testSendBtn").click(function() {
-            $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?>...<small>");
+            $("#testMailMsg").html("<small class='text-secondary'><?=lang('sending')?><small>");
             $.post("setting.php?action=mail_test", $("#mail_setting_form").serialize(), function(data) {
                 if (data === '') {
                     $("#testMailMsg").html("<small class='text-success'><?=lang('send_ok')?></small>");

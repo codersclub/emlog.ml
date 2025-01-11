@@ -31,7 +31,7 @@ if ($action == 'chat_stream') {
 }
 
 if ($action == 'genBio') {
-    $prompt = '从名言、歌词、电影台词、小说、诗词、名人名言中找出一句话，作为你的个性签名，避免输出引号、冒号等任何提示性内容。';
+    $prompt = lang('choose_prompt');
     $r = Ai::chat($prompt);
     Output::ok($r);
 }

@@ -243,7 +243,7 @@ $isdraft = $draft ? '&draft=1' : '';
 <div class="page"><?= $pageurl ?> </div>
 <div class="d-flex justify-content-center mb-4 small">
     <div class="form-inline">
-        <label for="perpage_num" class="mr-2">有 <?= $logNum ?> 篇<?= $draft ? '草稿' : '文章' ?>，每页显示</label>
+        <label for="perpage_num" class="mr-2"><?= lang('have') ?> <?= $logNum ?> <?= lang('number_of_items') ?><?= $draft ? lang('drafts') : lang('_articles') ?>, <?= lang('per_page') ?></label>
         <select name="perpage_num" id="perpage_num" class="form-control form-control-sm" onChange="changePerPage(this);">
             <option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
             <option value="20" <?= ($perPage == 20) ? 'selected' : '' ?>>20</option>

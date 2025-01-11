@@ -13,6 +13,11 @@ $lang = array(
     'mail_code_invalid' => '邮件验证码错误',//'Mail verification code error',
 
 //---------------------------
+//admin/ai.php
+    'choose_prompt' => '从名言、歌词、电影台词、小说、诗词、名人名言中找出一句话，作为你的个性签名，避免输出引号、冒号等任何提示性内容。',//'Pick a sentence from famous sayings, lyrics, movie lines, novels, poems, and famous quotes as your signature. Avoid inputting any suggestive content such as quotation marks and colons.',
+
+
+//---------------------------
 //admin/article.php
     'drafts' => '草稿',//'Drafts',
     '_drafts' => '草稿箱',//' drafts',
@@ -91,6 +96,9 @@ $lang = array(
     'send_test_prompt' => '<b>以QQ邮箱配置为例</b><br>发送人邮箱：你的QQ邮箱<br>SMTP密码：见QQ邮箱顶部设置-> 账户 -> 开启IMAP/SMTP服务 -> 生成授权码（即为SMTP密码）<br>发送人名称：你的姓名或者站点名称<br>SMTP服务器：smtp.qq.com<br>端口：465 (只支持 SSL 端口)<br>',//'<b>Let take QQ mailbox configuration as an example</b><br>Sender mailbox: your QQ mailbox<br>SMTP password: see the settings at the top of QQ mailbox -&gt; Account -&gt; Enable IMAP/SMTP service -&gt; Generate authorization code (i.e. SMTP password)<br>SMTP server: smtp.qq.com<br>Port: 465 (only SSL port is supported)<br>',
     'recepient_email_enter' => '输入接收邮箱',//'Enter recepient email',
     'send' => '发送',//'Send',
+    'shift_enter' => '按 Shift + Enter 换行',//'Press Shift+Enter to enter a new line',
+    'error_parsing' => '解析流数据错误',//'Error parsing stream data',
+    'error_model_net' => '连接出错，可能是模型配置或者网络问题',//'Connection error, it may be a model configuration or network problem',
 
 //---------------------------
 //admin/setting_user.php
@@ -102,7 +110,7 @@ $lang = array(
     'comment_write' => '发布评论',//'Post comments',
     'guest_rights' => '游客权限',//'Visitor permissions',
     'writer_need_approve' => '注册用户发布文章需要审核',//'Articles published by registered users need to be reviewed',
-    'sending' => '发送中',//'Sending',
+    'sending' => '发送中...',//'Sending',
     'send_ok' => '发送成功',//'Sent successfully',
     'posts_per_day' => '注册用户限制24小时发文数量（包括草稿）：',//'Registered users are limited to the number of posts (including drafts) they can post in 24 hours:',
     'att_maxsize' => '注册用户上传最大限制：',//'Maximum upload limit for registered users: ',
@@ -279,6 +287,7 @@ $lang = array(
     'top_rated' => '置顶优先',//'Top rated',
     'most_commented' => '评论最多',//'Most commented',
     'most_viewed' => '浏览最多',//'Most viewed',
+    'ai_request_failed' => 'AI 请求失败，请稍后再试',//'AI request failed, please try again later',
 
 //---------------------------
 //admin/views/article_write.php
@@ -357,6 +366,7 @@ $lang = array(
     'user_settings' => '用户设置',//'User settings',
     'email_notify' => '邮件通知',//'E-mail notification',
     'seo_settings' => 'SEO设置',//'SEO Settings',
+    'ai' => '✨AI',//'&#10024;AI',
     'background_style' => '后台风格',//'Background style',
     'personal_settings' => '个人信息',//'Personal Settings',
     'personal_data_modified_ok' => '资料修改成功',//'Data modified successfully',
@@ -449,6 +459,7 @@ $lang = array(
 //---------------------------
 //admin/views/footer.php
     'welcome_using' => '欢迎使用',//'Welcome using the',
+    'input_msg' => '输入消息...',//'Input Message',
 
 //---------------------------
 //admin/views/footer_user.php
@@ -876,6 +887,21 @@ $lang = array(
     'menu' => '菜单',//'Menu',
     'lmenu_title' => '左侧菜单标题',//'Left menu title',
 
+
+//---------------------------
+//admin/views/setting_ai.php
+    'enabled' => '已启用',//'Enabled',
+    'add_model' => '+添加模型',//'Add Model',
+    'add_ai_model' => '添加AI模型',//'Add AI model',
+    'ai_chat' => '✨AI对话',//'&#10024;AI Chat',
+    'only_big_model' => '仅支持配置openai协议的大模型',//'Only supports large models configured with the OpenAI protocol',
+    'zhipu_ai' => '智谱AI',//'Zhipu AI',
+    'generate_api_key' => '生成api key',//'Generate an API key',
+    'api_key_format' => '格式如：sk-****',//'Format: sk-****',
+    'tongyi_model' => '通义大模型',//'Tongyi Large Model',
+    'moon_model' => 'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',//'Model: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',
+    'qwen_model' => 'Model：qwen-max、qwen-plus、qwen-turbo、qwen-long 等',//'Model: qwen-max, qwen-plus, qwen-turbo, qwen-long, etc.',
+
 //---------------------------
 //admin/views/setting_api.php
     'api_key_reset_ok' => '接口秘钥重置成功',//'Interface key was reset successfully',
@@ -1167,6 +1193,10 @@ $lang = array(
     'banned' => '已禁用',//'Banned',
     'unban' => '解禁',//'Unban',
     'credits' => '积分',//'Credits',
+    'last_registered' => '最近注册',//'Recently registered',
+    'last_active' => '最近活跃',//'Recently Active',
+    'admin_priority' => '管理员优先',//'Administrator priority',
+    'users_perpage' => '个用户，每页显示',//'Users, displayed per page',
 
 //---------------------------
 //admin/views/user_edit.php

@@ -31,9 +31,9 @@
             <div class="form-inline">
                 <div id="f_t_order" class="mx-1">
                     <select name="order" id="order" onChange="selectOrder(this);" class="form-control">
-                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>>最近注册</option>
-                        <option value="update" <?= ($order === 'update') ? 'selected' : '' ?>>最近活跃</option>
-                        <option value="admin" <?= ($order === 'admin') ? 'selected' : '' ?>>管理员优先</option>
+                        <option value="date" <?= (empty($order)) ? 'selected' : '' ?>><?= lang('last_registered') ?></option>
+                        <option value="update" <?= ($order === 'update') ? 'selected' : '' ?>><?= lang('last_active') ?></option>
+                        <option value="admin" <?= ($order === 'admin') ? 'selected' : '' ?>><?= lang('admin_priority') ?></option>
                     </select>
                 </div>
             </div>
@@ -108,7 +108,7 @@
 <div class="page"><?= $pageurl ?></div>
 <div class="d-flex justify-content-center mb-4 small">
     <form action="user.php" method="get" class="form-inline">
-        <label for="perpage_num" class="mr-2">有 <?= $userCount ?> 个用户，每页显示</label>
+        <label for="perpage_num" class="mr-2"><?= lang('have') ?> <?= $userCount ?> <?= lang('users_perpage') ?></label>
         <select name="perpage_num" id="perpage_num" class="form-control form-control-sm" onChange="this.form.submit();">
             <option value="10" <?= ($perPage == 10) ? 'selected' : '' ?>>10</option>
             <option value="20" <?= ($perPage == 20) ? 'selected' : '' ?>>20</option>

@@ -50,7 +50,7 @@
             </div>
             <div class="card-footer text-right">
                 <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                <input type="submit" value="导入备份" class="btn btn-sm btn-success" />
+                <input type="submit" value="<?= lang('backup_import_local') ?>" class="btn btn-sm btn-success" />
             </div>
         </form>
     </div>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="card-footer text-right">
-            <input type="button" onclick="window.location='data.php?action=Cache';" value="更新缓存" class="btn btn-sm btn-success" />
+            <input type="button" onclick="window.location='data.php?action=Cache';" value="<?= lang('cache_update') ?>" class="btn btn-sm btn-success" />
         </div>
     </div>
 </div>
