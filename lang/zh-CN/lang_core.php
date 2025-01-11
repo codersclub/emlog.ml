@@ -182,7 +182,7 @@ $lang = array(
 //include/service/notice.php
 'new_article_review'         => '你的站点收到新的文章投稿',//'Your site has received new submissions',
 'new_article_title'          => '文章标题：',//'Article title: ',
-'new_comment_reply_review'	=> '你的评论收到一条回复',//'Your comment has received a new reply',
+'new_comment_reply_review'   => '你的评论收到一条回复',//'Your comment has received a new reply',
 'new_comment_review'         => '你的文章收到新的评论',//'Your article has received a new comment',
 'new_comment_is'             => '评论内容：',//'Comment content: ',
 'from_article'			=> '来自文章',//'From article: ',

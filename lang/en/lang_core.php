@@ -166,6 +166,12 @@ $lang = array(
 'uncategorized'            => 'Uncategorized',//'未分类',
 
 //---------------------------------------
+//include/service/ai.php
+    'useful_assistant' => 'You are a useful assistant',//'你是一个有用的助手',
+    'ai_model_not_configured' => 'AI model not configured',//'AI 模型未配置',
+    'model_exception' => 'Large model processing exception, please try again later, error message: ',//'大模型处理异常，请稍后再试，错误信息：',
+
+//---------------------------------------
 //include/service/media.php
 'att_size_php_limit' => 'File size exceeds PHP limit: ',//'文件大小超过PHP',
 'att_type_disabled' => 'Cannot upload this type of file',//'不能上传该类型文件',
@@ -176,7 +182,7 @@ $lang = array(
 //include/service/notice.php
 'new_article_review'         => 'Your site has received new submissions',//'你的站点收到新的文章投稿',
 'new_article_title'          => 'The article title is: ',//'文章标题是：',
-'new_comment_reply_review'	=> 'Your comment has received a new reply',//'你的评论收到一条回复',
+'new_comment_reply_review'   => 'Your comment has received a new reply',//'你的评论收到一条回复',
 'new_comment_review'         => 'Your article has received a new comment',//'你的文章收到新的评论',
 'new_comment_is'             => 'The comment is: ',//'评论内容是：',
 'from_article'			=> 'From article: ',//'来自文章',

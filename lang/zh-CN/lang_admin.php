@@ -110,7 +110,7 @@ $lang = array(
     'comment_write' => '发布评论',//'Post comments',
     'guest_rights' => '游客权限',//'Visitor permissions',
     'writer_need_approve' => '注册用户发布文章需要审核',//'Articles published by registered users need to be reviewed',
-    'sending' => '发送中...',//'Sending',
+    'sending' => '发送中...',//'Sending...',
     'send_ok' => '发送成功',//'Sent successfully',
     'posts_per_day' => '注册用户限制24小时发文数量（包括草稿）：',//'Registered users are limited to the number of posts (including drafts) they can post in 24 hours:',
     'att_maxsize' => '注册用户上传最大限制：',//'Maximum upload limit for registered users: ',
@@ -887,7 +887,6 @@ $lang = array(
     'menu' => '菜单',//'Menu',
     'lmenu_title' => '左侧菜单标题',//'Left menu title',
 
-
 //---------------------------
 //admin/views/setting_ai.php
     'enabled' => '已启用',//'Enabled',
@@ -930,7 +929,7 @@ $lang = array(
 
 //---------------------------
 //admin/views/setting_user.php
-    'groups_about' => '            <b>用户组</b><br>
+    'groups_about' => '<b>用户组</b><br>
                       注册用户：可以发文投稿、管理自己的文章、图文资源<br>
                       内容编辑：负责全站文章、资源、评论等内容的管理<br>
                       管理员：拥有站点全部管理权限，可以管理用户、进行系统设置等<br>',

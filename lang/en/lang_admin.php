@@ -13,6 +13,11 @@ $lang = array(
     'mail_code_invalid' => 'Mail verification code error',//'邮件验证码错误',
 
 //---------------------------
+//admin/ai.php
+    'choose_prompt' => 'Pick a sentence from famous sayings, lyrics, movie lines, novels, poems, and famous quotes as your signature. Avoid inputting any suggestive content such as quotation marks and colons.',//'从名言、歌词、电影台词、小说、诗词、名人名言中找出一句话，作为你的个性签名，避免输出引号、冒号等任何提示性内容。',
+
+
+//---------------------------
 //admin/article.php
     'drafts' => 'Drafts',//'草稿箱',
     '_drafts' => ' drafts',//'草稿箱',
@@ -91,6 +96,9 @@ $lang = array(
     'send_test_prompt' => '<b>Let take QQ mailbox configuration as an example</b><br>Sender mailbox: your QQ mailbox<br>SMTP password: see the settings at the top of QQ mailbox -&gt; Account -&gt; Enable IMAP/SMTP service -&gt; Generate authorization code (i.e. SMTP password)<br>SMTP server: smtp.qq.com<br>Port: 465<br>',//'<b>以QQ邮箱配置为例</b><br>发送人邮箱：你的QQ邮箱<br>SMTP密码：见QQ邮箱顶部设置-> 账户 -> 开启IMAP/SMTP服务 -> 生成授权码（即为SMTP密码）<br>SMTP服务器：smtp.qq.com<br>端口：465<br>',
     'recepient_email_enter' => 'Enter recepient email',//'输入接收邮箱',
     'send' => 'Send',//'发送',
+    'shift_enter' => 'Press Shift+Enter to enter a new line',//'按 Shift + Enter 换行',
+    'error_parsing' => 'Error parsing stream data',//'解析流数据错误',
+    'error_model_net' => 'Connection error, it may be a model configuration or network problem',//'连接出错，可能是模型配置或者网络问题',
 
 //---------------------------
 //admin/setting_user.php
@@ -102,7 +110,7 @@ $lang = array(
     'comment_write' => 'Post comments',//'发布评论',
     'guest_rights' => 'Visitor permissions',//'游客权限',
     'writer_need_approve' => 'Articles published by registered users need to be reviewed',//'注册用户发布文章需要审核',
-    'sending' => 'Sending',//'发送中',
+    'sending' => 'Sending...',//'发送中...',
     'send_ok' => 'Sent successfully',//'发送成功',
     'posts_per_day' => 'Registered users are limited to the number of posts (including drafts) they can post in 24 hours: ',//'注册用户限制24小时发文数量（包括草稿）：',
     'att_maxsize' => 'Maximum upload limit for registered users: ',//'注册用户上传最大限制：',
@@ -279,6 +287,7 @@ $lang = array(
     'top_rated' => 'Top rated',//'置顶优先',
     'most_commented' => 'Most commented',//'评论最多',
     'most_viewed' => 'Most viewed',//'浏览最多',
+    'ai_request_failed' => 'AI request failed, please try again later',//'AI 请求失败，请稍后再试',
 
 //---------------------------
 //admin/views/article_write.php
@@ -357,6 +366,7 @@ $lang = array(
     'user_settings' => 'User settings',//'用户设置',
     'email_notify' => 'E-mail notification',//'邮件通知',
     'seo_settings' => 'SEO Settings',//'SEO设置',
+    'ai' => '&#10024;AI',//'✨AI',
     'background_style' => 'Background style',//'后台风格',
     'personal_settings' => 'Personal Info',//'个人信息',
     'personal_data_modified_ok' => 'Data modified successfully',//'资料修改成功',
@@ -449,6 +459,7 @@ $lang = array(
 //---------------------------
 //admin/views/footer.php
     'welcome_using' => 'Welcome using the',//'欢迎使用',
+    'input_msg' => 'Input Message...',//'输入消息...',
 
 //---------------------------
 //admin/views/footer_user.php
@@ -877,6 +888,20 @@ $lang = array(
     'lmenu_title' => 'Left menu title',//'左侧菜单标题',
 
 //---------------------------
+//admin/views/setting_ai.php
+    'enabled' => 'Enabled',//'已启用',
+    'add_model' => 'Add Model',//'+添加模型',
+    'add_ai_model' => 'Add AI model',//'添加AI模型',
+    'ai_chat' => '&#10024;AI Chat',//'✨AI对话',
+    'only_big_model' => 'Only supports large models configured with the OpenAI protocol',//'仅支持配置openai协议的大模型',
+    'zhipu_ai' => 'Zhipu AI',//'智谱AI',
+    'generate_api_key' => 'Generate an API key',//'生成api key',
+    'api_key_format' => 'Format: sk-****',//'格式如：sk-****',
+    'tongyi_model' => 'Tongyi Large Model',//'通义大模型',
+    'moon_model' => 'Model: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',//'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',
+    'qwen_model' => 'Model: qwen-max, qwen-plus, qwen-turbo, qwen-long, etc.',//'Model：qwen-max、qwen-plus、qwen-turbo、qwen-long 等',
+
+//---------------------------
 //admin/views/setting_api.php
     'api_key_reset_ok' => 'Interface key was reset successfully',//'接口秘钥重置成功',
     'api_enable' => 'Enable API',//'开启API',
@@ -1019,7 +1044,7 @@ $lang = array(
     '_plugins' => ' plugins',//'个插件',// Number of plugins
     'recommend_today' => 'Recommended today',//'今日推荐',
     'limited_offer' => 'Limited Time Offer',//'限时优惠',
-    'download_count' => 'Downloads',//'下载次数',
+    'download_count' => 'Downloads',//'安装次数',
 
 //---------------------------
 //admin/views/store_svip.php
@@ -1167,6 +1192,10 @@ $lang = array(
     'banned' => 'Banned',//'已禁用',
     'unban' => 'Unban',//'解禁',
     'credits' => 'Credits',//'积分',
+    'last_registered' => 'Recently registered',//'最近注册',
+    'last_active' => 'Recently Active',//'最近活跃',
+    'admin_priority' => 'Administrator priority',//'管理员优先',
+    'users_perpage' => 'Users, displayed per page',//'个用户，每页显示',
 
 //---------------------------
 //admin/views/user_edit.php
