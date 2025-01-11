@@ -423,7 +423,8 @@ body {
 }
 
 .list-menu {
-    list-style: none
+    list-style: none;
+    padding: 1rem 0.5rem;
 }
 
 /* Responsive configuration of navigation list
