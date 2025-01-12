@@ -19,12 +19,13 @@ A fast and stable lightweight blog and CMS website building system to create an 
 
 - Markdown editor
 - Multiple user roles
+- Flexible tags and categories
 - Multimedia resource management
-- Rich templates and plug-in ecosystem
-- Powerful SEO functions
-- Custom pages
-- Built-in API
-- Tags and categories
+- SEO Full support
+- Built-in API interface
+- Rich template themes
+- Plugin-based extension ecosystem
+- Native support for AI functions
 
 ## Official website
 
