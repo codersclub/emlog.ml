@@ -28,6 +28,50 @@ class Order_Model
         return $orderNumber;
     }
 
+    function createOrder($uid, $pay_type, $sku_name, $sku_id, $price)
+    {
+        $order_id = $this->generateOrderNumber();
+        $data = [
+            'app_name' => $this->app_name,
+            'order_id' => $order_id,
+            'order_uid' => $uid,
+            'pay_type' => $pay_type,
+            'sku_name' => $sku_name,
+            'sku_id' => $sku_id,
+            'price' => $price,
+            'update_time' => time(),
+            'create_time' => time()
+        ];
+        $fields = implode(',', array_keys($data));
+        $values = "'" . implode("','", array_map('addslashes', $data)) . "'";
+        $sql = sprintf(
+            "INSERT INTO `%s` (%s) VALUES (%s)",
+            $this->table,
+            $fields,
+            $values
+        );
+        $this->db->query($sql);
+        return $order_id;
+    }
+
+    function updateOrder($orderId, $data)
+    {
+        $orderId = addslashes($orderId);
+        $updates = [];
+        foreach ($data as $key => $value) {
+            $updates[] = sprintf("%s='%s'", $key, addslashes($value));
+        }
+        $updates[] = "update_time=" . time();
+        $sql = sprintf(
+            "UPDATE `%s` SET %s WHERE order_id='%s'",
+            $this->table,
+            implode(',', $updates),
+            $orderId
+        );
+        $this->db->query($sql);
+        return $this->db->affected_rows() > 0;
+    }
+
     function getOrderById($orderId)
     {
         $orderId = addslashes($orderId);
@@ -100,9 +144,10 @@ class Order_Model
      * @param int $page Page number
      * @param int $perpage Number of orders per page
      * @param bool $isPaid Whether to obtain only paid orders
+     * @param string $sku_name 是否只获取某个商品的订单
      * @return array Order List
      */
-    function getOrdersByUserId($userId, $page = 1, $perpage = 10, $isPaid = false)
+    function getOrdersByUserId($userId, $page = 1, $perpage = 10, $isPaid = false, $sku_name = '')
     {
         $userId = (int)$userId;
         $page = (int)$page;
@@ -111,6 +156,9 @@ class Order_Model
         $where = "WHERE order_uid=$userId AND app_name='$this->app_name'";
         if ($isPaid) {
             $where .= " AND pay_price > 0";
+        }
+        if ($sku_name) {
+            $where .= " AND sku_name = '$sku_name'";
         }
         $offset = ($page - 1) * $perpage;
         $sql = sprintf(
@@ -126,50 +174,6 @@ class Order_Model
             $orders[] = $this->formatOrder($row);
         }
         return $orders;
-    }
-
-    function createOrder($uid, $pay_type, $sku_name, $sku_id, $price)
-    {
-        $order_id = $this->generateOrderNumber();
-        $data = [
-            'app_name' => $this->app_name,
-            'order_id' => $order_id,
-            'order_uid' => $uid,
-            'pay_type' => $pay_type,
-            'sku_name' => $sku_name,
-            'sku_id' => $sku_id,
-            'price' => $price,
-            'update_time' => time(),
-            'create_time' => time()
-        ];
-        $fields = implode(',', array_keys($data));
-        $values = "'" . implode("','", array_map('addslashes', $data)) . "'";
-        $sql = sprintf(
-            "INSERT INTO `%s` (%s) VALUES (%s)",
-            $this->table,
-            $fields,
-            $values
-        );
-        $this->db->query($sql);
-        return $order_id;
-    }
-
-    function updateOrder($orderId, $data)
-    {
-        $orderId = addslashes($orderId);
-        $updates = [];
-        foreach ($data as $key => $value) {
-            $updates[] = sprintf("%s='%s'", $key, addslashes($value));
-        }
-        $updates[] = "update_time=" . time();
-        $sql = sprintf(
-            "UPDATE `%s` SET %s WHERE order_id='%s'",
-            $this->table,
-            implode(',', $updates),
-            $orderId
-        );
-        $this->db->query($sql);
-        return $this->db->affected_rows() > 0;
     }
 
     function isOrderPaid($orderId)
@@ -207,6 +211,8 @@ class Order_Model
         $order['price'] = (float)$order['price'];
         $order['pay_price'] = (float)$order['pay_price'];
         $order['refund_amount'] = (float)$order['refund_amount'];
+        $order['update_timestamp'] = $order['update_time'];
+        $order['create_timestamp'] = $order['create_time'];
         $order['update_time'] = date('Y-m-d H:i:s', $order['update_time']);
         $order['create_time'] = date('Y-m-d H:i:s', $order['create_time']);
         $order['out_trade_no'] = (string)$order['out_trade_no'];

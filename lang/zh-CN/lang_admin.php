@@ -460,7 +460,7 @@ $lang = array(
 //admin/views/footer.php
     'welcome_using' => '欢迎使用',//'Welcome using the',
     'input_msg' => '输入消息...',//'Input Message',
-
+    'model_not_configured' => '未配置AI模型',//'AI model not configured',
 //---------------------------
 //admin/views/footer_user.php
     'all_rights_reserved' => '版权所有',//'All rights reserved',

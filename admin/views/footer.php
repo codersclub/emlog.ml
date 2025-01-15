@@ -1,7 +1,7 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 </div>
 </div>
-<?php if (Option::get('ai_model')): ?>
+<?php if (AI::model()): ?>
     <a class="ai-chat-button" href="#" data-toggle="modal" data-target="#aiChatModal">
         <span>&#10024;</span>
     </a>
@@ -30,7 +30,7 @@
                             <button class="btn btn-primary" type="submit" id="send-btn"><?= lang('send') ?></button>
                         </div>
                     </div>
-                    <div class="text-muted text-xs mt-2">Model: <?= Option::get('ai_model') ?>, <?= lang('shift_enter') ?></div>
+                    <div class="text-muted text-xs mt-2">Model: <?= AI::model() ? AI::model() : lang('model_not_configured') ?>, <?= lang('shift_enter') ?></div>
                 </form>
                 <script>
                     $(document).ready(function() {

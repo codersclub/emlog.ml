@@ -43,7 +43,7 @@ class Ai
     public static function sendStream($messages)
     {
         $modelInfo = self::getCurrentModelInfo();
-        if ($modelInfo === null || !isset($modelInfo['api_url'])) {
+        if (empty($modelInfo) || !isset($modelInfo['api_url'])) {
             echo "data: " . json_encode(["error" => lang('ai_model_not_configured')]) . "\n\n";
             return;
         }
@@ -68,9 +68,12 @@ class Ai
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $apiUrl);
         curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 600);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false); // Disable full response buffering
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
         curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($curl, $data) {
             echo $data;
             ob_flush();
@@ -96,7 +99,7 @@ class Ai
         $apiKey = $model['api_key'];
         $model = $model['model'];
 
-        $emcurl = new EmCurl(10);
+        $emcurl = new EmCurl(600);
         $post_data = json_encode([
             'messages' => $messages,
             'model' => $model,
@@ -142,13 +145,35 @@ class Ai
 
     public static function getCurrentModelInfo()
     {
-        $currentModel = Option::get('ai_model');
-        $aiModels = json_decode(Option::get('ai_models'), true);
+        $currentModel = self::model();
+        $aiModels = self::models();
 
         if (isset($aiModels[$currentModel])) {
             return $aiModels[$currentModel];
         }
 
         return null;
+    }
+
+    public static function model()
+    {
+        $currentModel = Option::get('ai_model');
+        if ($currentModel) {
+            return $currentModel;
+        }
+        return '';
+    }
+
+    public static function models()
+    {
+        $aiModels = Option::get('ai_models');
+        if (empty($aiModels)) {
+            return [];
+        }
+        $aiModels = json_decode(Option::get('ai_models'), true);
+        if ($aiModels) {
+            return $aiModels;
+        }
+        return [];
     }
 }
