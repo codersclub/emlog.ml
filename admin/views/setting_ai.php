@@ -127,7 +127,7 @@
                         API Key: <a href="https://bailian.console.aliyun.com/?apiKey=1#/api-key" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
                         <?= lang('qwen_models') ?>
                         <hr>
-                        仅支持配置openai协议的大模型，<a href="https://www.emlog.net/docs/ai/ai_emlog" target="_blank">查看更多</a><br>
+                        <?= lang('only_big_model') ?> <a href="https://www.emlog.net/docs/ai/ai_emlog" target="_blank"><?= lang('see_more') ?></a><br>
                     </div>
                 </form>
             </div>

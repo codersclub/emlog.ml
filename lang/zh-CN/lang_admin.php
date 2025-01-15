@@ -461,6 +461,7 @@ $lang = array(
     'welcome_using' => '欢迎使用',//'Welcome using the',
     'input_msg' => '输入消息...',//'Input Message',
     'model_not_configured' => '未配置AI模型',//'AI model not configured',
+
 //---------------------------
 //admin/views/footer_user.php
     'all_rights_reserved' => '版权所有',//'All rights reserved',
@@ -900,6 +901,7 @@ $lang = array(
     'tongyi_model' => '通义大模型',//'Tongyi Large Model',
     'moon_model' => 'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',//'Model: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',
     'qwen_model' => 'Model：qwen-max、qwen-plus、qwen-turbo、qwen-long 等',//'Model: qwen-max, qwen-plus, qwen-turbo, qwen-long, etc.',
+    'see_more' => '查看更多',//'See more',
 
 //---------------------------
 //admin/views/setting_api.php

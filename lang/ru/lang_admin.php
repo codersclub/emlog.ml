@@ -460,6 +460,7 @@ $lang = array(
 //admin/views/footer.php
 'welcome_using'			=> 'Добро пожаловать в',//'欢迎使用',
 'input_msg'			=> 'Введите сообщение...',//'输入消息...',
+'model_not_configured'		=> 'Модель ИИ не настроена',//'未配置AI模型',
 
 //---------------------------
 //admin/views/footer_user.php

@@ -144,7 +144,7 @@ class Order_Model
      * @param int $page Page number
      * @param int $perpage Number of orders per page
      * @param bool $isPaid Whether to obtain only paid orders
-     * @param string $sku_name 是否只获取某个商品的订单
+     * @param string $sku_name Whether to obtain orders only for a specified product
      * @return array Order List
      */
     function getOrdersByUserId($userId, $page = 1, $perpage = 10, $isPaid = false, $sku_name = '')
