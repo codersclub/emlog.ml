@@ -411,13 +411,13 @@ function smartDate($timestamp, $format = 'Y-m-d H:i')
         $op = floor($sec / 3600) . lang('_hour_ago');
     } elseif ($sec < 3600 * 24 * 30) {
         $days = floor($sec / (3600 * 24));
-        $op = $days . " 天前";
+        $op = $days . lang('_days');
     } elseif ($sec < 3600 * 24 * 365) {
         $months = floor($sec / (3600 * 24 * 30));
-        $op = $months . " 个月前";
+        $op = $months . lang('_months');
     } elseif ($sec < 3600 * 24 * 365 * 5) {
         $years = floor($sec / (3600 * 24 * 365));
-        $op = $years . " 年前";
+        $op = $years . lang('_years');
     } else {
         $op = date($format, $timestamp);
     }

@@ -78,18 +78,18 @@
 <?php endif; ?>
 <form action="media.php?action=operate_media" method="post" name="form_media" id="form_media">
     <?php if ($show === 'list'): ?>
-        <!-- 列表模式 -->
+        <!-- List Mode -->
         <div class="card shadow mb-4">
             <div class="card-body table-responsive">
                 <table class="table table-bordered table-striped table-hover dataTable no-footer">
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="checkAllItem" /></th>
-                            <th>资源名称</th>
-                            <th>文件大小</th>
-                            <th>创建人</th>
-                            <th>时间</th>
-                            <th>操作</th>
+                            <th><?= lang('media_name') ?></th>
+                            <th><?= lang('file_size') ?></th>
+                            <th><?= lang('founder') ?></th>
+                            <th><?= lang('time') ?></th>
+                            <th><?= lang('operation') ?></th>
                         </tr>
                     </thead>
                     <tbody class="checkboxContainer">
@@ -99,16 +99,16 @@
                             $media_name = $value['filename'];
                             $author = $user_cache[$value['author']]['name'];
                             if (isImage($value['mimetype'])) {
-                                $media_icon = '🖼️';
+                                $media_icon = '&#128444;'; // Framed picture
                                 $img_viewer = 'class="highslide" onclick="return hs.expand(this)"';
                             } elseif (isZip($value['filename'])) {
-                                $media_icon = "📦";
+                                $media_icon = '&#128230;'; // Package
                                 $img_viewer = '';
                             } elseif (isVideo($value['mimetype'])) {
-                                $media_icon = "🎬";
+                                $media_icon = '&#127916;'; // Clapper board
                                 $img_viewer = '';
                             } elseif (isAudio($value['filename'])) {
-                                $media_icon = "🎧";
+                                $media_icon = '&#127911;'; // headphone
                                 $img_viewer = '';
                             } else {
                                 $media_icon = "";
@@ -120,9 +120,9 @@
                                 <td>
                                     <?= $media_icon ?>
                                     <a href="<?= $media_url ?>" <?= $img_viewer ?> target="_blank"><?= $media_name ?></a> <span class="badge badge-success"><?= $sort_name ?></span>
-                                    <br><span class="small">源文件：<a href="#" class="copy-link text-muted" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a></span>
+                                    <br><span class="small"><?= lang('source_file') ?>: <a href="#" class="copy-link text-muted" data-toggle="popover" data-url="<?= $media_url ?>"><?= $media_url ?></a></span>
                                     <?php if ($value['width'] && $value['height']): ?>
-                                        <br><span class="small">图片尺寸：<?= $value['width'] ?>x<?= $value['height'] ?></span>
+                                        <br><span class="small"><?= lang('image_size') ?>: <?= $value['width'] ?>x<?= $value['height'] ?></span>
                                     <?php endif ?>
                                 </td>
                                 <td><?= $value['attsize'] ?></td>
@@ -135,8 +135,8 @@
                                 </td>
                                 <td><?= $value['addtime'] ?></td>
                                 <td>
-                                    <a href="#" data-toggle="modal" data-target="#editMediaModal" data-id="<?= $value['aid'] ?>" data-filename="<?= $media_name ?>" class="badge badge-success">改名</a>
-                                    <a href="javascript: em_confirm(<?= $value['aid'] ?>, 'media', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger">删除</a>
+                                    <a href="#" data-toggle="modal" data-target="#editMediaModal" data-id="<?= $value['aid'] ?>" data-filename="<?= $media_name ?>" class="badge badge-success"><?= lang('change_name') ?></a>
+                                    <a href="javascript: em_confirm(<?= $value['aid'] ?>, 'media', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -146,7 +146,7 @@
         </div>
     <?php else: ?>
         <div class="row checkboxContainer">
-            <!-- 宫格卡片模式 -->
+            <!-- Grid Card Mode -->
             <?php foreach ($medias as $key => $value):
                 $media_url = getFileUrl($value['filepath']);
                 $thumbnail_url = $value['thumbnail_url'];
