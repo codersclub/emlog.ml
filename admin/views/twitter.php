@@ -99,51 +99,60 @@
         </div>
     </div>
 </div>
-
-<link rel="stylesheet" type="text/css" href="./views/css/markdown.css?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>">
-<script src="./editor.md/editormd.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
 <script>
-    $("#menu_twitter").addClass('active');
-    setTimeout(hideActived, 3600);
+    $(document).ready(function() {
+        initPageScripts();
+    });
 
-    var Editor;
-    $(function() {
-        Editor = editormd("t", {
-            width: "100%",
-            height: 260,
-            toolbarIcons: function() {
-                return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "|",
-                    "link", "image", "|", "preview"
-                ]
-            },
-            path: "editor.md/lib/",
-            tex: false,
-            watch: false,
-            htmlDecode: true,
-            flowChart: false,
-            autoFocus: false,
-            lineNumbers: false,
-            sequenceDiagram: false,
-            imageUpload: true,
-            imageFormats: ["jpg", "jpeg", "gif", "png"],
-            imageUploadURL: "media.php?action=upload&editor=1",
-            syncScrolling: "single",
+    function initPageScripts() {
+        var cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.type = 'text/css';
+        cssLink.href = './views/css/markdown.css?t=' + '<?= Option::EMLOG_VERSION_TIMESTAMP ?>';
+        document.head.appendChild(cssLink);
+
+        $.getScript('./editor.md/editormd.js?t=' + '<?= Option::EMLOG_VERSION_TIMESTAMP ?>', function() {
+            Editor = editormd("t", {
+                width: "100%",
+                height: 260,
+                toolbarIcons: function() {
+                    return ["bold", "del", "italic", "quote", "|", "h1", "h2", "h3", "|", "list-ul", "list-ol", "|",
+                        "link", "image", "|", "preview"
+                    ];
+                },
+                path: "editor.md/lib/",
+                tex: false,
+                watch: false,
+                htmlDecode: true,
+                flowChart: false,
+                autoFocus: false,
+                lineNumbers: false,
+                sequenceDiagram: false,
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png"],
+                imageUploadURL: "media.php?action=upload&editor=1",
+                syncScrolling: "single",
+            });
+            Editor.setToolbarAutoFixed(false);
         });
-        Editor.setToolbarAutoFixed(false);
+
+        $("#menu_twitter").addClass('active');
+        setTimeout(hideActived, 3600);
 
         $('#editModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var t = button.data('t')
-            var modal = $(this)
-            modal.find('.modal-body #t').val(t)
-            modal.find('.modal-footer #id').val(id)
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var t = button.data('t');
+            var modal = $(this);
+            modal.find('.modal-body #t').val(t);
+            modal.find('.modal-footer #id').val(id);
         });
+
         $('#tModal').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var t = button.data('t')
-            var modal = $(this)
-            modal.find('.modal-body #modal_t').html(t)
+            var button = $(event.relatedTarget);
+            var t = button.data('t');
+            var modal = $(this);
+            modal.find('.modal-body #modal_t').html(t);
         });
-    });
+    }
 </script>

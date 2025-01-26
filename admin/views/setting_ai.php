@@ -105,7 +105,7 @@
                         <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                         <button type="submit" class="btn btn-success btn-sm"><?= lang('save_settings') ?></button>
                     </div>
-                    <div id="more-config-details" class="alert alert-warning small">
+                    <div id="more-config-details" class="alert alert-warning">
                         <a href="https://www.deepseek.com/" target="_blank">DeepSeek</a><br>
                         API URL: https://api.deepseek.com/v1/chat/completions<br>
                         API Key: <a href="https://platform.deepseek.com/api_keys" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>

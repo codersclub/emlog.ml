@@ -145,8 +145,13 @@ function checkMail($email)
  */
 function subString($strings, $start, $length, $dot = '...')
 {
-    $sub_str = mb_substr($strings, $start, $length, 'utf8');
-    return mb_strlen($sub_str, 'utf8') < mb_strlen($strings, 'utf8') ? $sub_str . $dot : $sub_str;
+    if (function_exists('mb_substr') && function_exists('mb_strlen')) {
+        $sub_str = mb_substr($strings, $start, $length, 'UTF-8');
+        return mb_strlen($sub_str, 'UTF-8') < mb_strlen($strings, 'UTF-8') ? $sub_str . $dot : $sub_str;
+    } else {
+        $sub_str = substr($strings, $start, $length);
+        return strlen($sub_str) < strlen($strings) ? $sub_str . $dot : $sub_str;
+    }
 }
 
 /**
@@ -403,7 +408,16 @@ function smartDate($timestamp, $format = 'Y-m-d H:i')
     } elseif ($sec < 3600) {
         $op = floor($sec / 60) . lang('_min_ago');
     } elseif ($sec < 3600 * 24) {
-        $op = lang('about_') . floor($sec / 3600) . lang('_hour_ago');
+        $op = floor($sec / 3600) . lang('_hour_ago');
+    } elseif ($sec < 3600 * 24 * 30) {
+        $days = floor($sec / (3600 * 24));
+        $op = $days . " 天前";
+    } elseif ($sec < 3600 * 24 * 365) {
+        $months = floor($sec / (3600 * 24 * 30));
+        $op = $months . " 个月前";
+    } elseif ($sec < 3600 * 24 * 365 * 5) {
+        $years = floor($sec / (3600 * 24 * 365));
+        $op = $years . " 年前";
     } else {
         $op = date($format, $timestamp);
     }

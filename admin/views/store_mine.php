@@ -10,7 +10,7 @@
         <li class="nav-item"><a class="nav-link" href="./store.php"><?=lang('all_apps')?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=tpl"><?=lang('ext_store_templates')?></a></li>
         <li class="nav-item"><a class="nav-link" href="./store.php?action=plu"><?=lang('ext_store_plugins')?></a></li>
-        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?=lang('svip')?></a></li>
+        <li class="nav-item"><a class="nav-link" href="./store.php?action=svip"><?=lang('hard')?></a></li>
         <li class="nav-item"><a class="nav-link active" href="./store.php?action=mine"><?=lang('my_apps')?></a></li>
     </ul>
 </div>
@@ -19,7 +19,7 @@
         <div class="d-flex flex-wrap app-list">
             <?php foreach ($addons as $k => $v):
                 $icon = $v['icon'] ?: "./views/images/theme.png";
-                ?>
+            ?>
                 <div class="col-md-6 col-lg-3">
                     <div class="card mb-4 shadow-sm">
                         <a href="#appModal" class="p-1" data-toggle="modal" data-target="#appModal" data-name="<?= $v['name'] ?>" data-url="<?= $v['app_url'] ?>" data-buy-url="<?= $v['buy_url'] ?>">
@@ -77,7 +77,7 @@
     </div>
 </div>
 <script>
-    $(function () {
+    $(function() {
         $("#menu_store").addClass('active');
         setTimeout(hideActived, 3600);
     });

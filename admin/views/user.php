@@ -131,7 +131,7 @@
             <form action="user.php?action=new" method="post" autocomplete="off">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="sortname"><?= lang('role') ?></label>
+                        <label for="role"><?= lang('role') ?></label>
                         <select name="role" id="role" class="form-control">
                             <option value="writer"><?= lang('registered_user') ?></option>
                             <option value="editor"><?= lang('editor') ?></option>
@@ -142,8 +142,8 @@
                         <?= lang('groups_alert') ?>
                     </div>
                     <div class="form-group">
-                        <label for="username"><?= lang('email') ?></label>
-                        <input type="email" name="email" class="form-control" value="<?= $email ?>" required>
+                        <label for="email"><?= lang('email') ?></label>
+                        <input type="email" name="email" id="email" class="form-control" value="<?= $email ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password"><?= lang('password_min_length') ?></label>

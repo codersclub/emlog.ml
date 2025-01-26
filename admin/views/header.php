@@ -21,6 +21,7 @@
     <script src="./views/js/jquery-ui.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/jquery.ui.touch-punch.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/jquery.ui.timepicker-addon.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
+    <script src="./views/js/jquery.pjax.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/js.cookie-2.2.1.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script src="./views/js/cropper.min.js?t=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <script>    var em_lang = '<?= LANG ?>'; var LNG;</script>
@@ -34,7 +35,7 @@
 <body id="page-top">
     <div id="editor-md-dialog"></div>
     <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sd-hidden" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion sd-hidden rounded-em-lg m-1" id="accordionSidebar">
             <li class="nav-item active emlog_title" id="menu_home">
                 <a class="nav-link" href="./"><?= subString(Option::get('panel_menu_title'), 0, 11) ?: 'EMLOG PRO' ?></a>
             </li>
@@ -64,7 +65,7 @@
                 <a class="nav-link" href="comment.php"><i class="icofont-comment"></i><span><?= lang('comments') ?></span></a>
             </li>
             <li class="nav-item" id="menu_twitter">
-                <a class="nav-link" href="twitter.php"><i class="icofont-penalty-card"></i><span><?= lang('twitters') ?></span></a>
+                <a class="nav-link" data-pjax="true" href="twitter.php"><i class="icofont-penalty-card"></i><span><?= lang('twitters') ?></span></a>
             </li>
             <li class="nav-item" id="menu_media">
                 <a class="nav-link" href="media.php"><i class="icofont-image"></i><span><?= lang('resources') ?></span></a>
@@ -155,4 +156,4 @@
                         </li>
                     </ul>
                 </nav>
-                <div class="container-fluid">
+                <div class="container-fluid" id="main-container">

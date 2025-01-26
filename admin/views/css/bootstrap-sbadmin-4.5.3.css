@@ -11088,7 +11088,7 @@ a:focus {
 
 .sidebar {
     width: 6.5rem;
-    min-height: 100vh;
+    min-height: calc(100vh - 0.5rem);
 }
 
 .sidebar .nav-item {
@@ -11276,7 +11276,7 @@ a:focus {
 
 @media (min-width: 768px) {
     .sidebar {
-        width: 14rem !important;
+        width: 12rem !important;
     }
 
     .sidebar .nav-item .collapse {
@@ -11308,7 +11308,6 @@ a:focus {
         width: 100%;
         text-align: left;
         padding: 0.9rem;
-        width: 14rem;
     }
 
     .sidebar .nav-item .nav-link i {
@@ -12070,3 +12069,5 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%;
 }
+
+.rounded-em-lg{border-radius:.5rem!important}

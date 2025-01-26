@@ -24,9 +24,19 @@ if (empty($action)) {
     $date = Input::getStrVar('date');
     $uid = Input::getIntVar('uid');
     $keyword = Input::getStrVar('keyword');
+    $show = Input::getStrVar('show');
 
     if (!User::haveEditPermission()) {
         $uid = UID;
+    }
+
+    if ($show === 'list' || $show === 'grid') {
+        Option::updateOption('media_show_model', $show);
+        $CACHE->updateCache('options');
+    }
+    $show = Option::get('media_show_model');
+    if ($show !== 'list' && $show !== 'grid') {
+        $show = 'grid';
     }
 
     $page_count = 24;

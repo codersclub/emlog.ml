@@ -82,7 +82,7 @@
                         <input type="text" class="form-control" id="kw" name="kw">
                     </div>
                     <div class="form-group">
-                        <label for="alias"><?= lang('tab_desc') ?></label>
+                        <label for="description"><?= lang('tab_desc') ?></label>
                         <textarea name="description" id="description" type="text" class="form-control"></textarea>
                     </div>
                 </div>
