@@ -54,6 +54,9 @@ $lang = array(
 'not_editable'			=> 'Approved articles cannot be edited or deleted by users',//'审核通过的文章用户不可编辑、删除',
 'file_upload_failed'		=> 'File upload failed',//'文件上传失败',
 'file_size_large'		=> 'File size exceeds the system limit',//'文件大小超出系统限制',
+'_days'				=> ' days ago',//' 天前',
+'_months'			=> ' months ago',//' 个月前',
+'_years'			=> ' years ago',//' 年前',
 
 //---------------------------
 //include/lib/emcurl.php

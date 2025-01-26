@@ -636,6 +636,7 @@ $lang = array(
     'account_register' => 'Register an account',//'注册账号',
     'validation_error' => 'Captcha validation error',//'图形验证错误',
     'password_invalid' => 'User or password incorrect, please re-enter',//'用户或密码错误，请重新输入',
+    'change_name' => 'Change name',//'改名',
 
 //---------------------------
 //admin/views/media.php
@@ -671,6 +672,7 @@ $lang = array(
     'search_file_name' => 'Search media file name...',//'搜索资源文件名...',
     'thumbnail_url' => 'Thumbnail URL',//'缩略图地址',
     'source_file' => 'Source File',//'源文件',
+    'image_size' => 'Image size',//'图片尺寸',
 
 //---------------------------
 //admin/views/media_lib.php

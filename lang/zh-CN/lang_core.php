@@ -51,12 +51,12 @@ $lang = array(
 
 //---------------------------
 //include/lib/common.php
-'not_editable'		=> '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
-'file_upload_failed'	=> '文件上传失败',//'File upload failed',
-'file_size_large'	=> '文件大小超出系统限制',//'File size exceeds the system limit',
-'_days'			=> ' 天前',//' days ago',
-'_months'		=> ' 个月前',//' months ago',
-'_years'		=> ' 年前',//' years ago',
+'not_editable'			=> '审核通过的文章用户不可编辑、删除',//'Approved articles cannot be edited or deleted by users',
+'file_upload_failed'		=> '文件上传失败',//'File upload failed',
+'file_size_large'		=> '文件大小超出系统限制',//'File size exceeds the system limit',
+'_days'				=> ' 天前',//' days ago',
+'_months'			=> ' 个月前',//' months ago',
+'_years'			=> ' 年前',//' years ago',
 
 //---------------------------
 //include/lib/emcurl.php
