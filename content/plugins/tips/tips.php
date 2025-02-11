@@ -20,16 +20,18 @@ vot*/
 load_language('plugins/tips');
 
 
-function tips_init() {
+function tips_init()
+{
 /*vot*/    $array_tips = lang('array_tips');
-    $i = mt_rand(0, count($array_tips) - 1);
+    $i = em_rand(0, count($array_tips) - 1);
     $tip = $array_tips[$i];
     echo "<div id=\"tip\"> $tip</div>";
 }
 
 addAction('adm_main_top', 'tips_init');
 
-function tips_css() {
+function tips_css()
+{
     echo "<style>
     #tip{
         background:url(../content/plugins/tips/icon_tips.gif) no-repeat left 3px;

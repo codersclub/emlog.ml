@@ -1,8 +1,8 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row justify-content-center w-100">
         <div class="col-xl-6 col-lg-10 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-1 shadow my-5">
                 <div class="card-body p-0">
                     <div class="row">
                         <div class="col-lg-12 p-5">
@@ -25,27 +25,27 @@
                             <form method="post" class="user" action="./account.php?action=dosignup">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="mail" name="mail" aria-describedby="emailHelp" placeholder="<?= lang('email') ?>" required
-                                           autofocus>
+                                        autofocus>
                                 </div>
                                 <div class="form-group">
 <!--vot-->                          <input type="password" class="form-control form-control-user" minlength="5" id="passwd" autocomplete="new-password" name="passwd"
-                                           placeholder="<?= lang('password') ?>" required>
+                                        placeholder="<?= lang('password') ?>" required>
                                 </div>
                                 <div class="form-group">
 <!--vot-->                          <input type="password" class="form-control form-control-user" minlength="5" id="repasswd" name="repasswd" placeholder="<?= lang('password_confirm') ?>"
-                                           required>
+                                        required>
                                 </div>
                                 <?php if ($email_code): ?>
                                     <div class="form-group form-inline">
                                         <input type="text" name="mail_code" class="form-control form-control-user" style="width: 180px;" id="mail_code" placeholder="<?= lang('email_verification_code') ?>"
-                                               required>
+                                            required>
                                         <button class="btn btn-success btn-user mx-2" type="button" id="send-btn"><?= lang('send_email_code') ?></button>
                                     </div>
                                 <?php endif ?>
                                 <?php if ($login_code): ?>
                                     <div class="form-group form-inline">
                                         <input type="text" name="login_code" class="form-control form-control-user" style="width: 180px;" id="login_code" placeholder="<?= lang('captcha') ?>"
-                                               required>
+                                            required>
                                         <img src="../include/lib/checkcode.php" id="checkcode" class="mx-2">
                                     </div>
                                 <?php endif ?>
@@ -65,17 +65,18 @@
 </div>
 </div>
 </body>
+
 </html>
 <script>
     // send mail code
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 6000);
-        $('#checkcode').click(function () {
+        $('#checkcode').click(function() {
             var timestamp = new Date().getTime();
             $(this).attr("src", "../include/lib/checkcode.php?" + timestamp);
         });
 
-        $('#send-btn').click(function () {
+        $('#send-btn').click(function() {
             const email = $('#mail').val();
             const sendBtn = $(this);
             const sendBtnResp = $('#send-btn-resp');
@@ -87,7 +88,7 @@
                 data: {
                     mail: email
                 },
-                success: function (response) {
+                success: function(response) {
                     // After sending the email successfully, start the countdown
                     let seconds = 60;
                     // Start the countdown
@@ -102,7 +103,7 @@
                         }
                     }, 1000);
                 },
-                error: function (data) {
+                error: function(data) {
                     sendBtnResp.html(data.responseJSON.msg).addClass('text-danger').show()
                     sendBtn.prop('disabled', false);
                 }

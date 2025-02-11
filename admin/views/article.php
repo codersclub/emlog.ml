@@ -144,6 +144,8 @@ $isdraft = $draft ? '&draft=1' : '';
                                         <?= $value['feedback'] ? '<br><small class="text-secondary">' . lang('feedback_review') . $value['feedback'] . '</small>' : '' ?>
                                     <?php endif ?>
                                     <br>
+                                    <span class="small"> ID:<?= $value['gid'] ?></span>
+                                    <?php if ($value['alias']): ?> <span class="small">(<?= $value['alias'] ?>)</span><?php endif ?>
                                     <?php foreach ($logTags as $tid => $t): ?>
                                         <a href="./article.php?tagid=<?= $tid . $isdraft ?>" class='em-badge small em-badge-tag'><?= htmlspecialchars($t) ?></a>
                                     <?php endforeach; ?>

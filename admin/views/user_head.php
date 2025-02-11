@@ -1,6 +1,7 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
 <!doctype html>
 <html lang="<?= LANG ?>" dir="<?= LANG_DIR ?>">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,4 +16,5 @@
     <script src="./views/js/common.js?v=<?= Option::EMLOG_VERSION_TIMESTAMP ?>"></script>
     <?php doAction('login_head') ?>
 </head>
-<body class="bg-gradient-primary">
+
+<body class="bg-gradient-gray">

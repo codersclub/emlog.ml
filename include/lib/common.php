@@ -437,9 +437,21 @@ function getRandStr($length = 12, $special_chars = true, $numeric_only = false)
     $randStr = '';
     $chars_length = strlen($chars);
     for ($i = 0; $i < $length; $i++) {
-        $randStr .= substr($chars, mt_rand(0, $chars_length - 1), 1);
+        $randStr .= substr($chars, em_rand(0, $chars_length - 1), 1);
     }
     return $randStr;
+}
+
+function em_rand($min = 0, $max = 0)
+{
+    if (function_exists('random_int')) {
+        try {
+            return random_int($min, $max);
+        } catch (Exception $e) {
+            // 失败时继续使用其他方法
+        }
+    }
+    return mt_rand($min, $max);
 }
 
 /**
@@ -919,21 +931,40 @@ EOT;
 <title>$title</title>
 <style>
 body {
-    background-color:#4e73df;
+    background-color:#f8f9fc;
     font-family: Arial;
     font-size: 12px;
     line-height:150%;
 }
 .main {
-    background-color:#FFFFFF;
-    font-size: 12px;
-    color: #666666;
-    width:650px;
-    margin:60px auto 0px;
-    border-radius: 10px;
-    padding:10px;
-    list-style:none;
-    border:#DFDFDF 1px solid;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #333333;
+    width: 650px;
+    margin: 80px auto 0;
+    border-radius: 8px;
+    padding: 20px;
+    list-style: none;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.main p {
+    margin: 16px 0;
+    color: #444444;
+}
+
+.main a {
+    color: #1890ff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.main a:hover {
+    color: #40a9ff;
+    text-decoration: underline;
 }
 .main p {
     line-height: 18px;
