@@ -296,7 +296,7 @@
             });
         }
 
-        // AI 生成个人描述
+        // AI generates personal descriptions
         $('#ai_button').click(function() {
             $.ajax({
                 url: 'ai.php?action=genBio',

@@ -112,7 +112,7 @@
                         <a href="https://www.deepseek.com/" target="_blank">DeepSeek</a><br>
                         API URL: https://api.deepseek.com/v1/chat/completions<br>
                         API Key: <a href="https://platform.deepseek.com/api_keys" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
-                        Model: deepseek-chat、deepseek-reasoner<br>
+                        Model: deepseek-chat, deepseek-reasoner<br>
                         <hr>
                         <a href="https://bigmodel.cn/" target="_blank"><?= lang('zhipu_ai') ?></a><br>
                         API URL: https://open.bigmodel.cn/api/paas/v4/chat/completions<br>

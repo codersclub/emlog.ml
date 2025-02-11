@@ -214,13 +214,13 @@
             modal.find('.modal-body #hide').val(hide)
         })
 
-        // AI 生成评论回复
+        // AI-generated comment replies
         $('#ai_button_reply').click(function() {
             var $button = $(this);
             var $reply = $('#reply');
             var comment = $('.comment-replay-content').html();
 
-            // 禁用按钮，显示加载状态
+            // Disable button to show loading status
             $button.prop('disabled', true).text('AI生成中...');
 
             $.ajax({
@@ -241,7 +241,7 @@
                     alert('AI 请求失败，请稍后再试');
                 },
                 complete: function() {
-                    // 恢复按钮状态
+                    // Restore button state
                     $button.prop('disabled', false).text('✨');
                 }
             });

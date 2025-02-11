@@ -448,7 +448,7 @@ function em_rand($min = 0, $max = 0)
         try {
             return random_int($min, $max);
         } catch (Exception $e) {
-            // 失败时继续使用其他方法
+            // If it fails, continue with other methods
         }
     }
     return mt_rand($min, $max);

@@ -95,7 +95,7 @@
             initPageScripts();
         });
 
-        // 时间选择控件
+        // Time selection control
         $.timepicker.regional['zh-CN'] = {
             timeOnlyTitle: '选择时间',
             timeText: '时间',
