@@ -75,7 +75,7 @@
                                     <br>
                                     <span class="small"> ID:<?= $value['gid'] ?></span>
                                     <?php if ($value['alias']): ?> <span class="small">(<?= $value['alias'] ?>)</span><?php endif ?>
-                                    <?php if ($value['allow_remark'] === 'y'): ?> <span class="small">💬</span><?php endif ?>
+<!--vot:Speech balloon-->           <?php if ($value['allow_remark'] === 'y'): ?> <span class="small">&#128172;</span><?php endif ?>
 <!--vot:Link Char-->                <?php if ($value['link']): ?><span class="small">&#x1F517;</span><?php endif ?>                                    
                                 </td>
                                 <td>

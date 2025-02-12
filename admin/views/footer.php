@@ -118,6 +118,7 @@
             weekHeader: '周',
             yearSuffix: '年',
         };
+/* vot: moved to common.js
         $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
         let dayNamesMin = ["日", "一", "二", "三", "四", "五", "六"];
         let monthNamesShort = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
@@ -145,6 +146,7 @@
                 typeof onDatepickerClose === "function" && onDatepickerClose(dateText, inst);
             }
         });
+*/
         $('body').on('focus', '.datepicker', function() {
             let _this = $(this)
             $('.datepicker').removeClass('active')

@@ -579,6 +579,11 @@ function lang(key) {
     }
     return val;
 }
+//------------------------------
+// Return the language var value
+function jlang(key) {
+    return lang(val);
+}
 
 /*vot*/    // Load Timepicker language
 /*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');

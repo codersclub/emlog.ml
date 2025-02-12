@@ -305,7 +305,7 @@
                     $('#description').val(response.data);
                 },
                 error: function(xhr) {
-                    alert('AI 请求失败，请稍后再试');
+                    alert(jlang('ai_request_failed'));
                 }
             });
         });

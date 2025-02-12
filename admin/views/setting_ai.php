@@ -52,8 +52,8 @@
                         <div>
                             <a type="button" class="" data-toggle="modal" data-target="#aiChatModal">
                                 <?= lang('ai_chat') ?>
-                            </a>，
-                            <a href="store.php?action=plu&keyword=AI">更多AI应用</a>
+                            </a>,
+                            <a href="store.php?action=plu&keyword=AI"><?= lang('more_ai_app') ?></a>
                         </div>
                     </div>
                 </div>

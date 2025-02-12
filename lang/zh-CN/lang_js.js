@@ -22,10 +22,13 @@ var LNG = {
     'resend' : '重新发送',//'Resend',
     'captcha_send' : '发送验证码',//'Send verification code',
     'captcha_sent_ok' : '验证码已发送，请查收邮件',//'Verification code has been sent, please check your email',
+    'ai_request_failed' : 'AI 请求失败，请稍后再试',//'AI request failed, please try again later',
 
 // admin/views/comment.php
     'comment_operation_select': '请选择评论',//'Please select a comment',
     'comment_selected_delete_sure': '删除所选评论？',//'Delete selected comments?',
+    'ai_generating' : 'AI生成中...',//'AI Generating...',
+    'ai_gen_failed' : 'AI 生成失败',//'AI generation failed',
 
 // admin/views/components/layer/layer.js
     'rotate' : '旋转',//'Rotate',

@@ -170,7 +170,7 @@
                         <input type="hidden" value="" name="hide" id="hide" />
                         <textarea class="form-control" id="reply" name="reply" required></textarea>
                     </div>
-                    <p><a href="javascript:void(0);" class="" id="ai_button_reply">✨</a></p>
+<!--vot: Sparkles--><p><a href="javascript:void(0);" class="" id="ai_button_reply">&#10024;</a></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
@@ -221,7 +221,7 @@
             var comment = $('.comment-replay-content').html();
 
             // Disable button to show loading status
-            $button.prop('disabled', true).text('AI生成中...');
+            $button.prop('disabled', true).text(jlang('ai_generating'));
 
             $.ajax({
                 url: 'ai.php?action=genReply',
@@ -234,15 +234,15 @@
                     if (response.code === 0) {
                         $reply.val(response.data);
                     } else {
-                        alert(response.msg || 'AI 生成失败');
+                        alert(response.msg || jlang('ai_gen_failed'));
                     }
                 },
                 error: function(xhr) {
-                    alert('AI 请求失败，请稍后再试');
+                    alert(jlang('ai_request_failed'));
                 },
                 complete: function() {
                     // Restore button state
-                    $button.prop('disabled', false).text('✨');
+/*vot*/             $button.prop('disabled', false).text('&#10024;'); // sparkles
                 }
             });
         });

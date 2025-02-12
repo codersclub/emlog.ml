@@ -15,7 +15,7 @@ $lang = array(
 //---------------------------
 //admin/ai.php
     'choose_prompt' => 'Pick a sentence from famous sayings, lyrics, movie lines, novels, poems, and famous quotes as your signature. Avoid inputting any suggestive content such as quotation marks and colons.',//'从名言、歌词、电影台词、小说、诗词、名人名言中找出一句话，作为你的个性签名，避免输出引号、冒号等任何提示性内容。',
-
+    'ai_prompt' => '. === Please reply politely and professionally === to the previous user comment, and avoid outputting any suggestive content.',//'。=== 请礼貌而专业的回复 === 前面这段用户评论，避免输出任何提示性内容。',
 
 //---------------------------
 //admin/article.php
@@ -287,7 +287,6 @@ $lang = array(
     'top_rated' => 'Top rated',//'置顶优先',
     'most_commented' => 'Most commented',//'评论最多',
     'most_viewed' => 'Most viewed',//'浏览最多',
-    'ai_request_failed' => 'AI request failed, please try again later',//'AI 请求失败，请稍后再试',
 
 //---------------------------
 //admin/views/article_write.php
@@ -903,6 +902,8 @@ $lang = array(
     'tongyi_model' => 'Tongyi Large Model',//'通义大模型',
     'moon_model' => 'Model: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',//'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',
     'qwen_model' => 'Model: qwen-max, qwen-plus, qwen-turbo, qwen-long, etc.',//'Model：qwen-max、qwen-plus、qwen-turbo、qwen-long 等',
+    'see_more' => 'See more',//'查看更多',
+    'more_ai_app' => 'More AI applications',//'更多AI应用',
 
 //---------------------------
 //admin/views/setting_api.php

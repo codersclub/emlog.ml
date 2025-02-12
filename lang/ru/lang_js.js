@@ -22,10 +22,13 @@ var LNG = {
     'resend' : 'Отправить заново',//'重新发送',
     'captcha_send' : 'Отправить код верификации',//'发送验证码',
     'captcha_sent_ok' : 'Проверочный код успешно отправлен. Проверьте Ваш почтовый ящик',//'验证码已发送，请查收邮件',
+    'ai_request_failed' : 'Сбой запроса к ИИ сервису, попробуйте повторить позже',//'AI 请求失败，请稍后再试',
 
 // admin/views/comment.php
     'comment_operation_select'     : 'Пожалуйста, выберите комментарий',//'请选择评论',
     'comment_selected_delete_sure' : 'Удалить выбранные комментарии?',//'删除所选评论？',
+    'ai_generating' : 'Генерация ответа...',//'AI Generating...',
+    'ai_gen_failed' : 'Ошибка при генерации ответа',//'AI generation failed',
 
 // admin/views/components/layer/layer.js
     'rotate' : 'Поворот',//'旋转',
