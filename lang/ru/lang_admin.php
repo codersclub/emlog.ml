@@ -892,9 +892,9 @@ $lang = array(
 //---------------------------
 //admin/views/setting_ai.php
 'enabled'			=> 'Разрешено',//'已启用',
-'add_model'			=> 'Добавить модель',//'+添加模型',
+'add_model'			=> '+Добавить модель',//'+添加模型',
 'add_ai_model'			=> 'Добавление ИИ модели',//'添加AI模型',
-'ai_chat'			=> '&#10024; Чат с ИИ',//'✨AI对话',
+'ai_chat'			=> '&#129302; Чат с ИИ',//'&#129302;AI对话',///robot face
 'only_big_model'		=> 'Поддерживаются только большие модели, конфигурируемые с помощью протокола OpenAI',//'仅支持配置openai协议的大模型',
 'zhipu_ai'			=> 'Zhipu ИИ',//'智谱AI',
 'generate_api_key'		=> 'Сгенерировать API ключ',//'生成api key',
@@ -903,7 +903,7 @@ $lang = array(
 'moon_model'			=> 'Модели: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',//'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',
 'qwen_model'			=> 'Модели: qwen-max, qwen-plus, deepseek-v3, и т.д.',//Model：qwen-max、qwen-plus、deepseek-v3 等,
 'see_more'			=> 'Показать ещё',//'See more',
-'more_ai_app'			=> 'Больше ИИ приложений',//'More AI applications',
+'more_ai_app'			=> 'Больше ИИ приложений в магазине',//'More AI applications in the App Store',
 
 //---------------------------
 //admin/views/setting_api.php

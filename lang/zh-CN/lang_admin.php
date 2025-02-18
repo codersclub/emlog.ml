@@ -892,9 +892,9 @@ $lang = array(
 //---------------------------
 //admin/views/setting_ai.php
     'enabled' => '已启用',//'Enabled',
-    'add_model' => '+ 添加模型',//'Add Model',
+    'add_model' => '+ 添加模型',//'+Add Model',
     'add_ai_model' => '添加AI模型',//'Add AI model',
-    'ai_chat' => '🤖AI对话',//'&#10024;AI Chat',
+    'ai_chat' => '&#129302;AI对话',//'&#129302;AI Chat',///robot face
     'only_big_model' => '仅支持配置openai协议的大模型',//'Only supports large models configured with the OpenAI protocol',
     'zhipu_ai' => '智谱AI',//'Zhipu AI',
     'generate_api_key' => '生成api key',//'Generate an API key',

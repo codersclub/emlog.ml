@@ -892,18 +892,18 @@ $lang = array(
 //---------------------------
 //admin/views/setting_ai.php
     'enabled' => 'Enabled',//'已启用',
-    'add_model' => 'Add Model',//'+添加模型',
+    'add_model' => '+Add Model',//'+ 添加模型',
     'add_ai_model' => 'Add AI model',//'添加AI模型',
-    'ai_chat' => '&#10024;AI Chat',//'✨AI对话',
+    'ai_chat' => '&#129302;AI Chat',//'&#129302;AI对话',///robot face
     'only_big_model' => 'Only supports large models configured with the OpenAI protocol',//'仅支持配置openai协议的大模型',
     'zhipu_ai' => 'Zhipu AI',//'智谱AI',
     'generate_api_key' => 'Generate an API key',//'生成api key',
     'api_key_format' => 'Format: sk-****',//'格式如：sk-****',
     'alibaba_model' => 'Alibaba',//'阿里百炼',
     'moon_model' => 'Model: moonshot-V1-8, moonshot-V1-32, moonshot-V1-128',//'Model：moonshot-v1-8k、moonshot-v1-32k、moonshot-v1-128k',
-    'qwen_model' => 'Model: qwen-max, qwen-plus, deepseek-v3, etc.',//Model：qwen-max、qwen-plus、deepseek-v3 等,
+    'qwen_model' => 'Model: qwen-max, qwen-plus, deepseek-v3, etc.',//'Model：qwen-max、qwen-plus、deepseek-v3 等',
     'see_more' => 'See more',//'查看更多',
-    'more_ai_app' => 'More AI applications',//'更多AI应用',
+    'more_ai_app' => 'More AI applications in the App Store',//'应用商店更多AI应用',
 
 //---------------------------
 //admin/views/setting_api.php
