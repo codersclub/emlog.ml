@@ -50,58 +50,71 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover dataTable no-footer" id="adm_comment_list">
-                <thead>
-                    <tr>
-                        <th></th>
+        <form action="user.php?action=operate_user" method="post" name="form_user" id="form_user">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover dataTable no-footer" id="adm_comment_list">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="checkAllItem" /></th>
                         <th><?= lang('user_name') ?></th>
                         <th><?= lang('email') ?></th>
-                        <th><?= lang('user_id') ?></th>
                         <th><?= lang('login_ip') ?></th>
                         <th><?= lang('last_login_time') ?></th>
                         <th><?= lang('create_time') ?></th>
                         <th><?= lang('operation') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($users as $key => $val):
-                        $avatar = User::getAvatar($user_cache[$val['uid']]['avatar']);
-                        $forbid = $val['state'] == 1;
-                        $user_log_num = isset($sta_cache[$val['uid']]['lognum']) ? $sta_cache[$val['uid']]['lognum'] : 0;
-                    ?>
-                        <tr>
-                            <td><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle" /></td>
-                            <td>
-                                <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
-                                <span class="small"><?= $val['role'] ?></span>
-                                <?php if ($forbid): ?>
-                                    <span class="badge badge-warning"><?= lang('disabled') ?></span>
-                                <?php endif ?>
-                                <br />
-                                <span class="small mr-2"><?= lang('articles') ?>: <a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></span>
-                                <span class="small"><?= lang('credits') ?>: <?= $val['credits'] ?></span>
-                            </td>
-                            <td><?= $val['email'] ?></td>
-                            <td><?= $val['uid'] ?></td>
-                            <td><?= $val['ip'] ?></td>
-                            <td><?= $val['update_time'] ?></td>
-                            <td><?= $val['create_time'] ?></td>
-                            <td>
-                                <?php if (UID != $val['uid']): ?>
-                                    <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
-                                    <?php if ($forbid): ?>
-                                        <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>" class="badge badge-success"><?= lang('unban') ?></a>
-                                    <?php else: ?>
-                                        <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-warning"><?= lang('ban') ?></a>
-                                    <?php endif ?>
-                                <?php endif ?>
-                            </td>
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="checkboxContainer">
+                        <?php
+                        foreach ($users as $key => $val):
+                            $avatar = User::getAvatar($user_cache[$val['uid']]['avatar']);
+                            $forbid = $val['state'] == 1;
+                            $user_log_num = isset($sta_cache[$val['uid']]['lognum']) ? $sta_cache[$val['uid']]['lognum'] : 0;
+                        ?>
+                            <tr>
+                                <td style="width: 19px;">
+                                    <input type="checkbox" name="user_ids[]" value="<?= $val['uid'] ?>" class="ids" />
+                                </td>
+                                <td style="width: 25px;"><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle" /></td>
+                                <td>
+                                    <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
+                                    <span class="small"><?= $val['role'] ?></span>
+                                    <?php if ($forbid): ?>
+                                        <span class="badge badge-warning"><?= lang('disabled') ?></span>
+                                    <?php endif ?>
+                                    <br />
+                                    <span class="small mr-2"> ID:<?= $val['uid'] ?></span>
+                                    <span class="small mr-2"><?= lang('articles') ?>: <a href="article.php?uid=<?= $val['uid'] ?>"><?= $user_log_num ?></a></span>
+                                    <span class="small"><?= lang('credits') ?>: <?= $val['credits'] ?></span>
+                                </td>
+                                <td><?= $val['email'] ?></td>
+                                <td><?= $val['ip'] ?></td>
+                                <td><?= $val['update_time'] ?></td>
+                                <td><?= $val['create_time'] ?></td>
+                                <td>
+                                    <?php if (UID != $val['uid']): ?>
+                                        <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'del_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                                        <?php if ($forbid): ?>
+                                            <a href="user.php?action=unforbid&uid=<?= $val['uid'] ?>&token=<?= LoginAuth::genToken() ?>" class="badge badge-success"><?= lang('unban') ?></a>
+                                        <?php else: ?>
+                                            <a href="javascript: em_confirm(<?= $val['uid'] ?>, 'forbid_user', '<?= LoginAuth::genToken() ?>');" class="badge badge-warning"><?= lang('ban') ?></a>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+            <input name="operate" id="operate" value="" type="hidden" />
+        </form>
+        <div class="form-inline">
+            <div class="btn-group">
+                <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                <div class="dropdown-menu">
+                    <a href="javascript:useract('forbid');" class="dropdown-item text-warning">禁用</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -172,5 +185,24 @@
 
     function selectOrder(obj) {
         window.open("./user.php?order=" + obj.value, "_self");
+    }
+
+    function useract(act) {
+        if (getChecked('ids') === false) {
+            infoAlert('请选择用户');
+            return;
+        }
+
+        if (act === 'forbid') {
+            delAlert2('', '封禁所选用户？', function() {
+                    $("#operate").val("forbid");
+                    $("#form_user").submit();
+                },
+                '封禁')
+            return;
+        }
+
+        $("#operate").val(act);
+        $("#form_user").submit();
     }
 </script>

@@ -16,45 +16,56 @@
 <div class="card shadow mb-4 mt-2">
     <div class="card-body">
         <div class="row">
-            <?php foreach ($aiModels as $val): ?>
+            <?php foreach ($aiModels as $k => $val):
+                $apiUrl = $val['api_url'];
+                $apiUrlDomain = parse_url($apiUrl, PHP_URL_HOST);
+                $apiKey = subString($val['api_key'], 0, 8, '******');
+                $model = $val['model'];
+                if (strpos($model, 'deepseek') !== false) {
+                    $model = '🐳 ' . $model;
+                }
+            ?>
                 <div class="col-md-4 mb-3">
                     <div class="card model-card">
                         <div class="card-body align-items-center justify-content-center">
-                            <h5 class="card-title model-name">
-                                <?php if ($val['model'] == $aiModel): ?>
-                                    <?= $val['model'] ?>
+                            <h4 class="card-title model-name">
+                                <?php if ($k == $currentModelKey): ?>
+                                    <?= $model ?>
                                     <span class="badge badge-success"><?= lang('enabled') ?></span>
                                 <?php else: ?>
-                                    <a href="./setting.php?action=ai_model&ai_model=<?= $val['model'] ?>"><?= $val['model'] ?></a>
+                                    <a href="./setting.php?action=ai_model&ai_model_key=<?= $k ?>"><?= $model ?></a>
                                 <?php endif; ?>
-                            </h5>
-                            <div class="small my-3">
-                                <?= $val['api_url'] ?><br>
-                                <?= subString($val['api_key'], 0, 16, '******') ?><br>
+                            </h4>
+                            <div class="my-3">
+                                <span class="badge badge-gray" style="font-size: 1.2em;"><?= $apiUrlDomain ?></span><br>
                             </div>
-                            <a href="./setting.php?action=delete_model&ai_model=<?= $val['model'] ?>" class="delete-link small text-danger" style="position: absolute; bottom: 10px; right: 10px;"><?= lang('delete') ?></a>
+                            <a href="#" class="edit-link small text-primary" data-toggle="modal" data-target="#editModelModal" data-model="<?= $val['model'] ?>" data-url="<?= $val['api_url'] ?>" data-api_key="<?= $apiKey ?>" data-model_key="<?= $k ?>" style="position: absolute; bottom: 10px; right: 40px;">编辑</a>
+                            <a href="javascript: em_confirm('<?= $k ?>', 'ai_model', '<?= LoginAuth::genToken() ?>');" class="delete-link small text-danger" style="position: absolute; bottom: 10px; right: 10px;">删除</a>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
-                    <div class="card-body d-flex align-items-center justify-content-center">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center">
                         <a type="button" class="" data-toggle="modal" data-target="#addModelModal">
                             <?= lang('add_model') ?>
                         </a>
+                        <p class="text-center small text-muted mt-3">
+                            <a href="https://www.emlog.net/docs/ai/ai_emlog" class="text-muted" target="_blank">查看支持模型列表</a>
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card h-100">
-                    <div class="card-body d-flex align-items-center justify-content-center">
-                        <div>
-                            <a type="button" class="" data-toggle="modal" data-target="#aiChatModal">
-                                <?= lang('ai_chat') ?>
-                            </a>,
-                            <a href="store.php?action=plu&keyword=AI"><?= lang('more_ai_app') ?></a>
-                        </div>
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                        <a type="button" class="" data-toggle="modal" data-target="#aiChatModal">
+                            <?= lang('ai_chat') ?>
+                        </a>
+                        <p class="text-center small mt-3">
+                            <a href="store.php?action=plu&keyword=AI" target="_blank" class="text-muted">应用商店更多AI应用</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -77,6 +88,17 @@
         $('#edit-model-form').submit(function(event) {
             event.preventDefault();
             $('#editModelModal').modal('hide');
+        });
+
+        $('.edit-link').click(function() {
+            var model = $(this).data('model');
+            var url = $(this).data('url');
+            var api_key = $(this).data('api_key');
+            var model_key = $(this).data('model_key');
+            $('#editModelModal #edit_ai_model').val(model);
+            $('#editModelModal #edit_ai_api_url').val(url);
+            $('#editModelModal #edit_ai_api_key').val(api_key);
+            $('#editModelModal #ai_model_key').val(model_key);
         });
     });
 </script>
@@ -124,13 +146,48 @@
                         API Key: <a href="https://platform.moonshot.cn/console/api-keys" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
                         <?= lang('moon_models') ?><br>
                         <hr>
-                        <a href="https://tongyi.aliyun.com/" target="_blank"><?= lang('tongyi_model') ?></a><br>
+                        <a href="https://tongyi.aliyun.com/" target="_blank"><?= lang('alibaba_model') ?></a><br>
                         API URL: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
                         <br>
                         API Key: <a href="https://bailian.console.aliyun.com/?apiKey=1#/api-key" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
                         <?= lang('qwen_models') ?>
                         <hr>
                         <?= lang('only_big_model') ?> <a href="https://www.emlog.net/docs/ai/ai_emlog" target="_blank"><?= lang('see_more') ?></a><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for editing custom model -->
+<div class="modal fade" id="editModelModal" tabindex="-1" role="dialog" aria-labelledby="editModelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModelModalLabel">编辑AI模型</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="setting.php?action=ai_update" method="post" name="edit_model_form" id="edit_model_form">
+                    <p>API URL：</p>
+                    <div class="form-group">
+                        <input type="url" class="form-control" value="" name="edit_ai_api_url" id="edit_ai_api_url" disabled />
+                    </div>
+                    <p>API Key：</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="" name="edit_ai_api_key" id="edit_ai_api_key" disabled />
+                    </div>
+                    <p>Model：</p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="edit_ai_model" id="edit_ai_model" value="" />
+                        <input type="hidden" name="ai_model_key" id="ai_model_key" value="" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
+                        <button type="submit" class="btn btn-success btn-sm">保存设置</button>
                     </div>
                 </form>
             </div>

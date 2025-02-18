@@ -97,6 +97,11 @@ function em_confirm(id, property, token) {
             text = lang('media_category_del_sure') + lang('category_not_deleted');
             delAlert(msg, text, url, token)
             break;
+        case 'ai_model':
+            url = 'setting.php?action=delete_model&ai_model_key=' + id;
+            text = '删除该模型？';
+            delAlert(msg, text, url, token)
+            break;
     }
 }
 
