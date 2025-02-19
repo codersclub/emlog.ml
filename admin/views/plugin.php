@@ -49,7 +49,7 @@
         </li>
     </ul>
     <div class="w-md-auto">
-        <input type="text" id="pluginSearch" class="form-control" placeholder="搜索插件...">
+        <input type="text" id="pluginSearch" class="form-control" placeholder="<?= lang('plugin_search') ?>">
     </div>
 </div>
 <div class="card shadow mb-4">

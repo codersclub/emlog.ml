@@ -23,6 +23,10 @@ var LNG = {
     'captcha_send' : '发送验证码',//'Send verification code',
     'captcha_sent_ok' : '验证码已发送，请查收邮件',//'Verification code has been sent, please check your email',
     'ai_request_failed' : 'AI 请求失败，请稍后再试',//'AI request failed, please try again later',
+    'password_strength' : '密码强度：',//'Password strength: '
+    'weak' : '弱',//'weak',
+    'strong' : '强',//‘strong’,
+    'medium' : '中等',//'medium',
 
 // admin/views/comment.php
     'comment_operation_select': '请选择评论',//'Please select a comment',
@@ -72,6 +76,12 @@ var LNG = {
 //admin/views/template.php
     'update_api_error': '更新接口返回错误',//'The update interface returned an error',
     'update_request_error': '请求更新接口失败',//'The request to update the interface failed',
+
+//---------------------------
+//admin/views/user.php
+    'user_select' : '请选择用户',//'Please select a user',
+    'block_users' : '封禁所选用户？',//'Block selected users?',
+    'blocked' : '封禁',//'Banned',
 
 //---------------------------
 //admin/views/js/common.js
@@ -162,6 +172,7 @@ var LNG = {
     'refresh_page': '刷新页面',//'Refresh page',
     'to_use_new': '开始体验新版本',//' to start experiencing the new version',
     'prompt': '提示',//'Prompt', 
+    'delete_model?' : '删除该模型？',//'Delete this model?',
 
 //---------------------------
 //include/lib/js/common_tpl.js

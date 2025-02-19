@@ -19,87 +19,87 @@ function em_confirm(id, property, token) {
     switch (property) {
         case 'article':
             url = 'article.php?action=del&gid=' + id;
-            text = lang('article_del_sure');
+            text = jlang('article_del_sure');
             delArticle(msg, text, url, token)
             break;
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
-            msg = lang('draft_del_sure');
+            msg = jlang('draft_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
-            msg = lang('twitter_del_sure');
+            msg = jlang('twitter_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'comment':
             url = 'comment.php?action=del&id=' + id;
-            msg = lang('comment_del_sure');
+            msg = jlang('comment_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'commentbyip':
             url = 'comment.php?action=delbyip&ip=' + id;
-            msg = lang('comment_ip_del_sure');
+            msg = jlang('comment_ip_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'link':
             url = 'link.php?action=del&linkid=' + id;
-            msg = lang('link_del_sure');
+            msg = jlang('link_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'navi':
             url = 'navbar.php?action=del&id=' + id;
-            msg = lang('navi_del_sure');
+            msg = jlang('navi_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'media':
             url = 'media.php?action=delete&aid=' + id;
-            msg = lang('attach_del_sure');
+            msg = jlang('attach_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'avatar':
             url = 'blogger.php?action=delicon';
-            msg = lang('avatar_del_sure');
+            msg = jlang('avatar_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'sort':
             url = 'sort.php?action=del&sid=' + id;
-            msg = lang('category_del_sure');
+            msg = jlang('category_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'del_user':
             url = 'user.php?action=del&uid=' + id;
-            msg = lang('user_del_sure');
+            msg = jlang('user_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'forbid_user':
             url = 'user.php?action=forbid&uid=' + id;
-            text = lang('user_disable_sure');
-            delAlert(msg, text, url, token, lang('disable'))
+            text = jlang('user_disable_sure');
+            delAlert(msg, text, url, token, jlang('disable'))
             break;
         case 'tpl':
             url = 'template.php?action=del&tpl=' + id;
-            msg = lang('template_del_sure');
+            msg = jlang('template_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'reset_widget':
             url = 'widgets.php?action=reset';
-            text = lang('plugin_reset_sure') + lang('plugin_reset_info');
-            delAlert(msg, text, url, lang('reset'))
+            text = jlang('plugin_reset_sure') + jlang('plugin_reset_info');
+            delAlert(msg, text, url, jlang('reset'))
             break;
         case 'plu':
             url = 'plugin.php?action=del&plugin=' + id;
-            msg = lang('plugin_del_sure');
+            msg = jlang('plugin_del_sure');
             delAlert(msg, text, url, token)
             break;
         case 'media_sort':
             url = 'media.php?action=del_media_sort&id=' + id;
-            text = lang('media_category_del_sure') + lang('category_not_deleted');
+            text = jlang('media_category_del_sure') + jlang('category_not_deleted');
             delAlert(msg, text, url, token)
             break;
         case 'ai_model':
             url = 'setting.php?action=delete_model&ai_model_key=' + id;
-            text = '删除该模型？';
+            text = jlang('delete_model?');
             delAlert(msg, text, url, token)
             break;
     }
@@ -113,16 +113,16 @@ function infoAlert(msg) {
     });
 }
 
-function delAlert(msg, text, url, token, btnText = lang('delete')) {
+function delAlert(msg, text, url, token, btnText = jlang('delete')) {
     // icon: 0 default, 1 ok, 2 err, 3 ask
-    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, lang('cancel')]}, function (index) {
+    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, jlang('cancel')]}, function (index) {
         window.location = url + '&token=' + token;
         layer.close(index);
     });
 }
 
-function delAlert2(msg, text, actionClosure, btnText = lang('delete')) {
-    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, lang('cancel')]}, function (index) {
+function delAlert2(msg, text, actionClosure, btnText = jlang('delete')) {
+    layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, jlang('cancel')]}, function (index) {
         actionClosure(); // Execute closure
         layer.close(index);
     });
@@ -132,7 +132,7 @@ function delArticle(msg, text, url, token) {
     layer.confirm(text, {
         title: msg,
         icon: 3,
-        btn: [lang('save_draft'), '<span class="text-danger">'+lang('del_completely')+'</span>', lang('cancel')]
+        btn: [jlang('save_draft'), '<span class="text-danger">'+jlang('del_completely')+'</span>', jlang('cancel')]
     }, function (index) {
         window.location = url + '&token=' + token;
         layer.close(index);
@@ -150,7 +150,7 @@ function submitForm(formId, successMsg) {
         url: $(formId).attr('action'),
         data: $(formId).serialize(),
         success: function () {
-/*vot*/     cocoMessage.success(successMsg || lang('save_success'))
+/*vot*/     cocoMessage.success(successMsg || jlang('save_success'))
         },
         error: function (xhr) {
             const errorMsg = JSON.parse(xhr.responseText).msg;
@@ -247,7 +247,7 @@ function checkform() {
     if (0 == isalias(a)) {
         return true;
     } else {
-        infoAlert(lang('alias_link_error'));
+        infoAlert(jlang('alias_link_error'));
         $("#alias").focus();
         return false;
     }
@@ -256,13 +256,13 @@ function checkform() {
 function checkalias() {
     var a = $.trim($("#alias").val());
     if (1 == isalias(a)) {
-        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_invalid_chars') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + jlang('alias_invalid_chars') + '</span>');
     } else if (2 == isalias(a)) {
-        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_digital') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + jlang('alias_digital') + '</span>');
     } else if (3 == isalias(a)) {
-        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_format_must_be') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + jlang('alias_format_must_be') + '</span>');
     } else if (4 == isalias(a)) {
-        $("#alias_msg_hook").html('<span id="input_error">' + lang('alias_system_conflict') + '</span>');
+        $("#alias_msg_hook").html('<span id="input_error">' + jlang('alias_system_conflict') + '</span>');
     } else {
         $("#alias_msg_hook").html('');
         $("#msg").html('');
@@ -282,7 +282,7 @@ function autosave(act) {
     }
 
     if (alias != '' && 0 != isalias(alias)) {
-        $("#msg").show().html(lang('alias_link_error_not_saved'));
+        $("#msg").show().html(jlang('alias_link_error_not_saved'));
         if (act == 0) {
             setTimeout("autosave(1)", timeout);
         }
@@ -302,8 +302,8 @@ function autosave(act) {
 
     const $savedf = $("#savedf");
     const btname = $savedf.val();
-    $savedf.val(lang('saving')).attr("disabled", "disabled");
-    $('title').text(lang('saving_in') + titleText);
+    $savedf.val(jlang('saving')).attr("disabled", "disabled");
+    $('title').text(jlang('saving_in') + titleText);
     $.post(url, $("#addlog").serialize(), function (data) {
         data = $.trim(data);
         var isresponse = /.*autosave\_gid\:\d+\_.*/;
@@ -314,8 +314,8 @@ function autosave(act) {
             const h = d.getHours();
             const m = d.getMinutes();
             const tm = (h < 10 ? "0" + h : h) + ":" + (m < 10 ? "0" + m : m);
-            $("#save_info").html(lang('saved_ok_time') + tm + ' <a href="../?post=' + logid + '" target="_blank">' + lang('article_preview') + '</a>');
-            $('title').text(lang('saved_ok') + titleText);
+            $("#save_info").html(jlang('saved_ok_time') + tm + ' <a href="../?post=' + logid + '" target="_blank">' + jlang('article_preview') + '</a>');
+            $('title').text(jlang('saved_ok') + titleText);
             setTimeout(function () {
                 $('title').text(titleText);
             }, 2000);
@@ -325,8 +325,8 @@ function autosave(act) {
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-/*vot*/     $("#save_info").html(lang('save_system_error')).addClass("alert-danger");
-            $('title').text(lang('save_failed') + titleText);
+/*vot*/     $("#save_info").html(jlang('save_system_error')).addClass("alert-danger");
+            $('title').text(jlang('save_failed') + titleText);
         }
     });
     if (act == 1) {
@@ -344,18 +344,18 @@ function pagesave() {
         }
     });
     let url = "page.php?action=save";
-    if ($("[name='pageid']").attr("value") < 0) return infoAlert(lang('save_first'));
-/*vot*/ if (!$("[name='pagecontent']").html()) return infoAlert(lang('content_empty'));
-/*vot*/ $('title').text(lang('saving_in') + ' ' + pagetitle);
+    if ($("[name='pageid']").attr("value") < 0) return infoAlert(jlang('save_first'));
+/*vot*/ if (!$("[name='pagecontent']").html()) return infoAlert(jlang('content_empty'));
+/*vot*/ $('title').text(jlang('saving_in') + ' ' + pagetitle);
     $.post(url, $("#addlog").serialize(), function (data) {
-/*vot*/ $('title').text(lang('saved_ok') + pagetitle);
+/*vot*/ $('title').text(jlang('saved_ok') + pagetitle);
         setTimeout(function () {
             $('title').text(pagetitle);
         }, 2000);
         pageText = $("textarea").text();
     }).fail(function () {
-/*vot*/ $('title').text(lang('save_failed') + pagetitle);
-/*vot*/ infoAlert(lang('save_failed!'))
+/*vot*/ $('title').text(jlang('save_failed') + pagetitle);
+/*vot*/ infoAlert(jlang('save_failed!'))
     });
 }
 
@@ -454,17 +454,17 @@ function imgPasteExpand(thisEditor) {
     // Upload image
     function uploadImg(img) {
         var formData = new FormData();
-        var imgName = lang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
+        var imgName = jlang('paste_upload') + new Date().getTime() + "." + img.name.split(".").pop();
 
         formData.append('file', img, imgName);
-        thisEditor.insertValue(lang('uploading'));
+        thisEditor.insertValue(jlang('uploading'));
         $.ajax({
             url: postUrl, type: 'post', data: formData, processData: false, contentType: false, xhr: function () {
                 var xhr = $.ajaxSettings.xhr();
                 if (xhr.upload) {
                     thisEditor.insertValue("....");
                     xhr.upload.addEventListener('progress', function (e) {  // Show upload progress
-                        console.log(lang('progress') + e.loaded + ' / ' + e.total);
+                        console.log(jlang('progress') + e.loaded + ' / ' + e.total);
                         let percent = Math.floor(e.loaded / e.total * 100);
                         if (percent < 10) {
                             replaceByNum('..' + percent + '%', 4);
@@ -477,20 +477,20 @@ function imgPasteExpand(thisEditor) {
                 }
                 return xhr;
             }, success: function (result) {
-                console.log(lang('upload_ok_get_result'));
+                console.log(jlang('upload_ok_get_result'));
                 $.get(emMediaPhpUrl, function (resp) {
                     var image = resp.data.images[0];
                     if (image) {
-/*vot*/                 console.log(lang('result_ok'));
+/*vot*/                 console.log(jlang('result_ok'));
 /*vot*/                 replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
-/*vot*/                 console.log(lang('get_result_fail'));
-/*vot*/                 infoAlert(lang('get_result_fail'));
+/*vot*/                 console.log(jlang('get_result_fail'));
+/*vot*/                 infoAlert(jlang('get_result_fail'));
                     }
                 })
             }, error: function (result) {
-                infoAlert(lang('upload_failed_error'));
-                replaceByNum(lang('upload_failed_error'), 6);
+                infoAlert(jlang('upload_failed_error'));
+                replaceByNum(jlang('upload_failed_error'), 6);
             }
         })
     }
@@ -520,20 +520,20 @@ function checkUpdate() {
 
     $.get("./upgrade.php?action=check_update", function (result) {
         if (result.code === 1001) {
-/*vot*/     rep_msg = lang('emlog_not_registered') + ': <a href="auth.php">' + lang('register') + '</a>';
+/*vot*/     rep_msg = jlang('emlog_not_registered') + ': <a href="auth.php">' + jlang('register') + '</a>';
         } else if (result.code === 1002) {
-            rep_msg = lang('is_latest_version');
+            rep_msg = jlang('is_latest_version');
         } else if (result.code === 200) {
-            rep_msg = lang('new_ver_available') + `: <span class="text-danger">${result.data.version}</span> <br><br>`;
-            rep_changes = '<b>' + lang('view_changelog') + '</b>:<br>' + result.data.changes;
+            rep_msg = jlang('new_ver_available') + `: <span class="text-danger">${result.data.version}</span> <br><br>`;
+            rep_changes = '<b>' + jlang('view_changelog') + '</b>:<br>' + result.data.changes;
 
             // Check if cdn_sql and cdn_file are empty
             let sqlFile = result.data.cdn_sql || result.data.sql;
             let fileFile = result.data.cdn_file || result.data.file;
 
-            rep_btn = `<hr><a href="javascript:doUp('${fileFile}','${sqlFile}');" id="upbtn" class="btn btn-success btn-sm">` + lang('update_now') + '</a>';
+            rep_btn = `<hr><a href="javascript:doUp('${fileFile}','${sqlFile}');" id="upbtn" class="btn btn-success btn-sm">` + jlang('update_now') + '</a>';
         } else {
-            rep_msg = lang('check_failed');
+            rep_msg = jlang('check_failed');
         }
 
         updateModalLoading.removeClass();
@@ -551,23 +551,23 @@ function doUp(source, upSQL) {
     const upbtn = $("#upbtn");
 
     updateModalLoading.addClass("spinner-border text-primary");
-    updateModalMsg.html(lang('updating_now'));
+    updateModalMsg.html(jlang('updating_now'));
     updateModalChanges.html("");
 
     $.get(`./upgrade.php?action=update&source=${source}&upsql=${upSQL}`, function (data) {
         upmsg.removeClass();
         if (data.includes("succ")) {
-            upbtn.text(lang('refresh_page'));
+            upbtn.text(jlang('refresh_page'));
             upbtn.attr('href', './');
-            updateModalMsg.html(lang('updated_ok') + ', <a href="./">' + lang('refresh_page') +'</a> ' + lang('to_use_new'));
+            updateModalMsg.html(jlang('updated_ok') + ', <a href="./">' + jlang('refresh_page') +'</a> ' + jlang('to_use_new'));
         } else if (data.includes("error_down")) {
-            updateModalMsg.html(lang('update_download_fail'));
+            updateModalMsg.html(jlang('update_download_fail'));
         } else if (data.includes("error_zip")) {
-            updateModalMsg.html(lang('unzip_fail'));
+            updateModalMsg.html(jlang('unzip_fail'));
         } else if (data.includes("error_dir")) {
-            updateModalMsg.html(lang('update_not_writable'));
+            updateModalMsg.html(jlang('update_not_writable'));
         } else {
-            updateModalMsg.html(lang('update_fail'));
+            updateModalMsg.html(jlang('update_fail'));
         }
 
         updateModalLoading.removeClass();
@@ -631,12 +631,12 @@ $(function () {
         let down_url = link.data('url');
         let cdn_down_url = link.data('cdn-url');
         let type = link.data('type');
-/*vot*/        link.text(lang('installing'));
+/*vot*/        link.text(jlang('installing'));
         link.parent().prev(".installMsg").html("").addClass("spinner-border text-primary");
 
         let url = './store.php?action=install&type=' + type + '&source=' + down_url + '&cdn_source=' + cdn_down_url;
         $.get(url, function (data) {
-/*vot*/            link.text(lang('install_free'));
+/*vot*/            link.text(jlang('install_free'));
             link.parent().prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
         });
     });

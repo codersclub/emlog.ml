@@ -110,9 +110,9 @@
         </form>
         <div class="form-inline">
             <div class="btn-group">
-                <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">操作</button>
+                <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                 <div class="dropdown-menu">
-                    <a href="javascript:useract('forbid');" class="dropdown-item text-warning">禁用</a>
+                    <a href="javascript:useract('forbid');" class="dropdown-item text-warning"><?= lang('disable') ?></a>
                 </div>
             </div>
         </div>
@@ -189,16 +189,16 @@
 
     function useract(act) {
         if (getChecked('ids') === false) {
-            infoAlert('请选择用户');
+            infoAlert(jlang('user_select'));
             return;
         }
 
         if (act === 'forbid') {
-            delAlert2('', '封禁所选用户？', function() {
+            delAlert2('', jlang('block_users'), function() {
                     $("#operate").val("forbid");
                     $("#form_user").submit();
                 },
-                '封禁')
+                jlang('blocked'))
             return;
         }
 

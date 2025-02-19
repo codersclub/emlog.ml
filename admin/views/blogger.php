@@ -311,28 +311,28 @@
             });
         });
 
-        // 密码强度检查
+        // Check password strength
         $('#new_passwd').on('input', function() {
             var password = $(this).val();
             var strength = getPasswordStrength(password);
-            $('#passwordHelp').text('密码强度：' + strength.text).css('color', strength.color);
+            $('#passwordHelp').text(jlang('password_strength') + strength.text).css('color', strength.color);
         });
 
         function getPasswordStrength(password) {
             var strength = {
-                text: '弱',
+                text: jlang('weak'),
                 color: 'red'
             };
             if (password.length >= 6) {
                 var strengthScore = [/[A-Z]/, /[a-z]/, /\d/, /\W/].reduce((score, regex) => score + regex.test(password), 0);
                 if (strengthScore >= 3) {
                     strength = {
-                        text: '强',
+                        text: jlang('strong'),
                         color: 'green'
                     };
                 } else if (strengthScore >= 2) {
                     strength = {
-                        text: '中等',
+                        text: jlang('medium'),
                         color: 'orange'
                     };
                 }

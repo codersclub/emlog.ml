@@ -22,7 +22,7 @@
                 $apiKey = subString($val['api_key'], 0, 8, '******');
                 $model = $val['model'];
                 if (strpos($model, 'deepseek') !== false) {
-                    $model = '🐳 ' . $model;
+                    $model = '&#128051; ' . $model; /// Whale
                 }
             ?>
                 <div class="col-md-4 mb-3">
@@ -39,8 +39,8 @@
                             <div class="my-3">
                                 <span class="badge badge-gray" style="font-size: 1.2em;"><?= $apiUrlDomain ?></span><br>
                             </div>
-                            <a href="#" class="edit-link small text-primary" data-toggle="modal" data-target="#editModelModal" data-model="<?= $val['model'] ?>" data-url="<?= $val['api_url'] ?>" data-api_key="<?= $apiKey ?>" data-model_key="<?= $k ?>" style="position: absolute; bottom: 10px; right: 40px;">编辑</a>
-                            <a href="javascript: em_confirm('<?= $k ?>', 'ai_model', '<?= LoginAuth::genToken() ?>');" class="delete-link small text-danger" style="position: absolute; bottom: 10px; right: 10px;">删除</a>
+                            <a href="#" class="edit-link small text-primary" data-toggle="modal" data-target="#editModelModal" data-model="<?= $val['model'] ?>" data-url="<?= $val['api_url'] ?>" data-api_key="<?= $apiKey ?>" data-model_key="<?= $k ?>" style="position: absolute; bottom: 10px; right: 40px;"><?= lang('edit') ?></a>
+                            <a href="javascript: em_confirm('<?= $k ?>', 'ai_model', '<?= LoginAuth::genToken() ?>');" class="delete-link small text-danger" style="position: absolute; bottom: 10px; right: 10px;"><?= lang('delete') ?></a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                             <?= lang('add_model') ?>
                         </a>
                         <p class="text-center small text-muted mt-3">
-                            <a href="https://www.emlog.net/docs/ai/ai_emlog" class="text-muted" target="_blank">查看支持模型列表</a>
+                            <a href="https://www.emlog.net/docs/ai/ai_emlog" class="text-muted" target="_blank"><?= lang('models_supported') ?></a>
                         </p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             <?= lang('ai_chat') ?>
                         </a>
                         <p class="text-center small mt-3">
-                            <a href="store.php?action=plu&keyword=AI" target="_blank" class="text-muted">应用商店更多AI应用</a>
+                            <a href="store.php?action=plu&keyword=AI" target="_blank" class="text-muted"><?= lang('more_ai_app') ?></a>
                         </p>
                     </div>
                 </div>
@@ -165,29 +165,29 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editModelModalLabel">编辑AI模型</h5>
+                <h5 class="modal-title" id="editModelModalLabel"><?= lang('model_edit') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form action="setting.php?action=ai_update" method="post" name="edit_model_form" id="edit_model_form">
-                    <p>API URL：</p>
+                    <p>API URL:</p>
                     <div class="form-group">
                         <input type="url" class="form-control" value="" name="edit_ai_api_url" id="edit_ai_api_url" disabled />
                     </div>
-                    <p>API Key：</p>
+                    <p>API Key:</p>
                     <div class="form-group">
                         <input type="text" class="form-control" value="" name="edit_ai_api_key" id="edit_ai_api_key" disabled />
                     </div>
-                    <p>Model：</p>
+                    <p>Model:</p>
                     <div class="form-group">
                         <input type="text" class="form-control" name="edit_ai_model" id="edit_ai_model" value="" />
                         <input type="hidden" name="ai_model_key" id="ai_model_key" value="" />
                     </div>
                     <div class="form-group mt-3">
                         <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                        <button type="submit" class="btn btn-success btn-sm">保存设置</button>
+                        <button type="submit" class="btn btn-success btn-sm"><?= lang('save_settings') ?></button>
                     </div>
                 </form>
             </div>

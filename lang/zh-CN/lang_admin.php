@@ -904,6 +904,8 @@ $lang = array(
     'qwen_model' => 'Model：qwen-max、qwen-plus、deepseek-v3 等',//'Model: qwen-max, qwen-plus, deepseek-v3, etc.',
     'see_more' => '查看更多',//'See more',
     'more_ai_app' => '应用商店更多AI应用',//'More AI applications in the App Store',
+    'models_supported' => '查看支持模型列表',//'View the list of supported models',
+    'model_edit' => '编辑AI模型',//'Editing AI Models',
 
 //---------------------------
 //admin/views/setting_api.php
@@ -1200,6 +1202,7 @@ $lang = array(
     'last_active' => '最近活跃',//'Recently Active',
     'admin_priority' => '管理员优先',//'Administrator priority',
     'users_perpage' => '个用户，每页显示',//'Users, displayed per page',
+    'disable' => '禁用',//'Disable',
 
 //---------------------------
 //admin/views/user_edit.php
