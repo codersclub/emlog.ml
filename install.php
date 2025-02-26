@@ -653,7 +653,7 @@ CREATE TABLE {$db_prefix}sort (
   title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
   sortimg varchar(512) NOT NULL default '' COMMENT 'Category image',
-    page_count int(11) unsigned NOT NULL default '0' COMMENT '每页文章数量',
+    page_count int(11) unsigned NOT NULL default '0' COMMENT 'Articles per page',
     PRIMARY KEY  (sid)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}user;

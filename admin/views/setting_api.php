@@ -20,7 +20,7 @@
         <form action="setting.php?action=api_save" method="post" name="setting_api_form" id="setting_api_form">
             <div class="custom-control custom-switch">
                 <input class="custom-control-input" type="checkbox" value="y" name="is_openapi" id="is_openapi" <?= $conf_is_openapi ?> />
-                <label class="custom-control-label" for="is_openapi">开启API</label>
+                <label class="custom-control-label" for="is_openapi"><?= lang('api_enable') ?>	</label>
             </div>
             <div class="input-group mt-3">
                 <div class="input-group-prepend">

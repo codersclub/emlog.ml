@@ -192,9 +192,9 @@
                         <?php endif; ?>
                     </div>
                     <div class="form-group">
-                        <label>每页显示文章数量</label>
+                        <label><?= lang('posts_per_page') ?></label>
                         <input class="form-control" value="<?= $sort_lognum ?>" name="page_count" id="page_count" type="number" min="0" />
-                        <small class="form-text text-muted">为0则使用全局设置</small>
+                        <small class="form-text text-muted"><?= lang('0_use_global') ?></small>
                     </div>
                     <?php doAction('adm_sort_add') ?>
                 </div>

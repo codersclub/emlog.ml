@@ -888,6 +888,7 @@ $lang = array(
     'app_recommended' => 'Updated applications',//'应用推荐',
     'menu' => 'Menu',//'菜单',
     'lmenu_title' => 'Left menu title',//'左侧菜单标题',
+    'fulltext_search' => 'Full-text search (enabling this may affect site performance when there are many articles)',//'全文搜索（文章较多时开启可能会影响站点性能）',
 
 //---------------------------
 //admin/views/setting_ai.php
@@ -981,6 +982,7 @@ $lang = array(
     'category_image' => 'Category image',//'分类图像',
     'cat_title_prompt' => 'Title (used for category pages)',//'标题（用于分类页的 title）',
     'cat_tpl_variables' => 'Supported variables: {{site_title}}, {{site_name}}, {{sort_name}}',//'支持变量: {{site_title}}, {{site_name}}, {{sort_name}}',
+    '0_use_global' => 'If it is 0, use the global setting',//'为0则使用全局设置',
 
 //---------------------------
 //admin/views/sort_edit.php

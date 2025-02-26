@@ -102,7 +102,7 @@
             </div>
             <div class="custom-control custom-switch">
                 <input class="custom-control-input" type="checkbox" value="y" name="isfullsearch" id="isfullsearch" <?= $conf_isfullsearch ?> />
-                <label class="custom-control-label" for="isfullsearch">全文搜索（文章较多时开启可能会影响站点性能）</label>
+                <label class="custom-control-label" for="isfullsearch"><?= lang('fulltext_search') ?></label>
             </div>
             <hr>
             <h4><?= lang('upload_settings') ?></h4>
