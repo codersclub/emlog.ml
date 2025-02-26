@@ -29,12 +29,11 @@
                 <label><?= lang('site_address') ?>:</label>
                 <input class="form-control" value="<?= $blogurl ?>" name="blogurl" type="url" required>
             </div>
-            <div class="form-group form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="detect_url" id="detect_url" <?= $conf_detect_url ?> />
-                <label class="form-check-label" for="detect_url"><?= lang('detect_url') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="detect_url" id="detect_url" <?= $conf_detect_url ?> />
+                <label class="custom-control-label" for="detect_url"><?= lang('detect_url') ?></label>
             </div>
-
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <label><?= lang('your_timezone') ?></label>
                 <select name="timezone" class="form-control">
                     <?php foreach ($tzlist as $key => $value):
@@ -43,7 +42,6 @@
                     <?php endforeach ?>
                 </select>
             </div>
-
             <div class="form-group">
                 <label><?= lang('icp_reg_no') ?></label>
                 <input class="form-control" value="<?= $icp ?>" name="icp" />
@@ -54,25 +52,25 @@
             </div>
             <hr>
             <h4><?= lang('comment_settings') ?></h4>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="iscomment" id="iscomment" <?= $conf_iscomment ?> />
-                <label for="iscomment"><?= lang('enable_comments') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="iscomment" id="iscomment" <?= $conf_iscomment ?> />
+                <label class="custom-control-label" for="iscomment"><?= lang('enable_comments') ?></label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="ischkcomment" id="ischkcomment" <?= $conf_ischkcomment ?> />
-                <label for="ischkcomment"><?= lang('comment_moderation') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="ischkcomment" id="ischkcomment" <?= $conf_ischkcomment ?> />
+                <label class="custom-control-label" for="ischkcomment"><?= lang('comment_moderation') ?></label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="comment_code" id="comment_code" <?= $conf_comment_code ?> />
-                <label for="comment_code"><?= lang('comment_verification_code') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="comment_code" id="comment_code" <?= $conf_comment_code ?> />
+                <label class="custom-control-label" for="comment_code"><?= lang('comment_verification_code') ?></label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
-                <label for="login_comment"><?= lang('login_before_comment_on') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="login_comment" id="login_comment" <?= $conf_login_comment ?> />
+                <label class="custom-control-label" for="login_comment"><?= lang('login_before_comment_on') ?></label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="comment_paging" id="comment_paging" <?= $conf_comment_paging ?> />
-                <label for="comment_paging"><?= lang('comment_per_page') ?></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="comment_paging" id="comment_paging" <?= $conf_comment_paging ?> />
+                <label class="custom-control-label" for="comment_paging"><?= lang('comment_per_page') ?></label>
             </div>
             <div class="form-group form-inline">
                 <?= lang('comments_per_page') ?>: <input maxlength="5" style="width:80px;" class="form-control" value="<?= $comment_pnum ?>" name="comment_pnum" type="number" min="0" />
@@ -86,15 +84,12 @@
             <div class="form-group form-inline">
                 <?= lang('comment_interval') ?> (<?= lang('seconds') ?>): <input class="form-control mx-sm-3" value="<?= $comment_interval ?>" name="comment_interval" style="width:80px;" type="number" min="0" />
             </div>
-
             <hr>
-
             <h4><?= lang('article_settigs') ?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('posts_per_page') ?></label>
                 <input class="form-control mx-sm-3" style="width:80px;" value="<?= $index_lognum ?>" name="index_lognum" type="number" min="1" />
             </div>
-
             <div class="form-group form-inline">
                 RSS <?= lang('export') ?> <input maxlength="5" style="width:80px;" value="<?= $rss_output_num ?>" type="number" min="0" class="form-control" name="rss_output_num" /> <?= lang('rss_output_num') ?>
                 <select name="rss_output_fulltext" class="form-control">
@@ -105,18 +100,22 @@
             <div class="alert alert-primary">
 <!--vot-->            <?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
             </div>
-
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="isfullsearch" id="isfullsearch" <?= $conf_isfullsearch ?> />
+                <label class="custom-control-label" for="isfullsearch">全文搜索（文章较多时开启可能会影响站点性能）</label>
+            </div>
             <hr>
-
             <h4><?= lang('upload_settings') ?></h4>
             <div class="form-group form-inline">
-                <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" class="mr-1" <?= $conf_isthumbnail ?> />
-                <label for="isthumbnail"><?= lang('thumbnail_image') ?></label>, <?= lang('max_size') ?>:
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" value="y" name="isthumbnail" id="isthumbnail" class="custom-control-input" <?= $conf_isthumbnail ?> />
+                    <label class="custom-control-label" for="isthumbnail"><?= lang('thumbnail_image') ?></label>
+                </div>
+                <?= lang('max_size') ?>:
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxw ?>" name="att_imgmaxw" /> x
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh" /> <?= lang('unit_pixels') ?>
             </div>
             <hr>
-
 <!--vot-->        <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('lmenu_title') ?></label>

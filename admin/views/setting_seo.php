@@ -59,16 +59,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="form-check mt-3">
-                <input class="form-check-input" type="checkbox" value="y" name="isalias" id="isalias" <?= $isalias ?> />
-                <label for="isalias"><?= lang('post_alias_enable') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc</span></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="isalias" id="isalias" <?= $isalias ?> />
+                <label class="custom-control-label" for="isalias"><?= lang('post_alias_enable') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc</span></label>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="y" name="isalias_html" id="isalias_html" <?= $isalias_html ?> />
-                <label for="isalias_html"><?= lang('enable_html_suffix') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc.html</span></label>
+            <div class="custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" value="y" name="isalias_html" id="isalias_html" <?= $isalias_html ?> />
+                <label class="custom-control-label" for="isalias_html"><?= lang('enable_html_suffix') ?>: <span class="permalink_url"><?= BLOG_URL ?>abc.html</span></label>
             </div>
 
-            <div class="alert alert-warning">
+            <div class="alert alert-warning mt-3">
                 <?= lang('post_url_rewriting') ?><br>
             </div>
 

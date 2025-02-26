@@ -23,83 +23,46 @@
             <div class="table-responsive" id="adm_sort_list">
                 <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>
-                    <tr>
-                        <th><?= lang('image') ?></th>
-                        <th><?= lang('category_id') ?></th>
-                        <th><?= lang('alias') ?></th>
-                        <th><?= lang('template') ?></th>
-                        <th><?= lang('view') ?></th>
-                        <th><?= lang('operation') ?></th>
-                    </tr>
+                        <tr>
+                            <th><?= lang('image') ?></th>
+                            <th><?= lang('category_id') ?></th>
+                            <th><?= lang('alias') ?></th>
+                            <th><?= lang('template') ?></th>
+                            <th><?= lang('view') ?></th>
+                            <th><?= lang('operation') ?></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    foreach ($sorts as $key => $value):
-                        if ($value['pid'] != 0) {
-                            continue;
-                        }
-                        ?>
-                        <tr style="cursor: move">
-                            <td>
-                                <div class="flex-shrink-0">
-                                    <?php if ($value['sortimg']): ?>
-                                        <img src="<?= $value['sortimg'] ?>" height="55" class="rounded"/>
-                                    <?php else: ?>
-                                        <img src="<?= './views/images/null.png' ?>" height="55" class="rounded"/>
-                                    <?php endif; ?>
-                                </div>
-                            </td>
-                            <td class="sortname">
-                                <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id"/>
-                                <input type="hidden" name="sort[]" value="<?= $value['sid'] ?>"/>
-                                <a href="#" data-toggle="modal" data-target="#sortModal"
-                                   data-sid="<?= $value['sid'] ?>"
-                                   data-sortname="<?= $value['sortname'] ?>"
-                                   data-alias="<?= $value['alias'] ?>"
-                                   data-description="<?= $value['description'] ?>"
-                                   data-kw="<?= $value['kw'] ?>"
-                                   data-title="<?= $value['title_origin'] ?>"
-                                   data-pid="<?= $value['pid'] ?>"
-                                   data-sortimg="<?= $value['sortimg'] ?>"
-                                   data-template="<?= $value['template'] ?>"><?= $value['sortname'] ?></a>
-                                <a href="<?= Url::sort($value['sid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
-                            </td>
-                            <td><?= $value['description'] ?></td>
-                            <td><?= $value['sid'] ?></td>
-                            <td class="alias"><?= $value['alias'] ?></td>
-                            <td><a href="article.php?sid=<?= $value['sid'] ?>"><?= $value['lognum'] ?></a></td>
-                            <td>
-                                <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
-                            </td>
-                        </tr>
                         <?php
-                        $children = $value['children'];
-                        foreach ($children as $key):
-                            $value = $sorts[$key];
-                            ?>
-                            <tr>
+                        foreach ($sorts as $key => $value):
+                            if ($value['pid'] != 0) {
+                                continue;
+                            }
+                        ?>
+                            <tr style="cursor: move">
                                 <td>
                                     <div class="flex-shrink-0">
                                         <?php if ($value['sortimg']): ?>
-                                            <img src="<?= $value['sortimg'] ?>" height="55" class="rounded"/>
+                                            <img src="<?= $value['sortimg'] ?>" height="55" class="rounded" />
                                         <?php else: ?>
-                                            <img src="<?= './views/images/null.png' ?>" height="55" class="rounded"/>
+                                            <img src="<?= './views/images/null.png' ?>" height="55" class="rounded" />
                                         <?php endif; ?>
                                     </div>
                                 </td>
                                 <td class="sortname">
-                                    <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id"/>
-                                    <input type="hidden" name="sort[]" value="<?= $value['sid'] ?>"/>
-                                    ---- <a href="#" data-toggle="modal" data-target="#sortModal"
-                                            data-sid="<?= $value['sid'] ?>"
-                                            data-sortname="<?= $value['sortname'] ?>"
-                                            data-alias="<?= $value['alias'] ?>"
-                                            data-description="<?= $value['description'] ?>"
-                                            data-kw="<?= $value['kw'] ?>"
-                                            data-title="<?= $value['title_origin'] ?>"
-                                            data-pid="<?= $value['pid'] ?>"
-                                            data-sortimg="<?= $value['sortimg'] ?>"
-                                            data-template="<?= $value['template'] ?>"><?= $value['sortname'] ?></a>
+                                    <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id" />
+                                    <input type="hidden" name="sort[]" value="<?= $value['sid'] ?>" />
+                                    <a href="#" data-toggle="modal" data-target="#sortModal"
+                                        data-sid="<?= $value['sid'] ?>"
+                                        data-sortname="<?= $value['sortname'] ?>"
+                                        data-alias="<?= $value['alias'] ?>"
+                                        data-description="<?= $value['description'] ?>"
+                                        data-kw="<?= $value['kw'] ?>"
+                                        data-title="<?= $value['title_origin'] ?>"
+                                        data-pid="<?= $value['pid'] ?>"
+                                        data-sortimg="<?= $value['sortimg'] ?>"
+                                        data-page_count="<?= $value['page_count'] ?>"
+                                        data-template="<?= $value['template'] ?>"><?= $value['sortname'] ?></a>
                                     <a href="<?= Url::sort($value['sid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
                                 </td>
                                 <td><?= $value['description'] ?></td>
@@ -110,15 +73,54 @@
                                     <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
                                 </td>
                             </tr>
+                            <?php
+                            $children = $value['children'];
+                            foreach ($children as $key):
+                                $value = $sorts[$key];
+                            ?>
+                                <tr>
+                                    <td>
+                                        <div class="flex-shrink-0">
+                                            <?php if ($value['sortimg']): ?>
+                                                <img src="<?= $value['sortimg'] ?>" height="55" class="rounded" />
+                                            <?php else: ?>
+                                                <img src="<?= './views/images/null.png' ?>" height="55" class="rounded" />
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                    <td class="sortname">
+                                        <input type="hidden" value="<?= $value['sid'] ?>" class="sort_id" />
+                                        <input type="hidden" name="sort[]" value="<?= $value['sid'] ?>" />
+                                        ---- <a href="#" data-toggle="modal" data-target="#sortModal"
+                                            data-sid="<?= $value['sid'] ?>"
+                                            data-sortname="<?= $value['sortname'] ?>"
+                                            data-alias="<?= $value['alias'] ?>"
+                                            data-description="<?= $value['description'] ?>"
+                                            data-kw="<?= $value['kw'] ?>"
+                                            data-title="<?= $value['title_origin'] ?>"
+                                            data-pid="<?= $value['pid'] ?>"
+                                            data-sortimg="<?= $value['sortimg'] ?>"
+                                            data-page_count="<?= $value['page_count'] ?>"
+                                            data-template="<?= $value['template'] ?>"><?= $value['sortname'] ?></a>
+                                        <a href="<?= Url::sort($value['sid']) ?>" target="_blank" class="text-muted ml-2"><i class="icofont-external-link"></i></a>
+                                    </td>
+                                    <td><?= $value['description'] ?></td>
+                                    <td><?= $value['sid'] ?></td>
+                                    <td class="alias"><?= $value['alias'] ?></td>
+                                    <td><a href="article.php?sid=<?= $value['sid'] ?>"><?= $value['lognum'] ?></a></td>
+                                    <td>
+                                        <a href="javascript: em_confirm(<?= $value['sid'] ?>, 'sort', '<?= LoginAuth::genToken() ?>');" class="badge badge-danger"><?= lang('delete') ?></a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
                         <?php endforeach ?>
-                    <?php endforeach ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <div class="list_footer">
-        <input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success"/>
+        <input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success" />
     </div>
 </form>
 
@@ -135,7 +137,7 @@
             <form action="sort.php?action=save" method="post" id="sort_new">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="sortname"><?= lang('category_name') ?></label>
+                        <label for="sortname"><?= lang('category_name') ?> <span class="text-danger">*</span></label>
                         <input class="form-control" id="sortname" name="sortname" required>
                     </div>
                     <div class="form-group">
@@ -152,7 +154,7 @@
                                 if ($value['pid'] != 0) {
                                     continue;
                                 }
-                                ?>
+                            ?>
                                 <option value="<?= $key ?>"><?= $value['sortname'] ?></option>
                             <?php endforeach ?>
                         </select>
@@ -181,7 +183,7 @@
                             foreach ($customTemplates as $v) {
                                 $sortListHtml .= '<option value="' . str_replace('.php', '', $v['filename']) . '">' . ($v['comment']) . '</option>';
                             }
-                            ?>
+                        ?>
                             <select id="template" name="template" class="form-control"><?= $sortListHtml; ?></select>
                             <small class="form-text text-muted"><?=lang('category_template_intro')?></small>
                         <?php else: ?>
@@ -189,11 +191,16 @@
                             <small class="form-text text-muted"><?=lang('custom_template_intro')?></small>
                         <?php endif; ?>
                     </div>
+                    <div class="form-group">
+                        <label>每页显示文章数量</label>
+                        <input class="form-control" value="<?= $sort_lognum ?>" name="page_count" id="page_count" type="number" min="0" />
+                        <small class="form-text text-muted">为0则使用全局设置</small>
+                    </div>
                     <?php doAction('adm_sort_add') ?>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" value="" name="sid" id="sid"/>
-                    <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden"/>
+                    <input type="hidden" value="" name="sid" id="sid" />
+                    <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                     <span id="alias_msg_hook"></span>
                     <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" id="save_btn" class="btn btn-sm btn-success"><?= lang('save') ?></button>
@@ -239,14 +246,14 @@
     }
 
     // Submit Form
-    $("#sort_form").submit(function (event) {
+    $("#sort_form").submit(function(event) {
         event.preventDefault();
         submitForm("#sort_form");
     });
 
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 3600);
-        $("#alias").keyup(function () {
+        $("#alias").keyup(function() {
             checksortalias();
         });
 
@@ -258,7 +265,7 @@
         $('#dataTable tbody').sortable().disableSelection();
 
         // Edit category
-        $('#sortModal').on('show.bs.modal', function (event) {
+        $('#sortModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var sid = button.data('sid')
             var sortname = button.data('sortname')
@@ -269,6 +276,7 @@
             var pid = button.data('pid')
             var template = button.data('template')
             var sortimg = button.data('sortimg')
+            var page_count = button.data('page_count')
             var modal = $(this)
             modal.find('.modal-body #sortname').val(sortname)
             modal.find('.modal-body #alias').val(alias)
@@ -278,6 +286,7 @@
             modal.find('.modal-body #pid').val(pid)
             modal.find('.modal-body #template').val(template)
             modal.find('.modal-body #sortimg').val(sortimg)
+            modal.find('.modal-body #page_count').val(page_count)
             modal.find('.modal-footer #sid').val(sid)
         })
     });

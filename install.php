@@ -550,6 +550,7 @@ INSERT INTO {$db_prefix}options (option_name, option_value) VALUES
 ('rss_output_num','10'),
 ('rss_output_fulltext','y'),
 ('index_lognum','10'),
+('isfullsearch','n'),
 ('index_comnum','10'),
 ('index_newlognum','5'),
 ('index_hotlognum','5'),
@@ -652,6 +653,7 @@ CREATE TABLE {$db_prefix}sort (
   title VARCHAR(2048) NOT NULL DEFAULT '' COMMENT 'Page Title',
   template varchar(255) NOT NULL default '' COMMENT 'Category template',
   sortimg varchar(512) NOT NULL default '' COMMENT 'Category image',
+    page_count int(11) unsigned NOT NULL default '0' COMMENT '每页文章数量',
     PRIMARY KEY  (sid)
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}user;

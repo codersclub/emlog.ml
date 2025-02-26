@@ -23,6 +23,9 @@ class Search_Controller
         $pageurl = '';
 
         $sqlSegment = "AND title LIKE '%$keyword%'";
+        if ($isfullsearch === 'y') {
+            $sqlSegment = "AND (title LIKE '%$keyword%' OR excerpt LIKE '%$keyword%' OR content LIKE '%$keyword%')";
+        }
         if ($sid) {
             $sqlSegment .= " AND sortid=$sid";
         }

@@ -802,7 +802,7 @@ $lang = array(
 //admin/views/setting_seo.php
     'htaccess_not_writable' => '保存失败：根目录下的.htaccess不可写',//'Save failed: .htaccess file in the root directory is not writable',
     'post_url_settings' => '文章链接设置',//'Post URL settings',
-    'post_url_rewriting' => '如果修改后文章无法访问，可能是服务器空间不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',//'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',
+    'post_url_rewriting' => '如果修改后文章无法访问，可能是服务器不支持URL重写（伪静态），请修改回默认格式并关闭文章连接别名。',//'If the article cannot be accessed after modification, it may be that the server space does not support URL rewriting (pseudo-static), please modify it back to the default format and disable the article link alias.',
     'post_url' => '文章链接',//'Article URL',
     'default_format' => '默认格式',//'Default format',
     'file_format' => '文件格式',//'File format',
@@ -968,7 +968,7 @@ $lang = array(
 //admin/views/sort.php
     'category_management' => '文章分类',//'Article categories',
     'category_name' => '分类名',//'Category name',
-    'alias_prompt' => '英文字母组成，用于seo设置，可不填',//'Composed of English letters, used for SEO settings, optional',
+    'alias_prompt' => '英文字母组成，用于seo设置',//'Composed of English letters, used for SEO settings',
     'category_parent' => '父分类',//'Parent category',
     'category_add' => '添加分类',//'添加分类+',//'Add Category',
     'tag_add' => '新建标签',//'Add Tag',
@@ -986,8 +986,8 @@ $lang = array(
 //admin/views/sort_edit.php
     'category_description' => '描述（也用于分类页的 description）',//'Description (also used for description on category pages)',
     'category_template' => '分类模板',//'Category template',
-    'category_template_intro' => '(选择当前模板支持的分类模板，可不选)',//'(Select the category template supported by the current template, you can not choose)',
-    'custom_template_intro' => '(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名，可不填)',//'(Used to customize the category page template, corresponding to the xxx.php file in the template directory, where xxx is the template name and can be left blank)',
+    'category_template_intro' => '(选择当前模板支持的分类模板)',//'(Select the category template supported by the current template)',
+    'custom_template_intro' => '(用于自定义分类页面模板，对应模板目录下xxx.php文件，xxx即为模板名)',//'(Used to customize the category page template, corresponding to the xxx.php file in the template directory, xxx is the template name)',
 
 //---------------------------
 //admin/views/store.php

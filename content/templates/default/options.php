@@ -42,9 +42,6 @@ $options = [
         'labels'      => 'tpl-head',
         'type'        => 'image',
         'name'        => lang('favicon'),
-        'values'      => [
-            TEMPLATE_URL . 'images/favicon.png',
-        ],
         'description' => lang('favicon_descr'),
     ],
     'slideShow'      => [
