@@ -144,13 +144,13 @@
                         <a href="https://www.moonshot.cn/" target="_blank">Kimi - moonshot</a><br>
                         API URL: https://api.moonshot.cn/v1/chat/completions<br>
                         API Key: <a href="https://platform.moonshot.cn/console/api-keys" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
-                        <?= lang('moon_models') ?><br>
+                        <?= lang('moon_model') ?><br>
                         <hr>
                         <a href="https://tongyi.aliyun.com/" target="_blank"><?= lang('alibaba_model') ?></a><br>
                         API URL: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions
                         <br>
                         API Key: <a href="https://bailian.console.aliyun.com/?apiKey=1#/api-key" target="_blank"><?= lang('generate_api_key') ?></a>, <?= lang('api_key_format') ?><br>
-                        <?= lang('qwen_models') ?>
+                        <?= lang('qwen_model') ?>
                         <hr>
                         <?= lang('only_big_model') ?> <a href="https://www.emlog.net/docs/ai/ai_emlog" target="_blank"><?= lang('see_more') ?></a><br>
                     </div>

@@ -84,7 +84,6 @@
                             <a class="collapse-item" id="menu_navi" href="navbar.php"><?= lang('navigation') ?></a>
                             <a class="collapse-item" id="menu_widget" href="widgets.php"><?= lang('sidebar') ?></a>
                             <a class="collapse-item" id="menu_link" href="link.php"><?= lang('friend_links') ?></a>
-                            <a class="collapse-item" id="menu_link" href="link.php"><?= lang('url') ?></a>
                         </div>
                     </div>
                 </li>

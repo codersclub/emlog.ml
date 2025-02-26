@@ -9,8 +9,11 @@
 
 class Ai
 {
-    public static function chat($prompt, $system_prompt = lang('useful_assistant'))
+/*vot*/ public static function chat($prompt, $system_prompt = '')
     {
+/*vot*/ if(empty($system_prompt)) {
+            $system_prompt = lang('useful_assistant');
+        }
         $messages = [
             [
                 "content" => $system_prompt,
@@ -25,8 +28,11 @@ class Ai
         return self::formatResponse($response);
     }
 
-    public static function chatStream($prompt, $system_prompt = lang('useful_assistant'))
+/*vot*/ public static function chatStream($prompt, $system_prompt = '')
     {
+/*vot*/ if(empty($system_prompt)) {
+            $system_prompt = lang('useful_assistant');
+        }
         $messages = [
             [
                 "content" => $system_prompt,

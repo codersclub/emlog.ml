@@ -24,7 +24,7 @@ if (empty($action)) {
     $conf_isthumbnail = $isthumbnail == 'y' ? 'checked="checked"' : '';
     $conf_comment_paging = $comment_paging == 'y' ? 'checked="checked"' : '';
     $conf_detect_url = $detect_url == 'y' ? 'checked="checked"' : '';
-    $conf_isfullsearch = $isfullsearch == 'y' ? 'checked="checked"' : '';
+/*vot*/ $conf_isfullsearch = @$isfullsearch == 'y' ? 'checked="checked"' : '';
 
     $ex1 = $ex2 = $ex3 = $ex4 = '';
     if ($rss_output_fulltext == 'y') {
