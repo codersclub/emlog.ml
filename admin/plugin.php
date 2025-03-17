@@ -161,12 +161,12 @@ if ($action === 'upgrade') {
     $alias = isset($_GET['alias']) ? trim($_GET['alias']) : '';
 
     if (!Register::isRegLocal()) {
-        Output::error('您的emlog尚未正版注册', 200);
+        Output::error(lang('emlog_unregistered'), 200);
     }
 
     $temp_file = emFetchFile('https://www.emlog.net/plugin/down/' . $alias);
     if (!$temp_file) {
-        Output::error('无法下载更新包，可能是服务器网络问题', 200);
+        Output::error(lang('update_download_failed'), 200);
     }
     $unzip_path = '../content/plugins/';
     $ret = emUnZip($temp_file, $unzip_path, 'plugin');
@@ -179,12 +179,12 @@ if ($action === 'upgrade') {
             break;
         case 1:
         case 2:
-            Output::error('上传失败，插件目录(content/plugins)不可写', 200);
+            Output::error(lang('plugin_not_writable', 200);
             break;
         case 3:
-            Output::error('请选择一个zip插件安装包', 200);
+            Output::error(lang('plugin_zip_select'), 200);
             break;
         default:
-            Output::error('安装失败，插件安装包不符合标准', 200);
+            Output::error(lang('plugin_wrong_format'), 200);
     }
 }

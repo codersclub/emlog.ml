@@ -15,6 +15,7 @@ var LNG = {
 // admin/views/article.php
     'select_article': '请选择文章',//'Please select an article',
     'sure_delete_articles': '确定要删除所选文章吗',//'Are you sure you want to delete the selected articles',
+    'success' : '成功',//'Success',
 
 // admin/views/blogger.php
     'password_changed_ok' : '密码修改成功, 请退出重新登录',//'Password changed successfully, please log out and log in again',
@@ -59,6 +60,8 @@ var LNG = {
     'update': '更新',//'Update',
     'plugin_update_check_fail': '插件更新检查无法正常进行,错误码:',//'Plug-in update check failed, error code: ',
     'plugin_update_check_exception': '<b>插件更新检查异常：</b><br>',//'Plugin update check exception: ',
+    'updating' : '正在更新...',//'Updating...',
+    'update_failed' : '更新请求失败，请稍后重试',//'Update request failed, please try again later',
 
 //---------------------------
 //admin/views/signup.php
