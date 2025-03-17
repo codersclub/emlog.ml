@@ -95,6 +95,7 @@
             initPageScripts();
         });
 
+/* vot: moved to common.js
         // Time selection control
         $.timepicker.regional['zh-CN'] = {
             timeOnlyTitle: '选择时间',
@@ -118,7 +119,6 @@
             weekHeader: '周',
             yearSuffix: '年',
         };
-/* vot: moved to common.js
         $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
         let dayNamesMin = ["日", "一", "二", "三", "四", "五", "六"];
         let monthNamesShort = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];

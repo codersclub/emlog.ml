@@ -439,8 +439,8 @@
         $('#field_box').append(newField);
     });
 
-    // 高级选项展开状态
+    // Advanced options expanded state
     initDisplayState('adv_set');
-    // 自动截取摘要状态
+    // Automatically capture summary status
     initCheckboxState('auto_excerpt');
 </script>

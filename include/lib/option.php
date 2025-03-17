@@ -42,8 +42,8 @@ class Option
     }
 
     /** 
-     * 获取路由表
-     * reg_0、reg_1、reg_2、reg_3 分别对应SEO设置中4种文章链接模式
+     * Get the routing table
+     * reg_0, reg_1, reg_2, reg_3 corresponds to the 4 article link modes in SEO settings
      */
     static function getRoutingTable()
     {

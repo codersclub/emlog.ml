@@ -703,7 +703,7 @@ $(function () {
         modal.find('.modal-body').append(iframe);
     });
 
-    // 删除提示
+    // Delete prompt
     const alert_action_success = localStorage.getItem('alert_action_success')
     if (localStorage.getItem('alert_action_success')) {
         cocoMessage.success(alert_action_success + '成功');

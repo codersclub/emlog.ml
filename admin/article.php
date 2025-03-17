@@ -101,7 +101,7 @@ if (empty($action)) {
 if ($action == 'del') {
     $draft = Input::getIntVar('draft');
     $gid = Input::getIntVar('gid');
-    $isRm = Input::getIntVar('rm'); // 是否彻底删除
+    $isRm = Input::getIntVar('rm'); // Completely delete?
 
     LoginAuth::checkToken();
 
