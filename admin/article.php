@@ -101,17 +101,23 @@ if (empty($action)) {
 if ($action == 'del') {
     $draft = Input::getIntVar('draft');
     $gid = Input::getIntVar('gid');
-    $isRm = Input::getIntVar('rm');
+    $isRm = Input::getIntVar('rm'); // 是否彻底删除
 
     LoginAuth::checkToken();
+
+    $redirectUrl = './article.php';
     if ($draft || $isRm) {
         $Log_Model->deleteLog($gid);
         doAction('del_log', $gid);
+        if ($draft) {
+            $redirectUrl .= '?draft=1';
+        }
     } else {
         $Log_Model->hideSwitch($gid, 'y');
+        $redirectUrl .= "?active_hide=1";
     }
     $CACHE->updateCache();
-    emDirect("./article.php?&active_del=1&draft=$draft");
+    emDirect($redirectUrl);
 }
 
 if ($action == 'tag') {
@@ -163,7 +169,7 @@ if ($action == 'operate_log') {
                 doAction('del_log', $val);
             }
             $CACHE->updateCache();
-            emDirect("./article.php?draft=1&active_del=1&draft=$draft");
+            emDirect("./article.php?draft=$draft");
             break;
         case 'top':
             foreach ($logs as $val) {

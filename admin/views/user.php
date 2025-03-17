@@ -1,8 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_del'])): ?>
-    <div class="alert alert-success"><?= lang('deleted_ok') ?></div><?php endif ?>
-<?php if (isset($_GET['active_fb'])): ?>
-    <div class="alert alert-success"><?= lang('user_ban_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_unfb'])): ?>
     <div class="alert alert-success"><?= lang('user_unban_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_update'])): ?>

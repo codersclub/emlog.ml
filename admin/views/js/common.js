@@ -25,7 +25,7 @@ function em_confirm(id, property, token) {
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
             msg = jlang('draft_del_sure');
-            delAlert(msg, text, url, token)
+            delAlert(msg, text, url, token, '删除', property)
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
@@ -116,6 +116,7 @@ function infoAlert(msg) {
 function delAlert(msg, text, url, token, btnText = jlang('delete')) {
     // icon: 0 default, 1 ok, 2 err, 3 ask
     layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, jlang('cancel')]}, function (index) {
+        localStorage.setItem('alert_action_success', btnText);
         window.location = url + '&token=' + token;
         layer.close(index);
     });
@@ -124,6 +125,7 @@ function delAlert(msg, text, url, token, btnText = jlang('delete')) {
 function delAlert2(msg, text, actionClosure, btnText = jlang('delete')) {
     layer.confirm(text, {icon: 3, title: msg, skin: 'class-layer-danger', btn: [btnText, jlang('cancel')]}, function (index) {
         actionClosure(); // Execute closure
+        localStorage.setItem('alert_action_success', btnText);
         layer.close(index);
     });
 }
@@ -137,6 +139,7 @@ function delArticle(msg, text, url, token) {
         window.location = url + '&token=' + token;
         layer.close(index);
     }, function (index) {
+        localStorage.setItem('alert_action_success', '删除');
         window.location = url + '&rm=1&token=' + token;
         layer.close(index);
     }, function (index) {
@@ -171,34 +174,26 @@ function hideActived() {
     $(".alert-danger").slideUp(300);
 }
 
-// Click action of [More Options]
-let icon_mod = "down";
-
 function displayToggle(id) {
-    $("#" + id).toggle();
-    if (icon_mod === "down") {
-        icon_mod = "right";
-        $(".icofont-simple-down").attr("class", "icofont-simple-right");
-    } else {
-        icon_mod = "down";
-        $(".icofont-simple-right").attr("class", "icofont-simple-down");
-    }
+    const element = $("#" + id);
+    const iconElement = element.prev().find(".icofont-simple-down, .icofont-simple-right");
 
-    // Using local storage to save state
-    localStorage.setItem('em_' + id, icon_mod);
+    element.toggle();
+    const isVisible = element.is(":visible");
+
+    iconElement.attr("class", isVisible ? "icofont-simple-down" : "icofont-simple-right");
+    localStorage.setItem('em_' + id, isVisible ? "down" : "right");
 }
 
-function applyStoredState(id) {
-    let storedState = localStorage.getItem('em_' + id);
+function initDisplayState(id) {
+    const storedState = localStorage.getItem('em_' + id);
+    const element = $("#" + id);
+    const iconElement = element.prev().find(".icofont-simple-down, .icofont-simple-right");
+
     if (storedState) {
-        icon_mod = storedState;
-        if (icon_mod === "right") {
-            $("#" + id).hide();
-            $(".icofont-simple-down").attr("class", "icofont-simple-right");
-        } else {
-            $("#" + id).show();
-            $(".icofont-simple-right").attr("class", "icofont-simple-down");
-        }
+        const isVisible = storedState === "down";
+        element.toggle(isVisible);
+        iconElement.attr("class", isVisible ? "icofont-simple-down" : "icofont-simple-right");
     }
 }
 
@@ -574,6 +569,16 @@ function doUp(source, upSQL) {
     });
 }
 
+function initCheckboxState(id) {
+    const isChecked = localStorage.getItem(id) === 'true';
+    $('#' + id).prop('checked', isChecked);
+}
+
+function toggleCheckbox(id) {
+    const isChecked = $('#' + id).prop('checked');
+    localStorage.setItem(id, isChecked);
+}
+
 //------------------------------
 // Return the language var value
 function lang(key) {
@@ -584,6 +589,35 @@ function lang(key) {
     }
     return val;
 }
+
+//------------------------------
+// Return the language var value
+function jlang(key) {
+    return lang(val);
+}
+
+/*vot*/    // Load Timepicker language
+/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
+
+//------------------------------
+// Return the language var value
+function lang(key) {
+    if (LNG[key]) {
+        val = LNG[key];
+    } else {
+        val = '{' + key + '}';
+    }
+    return val;
+}
+//------------------------------
+// Return the language var value
+function jlang(key) {
+    return lang(val);
+}
+
+/*vot*/    // Load Timepicker language
+/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
+
 //------------------------------
 // Return the language var value
 function jlang(key) {
@@ -668,4 +702,11 @@ $(function () {
 
         modal.find('.modal-body').append(iframe);
     });
+
+    // 删除提示
+    const alert_action_success = localStorage.getItem('alert_action_success')
+    if (localStorage.getItem('alert_action_success')) {
+        cocoMessage.success(alert_action_success + '成功');
+        localStorage.removeItem('alert_action_success');
+    }
 })

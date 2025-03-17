@@ -3,8 +3,6 @@
     <div class="alert alert-success"><?= lang('published_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_set'])): ?>
     <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>
-<?php if (isset($_GET['active_del'])): ?>
-    <div class="alert alert-success"><?= lang('deleted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
     <div class="alert alert-danger"><?= lang('twitter_empty') ?></div><?php endif ?>
 <?php if (isset($_GET['error_forbid'])): ?>

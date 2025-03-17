@@ -1,6 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_del'])): ?>
-    <div class="alert alert-success"><?= lang('category_deleted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_save'])): ?>
     <div class="alert alert-success"><?= lang('saved_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>

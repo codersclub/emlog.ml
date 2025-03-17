@@ -1,6 +1,4 @@
 <?php defined('EMLOG_ROOT') || exit('access denied!'); ?>
-<?php if (isset($_GET['active_del'])): ?>
-    <div class="alert alert-success"><?= lang('nav_delete_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_edit'])): ?>
     <div class="alert alert-success"><?= lang('nav_edit_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_add'])): ?>
@@ -22,109 +20,110 @@
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover dataTable no-footer" id="dataTable">
                     <thead>
-                    <tr>
-                        <th><?= lang('navigation') ?></th>
-                        <th><?= lang('type') ?></th>
-                        <th><?= lang('view') ?></th>
-                        <th><?= lang('address') ?></th>
-                        <th><?= lang('operation') ?></th>
-                    </tr>
+                        <tr>
+                            <th><?= lang('navigation') ?></th>
+                            <th><?= lang('type') ?></th>
+                            <th><?= lang('view') ?></th>
+                            <th><?= lang('address') ?></th>
+                            <th><?= lang('operation') ?></th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <?php
-                    if ($navis):
-                        foreach ($navis as $key => $value):
-                            if ($value['pid'] != 0) {
-                                continue;
-                            }
-                            $value['type_name'] = '';
-                            switch ($value['type']) {
-                                case Navi_Model::navitype_home:
-                                case Navi_Model::navitype_t:
-                                case Navi_Model::navitype_admin:
-                                    $value['type_name'] = lang('system');
-                                    $value['url'] = '/' . $value['url'];
-                                    break;
-                                case Navi_Model::navitype_sort:
-                                    $value['type_name'] = '<span class="text-primary">' . lang('category') . '</span>';
-                                    break;
-                                case Navi_Model::navitype_page:
-                                    $value['type_name'] = '<span class="text-success">' . lang('page') . '</span>';
-                                    break;
-                                case Navi_Model::navitype_custom:
-                                    $value['type_name'] = '<span class="text-danger">' . lang('custom') . '</span>';
-                                    break;
-                            }
-                            doAction('adm_navi_display');
+                        <?php
+                        if ($navis):
+                            foreach ($navis as $key => $value):
+                                if ($value['pid'] != 0) {
+                                    continue;
+                                }
+                                $value['type_name'] = '';
+                                switch ($value['type']) {
+                                    case Navi_Model::navitype_home:
+                                    case Navi_Model::navitype_t:
+                                    case Navi_Model::navitype_admin:
+                                        $value['type_name'] = lang('system');
+                                        $value['url'] = '/' . $value['url'];
+                                        break;
+                                    case Navi_Model::navitype_sort:
+                                        $value['type_name'] = '<span class="text-primary">' . lang('category') . '</span>';
+                                        break;
+                                    case Navi_Model::navitype_page:
+                                        $value['type_name'] = '<span class="text-success">' . lang('page') . '</span>';
+                                        break;
+                                    case Navi_Model::navitype_custom:
+                                        $value['type_name'] = '<span class="text-danger">' . lang('custom') . '</span>';
+                                        break;
+                                }
+                                doAction('adm_navi_display');
 
-                            ?>
-                            <tr style="cursor: move">
-                                <td>
-                                    <input type="hidden" name="navi[]" value="<?= $value['id'] ?>"/>
-                                    <a href="navbar.php?action=mod&amp;navid=<?= $value['id'] ?>"><?= $value['naviname'] ?></a>
-                                </td>
-                                <td><?= $value['type_name'] ?></td>
-                                <td>
-                                    <a href="<?= rtrim(BLOG_URL, '/') . $value['url'] ?>" target="_blank">
-                                        <img src="./views/images/<?= $value['newtab'] == 'y' ? 'vlog.gif' : 'vlog2.gif' ?>"/>
-                                    </a>
-                                </td>
-                                <td><?= $value['url'] ?></td>
-                                <td>
-                                    <?php if ($value['hide'] == 'n'): ?>
-                                        <a href="navbar.php?action=hide&amp;id=<?= $value['id'] ?>"
-                                           class="badge badge-primary"><?= lang('visible') ?></a>
-                                    <?php else: ?>
-                                        <a href="navbar.php?action=show&amp;id=<?= $value['id'] ?>"
-                                           class="badge badge-warning"><?= lang('hidden') ?></a>
-                                    <?php endif ?>
-                                    <?php if ($value['isdefault'] == 'n'): ?>
-                                        <a href="javascript: em_confirm(<?= $value['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
-                                           class="badge badge-danger"><?= lang('delete') ?></a>
-                                    <?php endif ?>
-                                </td>
+                        ?>
+                                <tr style="cursor: move">
+                                    <td>
+                                        <input type="hidden" name="navi[]" value="<?= $value['id'] ?>" />
+                                        <a href="navbar.php?action=mod&amp;navid=<?= $value['id'] ?>"><?= $value['naviname'] ?></a>
+                                    </td>
+                                    <td><?= $value['type_name'] ?></td>
+                                    <td>
+                                        <a href="<?= rtrim(BLOG_URL, '/') . $value['url'] ?>" target="_blank">
+                                            <img src="./views/images/<?= $value['newtab'] == 'y' ? 'vlog.gif' : 'vlog2.gif' ?>" />
+                                        </a>
+                                    </td>
+                                    <td><?= $value['url'] ?></td>
+                                    <td>
+                                        <?php if ($value['hide'] == 'n'): ?>
+                                            <a href="navbar.php?action=hide&amp;id=<?= $value['id'] ?>"
+                                                class="badge badge-primary"><?= lang('visible') ?></a>
+                                        <?php else: ?>
+                                            <a href="navbar.php?action=show&amp;id=<?= $value['id'] ?>"
+                                                class="badge badge-warning"><?= lang('hidden') ?></a>
+                                        <?php endif ?>
+                                        <?php if ($value['isdefault'] == 'n'): ?>
+                                            <a href="javascript: em_confirm(<?= $value['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
+                                                class="badge badge-danger"><?= lang('delete') ?></a>
+                                        <?php endif ?>
+                                    </td>
+                                </tr>
+                                <?php
+                                if (!empty($value['childnavi'])):
+                                    foreach ($value['childnavi'] as $val):
+                                ?>
+                                        <tr>
+                                            <td>
+                                                <input type="hidden" name="navi[]" value="<?= $val['id'] ?>" />
+                                                ----
+                                                <a href="navbar.php?action=mod&amp;navid=<?= $val['id'] ?>"><?= $val['naviname'] ?></a>
+                                            </td>
+                                            <td><?= $value['type_name'] ?></td>
+                                            <td>
+                                                <a href="<?= $val['url'] ?>" target="_blank">
+                                                    <img src="./views/images/<?= $val['newtab'] == 'y' ? 'vlog.gif' : 'vlog2.gif' ?>" /></a>
+                                            </td>
+                                            <td><?= $val['url'] ?></td>
+                                            <td>
+                                                <?php if ($val['hide'] == 'n'): ?>
+                                                    <a href="navbar.php?action=hide&amp;id=<?= $val['id'] ?>"
+                                                        class="badge badge-primary"><?= lang('visible') ?></a>
+                                                <?php else: ?>
+                                                    <a href="navbar.php?action=show&amp;id=<?= $val['id'] ?>"
+                                                        class="badge badge-warning"><?= lang('hidden') ?></a>
+                                                <?php endif ?>
+                                                <?php if ($val['isdefault'] == 'n'): ?>
+                                                    <a href="javascript: em_confirm(<?= $val['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
+                                                        class="badge badge-danger"><?= lang('delete') ?></a>
+                                                <?php endif ?>
+                                            </td>
+                                        </tr>
+                                <?php endforeach;
+                                endif ?>
+                            <?php endforeach;
+                        else: ?>
+                            <tr>
+                                <td colspan="4"><?= lang('nav_no') ?></td>
                             </tr>
-                            <?php
-                            if (!empty($value['childnavi'])):
-                                foreach ($value['childnavi'] as $val):
-                                    ?>
-                                    <tr>
-                                        <td>
-                                            <input type="hidden" name="navi[]" value="<?= $val['id'] ?>"/>
-                                            ----
-                                            <a href="navbar.php?action=mod&amp;navid=<?= $val['id'] ?>"><?= $val['naviname'] ?></a>
-                                        </td>
-                                        <td><?= $value['type_name'] ?></td>
-                                        <td>
-                                            <a href="<?= $val['url'] ?>" target="_blank">
-                                                <img src="./views/images/<?= $val['newtab'] == 'y' ? 'vlog.gif' : 'vlog2.gif' ?>"/></a>
-                                        </td>
-                                        <td><?= $val['url'] ?></td>
-                                        <td>
-                                            <?php if ($val['hide'] == 'n'): ?>
-                                                <a href="navbar.php?action=hide&amp;id=<?= $val['id'] ?>"
-                                                   class="badge badge-primary"><?= lang('visible') ?></a>
-                                            <?php else: ?>
-                                                <a href="navbar.php?action=show&amp;id=<?= $val['id'] ?>"
-                                                   class="badge badge-warning"><?= lang('hidden') ?></a>
-                                            <?php endif ?>
-                                            <?php if ($val['isdefault'] == 'n'): ?>
-                                                <a href="javascript: em_confirm(<?= $val['id'] ?>, 'navi', '<?= LoginAuth::genToken() ?>');"
-                                                   class="badge badge-danger"><?= lang('delete') ?></a>
-                                            <?php endif ?>
-                                        </td>
-                                    </tr>
-                                <?php endforeach;endif ?>
-                        <?php endforeach; else: ?>
-                        <tr>
-                            <td colspan="4"><?= lang('nav_no') ?></td>
-                        </tr>
-                    <?php endif ?>
+                        <?php endif ?>
                     </tbody>
                 </table>
             </div>
-            <div class="list_footer"><input type="submit" value="<?= lang('order_change') ?>"
-                                            class="btn btn-sm btn-success"/></div>
+            <div class="list_footer"><input type="submit" value="<?= lang('order_change') ?>" class="btn btn-sm btn-success"/></div>
         </form>
     </div>
 </div>
@@ -136,7 +135,7 @@
         <div class="card-body">
             <form action="navbar.php?action=add" method="post" name="navi" id="navi">
                 <div class="form-group">
-                    <input class="form-control" name="naviname" placeholder="<?= lang('nav_name') ?>" required/>
+                    <input class="form-control" name="naviname" placeholder="<?= lang('nav_name') ?>" required />
                 </div>
                 <div class="form-group">
                     <textarea maxlength="512" class="form-control" placeholder="<?= lang('nav_url') ?>" name="url" id="url" required></textarea>
@@ -154,7 +153,7 @@
                             if ($value['type'] != Navi_Model::navitype_custom || $value['pid'] != 0) {
                                 continue;
                             }
-                            ?>
+                        ?>
                             <option value="<?= $value['id'] ?>"><?= $value['naviname'] ?></option>
                         <?php endforeach ?>
                     </select>
@@ -177,27 +176,27 @@
                             if ($value['pid'] != 0) {
                                 continue;
                             }
-                            ?>
+                    ?>
                             <div class="form-group"><input type="checkbox" style="vertical-align:middle;"
-                                                           name="sort_ids[]" value="<?= $value['sid'] ?>" class="ids"/>
+                                    name="sort_ids[]" value="<?= $value['sid'] ?>" class="ids" />
                                 <?= $value['sortname'] ?>
                             </div>
                             <?php
                             $children = $value['children'];
                             foreach ($children as $key):
                                 $value = $sorts[$key];
-                                ?>
+                            ?>
                                 <div class="form-group">
                                     &nbsp; &nbsp; &nbsp; <input type="checkbox" style="vertical-align:middle;"
-                                                                name="sort_ids[]" value="<?= $value['sid'] ?>"
-                                                                class="ids"/>
+                                        name="sort_ids[]" value="<?= $value['sid'] ?>"
+                                        class="ids" />
                                     <?= $value['sortname'] ?>
                                 </div>
-                            <?php
+                        <?php
                             endforeach;
                         endforeach;
                         ?>
-                        <div class="form-group"><input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>"/></div>
+                        <div class="form-group"><input type="submit" name="" class="btn btn-sm btn-success" value="<?= lang('save') ?>" /></div>
                         <div class="form-group"><a class="small" href="sort.php"><?= lang('new_category') ?></a></div>
                     <?php else: ?>
                         <?= lang('no_categories') ?>, <a href="sort.php"><?= lang('category_add') ?></a>
@@ -215,14 +214,14 @@
                 <?php
                 if ($pages):
                     foreach ($pages as $key => $value):
-                        ?>
+                ?>
                         <div class="form-group">
                             <input type="checkbox" style="vertical-align:middle;" name="pages[<?= $value['gid'] ?>]"
-                                   value="<?= $value['title'] ?>" class="ids"/>
+                                value="<?= $value['title'] ?>" class="ids" />
                             <?= $value['title'] ?>
                         </div>
                     <?php endforeach ?>
-                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>"/></div>
+                    <div class="form-group"><input type="submit" class="btn btn-sm btn-success" name="" value="<?= lang('save') ?>" /></div>
                     <div class="form-group"><a class="small" href="page.php?action=new"><?= lang('add_page') ?></a></div>
                 <?php else: ?>
                     <div class="form-group"><?= lang('pages_no') ?>, <a href="page.php?action=new"><?= lang('add_page') ?></a></div>
@@ -233,14 +232,14 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         setTimeout(hideActived, 3600);
         $("#menu_category_view").addClass('active');
         $("#menu_view").addClass('show');
         $("#menu_navi").addClass('active');
 
         // Submit Form
-        $("#navi_form").submit(function (event) {
+        $("#navi_form").submit(function(event) {
             event.preventDefault();
             submitForm("#navi_form");
         });

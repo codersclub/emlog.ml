@@ -15,7 +15,7 @@
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <div class="mt-3">
                     <?= lang('post_description') ?><?= lang('optional') ?>:
-                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt">
+                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt" onclick="toggleCheckbox('auto_excerpt')">
                     <label for="auto_excerpt" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
                     <textarea id="logexcerpt" name="logexcerpt" class="form-control" rows="5"><?= $excerpt ?></textarea>
                 </div>
@@ -439,6 +439,8 @@
         $('#field_box').append(newField);
     });
 
-    // Check the expansion status of the advanced options on the right
-    applyStoredState('adv_set');
+    // 高级选项展开状态
+    initDisplayState('adv_set');
+    // 自动截取摘要状态
+    initCheckboxState('auto_excerpt');
 </script>

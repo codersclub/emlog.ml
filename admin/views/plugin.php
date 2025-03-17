@@ -3,8 +3,6 @@
     <div class="alert alert-success"><?= lang('plugin_upload_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['activate_upgrade'])): ?>
     <div class="alert alert-success"><?=lang('plugin_update_ok')?></div><?php endif ?>
-<?php if (isset($_GET['activate_del'])): ?>
-    <div class="alert alert-success"><?= lang('deleted_ok') ?></div><?php endif ?>
 <?php if (isset($_GET['active_error'])): ?>
     <div class="alert alert-danger"><?= lang('plugin_active_failed') ?></div><?php endif ?>
 <?php if (isset($_GET['error_a'])): ?>
@@ -21,8 +19,6 @@
     <div class="alert alert-danger"><?= lang('plugin_zipped_only') ?></div><?php endif ?>
 <?php if (isset($_GET['error_g'])): ?>
 <!--vot-->    <div class="alert alert-danger"><?= lang('php_size_limit') ?></div><?php endif ?>
-<?php if (isset($_GET['error_h'])): ?>
-    <div class="alert alert-danger"><?= lang('plugin_update_fail') ?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
     <div class="alert alert-danger"><?= lang('emlog_unregistered') ?></div><?php endif ?>
 <?php if (isset($_GET['error_sys'])): ?>
@@ -191,7 +187,11 @@
                     $.each(pluginsToUpdate, function(index, item) {
                         var $tr = $('table tbody tr[data-plugin-alias="' + item.name + '"]');
                         var $updateBtn = $tr.find('.update-btn');
-/*vot*/                 $updateBtn.append($('<a>').addClass('btn btn-success btn-sm').text(lang('update')).attr("href", "./plugin.php?action=upgrade&alias=" + item.name));
+                        var $updateLink = $('<a>').addClass('btn btn-success btn-sm').text(jlang('update')).attr("href", "javascript:void(0);");
+                        $updateLink.on('click', function() {
+                            updatePlugin(item.name, $updateLink);
+                        });
+                        $updateBtn.append($updateLink);
                     });
                 } else {
                     $('#upMsg').html(lang('plugin_update_check_fail') + response.code).addClass('alert alert-warning');
@@ -221,5 +221,29 @@
         } else {
             window.location.href = './plugin.php?action=inactive&plugin=' + plugin + '&token=' + token + '<?= '&filter=' . $filter ?>';
         }
+    }
+
+    function updatePlugin(pluginAlias, $updateLink) {
+        $updateLink.text('正在更新...').prop('disabled', true);
+        $.ajax({
+            url: './plugin.php?action=upgrade',
+            type: 'GET',
+            data: {
+                alias: pluginAlias,
+                token: '<?= LoginAuth::genToken() ?>'
+            },
+            success: function(response) {
+                if (response.code === 0) {
+                    location.href = 'plugin.php?activate_upgrade=1';
+                } else {
+                    $updateLink.text('更新').prop('disabled', false);
+                    cocoMessage.error(response.msg, 4000);
+                }
+            },
+            error: function(xhr) {
+                $updateLink.text('更新').prop('disabled', false);
+                cocoMessage.error('更新请求失败，请稍后重试', 4000)
+            }
+        });
     }
 </script>
