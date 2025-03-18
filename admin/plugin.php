@@ -179,7 +179,7 @@ if ($action === 'upgrade') {
             break;
         case 1:
         case 2:
-            Output::error(lang('plugin_not_writable', 200);
+            Output::error(lang('plugin_not_writable'), 200);
             break;
         case 3:
             Output::error(lang('plugin_zip_select'), 200);
