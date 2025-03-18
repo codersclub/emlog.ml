@@ -22,11 +22,11 @@
         <a href="./store.php?tag=paid" class="badge badge-warning m-1 p-2"><?= lang('paid_zone') ?></a>
         <a href="./store.php?tag=promo" class="badge badge-danger m-1 p-2"><?= lang('limited_offer') ?></a>
         <a href="./store.php?tag=download_top" class="badge badge-light text-primary p-2 small">&#x1F525;<?= lang('top_down') ?></a>
-        <a href="./store.php?keyword=ai" class="badge badge-light text-primary p-2 small">✨AI</a>
+        <a href="./store.php?keyword=ai" class="badge badge-light text-primary p-2 small"><?= lang('ai') ?></a>
         <a href="./store.php?sid=2" class="badge badge-light text-primary p-2 small">SEO</a>
-        <a href="./store.php?sid=8" class="badge badge-light text-primary p-2 small">个人博客</a>
-        <a href="./store.php?sid=21" class="badge badge-light text-primary p-2 small">文档知识库</a>
-        <a href="./store.php?sid=17" class="badge badge-light text-primary p-2 small">导航</a>
+        <a href="./store.php?sid=8" class="badge badge-light text-primary p-2 small"><?= lang('tpl_category_8') ?></a>
+        <a href="./store.php?sid=21" class="badge badge-light text-primary p-2 small"<?= lang('plu_category_21') ?></a>
+        <a href="./store.php?sid=17" class="badge badge-light text-primary p-2 small"><?= lang('tpl_category_17') ?></a>
         <a href="./store.php?sid=1" class="badge badge-light text-primary p-2 small"><?= lang('plu_category_1') ?></a>
         <a href="./store.php?sid=12" class="badge badge-light text-primary p-2 small"><?= lang('plu_category_12') ?></a>
         <a href="./store.php?sid=11" class="badge badge-light text-primary p-2 small"><?= lang('plu_category_11') ?></a>

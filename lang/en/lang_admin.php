@@ -143,7 +143,7 @@ $lang = array(
     'plu_category_5' => 'File Storage',//'文件存储',
     'plu_category_6' => 'Other',//'其他',
     'tpl_category_7' => 'Resource download',//'资源下载',
-    'tpl_category_8' => 'Blog We Media',//'博客自媒体',
+    'tpl_category_8' => 'Personal blog',//'个人博客',
     'tpl_category_9' => 'Community Forum',//'社区论坛',
     'tpl_category_10' => 'General Theme',//'通用主题',
     'plu_category_11' => 'User Interaction',//'用户互动',
@@ -152,7 +152,7 @@ $lang = array(
     'plu_category_14' => 'Program development',//'编程开发',
     'plu_category_15' => 'Content Creation',//'内容创作',
     'plu_category_16' => 'Data collection',//'数据采集',
-    'tpl_category_17' => 'Site navigation',//'网址导航',
+    'tpl_category_17' => 'Navigation',//'导航',
     'tpl_category_18' => 'WeChat Ecosystem',//'微信生态',
     'tpl_category_19' => 'Enterprise Show',//'企业展示',
     'plu_category_20' => 'Editor',//'编辑器',
@@ -523,7 +523,7 @@ $lang = array(
     'php_version' => 'PHP version',//'PHP版本',
     'emlog_version' => 'EMLOG version',//'EMLOG版本',
     'unregistered' => 'unregistered',//'未注册',
-    'emlog_unregistered' => 'Emlog is not registered',//'emlog未注册',
+    'emlog_unregistered' => 'Emlog is not registered',//'您的emlog尚未正版注册',
     'emlog_reg_advantages' => 'The emlog you installed has not been registered, after registration you will get:',//'您安装的emlog尚未注册，注册后将获得：',
     'advantage1' => '1. Unlock the online upgrade function, upgrade to the latest version with one click, and get official security and function updates.',//'1. 解锁在线升级功能，一键升级到最新版本，获得来自官方的安全和功能更新。',
     'advantage2' => '2. Unlock the app store to get more templates and extensions.',//'2. 解锁应用商店，获得更多模板和扩展插件。',
@@ -562,7 +562,7 @@ $lang = array(
     'update_check_failed' => 'Check failed, may be a network problem exists',//'检查失败，可能是网络问题',
     'updating' => 'Updating, please wait patiently',//'正在更新中，请耐心等待',
     'update_completed' => 'Congratulations! The update is successful, please <a href="./">refresh the page</a> to start experiencing the new version of emlog',//'恭喜您！更新成功了，请<a href="./">刷新页面</a> 开始体验新版emlog',
-    'update_download_failed' => 'Download the update failed, may be a network problem exists',//'下载更新失败，可能是服务器网络问题',
+    'update_download_failed' => 'Unable to download update package, it may be a server network problem',//'无法下载更新包，可能是服务器网络问题',
     'update_extract_failed' => 'Extract the update failed, may be the server does not support the zip extension',//'解压更新失败，可能是你的服务器空间不支持zip模块',
     'update_failed_nonwritable' => 'Update failed, the directory is not writable',//'更新失败，目录不可写',
     'update_failed' => 'Update failed',//'更新失败',
@@ -1058,7 +1058,7 @@ $lang = array(
 //admin/views/store_svip.php
     'not_svip' => 'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',//'您还不是铁杆svip付费支持用户，无法安装专属免费应用',
     'paid_support' => 'Paid support &rarr;',//'付费支持 &rarr;',
-    'can_use_free' => 'Users can download and install the following plug-ins for free &#x1F447;',//'用户可以免费下载安装下面的插件&#x1F447;',
+    'can_use_free' => 'Users can install the following apps for free &#x1F447;',//'用户可以免费安装下面的应用&#x1F447;',
 
 //---------------------------
 //admin/views/store_tpl.php

@@ -338,7 +338,7 @@ $isdraft = $draft ? '&draft=1' : '';
                 $("#form_log").submit();
                 layer.close(index);
             }, function(index) {
-                localStorage.setItem('alert_action_success', '删除');
+                localStorage.setItem('alert_action_success', jlang('delete'));
                 $("#operate").val(act);
                 $("#form_log").submit();
                 layer.close(index);
@@ -348,7 +348,7 @@ $isdraft = $draft ? '&draft=1' : '';
 
         if (act === 'del_draft') {
             delAlert2('', lang('sure_del_draft'), function() {
-                localStorage.setItem('alert_action_success', '删除');
+                localStorage.setItem('alert_action_success', jlang('delete'));
                 $("#operate").val("del");
                 $("#form_log").submit();
             })

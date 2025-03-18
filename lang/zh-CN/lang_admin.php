@@ -1058,7 +1058,7 @@ $lang = array(
 //admin/views/store_svip.php
     'not_svip' => '您还不是铁杆svip付费支持用户，无法安装专属免费应用',//'You are not a hardcore svip paid support user, so you cannot install exclusive free applications',
     'paid_support' => '付费支持 &rarr;',//'Paid support &rarr;',
-    'can_use_free' => '用户可以免费安装下面的应用👇',//'Users can install the following apps for free &#x1F447;',
+    'can_use_free' => '用户可以免费安装下面的应用&#x1F447;',//'Users can install the following apps for free &#x1F447;',
 
 //---------------------------
 //admin/views/store_tpl.php

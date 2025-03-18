@@ -25,7 +25,7 @@ function em_confirm(id, property, token) {
         case 'draft':
             url = 'article.php?action=del&draft=1&gid=' + id;
             msg = jlang('draft_del_sure');
-            delAlert(msg, text, url, token, '删除', property)
+            delAlert(msg, text, url, token, jlang('delete'), property)
             break;
         case 'tw':
             url = 'twitter.php?action=del&id=' + id;
@@ -139,7 +139,7 @@ function delArticle(msg, text, url, token) {
         window.location = url + '&token=' + token;
         layer.close(index);
     }, function (index) {
-        localStorage.setItem('alert_action_success', '删除');
+        localStorage.setItem('alert_action_success', jlang('delete'));
         window.location = url + '&rm=1&token=' + token;
         layer.close(index);
     }, function (index) {
@@ -706,7 +706,7 @@ $(function () {
     // Delete prompt
     const alert_action_success = localStorage.getItem('alert_action_success')
     if (localStorage.getItem('alert_action_success')) {
-        cocoMessage.success(alert_action_success + '成功');
+        cocoMessage.success(alert_action_success + jlang('success'));
         localStorage.removeItem('alert_action_success');
     }
 })

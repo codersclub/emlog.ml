@@ -224,7 +224,7 @@
     }
 
     function updatePlugin(pluginAlias, $updateLink) {
-        $updateLink.text('正在更新...').prop('disabled', true);
+        $updateLink.text(jlang('updating')).prop('disabled', true);
         $.ajax({
             url: './plugin.php?action=upgrade',
             type: 'GET',
@@ -236,13 +236,13 @@
                 if (response.code === 0) {
                     location.href = 'plugin.php?activate_upgrade=1';
                 } else {
-                    $updateLink.text('更新').prop('disabled', false);
+                    $updateLink.text(jlang('update')).prop('disabled', false);
                     cocoMessage.error(response.msg, 4000);
                 }
             },
             error: function(xhr) {
-                $updateLink.text('更新').prop('disabled', false);
-                cocoMessage.error('更新请求失败，请稍后重试', 4000)
+                $updateLink.text(jlang('update')).prop('disabled', false);
+                cocoMessage.error(jlang('update_failed'), 4000)
             }
         });
     }

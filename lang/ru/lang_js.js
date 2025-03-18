@@ -15,6 +15,7 @@ var LNG = {
 // admin/views/article.php
     'select_article'       : 'Пожалуйста, выберите статью',//'请选择文章',
     'sure_delete_articles' : 'Вы уверены, что хотите удалить выбранную статью',//'确定要删除所选文章吗',
+    'success' : 'Успешно',//'成功',
 
 // admin/views/blogger.php
     'password_changed_ok' : 'Пароль успешно изменён, выйдите и зайдите снова',//'密码修改成功, 请退出重新登录',
@@ -31,8 +32,8 @@ var LNG = {
 // admin/views/comment.php
     'comment_operation_select'     : 'Пожалуйста, выберите комментарий',//'请选择评论',
     'comment_selected_delete_sure' : 'Удалить выбранные комментарии?',//'删除所选评论？',
-    'ai_generating' : 'Генерация ответа...',//'AI Generating...',
-    'ai_gen_failed' : 'Ошибка при генерации ответа',//'AI generation failed',
+    'ai_generating'		   : 'Генерация ответа...',//'AI Generating...',
+    'ai_gen_failed'		   : 'Ошибка при генерации ответа',//'AI generation failed',
 
 // admin/views/components/layer/layer.js
     'rotate' : 'Поворот',//'旋转',
@@ -59,6 +60,8 @@ var LNG = {
     'update'				: 'Обновить',//'更新',
     'plugin_update_check_fail'		: 'Сбой при проверке обновления, код ошибкт: ',//'插件更新检查无法正常进行,错误码:',
     'plugin_update_check_exception'	: '<b>Исключение проверки обновления:</b><br>',//'插件更新检查异常： ',
+    'updating'				: 'Обновление...',//'正在更新...',
+    'update_failed'			: 'Ошибка загрузки обновления. Попробуйте повторить позже.',//'更新请求失败，请稍后重试',
 
 //---------------------------
 //admin/views/signup.php
