@@ -169,7 +169,7 @@
                 }
             ?>
                 <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
+                    <div class="card mb-4 shadow-sm hover-shadow-lg">
                         <a href="<?= $media_url ?>" <?= $img_viewer ?> target="_blank"><img class="card-img-top" loading="lazy" src="<?= $media_icon ?>" /></a>
                         <div class="card-body">
                             <p class="card-text text-muted small">
@@ -216,7 +216,7 @@
                     <label class="custom-control-label" for="checkAllItem"><?=lang('select_all')?></label>
                 </div>
             </div>
-            <a href="javascript:mediaact('del');" class="btn btn-sm btn-danger"><?= lang('delete') ?></a>
+            <a href="javascript:mediaact('del');" class="btn btn-outline-danger btn-sm"><?= lang('delete') ?></a>
             <div class="col-auto my-1 form-inline">
                 <?php if (User::isAdmin()): ?>
                     <select name="sort" id="sort" onChange="changeSort(this);" class="form-control form-control-sm m-1">

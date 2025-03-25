@@ -24,13 +24,20 @@ $(function () {
         action: tplOptions.uploadUrl, target: 'upload-image', enctype: 'multipart/form-data', method: 'post'
     });
     //Insert settings button
+    console.log(tplOptions);
     for (var tpl of Object.keys(tplOptions.templates)) {
-        var now = document.querySelector('a[href*="em_confirm(\'' + tpl + '\',"]');
-        var xps = document.createElement('a');
-        xps.style.fontSize = '12px';
-        xps.style.marginLeft = '4px';
-        now.parentNode.appendChild(xps);
-/*vot*/        $('<a class="btn btn-primary btn-sm">' + lang('options') + '</a>').insertBefore(xps).addClass(attr('setting')).data('template', tpl);
+        var templateCards = document.querySelectorAll('.card[data-app-alias]');
+        templateCards.forEach(function(card) {
+            if (card.getAttribute('data-app-alias') === tpl) {
+                var settingBtnContainer = card.querySelector('.setting-btn');
+                if (settingBtnContainer) {
+                    $('<a class="btn btn-outline-primary btn-sm"><i class="icofont-options"></i> ' + lang('options') + '</a>')
+                        .appendTo(settingBtnContainer)
+                        .addClass(attr('setting'))
+                        .data('template', tpl);
+                }
+            }
+        });
     }
     //Bind event handler
     body.on('click', '.' + attr('setting'), function () {

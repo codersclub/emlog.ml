@@ -26,7 +26,12 @@
                         foreach ($fields as $key => $value): ?>
                             <div class="form-row field_list">
                                 <div class="col-sm-4">
-                                    <input type="text" name="field_keys[]" value="<?= $key ?>" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
+                                    <input type="text" name="field_keys[]" value="<?= $key ?>" list="customFieldList" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
+                                    <datalist id="customFieldList">
+                                        <?php foreach ($customFields as $k => $v): ?>
+                                            <option value="<?= $k ?>"><?= $k . '【' . $v['name'] . '】' . $v['description'] ?></option>
+                                        <?php endforeach; ?>
+                                    </datalist>
                                 </div>
                                 <div class="col-sm-6 mx-sm-3">
                                     <input type="text" name="field_values[]" value="<?= $value ?>" id="field_values" class="form-control" placeholder="<?= lang('field_value') ?>" required>
@@ -426,7 +431,12 @@
         var newField = `
                     <div class="form-row field_list">
                         <div class="col-sm-4">
-                            <input type="text" name="field_keys[]" value="" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
+                            <input type="text" name="field_keys[]" list="customFieldList" value="" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
+                            <datalist id="customFieldList">
+                                <?php foreach ($customFields as $k => $v): ?>
+                                    <option value="<?= $k ?>"><?= $k . '【' . $v['name'] . '】' . $v['description'] ?></option>
+                                <?php endforeach; ?>
+                            </datalist>
                         </div>
                         <div class="col-sm-6 mx-sm-3">
                             <input type="text" name="field_values[]" value="" id="field_values" class="form-control" placeholder="<?= lang('field_value') ?>" required>

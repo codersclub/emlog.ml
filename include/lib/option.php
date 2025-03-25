@@ -8,8 +8,8 @@
 
 class Option
 {
-    const EMLOG_VERSION = 'pro 2.5.8';
-    const EMLOG_VERSION_TIMESTAMP = 1742118865;
+    const EMLOG_VERSION = 'pro 2.5.9';
+    const EMLOG_VERSION_TIMESTAMP = 1742862481;
     const UPLOADFILE_PATH = '../content/uploadfile/';
     const UPLOADFILE_FULL_PATH = EMLOG_ROOT . '/content/uploadfile/';
 
@@ -97,12 +97,7 @@ class Option
                 'reg_0'  => '|^.*/\?(keyword)=([^/&]+)(&(page)=(\d+))?([\?&].*)?$|',
             ],
             [
-                'model'  => 'Comment_Controller',
-                'method' => 'addComment',
-                'reg_0'  => '|^.*/\?(action)=(addcom)([\?&].*)?$|',
-            ],
-            [
-                'model'  => 'Like_Controller',
+                'model'  => 'Log_Controller',
                 'method' => 'index',
                 'reg_0'  => '|^.*/\?(action)=([a-z]+)([\?&].*)?$|',
             ],

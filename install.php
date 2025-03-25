@@ -508,6 +508,7 @@ CREATE TABLE {$db_prefix}comment (
   ip varchar(128) NOT NULL default '' COMMENT 'IP address',
   agent varchar(512) NOT NULL default '' COMMENT 'User agent',
   hide enum('n','y') NOT NULL default 'n' COMMENT 'Hide or not',
+    like_count int(11) unsigned NOT NULL default '0' COMMENT 'Likes',
   date bigint(20) NOT NULL COMMENT 'Creation time',
     PRIMARY KEY  (cid),
     KEY gid (gid),

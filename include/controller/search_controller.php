@@ -17,7 +17,6 @@ class Search_Controller
 
         $page = abs(Input::getIntVar('page', 1));
         $keyword = Input::getStrVar('keyword');
-        $keyword = htmlspecialchars(urldecode($keyword));
         $keyword = str_replace(array('%', '_'), array('\%', '\_'), $keyword);
         $sid = abs(Input::getIntVar('sid'));
         $pageurl = '';
@@ -41,6 +40,7 @@ class Search_Controller
         $logs = $Log_Model->getLogsForHome($sqlSegment . $orderBy, $page, $index_lognum);
         $page_url = pagination($lognum, $index_lognum, $page, $pageurl);
 
+        $keyword = htmlspecialchars($keyword);
         include View::getView('header');
         include View::getView('log_list');
     }
