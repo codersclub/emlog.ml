@@ -30,7 +30,7 @@ class Article
     }
 
     /**
-     *  是否禁止用户发文
+     *  Check if users prohibited from posting
      */
     public static function hasForbidPost()
     {

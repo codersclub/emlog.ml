@@ -297,6 +297,7 @@ $lang = array(
     'tags_have' => '已有标签+',//'Have tags+',
     'post_tags_separated' => '多个标签用英文逗号分隔',//'Multilple tags, separated by commas',
     'resource_library' => '资源媒体库',//'Media gallery',
+    'media_library' => '媒体库',//'Media Library',
     'no_resources' => '暂无可用资源',//'No resources available',
     'file_insert' => '插入文件',//'Insert file',
     'img_insert' => '插入图片',//'Insert image',
@@ -1104,6 +1105,9 @@ $lang = array(
     'template_author' => '模板开发者',//'Template author',
     'template_update_ok' => '模板更新成功',//'Template updated successfully',
     'enable' => '启用',//'Enable',
+    'template_new_install' => '安装新模板',//'Installing a New Template',
+    'template_select' => '选择模板文件',//'Select Template File',
+    'template_upload' => '请上传zip格式的模板安装包',//'Please upload the template installation package in zip format',
 
 //---------------------------
 //admin/views/template_crop.php

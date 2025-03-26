@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 模板预设的文章自定义字段
+ * Preset custom article fields in templates
  */
 
 defined('EMLOG_ROOT') || exit('access denied!');

@@ -29,7 +29,7 @@
                                     <input type="text" name="field_keys[]" value="<?= $key ?>" list="customFieldList" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
                                     <datalist id="customFieldList">
                                         <?php foreach ($customFields as $k => $v): ?>
-                                            <option value="<?= $k ?>"><?= $k . '【' . $v['name'] . '】' . $v['description'] ?></option>
+<!--vot-->                                  <option value="<?= $k ?>"><?= $k . ' [' . $v['name'] . '] ' . $v['description'] ?></option>
                                         <?php endforeach; ?>
                                     </datalist>
                                 </div>
@@ -434,7 +434,7 @@
                             <input type="text" name="field_keys[]" list="customFieldList" value="" id="field_keys" class="form-control" placeholder="<?= lang('field_name') ?>" maxlength="120" required>
                             <datalist id="customFieldList">
                                 <?php foreach ($customFields as $k => $v): ?>
-                                    <option value="<?= $k ?>"><?= $k . '【' . $v['name'] . '】' . $v['description'] ?></option>
+<!--vot-->                          <option value="<?= $k ?>"><?= $k . ' [' . $v['name'] . '] ' . $v['description'] ?></option>
                                 <?php endforeach; ?>
                             </datalist>
                         </div>
