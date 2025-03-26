@@ -24,7 +24,7 @@ var LNG = {
     'captcha_send' : 'Send verification code',//'发送验证码',
     'captcha_sent_ok' : 'Verification code has been sent, please check your email',//'验证码已发送，请查收邮件',
     'ai_request_failed' : 'AI request failed, please try again later',//'AI 请求失败，请稍后再试',
-    'password_strength' : 'Password strength: '//'密码强度：',
+    'password_strength' : 'Password strength: ',//'密码强度：',
     'weak' : 'weak',//'弱',
     'strong' : 'strong',//'强',
     'medium' : 'medium',//'中等',
