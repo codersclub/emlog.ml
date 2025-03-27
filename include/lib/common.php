@@ -8,9 +8,9 @@
 
 function emAutoload($class)
 {
-    $class = strtolower($class);
-
 /*vot*/ load_language($class);
+
+    $class = strtolower($class);
 
     if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
         require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
@@ -1310,6 +1310,7 @@ function load_language($model = '') {
     global $LANGUAGE;
     global $LANGLIST;
 
+/*vot*/ $class = $model; // Just for debug
     $model = strtolower($model);
     $model = str_replace(array('_controller', '_model'), '', $model);
 
@@ -1328,6 +1329,7 @@ function load_language($model = '') {
         } else {
             $file = EMLOG_ROOT . '/lang/' . LANG . '/lang_' . $model . '.php';
         }
+//dump($class . ' ~~&gt; ' . $file, 'load_language');
 
         if (is_file($file)) {
             $lang = array();
