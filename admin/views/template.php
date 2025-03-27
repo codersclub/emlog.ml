@@ -31,7 +31,7 @@
             <i class="icofont-shopping-cart mr-1"></i><?= lang('app_store') ?>
         </a>
         <a href="#" class="btn btn-success shadow-sm" data-toggle="modal" data-target="#addModal">
-            <i class="icofont-plus mr-1"></i>安装模板
+            <i class="icofont-plus mr-1"></i><?= lang('template_install') ?>
         </a>
     </div>
 </div>
@@ -53,7 +53,7 @@
                 <div class="card-footer bg-white border-0 p-4">
                     <div class="mb-3">
                         <?php if ($nonce_template == $value['tplfile']): ?>
-                            <span class="badge badge-success mr-2">已启用</span>
+                            <span class="badge badge-success mr-2"><?= lang('enabled') ?></span>
                         <?php endif; ?>
                         <?php if ($value['version']): ?>
                             <span class="badge badge-light mr-2"><?=lang('version_number')?>:<?= $value['version'] ?></span>
@@ -97,7 +97,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow">
             <div class="modal-header border-0">
-                <h5 class="modal-title">安装新模板</h5>
+                <h5 class="modal-title"><?= lang('template_new_install') ?></h5>
                 <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -106,17 +106,17 @@
                 <div class="modal-body px-4">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="tplzip" id="tplzip">
-                        <label class="custom-file-label" for="tplzip">选择模板文件</label>
+                        <label class="custom-file-label" for="tplzip"><?= lang('template_select') ?></label>
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                     </div>
                     <small class="form-text text-muted mt-2">
-                        请上传zip格式的模板安装包
+                        <?= lang('template_upload') ?>
                     </small>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-light" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-success">
-                        <i class="icofont-upload mr-1"></i>上传安装
+                        <i class="icofont-upload mr-1"></i><?= lang('upload_install') ?>
                     </button>
                 </div>
             </form>

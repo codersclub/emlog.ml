@@ -20,6 +20,10 @@ $lang = array(
 'cancel_failed'		=> 'Ошибка отмены',//'取消失败',
 
 //---------------------------
+//include/controller/log_controller.php
+'comment_not_exists'	=> 'Комментарий не найден',//'评论不存在',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'	=> 'm.Y',//'Y年n月',
 'cache_read_error'	=> 'Не удалось записать в кеш, возможно, каталог кеша (content/cache) недоступен для записи',//'读取缓存失败',

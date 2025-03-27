@@ -10,19 +10,19 @@ defined('EMLOG_ROOT') || exit('access denied!');
 $custom_fields = [
     'price' => [
         'type'        => 'text',
-        'name'        => '价格',
-        'description' => '如：9.99',
-        'default'     => ''
+        'name'        => 'Price',
+        'description' => 'For example: 9.99',
+        'default'     => '',
     ],
     'need_vip' => [
         'type'        => 'radio',
-        'name'        => '是否需要会员',
+        'name'        => 'Does membership required?',
         'values'      => [
-            '0' => '否',
-            '1' => '是'
+            '0' => 'No',
+            '1' => 'Yes',
         ],
-        'description' => '1是，0否',
-        'default'     => '0'
+        'description' => '1 for yes, 0 for no',
+        'default'     => '0',
     ],
 ];
 */

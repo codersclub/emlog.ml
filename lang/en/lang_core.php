@@ -20,6 +20,10 @@ $lang = array(
 'cancel_failed'		=> 'Cancellation failed',//'取消失败',
 
 //---------------------------
+//include/controller/log_controller.php
+'comment_not_exists' => 'Comment does not exist',//'评论不存在',
+
+//---------------------------
 //include/lib/cache.php
 'cache_date_format'  => 'm.Y',//'Y年n月',
 'cache_read_error'   => 'Failed to write to the cache, it may be that the cache directory (content/cache) is not writable',//'写入缓存失败，可能是缓存目录(content/cache)不可写',

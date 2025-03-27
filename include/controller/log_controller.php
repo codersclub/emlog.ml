@@ -167,27 +167,27 @@ class Log_Controller
         $err = '';
 
         if (!ISLOGIN && Option::get('login_comment') === 'y') {
-            $err = '请先完成登录，再发布评论';
+            $err = lang('login_before_comment');
         } elseif ($blogId <= 0 || empty($log)) {
-            $err = '文章不存在';
+            $err = lang('error_article_no');
         } elseif (Option::get('iscomment') == 'n' || $log['allow_remark'] == 'n') {
-            $err = '该文章未开启评论';
+            $err = lang('comment_error_comment_disabled');
         } elseif (!User::haveEditPermission() && $Comment_Model->isCommentTooFast() === true) {
-            $err = '评论发布太频繁';
+            $err = lang('comment_error_flood_control');
         } elseif (empty($name)) {
-            $err = '请填写昵称';
+            $err = lang('comment_error_name_enter');
         } elseif (strlen($name) > 100) {
-            $err = '昵称太长了';
+            $err = lang('error_name_invalid');
         } elseif ($mail !== '' && !checkMail($mail)) {
-            $err = '不是有效的邮箱';
+            $err = lang('comment_error_email_invalid');
         } elseif (empty($content)) {
-            $err = '请填写评论内容';
+            $err = lang('comment_error_empty');
         } elseif (strlen($content) > 60000) {
-            $err = '内容内容太长了';
+            $err = lang('comment_error_content_invalid');
         } elseif (ISLOGIN === false && Option::get('comment_code') == 'y' && session_start() && (empty($imgcode) || $imgcode !== $_SESSION['code'])) {
-            $err = '验证码错误';
+            $err = lang('captcha_invalid');
         } elseif (empty($ua) || preg_match('/bot|crawler|spider|robot|crawling/i', $ua)) {
-            $err = '非正常请求';
+            $err = lang('invalid_request');
         }
 
         if ($err) {
@@ -201,7 +201,7 @@ class Log_Controller
         notice::sendNewCommentMail($content, $blogId, $pid);
 
         if ($hide === 'y') {
-            $msg = '评论成功，请等待管理员审核';
+            $msg = lang('comment_wait_approve');
             $resp === 'json' ? Output::ok($msg) : emMsg($msg);
         }
         if ($resp === 'json') {
@@ -223,9 +223,9 @@ class Log_Controller
         $err = '';
 
         if (empty($c)) {
-            $err = '评论不存在';
+            $err = lang('comment_not_exists');
         } elseif (empty($ip) || empty($ua) || preg_match('/bot|crawler|spider|robot|crawling/i', $ua)) {
-            $err = '非正常请求';
+            $err = lang('invalid_request');
         }
 
         if ($err) {
@@ -261,15 +261,15 @@ class Log_Controller
         $err = '';
 
         if ($blogId <= 0 || empty($log)) {
-            $err = '文章不存在';
+            $err = lang('error_article_no');
         } elseif ($Like_Model->isLiked($blogId, $uid, $ip) === true) {
-            $err = '已经赞过了';
+            $err = lang('liked_already');
         } elseif (!User::haveEditPermission() && $Like_Model->isTooFast() === true) {
-            $err = '操作太频繁';
+            $err = lang('action_too_often');
         } elseif (strlen($name) > 100) {
-            $err = '昵称太长了';
+            $err = lang('error_name_invalid');
         } elseif (empty($ip) || empty($ua) || preg_match('/bot|crawler|spider|robot|crawling/i', $ua)) {
-            $err = '非正常请求';
+            $err = lang('invalid_request');
         }
 
         if ($err) {
@@ -296,7 +296,7 @@ class Log_Controller
         $r = $Like_Model->unLike($uid, $blogId);
 
         if ($r === false) {
-            Output::error('取消失败');
+            Output::error(lang('cancel_failed'));
         }
 
         Output::ok();

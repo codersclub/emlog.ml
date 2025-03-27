@@ -64,10 +64,10 @@
                     <?php if (!Article::hasForbidPost()): ?>
                         <a class="p-2" href="article.php"><?= Option::get("posts_name") ?></a>
                         <?php if (Option::get('forbid_user_upload') !== 'y') : ?>
-                            <a class="p-2" href="media.php">媒体库</a>
+                            <a class="p-2" href="media.php"><?= lang('media_library') ?></a>
                         <?php endif ?>
                     <?php endif ?>
-                    <a class="p-2" href="comment.php">评论</a>
+                    <a class="p-2" href="comment.php"><?= lang('comments') ?></a>
                     <?php doAction('user_menu') ?>
                 </nav>
                 <nav class="my-2 my-md-0 mr-md-3">
