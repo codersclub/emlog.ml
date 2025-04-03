@@ -46,8 +46,8 @@ if (empty($action)) {
     $page_url .= $uid ? "uid=$uid&" : '';
     $page_url .= $keyword ? "keyword=$keyword&" : '';
     $dateTime = $date ? $date . ' 23:59:59' : '';
-    $medias = $Media_Model->getMedias($page, $page_count, $uid, $sid, $dateTime, $keyword);
-    $count = $Media_Model->getMediaCount($uid, $sid, $dateTime, $keyword);
+    $medias = $Media_Model->getMedias($page, $page_count, $uid, $sid, strtotime($dateTime), $keyword);
+    $count = $Media_Model->getMediaCount($uid, $sid, strtotime($dateTime), $keyword);
     $page = pagination($count, $page_count, $page, $page_url . 'page=');
 
     $sorts = $MediaSortModel->getSorts();
@@ -142,7 +142,7 @@ if ($action === 'delete_async') {
 if ($action === 'operate_media') {
     $operate = Input::postStrVar('operate');
     $sort = Input::postIntVar('sort');
-    $aids = isset($_POST['aids']) ? array_map('intval', $_POST['aids']) : array();
+    $aids = Input::postIntArray('aids', []);
 
     LoginAuth::checkToken();
     switch ($operate) {
@@ -191,7 +191,7 @@ if ($action === 'update_media_sort') {
         emMsg(lang('no_permission'), './');
     }
     $sortname = Input::postStrVar('sortname');
-    $id = isset($_POST['id']) ? (int)$_POST['id'] : '';
+    $id = Input::postIntVar('id');
 
     if (empty($sortname)) {
         emDirect("./media.php?error_a=1");

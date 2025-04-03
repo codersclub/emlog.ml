@@ -6,11 +6,6 @@
  * @link https://www.emlog.net
  */
 
-/**
- * @var string $action
- * @var object $CACHE
- */
-
 require_once 'globals.php';
 
 if (empty($_POST)) {
@@ -21,9 +16,10 @@ $Log_Model = new Log_Model();
 $Tag_Model = new Tag_Model();
 
 $title = Input::postStrVar('title');
-$postDate = isset($_POST['postdate']) ? strtotime(trim($_POST['postdate'])) : time();
+$postDate = Input::postStrVar('postDate');
+$postDate = $postDate ? strtotime($postDate) : time();
 $sort = Input::postIntVar('sort', -1);
-$tagstring = isset($_POST['tag']) ? strip_tags(addslashes(trim($_POST['tag']))) : '';
+$tagstring = strip_tags(Input::postStrVar('tag'));
 $content = Input::postStrVar('logcontent');
 $excerpt = Input::postStrVar('logexcerpt');
 $alias = Input::postStrVar('alias');
@@ -34,26 +30,39 @@ $password = Input::postStrVar('password');
 $template = Input::postStrVar('template');
 $cover = Input::postStrVar('cover');
 $link = Input::postStrVar('link');
-$author = isset($_POST['author']) && User::haveEditPermission() ? (int)trim($_POST['author']) : UID;
+$author  = Input::postIntVar('author');
+$author = $author && User::haveEditPermission() ? $author : UID; // 非管理员用户只能修改自己的文章
 $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
 $pubPost = Input::postStrVar('pubPost'); // Whether to publish the article directly instead of saving a draft
-$auto_excerpt = Input::postStrVar('auto_excerpt');
+$auto_excerpt = Input::postStrVar('auto_excerpt', 'n');
+$auto_cover = Input::postStrVar('auto_cover', 'n');
 $field_keys = Input::postStrArray('field_keys');
 $field_values = Input::postStrArray('field_values');
 
+// 自动提取摘要
 if ($auto_excerpt === 'y') {
     $origContent = trim($_POST['logcontent']);
     $parseDown = new Parsedown();
     $excerpt = $parseDown->text($origContent);
     $excerpt = extractHtmlData($excerpt, 180);
     $excerpt = str_replace(["\r", "\n", "'", '"'], ' ', $excerpt);
+    $excerpt = addslashes($excerpt);
+}
+
+// 自动提取封面
+if (empty($cover) && $auto_cover === 'y') {
+    $cover = getFirstImage($content);
 }
 
 if ($pubPost) {
     $ishide = 'n';
 }
 
+// 检查文章别名
+if (!preg_match('/^[a-zA-Z0-9_-]+$/', $alias)) {
+    $alias = '';
+}
 if (!empty($alias)) {
     $logalias_cache = $CACHE->readCache('logalias');
     $alias = $Log_Model->checkAlias($alias, $logalias_cache, $blogid);

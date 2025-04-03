@@ -130,6 +130,17 @@ function delAlert2(msg, text, actionClosure, btnText = jlang('delete')) {
     });
 }
 
+function changeAuthorAlert() {
+    layer.prompt({
+        title: '输入新的作者ID',
+        formType: 0 // 单行输入框
+    }, function(value, index) {
+        $('#author').val(value); // 将输入的作者ID设置到隐藏的输入框中
+        changeAuthor(); // 调用更改作者的函数
+        layer.close(index);
+    });
+}
+
 function delArticle(msg, text, url, token) {
     layer.confirm(text, {
         title: msg,
@@ -663,12 +674,11 @@ $(function () {
         e.preventDefault();
         let link = $(this);
         let down_url = link.data('url');
-        let cdn_down_url = link.data('cdn-url');
         let type = link.data('type');
 /*vot*/        link.text(jlang('installing'));
         link.parent().prev(".installMsg").html("").addClass("spinner-border text-primary");
 
-        let url = './store.php?action=install&type=' + type + '&source=' + down_url + '&cdn_source=' + cdn_down_url;
+        let url = './store.php?action=install&type=' + type + '&source=' + down_url;
         $.get(url, function (data) {
 /*vot*/            link.text(jlang('install_free'));
             link.parent().prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");

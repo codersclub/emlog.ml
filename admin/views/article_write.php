@@ -15,9 +15,11 @@
                 <div id="logcontent"><textarea><?= $content ?></textarea></div>
                 <div class="mt-3">
                     <?= lang('post_description') ?><?= lang('optional') ?>:
-                    <input type="checkbox" value="y" name="auto_excerpt" id="auto_excerpt" onclick="toggleCheckbox('auto_excerpt')">
-                    <label for="auto_excerpt" style="margin-right: 8px;"><?= lang('auto_summary_prompt') ?></label>
                     <textarea id="logexcerpt" name="logexcerpt" class="form-control" rows="5"><?= $excerpt ?></textarea>
+                    <div class="custom-control custom-switch mt-1">
+                        <input type="checkbox" class="custom-control-input" id="auto_excerpt" name="auto_excerpt" value="y" onclick="toggleCheckbox('auto_excerpt')">
+                        <label class="custom-control-label" for="auto_excerpt"><?= lang('auto_summary_prompt') ?></label>
+                    </div>
                 </div>
                 <div class="mt-3">
                     <a href="javascript:void (0);" class="field_add small"><?= lang('add_field') ?><i class="icofont-plus"></i></a>
@@ -82,8 +84,13 @@
                             </label>
                         </div>
                     </div>
+                    <div class="custom-control custom-switch mt-1">
+                        <input type="checkbox" class="custom-control-input" id="auto_cover" name="auto_cover" value="y" onclick="toggleCheckbox('auto_cover')">
+                        <label class="custom-control-label" for="auto_cover">自动获取文中图片作为封面</label>
+                    </div>
                 </div>
                 <div class="form-group">
+                    <label>分类：</label>
                     <select name="sort" id="sort" class="form-control">
                         <option value="-1"><?= lang('category_select') ?></option>
                         <?php
@@ -129,12 +136,18 @@
                         <small class="text-muted"><?= lang('publish_time_tips') ?></small>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                        <label for="allow_remark" style="margin-right: 8px;"><?= lang('allow_comments') ?></label>
-                        <input type="checkbox" value="y" name="top" id="top" <?= $is_top; ?> />
-                        <label for="top" style="margin-right: 8px;"><?= lang('home_top') ?></label>
-                        <input type="checkbox" value="y" name="sortop" id="sortop" <?= $is_sortop; ?> />
-                        <label for="sortop" style="margin-right: 8px;"><?= lang('category_top') ?></label>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="allow_remark" name="allow_remark" value="y" <?= $is_allow_remark ?>>
+                            <label class="custom-control-label" for="allow_remark"><?= lang('allow_comments') ?></label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="top" name="top" value="y" <?= $is_top; ?>>
+                            <label class="custom-control-label" for="top"><?= lang('home_top') ?></label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="sortop" name="sortop" value="y" <?= $is_sortop; ?>>
+                            <label class="custom-control-label" for="sortop"><?= lang('category_top') ?></label>
+                        </div>
                     </div>
                     <div><a href="javascript:void (0);" class="show_adv_set" onclick="displayToggle('adv_set');"><?= lang('advanced_options') ?><i class="icofont-simple-right"></i></a></div>
                 <?php else: ?>
@@ -453,4 +466,6 @@
     initDisplayState('adv_set');
     // Automatically capture summary status
     initCheckboxState('auto_excerpt');
+    // 自动提取封面状态
+    initCheckboxState('auto_cover');
 </script>

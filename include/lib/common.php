@@ -41,13 +41,19 @@ if (!function_exists('getIp')) {
     function getIp()
     {
         $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+
+        // Check for Cloudflare
+        if (isset($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+            $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
+        } elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $list = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-            $ip = $list[0];
+            $ip = trim($list[0]);
         }
+
         if (!ip2long($ip)) {
             $ip = '';
         }
+
         return $ip;
     }
 }
@@ -179,18 +185,19 @@ function extractHtmlData($data, $len)
 }
 
 /**
- * Convert file size unit
+ * Convert file size units
  *
- * @param string $fileSize //File Size kb
+ * @param int $fileSize File size in bytes
+ * @return string Formatted file size with units
  */
 function changeFileSize($fileSize)
 {
     if ($fileSize >= 1073741824) {
-        $fileSize = round($fileSize / 1073741824, 2) . 'GB';
+        $fileSize = round($fileSize / 1073741824, 2) . ' GB';
     } elseif ($fileSize >= 1048576) {
-        $fileSize = round($fileSize / 1048576, 2) . 'MB';
+        $fileSize = round($fileSize / 1048576, 2) . ' MB';
     } elseif ($fileSize >= 1024) {
-        $fileSize = round($fileSize / 1024, 2) . 'KB';
+        $fileSize = round($fileSize / 1024, 2) . ' KB';
     } else {
         $fileSize .= lang('_bytes');
     }

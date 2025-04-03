@@ -132,7 +132,7 @@ if ($action == 'upload_zip') {
 }
 
 if ($action === 'check_update') {
-    $plugins = isset($_POST['plugins']) ? $_POST['plugins'] : [];
+    $plugins = Input::postStrArray('plugins', []);
 
     $emcurl = new EmCurl();
     $post_data = [
@@ -158,7 +158,7 @@ if ($action === 'check_update') {
 }
 
 if ($action === 'upgrade') {
-    $alias = isset($_GET['alias']) ? trim($_GET['alias']) : '';
+    $alias = Input::getStrVar('alias');
 
     if (!Register::isRegLocal()) {
         Output::error(lang('emlog_unregistered'), 200);
@@ -182,9 +182,7 @@ if ($action === 'upgrade') {
             Output::error(lang('plugin_not_writable'), 200);
             break;
         case 3:
-            Output::error(lang('plugin_zip_select'), 200);
-            break;
         default:
-            Output::error(lang('plugin_wrong_format'), 200);
+            Output::error(lang('update_failed_package'), 200);
     }
 }
