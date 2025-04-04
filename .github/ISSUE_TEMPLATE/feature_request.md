@@ -1,15 +1,15 @@
 ---
-name: 新功能及改进提议
-about: 提出您的新功能及改进提议
+name: New features and improvements
+about: Submit your new features and improvements
 title: ''
 labels: feature
 assignees: ''
 
 ---
 
-** 🚨🚨 请勿在 Issue 中提交安全漏洞！🚨🚨**
-👉 如发现安全问题，请您前往 [安全漏洞报告指南](https://github.com/emlog/emlog/blob/master/SECURITY.md) 按照指引提交。
+** 🚨🚨 Please do not report security vulnerabilities in Issues! 🚨🚨**
+👉 If you find a security issue, please go to [Security Vulnerability Reporting Guide](https://github.com/emlog/emlog/blob/master/SECURITY.md) and submit according to the instructions.
 
-## 描述您想要的新功能
+## Describe the new features you would like
 
-## 描述您的改进建议
+## Describe your improvement suggestion

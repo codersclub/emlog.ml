@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 🚨 安全漏洞报告
+  - name: 🚨 Security Vulnerability Report
     url: https://github.com/emlog/emlog/blob/master/SECURITY.md
-    about: 发现安全问题？请按照此指南提交，不要公开发布在Issue中！
+    about: Found a security issue? Please submit it according to this guide, do not post it publicly in Issues!

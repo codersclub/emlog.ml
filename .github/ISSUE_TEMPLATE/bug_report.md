@@ -1,27 +1,31 @@
 ---
-name: 使用问题反馈
-about: 反馈软件错误或问题，🚨 请勿在 Issue 中公开提交安全漏洞！🚨
+name: Use issue feedback
+about: Report software errors or problems. 🚨 Please do not publicly submit security vulnerabilities in Issues! 🚨
 title: ""
 labels: bug
 assignees: ''
 ---
 
-** 🚨🚨 请勿在 Issue 中提交安全漏洞！🚨🚨**
-👉 如发现安全问题，请您前往 [安全漏洞报告指南](https://github.com/emlog/emlog/blob/master/SECURITY.md) 按照指引提交。
+** 🚨🚨 Please do not report security vulnerabilities in Issues! 🚨🚨**
+👉 If you find a security issue, please go to [Security Vulnerability Reporting Guide](https://github.com/emlog/emlog/blob/master/SECURITY.md) and submit according to the instructions.
 
-**描述问题**
-请清晰描述你遇到的问题：
-- 发生了什么？
-- 如何复现？
+**Describe the problem**
 
-**环境信息**
-- 操作系统：
-- 浏览器：
-- PHP版本：
-- EMLOG版本：
+Please clearly describe the problem you are experiencing:
+- What happened?
+- How to reproduce?
 
-**截图**
-如果可能，请添加截图以帮助解释问题。
+**Environment information**
 
-**其他信息**
-在此处添加任何其他上下文信息。
+- Operating system:
+- Browser:
+- PHP version:
+- EMLOG version:
+
+**Screenshot**
+
+If possible, please add screenshots to help explain the problem.
+
+**Additional information**
+
+Add any additional context here.
