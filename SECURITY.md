@@ -1,9 +1,12 @@
-# 安全漏洞报告指南
+# Security Vulnerability Reporting Guide
 
-感谢您的安全研究和负责任的漏洞披露！请 **不要** 在 GitHub Issue 公开报告安全漏洞。
+Thank you for your security research and responsible vulnerability disclosure!
+Please **do not** report security vulnerabilities publicly in GitHub Issues.
 
-如需报告安全问题，请通过以下方式提交：
-- 发送邮件至 `emlog-tech@foxmail.com`
-- 通过 [GitHub Security Advisories](https://github.com/emlog/emlog/security/advisories) 提交
+To report a security issue, please submit it in the following ways:
 
-我们会尽快确认并修复问题，谢谢您的支持！
+- Send an email to `emlog-tech@foxmail.com`
+- Submit it through [GitHub Security Advisories](https://github.com/emlog/emlog/security/advisories)
+
+We will confirm and fix the problem as soon as possible,
+thank you for your support!
