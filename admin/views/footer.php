@@ -98,29 +98,29 @@
 /* vot: moved to common.js
         // Time selection control
         $.timepicker.regional['zh-CN'] = {
-            timeOnlyTitle: '选择时间',
-            timeText: '时间',
-            hourText: '时',
-            minuteText: '分',
-            secondText: '秒',
-            millisecText: '毫秒',
-            microsecText: '微秒',
-            timezoneText: '时区',
-            currentText: '现在时间',
-            closeText: '关闭',
+            timeOnlyTitle: '选择时间', // Do NOT translate
+            timeText: '时间',        // Do NOT translate
+            hourText: '时',         // Do NOT translate
+            minuteText: '分',       // Do NOT translate
+            secondText: '秒',       // Do NOT translate
+            millisecText: '毫秒',    // Do NOT translate
+            microsecText: '微秒',    // Do NOT translate
+            timezoneText: '时区',    // Do NOT translate
+            currentText: '现在时间',   // Do NOT translate
+            closeText: '关闭',       // Do NOT translate
             timeFormat: 'HH:mm',
             timeSuffix: '',
             amNames: ['AM', 'A'],
             pmNames: ['PM', 'P'],
             isRTL: false,
-            prevText: '上个月',
-            nextText: '下个月',
+            prevText: '上个月',       // Do NOT translate
+            nextText: '下个月',       // Do NOT translate
             showMonthAfterYear: true,
-            weekHeader: '周',
-            yearSuffix: '年',
+            weekHeader: '周',       // Do NOT translate
+            yearSuffix: '年',       // Do NOT translate
         };
         $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
-        let dayNamesMin = ["日", "一", "二", "三", "四", "五", "六"];
+        let dayNamesMin = ["日", "一", "二", "三", "四", "五", "六"]; // Do NOT translate
         let monthNamesShort = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
         const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         let _left = screenWidth < 1200 ? 0 : 50;

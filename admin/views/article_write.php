@@ -466,6 +466,6 @@
     initDisplayState('adv_set');
     // Automatically capture summary status
     initCheckboxState('auto_excerpt');
-    // 自动提取封面状态
+    // Automatically extract cover status
     initCheckboxState('auto_cover');
 </script>

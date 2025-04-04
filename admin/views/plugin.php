@@ -168,7 +168,7 @@
         setTimeout(hideActived, 3600);
         $("#menu_category_ext").addClass('active');
 
-        // 监听模板文件上传
+        // Monitor template file uploads
         $('#pluzip').on('change', function() {
             var fileName = $(this).get(0).files[0] ? $(this).get(0).files[0].name : '';
             $(this).next('.custom-file-label').text(fileName || '选择插件安装包');

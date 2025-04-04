@@ -98,7 +98,7 @@ class Api_Controller
             Output::error('parameter error');
         }
 
-        // 自动提取封面
+        // Automatically extract cover
         if (empty($cover) && $auto_cover === 'y') {
             $cover = getFirstImage($content);
         }

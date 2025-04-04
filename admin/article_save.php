@@ -31,7 +31,7 @@ $template = Input::postStrVar('template');
 $cover = Input::postStrVar('cover');
 $link = Input::postStrVar('link');
 $author  = Input::postIntVar('author');
-$author = $author && User::haveEditPermission() ? $author : UID; // 非管理员用户只能修改自己的文章
+$author = $author && User::haveEditPermission() ? $author : UID; // Non-admin users can only edit their own posts
 $ishide = Input::postStrVar('ishide', 'y');
 $blogid = Input::postIntVar('as_logid', -1); //Article is automatically saved as draft with id
 $pubPost = Input::postStrVar('pubPost'); // Whether to publish the article directly instead of saving a draft
@@ -40,7 +40,7 @@ $auto_cover = Input::postStrVar('auto_cover', 'n');
 $field_keys = Input::postStrArray('field_keys');
 $field_values = Input::postStrArray('field_values');
 
-// 自动提取摘要
+// Automatically extract summaries
 if ($auto_excerpt === 'y') {
     $origContent = trim($_POST['logcontent']);
     $parseDown = new Parsedown();
@@ -50,7 +50,7 @@ if ($auto_excerpt === 'y') {
     $excerpt = addslashes($excerpt);
 }
 
-// 自动提取封面
+// Automatically extract cover
 if (empty($cover) && $auto_cover === 'y') {
     $cover = getFirstImage($content);
 }
@@ -59,7 +59,7 @@ if ($pubPost) {
     $ishide = 'n';
 }
 
-// 检查文章别名
+// Check article alias
 if (!preg_match('/^[a-zA-Z0-9_-]+$/', $alias)) {
     $alias = '';
 }

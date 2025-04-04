@@ -141,7 +141,7 @@
         $("#menu_view").addClass('show');
         $("#menu_tpl").addClass('active');
 
-        // 监听模板文件上传
+        // Monitor template file uploads
         $('#tplzip').on('change', function() {
             var fileName = $(this).get(0).files[0] ? $(this).get(0).files[0].name : '';
             $(this).next('.custom-file-label').text(fileName || '选择模板安装包');

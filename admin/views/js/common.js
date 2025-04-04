@@ -135,8 +135,8 @@ function changeAuthorAlert() {
         title: '输入新的作者ID',
         formType: 0 // 单行输入框
     }, function(value, index) {
-        $('#author').val(value); // 将输入的作者ID设置到隐藏的输入框中
-        changeAuthor(); // 调用更改作者的函数
+        $('#author').val(value); // Set the input author ID to the hidden input box
+        changeAuthor(); // Call the function that changes the author
         layer.close(index);
     });
 }
