@@ -147,7 +147,7 @@ var LNG = {
     'ok': '确定',//'OK',
     'cancel': '取消',//'Cancel',
     'category_not_deleted': '不会删除分类下资源文件',//' Media files under the category will not be deleted',
-    'emlog_not_registered': '您的emlog pro尚未注册',//'Your emlog has not been registered',
+    'emlog_not_registered': '您的emlog尚未注册',//'Your emlog is not registered',
     'register': '去注册',//'Register',
     'is_latest_version': '已经是最新版本',//'Already the latest version',
     'update_expired': '更新服务已到期',//'Update service has expired',

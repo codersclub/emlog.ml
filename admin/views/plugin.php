@@ -18,7 +18,7 @@
 <?php if (isset($_GET['error_f'])): ?>
     <div class="alert alert-danger"><?= lang('plugin_zipped_only') ?></div><?php endif ?>
 <?php if (isset($_GET['error_g'])): ?>
-<!--vot-->    <div class="alert alert-danger"><?= lang('php_size_limit') ?></div><?php endif ?>
+    <div class="alert alert-danger"><?= lang('php_size_limit') ?></div><?php endif ?>
 <?php if (isset($_GET['error_i'])): ?>
     <div class="alert alert-danger"><?= lang('emlog_unregistered') ?></div><?php endif ?>
 <?php if (isset($_GET['error_sys'])): ?>

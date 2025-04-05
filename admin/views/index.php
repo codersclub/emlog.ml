@@ -132,10 +132,9 @@
                         <p><?= lang('advantage2') ?></p>
                         <p><?= lang('advantage3') ?></p>
                         <p><?= lang('advantage4') ?></p>
-                        <hr>
                         <p>
                             <a href="auth.php" class="btn btn-sm btn-primary shadow-lg"><?= lang('register_now') ?></a>
-                            <a href="https://emlog.net/register" target="_blank" class="btn btn-sm btn-success shadow-lg"><?= lang('get_emkey') ?></a>
+                            <a href="https://emlog.net/register" target="_blank" class="btn btn-sm ml-3 btn-success shadow-lg"><?= lang('get_emkey') ?></a>
                         </p>
                     </div>
                 </div>
