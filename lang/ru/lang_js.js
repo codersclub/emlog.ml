@@ -209,7 +209,7 @@ var LNG = {
 
 //---------------------------
 //admin/views/components/message.min.js
-    'is_loading': 'Загрузка',//'正在加载',
+'is_loading'		: 'Загрузка',//'正在加载',
 
 //----------------
 // The LAST key. DO NOT EDIT!!!

@@ -935,11 +935,11 @@ $lang = array(
     'email_template' => '邮件模板',//'Email Template',
     'select_template' => '选择模板',//'Select a template',//+:
     'simple' => '简约',//'Simple',
-    'email_template_placeholer' => '邮件模板(支持html)，不使用模板请留空。',//'Email template (supports html). Please leave it blank if you do not use a template.',
-    'template_prompt' => '模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',//'Template variables: {{mail_content}} = email content, {{mail_site_title}} = site title',
-    'template_from' => '来自站点：{{mail_site_title}}',//'From site: {{mail_site_title}}',
     'deep_blue' => '深蓝',//'Deep Blue',
     'bright_green' => '草绿',//'Bright Green',
+    'email_template_placeholer' => '邮件模板(支持html)，不使用模板请留空。',//'Email template (supports html). Please leave it blank if you do not use a template.',
+    'template_prompt' => '模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',//'Template variables: {{mail_content}} = email content, {{mail_site_title}} = site title',
+    'template_from' => '来自站点',//'From site',
 
 //---------------------------
 //admin/views/setting_user.php

@@ -299,6 +299,7 @@ $lang = array(
     'tags_have' => 'Have tags+',//'已有标签+',
     'post_tags_separated' => 'Multilple tags, separated by commas',//'多个标签用英文逗号分隔',
     'resource_library' => 'Media gallery',//'资源媒体库',
+    'media_library' => 'Media Library',//'媒体库',
     'no_resources' => 'No resources available',//'暂无可用资源',
     'file_insert' => 'Insert file',//'插入文件',
     'img_insert' => 'Insert image',//'插入图片',
@@ -322,6 +323,7 @@ $lang = array(
     'add_field' => 'Add field',//'添加字段',
     'field_name' => 'Field Name',//'字段名称',
     'field_value' => 'Field value',//'字段值',
+    'cover_auto' => 'Automatically obtain the image in the article as the cover',//'自动获取文中图片作为封面',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -735,6 +737,7 @@ $lang = array(
 //---------------------------
 //admin/views/plugin.php
     'plugin_manage' => 'Plug-ins',//'插件扩展',
+    'plugin_upload_zip' => 'Please upload the plugin installation package in zip format',//'请上传zip格式的插件安装包',
     'plugin_upload_ok' => 'Plugin uploaded successfully, please activate it to use',//'插件上传成功，请开启使用',
     'plugin_active_ok' => 'Plug-in activated successfully',//'插件开启成功',
     'plugin_active_failed' => 'Plug-in activation failed',//'插件开启失败',
@@ -930,11 +933,13 @@ $lang = array(
     'comment_new_notify' => 'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',//'评论通知（评论通知文章作者，回复评论通知评论人）',
     'article_new_notify' => 'Email notification of new articles submitted (sent to founder email only)',//'文章投稿通知（仅发送到创始人邮箱）',
     'email_template' => 'Email Template',//'邮件模板',
-    'select_email_template' => 'Select template',//'选择模板',//+:
+    'select_template' => 'Select template',//'选择模板',//+:
     'simple' => 'Simple',//'简约',
+    'deep_blue' => 'Deep Blue',//'深蓝',
+    'bright_green' => 'Bright Green',//'草绿',
     'email_template_placeholer' => 'Email template (supports html). Please leave it blank if you do not use a template.',//'邮件模板(支持html)，不使用模板请留空。',
     'template_prompt' => 'Template variables: {{mail_content}} = email content, {{mail_site_title}} = site title',//'模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',
-    'template_from' => 'From site: {{mail_site_title}}',//'来自站点：{{mail_site_title}}',
+    'template_from' => 'From site',//'来自站点',
 
 //---------------------------
 //admin/views/setting_user.php
