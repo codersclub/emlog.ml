@@ -176,6 +176,7 @@ var LNG = {
     'to_use_new': '开始体验新版本',//' to start experiencing the new version',
     'prompt': '提示',//'Prompt', 
     'delete_model?' : '删除该模型？',//'Delete this model?',
+    'author_new_id': '输入新的作者ID',//'Enter new author ID',
 
 //---------------------------
 //include/lib/js/common_tpl.js

@@ -198,7 +198,7 @@ $isdraft = $draft ? '&draft=1' : '';
                                 <a href="javascript:logact('sortop');" class="dropdown-item"><?= lang('category_top') ?></a>
                                 <a href="javascript:logact('notop');" class="dropdown-item"><?= lang('untop') ?></a>
                                 <hr>
-                                <a href="javascript:changeAuthorAlert();" class="dropdown-item">更改作者</a>
+                                <a href="javascript:changeAuthorAlert();" class="dropdown-item"><?= lang('user_edit') ?></a>
                                 <hr>
                             <?php endif ?>
                             <a href="javascript:logact('hide');" class="dropdown-item"><?= lang('add_draft') ?></a>

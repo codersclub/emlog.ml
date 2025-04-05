@@ -66,13 +66,10 @@
             </div>
             <h4><?= lang('email_template') ?></h4>
             <div class="my-3">
-                <div class="mb-3" id="mail_template_box">选择模板：<a href="javascript:useDefaultTemplate();">简约</a>
-                    <a href="javascript:useDeepBlueTemplate();">深蓝</a>
-                    <a href="javascript:useGreenVibrantTemplate();">草绿</a>
+                <div class="mb-3" id="mail_template_box"><?= lang('select_template') ?>: <a href="javascript:useDefaultTemplate();"><?= lang('simple') ?></a>
+                    <a href="javascript:useDeepBlueTemplate();"><?= lang('deep_blue') ?></a>
+                    <a href="javascript:useGreenVibrantTemplate();"><?= lang('bright_green') ?></a>
                     <span id="mail_template_box_ext"></span>
-                </div>
-                        <?= lang('preview') ?>:
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -126,7 +123,7 @@
             <p>{{mail_content}}</p>
         </div>
         <div style="border-top: 1px solid #e0e0e0; padding-top: 10px; text-align: center; font-size: 12px; color: #888; margin-top: 20px;">
-            <small><?= lang('template_from') ?></small>
+            <small><?= lang('template_from') ?>: {{mail_site_title}}</small>
         </div>
     </div>
 </body>
@@ -137,7 +134,7 @@
 
     function useDeepBlueTemplate() {
         const deepBlueTemplate = `<!DOCTYPE html>
-<html lang="zh-cn">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -155,7 +152,7 @@
             <div class="divider"></div>
         </div>
         <div class="footer">
-            <small>来自站点：{{mail_site_title}}</small>
+            <small><?= lang('template_from') ?>: {{mail_site_title}}</small>
         </div>
     </div>
 </body>
@@ -192,7 +189,7 @@
             <p>{{mail_content}}</p>
         </div>
         <div class="footer">
-            <small>来自站点：{{mail_site_title}}</small>
+            <small><?= lang('template_from') ?>: {{mail_site_title}}</small>
         </div>
     </div>
 </body>
@@ -213,7 +210,7 @@
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
-        // submit Form
+        // Submit Form
         $("#mail_setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#mail_setting_form");

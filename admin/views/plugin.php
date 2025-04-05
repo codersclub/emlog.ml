@@ -26,7 +26,6 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('plugin_manage') ?></h1>
-    <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
     <div>
         <a href="store.php?action=plu" class="btn btn-sm btn-warning shadow-sm mt-4"><i class="icofont-shopping-cart"></i> <?= lang('app_store') ?></a>
         <a href="#" class="btn btn-sm btn-success shadow-sm mt-4" data-toggle="modal" data-target="#addModal"><i class="icofont-plus"></i> <?= lang('plugin_new_install') ?></a>
@@ -150,12 +149,12 @@
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
                     </div>
                     <small class="form-text text-muted mt-2">
-                        请上传zip格式的插件安装包
+                        <?= lang('plugin_upload_zip') ?>
                     </small>
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
-                    <button type="submit" class="btn btn-sm btn-success"><?= lang('upload_install') ?>
+                    <button type="submit" class="btn btn-success"><?= lang('upload_install') ?>
                 </div>
             </form>
         </div>
@@ -171,7 +170,7 @@
         // Monitor template file uploads
         $('#pluzip').on('change', function() {
             var fileName = $(this).get(0).files[0] ? $(this).get(0).files[0].name : '';
-            $(this).next('.custom-file-label').text(fileName || '选择插件安装包');
+            $(this).next('.custom-file-label').text(fileName || '<?= lang('upload_install_info') ?>');
         });
 
         var pluginList = [];

@@ -132,8 +132,8 @@ function delAlert2(msg, text, actionClosure, btnText = jlang('delete')) {
 
 function changeAuthorAlert() {
     layer.prompt({
-        title: '输入新的作者ID',
-        formType: 0 // 单行输入框
+        title: jlang('author_new_id'),
+        formType: 0 // Single line input box
     }, function(value, index) {
         $('#author').val(value); // Set the input author ID to the hidden input box
         changeAuthor(); // Call the function that changes the author

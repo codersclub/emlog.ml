@@ -86,11 +86,11 @@
                     </div>
                     <div class="custom-control custom-switch mt-1">
                         <input type="checkbox" class="custom-control-input" id="auto_cover" name="auto_cover" value="y" onclick="toggleCheckbox('auto_cover')">
-                        <label class="custom-control-label" for="auto_cover">自动获取文中图片作为封面</label>
+                        <label class="custom-control-label" for="auto_cover"><?= lang('cover_auto') ?></label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>分类：</label>
+                    <label><?= lang('category') ?>:</label>
                     <select name="sort" id="sort" class="form-control">
                         <option value="-1"><?= lang('category_select') ?></option>
                         <?php
@@ -193,7 +193,6 @@
         </div>
     </div>
 </form>
-<!--Resource Library-->
 <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">

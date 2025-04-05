@@ -71,6 +71,7 @@ $lang = array(
     'update_failed_network' => 'The update request failed, it may be a network problem',//'请求更新失败，可能是网络问题',
     'pro_unregistered' => 'Unregistered pro version',//'未注册的pro版本',
     'apps_forbid' => 'The system prohibits uploading and installing applications',//'系统禁止上传安装应用',
+    'update_failed_package' => 'Update failed, update package invalid',//'更新失败，更新包异常',
 
 //---------------------------
 //admin/setting.php
@@ -178,6 +179,7 @@ $lang = array(
     'ok_for_emlog' => 'Suitable for Emlog: ',//'适用于emlog: ',
     'template_upload_failed' => 'Template upload failed',//'模板上传失败',
     'template_used' => 'You can not delete a template being used',//'不能删除正在使用的模板',
+    'template_not_writable' => 'Update failed, directory (content/templates) is not writable',//'更新失败，目录(content/templates)不可写',
 
 //---------------------------
 //admin/views/add_log.php
@@ -760,7 +762,7 @@ $lang = array(
 //---------------------------
 //admin/views/plugin_install.php
     'plugin_zipped_only' => 'Supports plug-in package only in zip compression format',//'只支持zip压缩格式的插件包',
-    'plugin_not_writable' => 'Upload failed, plugin directory (content/plugins) is not writable',//'上传失败，插件目录(content/plugins)不可写',
+    'plugin_not_writable' => 'Upload failed, plugin directory (content/plugins) is not writable',//'更新失败，插件目录(content/plugins)不可写',
     'plugin_zip_nonsupport' => 'Server does not support zip module, follow the prompts to install the plugin manually',//'空间不支持zip模块，请按照提示手动安装插件',
     'plugin_zip_select' => 'Please select a zipped plug-in installation package',//'请选择一个zip插件安装包',
     'plugin_wrong_format' => 'Installation failed, plug-in installation package does not meet the standards',//'安装失败，插件安装包不符合标准',
@@ -768,7 +770,7 @@ $lang = array(
     'install_promt_1' => '1) Unzip the plugin file and upload it to the content/plugins directory.',//'1、把解压后的插件文件夹上传到 content/plugins 目录下。',
     'install_prompt2' => '2) Log in to AdminCP, go to Plug-in management, and if the plug-in is already listed, you can click on it to activate it.',//'2、登录后台进入插件管理,插件管理里已经有了该插件，点击激活即可。',
     'upload_install' => 'Upload and install',//'上传安装',
-    'upload_install_info' => 'Upload a plug-in installation package in zip compressed format',//'（上传一个zip压缩格式的插件安装包）',
+    'upload_install_info' => 'Select the plugin installation package',//'选择插件安装包',
     'plugin_get_more' => 'Get More Plugins',//'获取更多插件',
     'app_center' => 'App center &raquo;',//'应用中心&raquo;',
 
@@ -869,7 +871,7 @@ $lang = array(
     'unit_pixels' => ' (Unit: pixels)',//'（单位：像素）',
     'icp_reg_no' => 'ICP Reg.&nbsp;No.',//'ICP备案号',
     'home_footer_info' => 'Footer info at the Home',//'首页底部信息',
-    'home_footer_info_html' => '(HTML supported, can be used to add a traffic statistics code)',//'(支持html，可用于添加流量统计代码)',
+    'home_footer_info_html' => '(HTML supported)',//'(支持HTML)',
     'save_settings' => 'Save Settings',//'保存设置',
     'before_intercept' => 'Intercept before article ',//'截取文章的前',
     'comment_sort' => 'Sort comments',//'评论排序方式',
@@ -1104,6 +1106,9 @@ $lang = array(
     'template_author' => 'Template author',//'模板开发者',
     'template_update_ok' => 'Template updated successfully',//'模板更新成功',
     'enable' => 'Enable',//'启用',
+    'template_new_install' => 'Installing a New Template',//'安装新模板',
+    'template_select' => 'Select the template installation package',//'选择模板安装包',
+    'template_upload' => 'Please upload the template installation package in zip format',//'请上传zip格式的模板安装包',
 
 //---------------------------
 //admin/views/template_crop.php

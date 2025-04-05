@@ -111,7 +111,7 @@
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
-                    <button type="submit" class="btn btn-success">上传安装</button>
+                    <button type="submit" class="btn btn-success"><?= lang('upload_install') ?></button>
                 </div>
             </form>
         </div>
@@ -144,7 +144,7 @@
         // Monitor template file uploads
         $('#tplzip').on('change', function() {
             var fileName = $(this).get(0).files[0] ? $(this).get(0).files[0].name : '';
-            $(this).next('.custom-file-label').text(fileName || '选择模板安装包');
+            $(this).next('.custom-file-label').text(fileName || '<?= lang('template_select') ?>');
         });
 
         var templateList = [];

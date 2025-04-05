@@ -323,6 +323,7 @@ $lang = array(
     'add_field' => '添加字段',//'Add field',
     'field_name' => '字段名称2',//'Field Name2',
     'field_value' => '字段值',//'Field value',
+    'cover_auto' => '自动获取文中图片作为封面',//'Automatically obtain the image in the article as the cover',
 
 //---------------------------
 //admin/views/admin_page.php
@@ -736,6 +737,7 @@ $lang = array(
 //---------------------------
 //admin/views/plugin.php
     'plugin_manage' => '插件扩展',//'Plug-ins',
+    'plugin_upload_zip' => '请上传zip格式的插件安装包',//'Please upload the plugin installation package in zip format',
     'plugin_upload_ok' => '插件安装成功，请开启使用',//'The plug-in is installed successfully, please activate it',
     'plugin_active_ok' => '插件开启成功',//'Plug-in activated successfully',
     'plugin_active_failed' => '插件开启失败',//'Plug-in activation failed',
@@ -931,11 +933,13 @@ $lang = array(
     'comment_new_notify' => '评论通知（评论通知文章作者，回复评论通知评论人）',//'Comment notification (notify the article author about a new comment, notify the commenter about a reply to the comment)',
     'article_new_notify' => '文章投稿通知（仅发送到创始人邮箱）',//'Notification of new articles submitted (sent to founder email only)',
     'email_template' => '邮件模板',//'Email Template',
-    'select_email_template' => '选择模板',//'Select template',//+:
+    'select_template' => '选择模板',//'Select a template',//+:
     'simple' => '简约',//'Simple',
     'email_template_placeholer' => '邮件模板(支持html)，不使用模板请留空。',//'Email template (supports html). Please leave it blank if you do not use a template.',
     'template_prompt' => '模板变量：{{mail_content}} 邮件内容，{{mail_site_title}} 站点标题',//'Template variables: {{mail_content}} = email content, {{mail_site_title}} = site title',
     'template_from' => '来自站点：{{mail_site_title}}',//'From site: {{mail_site_title}}',
+    'deep_blue' => '深蓝',//'Deep Blue',
+    'bright_green' => '草绿',//'Bright Green',
 
 //---------------------------
 //admin/views/setting_user.php
