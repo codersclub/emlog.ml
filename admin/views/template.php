@@ -26,7 +26,7 @@
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h4 mb-0 text-gray-800"><?= lang('template_manager') ?></h1>
-    <div>
+    <div class="mt-4">
         <a href="store.php" class="btn btn-primary btn-sm shadow-sm mr-2"><i class="icofont-shopping-cart mr-1"></i><?= lang('app_store') ?></a>
         <a href="#" class="btn btn-success btn-sm shadow-sm" data-toggle="modal" data-target="#addModal"><i class="icofont-plus mr-1"></i><?= lang('template_install') ?></a>
     </div>
@@ -90,7 +90,7 @@
 </div>
 
 <div class="modal fade" id="addModal">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog">
         <div class="modal-content border-0 shadow">
             <div class="modal-header border-0">
                 <h5 class="modal-title"><?= lang('template_add') ?></h5>
@@ -110,8 +110,8 @@
                     </small>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
-                    <button type="submit" class="btn btn-success"><?= lang('upload_install') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('upload_install') ?></button>
                 </div>
             </form>
         </div>

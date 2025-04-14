@@ -1212,7 +1212,7 @@ $lang = array(
     'credits' => '积分',//'Credits',
     'last_registered' => '最近注册',//'Recently registered',
     'last_active' => '最近活跃',//'Recently Active',
-    'admin_priority' => '管理员优先',//'Administrator priority',
+    'admin_priority' => '管理优先',//'Administrator priority',
     'users_perpage' => '个用户，每页显示',//'Users, displayed per page',
     'disable' => '禁用',//'Disable',
 

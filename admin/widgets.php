@@ -41,8 +41,8 @@ if ($action === '') {
 
 if ($action === 'setwg') {
     $widgetTitle = Option::get('widget_title');               //All widget titles
-    $widget = Input::getStrVar('wg');                         //Widget to modify
-    $wgTitle = Input::postStrVar('title');                    //New widget title
+    $widget = isset($_GET['wg']) ? $_GET['wg'] : '';          //Widget to modify
+    $wgTitle = isset($_POST['title']) ? $_POST['title'] : ''; //New widget title
 
     preg_match("/^(.*)\s\(.*/", $widgetTitle[$widget], $matchs);
     $realWgTitle = isset($matchs[1]) ? $matchs[1] : $widgetTitle[$widget];
@@ -75,12 +75,12 @@ if ($action === 'setwg') {
             break;
         case 'custom_text':
             $custom_widget = Option::get('custom_widget');
-            $title = Input::postStrVar('title');
-            $content = Input::postStrVar('content');
-            $custom_wg_id = Input::postStrVar('custom_wg_id');                              //Edit widget id
-            $new_title = Input::postStrVar('new_title');
-            $new_content = Input::postStrVar('new_content');
-            $rmwg = Input::getStrVar('rmwg');                                               //Delete widget id
+            $title = isset($_POST['title']) ? $_POST['title'] : '';
+            $content = isset($_POST['content']) ? $_POST['content'] : '';
+            $custom_wg_id = isset($_POST['custom_wg_id']) ? $_POST['custom_wg_id'] : ''; //Edit widget id
+            $new_title = isset($_POST['new_title']) ? $_POST['new_title'] : '';
+            $new_content = isset($_POST['new_content']) ? $_POST['new_content'] : '';
+            $rmwg = isset($_GET['rmwg']) ? addslashes($_GET['rmwg']) : '';               //Delete widget id
             //Add a new custom widget
             if ($new_content) {
                 //Determine the widget index
@@ -127,7 +127,7 @@ if ($action === 'setwg') {
 }
 
 if ($action === 'compages') {
-    $widgets = Input::postStrArray('widgets') ? addslashes(serialize(Input::postStrArray('widgets'))) : '';
+    $widgets = isset($_POST['widgets']) ? addslashes(serialize($_POST['widgets'])) : '';
     Option::updateOption("widgets1", $widgets);
     $CACHE->updateCache('options');
     emDirect("./widgets.php?activated=1");

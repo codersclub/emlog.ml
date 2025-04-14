@@ -46,8 +46,8 @@
             <!-- Set the modal box for receiving mailboxes -->
             <div class="modal fade" id="testMail">
                 <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header border-0">
                             <h4 class="modal-title"><?= lang('send_test') ?></h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
@@ -56,7 +56,7 @@
                                 <input class="form-control" type="email" name="testTo" placeholder="<?= lang('recepient_email_enter') ?>">
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer border-0">
                             <div id="testMailMsg"></div>
                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal"><?= lang('close') ?></button>
                             <button type="button" class="btn btn-success btn-sm" id="testSendBtn"><?= lang('send') ?></button>

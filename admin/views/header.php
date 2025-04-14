@@ -62,7 +62,7 @@
                 </div>
             </li>
             <li class="nav-item" id="menu_cm">
-                <a class="nav-link" href="comment.php"><i class="icofont-comment"></i><span><?= lang('comments') ?></span></a>
+                <a class="nav-link" data-pjax="true" href="comment.php"><i class="icofont-comment"></i><span><?= lang('comments') ?></span></a>
             </li>
             <li class="nav-item" id="menu_twitter">
                 <a class="nav-link" data-pjax="true" href="twitter.php"><i class="icofont-penalty-card"></i><span><?= lang('twitters') ?></span></a>
@@ -72,7 +72,7 @@
             </li>
             <?php if (User::isAdmin()): ?>
                 <li class="nav-item" id="menu_user">
-                    <a class="nav-link" href="user.php"><i class="icofont-user"></i><span><?= lang('users') ?></span></a>
+                    <a class="nav-link" data-pjax="true" href="user.php"><i class="icofont-user"></i><span><?= lang('users') ?></span></a>
                 </li>
                 <li class="nav-item" id="menu_category_view">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_view" aria-expanded="true" aria-controls="menu_view">

@@ -256,8 +256,8 @@ $isdraft = $draft ? '&draft=1' : '';
 <!--Article reject-->
 <div class="modal fade" id="uncheckModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('article_reject') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -269,9 +269,9 @@ $isdraft = $draft ? '&draft=1' : '';
                         <textarea name="feedback" type="text" maxlength="512" class="form-control" placeholder="<?= lang('article_reject_prompt') ?>"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0">
                     <input type="hidden" value="" name="gid" id="gid" />
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-warning"><?= lang('uncheck') ?></button>
                 </div>
             </form>
@@ -281,8 +281,8 @@ $isdraft = $draft ? '&draft=1' : '';
 <!-- Tags -->
 <div class="modal fade" id="tagModel" tabindex="-1" role="dialog" aria-labelledby="tagModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="tagModelLabel"><?= lang('tags') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -305,8 +305,8 @@ $isdraft = $draft ? '&draft=1' : '';
                         </div>
                     <?php endif; ?>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </form>

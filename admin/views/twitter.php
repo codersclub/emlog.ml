@@ -61,8 +61,8 @@
 <!--Edit Microblog-->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('twitter_edit') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -74,9 +74,9 @@
                         <textarea name="t" id="t" rows="20" type="text" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0">
                     <input type="hidden" value="" name="id" id="id" />
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 </div>
             </form>
@@ -87,8 +87,8 @@
 <!--Preview Microblog-->
 <div class="modal fade" id="tModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -103,6 +103,10 @@
     $(document).ready(function() {
         initPageScripts();
     });
+
+    function closePageScripts() {
+        $("#menu_twitter").removeClass('active');
+    }
 
     function initPageScripts() {
         var cssLink = document.createElement('link');

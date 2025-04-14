@@ -28,10 +28,10 @@
     <div class="panel-heading mb-3">
         <ul class="nav nav-pills justify-content-start mb-2 mb-md-0">
             <li class="nav-item">
-                <a class="nav-link <?= $hide == '' ? 'active' : '' ?>" href="./comment.php?<?= $addUrl_1 ?>"><?= lang('all') ?></a>
+                <a class="nav-link <?= $hide == '' ? 'active' : '' ?>" data-pjax="true" href="./comment.php?<?= $addUrl_1 ?>"><?= lang('all') ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?= $hide == 'y' ? 'active' : '' ?>" href="./comment.php?hide=y&<?= $addUrl_1 ?>"><?= lang('pending') ?>
+                <a class="nav-link <?= $hide == 'y' ? 'active' : '' ?>" data-pjax="true" href="./comment.php?hide=y&<?= $addUrl_1 ?>"><?= lang('pending') ?>
                     <?php
                     $hidecmnum = User::haveEditPermission() ? $sta_cache['hidecomnum'] : $sta_cache[UID]['hidecommentnum'];
                     if ($hidecmnum > 0)
@@ -66,7 +66,7 @@
                             $cid = $value['cid'];
                             $ip_info = $ip ? "<br />IP: {$ip}" : '';
                             $comment = $value['comment'];
-                            $poster = !empty($value['uid']) ? '<a href="./comment.php?uid=' . $value['uid'] . '">' . $value['poster'] . '</a>' : $value['poster'];
+                            $poster = !empty($value['uid']) ? '<a href="./comment.php?uid=' . $value['uid'] . '" data-pjax="true">' . $value['poster'] . '</a>' : $value['poster'];
                             $title = subString($value['title'], 0, 42);
                             $hide = $value['hide'];
                             $date = $value['date'];
@@ -90,7 +90,7 @@
                                 </td>
                                 <td class="small">
                                     <a href="<?= Url::log($gid) ?>" target="_blank"><?= $title ?></a><br>
-                                    <a href="comment.php?gid=<?= $gid ?>" class="badge badge-info"><?= lang('article_all_comments') ?></a>
+                                    <a href="comment.php?gid=<?= $gid ?>" data-pjax="true" class="badge badge-info"><?= lang('article_all_comments') ?></a>
                                 </td>
                                 <td class="small"><?= $date ?></td>
                                 <td>
@@ -104,7 +104,7 @@
                                         data-hide="<?= $value['hide'] ?>"><?= lang('reply') ?>
                                     </a>
                                     <?php if ($value['hide'] === 'y' && User::haveEditPermission()): ?>
-                                        <a class="badge badge-warning" href="comment.php?action=pub&id=<?= $cid ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('check') ?></a>
+                                        <a class="badge badge-warning" data-pjax="true" href="comment.php?action=pub&id=<?= $cid ?>&token=<?= LoginAuth::genToken() ?>"><?= lang('check') ?></a>
                                     <?php endif ?>
                                 </td>
                             </tr>
@@ -153,8 +153,8 @@
 </form>
 <div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="replyModalLabel"><?= lang('comment_reply') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -170,8 +170,8 @@
                     </div>
 <!--vot: Sparkles--><p><a href="javascript:void(0);" class="" id="ai_button_reply">&#10024;</a></p>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('reply') ?></button>
                 </div>
             </form>
@@ -180,24 +180,15 @@
 </div>
 
 <script>
-    function commentact(act) {
-        if (getChecked('ids') === false) {
-            infoAlert(lang('comment_operation_select'));
-            return;
-        }
+    $(document).ready(function() {
+        initPageScripts();
+    });
 
-        if (act === 'del') {
-            delAlert2('', lang('comment_selected_delete_sure'), function() {
-                $("#operate").val(act);
-                $("#form_com").submit();
-            })
-            return
-        }
-        $("#operate").val(act);
-        $("#form_com").submit();
+    function closePageScripts() {
+        $("#menu_cm").removeClass('active');
     }
 
-    $(function() {
+    function initPageScripts() {
         $("#menu_cm").addClass('active');
         setTimeout(hideActived, 3600);
 
@@ -244,5 +235,22 @@
                 }
             });
         });
-    });
+    }
+
+    function commentact(act) {
+        if (getChecked('ids') === false) {
+            infoAlert('请选择要操作的评论');
+            return;
+        }
+
+        if (act === 'del') {
+            delAlert2('', '删除所选评论？', function() {
+                $("#operate").val(act);
+                $("#form_com").submit();
+            })
+            return
+        }
+        $("#operate").val(act);
+        $("#form_com").submit();
+    }
 </script>

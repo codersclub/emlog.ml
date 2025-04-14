@@ -83,8 +83,8 @@
 <!--Resource Library-->
 <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('resource_library') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -117,8 +117,8 @@
 <!-- Cover image cropping -->
 <div class="modal fade" id="modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title"><?= lang('cover_upload') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <!--vot-->          <span aria-hidden="true">&times;</span>
@@ -136,7 +136,7 @@
             <div class="modal-footer justify-content-between">
                 <div><?= lang('crop_hold_shift') ?></div>
                 <div>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     <button type="button" id="use_original_image" class="btn btn-sm btn-google"><?= lang('use_original_image') ?></button>
                 </div>

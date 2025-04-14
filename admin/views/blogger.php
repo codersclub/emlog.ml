@@ -63,8 +63,8 @@
 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title"><?= lang('crop_upload') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -79,8 +79,8 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                 <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                 <button type="button" id="use_original_image" class="btn btn-sm btn-primary"><?= lang('use_original_image') ?></button>
             </div>
@@ -90,8 +90,8 @@
 
 <div class="modal fade" id="editPasswordModal" tabindex="-1" role="dialog" aria-labelledby="editPasswordModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('change_password') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -108,9 +108,9 @@
                         <label><?= lang('new_password_repeat') ?></label>
 <!--vot-->              <input type="password" class="form-control" id="new_passwd2" name="new_passwd2" minlength="5" required>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0">
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                         <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>
@@ -121,8 +121,8 @@
 
 <div class="modal fade" id="editEmailModal" tabindex="-1" role="dialog" aria-labelledby="editEmailModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('email_modify') ?></h5>
                 <span id="message" class="small ml-5"></span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -141,9 +141,9 @@
                             <button class="btn btn-outline-success" type="button" id="button-send-auth-email"><?= lang('captcha_send') ?></button>
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-0">
                         <input name="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                         <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>

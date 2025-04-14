@@ -365,6 +365,9 @@ EOT;
     if (!is_writable(EMLOG_ROOT . '/content/cache')) {
         emMsg(lang('cache_not_writable'));
     }
+
+    $PHPASS = new PasswordHash(8, true);
+
     $config = "<?php\n"
         . "//MySQL database host\n"
         . "const DB_HOST = '$db_host';"
@@ -377,9 +380,9 @@ EOT;
         . "\n//Database Table Prefix\n"
         . "const DB_PREFIX = '$db_prefix';"
         . "\n//Auth key\n"
-        . "const AUTH_KEY = '" . getRandStr(32) . md5(getUA()) . "';"
+        . "const AUTH_KEY = '" . $PHPASS->HashPassword(getRandStr(32) . md5(getIp()) . getUA() . microtime()) . "';"
         . "\n//Cookie name\n"
-        . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . getRandStr(32, false) . "';"
+        . "const AUTH_COOKIE_NAME = 'EM_AUTHCOOKIE_" . sha1(getRandStr(32, false) . md5(getIp()) . getUA() . microtime()) . "';";
 /*vot*/ . "\n\n// Production/Development Mode\n"
         . "const ENVIRONMENT = 'production'; // Operating mode: 'production' - production mode, 'develop' - development mode"
         . "\n\n// Default blog language\n"
@@ -416,7 +419,6 @@ EOT;
     }
 
     //Encrypt Password
-    $PHPASS = new PasswordHash(8, true);
     $password = $PHPASS->HashPassword($password);
 
     $table_charset_sql = 'DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;';
@@ -434,11 +436,11 @@ EOT;
 DROP TABLE IF EXISTS {$db_prefix}blog;
 CREATE TABLE {$db_prefix}blog (
   gid int(11) unsigned NOT NULL auto_increment COMMENT 'Article ID',
-  title varchar(255) NOT NULL default '' COMMENT 'Article title',
+  title varchar(512) NOT NULL default '' COMMENT 'Article title',
   date bigint(20) NOT NULL COMMENT 'Publish time',
   content longtext NOT NULL  COMMENT 'Article content',
   excerpt longtext NOT NULL  COMMENT 'Article Summary',
-  cover varchar(255) NOT NULL DEFAULT '' COMMENT 'Cover image',
+  cover varchar(2048) NOT NULL DEFAULT '' COMMENT 'Cover image',
   alias varchar(255) NOT NULL DEFAULT '' COMMENT 'Article alias',
   author int(11) NOT NULL default '1' COMMENT 'Author UID',
   sortid int(11) NOT NULL default '-1' COMMENT 'Category ID',
@@ -455,7 +457,7 @@ CREATE TABLE {$db_prefix}blog (
   password varchar(255) NOT NULL default '' COMMENT 'Access password',
   template varchar(255) NOT NULL default '' COMMENT 'Template',
   tags text COMMENT 'Tags',
-  link varchar(255) NOT NULL DEFAULT '' COMMENT 'Article jump link',
+  link varchar(2048) NOT NULL DEFAULT '' COMMENT 'Article jump link',
     feedback varchar(2048) NOT NULL DEFAULT '' COMMENT 'audit feedback',
   parent_id bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT 'Article parent ID',
     PRIMARY KEY (gid),
@@ -532,9 +534,9 @@ CREATE TABLE {$db_prefix}like (
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
-option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
-option_name VARCHAR( 75 ) NOT NULL COMMENT 'Option name',
-option_value LONGTEXT NOT NULL COMMENT 'Option value',
+    option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
+    option_name VARCHAR( 75 ) NOT NULL COMMENT 'Option name',
+    option_value LONGTEXT NOT NULL COMMENT 'Option value',
     PRIMARY KEY (option_id),
     UNIQUE KEY `option_name_uindex` (`option_name`)
 )" . $table_charset_sql . "

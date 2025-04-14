@@ -1,4 +1,5 @@
 <?php
+
 /**
  * init.
  * @package EMLOG
@@ -121,3 +122,5 @@ define('TEMPLATE_HOOK_PATH', TEMPLATE_PATH . 'plugins.php');
 if (file_exists(TEMPLATE_HOOK_PATH)) {
     include_once(TEMPLATE_HOOK_PATH);
 }
+
+User::updateUserActivity();

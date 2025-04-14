@@ -40,6 +40,9 @@ class User_Model
             case 'admin':
                 $condition .= " ORDER BY role IN('admin','editor') DESC";
                 break;
+            case 'forbid':
+                $condition .= " ORDER BY state DESC";
+                break;
             default:
                 $condition .= ' ORDER BY uid DESC';
         }
@@ -209,5 +212,12 @@ class User_Model
         }
         $this->db->query("UPDATE $this->table SET credits = IF(credits >= $count, credits - $count, 0) WHERE uid = $uid");
         return true;
+    }
+
+    public function updateUserActivityTime($uid)
+    {
+        $uid = (int)$uid;
+        $timestamp = time();
+        $this->db->query("UPDATE $this->table SET update_time=$timestamp WHERE uid=$uid");
     }
 }

@@ -57,8 +57,8 @@
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('tag_edit') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -84,9 +84,9 @@
                         <textarea name="description" id="description" type="text" class="form-control"></textarea>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0">
                     <input type="hidden" value="" id="tid" name="tid" />
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     <a class="btn btn-sm btn-outline-danger" href="javascript:deltags();"><?= lang('delete') ?></a>
                 </div>

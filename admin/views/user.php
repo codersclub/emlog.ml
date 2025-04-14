@@ -30,6 +30,7 @@
                         <option value="date" <?= (empty($order)) ? 'selected' : '' ?>><?= lang('last_registered') ?></option>
                         <option value="update" <?= ($order === 'update') ? 'selected' : '' ?>><?= lang('last_active') ?></option>
                         <option value="admin" <?= ($order === 'admin') ? 'selected' : '' ?>><?= lang('admin_priority') ?></option>
+                        <option value="forbid" <?= ($order === 'forbid') ? 'selected' : '' ?>>禁用优先</option>
                     </select>
                 </div>
             </div>
@@ -73,7 +74,7 @@
                                 </td>
                                 <td style="width: 25px;"><img src="<?= $avatar ?>" height="35" width="35" class="rounded-circle" /></td>
                                 <td>
-                                    <a href="user.php?action=edit&uid=<?= $val['uid'] ?>"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
+                                    <a href="user.php?action=edit&uid=<?= $val['uid'] ?>" data-pjax="true"><?= empty($val['name']) ? $val['login'] : $val['name'] ?></a>
                                     <span class="small"><?= $val['role'] ?></span>
                                     <?php if ($forbid): ?>
                                         <span class="badge badge-warning"><?= lang('disabled') ?></span>
@@ -109,6 +110,7 @@
                 <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                 <div class="dropdown-menu">
                     <a href="javascript:useract('forbid');" class="dropdown-item text-warning"><?= lang('disable') ?></a>
+                    <a href="javascript:useract('unforbid');" class="dropdown-item    ">解禁</a>
                 </div>
             </div>
         </div>
@@ -130,8 +132,8 @@
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('user_add') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -163,9 +165,9 @@
                         <input class="form-control" id="password2" minlength="6" name="password2" type="password" required>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0">
                     <input name="token" id="token" value="<?= LoginAuth::genToken() ?>" type="hidden" />
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     <span id="alias_msg_hook"></span>
                 </div>
@@ -174,10 +176,18 @@
     </div>
 </div>
 <script>
-    $(function() {
+    $(document).ready(function() {
+        initPageScripts();
+    });
+
+    function closePageScripts() {
+        $("#menu_user").removeClass('active');
+    }
+
+    function initPageScripts() {
         setTimeout(hideActived, 3600);
         $("#menu_user").addClass('active');
-    });
+    }
 
     function selectOrder(obj) {
         window.open("./user.php?order=" + obj.value, "_self");
@@ -195,6 +205,15 @@
                     $("#form_user").submit();
                 },
                 jlang('blocked'))
+            return;
+        }
+
+        if (act === 'unforbid') {
+            delAlert2('', '解禁所选用户？', function() {
+                    $("#operate").val("unforbid");
+                    $("#form_user").submit();
+                },
+                '解禁')
             return;
         }
 

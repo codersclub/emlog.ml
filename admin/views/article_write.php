@@ -6,7 +6,7 @@
         <div class="col-xl-9">
             <div id="post" class="form-group">
                 <div>
-                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" placeholder="<?= lang('title') ?>" autofocus required />
+                    <input type="text" name="title" id="title" value="<?= $title ?>" class="form-control" maxlength="512" placeholder="<?= lang('title') ?>" autofocus required />
                 </div>
                 <div class="small my-3">
                     <a href="#mediaModal" data-toggle="modal" data-target="#mediaModal"><i class="icofont-plus"></i><?= lang('upload_insert') ?></a>
@@ -73,7 +73,7 @@
             <div class="shadow-sm p-3 bg-white rounded" id="post_side">
                 <div class="form-group">
                     <label><?= lang('cover_image') ?>:</label>
-                    <input name="cover" id="cover" class="form-control" placeholder="" value="<?= $cover ?>" />
+                    <input name="cover" id="cover" class="form-control" maxlength="2048" placeholder="" value="<?= $cover ?>" />
                     <small class="text-muted"><?= lang('cover_upload_prompt') ?></small>
                     <div class="row mt-3">
                         <div class="col-md-4">
@@ -163,7 +163,7 @@
                         </div>
                         <div class="form-group">
 <!--vot-->                  <label><?=lang('jump_link')?>:</label>
-                            <input name="link" id="link" type="url" class="form-control" value="<?= $link ?>" placeholder="https://" />
+                            <input name="link" id="link" type="url" class="form-control" maxlength="2048" value="<?= $link ?>" placeholder="https://" />
                             <small class="text-muted"><?=lang('jump_link_info')?></small>
                         </div>
                         <div class="form-group">
@@ -195,8 +195,8 @@
 </form>
 <div class="modal fade" id="mediaModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel"><?= lang('resource_library') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -229,8 +229,8 @@
 <!-- Cover image cropping -->
 <div class="modal fade" id="modal" tabindex="-2" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
                 <h5 class="modal-title"><?= lang('cover_upload') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 <!--vot-->          <span aria-hidden="true">&times;</span>
@@ -248,7 +248,7 @@
             <div class="modal-footer justify-content-between">
                 <div><?= lang('crop_hold_shift') ?></div>
                 <div>
-                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                     <button type="button" id="crop" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     <button type="button" id="use_original_image" class="btn btn-sm btn-primary"><?= lang('use_original_image') ?></button>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * global
  * @package EMLOG
