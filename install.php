@@ -534,8 +534,8 @@ CREATE TABLE {$db_prefix}like (
 )" . $table_charset_sql . "
 DROP TABLE IF EXISTS {$db_prefix}options;
 CREATE TABLE {$db_prefix}options (
-    option_id INT( 11 ) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
-    option_name VARCHAR( 75 ) NOT NULL COMMENT 'Option name',
+    option_id INT(11) UNSIGNED NOT NULL auto_increment COMMENT 'Option ID',
+    option_name VARCHAR(75) NOT NULL COMMENT 'Option name',
     option_value LONGTEXT NOT NULL COMMENT 'Option value',
     PRIMARY KEY (option_id),
     UNIQUE KEY `option_name_uindex` (`option_name`)
