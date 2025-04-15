@@ -239,12 +239,12 @@
 
     function commentact(act) {
         if (getChecked('ids') === false) {
-            infoAlert('请选择要操作的评论');
+            infoAlert(jlang('comment_operation_select'));
             return;
         }
 
         if (act === 'del') {
-            delAlert2('', '删除所选评论？', function() {
+            delAlert2('', jlang('comment_selected_delete_sure'), function() {
                 $("#operate").val(act);
                 $("#form_com").submit();
             })

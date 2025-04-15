@@ -84,7 +84,9 @@ var LNG = {
 //admin/views/user.php
     'user_select' : '请选择用户',//'Please select a user',
     'block_users' : '封禁所选用户？',//'Block selected users?',
-    'blocked' : '封禁',//'Banned',
+    'blocked'     : '封禁',//'Banned',
+    'unban_users' : '解禁所选用户？',//'Unban selected users?',
+    'ban'         : '解禁',//'Ban',
 
 //---------------------------
 //admin/views/js/common.js

@@ -129,8 +129,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-sm btn-success">保存设置</button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('save_settings') ?></button>
                     <div id="more-config-details" class="alert alert-warning mt-2">
                         <a href="https://www.deepseek.com/" target="_blank">DeepSeek</a><br>
                         API URL: https://api.deepseek.com/v1/chat/completions<br>
@@ -189,8 +189,8 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-sm btn-success">保存设置</button>
+                    <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
+                    <button type="submit" class="btn btn-sm btn-success"><?= lang('save_settings') ?></button>
                 </div>
             </form>
         </div>

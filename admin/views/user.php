@@ -30,7 +30,7 @@
                         <option value="date" <?= (empty($order)) ? 'selected' : '' ?>><?= lang('last_registered') ?></option>
                         <option value="update" <?= ($order === 'update') ? 'selected' : '' ?>><?= lang('last_active') ?></option>
                         <option value="admin" <?= ($order === 'admin') ? 'selected' : '' ?>><?= lang('admin_priority') ?></option>
-                        <option value="forbid" <?= ($order === 'forbid') ? 'selected' : '' ?>>禁用优先</option>
+                        <option value="forbid" <?= ($order === 'forbid') ? 'selected' : '' ?>><?= lang('ban_priority'</option>
                     </select>
                 </div>
             </div>
@@ -53,12 +53,13 @@
                     <thead>
                         <tr>
                             <th><input type="checkbox" id="checkAllItem" /></th>
-                        <th><?= lang('user_name') ?></th>
-                        <th><?= lang('email') ?></th>
-                        <th><?= lang('login_ip') ?></th>
-                        <th><?= lang('last_login_time') ?></th>
-                        <th><?= lang('create_time') ?></th>
-                        <th><?= lang('operation') ?></th>
+                            <th><?= lang('avatar') ?></th>
+                            <th><?= lang('user_name') ?></th>
+                            <th><?= lang('email') ?></th>
+                            <th><?= lang('login_ip') ?></th>
+                            <th><?= lang('last_login_time') ?></th>
+                            <th><?= lang('create_time') ?></th>
+                            <th><?= lang('operation') ?></th>
                         </tr>
                     </thead>
                     <tbody class="checkboxContainer">
@@ -110,7 +111,7 @@
                 <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"><?= lang('operation') ?></button>
                 <div class="dropdown-menu">
                     <a href="javascript:useract('forbid');" class="dropdown-item text-warning"><?= lang('disable') ?></a>
-                    <a href="javascript:useract('unforbid');" class="dropdown-item    ">解禁</a>
+                    <a href="javascript:useract('unforbid');" class="dropdown-item    "><?= lang('ban') ?></a>
                 </div>
             </div>
         </div>
@@ -209,11 +210,11 @@
         }
 
         if (act === 'unforbid') {
-            delAlert2('', '解禁所选用户？', function() {
+            delAlert2('', jlang('unban_users'), function() {
                     $("#operate").val("unforbid");
                     $("#form_user").submit();
                 },
-                '解禁')
+                jlang('ban'))
             return;
         }
 

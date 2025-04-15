@@ -15,13 +15,13 @@
     <h1 class="h4 mb-0 text-gray-800"><?= lang('nav_manage') ?></h1>
     <div class="mt-4">
         <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#customNavModal">
-            <i class="icofont-plus mr-1"></i>自定义导航
+            <i class="icofont-plus mr-1"></i><?= lang('custom_nav') ?>
         </a>
         <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#sortNavModal">
-            <i class="icofont-plus mr-1"></i>添加分类
+            <i class="icofont-plus mr-1"></i><?= lang('category_add') ?>
         </a>
         <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#pageNavModal">
-            <i class="icofont-plus mr-1"></i>添加页面
+            <i class="icofont-plus mr-1"></i><?= lang('nav_add_page') ?>
         </a>
     </div>
 </div>
@@ -141,7 +141,7 @@
     </div>
 </div>
 
-<!-- 自定义导航模态窗口 -->
+<!-- Customize the navigation modal window -->
 <div class="modal fade" id="customNavModal" tabindex="-1" role="dialog" aria-labelledby="customNavModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -180,7 +180,7 @@
                         </select>
                     </div>
                     <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
                         <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                     </div>
                 </form>
@@ -189,12 +189,12 @@
     </div>
 </div>
 
-<!-- 分类导航模态窗口 -->
+<!-- Category navigation modal window -->
 <div class="modal fade" id="sortNavModal" tabindex="-1" role="dialog" aria-labelledby="sortNavModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="sortNavModalLabel">添加分类到导航</h5>
+                <h5 class="modal-title" id="sortNavModalLabel"><?= lang('nav_add_category') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -225,9 +225,9 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="modal-footer border-0">
-                            <a class="btn btn-sm btn-link mr-auto" href="sort.php">+新建分类</a>
-                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">取消</button>
-                            <button type="submit" class="btn btn-sm btn-success">保存</button>
+                            <a class="btn btn-sm btn-link mr-auto" href="sort.php"><?= lang('new_category') ?></a>
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
+                            <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                         </div>
                     <?php else: ?>
                         <div>
@@ -240,12 +240,12 @@
     </div>
 </div>
 
-<!-- 页面导航模态窗口 -->
+<!-- Page navigation modal window -->
 <div class="modal fade" id="pageNavModal" tabindex="-1" role="dialog" aria-labelledby="pageNavModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header border-0">
-                <h5 class="modal-title" id="pageNavModalLabel">添加页面到导航</h5>
+                <h5 class="modal-title" id="pageNavModalLabel"><?= lang('nav_page_add') ?></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -262,9 +262,9 @@
                             <?php endforeach; ?>
                         </div>
                         <div class="modal-footer border-0">
-                            <a class="btn btn-sm btn-link mr-auto" href="page.php?action=new">+新建页面</a>
-                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">取消</button>
-                            <button type="submit" class="btn btn-sm btn-success">保存</button>
+                            <a class="btn btn-sm btn-link mr-auto" href="page.php?action=new">+<?= lang('add_page') ?></a>
+                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
+                            <button type="submit" class="btn btn-sm btn-success"><?= lang('save') ?></button>
                         </div>
                     <?php else: ?>
                         <div>

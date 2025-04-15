@@ -716,6 +716,8 @@ $lang = array(
     'address' => '地址',//'Address',
     'add' => '添加',//'Add',
     'new_category' => '+新建分类',//'+New category',
+    'custom_nav' => '自定义导航',//'Custom navigation',
+    'nav_add_page' => '添加页面',//'Add page',
 
 //---------------------------
 //admin/views/page.php
@@ -1213,6 +1215,7 @@ $lang = array(
     'last_registered' => '最近注册',//'Recently registered',
     'last_active' => '最近活跃',//'Recently Active',
     'admin_priority' => '管理优先',//'Administrator priority',
+    'ban_priority' => '禁用优先',//'Ban priority',
     'users_perpage' => '个用户，每页显示',//'Users, displayed per page',
     'disable' => '禁用',//'Disable',
 

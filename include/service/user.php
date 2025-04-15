@@ -165,7 +165,7 @@ class User
         $lastActivity = isset($_SESSION['last_activity']) ? $_SESSION['last_activity'] : 0;
         $currentTime = time();
 
-        // 每6小时更新一次用户活动时间
+        // Update user activity time every 6 hours
         if ($currentTime - $lastActivity >= 21600) { // 21600 seconds = 6 hours
             $userModel = new User_Model();
             $userModel->updateUserActivityTime($uid);
