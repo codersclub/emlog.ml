@@ -1,5 +1,240 @@
 # &#x1f335; Emlog Changelog
 
+## Pro 2.5.12
+
+Release time: 2025-4-13
+
+[Function] Added batch unban function to user management
+[Function] Optimized user active time logic
+[Function] Optimized the display of latest articles and comments in the default user center
+[Function] Optimized pop-up window style, and some background pages are loaded using pjax
+[Fix] Fixed the error of adding html content in custom sidebar
+
+Installation package: [emlog_pro_2.5.12.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.12/emlog_pro_2.5.12.zip)
+
+
+## Pro 2.5.11
+
+Release time: 2025-4-4
+
+[Fix] Fix the problem that the article release time cannot be set in the previous version
+
+Installation package: [emlog_pro_2.5.11.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.11/emlog_pro_2.5.11.zip)
+
+
+## Pro 2.5.10
+
+Release time: 2025-4-3
+
+[Function] Article management supports batch change of authors
+[Function] Write articles (including interfaces) to support automatic acquisition of pictures in articles as cover
+[Function] Add two new email templates: dark blue and grass green
+[Fix] Get user IP function compatible with Cloudflare
+
+Installation package: [emlog_pro_2.5.10.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.10/emlog_pro_2.5.10.zip)
+
+
+## Pro 2.5.9
+
+Release time: 2025-3-25
+
+[Function] Optimize the template management interface, and the setting button will no longer be displayed for unactivated themes
+[Function] Optimize the registered user personal center interface
+[Function] Add comment and like related data and interface support, see API documentation for details
+[Function] Support template preset article custom fields, see theme development documentation for details
+[Fix] Fixed a PHP8.2 compatibility issue
+
+Installation package: [emlog_pro_2.5.9.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.9/emlog_pro_2.5.9.zip)
+
+
+## Pro 2.5.8
+
+Release time: 2025-3-16
+
+[Function] Optimize the plugin and template update experience, and make application updates smoother
+[Function] Remember the check status of automatic summary capture, so you don't have to check it every time you write an article
+[Function] Optimize the prompt experience for deleting articles and other items, and no longer prompt when refreshing the page
+[Function] AI dialogue supports the output of the inference process of the inference model
+[Function] Always open the article list API to facilitate asynchronous loading of theme development
+[Function] User center routing is compatible with the situation where pseudo-static is not turned on, see the theme development document for details
+
+Installation package: [emlog_pro_2.5.8.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.8/emlog_pro_2.5.8.zip)
+
+
+## Pro 2.5.7
+
+Release time: 2025-2-25
+
+[Function] Add insert audio button to the default editor, support formats such as MP3
+[Function] Add full-text search function in the front-end, which needs to be enabled in the system settings
+[Function] Add the number of articles displayed per page in the category, so that different categories can display different numbers of articles
+[Function] Optimize the switch control style of the setting interface
+[Fix] Solve the problem that the default theme favicon is overwritten during update
+
+Installation package: [emlog_pro_2.5.7.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.7/emlog_pro_2.5.7.zip)
+
+
+## Pro 2.5.6
+
+Release time: 2025-2-17
+
+[Function] Optimize the AI model setting experience, support models with the same name, and support editing
+[Function] Optimize the default theme comment verification code pop-up window style
+[Function] Search supports searching by category
+[Function] Add search function to backend plug-in management
+[Function] User management supports batch ban
+[Function] Add password strength prompt to password modification interface
+
+Installation package: [emlog_pro_2.5.6.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.6/emlog_pro_2.5.6.zip)
+
+
+## Pro 2.5.5
+
+Release time: 2025-2-10
+
+[Function] Optimize login interface layout and color matching
+[Function] Support AI-generated replies when replying to user comments
+[Fix] Enhance the security of random number generation
+[Fix] Enhance the compatibility of exporting database backup files
+[Fix] Article and page lists display article ID, link alias and other information
+
+Installation package: [emlog_pro_2.5.5.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.5/emlog_pro_2.5.5.zip)
+
+
+## Pro 2.5.4
+
+Release time: 2025-1-25
+
+[Function] Add list mode to resource management
+[Function] Optimize backend sidebar style
+[Function] Optimize AI model call and improve compatibility
+[Function] Try Pjax loading on the backend microblog page
+[Fix] Optimize some functions and interface details
+
+Installation package: [emlog_pro_2.5.4.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.4/emlog_pro_2.5.4.zip)
+
+
+## Pro 2.5.3
+
+Release time: 2025-1-14
+
+[Function] Optimize AI model calls and improve compatibility
+[Function] Optimize order data model to facilitate application development
+[Function] API: Article publishing supports passing jump link parameters
+
+Installation package: [emlog_pro_2.5.3.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.3/emlog_pro_2.5.3.zip)
+
+
+## Pro 2.5.2
+
+Release time: 2025-1-11
+
+[Fix] Fix the error of editing articles after a new installation
+
+Installation package: [emlog_pro_2.5.2.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.2/emlog_pro_2.5.2.zip)
+
+## Pro 2.5.1
+
+Release time: 2025-1-10
+
+[Function] Add AI basic capability settings to support adding and switching of openai protocol large models.
+[Function] Add AI dialogue function in the lower right corner of the backend to request AI assistance at any time.
+[Function] User list supports sorting by registration and active time
+[Function] Add the number of pages per page at the bottom of the article, comment, and user list
+[Fix] The problem of scheduled articles being viewed in advance
+[Fix] The problem of interface accessing articles not increasing the number of visits
+
+Installation package: [emlog_pro_2.5.1.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.1/emlog_pro_2.5.1.zip)
+
+
+## Pro 2.4.3
+
+Release time: 2024-12-17
+
+[Fix] Fix the problem of error reporting when posting articles
+
+Installation package: [emlog_pro_2.4.3.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.4.3/emlog_pro_2.4.3.zip)
+
+
+## Pro 2.4.2
+
+Release time: 2024-12-17
+
+[Function] The background page supports search and sorting
+[Function] Add order table and related operation Model to facilitate application to implement order management
+[Function] Add /user route to facilitate template development of user center and other functions
+[Function] Add user registration success and delete user mount point
+[Function] Optimize the efficiency of count query SQL
+[Function] Article update API supports updating custom fields
+[Fix] Fixed the problem of home page paging errors caused by scheduled publishing
+
+Installation package: [emlog_pro_2.4.2.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.4.2/emlog_pro_2.4.2.zip)
+
+
+## Pro 2.4.1
+
+Release time: 2024-11-19
+
+[Function] Optimize comment management operations and add one-click review comments
+[Function] Resource media library: optimize resource file search and support search file name
+[Function] Resource media library: add new formats for image and video resources: svg, avif, mov
+[Function] Uploaded cover images are automatically added to the resource library
+[Fix] Adjust the default size of avatar to 120px
+[Fix] Optimize error information and other details
+
+Installation package: [emlog_pro_2.4.1.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.4.1/emlog_pro_2.4.1.zip)
+
+## Pro 2.4.0
+
+Release time: 2024-10-30
+
+[Function] API: Add a cancel like interface
+[Function] API: The article list and detail interface return the markdown original text to facilitate front-end rendering
+[Function] User download supports more compression formats: rar, 7z
+[Function] Add article hierarchy: add parent_id field to article table
+[Fix] No longer display commenter IP information to ordinary users
+[Fix] Optimize resource management file icons
+
+Installation package: [emlog_pro_2.4.0.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.4.0/emlog_pro_2.4.0.zip)
+
+
+## Pro 2.3.18
+
+Release time: 2024-10-3
+
+[Function] New background date selection control
+[Function] API: Add article like related interface
+[Function] API: Comment list must pass article ID
+[Function] API: Add a comment list interface with clearer and simpler structure
+[Fix] The problem that registered users are not strictly restricted from posting through API
+[Fix] The problem that registered users will change the article publishing time when editing articles
+
+Installation package: [emlog_pro_2.3.18.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.18/emlog_pro_2.3.18.zip)
+
+## Pro 2.3.17
+
+Release time: 2024-9-25
+
+[Function] Support custom tag pages: title, description, keywords
+[Function] Optimize the background microblog list display experience
+[Function] Development: Add login success and failure mount points
+[Function] API: Add whether to set a password field to the article list interface
+[Function] API: Article details interface supports passing passwords to access private articles
+[Function] Add class names to comment verification codes and input boxes to facilitate theme customization
+
+Installation package: [emlog_pro_2.3.17.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.17/emlog_pro_2.3.17.zip)
+
+## Pro 2.3.16
+
+Release time: 2024-9-12
+
+[Function] Cooperate with the official website document revision and adjust related document links
+[Function] Optimize the error prompt of the download method to more accurately reflect the problem.
+[Function] Optimize the application store interface to improve the experience of installing application upgrade programs on Hong Kong servers.
+
+Installation package: [emlog_pro_2.3.16.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.3.16/emlog_pro_2.3.16.zip)
+
+
 ## Pro 2.3.15
 
 Release time: 2024-8-27
