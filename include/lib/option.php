@@ -8,8 +8,8 @@
 
 class Option
 {
-    const EMLOG_VERSION = 'pro 2.5.12';
-    const EMLOG_VERSION_TIMESTAMP = 1744587214;
+    const EMLOG_VERSION = 'pro 2.5.13';
+    const EMLOG_VERSION_TIMESTAMP = 1745404804;
     const UPLOADFILE_PATH = '../content/uploadfile/';
     const UPLOADFILE_FULL_PATH = EMLOG_ROOT . '/content/uploadfile/';
 
@@ -34,7 +34,7 @@ class Option
                 return $options_cache['blogurl'];
             case 'posts_name':
                 if (empty($options_cache['posts_name'])) {
-/*vot*/             return lang('article');
+                    return lang('article');
                 }
             default:
                 return isset($options_cache[$option]) ? $options_cache[$option] : '';

@@ -169,8 +169,9 @@ class TplOptions
         //Set template directory
         $this->_view = __DIR__ . '/views/';
         $this->_assets = BLOG_URL . 'content/plugins/' . self::ID . '/assets/';
-        /*vot*/
-        $this->_lang = BLOG_URL . 'content/plugins/' . self::ID . '/lang/' . LANG;
+
+        // Set the plugin language folder
+/*vot*/ $this->_lang = BLOG_URL . 'content/plugins/' . self::ID . '/lang/' . LANG;
 
         //Register each hook
         $scriptBaseName = strtolower(substr(basename($_SERVER['SCRIPT_NAME']), 0, -4));
@@ -208,8 +209,8 @@ class TplOptions
     {
         echo sprintf('<link rel="stylesheet" href="%s">', $this->_assets . 'main.css?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
         echo sprintf('<script src="%s"></script>', $this->_assets . 'main.js?ver=' . urlencode(self::VERSION . Option::EMLOG_VERSION_TIMESTAMP));
-        /*vot*/
-        echo sprintf('<script src="%s"></script>', $this->_lang . '/lang_js.js?ver=' . urlencode(self::VERSION));
+
+/*vot*/ echo sprintf('<script src="%s"></script>', $this->_lang . '/lang_js.js?ver=' . urlencode(self::VERSION));
     }
 
     /**
@@ -333,10 +334,10 @@ class TplOptions
         $sorts = Cache::getInstance()->readCache('sort');
         if ($unsorted) {
             array_unshift($sorts, array(
-                'sid'              => -1,
-                /*vot*/ 'sortname' => lang('uncategorized'),
-                'lognum'           => 0,
-                'children'         => array(),
+                'sid'      => -1,
+/*vot*/         'sortname' => lang('uncategorized'),
+                'lognum'   => 0,
+                'children' => array(),
             ));
         }
         if ($is_cate) {
@@ -560,15 +561,15 @@ class TplOptions
         } elseif ($template !== null) {
             if (!is_dir(TPLS_PATH . $template)) {
                 $this->jsonReturn(array(
-                    'code'        => 1,
-                    /*vot*/ 'msg' => lang('tpl_not_found'),
+                    'code' => 1,
+/*vot*/              'msg' => lang('tpl_not_found'),
                 ));
             }
             $options = $this->getTemplateDefinedOptions($template);
             if ($options === false) {
                 $this->jsonReturn(array(
-                    'code'        => 1,
-                    /*vot*/ 'msg' => lang('tpl_not_support'),
+                    'code' => 1,
+/*vot*/             'msg'  => lang('tpl_not_support'),
                 ));
             }
             $this->_currentTemplate = $template;
@@ -617,8 +618,7 @@ class TplOptions
                 $data = array(
                     'template' => $template,
                     'code'     => $result ? 0 : 1,
-                    /*vot*/
-                    'msg'      => lang('tpl_save_settings') . ($result ? lang('success') : lang('failure')),
+/*vot*/             'msg'      => lang('tpl_save_settings') . ($result ? lang('success') : lang('failure')),
                 );
                 $this->jsonReturn($data);
             }
@@ -691,29 +691,26 @@ class TplOptions
         );
         if ($file['error'] == 1) {
             $result['code'] = 100;
-            /*vot*/
-            $result['msg'] = lang('file_size_large_system');
+/*vot*/     $result['msg'] = lang('file_size_large_system');
             return $result;
         }
 
         if ($file['error'] > 1) {
             $result['code'] = 101;
-            /*vot*/
-            $result['msg'] = lang('file_upload_failed');
+/*vot*/     $result['msg'] = lang('file_upload_failed');
             return $result;
         }
         $extension = getFileSuffix($file['name']);
         if (!in_array($extension, $this->_imageTypes)) {
             $result['code'] = 102;
-            /*vot*/
-            $result['msg'] = lang('file_wrong_type');
+/*vot*/     $result['msg'] = lang('file_wrong_type');
             return $result;
         }
         $maxSize = defined(UPLOAD_MAX_SIZE) ? UPLOAD_MAX_SIZE : 2097152;
 
         if ($file['size'] > $maxSize) {
             $result['code'] = 103;
-            $result['msg'] = lang('file_size_large');
+/*vot*/     $result['msg'] = lang('file_size_large');
             return $result;
         }
         $uploadPath = Option::UPLOADFILE_PATH . self::ID . "/$template/";
@@ -736,16 +733,14 @@ class TplOptions
             $ret = @mkdir($uploadPath, 0777, true);
             if ($ret === false) {
                 $result['code'] = 104;
-                /*vot*/
-                $result['msg'] = lang('create_upload_dir_error');
+/*vot*/         $result['msg'] = lang('create_upload_dir_error');
                 return $result;
             }
         }
         if (@is_uploaded_file($file['tmp_name'])) {
             if (@!move_uploaded_file($file['tmp_name'], $attachpath)) {
                 $result['code'] = 105;
-                /*vot*/
-                $result['msg'] = lang('upload_no_rights');
+/*vot*/         $result['msg'] = lang('upload_no_rights');
                 return $result;
             }
             @chmod($attachpath, 0777);
@@ -787,10 +782,8 @@ class TplOptions
                 case 'radio':
                     if (!isset($option['values']) || !is_array($option['values'])) {
                         $option['values'] = array(
-                            /*vot*/
-                            0 => lang('no'),
-                            /*vot*/
-                            1 => lang('yes'),
+/*vot*/                     0 => lang('no'),
+/*vot*/                     1 => lang('yes'),
                         );
                     }
                     $default = $this->arrayGet(array_keys($option['values']), 0);
@@ -893,7 +886,6 @@ class TplOptions
             $tip = '<small class="new-tip">' . trim($option['new']) . '</small>';
         }
         echo '<div class="option ' . @$option['labels'] . '" id="' . $option['id'] . '">';
-        echo '<div class="option-ico upico"></div>';
 /*vot*/ echo '<div class="option-name" title="' . lang('shrink_expand') . '" data-name="' . $this->encode($option['name']) . '" data-id="' . $option['id'] . '">', $this->encode($option['name']) . $tip, $desc, '</div>';
         $depend = isset($option['depend']) ? $option['depend'] : 'none';
         echo sprintf('<div class="option-body depend-%s %s">', $depend, $is_multi);

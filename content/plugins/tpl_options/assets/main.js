@@ -31,7 +31,7 @@ $(function () {
             if (card.getAttribute('data-app-alias') === tpl) {
                 var settingBtnContainer = card.querySelector('.setting-btn');
                 if (settingBtnContainer) {
-                    $('<a class="btn btn-outline-primary btn-sm"><i class="icofont-options"></i> ' + lang('options') + '</a>')
+                    $('<a class="btn btn-outline-primary btn-sm"><i class="icofont-options"></i> ' + jlang('options') + '</a>')
                         .appendTo(settingBtnContainer)
                         .addClass(attr('setting'))
                         .data('template', tpl);
@@ -68,33 +68,12 @@ $(function () {
         document.getElementsByClassName("container-fluid")[0].children[0].style.cssText = 'display:flex !important';
         $('.container-fluid .row').fadeToggle();
         optionArea.slideUp(500), tplBox.show();
-    }).on('click', '.option-name', function () {
-        $(this).find('.option-description').fadeToggle();
-        $(this).parent().find('.option-body').fadeToggle();
-        if ($(this).parent().find('.option-ico').hasClass('upico')) {
-            $(this).parent().find('.option-ico').removeClass('upico').addClass('downico');
-        } else {
-            $(this).parent().find('.option-ico').removeClass('downico').addClass('upico');
-        }
-
     }).on('click', '.tpl-options-menu li', function () {
         //$('html,body').animate({scrollTop:$('#'+$(this).attr('data-id')).offset().top-80}, 500);
     }).on('click', '.vtpl-menu,.vtpl-nav.show ul li,.fixed-body', function () {
         $('.vtpl-nav').toggleClass('show')
     }).on('click', '.tpl-options-menubtn', function () {
         $('.tpl-options-menu').fadeToggle();
-    }).on('click', '.tpl-options-btns', function () {
-        if ($(this).attr('data-type') == 1) {
-/*vot*/            $(this).text(lang('expand_all')).attr('data-type', 0);
-            $('.option-body').fadeOut();
-            $('.option-description').fadeOut();
-            $('.option-ico').removeClass('upico').addClass('downico');
-        } else {
-/*vot*/            $(this).text(lang('shrink_all')).attr('data-type', 1);
-            $('.option-body').fadeIn();
-            $('.option-description').fadeIn();
-            $('.option-ico').removeClass('downico').addClass('upico');
-        }
     }).on('click', '.option-sort-tag-name', function () {
         var that = $(this);
         if (that.is('.selected')) {
@@ -167,18 +146,18 @@ $(function () {
         let _url = $(this).attr('data-url')
         let type_html = ''
         if (_type === 'image') {
-/*vot*/     type_html = '<div class="tpl-block-upload"><span>' + lang('enter_block_title') + ':</span>' +
+/*vot*/     type_html = '<div class="tpl-block-upload"><span>' + jlang('enter_block_title') + ':</span>' +
                 '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">' +
                 '<div class="tpl-image-preview"><img src=""></div><div class="tpl-block-upload-input">' +
                 '<input type="text" name="' + _name + '[content][]" value=""><label>\n' +
-                '<a class="btn btn-primary"><i class="icofont-plus"></i>' + lang('upload') + '</a>\n' +
+                '<a class="btn btn-primary"><i class="icofont-plus"></i>' + jlang('upload') + '</a>\n' +
                 '<input class="d-none tpl-image" type="file" name="image" data-url="' + _url + '" accept="image/svg+xml,image/webp,image/avif,image/jpeg,image/jpg,image/png,image/gif">\n' +
                 '</label>'
             type_html += '</div></div>';
         } else {
-/*vot*/     type_html += '<div>' + lang('enter_block_title') + ':</div>'
+/*vot*/     type_html += '<div>' + jlang('enter_block_title') + ':</div>'
             type_html += '<input class="block-title-input" type="text" name="' + _name + '[title][]" value="">'
-/*vot*/     type_html += '<div>' + lang('enter_block_content') + ':</div>'
+/*vot*/     type_html += '<div>' + jlang('enter_block_content') + ':</div>'
             if ($(this).parent().parent().hasClass('is-multi')) {
                 type_html += '<textarea rows="5" name="' + _name + '[content][]"></textarea>'
             } else {
@@ -229,13 +208,13 @@ $(function () {
                 }
             },
             error: function (data) {
-                cocoMessage.error(lang('network_error'), 2500);
+                cocoMessage.error(jlang('network_error'), 2500);
             }
 
         });
 
     }).on('click', '.tpl-block-remove', function () {
-/*vot*/ if (confirm(lang('delete_sure'))) {
+        if (confirm(jlang('delete_sure'))) {
             $(this).parent().parent().remove()
             $('form.tpl-options-form').trigger('submit');
         }
@@ -271,7 +250,7 @@ $(function () {
                 }
                 cocoMessage.success(data.msg, 2500);
             }, error: function () {
-/*vot*/                showMsg(1, lang('network_error'), 2500);
+                showMsg(1, jlang('network_error'), 2500);
             }, complete: function () {
                 // loading(false);
             }
@@ -303,7 +282,7 @@ $(function () {
             $('[name="' + target + '"]').val(path).trigger('change');
             $('[data-name="' + target + '"]').attr('href', src).find('img').attr('src', src);
         } else {
-/*vot*/            alert(lang('upload_failed') + msg)
+            alert(jlang('upload_failed') + msg)
         }
         trueInput.val('');
         target = '';

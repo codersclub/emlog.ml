@@ -15,6 +15,9 @@ class User
     const ROLE_VISITOR = 'visitor'; // Guest
     const ROLE_EDITOR = 'editor';   // Content editor
 
+    const USER_STATE_FORBID = 1;
+    const USER_STATE_NORMAL = 0;
+
     static function isFounder($role = ROLE, $uid = UID)
     {
         $uid = (int)$uid;

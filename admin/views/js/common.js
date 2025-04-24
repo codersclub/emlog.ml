@@ -145,7 +145,7 @@ function delArticle(msg, text, url, token) {
     layer.confirm(text, {
         title: msg,
         icon: 3,
-        btn: [jlang('save_draft'), '<span class="text-danger">'+jlang('del_completely')+'</span>', jlang('cancel')]
+        btn: [jlang('save_draft'), '<span class="text-danger">' + jlang('del_completely') + '</span>', jlang('cancel')]
     }, function (index) {
         window.location = url + '&token=' + token;
         layer.close(index);
@@ -164,7 +164,7 @@ function submitForm(formId, successMsg) {
         url: $(formId).attr('action'),
         data: $(formId).serialize(),
         success: function () {
-/*vot*/     cocoMessage.success(successMsg || jlang('save_success'))
+            cocoMessage.success(successMsg || jlang('save_success'))
         },
         error: function (xhr) {
             const errorMsg = JSON.parse(xhr.responseText).msg;
@@ -331,7 +331,7 @@ function autosave(act) {
             $("#savedf").attr("disabled", false).val(btname);
         } else {
             $("#savedf").attr("disabled", false).val(btname);
-/*vot*/     $("#save_info").html(jlang('save_system_error')).addClass("alert-danger");
+            $("#save_info").html(jlang('save_system_error')).addClass("alert-danger");
             $('title').text(jlang('save_failed') + titleText);
         }
     });
@@ -351,17 +351,17 @@ function pagesave() {
     });
     let url = "page.php?action=save";
     if ($("[name='pageid']").attr("value") < 0) return infoAlert(jlang('save_first'));
-/*vot*/ if (!$("[name='pagecontent']").html()) return infoAlert(jlang('content_empty'));
-/*vot*/ $('title').text(jlang('saving_in') + ' ' + pagetitle);
+    if (!$("[name='pagecontent']").html()) return infoAlert(jlang('content_empty'));
+    $('title').text(jlang('saving_in') + ' ' + pagetitle);
     $.post(url, $("#addlog").serialize(), function (data) {
-/*vot*/ $('title').text(jlang('saved_ok') + pagetitle);
+        $('title').text(jlang('saved_ok') + pagetitle);
         setTimeout(function () {
             $('title').text(pagetitle);
         }, 2000);
         pageText = $("textarea").text();
     }).fail(function () {
-/*vot*/ $('title').text(jlang('save_failed') + pagetitle);
-/*vot*/ infoAlert(jlang('save_failed!'))
+        $('title').text(jlang('save_failed') + pagetitle);
+        infoAlert(jlang('save_failed!'))
     });
 }
 
@@ -487,11 +487,11 @@ function imgPasteExpand(thisEditor) {
                 $.get(emMediaPhpUrl, function (resp) {
                     var image = resp.data.images[0];
                     if (image) {
-/*vot*/                 console.log(jlang('result_ok'));
-/*vot*/                 replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
+                        console.log(jlang('result_ok'));
+                        replaceByNum(`[![](${image.media_icon})](${image.media_url})`, 10);  // The number 10 here corresponds to 'Uploading...100%' which is 10 characters
                     } else {
-/*vot*/                 console.log(jlang('get_result_fail'));
-/*vot*/                 infoAlert(jlang('get_result_fail'));
+                        console.log(jlang('get_result_fail'));
+                        infoAlert(jlang('get_result_fail'));
                     }
                 })
             }, error: function (result) {
@@ -590,97 +590,66 @@ function toggleCheckbox(id) {
     localStorage.setItem(id, isChecked);
 }
 
-//------------------------------
-// Return the language var value
-function lang(key) {
-    if (LNG[key]) {
-        val = LNG[key];
-    } else {
-        val = '{' + key + '}';
-    }
-    return val;
-}
-
-//------------------------------
-// Return the language var value
-function jlang(key) {
-    return lang(val);
-}
-
-/*vot*/    // Load Timepicker language
-/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
-
-//------------------------------
-// Return the language var value
-function lang(key) {
-    if (LNG[key]) {
-        val = LNG[key];
-    } else {
-        val = '{' + key + '}';
-    }
-    return val;
-}
-//------------------------------
-// Return the language var value
-function jlang(key) {
-    return lang(val);
-}
-
-/*vot*/    // Load Timepicker language
-/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
-
-//------------------------------
-// Return the language var value
-function jlang(key) {
-    return lang(val);
-}
-
-/*vot*/    // Load Timepicker language
-/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
-
-
-$(function () {
-    // Setting interface: Automatically detect site address. If "Automatically detect address" is set, set the input to read-only to indicate that the item is invalid.
-    if ($("#detect_url").prop("checked")) {
-        $("[name=blogurl]").attr("readonly", "readonly")
-    }
-    $("#detect_url").click(function () {
-        if ($(this).prop("checked")) {
-            $("[name=blogurl]").attr("readonly", "readonly")
-        } else {
-            $("[name=blogurl]").removeAttr("readonly")
-        }
-    })
-
-    // Select all checkboxes
-    $('#checkAllItem').click(function () {
-        let cardCheckboxes = $('.checkboxContainer').find('input[type=checkbox]');
+/**
+ * Encapsulate the checkbox selection logic
+ * @param {string} checkAllSelector Select All Buttons Selector
+ * @param {string} containerSelector Checkbox container selector
+ */
+function initCheckboxSelectAll(checkAllSelector, containerSelector) {
+    $(checkAllSelector).click(function () {
+        let cardCheckboxes = $(containerSelector).find('input[type=checkbox]');
         cardCheckboxes.prop('checked', $(this).prop('checked'));
     });
 
-    $('.checkboxContainer').find('input[type=checkbox]').click(function () {
+    $(containerSelector).find('input[type=checkbox]').click(function () {
         let allChecked = true;
-        $('.checkboxContainer').find('input[type=checkbox]').each(function () {
+        $(containerSelector).find('input[type=checkbox]').each(function () {
             if (!$(this).prop('checked')) {
                 allChecked = false;
                 return false;
             }
         });
-        $('#checkAllItem').prop('checked', allChecked);
+        $(checkAllSelector).prop('checked', allChecked);
     });
+}
 
-    // store app install
+//------------------------------
+// Return the language var value
+function lang(key) {
+    if (LNG[key]) {
+        val = LNG[key];
+    } else {
+        val = '{' + key + '}';
+    }
+    return val;
+}
+
+//------------------------------
+// Return the language var value
+function jlang(key) {
+    return lang(val);
+}
+
+/*vot*/    // Load Timepicker language
+/*vot*/    $.getScript('../lang/' + em_lang + '/lang_timepicker.js');
+
+//------------------------------
+$(function () {
+    // Select all checkboxes
+    initCheckboxSelectAll('#checkAllItem', '.checkboxContainer');
+
+    // Store app install
     $('.installBtn').click(function (e) {
         e.preventDefault();
         let link = $(this);
         let down_url = link.data('url');
         let type = link.data('type');
-/*vot*/        link.text(jlang('installing'));
+        link.text(jlang('installing'));
         link.parent().prev(".installMsg").html("").addClass("spinner-border text-primary");
 
         let url = './store.php?action=install&type=' + type + '&source=' + down_url;
         $.get(url, function (data) {
-/*vot*/            link.text(jlang('install_free'));
+            link.text(jlang('install_free'));
             link.parent().prev(".installMsg").html('<span class="text-danger">' + data + '</span>').removeClass("spinner-border text-primary");
         });
     });

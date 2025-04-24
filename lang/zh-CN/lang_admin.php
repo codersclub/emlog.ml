@@ -969,6 +969,7 @@ $lang = array(
 //---------------------------
 //admin/views/signin.php
     'password_reset_ok' => '密码重置成功，请登录',//'Password reset successfully, please log in',
+    'account_deactivated' => '账号已被停用',//'Account has been deactivated',
 
 //---------------------------
 //admin/views/signup.php

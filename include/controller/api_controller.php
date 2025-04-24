@@ -207,7 +207,6 @@ class Api_Controller
         $keyword = htmlspecialchars($keyword);
         $keyword = str_replace(['%', '_'], ['\%', '\_'], $keyword);
         $tag = Input::getStrVar('tag');
-        $tag = urldecode($tag);
         $order = Input::getStrVar('order');
 
         $sub = '';
@@ -246,6 +245,7 @@ class Api_Controller
         $sort_cache = $this->Cache->readCache('sort');
         $articles = [];
         foreach ($r as $value) {
+            $author = $this->getAuthor($value['author']);
             $articles[] = [
                 'id'          => (int)$value['gid'],
                 'title'       => $value['title'],
@@ -255,7 +255,8 @@ class Api_Controller
                 'description_raw' => empty($value['excerpt']) ? $value['content'] : $value['excerpt'],
                 'date'        => date('Y-m-d H:i:s', $value['date']),
                 'author_id'   => (int)$value['author'],
-                'author_name' => $this->getAuthorName($value['author']),
+                'author_name' => $author['nickname'],
+                'author_avatar' => $author['avatar'],
                 'sort_id'     => (int)$value['sortid'],
                 'sort_name'   => isset($sort_cache[$value['sortid']]['sortname']) ? $sort_cache[$value['sortid']]['sortname'] : '',
                 'views'       => (int)$value['views'],
@@ -294,9 +295,7 @@ class Api_Controller
             Output::error('Wrong password');
         }
 
-        $user_info = $this->User_Model->getOneUser($r['author']);
-        $author_name = isset($user_info['nickname']) ? $user_info['nickname'] : '';
-        $author_avatar = isset($user_info['photo']) ? getFileUrl($user_info['photo']) : '';
+        $author = $this->getAuthor($r['author']);
 
         $article = [
             'title'         => $r['log_title'],
@@ -306,8 +305,8 @@ class Api_Controller
             'sort_name'     => isset($sort_cache[$r['sortid']]['sortname']) ? $sort_cache[$r['sortid']]['sortname'] : '',
             'type'          => $r['type'],
             'author_id'     => (int)$r['author'],
-            'author_name'   => $author_name,
-            'author_avatar' => $author_avatar,
+            'author_name'   => $author['nickname'],
+            'author_avatar' => $author['avatar'],
             'content'       => $r['log_content'],
             'content_raw'   => $r['content_raw'],
             'excerpt'       => $r['excerpt'],
@@ -393,13 +392,15 @@ class Api_Controller
 
         $notes = [];
         foreach ($r as $value) {
+            $author = $this->getAuthor($value['author']);
             $notes[] = [
                 'id'          => (int)$value['id'],
                 't'           => $value['t'],
                 't_raw'       => $value['t_raw'],
                 'date'        => $value['date'],
                 'author_id'   => (int)$value['author'],
-                'author_name' => $this->getAuthorName($value['author']),
+                'author_name' => $author['nickname'],
+                'author_avatar' => $author['avatar'],
             ];
         }
         output::ok(['notes' => $notes,]);
@@ -557,10 +558,12 @@ class Api_Controller
         return $tags;
     }
 
-    private function getAuthorName($uid)
+    private function getAuthor($uid)
     {
         $userInfo = $this->User_Model->getOneUser($uid);
-        return isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
+        $r['nickname'] = isset($userInfo['nickname']) ? $userInfo['nickname'] : '';
+        $r['avatar'] = User::getAvatar(isset($userInfo['photo']) ? $userInfo['photo'] : '');
+        return $r;
     }
 
     private function checkApiOpen($apiName)

@@ -98,7 +98,7 @@
                 </select>
             </div>
             <div class="alert alert-primary">
-<!--vot-->            <?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
+                <?=lang('rss_url')?>: <?= $blogurl . 'rss.php' ?>
             </div>
             <div class="custom-control custom-switch">
                 <input class="custom-control-input" type="checkbox" value="y" name="isfullsearch" id="isfullsearch" <?= $conf_isfullsearch ?> />
@@ -116,7 +116,7 @@
                 <input maxlength="5" style="width:80px;" class="form-control" value="<?= $att_imgmaxh ?>" name="att_imgmaxh" /> <?= lang('unit_pixels') ?>
             </div>
             <hr>
-<!--vot-->        <h4><?=lang('other_settings')?></h4>
+            <h4><?=lang('other_settings')?></h4>
             <div class="form-group form-inline">
                 <label><?= lang('lmenu_title') ?></label>
                 <input class="form-control ml-2" value="<?= $panel_menu_title ?>" name="panel_menu_title">
@@ -134,10 +134,22 @@
         $("#menu_setting").addClass('active');
         setTimeout(hideActived, 3600);
 
-        // submit Form
+        // Submit Form
         $("#setting_form").submit(function(event) {
             event.preventDefault();
             submitForm("#setting_form");
         });
+
+        // Settings interface: Automatically detect site address If "Automatically detect address" is set, set the input to read-only to indicate that the item is invalid.
+        if ($("#detect_url").prop("checked")) {
+            $("[name=blogurl]").attr("readonly", "readonly")
+        }
+        $("#detect_url").click(function() {
+            if ($(this).prop("checked")) {
+                $("[name=blogurl]").attr("readonly", "readonly")
+            } else {
+                $("[name=blogurl]").removeAttr("readonly")
+            }
+        })
     });
 </script>

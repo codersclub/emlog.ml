@@ -16,7 +16,7 @@
         <div>
         <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
             <?php foreach ($sorts as $key => $val):
-                $cur_tab = $val['id'] == $sid ? "btn-info" : "btn-success";
+                $cur_tab = $val['id'] == $sid ? "btn-primary" : "btn-success";
             ?>
                 <div class="btn-group mr-2 my-1">
                     <a href="media.php?sid=<?= $val['id'] ?>" class="btn btn-sm <?= $cur_tab ?>"><?= $val['sortname'] ?></a>
@@ -27,7 +27,10 @@
                     </div>
                 </div>
             <?php endforeach ?>
-            <a href="#" class="btn btn-success btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i> <?= lang('category') ?></a>
+            <?php if ($sorts): ?>
+                <a href="media.php?sid=na" class="btn btn-sm <?= $sid === 'na' ? "btn-primary" : "btn-light" ?> mr-2 my-1">未分类</a>
+            <?php endif ?>
+            <a href="#" class="btn btn-light btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i> <?= lang('category') ?></a>
         </div>
         <div class="d-flex align-items-center mb-3 mb-sm-0">
             <div class="mr-2">
@@ -106,7 +109,7 @@
                                 $media_icon = '&#127916;'; // Clapper board
                                 $img_viewer = '';
                             } elseif (isAudio($value['filename'])) {
-                                $media_icon = '&#127911;'; // headphone
+                                $media_icon = '&#127911;'; // Headphone
                                 $img_viewer = '';
                             } else {
                                 $media_icon = "";
@@ -369,7 +372,7 @@
             hs.graphicsDir = './views/components/highslide/graphics/';
             hs.wrapperClassName = 'rounded-white';
         } else {
-        $('.highslide').removeAttr('onclick') // If it is a mobile terminal, do not use the highslide function
+            $('.highslide').removeAttr('onclick') // If it is a mobile terminal, do not use the highslide function
         }
 
         // copy url
@@ -398,12 +401,12 @@
 
     function mediaact(act) {
         if (getChecked('aids') === false) {
-/*vot*/     infoAlert(lang('resource_select'));
+/*vot*/     infoAlert(jlang('resource_select'));
             return;
         }
 
         if (act === 'del') {
-            delAlert2('', lang('resource_del_sure'), function() {
+            delAlert2('', jlang('resource_del_sure'), function() {
                 $("#operate").val(act);
                 $("#form_media").submit();
             })
@@ -416,7 +419,7 @@
     // Change category
     function changeSort(obj) {
         if (getChecked('aids') === false) {
-/*vot*/     infoAlert(lang('media_select'));
+/*vot*/     infoAlert(jlang('media_select'));
             return;
         }
         if ($('#sort').val() === '') return;

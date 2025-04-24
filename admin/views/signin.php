@@ -17,6 +17,8 @@
                                 <div class="alert alert-danger"><?= lang('validation_error') ?></div><?php endif ?>
                             <?php if (isset($_GET['err_login'])): ?>
                                 <div class="alert alert-danger"><?= lang('password_invalid') ?></div><?php endif ?>
+                            <?php if (isset($_GET['err_forbid'])): ?>
+                                <div class="alert alert-danger"><?= lang('account_deactivated') ?></div><?php endif ?>
                             <form method="post" class="user" action="./account.php?action=dosignin&s=<?= $admin_path_code ?>">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="user" name="user" aria-describedby="emailHelp" placeholder="<?= lang('email') ?>" required

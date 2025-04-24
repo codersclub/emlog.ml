@@ -168,7 +168,7 @@
                         <input type="hidden" value="" name="hide" id="hide" />
                         <textarea class="form-control" id="reply" name="reply" required></textarea>
                     </div>
-<!--vot: Sparkles--><p><a href="javascript:void(0);" class="" id="ai_button_reply">&#10024;</a></p>
+<!-- Sparkles-->    <p><a href="javascript:void(0);" class="" id="ai_button_reply">&#10024;</a></p>
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-sm btn-light" data-dismiss="modal"><?= lang('cancel') ?></button>
@@ -192,6 +192,8 @@
         $("#menu_cm").addClass('active');
         setTimeout(hideActived, 3600);
 
+        initCheckboxSelectAll('#checkAllItem', '.checkboxContainer');
+
         $('#replyModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
             var comment = button.data('comment')
@@ -203,7 +205,7 @@
             modal.find('.modal-body #hide').val(hide)
         })
 
-        // AI-generated comment replies
+        // AI-generated comment reply
         $('#ai_button_reply').click(function() {
             var $button = $(this);
             var $reply = $('#reply');
@@ -231,7 +233,7 @@
                 },
                 complete: function() {
                     // Restore button state
-/*vot*/             $button.prop('disabled', false).text('&#10024;'); // sparkles
+<!-- Sparkles-->    $button.prop('disabled', false).text('&#10024;');
                 }
             });
         });

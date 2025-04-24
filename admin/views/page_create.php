@@ -68,10 +68,14 @@
                     <?php endif; ?>
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" value="y" name="allow_remark" id="allow_remark" <?= $is_allow_remark ?> />
-                    <label for="allow_remark"><?= lang('allow_comments') ?></label><br>
-                    <input type="checkbox" value="y" name="home_page" id="home_page" <?= $is_home_page ?> />
-                    <label for="home_page"><?= lang('set_as_home') ?></label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="allow_remark" name="allow_remark" value="y" <?= $is_allow_remark ?>>
+                        <label class="custom-control-label" for="allow_remark"><?= lang('allow_comments') ?></label>
+                    </div>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="home_page" name="home_page" value="y" <?= $is_home_page ?>>
+                        <label class="custom-control-label" for="home_page"><?= lang('set_as_home') ?></label>
+                    </div>
                 </div>
                 <div id="page_side_ext">
                     <?php doAction('adm_write_page_side') ?>
@@ -207,8 +211,8 @@
     window.onbeforeunload = function(e) {
         if ($("textarea").text() == pageText) return
         e = e || window.event;
-        if (e) e.returnValue = lang('leave_prompt');
-        return lang('leave_prompt');
+        if (e) e.returnValue = jlang('leave_prompt');
+        return jlang('leave_prompt');
     }
     // Global shortcut keys on page editing interface Ctrl (Cmd) + S to save content
     document.addEventListener('keydown', function(e) {
@@ -231,7 +235,7 @@
             };
             if (files && files.length > 0) {
                 if (!files[0].type.startsWith('image')) {
-                    alert(lang('upload_images_only'));
+                    alert(jlang('upload_images_only'));
                     return;
                 }
                 reader = new FileReader();
@@ -275,7 +279,7 @@
                     if (data && typeof data === "object") {
                         alert(data.msg);
                     } else {
-                        alert(lang('cover_upload_error'));
+                        alert(jlang('cover_upload_error'));
                     }
                 }
             });

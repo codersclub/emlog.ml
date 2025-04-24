@@ -40,8 +40,8 @@ $auto_cover = Input::postStrVar('auto_cover', 'n');
 $field_keys = Input::postStrArray('field_keys');
 $field_values = Input::postStrArray('field_values');
 
-// Automatically extract summaries
-if ($auto_excerpt === 'y') {
+// Automatically extract summary
+if (empty($excerpt) && $auto_excerpt === 'y') {
     $origContent = trim($_POST['logcontent']);
     $parseDown = new Parsedown();
     $excerpt = $parseDown->text($origContent);
@@ -51,7 +51,7 @@ if ($auto_excerpt === 'y') {
 }
 
 // Automatically extract cover
-if (empty($cover) && $auto_cover === 'y') {
+if ($content && empty($cover) && $auto_cover === 'y') {
     $cover = getFirstImage($content);
 }
 

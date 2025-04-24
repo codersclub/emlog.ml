@@ -18,7 +18,6 @@ $is_has_menu = array_key_exists('TplOptionsNavi', $tplget);
                         <?php if ($is_has_menu): ?>
                             <input type="submit" class="button vtpl-menu none" value="<?= lang('menu') ?>">
                         <?php endif; ?>
-                        <span class="button vtpl-collapse-section tpl-options-btns" data-type="1"><?= lang('shrink_all') ?></span>
                     </div>
                 </div>
                 <div class="clear"></div>
@@ -34,14 +33,14 @@ $is_has_menu = array_key_exists('TplOptionsNavi', $tplget);
         <div class="vtpl-wrapper vtpl-option-main">
             <div class="vtpl-nav vtpl-nav-options tpl-nav-options">
                 <ul>
-<!--vot-->          <li onClick="TplShow('tpl-system')" class="active"><?=lang('settings_help')?></li>
+                    <li onClick="TplShow('tpl-system')" class="active"><?=lang('settings_help')?></li>
                     <?php
                     foreach ($tplnavi as $key => $v):
                         $icom_html = '';
                         if ($tplnavi_icons) {
                             $icom_html = trim($tplnavi_icons[$key]) ? '<i class="' . $tplnavi_icons[$key] . ' ri-lg"></i>' : '';
                         }
-                        ?>
+                    ?>
                         <li onClick="TplShow('<?= $key; ?>')"><?= $icom_html . $v; ?></li>
                     <?php endforeach; ?>
                 </ul>
