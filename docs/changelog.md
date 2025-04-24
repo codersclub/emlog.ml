@@ -1,5 +1,18 @@
 # &#x1f335; Emlog Changelog
 
+## Pro 2.5.13
+
+Release time: 2025-4-23
+
+[Function] Resource management adds unclassified resource filtering
+[Function] Optimize the login prompt for banned users
+[Function] API: Return user avatars in article lists
+[Fix] Issue where multiple selections cannot be made in comments and user management
+[Fix] Other known issues and interface detail optimizations
+
+Installation package: [emlog_pro_2.5.13.zip](https://gitee.com/snowsun/emlog/releases/download/pro-2.5.13/emlog_pro_2.5.13.zip)
+
+
 ## Pro 2.5.12
 
 Release time: 2025-4-13

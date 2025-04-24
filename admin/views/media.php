@@ -14,7 +14,7 @@
 <?php if (User::isAdmin()): ?>
     <div class="row mb-4 ml-1 justify-content-between">
         <div>
-        <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
+            <a href="media.php" class="btn btn-sm btn-primary mr-2 my-1"><?= lang('media_all') ?></a>
             <?php foreach ($sorts as $key => $val):
                 $cur_tab = $val['id'] == $sid ? "btn-primary" : "btn-success";
             ?>
@@ -28,7 +28,7 @@
                 </div>
             <?php endforeach ?>
             <?php if ($sorts): ?>
-                <a href="media.php?sid=na" class="btn btn-sm <?= $sid === 'na' ? "btn-primary" : "btn-light" ?> mr-2 my-1">未分类</a>
+                <a href="media.php?sid=na" class="btn btn-sm <?= $sid === 'na' ? "btn-primary" : "btn-light" ?> mr-2 my-1"><?= lang('uncategorized') ?></a>
             <?php endif ?>
             <a href="#" class="btn btn-light btn-sm my-1" data-toggle="modal" data-target="#mediaSortModal"><i class="icofont-plus"></i> <?= lang('category') ?></a>
         </div>
