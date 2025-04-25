@@ -627,7 +627,7 @@ function lang(key) {
 //------------------------------
 // Return the language var value
 function jlang(key) {
-    return lang(val);
+    return lang(key);
 }
 
 /*vot*/    // Load Timepicker language
