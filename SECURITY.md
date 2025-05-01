@@ -1,12 +1,14 @@
 # Security Vulnerability Reporting Guide
 
 Thank you for your security research and responsible vulnerability disclosure!
-Please **do not** report security vulnerabilities publicly in GitHub Issues.
+Please do not publicly report security vulnerabilities in GitHub Issues.
 
-To report a security issue, please submit it in the following ways:
+To report security issues, please submit them in the following ways:
 
-- Send an email to `emlog-tech@foxmail.com`
-- Submit it through [GitHub Security Advisories](https://github.com/emlog/emlog/security/advisories)
+- Submit through [GitHub Security Advisories](https://github.com/emlog/emlog/security/advisories)
 
-We will confirm and fix the problem as soon as possible,
-thank you for your support!
+We will confirm and respond to your report as soon as possible.
+For confirmed and fixed issues, we will apply for CVE and make it public
+after 3 months to prevent malicious exploitation.
+
+Thank you for your support!
