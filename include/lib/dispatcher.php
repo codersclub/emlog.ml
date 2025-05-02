@@ -133,8 +133,7 @@ class Dispatcher
         } else {
             $path = $_SERVER['PHP_SELF'] . '?' . $_SERVER['QUERY_STRING'];
         }
-/*vot*/ $path = ROOT_URL;
-//dump($path, '$path');
+///*vot*/ $path = ROOT_URL;
 
         //for iis6 path is GBK
 /*vot*/ if(LANG == 'zh-CN') { // Only for Simplified Chinese!

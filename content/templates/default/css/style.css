@@ -3,14 +3,12 @@
  */
 :root {
     --marRadius: 5px;
-    --headBgcolor: #4e73df;  /* Background color for blog header */
-    --headColor: #e0e0e0;    /* Text color for blog header */
     --conBgcolor: #ffffff;   /* Background color for navigation, cards, content */
     --bodyBground: #f5f5f6;  /* Page background color */
     --fontColor: #5a5c69;    /* Normal text color */
     --aColor: #333333;       /* Link color (a tag) */
     --aHoverColor: #f6607d;  /* Link hover color */
-    --lightColor: #757575;    /* Lighter text color */
+    --lightColor: #757575;   /* Lighter text color */
 
     /* General styles for forms and buttons */
     --inputBgColor: #ffffff;
@@ -28,7 +26,6 @@
 
 /* Dark Mode */
 [data-theme="dark"] {
-    --headBgcolor: #2e2e2e; /* Background color of navigation, cards, and content */
     --conBgcolor: #2e2e2e; /* Background color of navigation, cards, and content */
     --bodyBground: #121212; /* Page body background color */
     --fontColor: #ffffff; /* Normal text color */
@@ -139,7 +136,6 @@ hr {
 
 .m-r-5 {
     margin-right: 5px;
-    margin-left: 5px;
 }
 
 .m-r-10 {
@@ -381,25 +377,14 @@ body {
 ---------------------------------------------------*/
 .blog-header {
     margin-bottom: 2.3rem;
-    background-color: var(--headBgcolor);
+    background-color: var(--conBgcolor);
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.02);
-    color: var(--headColor);
 }
 
 .blog-header-c {
     height: 71.63px;
     display: flex;
     justify-content: space-between /* The navigation bar is aligned at both ends of the main axis, that is, the heading and the navigation are two parts, one is aligned to the left, and the other is aligned to the right. */
-}
-
-.blog-header a {
-    color: #e0e0e0;
-}
-.blog-header a:hover,
-.blog-header a:focus
-{
-    color: #fff;
-    text-decoration: underline;
 }
 
 /* Blog title and subtitle */
@@ -424,7 +409,6 @@ body {
 
 .list-menu {
     list-style: none;
-    padding: 1rem 0.5rem;
 }
 
 /* Responsive configuration of navigation list
@@ -2026,7 +2010,7 @@ img.zoom-img {
     }
 }
 
-/* Dropdown */
+/*vot: Dropdown */
 .drop {
     position: relative;
     display: inline-block;

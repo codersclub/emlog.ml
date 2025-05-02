@@ -42,7 +42,7 @@ class Notice
         $_SESSION['mail'] = $mail;
 
 /*vot*/ $title = lang('email_verif_code_title');
-        $content = sprintf('<div id="email_code">'.lang('email_verif_code').'<b style="color: orange;">%s</b></div>', $randCode);
+        $content = sprintf('<div id="email_code">' . lang('email_verif_code') . '<b style="color: orange;">%s</b></div>', $randCode);
         return self::sendMail($mail, $title, $content);
     }
 
@@ -77,7 +77,7 @@ class Notice
         }
         $title = lang('new_article_review');
         $url = Url::log($gid);
-        $content = sprintf(lang('new_article_title').'<a href="%s">%s</a>', $url, $postTitle);
+        $content = sprintf(lang('new_article_title') . '<a href="%s">%s</a>', $url, $postTitle);
         return self::sendMail($mail, $title, $content);
     }
 

@@ -11,7 +11,6 @@ function emAutoload($class)
 /*vot*/ load_language($class);
 
     $class = strtolower($class);
-
     if (file_exists(EMLOG_ROOT . '/include/model/' . $class . '.php')) {
         require_once(EMLOG_ROOT . '/include/model/' . $class . '.php');
     } elseif (file_exists(EMLOG_ROOT . '/include/lib/' . $class . '.php')) {
@@ -72,7 +71,7 @@ function getBlogUrl()
 {
     $phpself = isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '';
     if (preg_match("/^.*\//", $phpself, $matches)) {
-        return 'http://' . $_SERVER['HTTP_HOST'] . $matches[0];
+/*vot*/ return SCHEME . $_SERVER['HTTP_HOST'] . $matches[0];
     } else {
         return BLOG_URL;
     }
@@ -90,6 +89,7 @@ function realUrl()
 
 /*vot*/ $emlog_path = EMLOG_ROOT . '/';
     $script_path = pathinfo($_SERVER['SCRIPT_NAME'], PATHINFO_DIRNAME);
+    $script_path = str_replace('\\', '/', $script_path);
     $path_element = explode('/', $script_path);
 
     $this_match = '';
@@ -103,7 +103,6 @@ function realUrl()
         }
         $current_deep++;
     }
-
     $best_match = str_replace(DIRECTORY_SEPARATOR, '/', $best_match);
 
     $protocol = 'http://';

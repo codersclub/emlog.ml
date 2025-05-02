@@ -51,7 +51,7 @@ class Register
             return false;
         }
         $response = $emcurl->getRespone();
-        $response = json_decode($response, JSON_UNESCAPED_UNICODE);
+/*vot*/ $response = json_decode($response, JSON_UNESCAPED_UNICODE);
         if ($response['code'] !== 200) {
             $CACHE = Cache::getInstance();
             Option::updateOption('emkey', '');
@@ -75,7 +75,7 @@ class Register
             return false;
         }
         $response = $emcurl->getRespone();
-        $response = json_decode($response, JSON_UNESCAPED_UNICODE);
+/*vot*/ $response = json_decode($response, JSON_UNESCAPED_UNICODE);
         if ($response['code'] !== 200) {
             self::clean();
             return false;

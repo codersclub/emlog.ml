@@ -24,7 +24,6 @@ class MySqlii {
     private $result;
 
     /**
-     * Internal object instance
      * @var object MySql
      */
     private static $instance;

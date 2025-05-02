@@ -333,8 +333,8 @@ function blog_navi()
                 }
                 if ($value['url'] == 'admin' && (!User::isVisitor())):
             ?>
-                    <li class="list-item list-menu nav-link"><a href="<?= BLOG_URL ?>admin/"><?= lang('site_management') ?></a></li>
-                    <li class="list-item list-menu nav-link"><a href="<?= BLOG_URL ?>admin/account.php?action=logout"><?= lang('logout') ?></a></li>
+                    <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/" class="nav-link"><?= lang('site_management') ?></a></li>
+                    <li class="list-item list-menu"><a href="<?= BLOG_URL ?>admin/account.php?action=logout" class="nav-link"><?= lang('logout') ?></a></li>
                 <?php
                     continue;
                 endif;
@@ -450,8 +450,7 @@ function blog_tag($blogid)
     if (!empty($tag_names)) {
         $tag = '';
         foreach ($tag_names as $value) {
-/*vot*/     $tag .= '    <a href="' . Url::tag(rawurlencode($value)) . '" class="tags">' . htmlspecialchars($value) . '</a>';
-            $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class='tags' title='" . lang('tag') . "' >" . htmlspecialchars($value) . '</a>';
+/*vot*/     $tag .= "    <a href=\"" . Url::tag(rawurlencode($value)) . "\" class=\"tags\" title=\"{lang('tag')}\" >" . htmlspecialchars($value) . '</a>';
         }
         echo $tag;
     }

@@ -14,6 +14,7 @@ class User
     const ROLE_WRITER = 'writer';   // Registered user
     const ROLE_VISITOR = 'visitor'; // Guest
     const ROLE_EDITOR = 'editor';   // Content editor
+/*vot*/ const ROLE_FOUNDER = 'founder'; // Site founder
 
     const USER_STATE_FORBID = 1;
     const USER_STATE_NORMAL = 0;

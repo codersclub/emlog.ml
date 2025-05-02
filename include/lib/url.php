@@ -65,9 +65,6 @@ class Url {
         return $logUrl;
     }
 
-    /**
-     * Get record URL
-     */
     static function record($record, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -86,9 +83,6 @@ class Url {
         return $recordUrl;
     }
 
-    /**
-     * Get Category URL
-     */
     static function sort($sortId, $page = null) {
         $CACHE = Cache::getInstance();
         $sort_cache = $CACHE->readCache('sort');
@@ -124,9 +118,6 @@ class Url {
         return $sortUrl;
     }
 
-    /**
-     * Get Author URL
-     */
     static function author($authorId, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -145,9 +136,6 @@ class Url {
         return $authorUrl;
     }
 
-    /**
-     * Get Tag URL
-     */
     static function tag($tag, $page = null) {
         switch (Option::get('isurlrewrite')) {
             case '0':
@@ -166,9 +154,6 @@ class Url {
         return $tagUrl;
     }
 
-    /**
-     * Get the Home Post pagination links
-     */
     static function logPage() {
         $posts = Option::get('home_page_id') > 0 ? 'posts/' : '';
         switch (Option::get('isurlrewrite')) {
@@ -182,9 +167,6 @@ class Url {
         return $logPageUrl;
     }
 
-    /**
-     * Get Comment URL
-     */
     static function comment($blogId, $pageId, $cid) {
         $commentUrl = Url::log($blogId);
         if ($pageId > 1) {

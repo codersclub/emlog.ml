@@ -79,7 +79,7 @@ var myBlog = {
             let mail = $('#info_m').val()
 
             if (typeof mail !== "undefined" && mail !== '' && !mailReg.test(mail)) {
-                this.comTip = lang('email_invalid')
+                this.comTip = jlang('email_invalid')
             } else {
                 this.comTip = ''
             }
@@ -134,7 +134,7 @@ var myBlog = {
      */
     tocFlag: /\[toc\]/gi,  // Regular expression to determine whether toc is declared
     tocArray: new Array(),  // Array to store toc
-    tocSetArray: function(){  // Fill the toc array with data
+    tocSetArray: function () {  // Fill the toc array with data
         var $titles = $("#emlogEchoLog h1,h2,h3,h4,h5,h6:eq(0)")
 
         for (var i = 0; i < $titles.length; i++) {  // Store the label data into an array in sequence
@@ -303,7 +303,7 @@ var myBlog = {
         if (window.outerWidth === 0) return  // Chrome browser will set the width to 0 for pages opened in new windows
         if (window.outerWidth > 1275) return
         $(".toc-con").toggle()
-        $("[toc-date='title']").append('<a class="toc-link">[' + lang('toc') + ']</a>')
+        $("[toc-date='title']").append('<a class="toc-link">[' + jlang('toc') + ']</a>')
 
         $(".toc-link").click(function (e) {  // Add event listener
             $(".toc-con").show()
@@ -375,21 +375,6 @@ $(document).ready(function () {
     })
 
     // Switch to dark mode theme
-/*
-    $("#theme-toggle").click(function () {
-            var currentTheme = localStorage.getItem('theme');
-            var targetTheme;
-            if (currentTheme === 'light') {
-                targetTheme = 'dark';
-            } else {
-                targetTheme = 'light';
-            }
-
-            document.documentElement.setAttribute('data-theme', targetTheme);
-            localStorage.setItem('theme', targetTheme);
-    })
-*/
-
     const toggleButton = document.getElementById('theme-toggle');
     if (toggleButton) {
         toggleButton.addEventListener('click', () => {
@@ -404,5 +389,4 @@ $(document).ready(function () {
             localStorage.setItem('theme', targetTheme);
         });
     }
-
 })

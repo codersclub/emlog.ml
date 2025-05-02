@@ -67,23 +67,24 @@ const ROLE_VISITOR = 'visitor';
 
 define('ROLE', ISLOGIN === true ? $userData['role'] : User::ROLE_VISITOR);
 define('UID', ISLOGIN === true ? (int)$userData['uid'] : 0);
-//Site fixed URL
+
+//Site URL
 //define('BLOG_URL', Option::get('blogurl'));
 	//------------------------------------------------------------------------
         // App URL
 	$url = dirname($_SERVER['PHP_SELF']);    // URL to your website without trailing slash.
         $url = str_replace('\\', '/', $url);
         $url = preg_replace("#/admin$#", '', $url);
-
 	define('BLOG_URL', "$url/");
+
 	// Root Web URL (start from the SITE ROOT, W/o ending slash !)
 	$url = dirname($url);    // URL to your website with trailing slash.
         $url = str_replace('\\', '/', $url);
 	define('ROOT_URL', preg_replace("/\/$/", '', str_replace('\\', '/', $url)) . '/');
 
-//Template Library URL
+//Template URL
 const TPLS_URL = BLOG_URL . 'content/templates/';
-//Template Library Path
+//Template Path
 const TPLS_PATH = EMLOG_ROOT . '/content/templates/';
 const PLUGIN_URL = BLOG_URL . 'content/plugins/';
 const PLUGIN_PATH = EMLOG_ROOT . '/content/plugins/';
@@ -96,8 +97,9 @@ define('TEMPLATE_URL', TPLS_URL . Option::get('nonce_templet') . '/');
 define('ADMIN_TEMPLATE_PATH', EMLOG_ROOT . '/admin/views/');
 //Frontend template absolute path
 define('TEMPLATE_PATH', TPLS_PATH . Option::get('nonce_templet') . '/');
-//dump(EMLOG_ROOT, 'EMLOG_ROOT');
 //dump(BLOG_URL, 'BLOG_URL');
+//dump(ROOT_URL, 'ROOT_URL');
+//dump(EMLOG_ROOT, 'EMLOG_ROOT');
 
 //Error code
 const MSGCODE_EMKEY_INVALID = 1001;
