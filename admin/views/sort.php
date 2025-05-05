@@ -163,7 +163,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title"><?= lang('cat_title_prompt') ?></label>
-                        <textarea name="title" id="title" type="text" class="form-control"></textarea>
+                        <input class="form-control" id="title" name="title">
                         <small class="form-text text-muted"><?= lang('cat_tpl_variables') ?></small>
                     </div>
                     <div class="form-group">
@@ -172,7 +172,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kw"><?= lang('keywords') ?><?= lang('keywords_info') ?></label>
-                        <textarea name="kw" id="kw" type="text" class="form-control"></textarea>
+                        <input class="form-control" id="kw" name="kw">
                     </div>
                     <div class="form-group">
                         <label for="template"><?=lang('category_template')?></label>
